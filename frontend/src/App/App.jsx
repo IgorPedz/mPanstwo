@@ -1,12 +1,15 @@
 import { useState } from 'react'
+import Navbar from '../Nav/Nav';
+import Dashboard from '../Dashboard/Dashboard';
 
 function App() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-blue-500">
-        Hello Tailwind 🚀
-      </h1>
+      <div className='flex'>
+        <Navbar />
+        <Dashboard />
+      </div>
     </>
   )
 }
