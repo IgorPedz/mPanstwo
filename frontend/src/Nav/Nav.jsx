@@ -42,10 +42,6 @@ export default function Sidebar() {
 
       {/* Dół */}
       <div className="p-3 border-t border-gray-100 space-y-1">
-        <button className="cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-100 transition">
-          <UserCircleIcon className="h-5 w-5" />
-          <span className="text-sm font-medium">Moje konto</span>
-        </button>
 
         <button className="cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-100 transition">
           <Cog6ToothIcon className="h-5 w-5" />

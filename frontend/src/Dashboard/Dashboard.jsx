@@ -138,7 +138,25 @@ const iconColors = {
     krs: "text-teal-700",
 };
 
-const TILES_PER_PAGE = 9;
+
+function useTilesPerPage() {
+    const [tilesPerPage, setTilesPerPage] = useState(getTilesPerPage());
+
+    function getTilesPerPage() {
+        if (window.matchMedia("(min-width: 1100px)").matches) return 9;
+        if (window.matchMedia("(min-width: 900px)").matches) return 8;
+        if (window.matchMedia("(min-width: 768px)").matches) return 6;
+        return 3;
+    }
+
+    useEffect(() => {
+        const handleResize = () => setTilesPerPage(getTilesPerPage());
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    return tilesPerPage;
+}
 
 function Tile({ id, type, label, icon: Icon, accent, onDelete }) {
     const {
@@ -167,13 +185,9 @@ function Tile({ id, type, label, icon: Icon, accent, onDelete }) {
         ${isDragging ? "opacity-70 scale-95" : ""}
         cursor-pointer`}
         >
-
-            {/* gradient pasek */}
             <div
                 className={`h-1 bg-gradient-to-r ${accent} rounded-t-xl absolute top-0 left-0 right-0`}
             />
-
-            {/* delete */}
             <button
                 onClick={(e) => {
                     e.stopPropagation();
@@ -183,8 +197,6 @@ function Tile({ id, type, label, icon: Icon, accent, onDelete }) {
             >
                 <XMarkIcon className="h-5 w-5" />
             </button>
-
-            {/* drag handle */}
             <div
                 {...attributes}
                 {...listeners}
@@ -197,14 +209,32 @@ function Tile({ id, type, label, icon: Icon, accent, onDelete }) {
             <div className="mt-6 flex items-center gap-4">
                 <Icon className={`h-10 w-10 ${iconClass}`} />
                 <div>
-                    <h3 className="font-semibold text-gray-800">{label}</h3>
-                    <p className="text-sm text-gray-500">Kliknij aby otworzyć moduł</p>
+                    <h3 className="text-sm font-semibold text-gray-800">{label}</h3>
+                    <p className="text-xs text-gray-500">Kliknij aby otworzyć moduł</p>
                 </div>
             </div>
         </div>
     );
 }
-
+function AddTile({ onClick }) {
+    return (
+        <div
+            onClick={onClick}
+            className="
+                bg-white border-2 border-dashed border-gray-300
+                rounded-xl shadow-sm p-5
+                flex flex-col items-center justify-center
+                hover:shadow-lg hover:-translate-y-1
+                hover:border-blue-500 hover:bg-blue-50
+                transition-all duration-200
+                cursor-pointer
+            "
+        >
+            <div className="text-4xl text-blue-700">+</div>
+            <p className="mt-2 text-sm text-gray-500">Dodaj moduł</p>
+        </div>
+    );
+}
 export default function Dashboard() {
     const [tiles, setTiles] = useState([]);
     const [error, setError] = useState("");
@@ -226,7 +256,6 @@ export default function Dashboard() {
         const tileData = AVAILABLE_TILES.find((t) => t.type === type);
         if (!tileData) return;
 
-        // jeśli kafelek już istnieje → pokaz błąd
         if (tiles.some((t) => t.type === type)) {
             setError(`Moduł "${tileData.label}" jest już dodany!`);
             return;
@@ -236,7 +265,7 @@ export default function Dashboard() {
             ...tiles,
             {
                 id: uuidv4(),
-                type: tileData.type, // konieczne do kolorów i uników
+                type: tileData.type,
                 label: tileData.label,
                 icon: tileData.icon,
                 accent: tileData.accent,
@@ -257,33 +286,32 @@ export default function Dashboard() {
             });
         }
     };
+    const TILES_PER_PAGE = useTilesPerPage();
 
-    const totalPages = Math.ceil(tiles.length / TILES_PER_PAGE);
-    const paginatedTiles = tiles.slice(currentPage * TILES_PER_PAGE, (currentPage + 1) * TILES_PER_PAGE);
+    const totalPages = Math.ceil((tiles.length + 1) / TILES_PER_PAGE);
+    const currentTiles = tiles.slice(
+        currentPage * TILES_PER_PAGE,
+        (currentPage + 1) * TILES_PER_PAGE
+    );
+
+    const isPageFull = currentTiles.length >= TILES_PER_PAGE;
 
     return (
         <div className="flex-1 p-10 bg-gray-50 min-h-screen">
 
             <div className="flex justify-between">
                 <h1
-                    className="tracking-wider text-3xl md:text-4xl text-blue-900 mb-4"
+                    className="tracking-wide text-2xl md:text-2xl text-blue-900 mb-4"
                     style={{ fontFamily: "'Patrick Hand', cursive" }}
                 >
                     Witaj, Igor!
                 </h1>
-
-                <button
-                    onClick={() => setShowAddMenu(!showAddMenu)}
-                    className="flex items-center justify-center w-12 h-12 text-blue-900 text-2xl font-bold rounded-full hover:text-blue-700 transition"
-                >
-                    +
-                </button>
             </div>
 
             <AnimatePresence initial={false} mode="wait">
                 <motion.div
                     key={currentPage}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"
                     initial={{ x: 300, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: -300, opacity: 0 }}
@@ -291,15 +319,19 @@ export default function Dashboard() {
                 >
                     <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
                         <SortableContext
-                            items={paginatedTiles.map((t) => t.id)}
+                            items={currentTiles.map((t) => t.id)}
                             strategy={rectSortingStrategy}
                         >
-                            {paginatedTiles.map((tile) => (
+                            {currentTiles.map((tile) => (
                                 <Tile key={tile.id} {...tile} onDelete={deleteTile} />
                             ))}
                         </SortableContext>
                     </DndContext>
+
+                    {/* AddTile pojawia się zawsze na końcu ostatniej strony */}
+                    {currentPage === totalPages - 1 && <AddTile onClick={() => setShowAddMenu(true)} />}
                 </motion.div>
+
             </AnimatePresence>
 
             {totalPages > 1 && (
@@ -321,11 +353,7 @@ export default function Dashboard() {
                     </button>
                 </div>
             )}
-            {tiles.length === 0 && (
-                <p className="text-gray-400 mt-20 text-center">
-                    Nie ma żadnego modułu!
-                </p>
-            )}
+
             <ErrorMessage message={error} onClose={() => setError("")} />
 
             {showAddMenu && (
