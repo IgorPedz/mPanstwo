@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import ErrorMessage from "../ErrorMessages/ErrorMessage";
-import useNoScroll from "../Utills/UseNoScroll";
+import { useState, useEffect} from "react";
+import ErrorMessage from "../../Utils/ErrorMessage";
+import useNoScroll from "../../Utils/UseNoScroll";
+import DropDown from "../Dashboard/DropDown";
 import { motion, AnimatePresence } from "framer-motion";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
@@ -9,8 +10,8 @@ import {
     rectSortingStrategy,
     arrayMove,
 } from "@dnd-kit/sortable";
+
 import { CSS } from "@dnd-kit/utilities";
-import { v4 as uuidv4 } from "uuid";
 
 import {
     UserGroupIcon,
@@ -26,6 +27,8 @@ import {
     AcademicCapIcon,
     BanknotesIcon,
 } from "@heroicons/react/24/outline";
+
+import {useUser} from '../../Contexts/UserContext'
 
 const AVAILABLE_TILES = [
     {
@@ -120,24 +123,6 @@ const AVAILABLE_TILES = [
         iconColor: "text-teal-700",
     },
 ];
-
-
-const iconColors = {
-    poslowie: "text-blue-800",
-    senatorowie: "text-orange-800",
-    senat: "text-indigo-800",
-    kluby: "text-purple-700",
-    sejm: "text-emerald-700",
-    rada: "text-rose-700",
-    ustawy: "text-green-700",
-    kancelaria_prezydenta: "text-gray-700",
-    prezydent: "text-red-700",
-    uokik: "text-pink-700",
-    tk: "text-yellow-700",
-    nsa: "text-cyan-700",
-    krs: "text-teal-700",
-};
-
 
 function useTilesPerPage() {
     const [tilesPerPage, setTilesPerPage] = useState(getTilesPerPage());
@@ -239,7 +224,9 @@ export default function Dashboard() {
     const [tiles, setTiles] = useState([]);
     const [error, setError] = useState("");
     const [showAddMenu, setShowAddMenu] = useState(false);
-    const [currentPage, setCurrentPage] = useState(0);
+    let [currentPage, setCurrentPage] = useState(0);
+
+    const { user } = useUser()
 
     useNoScroll(true);
 
@@ -248,30 +235,11 @@ export default function Dashboard() {
         if (saved) setTiles(JSON.parse(saved));
     }, []);
 
+
     useEffect(() => {
         localStorage.setItem("mpanstwo-tiles", JSON.stringify(tiles));
     }, [tiles]);
 
-    const addTile = (type) => {
-        const tileData = AVAILABLE_TILES.find((t) => t.type === type);
-        if (!tileData) return;
-
-        if (tiles.some((t) => t.type === type)) {
-            setError(`Moduł "${tileData.label}" jest już dodany!`);
-            return;
-        }
-
-        setTiles([
-            ...tiles,
-            {
-                id: uuidv4(),
-                type: tileData.type,
-                label: tileData.label,
-                icon: tileData.icon,
-                accent: tileData.accent,
-            },
-        ]);
-    };
     const deleteTile = (id) => {
         setTiles((prev) => prev.filter((t) => t.id !== id));
     };
@@ -294,7 +262,11 @@ export default function Dashboard() {
         (currentPage + 1) * TILES_PER_PAGE
     );
 
-    const isPageFull = currentTiles.length >= TILES_PER_PAGE;
+    useEffect(() => {
+        if (currentPage > totalPages - 1) {
+            setCurrentPage(0);
+        }
+    }, [totalPages]);
 
     return (
         <div className="flex-1 p-10 bg-gray-50 min-h-screen">
@@ -304,7 +276,7 @@ export default function Dashboard() {
                     className="tracking-wide text-2xl md:text-2xl text-blue-900 mb-4"
                     style={{ fontFamily: "'Patrick Hand', cursive" }}
                 >
-                    Witaj, Igor!
+                    Witaj, {user.name}!
                 </h1>
             </div>
 
@@ -327,8 +299,6 @@ export default function Dashboard() {
                             ))}
                         </SortableContext>
                     </DndContext>
-
-                    {/* AddTile pojawia się zawsze na końcu ostatniej strony */}
                     {currentPage === totalPages - 1 && <AddTile onClick={() => setShowAddMenu(true)} />}
                 </motion.div>
 
@@ -363,43 +333,13 @@ export default function Dashboard() {
                 />
             )}
 
-            {/* Drawer */}
-            <div
-                className={`fixed top-0 right-0 h-full w-80 bg-white shadow-lg z-50 transform transition-transform duration-300 overflow-y-auto`}
-                style={{ transform: showAddMenu ? "translateX(0)" : "translateX(100%)" }}
-
-            >
-                <div className="flex justify-between items-center p-4 border-b">
-                    <h3 className="font-semibold text-lg">Dodaj moduł</h3>
-                    <button
-                        onClick={() => setShowAddMenu(false)}
-                        className="cursor-pointer text-gray-500 hover:text-red-700"
-                    >
-                        ×
-                    </button>
-                </div>
-
-                <div className="p-4 grid grid-cols-1 gap-3">
-                    {AVAILABLE_TILES.map((tile) => {
-                        const isAdded = tiles.some((t) => t.type === tile.type);
-                        return (
-                            <button
-                                key={tile.type}
-                                onClick={() => {
-                                    if (!isAdded) addTile(tile.type);
-                                }}
-                                disabled={isAdded}
-                                className={`flex items-center gap-2 p-3 border rounded-lg transition 
-            ${isAdded ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                                        : "bg-blue-50 hover:bg-blue-100 cursor-pointer"}`}
-                            >
-                                <tile.icon className={`h-6 w-6 ${iconColors[tile.type] || "text-gray-800"}`} />
-                                <span>{tile.label}</span>
-                            </button>
-                        );
-                    })}
-                </div>
-            </div>
+            <DropDown
+                showAddMenu={showAddMenu}
+                setShowAddMenu={setShowAddMenu}
+                tiles={tiles}
+                setTiles={setTiles}
+                AVAILABLE_TILES={AVAILABLE_TILES}
+            />
 
 
         </div>

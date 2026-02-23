@@ -14,8 +14,9 @@ const navItems = [
   { name: "Statystyki", icon: ChartBarIcon },
   { name: "Obywatele", icon: UsersIcon },
 ];
-
+import { useUser } from "../../Contexts/UserContext"; 
 export default function Sidebar() {
+  const {user,logout} = useUser()
   return (
     <aside className="h-screen w-64 bg-white border-r border-gray-200 flex flex-col justify-between shadow-sm">
       
@@ -40,7 +41,6 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      {/* Dół */}
       <div className="p-3 border-t border-gray-100 space-y-1">
 
         <button className="cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-100 transition">
@@ -48,7 +48,7 @@ export default function Sidebar() {
           <span className="text-sm font-medium">Ustawienia</span>
         </button>
 
-        <button className="cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 transition">
+        <button onClick={logout}className="cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 transition">
           <ArrowRightOnRectangleIcon className="h-5 w-5" />
           <span className="text-sm font-medium">Wyloguj się</span>
         </button>

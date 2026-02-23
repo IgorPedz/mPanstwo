@@ -1,21 +1,33 @@
-import { useState } from 'react'
-import Navbar from '../Nav/Nav';
-import Dashboard from '../Dashboard/Dashboard';
-import Headbar from '../Dashboard/Headbar'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import DashboardPage from "../pages/DashboardPage";
+import AuthPage from "../pages/AuthPage";
+import { UserProvider, useUser } from "../Contexts/UserContext";
+import ProtectedRoute from "../Utils/ProtectedRoutes"
 function App() {
-
   return (
-    <>
-      <div className="flex min-h-screen">
-        <Navbar className="w-64" />
+    <UserProvider>
+      <Router>
+        <Routes>
+          {/* Auth */}
+          <Route path="/auth" element={<AuthPage />} />
 
-        <div className="flex-1 flex flex-col">
-          <Headbar />
-          <Dashboard />
-        </div>
-      </div>
-    </>
-  )
+          {/* Dashboard */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Domyślnie */}
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Routes>
+      </Router>
+    </UserProvider>
+  );
 }
 
-export default App
+export default App;
