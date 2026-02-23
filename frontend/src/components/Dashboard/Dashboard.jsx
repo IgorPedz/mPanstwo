@@ -1,16 +1,16 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import ErrorMessage from "../../Utils/ErrorMessage";
 import useNoScroll from "../../Utils/UseNoScroll";
 import DropDown from "../Dashboard/DropDown";
 import { motion, AnimatePresence } from "framer-motion";
 import { DndContext, closestCenter } from "@dnd-kit/core";
+import { restrictToParentElement } from "@dnd-kit/modifiers";   
 import {
     SortableContext,
     useSortable,
     rectSortingStrategy,
     arrayMove,
 } from "@dnd-kit/sortable";
-
 import { CSS } from "@dnd-kit/utilities";
 
 import {
@@ -28,7 +28,7 @@ import {
     BanknotesIcon,
 } from "@heroicons/react/24/outline";
 
-import {useUser} from '../../Contexts/UserContext'
+import { useUser } from "../../Contexts/UserContext";
 
 const AVAILABLE_TILES = [
     {
@@ -158,27 +158,25 @@ function Tile({ id, type, label, icon: Icon, accent, onDelete }) {
         transition,
     };
 
-    let iconClass = "text-gray-800";
-
     return (
         <div
             ref={setNodeRef}
             style={style}
-            className={`bg-white border border-gray-200 rounded-xl shadow-sm p-5 relative
-        transition-all duration-200
+            className={`bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm p-5 relative
+        transition-all duration-200 color-transition
         hover:shadow-lg hover:-translate-y-1
         ${isDragging ? "opacity-70 scale-95" : ""}
         cursor-pointer`}
         >
             <div
-                className={`h-1 bg-gradient-to-r ${accent} rounded-t-xl absolute top-0 left-0 right-0`}
+                className={`h-1 bg-gradient-to-r ${accent} rounded-t-xl absolute top-0 left-1 right-1 color-transition`}
             />
             <button
                 onClick={(e) => {
                     e.stopPropagation();
                     onDelete(id);
                 }}
-                className="absolute top-3 right-3 text-gray-400 hover:text-red-600 transition cursor-pointer"
+                className="absolute top-3 right-3 text-gray-400 dark:text-gray-300 hover:text-red-600 transition color-transition cursor-pointer"
             >
                 <XMarkIcon className="h-5 w-5" />
             </button>
@@ -186,47 +184,53 @@ function Tile({ id, type, label, icon: Icon, accent, onDelete }) {
                 {...attributes}
                 {...listeners}
                 onClick={(e) => e.stopPropagation()}
-                className="absolute top-3 left-3 text-gray-400 hover:text-gray-700 transition cursor-grab active:cursor-grabbing"
+                className="absolute top-3 left-3 text-gray-400 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 transition color-transition cursor-grab active:cursor-grabbing"
             >
                 <Bars3Icon className="h-5 w-5" />
             </div>
 
             <div className="mt-6 flex items-center gap-4">
-                <Icon className={`h-10 w-10 ${iconClass}`} />
+                <Icon className={`h-10 w-10 text-gray-800 dark:text-gray-200 color-transition`} />
                 <div>
-                    <h3 className="text-sm font-semibold text-gray-800">{label}</h3>
-                    <p className="text-xs text-gray-500">Kliknij aby otworzyć moduł</p>
+                    <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 color-transition">
+                        {label}
+                    </h3>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 color-transition">
+                        Kliknij aby otworzyć moduł
+                    </p>
                 </div>
             </div>
         </div>
     );
 }
+
 function AddTile({ onClick }) {
     return (
         <div
             onClick={onClick}
             className="
-                bg-white border-2 border-dashed border-gray-300
-                rounded-xl shadow-sm p-5
-                flex flex-col items-center justify-center
-                hover:shadow-lg hover:-translate-y-1
-                hover:border-blue-500 hover:bg-blue-50
-                transition-all duration-200
-                cursor-pointer
-            "
+        bg-white dark:bg-gray-800 border-2 border-dashed border-gray-300 dark:border-gray-600
+        rounded-xl shadow-sm p-5
+        flex flex-col items-center justify-center
+        hover:shadow-lg hover:-translate-y-1
+        hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900
+        transition-all duration-200 color-transition
+        cursor-pointer
+      "
         >
-            <div className="text-4xl text-blue-700">+</div>
-            <p className="mt-2 text-sm text-gray-500">Dodaj moduł</p>
+            <div className="text-4xl text-blue-700 dark:text-blue-400 color-transition">+</div>
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 color-transition">Dodaj moduł</p>
         </div>
     );
 }
+
 export default function Dashboard() {
     const [tiles, setTiles] = useState([]);
     const [error, setError] = useState("");
     const [showAddMenu, setShowAddMenu] = useState(false);
     let [currentPage, setCurrentPage] = useState(0);
 
-    const { user } = useUser()
+    const { user } = useUser();
 
     useNoScroll(true);
 
@@ -234,7 +238,6 @@ export default function Dashboard() {
         const saved = localStorage.getItem("mpanstwo-tiles");
         if (saved) setTiles(JSON.parse(saved));
     }, []);
-
 
     useEffect(() => {
         localStorage.setItem("mpanstwo-tiles", JSON.stringify(tiles));
@@ -254,8 +257,8 @@ export default function Dashboard() {
             });
         }
     };
-    const TILES_PER_PAGE = useTilesPerPage();
 
+    const TILES_PER_PAGE = useTilesPerPage();
     const totalPages = Math.ceil((tiles.length + 1) / TILES_PER_PAGE);
     const currentTiles = tiles.slice(
         currentPage * TILES_PER_PAGE,
@@ -269,11 +272,10 @@ export default function Dashboard() {
     }, [totalPages]);
 
     return (
-        <div className="flex-1 p-10 bg-gray-50 min-h-screen">
-
+        <div className="flex-1 p-10 bg-gray-50 dark:bg-gray-900 h-screen color-transition">
             <div className="flex justify-between">
                 <h1
-                    className="tracking-wide text-2xl md:text-2xl text-blue-900 mb-4"
+                    className="tracking-wide text-2xl md:text-2xl text-blue-900 dark:text-blue-400 mb-4 color-transition"
                     style={{ fontFamily: "'Patrick Hand', cursive" }}
                 >
                     Witaj, {user.name}!
@@ -289,11 +291,8 @@ export default function Dashboard() {
                     exit={{ x: -300, opacity: 0 }}
                     transition={{ type: "tween", duration: 0.3 }}
                 >
-                    <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-                        <SortableContext
-                            items={currentTiles.map((t) => t.id)}
-                            strategy={rectSortingStrategy}
-                        >
+                    <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd} modifiers={[restrictToParentElement]}>
+                        <SortableContext items={currentTiles.map((t) => t.id)} strategy={rectSortingStrategy}>
                             {currentTiles.map((tile) => (
                                 <Tile key={tile.id} {...tile} onDelete={deleteTile} />
                             ))}
@@ -301,23 +300,24 @@ export default function Dashboard() {
                     </DndContext>
                     {currentPage === totalPages - 1 && <AddTile onClick={() => setShowAddMenu(true)} />}
                 </motion.div>
-
             </AnimatePresence>
 
             {totalPages > 1 && (
                 <div className="flex justify-center gap-4 mt-6">
                     <button
                         disabled={currentPage === 0}
-                        onClick={() => setCurrentPage(p => Math.max(p - 1, 0))}
-                        className="cursor-pointer px-3 py-1 bg-blue-200 rounded hover:bg-blue-300 disabled:opacity-50"
+                        onClick={() => setCurrentPage((p) => Math.max(p - 1, 0))}
+                        className="cursor-pointer px-4 py-2 bg-blue-200 dark:bg-blue-900 text-lg dark:text-blue-200 rounded hover:bg-blue-300 dark:hover:bg-blue-700 disabled:opacity-50 transition color-transition"
                     >
                         {"<"}
                     </button>
-                    <span className="px-3 py-1">{currentPage + 1} / {totalPages}</span>
+                    <span className="px-4 py-2 text-gray-800 dark:text-gray-200 text-lg color-transition">
+                        {currentPage + 1} / {totalPages}
+                    </span>
                     <button
                         disabled={currentPage === totalPages - 1}
-                        onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages - 1))}
-                        className="cursor-pointer px-3 py-1 bg-blue-200 rounded hover:bg-blue-300 disabled:opacity-50"
+                        onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages - 1))}
+                        className="cursor-pointer px-4 py-2 bg-blue-200 dark:bg-blue-900 text-lg dark:text-blue-200 rounded hover:bg-blue-300 dark:hover:bg-blue-700 disabled:opacity-50 transition color-transition"
                     >
                         {">"}
                     </button>
@@ -340,8 +340,6 @@ export default function Dashboard() {
                 setTiles={setTiles}
                 AVAILABLE_TILES={AVAILABLE_TILES}
             />
-
-
         </div>
     );
 }

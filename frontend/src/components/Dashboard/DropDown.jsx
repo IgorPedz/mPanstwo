@@ -30,7 +30,7 @@ export default function AddModuleDropdown({ showAddMenu, setShowAddMenu, tiles, 
 
         if (newTiles.length > 0) setTiles((prev) => [...prev, ...newTiles]);
         setSelectedTiles([]);
-        setShowAddMenu(false)
+        setShowAddMenu(false);
     };
 
     const isDragging = useRef(false);
@@ -54,6 +54,7 @@ export default function AddModuleDropdown({ showAddMenu, setShowAddMenu, tiles, 
 
     return (
         <>
+            {/* overlay */}
             <div
                 className={`fixed inset-0 z-40 transition-all duration-200 ${showAddMenu
                     ? "bg-black/25 backdrop-blur-sm opacity-100"
@@ -62,21 +63,26 @@ export default function AddModuleDropdown({ showAddMenu, setShowAddMenu, tiles, 
                 onClick={() => setShowAddMenu(false)}
             />
 
+            {/* dropdown container */}
             <div
-                className={`fixed bottom-0 left-0 right-0 z-50 bg-white rounded-t-3xl shadow-2xl
+                className={`fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-800 rounded-t-3xl shadow-2xl
                     transition-transform duration-300 ease-out
                     ${showAddMenu ? "translate-y-0" : "translate-y-full"}`}
                 style={{ height: "70vh" }}
             >
+                {/* drag handle */}
                 <div className="flex justify-center pt-2 pb-1">
-                    <div className="w-12 h-1.5 bg-gray-300 rounded-full" />
+                    <div className="w-12 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full transition color-transition" />
                 </div>
 
+                {/* header */}
                 <div className="flex justify-between items-center px-4 pb-3">
-                    <h3 className="font-bold text-xl text-gray-800">Dodaj moduł</h3>
+                    <h3 className="font-bold text-xl text-gray-800 dark:text-gray-200 color-transition">
+                        Dodaj moduł
+                    </h3>
                     <button
                         onClick={() => setShowAddMenu(false)}
-                        className="text-gray-400 hover:text-red-600 text-2xl cursor-pointer"
+                        className="text-gray-400 dark:text-gray-300 hover:text-red-600 transition color-transition text-2xl cursor-pointer"
                     >
                         ×
                     </button>
@@ -84,14 +90,15 @@ export default function AddModuleDropdown({ showAddMenu, setShowAddMenu, tiles, 
 
                 <div
                     ref={scrollRef}
-                    className="px-4 overflow-x-auto overflow-y-hidden cursor-grab select-none no-scrollbar"
+                    className="pt-5 px-4 flex flex-row flex-wrap overflow-x-auto h-[calc(70vh-120px)] cursor-grab select-none no-scrollbar"
                     onMouseDown={onMouseDown}
                     onMouseMove={onMouseMove}
                     onMouseUp={onMouseUp}
                     onMouseLeave={onMouseLeave}
                 >
-                    <div className="grid grid-rows-2 grid-flow-col auto-cols-[160px] gap-10">
+                    <div className="grid grid-rows-2 grid-flow-col auto-cols-[180px] gap-10">
                         {AVAILABLE_TILES.map((tile) => {
+                            console.log(tile.type, tile.icon);
                             const isAdded = tiles.some((t) => t.type === tile.type);
                             const isSelected = selectedTiles.includes(tile.type);
 
@@ -100,21 +107,24 @@ export default function AddModuleDropdown({ showAddMenu, setShowAddMenu, tiles, 
                                     key={tile.type}
                                     onClick={() => !isAdded && toggleTile(tile.type)}
                                     disabled={isAdded}
-                                    className={` cursor-pointer
-                                        group relative h-44 w-44 flex flex-col items-center justify-center
-                                        rounded-2xl p-5 transition-all duration-300
+                                    className={`group relative h-35 w-35 flex flex-col items-center justify-center
+                                        rounded-2xl p-5 transition-all duration-300 color-transition
                                         ${isAdded
-                                            ? "bg-gray-50 text-gray-400 cursor-not-allowed"
-                                            : `bg-gray-50 hover:scale-[1.05] hover:shadow-lg
-                                               ${isSelected ? "ring-4 ring-blue-400 ring-offset-2 ring-offset-gray-50" : ""}`
+                                            ? "bg-gray-50 dark:bg-gray-700 text-gray-400 cursor-not-allowed"
+                                            : `bg-gray-50 dark:bg-gray-700 hover:scale-[1.05] hover:shadow-lg
+                                               ${isSelected ? "ring-4 ring-blue-400 ring-offset-2 ring-offset-gray-50 dark:ring-offset-gray-800" : ""}`
                                         }
                                     `}
                                 >
+
                                     <tile.icon
-                                        className={`h-12 w-12 mb-3 transition-transform duration-300
-                                            ${isAdded ? "text-gray-400" : tile.iconColor}`}
+                                        className={`h-12 w-12 mb-3 transition-transform duration-300 
+                                            ${isAdded
+                                                ? "text-gray-400 dark:text-gray-500"
+                                                : `${tile.iconColor} dark:${tile.iconColor}`
+                                            }`}
                                     />
-                                    <span className={`${isAdded ? "text-gray-400" : "text-gray-800"} text-sm font-medium text-center `}>
+                                    <span className={`${isAdded ? "text-gray-400 dark:text-gray-500" : "text-gray-800 dark:text-gray-200"} text-sm font-medium text-center color-transition`}>
                                         {tile.label}
                                     </span>
                                 </div>
@@ -123,21 +133,21 @@ export default function AddModuleDropdown({ showAddMenu, setShowAddMenu, tiles, 
                     </div>
                 </div>
 
-                <div className="sticky bottom-0 bg-white pt-4 pb-6 px-4 flex justify-center">
+                {/* add button */}
+                <div className="sticky bottom-0 bg-white dark:bg-gray-800 pt-4 pb-6 px-4 flex justify-center">
                     <button
                         onClick={addSelectedTiles}
                         disabled={selectedTiles.length === 0}
                         className="w-full md:w-auto px-8 py-3 rounded-full font-semibold
-                                   bg-gradient-to-r from-blue-500 to-indigo-600 text-white
-                                   shadow-lg hover:scale-[1.03] hover:shadow-xl
+                                   bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700
+                                   text-white shadow-lg hover:scale-[1.03] hover:shadow-xl
                                    disabled:from-gray-300 disabled:to-gray-300 disabled:text-gray-500
-                                   transition-all duration-200 cursor-pointer"
+                                   transition-all duration-200 cursor-pointer color-transition"
                     >
                         Dodaj {selectedTiles.length > 0 ? `(${selectedTiles.length})` : ""}
                     </button>
                 </div>
             </div>
-
         </>
     );
 }
