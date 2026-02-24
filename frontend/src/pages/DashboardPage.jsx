@@ -7,6 +7,7 @@ function DashboardPage() {
   return (
     <>
       <div className="flex min-h-screen">
+        
         <Navbar className="w-64" />
         <div className="flex-1 flex flex-col">
           <Headbar />

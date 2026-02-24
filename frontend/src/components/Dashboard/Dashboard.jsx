@@ -279,6 +279,7 @@ export default function Dashboard() {
                     style={{ fontFamily: "'Patrick Hand', cursive" }}
                 >
                     Witaj, {user.name}!
+                    {console.log(user)}
                 </h1>
             </div>
 
