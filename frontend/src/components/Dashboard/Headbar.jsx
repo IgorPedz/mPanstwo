@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ThemeToggle from "../../Utils/ThemeToggle";
+
 import {
     Bars3Icon,
     XMarkIcon,
@@ -19,15 +19,8 @@ export default function Headbar() {
     ];
 
     return (
-        <header className="color-transition w-full bg-white dark:bg-gray-900 shadow-md px-6 py-4 flex items-center justify-between relative z-10 text-gray-900 dark:text-gray-100">
-            {/* Toggle Dark Mode */}
-            <div>
-                <ThemeToggle />
-            </div>
+        <header className="color-transition w-full bg-white dark:bg-gray-900 shadow-md px-6 py-5 flex items-center justify-end relative z-10 text-gray-900 dark:text-gray-100">
 
-            {/* Menu */}
-            <div>
-                {/* Desktop menu */}
                 <nav className="hidden md:flex items-center gap-8">
                     {menuItems.map((item) => (
                         <button
@@ -75,7 +68,6 @@ export default function Headbar() {
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </div>
         </header>
     );
 }

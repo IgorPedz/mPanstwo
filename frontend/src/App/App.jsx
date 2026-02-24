@@ -9,10 +9,8 @@ function App() {
     <UserProvider>
       <Router>
         <Routes>
-          {/* Auth */}
           <Route path="/auth" element={<AuthPage />} />
 
-          {/* Dashboard */}
           <Route
             path="/dashboard"
             element={
@@ -22,7 +20,6 @@ function App() {
             }
           />
 
-          {/* Domyślnie */}
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </Router>

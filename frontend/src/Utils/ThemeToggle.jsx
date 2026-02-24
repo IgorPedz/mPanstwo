@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 
 const ThemeToggle = () => {
@@ -30,7 +30,6 @@ const ThemeToggle = () => {
                     }`}
             ></div>
 
-            {/* Ikony */}
             <SunIcon className="w-6 h-6 text-yellow-400 absolute left-2 top-1/2 -translate-y-1/2 dark:text-gray-100" />
             <MoonIcon className="w-6 h-6 text-gray-900 dark:text-black-100 absolute right-2 top-1/2 -translate-y-1/2" />
         </button>

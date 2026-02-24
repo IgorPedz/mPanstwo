@@ -8,7 +8,7 @@ export default function AuthForm({ formData, setFormData, onSubmit, isLogin, err
   };
 
   return (
-    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
+    <form className="text-black dark:text-white flex flex-col gap-4" onSubmit={onSubmit}>
       {!isLogin && (
         <AuthInput
           label="Imię i nazwisko"

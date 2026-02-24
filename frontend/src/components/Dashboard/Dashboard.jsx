@@ -85,7 +85,7 @@ const AVAILABLE_TILES = [
         label: "Kancelaria Prezydenta RP",
         icon: BriefcaseIcon,
         accent: "from-gray-700 to-gray-500",
-        iconColor: "text-gray-700",
+        iconColor: "text-fuchsia-700",
     },
     {
         type: "prezydent",
@@ -162,8 +162,8 @@ function Tile({ id, type, label, icon: Icon, accent, onDelete }) {
         <div
             ref={setNodeRef}
             style={style}
-            className={`bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm p-5 relative
-        transition-all duration-200 color-transition
+            className={`color-transition bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm p-5 relative
+        transition-all duration-200
         hover:shadow-lg hover:-translate-y-1
         ${isDragging ? "opacity-70 scale-95" : ""}
         cursor-pointer`}
