@@ -56,9 +56,8 @@ app.post("/login", (req, res) => {
         const user = results[0];
         const validPassword = await bcrypt.compare(password, user.password);
 
-        if (!validPassword) return res.status(400).json({ message: "Nieprawidłowy email lub hasło" });
+        if (!validPassword) return res.status(400).json({ message: "Nieprawidłowy email lub hasło!" });
 
-        // Token z id, email i imieniem
         const token = jwt.sign(
             { id: user.id, email: user.email, name: user.name },
             process.env.JWT_SECRET,
@@ -72,6 +71,20 @@ app.post("/login", (req, res) => {
     });
 });
 
+
+// ================== POBIERANIE CONTENTU DO DASHBOARD ==================
+app.get("/dashboard_content", (req, res) => {
+    db.query("SELECT * FROM dashboard_content", (err, results) => {
+        if (err)
+            return res.status(500).json({ message: "Błąd serwera" });
+
+        if (results.length === 0)
+            return res.status(400).json({ message: "Brak contentu do dashboardu!" });
+
+        console.log(results);
+        res.json(results);
+    });
+});
 app.listen(process.env.PORT, () =>
     console.log(`Serwer działa na porcie ${process.env.PORT}`)
 );

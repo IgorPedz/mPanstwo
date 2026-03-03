@@ -8,20 +8,18 @@ export default function AuthInput({
   formData,
   setFormData,
   errors,
-  validate, // funkcja walidacji dla dynamicznej walidacji
+  validate, 
 }) {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     const value = e.target.value;
 
-    // aktualizuj formData
     setFormData({
       ...formData,
       [name]: value,
     });
 
-    // dynamiczna walidacja
     if (validate) {
       const error = validate(value);
       setErrorMessage(error || "");
@@ -50,10 +48,9 @@ export default function AuthInput({
           focus:outline-none focus:ring-2 focus:ring-indigo-500
           transition-all duration-200
           ${errors?.[name] || errorMessage ? "border-red-500 focus:ring-red-500" : ""}
-        `}
+        `}  
       />
 
-      {/* pokazuj błąd z parent lub lokalny błąd dynamiczny */}
       {(errors?.[name] || errorMessage) && (
         <span className="text-xs text-red-500 mt-1">
           {errors?.[name] || errorMessage}

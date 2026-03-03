@@ -14,7 +14,7 @@ export default function LoginForm({
         type="email"
         name="email"
         formData={formData}
-        setFormData={setFormData}  // <- TO JEST KLUCZ
+        setFormData={setFormData} 
         errors={errors}
       />
 

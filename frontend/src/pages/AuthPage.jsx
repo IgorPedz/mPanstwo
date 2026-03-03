@@ -59,7 +59,7 @@ export default function AuthPage() {
       <div className="relative w-full max-w-6xl h-[600px] rounded-3xl shadow-2xl overflow-hidden flex">
 
         <div
-          className={`
+          className={` dark:bg-gray-800
         w-1/2 h-full flex flex-col justify-center items-center p-12
         transition-transform duration-700
         ${isLogin ? "translate-x-0" : "translate-x-full"}
@@ -96,7 +96,7 @@ export default function AuthPage() {
           className={`
         w-1/2 h-full flex flex-col justify-center items-center
         bg-gradient-to-br from-indigo-500 via-purple-500 to-indigo-600
-        dark:from-gray-700 dark:via-gray-800 dark:to-gray-700
+        dark:from-gray-700 dark:via-zinc-700 dark:to-zinc-600
         text-white p-12 transition-transform duration-700
         ${isLogin ? "translate-x-0" : "-translate-x-full"}
       `}
@@ -113,7 +113,7 @@ export default function AuthPage() {
 
           <button
             onClick={() => setIsLogin(!isLogin)}
-            className="cursor-pointer border border-white px-6 py-2 rounded-full hover:bg-white hover:text-indigo-600 transition duration-300"
+            className="cursor-pointer border border-white px-6 py-2 rounded-full hover:bg-white hover:text-indigo-600 transition duration-300 dark:hover:bg-zinc-600 dark:hover:text-white"
           >
             {isLogin ? "Zarejestruj się" : "Zaloguj się"}
           </button>
