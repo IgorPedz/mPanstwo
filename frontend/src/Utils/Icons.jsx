@@ -1,5 +1,13 @@
-// Icons.jsx
+
 import {
+    HomeIcon,
+    BuildingOffice2Icon,
+    ChartBarIcon,
+    UsersIcon,
+    CalendarDaysIcon,
+    FolderIcon,
+    ChatBubbleLeftRightIcon,
+    BellIcon,
     UserGroupIcon,
     BuildingLibraryIcon,
     BuildingOfficeIcon,
@@ -10,18 +18,36 @@ import {
     BriefcaseIcon,
     AcademicCapIcon,
     BanknotesIcon,
+    InboxIcon,
+    TrophyIcon,
+    QuestionMarkCircleIcon,
+    PrinterIcon,
 } from "@heroicons/react/24/outline";
 
 const ICON_MAP = {
-    UserGroupIcon,
+    dashboard: HomeIcon,
+    countries: BuildingOffice2Icon,
+    stats: ChartBarIcon,
+    citiziens: UsersIcon,
+    events: CalendarDaysIcon,
+    documents: FolderIcon,
+    messages: ChatBubbleLeftRightIcon,
+    notifications: BellIcon,
+    profil: UserIcon,
+    courses: AcademicCapIcon,
+    survey: InboxIcon,
+    achievements: TrophyIcon,
+    about: QuestionMarkCircleIcon,
+    project: PrinterIcon,
+    AcademicCapIcon,
     UserIcon,
+    UserGroupIcon,
     BuildingLibraryIcon,
     BuildingOfficeIcon,
     ScaleIcon,
     DocumentTextIcon,
     FlagIcon,
     BriefcaseIcon,
-    AcademicCapIcon,
     BanknotesIcon,
 };
 

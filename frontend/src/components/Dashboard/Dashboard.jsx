@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios"
 import ErrorMessage from "../../Utils/ErrorMessage";
 import useNoScroll from "../../Utils/UseNoScroll";
-import DropDown from "../Dashboard/DropDown";
-import Tile from "../Dashboard/Tile"
+import DropDown from "./DropDown";
+import Tile from "./Tile"
 import AddTile from "./AddTile";
+import WelcomeDashboard from "./WelcomeDashboard"
 import { motion, AnimatePresence } from "framer-motion";
 import { DndContext, closestCenter } from "@dnd-kit/core";
-import { restrictToParentElement } from "@dnd-kit/modifiers";
+import { restrictToParentElement } from "@dnd-kit/modifiers"
 import {
     SortableContext,
     rectSortingStrategy,
@@ -20,10 +21,10 @@ function useTilesPerPage() {
     const [tilesPerPage, setTilesPerPage] = useState(getTilesPerPage());
 
     function getTilesPerPage() {
-        if (window.matchMedia("(min-width: 1100px)").matches) return 9;
-        if (window.matchMedia("(min-width: 900px)").matches) return 8;
-        if (window.matchMedia("(min-width: 768px)").matches) return 6;
-        return 3;
+        if (window.matchMedia("(min-width: 1100px)").matches) return 12;
+        if (window.matchMedia("(min-width: 900px)").matches) return 9;
+        if (window.matchMedia("(min-width: 768px)").matches) return 8;
+        return 5;
     }
 
     useEffect(() => {
@@ -100,16 +101,8 @@ export default function Dashboard() {
     }, [totalPages]);
 
     return (
-        <div className="flex-1 p-10 bg-gray-50 dark:bg-gray-900 h-screen color-transition">
-            <div className="flex justify-between">
-                <h1
-                    className="tracking-wide text-2xl md:text-2xl text-blue-900 dark:text-blue-400 mb-4 color-transition"
-                    style={{ fontFamily: "'Patrick Hand', cursive" }}
-                >
-                    Witaj, {user.name}!
-                </h1>
-            </div>
-
+        <div className="flex-1 p-10  bg-gray-50 dark:bg-gray-900 h-screen color-transition">
+            <WelcomeDashboard />
             <AnimatePresence initial={false} mode="wait">
                 <motion.div
                     key={currentPage}
