@@ -86,6 +86,7 @@ export default function Dashboard() {
         }
     };
 
+    
     const TILES_PER_PAGE = useTilesPerPage();
     const totalPages = Math.ceil((tiles.length + 1) / TILES_PER_PAGE);
     const currentTiles = tiles.slice(
@@ -120,7 +121,7 @@ export default function Dashboard() {
                     transition={{ type: "tween", duration: 0.3 }}
                 >
                     <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd} modifiers={[restrictToParentElement]}>
-                        <SortableContext items={currentTiles.map((t) => t.id)} strategy={rectSortingStrategy}>
+                        <SortableContext items={tiles.map((t) => t.id)} strategy={rectSortingStrategy}>
                             {currentTiles.map((tile) => (
                                 <Tile key={tile.id} {...tile} onDelete={deleteTile} />
                             ))}
