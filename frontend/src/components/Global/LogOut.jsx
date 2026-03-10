@@ -3,9 +3,9 @@ import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/outline";
 import { useUser } from "../../Contexts/UserContext";
 import ModalMessage from "../../Utils/ModalMessage";
 export default function Settings() {
-    const {logout} = useUser()
-    const [showLogoutModal, setShowLogoutModal] = useState(false);
-return (
+  const { logout } = useUser()
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  return (
     <>
       <button
         onClick={() => setShowLogoutModal(true)}

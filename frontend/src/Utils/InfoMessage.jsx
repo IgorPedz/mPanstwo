@@ -28,7 +28,7 @@ export default function InfoMessage({ message, type = "success", onClose }) {
           {onClose && (
             <button
               onClick={onClose}
-              className="ml-4 text-gray-500 hover:text-gray-700 transition"
+              className="cursor-pointer ml-4 text-gray-500 hover:text-gray-700 transition"
             >
               <XMarkIcon className="h-4 w-4" />
             </button>

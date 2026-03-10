@@ -1,8 +1,7 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import DashboardPage from "../pages/DashboardPage";
 import AuthPage from "../pages/AuthPage";
-import { UserProvider, useUser } from "../Contexts/UserContext";
+import { UserProvider } from "../Contexts/UserContext";
 import ProtectedRoute from "../Utils/ProtectedRoutes"
 function App() {
   return (

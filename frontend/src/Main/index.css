@@ -2,8 +2,20 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+html.dark,
+body.dark,
+#root.dark {
+  background-color: #111827;
+}
+
 .color-transition {
   @apply transition-colors duration-300 ease-in-out;
+}
+
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
 }
 
 /* slide-in animacja */

@@ -3,10 +3,10 @@ import ThemeToggle from "../../Utils/ThemeToggle";
 import ChangeFonts from "../../Utils/ChangeFonts";
 export default function Settings() {
     return (
-        <div className="relative inline-block text-left group w-full">
+        <div className="color-transition relative inline-block text-left group w-full">
 
             <div
-                className="absolute left-0 bottom-full w-64 color-transition
+                className="color-transition absolute left-0 bottom-full w-64 color-transition
         opacity-0 invisible translate-y-2
         group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
         transition-all duration-200 ease-out
@@ -33,7 +33,7 @@ export default function Settings() {
             <button
                 className="cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-xl
         text-gray-700 dark:text-gray-200
-        bg-white dark:bg-gray-900
+        bg-transparent 
         hover:bg-gray-100 dark:hover:bg-gray-800
         transition-all duration-200 color-transition"
             >

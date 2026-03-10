@@ -1,22 +1,27 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useUser } from "../Contexts/UserContext";
-import axios from "axios";
+import { motion, AnimatePresence } from "framer-motion";
 
-import RegisterForm from "../components/Auth/RegisterForm";
 import LoginForm from "../components/Auth/LoginForm";
-
+import RegisterForm from "../components/Auth/RegisterForm";
 import useAuthForm from "../Hooks/useAuthForm";
+import useAuthSubmit from "../Hooks/useAuthSubmit";
 import InfoMessage from "../Utils/InfoMessage";
 import Settings from "../components/Global/Settings";
+import ImageSlider from "../components/Global/ImagesSlider";
+
+import sejmIMG from "../../public/images/sejmRP.jpg";
+import palacIMG from "../../public/images/palacRP.jpg";
+import sadIMG from "../../public/images/sadRP.jpeg";
+import kprmIMG from "../../public/images/KPRP.jpg";
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
   const { formData, setFormData, errors, handleSubmit } = useAuthForm();
-  const { login } = useUser();
+  const { onSubmit, infoMessage, setInfoMessage, isLeaving } = useAuthSubmit(isLogin);
+
   const navigate = useNavigate();
   const location = useLocation();
-  const [infoMessage, setInfoMessage] = useState("");
 
   useEffect(() => {
     if (location.state?.registered) {
@@ -24,106 +29,90 @@ export default function AuthPage() {
       setIsLogin(true);
       navigate(location.pathname, { replace: true, state: {} });
     }
-  }, [location, navigate]);
-
-  const onSubmit = async (data) => {
-    try {
-      if (isLogin) {
-        const res = await axios.post("http://localhost:5000/login", {
-          email: data.email,
-          password: data.password,
-        });
-
-        localStorage.setItem("token", res.data.token);
-        login(res.data.user);
-        navigate("/dashboard");
-      } else {
-        await axios.post("http://localhost:5000/register", {
-          name: data.name,
-          email: data.email,
-          password: data.password,
-        });
-
-        navigate("/auth", { state: { registered: true } });
-      }
-    } catch (error) {
-      setInfoMessage(
-        error.response?.data?.message || "Wystąpił błąd"
-      );
-    }
-  };
+  }, [location, navigate, setInfoMessage]);
 
   return (
-    <div className="color-transition min-h-screen flex flex-col justify-center items-center bg-white dark:bg-gray-900 px-4 relative">
-
-      <div className="relative w-full max-w-6xl h-[600px] rounded-3xl shadow-2xl overflow-hidden flex">
-
-        <div
-          className={` dark:bg-gray-800
-        w-1/2 h-full flex flex-col justify-center items-center p-12
-        transition-transform duration-700
-        ${isLogin ? "translate-x-0" : "translate-x-full"}
-      `}
-        >
-          <h1 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100 text-center">
-            {isLogin ? "Zaloguj się" : "Rejestracja"}
+    <motion.div
+      className="min-h-screen w-full grid lg:grid-cols-2 bg-gray-50 dark:bg-gray-900"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isLeaving ? 0 : 1 }}
+      transition={{ duration: 0.4 }}
+    >
+      <div className="flex items-center justify-center px-8 py-12">
+        <div className="w-full max-w-md">
+          <h1
+            className="text-5xl font-bold text-gray-900 dark:text-white mb-2"
+            style={{ fontFamily: "'Patrick Hand', cursive" }}
+          >
+            {isLogin ? "Logowanie" : "Stwórz konto"}
           </h1>
 
-          {infoMessage && (
-            <InfoMessage message={infoMessage} type="error" onClose={() => setInfoMessage("")} />
-          )}
-
-          <div className={`${isLogin ? "block" : "hidden"} w-full max-w-md`}>
-            <LoginForm
-              formData={formData}
-              setFormData={setFormData}
-              onSubmit={handleSubmit(onSubmit)}
-              errors={errors}
-            />
-          </div>
-
-          <div className={`${!isLogin ? "block" : "hidden"} w-full max-w-md`}>
-            <RegisterForm
-              formData={formData}
-              setFormData={setFormData}
-              onSubmit={handleSubmit(onSubmit)}
-              errors={errors}
-            />
-          </div>
-        </div>
-
-        <div
-          className={`
-        w-1/2 h-full flex flex-col justify-center items-center
-        bg-gradient-to-br from-indigo-500 via-purple-500 to-indigo-600
-        dark:from-gray-700 dark:via-zinc-700 dark:to-zinc-600
-        text-white p-12 transition-transform duration-700
-        ${isLogin ? "translate-x-0" : "-translate-x-full"}
-      `}
-        >
-          <h2 className="text-3xl font-bold mb-4 text-center">
-            {isLogin ? "Witaj ponownie!" : "Dołącz do nas!"}
-          </h2>
-
-          <p className="text-center mb-6 opacity-90">
+          <p className="text-gray-500 mb-8">
             {isLogin
-              ? "Nie masz konta? Zarejestruj się i zacznij korzystać."
-              : "Masz już konto? Zaloguj się i kontynuuj."}
+              ? "Witamy ponownie! Zaloguj się, by kontynuować"
+              : "Stwórz konto, by móc korzystać z aplikacji!"}
           </p>
 
-          <button
-            onClick={() => setIsLogin(!isLogin)}
-            className="cursor-pointer border border-white px-6 py-2 rounded-full hover:bg-white hover:text-indigo-600 transition duration-300 dark:hover:bg-zinc-600 dark:hover:text-white"
-          >
-            {isLogin ? "Zarejestruj się" : "Zaloguj się"}
-          </button>
-        </div>
+          {infoMessage && (
+            <InfoMessage
+              message={infoMessage}
+              type="error"
+              onClose={() => setInfoMessage("")}
+            />
+          )}
 
+          <div className="mt-6 relative min-h-[360px]">
+            <AnimatePresence mode="wait">
+              {isLogin ? (
+                <motion.div
+                  key="login"
+                  initial={{ opacity: 0, x: -40, scale: 0.95 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: 40, scale: 0.95 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <LoginForm
+                    formData={formData}
+                    setFormData={setFormData}
+                    onSubmit={onSubmit}
+                    errors={errors}
+                    switchToRegister={() => setIsLogin(false)}
+                  />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="register"
+                  initial={{ opacity: 0, x: 40, scale: 0.95 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: -40, scale: 0.95 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <RegisterForm
+                    formData={formData}
+                    setFormData={setFormData}
+                    onSubmit={onSubmit}
+                    errors={errors}
+                    switchToLogin={() => setIsLogin(true)}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
 
-      <div className="absolute bottom-4 left-4">
+      <div className="hidden lg:flex relative w-full h-full">
+        <ImageSlider
+          images={[sejmIMG, palacIMG, sadIMG, kprmIMG]}
+          interval={5000}
+          autoPlay={true}
+          showArrows={true}
+        />
+      </div>
+
+      <div className="absolute bottom-6 left-6">
         <Settings />
       </div>
-    </div>
+    </motion.div>
   );
 }

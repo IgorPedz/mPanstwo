@@ -60,11 +60,11 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="color-transition h-screen w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 flex flex-col">
+    <aside className="color-transition h-dvh w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden">
 
       <Logo />
 
-      <nav className="flex-1 overflow-y-auto px-3 mt-4 space-y-3">
+      <nav className="flex-1 min-h-0 overflow-y-auto px-3 mt-4 space-y-3">
         {navSections.map((section) => {
           const isOpen = openSections[section.title];
 

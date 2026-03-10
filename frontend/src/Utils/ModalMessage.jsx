@@ -1,5 +1,6 @@
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
+import useNoScroll from "../Utils/UseNoScroll";
 
 export default function ModalMessage({
   isOpen,
@@ -10,12 +11,14 @@ export default function ModalMessage({
   onConfirm,
   onCancel,
 }) {
+
+  useNoScroll(isOpen)
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isOpen && (
         <>
           <motion.div
-            className="fixed inset-0 bg-black/90 z-40"
+            className="fixed top-0 left-0 w-full h-screen bg-black/40 z-40"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.4 }}
             exit={{ opacity: 0 }}
@@ -30,7 +33,7 @@ export default function ModalMessage({
             transition={{ duration: 0.2 }}
           >
             <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl w-full max-w-md p-6">
-              
+
               <div className="flex items-center gap-3 mb-4">
                 <ExclamationTriangleIcon className="h-6 w-6 text-red-500" />
                 <h2 className="text-lg font-semibold dark:text-gray-100">{title}</h2>
@@ -43,7 +46,7 @@ export default function ModalMessage({
               <div className="flex justify-end gap-3">
                 <button
                   onClick={onCancel}
-                  className="cursor-pointer px-4 py-2 rounded-lg text-sm bg-gray-200 hover:bg-gray-300 dark:bg-white dark:hover:bg-gray-300 dark:text-gray-900 transition"
+                  className="cursor-pointer px-4 py-2 rounded-lg text-sm bg-gray-200 hover:bg-gray-300 dark:hover:bg-gray-300 dark:text-gray-900 transition"
                 >
                   {cancelText}
                 </button>
