@@ -2,8 +2,6 @@ import { useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import ICON_MAP from "../../Utils/Icons";
 
-// props:
-// - showAddMenu, setShowAddMenu, tiles, setTiles, AVAILABLE_TILES
 export default function AddModuleDropdown({ showAddMenu, setShowAddMenu, tiles, setTiles, AVAILABLE_TILES }) {
     const scrollRef = useRef(null);
     const [selectedTiles, setSelectedTiles] = useState([]);

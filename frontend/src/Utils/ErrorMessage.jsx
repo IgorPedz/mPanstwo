@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { XMarkIcon } from "@heroicons/react/24/solid";
+import { useEffect } from "react"
 
 export default function ErrorMessage({ message, onClose, duration = 4000 }) {
   useEffect(() => {
