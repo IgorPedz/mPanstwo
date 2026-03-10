@@ -7,8 +7,12 @@ export default function RegisterForm({
   errors,
   switchToLogin
 }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(formData);
+  };
   return (
-    <form onSubmit={onSubmit} className="flex flex-col">
+    <form onSubmit={handleSubmit} className="space-y-4">
 
       <AuthInput
         label="Nazwa użytkownika"
@@ -39,7 +43,7 @@ export default function RegisterForm({
         setFormData={setFormData}
         errors={errors}
       />
-    
+
       <div className="flex gap-20">
         <button
           type="submit"

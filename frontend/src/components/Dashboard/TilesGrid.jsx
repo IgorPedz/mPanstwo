@@ -29,7 +29,7 @@ export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, 
                 <div className="relative">
                     <AnimatePresence mode="wait">
                         <motion.div
-                            key={currentPage} // klucz zmienia się przy zmianie strony
+                            key={currentPage} 
                             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -44,7 +44,6 @@ export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, 
                                     className="w-full"
                                 />
                             ))}
-                            {console.log(currentPage)}
                             {currentPage === totalPages - 1 && (
                                     <AddTile
                                         onClick={() => setShowAddMenu(true)}

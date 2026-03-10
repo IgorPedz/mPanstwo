@@ -24,6 +24,7 @@ db.connect(err => {
 
 // ================== REJESTRACJA ==================
 app.post("/register", async (req, res) => {
+    console.log(req.body);
     const { name, email, password } = req.body;
 
     try {
@@ -87,7 +88,6 @@ app.get("/dashboard_content", (req, res) => {
         if (results.length === 0)
             return res.status(400).json({ message: "Brak contentu do dashboardu!" });
 
-        console.log(results);
         res.json(results);
     });
 });

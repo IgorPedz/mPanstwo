@@ -17,8 +17,8 @@ import kprmIMG from "../../public/images/KPRP.jpg";
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
-  const { formData, setFormData, errors, handleSubmit } = useAuthForm();
-  const { onSubmit, infoMessage, setInfoMessage, isLeaving } = useAuthSubmit(isLogin);
+  const { formData, setFormData, errors } = useAuthForm();
+  const { onSubmit, infoMessage, setInfoMessage, messageType, setMessageType, isLeaving } = useAuthSubmit(isLogin);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,7 +26,9 @@ export default function AuthPage() {
   useEffect(() => {
     if (location.state?.registered) {
       setInfoMessage("Konto zostało zarejestrowane. Zaloguj się.");
+      setMessageType(location.state?.messageType || "success");
       setIsLogin(true);
+
       navigate(location.pathname, { replace: true, state: {} });
     }
   }, [location, navigate, setInfoMessage]);
@@ -56,7 +58,7 @@ export default function AuthPage() {
           {infoMessage && (
             <InfoMessage
               message={infoMessage}
-              type="error"
+              type={messageType}
               onClose={() => setInfoMessage("")}
             />
           )}
