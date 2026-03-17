@@ -7,6 +7,7 @@ import RegisterForm from "../components/Auth/RegisterForm";
 import useAuthForm from "../Hooks/useAuthForm";
 import useAuthSubmit from "../Hooks/useAuthSubmit";
 import InfoMessage from "../Utils/InfoMessage";
+import LoginFooter from "../components/Global/LoginFooter";
 import Settings from "../components/Global/Settings";
 import ImageSlider from "../components/Global/ImagesSlider";
 
@@ -112,8 +113,9 @@ export default function AuthPage() {
         />
       </div>
 
-      <div className="absolute bottom-6 left-6">
+      <div className="absolute bottom-0 left-10 lg:left-28 flex items-center">
         <Settings />
+        <LoginFooter />
       </div>
     </motion.div>
   );

@@ -51,9 +51,9 @@ export default function ImageSlider({ images = [], autoPlay = true, interval = 5
               setPrev(current);
               setCurrent((prev) => (prev - 1 + images.length) % images.length);
             }}
-            className="cursor-pointer absolute left-4 top-1/2 transform -translate-y-1/2  p-3 rounded-full shadow-lg transition bg-gray-100 hover:bg-gray-300"
+            className="cursor-pointer absolute left-4 top-1/2 transform -translate-y-1/2  p-3 rounded-full shadow-lg transition bg-gray-100 hover:bg-gray-300 dark:bg-gray-900 dark:hover:bg-gray-800"
           >
-            <ChevronLeftIcon className="w-6 h-6 text-indigo-700" />
+            <ChevronLeftIcon className="w-6 h-6 text-indigo-700 dark:text-white" />
           </button>
 
           <button
@@ -61,9 +61,9 @@ export default function ImageSlider({ images = [], autoPlay = true, interval = 5
               setPrev(current);
               setCurrent((prev) => (prev + 1) % images.length);
             }}
-            className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2  p-3 rounded-full shadow-lg transition bg-gray-100 hover:bg-gray-300"
+            className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2  p-3 rounded-full shadow-lg transition bg-gray-100 hover:bg-gray-300 dark:bg-gray-900 dark:hover:bg-gray-800"
           >
-            <ChevronRightIcon className="w-6 h-6 text-indigo-700" />
+            <ChevronRightIcon className="w-6 h-6 text-indigo-700 dark:text-white" />
           </button>
         </>
       )}

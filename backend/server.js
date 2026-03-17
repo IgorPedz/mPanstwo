@@ -4,10 +4,12 @@ const mysql = require("mysql2");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -20,7 +22,6 @@ db.connect(err => {
     if (err) throw err;
     console.log("Połączono z MySQL");
 });
-
 
 // ================== REJESTRACJA ==================
 app.post("/register", async (req, res) => {
@@ -47,36 +48,67 @@ app.post("/register", async (req, res) => {
 
 
 // ================== LOGOWANIE ==================
-app.post("/login", (req, res) => {
-    const { email, password, rememberMe } = req.body;
+app.post("/login", async (req, res) => {
+    try {
+        console.log("BODY:", req.body);
 
-    db.query("SELECT * FROM users WHERE email = ?", [email], async (err, results) => {
-        if (err) return res.status(500).json({ message: "Błąd serwera" });
-        if (results.length === 0) return res.status(400).json({ message: "Nieprawidłowy email lub hasło" });
+        const { email, password, rememberMe } = req.body;
 
-        const user = results[0];
-        const validPassword = await bcrypt.compare(password, user.password);
-        if (!validPassword) return res.status(400).json({ message: "Nieprawidłowy email lub hasło!" });
+        db.query("SELECT * FROM users WHERE email = ?", [email], async (err, results) => {
 
-        const token = jwt.sign(
-            { id: user.id, email: user.email, name: user.name },
-            process.env.JWT_SECRET,
-            { expiresIn: rememberMe ? "30d" : "10s" } 
-        );
+            if (err) {
+                console.error("MYSQL ERROR:", err);
+                return res.status(500).json({ message: "Błąd serwera - DB" });
+            }
 
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
-            maxAge: rememberMe ? 30 * 24 * 60 * 60 * 1000 : 60 * 60 * 1000, // ms
+            console.log("MYSQL RESULTS:", results);
+
+            if (!results || results.length === 0) {
+                console.log("User not found");
+                return res.status(400).json({ message: "Nieprawidłowy email lub hasło" });
+            }
+
+            const user = results[0];
+
+            console.log("USER:", user);
+
+            const validPassword = await bcrypt.compare(password, user.password);
+
+            console.log("PASSWORD VALID:", validPassword);
+
+            if (!validPassword) {
+                return res.status(400).json({ message: "Nieprawidłowy email lub hasło!" });
+            }
+
+            console.log("JWT SECRET:", process.env.JWT_SECRET);
+
+            const token = jwt.sign(
+                { id: user.id, email: user.email, name: user.name },
+                process.env.JWT_SECRET,
+                { expiresIn: rememberMe ? "30d" : "10s" }
+            );
+
+            console.log("TOKEN GENERATED");
+
+            res.cookie("token", token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+                sameSite: "strict",
+                maxAge: rememberMe ? 30 * 24 * 60 * 60 * 1000 : 60 * 60 * 1000,
+            });
+
+            res.json({
+                user: { email: user.email, name: user.name },
+                message: "Zalogowano pomyślnie"
+            });
+
         });
 
-        res.json({
-            user: { email: user.email, name: user.name },
-            message: "Zalogowano pomyślnie"
-        });
-    });
-});
+    } catch (error) {
+        console.error("LOGIN ERROR:", error);
+        res.status(500).json({ message: "Błąd serwera - catch" });
+    }
+});3
 
 
 // ================== POBIERANIE CONTENTU DO DASHBOARD ==================

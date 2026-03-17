@@ -5,7 +5,7 @@ import TilesGrid from "./TilesGrid";
 import Pagination from "./Pagination";
 import DropDown from "./DropDown";
 import WelcomeDashboard from "./WelcomeDashboard";
-import useNoScroll from "../../Utils/UseNoScroll";
+import useNoScroll from "../../Hooks/UseNoScroll";
 
 export default function Dashboard() {
     const TILES_PER_PAGE = useTilesPerPage();

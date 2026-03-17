@@ -22,6 +22,7 @@ import {
     TrophyIcon,
     QuestionMarkCircleIcon,
     PrinterIcon,
+    EnvelopeIcon
 } from "@heroicons/react/24/outline";
 
 const ICON_MAP = {
@@ -39,6 +40,7 @@ const ICON_MAP = {
     achievements: TrophyIcon,
     about: QuestionMarkCircleIcon,
     project: PrinterIcon,
+    contact:EnvelopeIcon,
     AcademicCapIcon,
     UserIcon,
     UserGroupIcon,
