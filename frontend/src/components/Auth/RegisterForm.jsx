@@ -4,7 +4,6 @@ export default function RegisterForm({
   formData,
   setFormData,
   onSubmit,
-  errors,
   switchToLogin
 }) {
   const handleSubmit = (e) => {
@@ -21,7 +20,6 @@ export default function RegisterForm({
         placeholder="Wpisz nazwę użytkownika"
         formData={formData}
         setFormData={setFormData}
-        errors={errors}
       />
 
       <AuthInput
@@ -31,7 +29,6 @@ export default function RegisterForm({
         placeholder="Wpisz email"
         formData={formData}
         setFormData={setFormData}
-        errors={errors}
       />
 
       <AuthInput
@@ -41,7 +38,6 @@ export default function RegisterForm({
         placeholder="Wpisz hasło"
         formData={formData}
         setFormData={setFormData}
-        errors={errors}
       />
 
       <div className="flex gap-20">

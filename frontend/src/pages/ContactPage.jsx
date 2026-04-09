@@ -2,9 +2,12 @@ import { EnvelopeIcon, PhoneIcon, MapPinIcon } from "@heroicons/react/24/outline
 import Footer from "../components/Info/Footer";
 import heroImage from "../../public/images/heroImageContact.jpg";
 import ReturnBtn from "../components/Info/ReturnBtn";
+import { useUser } from "../Contexts/UserContext";
 export default function ContactPage() {
+    const user = useUser()
     return (
         <div className="w-full min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 color-transition">
+            
             <ReturnBtn />
 
             <div className="relative w-full h-96 md:h-[480px] flex items-center justify-center overflow-hidden color-transition">

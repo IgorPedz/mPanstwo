@@ -4,8 +4,7 @@ import AuthInput from "./AuthInput";
 export default function LoginForm({
   formData,
   setFormData,
-  onSubmit,        
-  errors,
+  onSubmit,
   switchToRegister
 }) {
   const [rememberMe, setRememberMe] = useState(false);
@@ -24,7 +23,6 @@ export default function LoginForm({
         name="email"
         formData={formData}
         setFormData={setFormData}
-        errors={errors}
       />
 
       <AuthInput
@@ -33,12 +31,6 @@ export default function LoginForm({
         name="password"
         formData={formData}
         setFormData={setFormData}
-        errors={errors}
-        validate={(value) => {
-          if (!value) return "Hasło jest wymagane";
-          if (value.length < 6) return "Hasło musi mieć minimum 6 znaków";
-          return "";
-        }}
       />
 
       <div className="flex items-center space-x-3">

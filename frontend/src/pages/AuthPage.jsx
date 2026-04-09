@@ -18,7 +18,7 @@ import kprmIMG from "../../public/images/KPRP.jpg";
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
-  const { formData, setFormData, errors } = useAuthForm();
+  const { formData, setFormData } = useAuthForm();
   const { onSubmit, infoMessage, setInfoMessage, messageType, setMessageType, isLeaving } = useAuthSubmit(isLogin);
 
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ export default function AuthPage() {
 
   return (
     <motion.div
-      className="min-h-screen w-full grid lg:grid-cols-2 bg-gray-50 dark:bg-gray-900"
+      className="relative min-h-screen w-full grid lg:grid-cols-2 bg-gray-50 dark:bg-gray-900"
       initial={{ opacity: 0 }}
       animate={{ opacity: isLeaving ? 0 : 1 }}
       transition={{ duration: 0.4 }}
@@ -78,7 +78,6 @@ export default function AuthPage() {
                     formData={formData}
                     setFormData={setFormData}
                     onSubmit={onSubmit}
-                    errors={errors}
                     switchToRegister={() => setIsLogin(false)}
                   />
                 </motion.div>
@@ -94,7 +93,6 @@ export default function AuthPage() {
                     formData={formData}
                     setFormData={setFormData}
                     onSubmit={onSubmit}
-                    errors={errors}
                     switchToLogin={() => setIsLogin(true)}
                   />
                 </motion.div>
@@ -113,7 +111,7 @@ export default function AuthPage() {
         />
       </div>
 
-      <div className="absolute bottom-0 left-10 lg:left-28 flex items-center">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 lg:w-1/2 flex justify-center items-center pb-8">
         <Settings />
         <LoginFooter />
       </div>

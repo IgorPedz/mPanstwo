@@ -94,9 +94,38 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `user_tiles`
+--
+
+CREATE TABLE `user_tiles` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `tiles` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`tiles`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indeksy dla tabeli `user_tiles`
+--
+ALTER TABLE `user_tiles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- Ograniczenia dla zrzutów tabel
+--
+
+--
+-- Ograniczenia dla tabeli `user_tiles`
+--
+ALTER TABLE `user_tiles`
+  ADD CONSTRAINT `user_tiles_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- AUTO_INCREMENT for table `dashboard_content`

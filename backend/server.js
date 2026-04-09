@@ -54,41 +54,42 @@ app.post("/login", async (req, res) => {
 
         const { email, password, rememberMe } = req.body;
 
-        db.query("SELECT * FROM users WHERE email = ?", [email], async (err, results) => {
+        // 🔹 WALIDACJA PÓL
+        const errors = [];
+        if (!email || email.trim() === "") errors.push("Email jest wymagany");
+        if (!password || password.trim() === "") errors.push("Hasło jest wymagane");
 
+        if (errors.length > 0) {
+            return res.status(400).json({ message: errors[0] });
+        }
+
+        db.query("SELECT * FROM users WHERE email = ?", [email], async (err, results) => {
             if (err) {
                 console.error("MYSQL ERROR:", err);
-                return res.status(500).json({ message: "Błąd serwera - DB" });
+                return res.status(500).json({ message: "Błąd serwera" });
             }
-
-            console.log("MYSQL RESULTS:", results);
 
             if (!results || results.length === 0) {
-                console.log("User not found");
-                return res.status(400).json({ message: "Nieprawidłowy email lub hasło" });
+                return res.status(400).json({
+                    message: "Hasło lub email jest błędny"
+                });
             }
 
-            const user = results[0];
-
-            console.log("USER:", user);
+            const user = results[0]; 
 
             const validPassword = await bcrypt.compare(password, user.password);
 
-            console.log("PASSWORD VALID:", validPassword);
-
             if (!validPassword) {
-                return res.status(400).json({ message: "Nieprawidłowy email lub hasło!" });
+                return res.status(400).json({
+                    message: "Hasło lub email jest błędny"
+                });
             }
-
-            console.log("JWT SECRET:", process.env.JWT_SECRET);
 
             const token = jwt.sign(
                 { id: user.id, email: user.email, name: user.name },
                 process.env.JWT_SECRET,
                 { expiresIn: rememberMe ? "30d" : "10s" }
             );
-
-            console.log("TOKEN GENERATED");
 
             res.cookie("token", token, {
                 httpOnly: true,
@@ -101,14 +102,12 @@ app.post("/login", async (req, res) => {
                 user: { email: user.email, name: user.name },
                 message: "Zalogowano pomyślnie"
             });
-
         });
-
     } catch (error) {
         console.error("LOGIN ERROR:", error);
-        res.status(500).json({ message: "Błąd serwera - catch" });
+        res.status(500).json({ message: "Błąd serwera" });
     }
-});3
+});
 
 
 // ================== POBIERANIE CONTENTU DO DASHBOARD ==================

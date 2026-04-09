@@ -56,7 +56,7 @@ export default function AddModuleDropdown({ showAddMenu, setShowAddMenu, tiles, 
       >
         <div className="flex justify-center pt-2 pb-1">
           <div className="w-12 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full transition color-transition" />
-        </div>
+        </div>z
 
         <div className="flex justify-between items-center px-4 pb-3">
           <h3 className="font-bold text-xl text-gray-800 dark:text-gray-200 color-transition">Dodaj moduł</h3>
