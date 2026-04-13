@@ -6,7 +6,7 @@ export default function WelcomeDashboard() {
   return (
     <div className="flex justify-between">
       <p
-        className="text-2xl md:text-4xl text-blue-900 dark:text-blue-400 mb-4 color-transition animate-fade-in animate-text-pulse"
+        className="text-3xl md:text-4xl text-blue-900 dark:text-blue-400 mb-4 color-transition animate-fade-in animate-text-pulse"
         style={{ fontFamily: "'Patrick Hand', cursive" }}
       >
         Witaj, {user.name}!

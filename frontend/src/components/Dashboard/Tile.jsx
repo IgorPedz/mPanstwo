@@ -3,7 +3,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
 import ICON_MAP from "../../Utils/Icons"
 
-const Tile = ({id, type, name, icon, accent, iconColor, onDelete}) => {
+const Tile = ({id, type, name, icon, accent, iconColor, onDelete, isLocked}) => {
     const {
         attributes,
         listeners,
@@ -11,7 +11,7 @@ const Tile = ({id, type, name, icon, accent, iconColor, onDelete}) => {
         transform,
         transition,
         isDragging,
-    } = useSortable({ id });
+    } = useSortable({ id, disabled: isLocked });
 
     const style = {
         transform: CSS.Transform.toString(transform),
@@ -26,27 +26,29 @@ const Tile = ({id, type, name, icon, accent, iconColor, onDelete}) => {
             className={`color-transition bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm p-5 relative
                 transition-all duration-200
                 hover:shadow-lg hover:-translate-y-1
-                ${isDragging ? "opacity-70 scale-95" : ""} cursor-pointer`}
+                ${isDragging ? "opacity-70 scale-95" : ""} ${isLocked ? "cursor-default" : "cursor-pointer"}`}
         >
             <div
                 className={`h-1 bg-gradient-to-r ${accent} rounded-t-xl absolute top-0 left-1 right-1 color-transition`}
             />
 
-            <button
-                onClick={(e) => {
-                    e.stopPropagation();
-                    onDelete(id);
-                }}
-                className="absolute top-3 right-3 text-gray-400 dark:text-gray-300 hover:text-red-600 transition color-transition cursor-pointer"
-            >
-                <XMarkIcon className="h-5 w-5" />
-            </button>
+            {!isLocked && onDelete && (
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onDelete(id);
+                    }}
+                    className="absolute top-3 right-3 text-gray-400 dark:text-gray-300 hover:text-red-600 transition color-transition cursor-pointer"
+                >
+                    <XMarkIcon className="h-5 w-5" />
+                </button>
+            )}
 
             <div
                 {...attributes}
                 {...listeners}
                 onClick={(e) => e.stopPropagation()}
-                className="absolute top-3 left-3 text-gray-400 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 transition color-transition cursor-grab active:cursor-grabbing"
+                className={`absolute top-3 left-3 text-gray-400 dark:text-gray-300 transition color-transition ${isLocked ? "cursor-default" : "hover:text-gray-700 dark:hover:text-gray-100 cursor-grab active:cursor-grabbing"}`}
             >
                 <Bars3Icon className="h-5 w-5" />
             </div>

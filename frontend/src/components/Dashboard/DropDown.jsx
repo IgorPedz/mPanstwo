@@ -2,7 +2,8 @@ import { useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import AddTileCard from "./AddTileCard";
 
-export default function AddModuleDropdown({ showAddMenu, setShowAddMenu, tiles, setTiles, AVAILABLE_TILES }) {
+export default function AddModuleDropdown({ showAddMenu, setShowAddMenu, tiles, setTiles, AVAILABLE_TILES, isLocked }) {
+  if (isLocked) return null;
   const scrollRef = useRef(null);
   const [selectedTiles, setSelectedTiles] = useState([]);
 
@@ -56,7 +57,7 @@ export default function AddModuleDropdown({ showAddMenu, setShowAddMenu, tiles, 
       >
         <div className="flex justify-center pt-2 pb-1">
           <div className="w-12 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full transition color-transition" />
-        </div>z
+        </div>
 
         <div className="flex justify-between items-center px-4 pb-3">
           <h3 className="font-bold text-xl text-gray-800 dark:text-gray-200 color-transition">Dodaj moduł</h3>
@@ -68,24 +69,26 @@ export default function AddModuleDropdown({ showAddMenu, setShowAddMenu, tiles, 
           </button>
         </div>
 
-        <div
-          ref={scrollRef}
-          className="pt-5 px-4 flex flex-row flex-wrap overflow-x-auto h-[calc(70vh-120px)] cursor-grab select-none no-scrollbar"
-          onMouseDown={handleScrollDrag.onMouseDown}
-          onMouseMove={handleScrollDrag.onMouseMove}
-          onMouseUp={handleScrollDrag.onMouseUp}
-          onMouseLeave={handleScrollDrag.onMouseLeave}
-        >
-          <div className="grid grid-rows-2 grid-flow-col auto-cols-[180px] gap-10">
-            {AVAILABLE_TILES.map((tile) => (
-              <AddTileCard
-                key={tile.type}
-                tile={tile}
-                isAdded={tiles.some((t) => t.type === tile.type)}
-                isSelected={selectedTiles.includes(tile.type)}
-                onClick={() => !tiles.some((t) => t.type === tile.type) && toggleTile(tile.type)}
-              />
-            ))}
+        <div className="flex flex-col h-[calc(70vh-100px)]">
+          <div
+            ref={scrollRef}
+            className="pt-5 px-4 flex flex-row flex-wrap overflow-x-auto flex-1 pb-6 cursor-grab select-none no-scrollbar"
+            onMouseDown={handleScrollDrag.onMouseDown}
+            onMouseMove={handleScrollDrag.onMouseMove}
+            onMouseUp={handleScrollDrag.onMouseUp}
+            onMouseLeave={handleScrollDrag.onMouseLeave}
+          >
+            <div className="grid grid-rows-2 grid-flow-col auto-cols-[180px] gap-10">
+              {AVAILABLE_TILES.map((tile) => (
+                <AddTileCard
+                  key={tile.type}
+                  tile={tile}
+                  isAdded={tiles.some((t) => t.type === tile.type)}
+                  isSelected={selectedTiles.includes(tile.type)}
+                  onClick={() => !tiles.some((t) => t.type === tile.type) && toggleTile(tile.type)}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
