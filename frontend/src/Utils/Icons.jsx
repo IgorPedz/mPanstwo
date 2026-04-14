@@ -22,7 +22,12 @@ import {
     TrophyIcon,
     QuestionMarkCircleIcon,
     PrinterIcon,
-    EnvelopeIcon
+    EnvelopeIcon,
+    CheckIcon, 
+    ArrowUturnLeftIcon,
+    LockClosedIcon, 
+    LockOpenIcon,
+    ChevronDownIcon
 } from "@heroicons/react/24/outline";
 
 const ICON_MAP = {
@@ -51,6 +56,11 @@ const ICON_MAP = {
     FlagIcon,
     BriefcaseIcon,
     BanknotesIcon,
+    check: CheckIcon,
+    cancel: ArrowUturnLeftIcon,
+    lockClosed: LockClosedIcon,
+    lockOpened: LockOpenIcon,
+    downIcon: ChevronDownIcon
 };
 
 export default ICON_MAP;

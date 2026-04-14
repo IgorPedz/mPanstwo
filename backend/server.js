@@ -75,7 +75,7 @@ app.post("/login", async (req, res) => {
                 });
             }
 
-            const user = results[0]; 
+            const user = results[0];
 
             const validPassword = await bcrypt.compare(password, user.password);
 
@@ -109,39 +109,30 @@ app.post("/login", async (req, res) => {
         res.status(500).json({ message: "Błąd serwera" });
     }
 });
-
+// ================== ZAPISYWANIE DASHBOARDU ==================
 app.post("/user_tiles", (req, res) => {
     const { userId, tiles } = req.body;
 
-    if (!userId || !tiles) {
-        return res.status(400).json({ message: "Brak danych do zapisu" });
+    if (!userId || !Array.isArray(tiles)) {
+        return res.status(400).json({ message: "Nieprawidłowe dane" });
     }
 
     const tilesJson = JSON.stringify(tiles);
 
-    db.query("SELECT id FROM user_tiles WHERE user_id = ?", [userId], (err, results) => {
-        if (err) return res.status(500).json({ message: "Błąd serwera" });
+    db.query(
+        `INSERT INTO user_tiles (user_id, tiles)
+         VALUES (?, ?)
+         ON DUPLICATE KEY UPDATE tiles = VALUES(tiles)`,
+        [userId, tilesJson],
+        (err) => {
+            if (err) {
+                console.error("DB error:", err);
+                return res.status(500).json({ message: err.message });
+            }
 
-        if (results.length === 0) {
-            db.query(
-                "INSERT INTO user_tiles (user_id, tiles) VALUES (?, ?)",
-                [userId, tilesJson],
-                (insertErr) => {
-                    if (insertErr) return res.status(500).json({ message: "Błąd zapisu" });
-                    res.json({ message: "Układ zapisany" });
-                }
-            );
-        } else {
-            db.query(
-                "UPDATE user_tiles SET tiles = ? WHERE user_id = ?",
-                [tilesJson, userId],
-                (updateErr) => {
-                    if (updateErr) return res.status(500).json({ message: "Błąd zapisu" });
-                    res.json({ message: "Układ zapisany" });
-                }
-            );
+            res.json({ message: "Układ zapisany" });
         }
-    });
+    );
 });
 
 app.get("/user_tiles/:userId", (req, res) => {

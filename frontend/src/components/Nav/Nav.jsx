@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import ICON_MAP from "../../Utils/Icons";
 import Settings from "../Global/Settings";
 import LogOut from "../Global/LogOut";
@@ -45,7 +44,7 @@ const navSections = [
 
 export default function Sidebar() {
   const [openSections, setOpenSections] = useState({ "Główne": true });
-
+  const ChevronDownIcon = ICON_MAP['downIcon']
   const toggleSection = (title) => {
     setOpenSections((prev) => ({
       ...prev,
@@ -54,7 +53,7 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="color-transition h-dvh w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden">
+    <aside className="color-transition h-dvh w-55 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden">
       <Logo />
 
       <nav className="flex-1 min-h-0 overflow-y-auto px-3 mt-4 space-y-3">
@@ -84,10 +83,10 @@ export default function Sidebar() {
                     if (!Icon) return null;
 
                     return (
-                        <a className="cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 transition color-transition" href={item.href} key={item.name}>
-                          <Icon className="h-5 w-5 color-transition" />
-                          <span className="text-sm font-medium color-transition">{item.name}</span>
-                        </a>
+                      <a className="cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 transition color-transition" href={item.href} key={item.name}>
+                        <Icon className="h-5 w-5 color-transition" />
+                        <span className="text-sm font-medium color-transition">{item.name}</span>
+                      </a>
                     );
                   })}
                 </div>

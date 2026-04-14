@@ -51,7 +51,7 @@ export default function InfoMessage({
           </div>
 
           <button onClick={() => setShow(false)}>
-            <XMarkIcon className="h-4 w-4 text-gray-500 hover:text-red-700" />
+            <XMarkIcon className="cursor-pointer h-4 w-4 text-gray-500 hover:text-red-700" />
           </button>
         </motion.div>
       )}

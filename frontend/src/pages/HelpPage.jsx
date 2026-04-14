@@ -1,5 +1,6 @@
 import { ChevronDownIcon, MagnifyingGlassIcon, TagIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { useUser } from "../Contexts/UserContext";
 import heroImage from "../../public/images/heroImageContact.jpg";
 import Footer from "../components/Info/Footer";
 import ReturnBtn from "../components/Info/ReturnBtn";
@@ -29,9 +30,12 @@ export default function FAQPage() {
         return matchesCategory && matchesSearch;
     });
 
+    const { user } = useUser();
+    const isLoggedIn = !!user?.id;
+
     return (
         <div className="w-full min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 color-transition">
-            <ReturnBtn />
+            {!isLoggedIn && (<ReturnBtn />)}
             <div className="relative w-full h-80 md:h-[420px] flex items-center justify-center overflow-hidden color-transition">
                 <img
                     src={heroImage}
@@ -126,7 +130,7 @@ export default function FAQPage() {
                     </p>
                 )}
             </div>
-            <Footer />
+            {!isLoggedIn && (<Footer />)}
         </div>
     );
 }

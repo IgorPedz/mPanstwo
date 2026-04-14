@@ -19,6 +19,7 @@ export const UserProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     localStorage.removeItem("mpanstwo-user");
+    window.location.href = "/auth";
   };
 
   return (

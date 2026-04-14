@@ -2,17 +2,18 @@ import Footer from "../components/Info/Footer";
 import heroImage from "../../public/images/heroImageContact.jpg";
 import ReturnBtn from "../components/Info/ReturnBtn";
 import { DocumentTextIcon, ShieldCheckIcon, ClipboardDocumentIcon } from "@heroicons/react/24/outline";
-
+import { useUser } from "../Contexts/UserContext";
 export default function DocumentsPage() {
     const documents = [
         { title: "Regulamin", description: "Zasady korzystania z serwisu", icon: <DocumentTextIcon className="w-6 h-6 text-blue-500 color-transition" />, badge: "Nowy" },
         { title: "Polityka Prywatności", description: "Jak chronimy Twoje dane", icon: <ShieldCheckIcon className="w-6 h-6 text-green-500 color-transition" />, badge: "Ważne" },
         { title: "RODO", description: "Twoje prawa w UE", icon: <ClipboardDocumentIcon className="w-6 h-6 text-purple-500 color-transition" />, badge: "Aktualizacja" },
     ];
-
+    const { user } = useUser();
+    const isLoggedIn = !!user?.id;
     return (
         <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 color-transition">
-            <ReturnBtn />
+            {!isLoggedIn && (<ReturnBtn />)}
             <div className="relative w-full h-80 md:h-[400px] flex items-center justify-center overflow-hidden color-transition">
                 <img
                     src={heroImage}
@@ -51,7 +52,7 @@ export default function DocumentsPage() {
                     </div>
                 ))}
             </div>
-            <Footer />
+            {!isLoggedIn && (<Footer />)}
         </div>
     );
 }

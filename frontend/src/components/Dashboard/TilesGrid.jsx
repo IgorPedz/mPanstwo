@@ -1,12 +1,5 @@
 import { useEffect, useMemo } from "react";
-import {
-    DndContext,
-    closestCorners,
-    PointerSensor,
-    TouchSensor,
-    useSensor,
-    useSensors,
-} from "@dnd-kit/core";
+import { DndContext, closestCorners, PointerSensor,  TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
 
 import { restrictToParentElement } from "@dnd-kit/modifiers";
 import { SortableContext, rectSortingStrategy, arrayMove } from "@dnd-kit/sortable";
@@ -15,15 +8,7 @@ import Tile from "./Tile";
 import AddTile from "./AddTile";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function TilesGrid({
-    tiles,
-    setTiles,
-    currentTiles,
-    currentPage,
-    totalPages,
-    setShowAddMenu,
-    isLocked,
-}) {
+export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, totalPages, setShowAddMenu, isLocked }) {
     const handleDragEnd = ({ active, over }) => {
         if (isLocked) return;
         if (!over || active.id === over.id) return;
@@ -35,16 +20,15 @@ export default function TilesGrid({
         });
     };
 
-    // ✅ FIX: desktop + mobile
     const sensors = useSensors(
         useSensor(PointerSensor, {
             activationConstraint: {
-                distance: 8, // desktop: klik vs drag
+                distance: 8,
             },
         }),
         useSensor(TouchSensor, {
             activationConstraint: {
-                delay: 180, // mobile long-press
+                delay: 180,
                 tolerance: 8,
             },
         })
@@ -93,9 +77,9 @@ export default function TilesGrid({
                                         isLocked
                                             ? undefined
                                             : () =>
-                                                  setTiles((prev) =>
-                                                      prev.filter((t) => t.id !== tile.id)
-                                                  )
+                                                setTiles((prev) =>
+                                                    prev.filter((t) => t.id !== tile.id)
+                                                )
                                     }
                                 />
                             ))}
