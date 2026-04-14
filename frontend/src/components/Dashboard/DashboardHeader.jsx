@@ -1,14 +1,14 @@
 import { useUser } from "../../Contexts/UserContext";
 import ICON_MAP from "../../Utils/Icons";
-export default function WelcomeDashboard({ isLocked, saveLayout, setIsLocked, setShowAddMenu, showAddMenu }) {
+export default function WelcomeDashboard({ isLocked, hasUnsavedChanges, saveLayout, setIsLocked, setShowAddMenu, showAddMenu }) {
   const { user } = useUser();
   const LockOpened = ICON_MAP["lockOpened"];
   const LockClosed = ICON_MAP["lockClosed"];
   return (
 
-    <div className="flex justify-between mb-10">
+    <div className="flex justify-between mb-5">
       <p
-        className="text-3xl md:text-4xl text-blue-900 dark:text-blue-400 mb-4 color-transition animate-fade-in animate-text-pulse"
+        className="text-3xl md:text-4xl text-blue-900 dark:text-blue-400 color-transition animate-fade-in animate-text-pulse"
         style={{ fontFamily: "'Patrick Hand', cursive" }}
       >
         Witaj, {user.name}!
@@ -18,7 +18,7 @@ export default function WelcomeDashboard({ isLocked, saveLayout, setIsLocked, se
         type="button"
         onClick={() => {
           setIsLocked((prev) => !prev);
-          if(!isLocked) saveLayout();
+          if(!isLocked && hasUnsavedChanges) saveLayout();
           if (showAddMenu) setShowAddMenu(false);
         }}
         aria-label={isLocked ? "Odblokuj edycję" : "Zablokuj edycję"}

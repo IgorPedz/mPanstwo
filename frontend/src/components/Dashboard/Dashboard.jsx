@@ -50,6 +50,7 @@ export default function Dashboard() {
             
             <DashboardHeader
                 isLocked={isLocked}
+                hasUnsavedChanges={hasUnsavedChanges}
                 saveLayout={saveLayout}
                 setIsLocked={setIsLocked}
                 setShowAddMenu={setShowAddMenu}

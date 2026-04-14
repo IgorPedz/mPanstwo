@@ -43,7 +43,7 @@ export default function InfoMessage({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -10, scale: 0.95 }}
           transition={{ duration: 0.25 }}
-          className={`flex items-center justify-between p-3 rounded mb-4 shadow ${color}`}
+          className={`flex items-center justify-between p-3 rounded mb-4 shadow ${color} absolute top-4 left-1/2 -translate-x-1/2 w-full max-w-sm z-50`}
         >
           <div className="flex items-center gap-2">
             <Icon className="h-5 w-5" />

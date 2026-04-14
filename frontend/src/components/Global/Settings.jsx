@@ -18,7 +18,7 @@ export default function Settings() {
   }, []);
 
   return (
-    <div ref={ref} className="relative inline-block text-left color-transition">
+    <div ref={ref} className="w-full md:w-auto relative inline-block text-left color-transition">
 
       <div
         className={`absolute left-0 bottom-full w-64
@@ -47,10 +47,10 @@ export default function Settings() {
 
       <button
         onClick={() => setOpenSettings(prev => !prev)}
-        className="cursor-pointer flex items-center gap-3 px-4 py-3 rounded-xl
+        className="cursor-pointer flex items-center gap-3 px-4 py-3
         text-gray-700 dark:text-gray-200
         hover:bg-gray-100 dark:hover:bg-gray-800
-        transition-all duration-200 color-transition"
+        transition-all duration-200 color-transition w-full"
       >
         <Cog6ToothIcon className="h-5 w-5 color-transition" />
         <span className="text-sm font-medium color-transition">Ustawienia</span>

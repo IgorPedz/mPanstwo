@@ -60,14 +60,14 @@ export default function LoginForm({
         </span>
       </div>
 
-      <div className="flex gap-4 mt-4">
+      <div className="flex flex-col gap-4 mt-4">
         <button
           type="submit"
           className="cursor-pointer w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-xl transition"
         >
           Zaloguj się
         </button>
-
+        <span className="text-gray-700 dark:text-gray-200 font-medium text-center">lub</span>
         <button
           type="button"
           onClick={switchToRegister}

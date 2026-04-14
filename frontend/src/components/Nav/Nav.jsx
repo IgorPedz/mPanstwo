@@ -96,7 +96,7 @@ export default function Sidebar() {
         })}
       </nav>
 
-      <div className="p-3 border-t border-gray-100 dark:border-gray-700 space-y-1">
+      <div className="border-t border-gray-100 dark:border-gray-700 space-y-1">
         <Settings />
         <LogOut />
       </div>

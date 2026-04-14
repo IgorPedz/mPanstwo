@@ -7,8 +7,7 @@ import RegisterForm from "../components/Auth/RegisterForm";
 import useAuthForm from "../Hooks/useAuthForm";
 import useAuthSubmit from "../Hooks/useAuthSubmit";
 import InfoMessage from "../Utils/InfoMessage";
-import LoginFooter from "../components/Global/LoginFooter";
-import Settings from "../components/Global/Settings";
+import Footer from "../components/Info/Footer";
 import ImageSlider from "../components/Global/ImagesSlider";
 
 import sejmIMG from "../../public/images/sejmRP.jpg";
@@ -41,7 +40,7 @@ export default function AuthPage() {
       animate={{ opacity: isLeaving ? 0 : 1 }}
       transition={{ duration: 0.4 }}
     >
-      <div className="flex items-center justify-center px-8 py-12">
+      <div className="flex flex-col items-center justify-center px-8">
         <div className="w-full max-w-md">
           <h1
             className="text-5xl font-bold text-gray-900 dark:text-white mb-2"
@@ -57,11 +56,21 @@ export default function AuthPage() {
           </p>
 
           {infoMessage && (
-            <InfoMessage
-              message={infoMessage}
-              type={messageType}
-              onClose={() => setInfoMessage("")}
-            />
+            <div
+              className="
+      fixed z-50
+      top-6
+      left-1/2 -translate-x-1/2
+      lg:left-1/4 lg:-translate-x-1/2
+      w-[90%] max-w-md
+    "
+            >
+              <InfoMessage
+                message={infoMessage}
+                type={messageType}
+                onClose={() => setInfoMessage("")}
+              />
+            </div>
           )}
 
           <div className="mt-6 relative min-h-[360px]">
@@ -100,6 +109,7 @@ export default function AuthPage() {
             </AnimatePresence>
           </div>
         </div>
+        <Footer />
       </div>
 
       <div className="hidden lg:flex relative w-full h-full">
@@ -111,10 +121,7 @@ export default function AuthPage() {
         />
       </div>
 
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 lg:w-1/2 flex justify-center items-center pb-8">
-        <Settings />
-        <LoginFooter />
-      </div>
     </motion.div>
+
   );
 }
