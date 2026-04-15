@@ -18,6 +18,8 @@ export const UserProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
     localStorage.removeItem("mpanstwo-user");
     window.location.href = "/auth";
   };

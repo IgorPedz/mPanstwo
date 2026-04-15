@@ -39,7 +39,7 @@ export default function useAuthSubmit(isLogin) {
       setMessageType("error");
       setInfoMessage(validation.message);
       return;
-    } 
+    }
 
     try {
       if (isLogin) {
@@ -50,8 +50,10 @@ export default function useAuthSubmit(isLogin) {
 
         if (rememberMe) {
           localStorage.setItem("token", res.data.token);
+          sessionStorage.removeItem("token");
         } else {
           sessionStorage.setItem("token", res.data.token);
+          localStorage.removeItem("token");
         }
 
         login(res.data.user);

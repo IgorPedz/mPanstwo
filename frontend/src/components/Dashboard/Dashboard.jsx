@@ -21,8 +21,9 @@ export default function Dashboard() {
 
     const [showAddMenu, setShowAddMenu] = useState(false);
     const [currentPage, setCurrentPage] = useState(0);
-    const [isLocked, setIsLocked] = useState(false);
-
+    const [isLocked, setIsLocked] = useState(() => {
+        return localStorage.getItem("layout-locked") === "true";
+    });
     useNoScroll(true);
 
     const {
@@ -47,7 +48,7 @@ export default function Dashboard() {
 
     return (
         <div className="flex-1 p-4 sm:p-10 pb-10 bg-gray-50 dark:bg-gray-900 min-h-screen overflow-y-auto color-transition">
-            
+
             <DashboardHeader
                 isLocked={isLocked}
                 hasUnsavedChanges={hasUnsavedChanges}

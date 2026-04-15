@@ -18,17 +18,19 @@ export default function Settings() {
   }, []);
 
   return (
-    <div ref={ref} className="w-full md:w-auto relative inline-block text-left color-transition">
+    <div ref={ref} className="w-full relative inline-block text-left color-transition">
 
       <div
-        className={`absolute left-0 bottom-full w-64
-        transition-all duration-200 ease-out color-transition
-        rounded-xl shadow-lg border
-        bg-white dark:bg-gray-900
-        border-gray-200 dark:border-gray-700
-        p-4 z-50
-        ${openSettings ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}
-        `}
+        className={`absolute left-0 bottom-full w-60
+  shadow-lg border
+  bg-white dark:bg-gray-900
+  border-gray-200 dark:border-gray-700
+  p-4 z-50
+  transition duration-200 ease-out
+  ${openSettings
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 translate-y-2 pointer-events-none"}
+  `}
       >
         <div className="flex items-center gap-4 color-transition">
           <div className="text-sm font-semibold text-gray-700 dark:text-gray-200 color-transition">
@@ -47,7 +49,7 @@ export default function Settings() {
 
       <button
         onClick={() => setOpenSettings(prev => !prev)}
-        className="cursor-pointer flex items-center gap-3 px-4 py-3
+        className="cursor-pointer flex items-center gap-3 px-4 py-4
         text-gray-700 dark:text-gray-200
         hover:bg-gray-100 dark:hover:bg-gray-800
         transition-all duration-200 color-transition w-full"

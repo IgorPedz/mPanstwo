@@ -53,7 +53,7 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="color-transition h-dvh w-55 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden">
+    <aside className="color-transition h-dvh w-60 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden">
       <Logo />
 
       <nav className="flex-1 min-h-0 overflow-y-auto px-3 mt-4 space-y-3">

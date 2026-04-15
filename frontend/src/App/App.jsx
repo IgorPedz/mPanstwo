@@ -8,6 +8,7 @@ import HelpPage from "../pages/HelpPage";
 
 import { UserProvider } from "../Contexts/UserContext";
 import ProtectedRoute from "../Utils/ProtectedRoutes";
+import PublicRoute from "../Utils/PublicRoutes"; 
 
 import Layout from "../components/Layout/Layout";
 
@@ -17,13 +18,17 @@ function App() {
       <Router>
         <Routes>
 
-          {/* AUTH */}
-          <Route path="/auth" element={<AuthPage />} />
+          <Route
+            path="/auth"
+            element={
+              <PublicRoute>
+                <AuthPage />
+              </PublicRoute>
+            }
+          />
 
-          {/* 🧱 LAYOUT WRAPPER (UI dla wszystkich stron) */}
           <Route element={<Layout />}>
 
-            {/* 🔐 tylko dashboard wymaga loginu */}
             <Route
               path="/dashboard"
               element={
@@ -33,15 +38,13 @@ function App() {
               }
             />
 
-            {/* 🌍 public + logged w layout */}
             <Route path="/documents" element={<DocumentsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/help" element={<HelpPage />} />
 
           </Route>
 
-          {/* fallback */}
-          <Route path="*" element={<Navigate to="/dashboard" />} />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
 
         </Routes>
       </Router>
