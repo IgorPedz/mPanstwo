@@ -1,8 +1,8 @@
 import ICON_MAP from "../../Utils/Icons";
 
 export default function DashboardActions({ saveLayout, loadSavedLayout }) {
-    const SaveIcon = ICON_MAP["check"];
-    const CancelIcon = ICON_MAP["cancel"];
+    const SaveIcon = ICON_MAP["check"] || CheckIcon;
+    const CancelIcon = ICON_MAP["cancel"] || ArrowUturnLeftIcon;
 
     return (
         <div className="mt-6 flex justify-center gap-4 px-2">

@@ -44,7 +44,7 @@ const navSections = [
 
 export default function Sidebar() {
   const [openSections, setOpenSections] = useState({ "Główne": true });
-  const ChevronDownIcon = ICON_MAP['downIcon']
+  const ChevronDownIcon = ICON_MAP['dropdown']
   const toggleSection = (title) => {
     setOpenSections((prev) => ({
       ...prev,

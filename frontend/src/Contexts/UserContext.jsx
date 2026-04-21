@@ -6,14 +6,19 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(undefined);
 
   useEffect(() => {
-    const savedUser = localStorage.getItem("mpanstwo-user");
+    const savedUser =
+      localStorage.getItem("mpanstwo-user") ||
+      sessionStorage.getItem("mpanstwo-user");
+
     if (savedUser) setUser(JSON.parse(savedUser));
     else setUser(null);
   }, []);
 
-  const login = (userData) => {
+  const login = (userData, rememberMe) => {
     setUser(userData);
-    localStorage.setItem("mpanstwo-user", JSON.stringify(userData));
+
+    const storage = rememberMe ? localStorage : sessionStorage;
+    storage.setItem("mpanstwo-user", JSON.stringify(userData));
   };
 
   const logout = () => {
@@ -21,6 +26,7 @@ export const UserProvider = ({ children }) => {
     localStorage.removeItem("token");
     sessionStorage.removeItem("token");
     localStorage.removeItem("mpanstwo-user");
+    sessionStorage.removeItem("mpanstwo-user");
     window.location.href = "/auth";
   };
 

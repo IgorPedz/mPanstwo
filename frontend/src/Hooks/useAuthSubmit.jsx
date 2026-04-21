@@ -56,7 +56,7 @@ export default function useAuthSubmit(isLogin) {
           localStorage.removeItem("token");
         }
 
-        login(res.data.user);
+        login(res.data.user, rememberMe);
 
         setIsLeaving(true);
 

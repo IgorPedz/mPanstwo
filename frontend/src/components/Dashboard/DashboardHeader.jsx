@@ -12,10 +12,9 @@ export default function WelcomeDashboard({
 }) {
   const { user } = useUser();
 
-  const LockOpened = ICON_MAP["lockOpened"];
-  const LockClosed = ICON_MAP["lockClosed"];
+  const LockOpened = ICON_MAP["lock"];
+  const LockClosed = ICON_MAP["unlock"];
 
-  // 💾 sync do localStorage
   useEffect(() => {
     localStorage.setItem("layout-locked", JSON.stringify(isLocked));
   }, [isLocked]);
@@ -24,7 +23,6 @@ export default function WelcomeDashboard({
     setIsLocked((prev) => {
       const next = !prev;
 
-      // 🔥 zapis przy odblokowaniu
       if (!next && hasUnsavedChanges) {
         saveLayout();
       }

@@ -1,9 +1,18 @@
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
-import ICON_MAP from "../../Utils/Icons"
+import ICON_MAP from "../../Utils/Icons";
+import { ACCENT_MAP } from "../../Utils/Accents";
+import { COLOR_MAP } from "../../Utils/Colors";
 
-const Tile = ({id, type, name, icon, accent, iconColor, onDelete, isLocked}) => {
+const Tile = ({
+    id,
+    name,
+    icon,
+    color,
+    onDelete,
+    isLocked
+}) => {
     const {
         attributes,
         listeners,
@@ -17,8 +26,11 @@ const Tile = ({id, type, name, icon, accent, iconColor, onDelete, isLocked}) => 
         transform: CSS.Transform.toString(transform),
         transition,
     };
-    const IconComponent = ICON_MAP[icon];
 
+    const IconComponent = ICON_MAP[icon];
+    console.log("RENDERING TILE:", { id, name, icon, color, isLocked });
+    const colorClass = COLOR_MAP[color];
+    const accentClass = ACCENT_MAP[color] || "from-gray-500 to-gray-400";
     return (
         <div
             ref={setNodeRef}
@@ -26,42 +38,54 @@ const Tile = ({id, type, name, icon, accent, iconColor, onDelete, isLocked}) => 
             className={`color-transition bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm p-5 relative
                 transition-all duration-200
                 hover:shadow-lg hover:-translate-y-1
-                ${isDragging ? "opacity-70 scale-95" : ""} ${isLocked ? "cursor-default" : "cursor-pointer"}`}
+                ${isDragging ? "opacity-70 scale-95" : ""}
+                ${isLocked ? "cursor-default" : "cursor-pointer"}`}
         >
+            {/* TOP GRADIENT */}
             <div
-                className={`h-1 bg-gradient-to-r ${accent} rounded-t-xl absolute top-0 left-1 right-1 color-transition`}
+                className={`h-1 bg-gradient-to-r ${accentClass} rounded-t-xl absolute top-0 left-1 right-1 color-transition`}
             />
 
+            {/* DELETE */}
             {!isLocked && onDelete && (
                 <button
                     onClick={(e) => {
                         e.stopPropagation();
                         onDelete(id);
                     }}
-                    className="absolute top-3 right-3 text-gray-400 dark:text-gray-300 hover:text-red-600 transition color-transition cursor-pointer"
+                    className="absolute top-3 right-3 text-gray-400 dark:text-gray-300 hover:text-red-600 transition"
                 >
                     <XMarkIcon className="h-5 w-5" />
                 </button>
             )}
 
+            {/* DRAG HANDLE */}
             <div
                 {...attributes}
                 {...listeners}
                 onClick={(e) => e.stopPropagation()}
-                className={`absolute top-3 left-3 text-gray-400 dark:text-gray-300 transition color-transition ${isLocked ? "cursor-default" : "hover:text-gray-700 dark:hover:text-gray-100 cursor-grab active:cursor-grabbing"}`}
+                className={`absolute top-3 left-3 text-gray-400 dark:text-gray-300 transition
+                    ${isLocked
+                        ? "cursor-default"
+                        : "hover:text-gray-700 dark:hover:text-gray-100 cursor-grab active:cursor-grabbing"
+                    }`}
             >
                 <Bars3Icon className="h-5 w-5" />
             </div>
 
+            {/* CONTENT */}
             <div className="mt-6 flex items-center gap-4">
                 {IconComponent && (
-                    <IconComponent className="h-10 w-10 text-gray-800 dark:text-gray-200 color-transition" />
+                    <IconComponent
+                        className={`h-10 w-10 ${colorClass} dark:opacity-90 color-transition`}
+                    />
                 )}
+
                 <div>
                     <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 color-transition">
                         {name}
                     </h3>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 color-transition">
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
                         Kliknij aby otworzyć moduł
                     </p>
                 </div>
