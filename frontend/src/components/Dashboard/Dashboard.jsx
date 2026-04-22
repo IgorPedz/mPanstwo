@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useUser } from "../../Contexts/UserContext";
 import useTiles from "../../Hooks/useTiles";
 import useTilesPerPage from "../../Hooks/useTilesPerPage";
@@ -21,9 +21,11 @@ export default function Dashboard() {
 
     const [showAddMenu, setShowAddMenu] = useState(false);
     const [currentPage, setCurrentPage] = useState(0);
-    const [isLocked, setIsLocked] = useState(() => {
-        return localStorage.getItem("layout-locked") === "true";
-    });
+
+    const [isLocked, setIsLocked] = useState(() =>
+        localStorage.getItem("layout-locked") === "true"
+    );
+
     useNoScroll(true);
 
     const {
@@ -33,22 +35,39 @@ export default function Dashboard() {
         infoType,
     } = useDashboard(user, tiles, setTiles, setInfoMessage);
 
-    const totalPages = Math.ceil((tiles.length + (isLocked ? 0 : 1)) / TILES_PER_PAGE);
+    /* =========================
+       STABLE PAGINATION (NO SHIFT)
+    ========================= */
+    const totalPages = useMemo(() => {
+        return Math.max(
+            1,
+            Math.ceil((tiles.length + (isLocked ? 0 : 1)) / TILES_PER_PAGE)
+        );
+    }, [tiles.length, isLocked, TILES_PER_PAGE]);
 
-    const currentTiles = tiles.slice(
-        currentPage * TILES_PER_PAGE,
-        (currentPage + 1) * TILES_PER_PAGE
-    );
+    const currentTiles = useMemo(() => {
+        return tiles.slice(
+            currentPage * TILES_PER_PAGE,
+            (currentPage + 1) * TILES_PER_PAGE
+        );
+    }, [tiles, currentPage, TILES_PER_PAGE]);
 
     useEffect(() => {
-        if (totalPages > 0 && currentPage > totalPages - 1) {
+        if (currentPage > totalPages - 1) {
             setCurrentPage(totalPages - 1);
         }
     }, [currentPage, totalPages]);
 
     return (
-        <div className="flex-1 p-4 sm:p-10 pb-10 bg-gray-50 dark:bg-gray-900 min-h-screen overflow-y-auto color-transition">
+        <div
+            className="
+                flex-1 p-4 sm:p-10 pb-10
+                min-h-dvh
 
+                bg-gray-50 dark:bg-gray-900
+                color-transition
+            "
+        >
             <DashboardHeader
                 isLocked={isLocked}
                 hasUnsavedChanges={hasUnsavedChanges}
@@ -91,7 +110,11 @@ export default function Dashboard() {
 
             {showAddMenu && !isLocked && (
                 <div
-                    className="fixed inset-0 bg-black/30 z-40"
+                    className="
+                        fixed inset-0
+                        bg-black/20 backdrop-blur-sm
+                        z-40
+                    "
                     onClick={() => setShowAddMenu(false)}
                 />
             )}

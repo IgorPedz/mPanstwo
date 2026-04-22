@@ -13,49 +13,78 @@ export default function Settings() {
         setOpenSettings(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
-    <div ref={ref} className="w-full relative inline-block text-left color-transition">
-
+    <div
+      ref={ref}
+      className="
+        w-full relative inline-block text-left
+        color-transition
+      "
+    >
+      {/* DROPDOWN */}
       <div
-        className={`absolute left-0 bottom-full w-60
-  shadow-lg border
-  bg-white dark:bg-gray-900
-  border-gray-200 dark:border-gray-700
-  p-4 z-50
-  transition duration-200 ease-out
-  ${openSettings
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 translate-y-2 pointer-events-none"}
-  `}
+        className={`
+          absolute left-0 bottom-full w-60
+          shadow-lg border
+          bg-white dark:bg-gray-900
+          border-gray-200 dark:border-gray-700
+          p-4 z-50
+          rounded-xl
+
+          transition-all duration-200 ease-out
+          color-transition
+
+          ${
+            openSettings
+              ? "opacity-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 translate-y-2 pointer-events-none"
+          }
+        `}
       >
+        {/* THEME */}
         <div className="flex items-center gap-4 color-transition">
           <div className="text-sm font-semibold text-gray-700 dark:text-gray-200 color-transition">
             Motyw
           </div>
-          <ThemeToggle />
+          <div className="color-transition">
+            <ThemeToggle />
+          </div>
         </div>
 
-        <div className="flex items-center mt-3 color-transition">
+        {/* FONT */}
+        <div className="flex items-center mt-3 gap-2 color-transition">
           <div className="text-sm font-semibold text-gray-700 dark:text-gray-200 color-transition">
             Wielkość czcionki
           </div>
-          <ChangeFonts />
+          <div className="color-transition">
+            <ChangeFonts />
+          </div>
         </div>
       </div>
 
+      {/* BUTTON */}
       <button
-        onClick={() => setOpenSettings(prev => !prev)}
-        className="cursor-pointer flex items-center gap-3 px-4 py-4
-        text-gray-700 dark:text-gray-200
-        hover:bg-gray-100 dark:hover:bg-gray-800
-        transition-all duration-200 color-transition w-full"
+        onClick={() => setOpenSettings((prev) => !prev)}
+        className="
+          cursor-pointer flex items-center gap-3
+          px-4 py-4 w-full
+
+          text-gray-700 dark:text-gray-200
+          hover:bg-gray-100 dark:hover:bg-gray-800
+
+          transition-all duration-200
+          color-transition
+        "
       >
         <Cog6ToothIcon className="h-5 w-5 color-transition" />
-        <span className="text-sm font-medium color-transition">Ustawienia</span>
+        <span className="text-sm font-medium color-transition">
+          Ustawienia
+        </span>
       </button>
     </div>
   );

@@ -28,22 +28,33 @@ const Tile = ({
     };
 
     const IconComponent = ICON_MAP[icon];
-    console.log("RENDERING TILE:", { id, name, icon, color, isLocked });
     const colorClass = COLOR_MAP[color];
     const accentClass = ACCENT_MAP[color] || "from-gray-500 to-gray-400";
+
     return (
         <div
             ref={setNodeRef}
             style={style}
-            className={`color-transition bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm p-5 relative
+            className={`
+                color-transition
+                bg-white dark:bg-gray-800
+                border border-gray-200 dark:border-gray-700
+                rounded-xl shadow-sm p-5 relative
+
                 transition-all duration-200
                 hover:shadow-lg hover:-translate-y-1
+
                 ${isDragging ? "opacity-70 scale-95" : ""}
-                ${isLocked ? "cursor-default" : "cursor-pointer"}`}
+                ${isLocked ? "cursor-default" : "cursor-pointer"}
+            `}
         >
             {/* TOP GRADIENT */}
             <div
-                className={`h-1 bg-gradient-to-r ${accentClass} rounded-t-xl absolute top-0 left-1 right-1 color-transition`}
+                className={`
+                    h-1 bg-gradient-to-r ${accentClass}
+                    rounded-t-xl absolute top-0 left-1 right-1
+                    color-transition
+                `}
             />
 
             {/* DELETE */}
@@ -53,9 +64,15 @@ const Tile = ({
                         e.stopPropagation();
                         onDelete(id);
                     }}
-                    className="absolute top-3 right-3 text-gray-400 dark:text-gray-300 hover:text-red-600 transition"
+                    className="
+                        cursor-pointer absolute top-3 right-3
+                        text-gray-400 dark:text-gray-300
+                        hover:text-red-600
+                        transition-colors duration-200
+                        color-transition
+                    "
                 >
-                    <XMarkIcon className="h-5 w-5" />
+                    <XMarkIcon className="h-5 w-5 color-transition" />
                 </button>
             )}
 
@@ -64,28 +81,50 @@ const Tile = ({
                 {...attributes}
                 {...listeners}
                 onClick={(e) => e.stopPropagation()}
-                className={`absolute top-3 left-3 text-gray-400 dark:text-gray-300 transition
-                    ${isLocked
-                        ? "cursor-default"
-                        : "hover:text-gray-700 dark:hover:text-gray-100 cursor-grab active:cursor-grabbing"
-                    }`}
+                className={`
+                    absolute top-3 left-3
+                    text-gray-400 dark:text-gray-300
+
+                    transition-colors duration-200
+                    color-transition
+
+                    ${
+                        isLocked
+                            ? "cursor-default"
+                            : "hover:text-gray-700 dark:hover:text-gray-100 cursor-grab active:cursor-grabbing"
+                    }
+                `}
             >
-                <Bars3Icon className="h-5 w-5" />
+                <Bars3Icon className="h-5 w-5 color-transition" />
             </div>
 
             {/* CONTENT */}
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-6 flex items-center gap-4 color-transition">
                 {IconComponent && (
                     <IconComponent
-                        className={`h-10 w-10 ${colorClass} dark:opacity-90 color-transition`}
+                        className={`
+                            h-10 w-10
+                            ${colorClass}
+                            dark:opacity-90
+                            color-transition
+                        `}
                     />
                 )}
 
-                <div>
-                    <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 color-transition">
+                <div className="color-transition">
+                    <h3 className="
+                        text-sm font-semibold
+                        text-gray-800 dark:text-gray-200
+                        color-transition
+                    ">
                         {name}
                     </h3>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
+
+                    <p className="
+                        text-xs
+                        text-gray-500 dark:text-gray-400
+                        color-transition
+                    ">
                         Kliknij aby otworzyć moduł
                     </p>
                 </div>

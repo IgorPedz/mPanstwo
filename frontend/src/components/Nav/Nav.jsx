@@ -1,50 +1,48 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import ICON_MAP from "../../Utils/Icons";
 import Settings from "../Global/Settings";
 import LogOut from "../Global/LogOut";
 import Logo from "../Global/Logo";
 
-const navSections = [
-  {
-    title: "Główne",
-    items: [
-      { name: "Strona główna", icon: "dashboard", href: "/" },
-      { name: "Sondaże", icon: "stats", href: "/polls" },
-      { name: "Kalendarz wydarzeń", icon: "events", href: "/calendar" },
-    ],
-  },
-  {
-    title: "Społeczność",
-    items: [
-      { name: "Wiadomości", icon: "messages", href: "/messages" },
-      { name: "Powiadomienia", icon: "notifications", href: "/notifications" },
-    ],
-  },
-  {
-    title: "Edukacja",
-    items: [{ name: "Kursy i samouczki", icon: "courses", href: "/courses" }],
-  },
-  {
-    title: "Profil",
-    items: [
-      { name: "Moje konto", icon: "profil", href: "/profile" },
-      { name: "Osiągnięcia", icon: "achievements", href: "/achievements" },
-      { name: "Skrytka ankiet", icon: "survey", href: "/survey-box" },
-    ],
-  },
-  {
-    title: "Strona",
-    items: [
-      { name: "Dokumenty", icon: "documents", href: "/documents" },
-      { name: "Kontakt", icon: "contact", href: "/contact" },
-      { name: "Pomoc", icon: "about", href: "/help" },
-    ],
-  },
-];
-
 export default function Sidebar() {
   const [openSections, setOpenSections] = useState({ "Główne": true });
-  const ChevronDownIcon = ICON_MAP['dropdown']
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const ChevronDownIcon = ICON_MAP["dropdown"];
+  const navSections = [
+    {
+      title: "Główne",
+      items: [
+        { name: "Strona główna", icon: "dashboard", href: "/dashboard" },
+        { name: "Sondaże", icon: "stats", href: "/polls" },
+        { name: "Kalendarz wydarzeń", icon: "events", href: "/calendar" },
+      ],
+    },
+    {
+      title: "Edukacja",
+      items: [{ name: "Kursy i samouczki", icon: "courses", href: "/courses" }],
+    },
+    {
+      title: "Profil",
+      items: [
+        { name: "Mój Profil", icon: "profile", href: "/profile" },
+        { name: "Osiągnięcia", icon: "achievements", href: "/achievements" },
+        { name: "Skrytka ankiet", icon: "survey", href: "/survey-box" },
+        { name: "Powiadomienia", icon: "notifications", href: "/notifications" },
+      ],
+    },
+    {
+      title: "Strona",
+      items: [
+        { name: "Dokumenty", icon: "documents", href: "/documents" },
+        { name: "Kontakt", icon: "contact", href: "/contact" },
+        { name: "Pomoc", icon: "about", href: "/help" },
+      ],
+    },
+  ];
   const toggleSection = (title) => {
     setOpenSections((prev) => ({
       ...prev,
@@ -82,11 +80,27 @@ export default function Sidebar() {
                     const Icon = ICON_MAP[item.icon];
                     if (!Icon) return null;
 
+                    const active = location.pathname === item.href;
+
                     return (
-                      <a className="cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 transition color-transition" href={item.href} key={item.name}>
+                      <button
+                        key={item.name}
+                        onClick={() => navigate(item.href)}
+                        className={`
+                          w-full flex items-center gap-3 px-4 py-3 rounded-xl
+                          transition color-transition cursor-pointer
+
+                          ${active
+                            ? "bg-blue-50 dark:bg-gray-800 text-blue-600 dark:text-blue-300"
+                            : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                          }
+                        `}
+                      >
                         <Icon className="h-5 w-5 color-transition" />
-                        <span className="text-sm font-medium color-transition">{item.name}</span>
-                      </a>
+                        <span className="text-sm font-medium color-transition">
+                          {item.name}
+                        </span>
+                      </button>
                     );
                   })}
                 </div>

@@ -56,20 +56,42 @@ body.dark,
   animation: text-pulse 2s ease-in-out infinite;
 }
 
+/* =========================
+   SCROLLBAR (FIX DARK MODE)
+========================= */
+
 ::-webkit-scrollbar {
   width: 4px;
+  height: 4px;
+}
+
+/* LIGHT MODE */
+::-webkit-scrollbar-track {
+  background-color: #f9fafb;
+  /* gray-50 */
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #2563EB;
+  background-color: #2563eb;
   border-radius: 8px;
+  transition: background-color 200ms ease;
 }
-::-webkit-scrollbar-track{
-  background-color: white;
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #1d4ed8;
 }
-@media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-track {
-    background-color: #111827;
-    border-radius: 8px;
-  }
+
+/* DARK MODE (IMPORTANT: CLASS BASED, NOT PREFERS-COLOR-SCHEME) */
+html.dark ::-webkit-scrollbar-track {
+  background-color: #111827;
+  /* gray-900 */
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background-color: #3b82f6;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #60a5fa;
 }

@@ -103,7 +103,7 @@ export default function AddModuleDropdown({
 
           <button
             onClick={() => setShowAddMenu(false)}
-            className="text-gray-400 hover:text-red-600 transition text-2xl"
+            className="cursor-pointer text-gray-400 hover:text-red-600 transition text-2xl"
           >
             ×
           </button>
@@ -146,7 +146,7 @@ export default function AddModuleDropdown({
           <button
             onClick={addSelectedTiles}
             disabled={!selectedTiles.length}
-            className="w-full md:w-auto px-8 py-3 rounded-full font-semibold
+            className="cursor-pointer w-full md:w-auto px-8 py-3 rounded-full font-semibold
             bg-gradient-to-r from-blue-500 to-indigo-600
             text-white shadow-lg hover:scale-[1.03] hover:shadow-xl
             disabled:from-gray-300 disabled:to-gray-300 disabled:text-gray-500

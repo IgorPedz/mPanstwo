@@ -9,7 +9,7 @@ export default function AddTileCard({ tile, isAdded, isSelected, onClick }) {
   return (
     <div
       onClick={onClick}
-      className={`group relative h-35 w-35 flex flex-col items-center justify-center
+      className={`cursor-pointer group relative h-35 w-35 flex flex-col items-center justify-center
         rounded-2xl p-5 transition-all duration-300 color-transition
         ${isAdded
           ? "bg-gray-50 dark:bg-gray-700 text-gray-400 cursor-not-allowed"

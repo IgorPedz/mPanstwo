@@ -26,3 +26,19 @@ export const COLOR_MAP = {
   "cyan-gradient": "text-cyan-500",
   "rose-gradient": "text-rose-500"
 };
+
+export const GRADIENT_MAP = {
+  blue: "from-blue-500/30 to-blue-500/0",
+  indigo: "from-indigo-500/30 to-indigo-500/0",
+  purple: "from-purple-500/30 to-purple-500/0",
+  emerald: "from-emerald-500/30 to-emerald-500/0",
+  orange: "from-orange-500/30 to-orange-500/0",
+  rose: "from-rose-500/30 to-rose-500/0",
+  green: "from-green-500/30 to-green-500/0",
+  gray: "from-gray-500/30 to-gray-500/0",
+  red: "from-red-500/30 to-red-500/0",
+  pink: "from-pink-500/30 to-pink-500/0",
+  yellow: "from-yellow-500/30 to-yellow-500/0",
+  cyan: "from-cyan-500/30 to-cyan-500/0",
+  teal: "from-teal-500/30 to-teal-500/0",
+};

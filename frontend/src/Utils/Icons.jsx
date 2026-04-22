@@ -36,6 +36,12 @@ import {
   PaintBrushIcon,
   SparklesIcon,
   BeakerIcon,
+  BoltIcon,
+  CurrencyEuroIcon,
+  DeviceTabletIcon,
+  ComputerDesktopIcon,
+  GlobeEuropeAfricaIcon,
+  PencilSquareIcon,
 } from "@heroicons/react/24/outline";
 
 const ICON_MAP = {
@@ -70,10 +76,14 @@ const ICON_MAP = {
   banknotes: BanknotesIcon,
   factory: BuildingOfficeIcon,
   trophy: TrophyIcon,
+  lighting: BoltIcon,
+  euro: CurrencyEuroIcon,
+  tablet: DeviceTabletIcon,
+  computer: ComputerDesktopIcon,
   // missing FIXED
   globe: GlobeAltIcon,
   truck: TruckIcon,
-  leaf: SparklesIcon,
+  leaf: GlobeEuropeAfricaIcon,
   tractor: BeakerIcon,
 
   // actions
@@ -82,6 +92,7 @@ const ICON_MAP = {
   lock: LockClosedIcon,
   unlock: LockOpenIcon,
   dropdown: ChevronDownIcon,
+  pencil: PencilSquareIcon,
 
   // thematic
   heart: HeartIcon,
