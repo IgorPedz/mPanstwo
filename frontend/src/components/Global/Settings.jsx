@@ -3,9 +3,11 @@ import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import ThemeToggle from "../../Utils/ThemeToggle";
 import ChangeFonts from "../../Utils/ChangeFonts";
 
-export default function Settings() {
+export default function Settings({ size = "md" }) {
   const [openSettings, setOpenSettings] = useState(false);
   const ref = useRef();
+
+  const isSmall = size === "sm";
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -70,21 +72,21 @@ export default function Settings() {
       {/* BUTTON */}
       <button
         onClick={() => setOpenSettings((prev) => !prev)}
-        className="
+        className={`
           cursor-pointer flex items-center gap-3
-          px-4 py-4 w-full
+          ${isSmall ? "px-2 py-2" : "px-4 py-4"} w-full
 
           text-gray-700 dark:text-gray-200
           hover:bg-gray-100 dark:hover:bg-gray-800
 
           transition-all duration-200
           color-transition
-        "
+        `}
       >
-        <Cog6ToothIcon className="h-5 w-5 color-transition" />
-        <span className="text-sm font-medium color-transition">
-          Ustawienia
-        </span>
+        <Cog6ToothIcon className={`${isSmall ? "h-4 w-4" : "h-5 w-5"} color-transition`} />
+          <span className="text-sm font-medium color-transition">
+            Ustawienia
+          </span>
       </button>
     </div>
   );

@@ -16,9 +16,10 @@ export default function AuthInput({
   };
 
   return (
-    <div className="flex flex-col gap-1 mb-4">
+    <div className="flex flex-col gap-1 mb-4 color-transition">
+
       {label && (
-        <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+        <label className="text-sm font-medium text-gray-600 dark:text-gray-300 color-transition">
           {label}
         </label>
       )}
@@ -29,14 +30,20 @@ export default function AuthInput({
         value={formData[name] || ""}
         onChange={handleChange}
         placeholder={placeholder}
-        className={`
+        className="
           px-4 py-2 rounded-xl border
-          bg-gray-100 dark:bg-gray-700
+
+          bg-gray-100 dark:bg-gray-800
           text-gray-800 dark:text-white
-          border-gray-300 dark:border-gray-600
-          focus:outline-none focus:ring-2 focus:ring-indigo-500
-          transition-all duration-200
-        `}  
+
+          border-gray-300 dark:border-gray-700
+
+          focus:outline-none
+          focus:ring-2 focus:ring-indigo-500
+
+          transition-colors duration-200
+          color-transition
+        "
       />
     </div>
   );

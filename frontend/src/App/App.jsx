@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";  
+import { AnimatePresence, motion } from "framer-motion";
 import DashboardPage from "../pages/DashboardPage";
 import AuthPage from "../pages/AuthPage";
 import DocumentsPage from "../pages/DocumentsPage";
@@ -9,11 +9,11 @@ import ProfilePage from "../pages/ProfilePage";
 
 import { UserProvider } from "../Contexts/UserContext";
 import ProtectedRoute from "../Utils/ProtectedRoutes";
-import PublicRoute from "../Utils/PublicRoutes"; 
+import PublicRoute from "../Utils/PublicRoutes";
 
 import Layout from "../components/Layout/Layout";
 
-function App() {    
+function App() {
   return (
     <UserProvider>
       <Router>
@@ -28,6 +28,7 @@ function App() {
             }
           />
 
+          {/* 🔥 TU JEST KLUCZ */}
           <Route element={<Layout />}>
 
             <Route
@@ -39,11 +40,14 @@ function App() {
               }
             />
 
-            <Route path="/profile" element={
-              <ProtectedRoute>
-                <ProfilePage />
-              </ProtectedRoute>
-            } />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              }
+            />
 
             <Route path="/documents" element={<DocumentsPage />} />
             <Route path="/contact" element={<ContactPage />} />

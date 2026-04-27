@@ -46,6 +46,7 @@ export default function useAuthSubmit(isLogin) {
         const res = await axios.post("http://localhost:5000/login", {
           email: data.email,
           password: data.password,
+          rememberMe,
         });
 
         if (rememberMe) {

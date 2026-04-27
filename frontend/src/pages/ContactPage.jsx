@@ -3,116 +3,161 @@ import Footer from "../components/Info/Footer";
 import heroImage from "../../public/images/heroImageContact.jpg";
 import ReturnBtn from "../components/Info/ReturnBtn";
 import { useUser } from "../Contexts/UserContext";
+
 export default function ContactPage() {
     const { user } = useUser();
     const isLoggedIn = !!user?.id;
+
     return (
-        <div className="w-full min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 color-transition">
+        <div className="w-full min-h-screen flex flex-col text-gray-800 dark:text-gray-200">
 
-            {!isLoggedIn && (<ReturnBtn />)}
+            {!isLoggedIn && <ReturnBtn />}
 
-            <div className="relative w-full h-96 md:h-[480px] flex items-center justify-center overflow-hidden color-transition">
+            <div className="relative w-full h-96 md:h-[480px] flex items-center justify-center overflow-hidden">
+
                 <img
                     src={heroImage}
                     alt="Kontakt hero"
-                    className="absolute w-full h-full object-cover scale-105 color-transition"
+                    className="absolute w-full h-full object-cover scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 backdrop-blur-sm color-transition"></div>
+                <div className="absolute inset-0 bg-black/60"></div>
 
-                <div className="relative text-center px-6 color-transition">
-                    <h1 className="text-5xl md:text-6xl font-bold text-white color-transition">
+                <div className="relative text-center px-6">
+
+                    <h1 className="text-5xl md:text-6xl font-bold text-white">
                         Skontaktuj się z nami
                     </h1>
-                    <p className="mt-4 text-lg md:text-xl text-gray-200 max-w-xl mx-auto color-transition">
+
+                    <p className="mt-4 text-lg md:text-xl text-gray-200 max-w-xl mx-auto">
                         Masz pytania? Napisz lub zadzwoń — chętnie pomożemy
                     </p>
+
                 </div>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-6 -mt-20 px-6 md:px-16 relative z-10 color-transition">
+            {/* CONTACT CARDS */}
+            <div className="flex flex-col md:flex-row gap-6 -mt-20 px-6 md:px-16 relative z-10">
 
-                <div className="flex-1 group cursor-pointer">
-                    <div className="rounded-3xl p-[1px] bg-gradient-to-br from-blue-500/30 to-indigo-500/30 group-hover:from-blue-500/60 group-hover:to-indigo-500/60 transition-all duration-300">
-                        <div className="flex flex-col items-center gap-3 p-8 bg-white dark:bg-gray-900 rounded-3xl shadow-xl backdrop-blur-xl color-transition">
-                            <EnvelopeIcon className="w-7 h-7 text-blue-500 color-transition" />
-                            <div className="text-center color-transition">
-                                <div className="font-semibold text-lg color-transition">E-mail</div>
-                                <div className="text-gray-500 dark:text-gray-400 color-transition">
-                                    kontakt@twojadomena.pl
-                                </div>
+                {/* EMAIL */}
+                <div className="flex-1">
+                    <div className="
+                        flex flex-col items-center gap-3 p-8
+                        border border-gray-200 dark:border-gray-800
+                        rounded-2xl
+                    ">
+                        <EnvelopeIcon className="w-7 h-7 text-blue-500" />
+                        <div className="text-center">
+                            <div className="font-semibold text-lg">E-mail</div>
+                            <div className="text-gray-500 dark:text-gray-400">
+                                kontakt@twojadomena.pl
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="flex-1 group cursor-pointer">
-                    <div className="rounded-3xl p-[1px] bg-gradient-to-br from-green-500/30 to-emerald-500/30 group-hover:from-green-500/60 group-hover:to-emerald-500/60 transition-all duration-300">
-                        <div className="flex flex-col items-center gap-3 p-8 bg-white dark:bg-gray-900 rounded-3xl shadow-xl backdrop-blur-xl color-transition">
-                            <PhoneIcon className="w-7 h-7 text-green-500 color-transition" />
-                            <div className="text-center color-transition">
-                                <div className="font-semibold text-lg color-transition">Telefon</div>
-                                <div className="text-gray-500 dark:text-gray-400 color-transition">
-                                    +48 123 456 789
-                                </div>
+                {/* PHONE */}
+                <div className="flex-1">
+                    <div className="
+                        flex flex-col items-center gap-3 p-8
+                        border border-gray-200 dark:border-gray-800
+                        rounded-2xl
+                    ">
+                        <PhoneIcon className="w-7 h-7 text-green-500" />
+                        <div className="text-center">
+                            <div className="font-semibold text-lg">Telefon</div>
+                            <div className="text-gray-500 dark:text-gray-400">
+                                +48 123 456 789
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="flex-1 group cursor-pointer">
-                    <div className="rounded-3xl p-[1px] bg-gradient-to-br from-red-500/30 to-pink-500/30 group-hover:from-red-500/60 group-hover:to-pink-500/60 transition-all duration-300">
-                        <div className="flex flex-col items-center gap-3 p-8 bg-white dark:bg-gray-900 rounded-3xl shadow-xl backdrop-blur-xl color-transition">
-                            <MapPinIcon className="w-7 h-7 text-red-500 color-transition" />
-                            <div className="text-center color-transition">
-                                <div className="font-semibold text-lg color-transition">Adres</div>
-                                <div className="text-gray-500 dark:text-gray-400 color-transition">
-                                    ul. Przykładowa 12, 00-000 Miasto
-                                </div>
+                {/* ADDRESS */}
+                <div className="flex-1">
+                    <div className="
+                        flex flex-col items-center gap-3 p-8
+                        border border-gray-200 dark:border-gray-800
+                        rounded-2xl
+                    ">
+                        <MapPinIcon className="w-7 h-7 text-red-500" />
+                        <div className="text-center">
+                            <div className="font-semibold text-lg">Adres</div>
+                            <div className="text-gray-500 dark:text-gray-400">
+                                ul. Przykładowa 12, 00-000 Miasto
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-            <div className="flex justify-center px-6 md:px-16 mt-16 color-transition">
-                <form className="w-full max-w-2xl rounded-3xl p-[1px] bg-gradient-to-br from-blue-500/30 to-indigo-500/30">
+            {/* FORM */}
+            <div className="flex justify-center px-6 md:px-16 mt-16">
 
-                    <div className="bg-white dark:bg-gray-900 p-8 md:p-10 rounded-3xl shadow-2xl space-y-5 backdrop-blur-xl color-transition">
+                <form className="w-full max-w-2xl">
 
-                        <h2 className="text-2xl font-semibold text-center color-transition">
+                    <div className="
+                        border border-gray-200 dark:border-gray-800
+                        rounded-2xl p-8 md:p-10 space-y-5
+                    ">
+
+                        <h2 className="text-2xl font-semibold text-center">
                             Napisz do nas
                         </h2>
 
                         <input
                             type="text"
                             placeholder="Imię i nazwisko"
-                            className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 outline-none color-transition"
+                            className="
+                                w-full p-4 rounded-xl
+                                border border-gray-200 dark:border-gray-800
+                                bg-transparent
+                                outline-none
+                            "
                         />
 
                         <input
                             type="email"
                             placeholder="Twój e-mail"
-                            className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 outline-none color-transition"
+                            className="
+                                w-full p-4 rounded-xl
+                                border border-gray-200 dark:border-gray-800
+                                bg-transparent
+                                outline-none
+                            "
                         />
 
                         <textarea
                             placeholder="Wiadomość"
                             rows={5}
-                            className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 outline-none color-transition"
+                            className="
+                                w-full p-4 rounded-xl
+                                border border-gray-200 dark:border-gray-800
+                                bg-transparent
+                                outline-none
+                            "
                         />
 
                         <button
                             type="submit"
-                            className="w-full py-4 rounded-2xl font-semibold text-white bg-gradient-to-r from-blue-500 to-indigo-500 hover:opacity-90 transition-all duration-300 cursor-pointer color-transition"
+                            className="
+                                w-full py-4 rounded-xl
+                                bg-blue-600 hover:bg-blue-700
+                                text-white font-semibold
+                                transition cursor-pointer
+                            "
                         >
                             Wyślij wiadomość
                         </button>
 
                     </div>
+
                 </form>
+
             </div>
-            {!isLoggedIn && (<Footer />)}
+
+            {!isLoggedIn && <Footer />}
         </div>
     );
 }

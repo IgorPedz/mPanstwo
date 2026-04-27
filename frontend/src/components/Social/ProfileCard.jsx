@@ -8,7 +8,6 @@ const ProfileCard = ({ title, value, icon: Icon, color = "indigo" }) => {
     <div className="
       relative overflow-hidden rounded-2xl
       border border-gray-200 dark:border-gray-800
-      bg-white dark:bg-gray-900
       p-6 shadow-sm
       transition-all duration-300
       hover:shadow-xl hover:-translate-y-1
@@ -29,7 +28,7 @@ const ProfileCard = ({ title, value, icon: Icon, color = "indigo" }) => {
 
         <div className="
           flex h-11 w-11 items-center justify-center
-          rounded-xl bg-gray-100 dark:bg-gray-800
+          rounded-xl
           color-transition
         ">
           <Icon className={`h-6 w-6 ${textColor} color-transition`} />

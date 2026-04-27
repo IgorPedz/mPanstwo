@@ -35,9 +35,6 @@ export default function Dashboard() {
         infoType,
     } = useDashboard(user, tiles, setTiles, setInfoMessage);
 
-    /* =========================
-       STABLE PAGINATION (NO SHIFT)
-    ========================= */
     const totalPages = useMemo(() => {
         return Math.max(
             1,
@@ -63,8 +60,6 @@ export default function Dashboard() {
             className="
                 flex-1 p-4 sm:p-10 pb-10
                 min-h-dvh
-
-                bg-gray-50 dark:bg-gray-900
                 color-transition
             "
         >

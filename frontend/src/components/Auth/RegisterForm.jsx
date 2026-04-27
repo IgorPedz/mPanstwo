@@ -10,8 +10,9 @@ export default function RegisterForm({
     e.preventDefault();
     onSubmit(formData);
   };
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 color-transition">
 
       <AuthInput
         label="Nazwa użytkownika"
@@ -40,21 +41,41 @@ export default function RegisterForm({
         setFormData={setFormData}
       />
 
-      <div className="flex flex-col gap-4 mt-4">
+      <div className="flex flex-col gap-4 mt-4 color-transition">
+
         <button
           type="submit"
-          className="cursor-pointer w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-xl transition"
+          className="
+            cursor-pointer w-full
+            bg-indigo-600 hover:bg-indigo-700
+            text-white py-4 rounded-xl
+            transition-colors duration-200
+            color-transition
+          "
         >
           Zarejestruj się
         </button>
-        <span className="text-gray-700 dark:text-gray-200 font-medium text-center">lub</span>
+
+        <span className="text-gray-700 dark:text-gray-200 font-medium text-center color-transition">
+          lub
+        </span>
+
         <button
           type="button"
           onClick={switchToLogin}
-          className="cursor-pointer w-full border-2 border-indigo-500 text-indigo-600 py-4 rounded-xl hover:bg-indigo-50 dark:hover:bg-gray-800 transition"
+          className="
+            cursor-pointer w-full
+            border-2 border-indigo-500
+            text-indigo-600
+            py-4 rounded-xl
+            hover:bg-indigo-50 dark:hover:bg-gray-800
+            transition-colors duration-200
+            color-transition
+          "
         >
           Masz już konto?
         </button>
+
       </div>
 
     </form>

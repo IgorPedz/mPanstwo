@@ -12,6 +12,7 @@ export default function Sidebar() {
   const navigate = useNavigate();
 
   const ChevronDownIcon = ICON_MAP["dropdown"];
+
   const navSections = [
     {
       title: "Główne",
@@ -43,6 +44,7 @@ export default function Sidebar() {
       ],
     },
   ];
+
   const toggleSection = (title) => {
     setOpenSections((prev) => ({
       ...prev,
@@ -51,7 +53,7 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="color-transition h-dvh w-60 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden">
+    <aside className="color-transition h-dvh bg-gray-50 dark:bg-gray-900 w-60 border-r border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden">
       <Logo />
 
       <nav className="flex-1 min-h-0 overflow-y-auto px-3 mt-4 space-y-3">
@@ -62,18 +64,20 @@ export default function Sidebar() {
             <div key={section.title}>
               <button
                 onClick={() => toggleSection(section.title)}
-                className="cursor-pointer w-full flex items-center justify-between px-4 py-2 text-xs font-semibold uppercase text-gray-400 hover:text-gray-600 color-transition"
+                className="cursor-pointer w-full flex items-center justify-between px-4 py-2 text-xs font-semibold uppercase text-gray-400 hover:text-gray-600 transition-colors"
               >
                 {section.title}
                 <ChevronDownIcon
-                  className={`h-4 w-4 transition-transform duration-300 color-transition ${isOpen ? "rotate-180" : ""
-                    }`}
+                  className={`h-4 w-4 transition-transform duration-300 ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
                 />
               </button>
 
               <div
-                className={`overflow-hidden transition-all duration-300 color-transition ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                  }`}
+                className={`overflow-hidden transition-all duration-300 ${
+                  isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                }`}
               >
                 <div className="space-y-1 mt-1">
                   {section.items.map((item) => {
@@ -88,16 +92,17 @@ export default function Sidebar() {
                         onClick={() => navigate(item.href)}
                         className={`
                           w-full flex items-center gap-3 px-4 py-3 rounded-xl
-                          transition color-transition cursor-pointer
+                          transition-colors cursor-pointer
 
-                          ${active
-                            ? "bg-blue-50 dark:bg-gray-800 text-blue-600 dark:text-blue-300"
-                            : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                          ${
+                            active
+                              ? "text-blue-600 dark:text-blue-300"
+                              : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                           }
                         `}
                       >
-                        <Icon className="h-5 w-5 color-transition" />
-                        <span className="text-sm font-medium color-transition">
+                        <Icon className="h-5 w-5" />
+                        <span className="text-sm font-medium">
                           {item.name}
                         </span>
                       </button>
@@ -110,7 +115,7 @@ export default function Sidebar() {
         })}
       </nav>
 
-      <div className="border-t border-gray-100 dark:border-gray-700 space-y-1">
+      <div className="color-transition border-t border-gray-100 dark:border-gray-700 space-y-1">
         <Settings />
         <LogOut />
       </div>

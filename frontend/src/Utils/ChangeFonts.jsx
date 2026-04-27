@@ -26,13 +26,13 @@ export default function ChangeFonts() {
     };
 
     return (
-        <div className="color-transition flex items-center gap-4 p-4 rounded-xl dark:text-white transition-all duration-300">
+        <div className="color-transition flex items-center gap-4 p-4 rounded-xl text-gray-700 dark:text-white transition-all duration-300">
 
             <div className="relative inline-block w-30">
                 <select
                     value={fontSize}
                     onChange={(e) => handleFontChange(e.target.value)}
-                    className="appearance-none cursor-pointer px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700 color-transition"
+                    className="appearance-none cursor-pointer px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700 bg-white border-gray-300 color-transition"
                 >
                     <option value="text-sm">Mała</option>
                     <option value="text-base">Średnia</option>
@@ -40,7 +40,7 @@ export default function ChangeFonts() {
                     <option value="text-xl">Bardzo duża</option>
                 </select>
 
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500 color-transition">
                     <svg
                         className="h-4 w-4"
                         fill="none"

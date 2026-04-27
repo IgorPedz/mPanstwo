@@ -22,16 +22,16 @@ const ThemeToggle = () => {
     return (
         <button
             onClick={toggleDarkMode}
-            className="cursor-pointer relative w-20 h-10 flex items-center bg-gray-300 dark:bg-gray-700 rounded-full p-1 shadow-lg transition-colors focus:outline-none"
+            className="cursor-pointer relative w-20 h-10 flex items-center bg-gray-300 dark:bg-gray-700 rounded-full p-1 shadow-lg transition-colors focus:outline-none color-transition"
             aria-label="Toggle Dark Mode"
         >
             <div
-                className={`absolute top-1 left-1 w-8 h-8 bg-white rounded-full shadow-md transform transition-transform duration-300 ease-in-out ${darkMode ? "translate-x-10" : "translate-x-0"
+                className={`absolute top-1 left-1 w-8 h-8 bg-white dark:bg-gray-200 rounded-full shadow-md transform transition-transform duration-300 ease-in-out color-transition ${darkMode ? "translate-x-10" : "translate-x-0"
                     }`}
             ></div>
 
-            <SunIcon className="w-6 h-6 text-yellow-400 absolute left-2 top-1/2 -translate-y-1/2 dark:text-gray-100" />
-            <MoonIcon className="w-6 h-6 text-gray-900 dark:text-black-100 absolute right-2 top-1/2 -translate-y-1/2" />
+            <SunIcon className="w-6 h-6 text-yellow-400 absolute left-2 top-1/2 -translate-y-1/2 dark:text-gray-100 color-transition" />
+            <MoonIcon className="w-6 h-6 text-gray-900 dark:text-black-100 absolute right-2 top-1/2 -translate-y-1/2 color-transition" />
         </button>
     );
 };

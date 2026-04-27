@@ -46,7 +46,7 @@ const ProfilePage = () => {
     ];
 
     return (
-        <div className="p-6 space-y-6 min-h-screen bg-gray-50 dark:bg-gray-900 color-transition">
+        <div className="p-6 space-y-6 min-h-screen">
 
             <Tabs activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs} />
 
@@ -85,15 +85,13 @@ const ProfilePage = () => {
                                 <div
                                     key={p.id}
                                     className="
-              p-4 rounded-xl
-              bg-white dark:bg-gray-900
-              border border-gray-200 dark:border-gray-800
-              text-gray-900 dark:text-white
-              cursor-pointer
-              hover:bg-gray-100 dark:hover:bg-gray-800
-              transition
-              color-transition
-            "
+                                        p-4 rounded-xl
+                                        border border-gray-200 dark:border-gray-800
+                                        text-gray-900 dark:text-white
+                                        cursor-pointer
+                                        hover:border-gray-300 dark:hover:border-gray-700
+                                        transition
+                                    "
                                 >
                                     {p.title} ({p.votes})
                                 </div>
@@ -107,14 +105,12 @@ const ProfilePage = () => {
                                 <div
                                     key={n.id}
                                     className="
-              p-4 rounded-xl
-              bg-white dark:bg-gray-900
-              border border-gray-200 dark:border-gray-800
-              cursor-pointer
-              hover:bg-gray-100 dark:hover:bg-gray-800
-              transition
-              color-transition
-            "
+                                        p-4 rounded-xl
+                                        border border-gray-200 dark:border-gray-800
+                                        cursor-pointer
+                                        hover:border-gray-300 dark:hover:border-gray-700
+                                        transition
+                                    "
                                 >
                                     <div className="font-medium text-gray-900 dark:text-white">
                                         {n.title}

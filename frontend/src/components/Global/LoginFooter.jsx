@@ -13,8 +13,8 @@ const LoginFooter = () => {
             hover:bg-gray-100 dark:hover:bg-gray-800
             transition-all duration-200 color-transition"
         >
-          <EnvelopeIcon className="h-5 w-5" />
-          <span className="text-sm font-medium">Kontakt</span>
+          <EnvelopeIcon className="h-5 w-5 color-transition" />
+          <span className="text-sm font-medium color-transition">Kontakt</span>
         </a>
 
         <a
@@ -25,8 +25,8 @@ const LoginFooter = () => {
             hover:bg-gray-100 dark:hover:bg-gray-800
             transition-all duration-200 color-transition"
         >
-          <QuestionMarkCircleIcon className="h-5 w-5" />
-          <span className="text-sm font-medium">Pomoc</span>
+          <QuestionMarkCircleIcon className="h-5 w-5 color-transition" />
+          <span className="text-sm font-medium color-transition">Pomoc</span>
         </a>
 
         <a
@@ -37,8 +37,8 @@ const LoginFooter = () => {
             hover:bg-gray-100 dark:hover:bg-gray-800
             transition-all duration-200 color-transition"
         >
-          <DocumentTextIcon className="h-5 w-5" />
-          <span className="text-sm font-medium">Dokumenty</span>
+          <DocumentTextIcon className="h-5 w-5 color-transition" />
+          <span className="text-sm font-medium color-transition">Dokumenty</span>
         </a>
 
       </div>
