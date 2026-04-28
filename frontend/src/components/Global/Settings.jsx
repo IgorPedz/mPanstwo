@@ -28,7 +28,7 @@ export default function Settings({ size = "md" }) {
         color-transition
       "
     >
-      {/* DROPDOWN */}
+
       <div
         className={`
           absolute left-0 bottom-full w-60
@@ -48,7 +48,7 @@ export default function Settings({ size = "md" }) {
           }
         `}
       >
-        {/* THEME */}
+
         <div className="flex items-center gap-4 color-transition">
           <div className="text-sm font-semibold text-gray-700 dark:text-gray-200 color-transition">
             Motyw
@@ -58,7 +58,6 @@ export default function Settings({ size = "md" }) {
           </div>
         </div>
 
-        {/* FONT */}
         <div className="flex items-center mt-3 gap-2 color-transition">
           <div className="text-sm font-semibold text-gray-700 dark:text-gray-200 color-transition">
             Wielkość czcionki
@@ -69,7 +68,6 @@ export default function Settings({ size = "md" }) {
         </div>
       </div>
 
-      {/* BUTTON */}
       <button
         onClick={() => setOpenSettings((prev) => !prev)}
         className={`

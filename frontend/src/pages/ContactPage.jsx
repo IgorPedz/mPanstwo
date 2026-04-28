@@ -9,10 +9,11 @@ export default function ContactPage() {
     const isLoggedIn = !!user?.id;
 
     return (
-        <div className="w-full min-h-screen flex flex-col text-gray-800 dark:text-gray-200">
+        <div className="w-full min-h-screen flex flex-col text-gray-800 dark:text-gray-200 color-transition">
 
             {!isLoggedIn && <ReturnBtn />}
 
+            {/* HERO */}
             <div className="relative w-full h-96 md:h-[480px] flex items-center justify-center overflow-hidden">
 
                 <img
@@ -24,7 +25,6 @@ export default function ContactPage() {
                 <div className="absolute inset-0 bg-black/60"></div>
 
                 <div className="relative text-center px-6">
-
                     <h1 className="text-5xl md:text-6xl font-bold text-white">
                         Skontaktuj się z nami
                     </h1>
@@ -32,7 +32,6 @@ export default function ContactPage() {
                     <p className="mt-4 text-lg md:text-xl text-gray-200 max-w-xl mx-auto">
                         Masz pytania? Napisz lub zadzwoń — chętnie pomożemy
                     </p>
-
                 </div>
             </div>
 
@@ -44,12 +43,17 @@ export default function ContactPage() {
                     <div className="
                         flex flex-col items-center gap-3 p-8
                         border border-gray-200 dark:border-gray-800
-                        rounded-2xl
+                        rounded-2xl color-transition
+
+                        hover:bg-gray-50 dark:hover:bg-gray-900
+                        hover:border-gray-300 dark:hover:border-gray-700
                     ">
                         <EnvelopeIcon className="w-7 h-7 text-blue-500" />
                         <div className="text-center">
-                            <div className="font-semibold text-lg">E-mail</div>
-                            <div className="text-gray-500 dark:text-gray-400">
+                            <div className="font-semibold text-lg color-transition">
+                                E-mail
+                            </div>
+                            <div className="text-gray-500 dark:text-gray-400 color-transition">
                                 kontakt@twojadomena.pl
                             </div>
                         </div>
@@ -61,12 +65,17 @@ export default function ContactPage() {
                     <div className="
                         flex flex-col items-center gap-3 p-8
                         border border-gray-200 dark:border-gray-800
-                        rounded-2xl
+                        rounded-2xl color-transition
+
+                        hover:bg-gray-50 dark:hover:bg-gray-900
+                        hover:border-gray-300 dark:hover:border-gray-700
                     ">
                         <PhoneIcon className="w-7 h-7 text-green-500" />
                         <div className="text-center">
-                            <div className="font-semibold text-lg">Telefon</div>
-                            <div className="text-gray-500 dark:text-gray-400">
+                            <div className="font-semibold text-lg color-transition">
+                                Telefon
+                            </div>
+                            <div className="text-gray-500 dark:text-gray-400 color-transition">
                                 +48 123 456 789
                             </div>
                         </div>
@@ -78,12 +87,17 @@ export default function ContactPage() {
                     <div className="
                         flex flex-col items-center gap-3 p-8
                         border border-gray-200 dark:border-gray-800
-                        rounded-2xl
+                        rounded-2xl color-transition
+
+                        hover:bg-gray-50 dark:hover:bg-gray-900
+                        hover:border-gray-300 dark:hover:border-gray-700
                     ">
                         <MapPinIcon className="w-7 h-7 text-red-500" />
                         <div className="text-center">
-                            <div className="font-semibold text-lg">Adres</div>
-                            <div className="text-gray-500 dark:text-gray-400">
+                            <div className="font-semibold text-lg color-transition">
+                                Adres
+                            </div>
+                            <div className="text-gray-500 dark:text-gray-400 color-transition">
                                 ul. Przykładowa 12, 00-000 Miasto
                             </div>
                         </div>
@@ -100,9 +114,10 @@ export default function ContactPage() {
                     <div className="
                         border border-gray-200 dark:border-gray-800
                         rounded-2xl p-8 md:p-10 space-y-5
+                        color-transition
                     ">
 
-                        <h2 className="text-2xl font-semibold text-center">
+                        <h2 className="text-2xl font-semibold text-center color-transition">
                             Napisz do nas
                         </h2>
 
@@ -114,6 +129,9 @@ export default function ContactPage() {
                                 border border-gray-200 dark:border-gray-800
                                 bg-transparent
                                 outline-none
+                                color-transition
+
+                                focus:border-blue-500
                             "
                         />
 
@@ -125,6 +143,9 @@ export default function ContactPage() {
                                 border border-gray-200 dark:border-gray-800
                                 bg-transparent
                                 outline-none
+                                color-transition
+
+                                focus:border-blue-500
                             "
                         />
 
@@ -136,6 +157,9 @@ export default function ContactPage() {
                                 border border-gray-200 dark:border-gray-800
                                 bg-transparent
                                 outline-none
+                                color-transition
+
+                                focus:border-blue-500
                             "
                         />
 
@@ -145,7 +169,7 @@ export default function ContactPage() {
                                 w-full py-4 rounded-xl
                                 bg-blue-600 hover:bg-blue-700
                                 text-white font-semibold
-                                transition cursor-pointer
+                                color-transition cursor-pointer
                             "
                         >
                             Wyślij wiadomość

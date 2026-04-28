@@ -39,7 +39,6 @@ export default function FAQPage() {
 
             {!isLoggedIn && <ReturnBtn />}
 
-            {/* HERO */}
             <div className="relative w-full h-80 md:h-[420px] flex items-center justify-center overflow-hidden">
 
                 <img
@@ -58,17 +57,16 @@ export default function FAQPage() {
                 </div>
             </div>
 
-            {/* FILTERS */}
             <div className="w-full mt-8 px-6 flex flex-col md:flex-row items-center justify-between gap-4">
 
                 <div className="overflow-x-auto">
-                    <div className="flex border border-gray-200 dark:border-gray-800 rounded-full p-1 w-max">
+                    <div className="color-transition flex border border-gray-200 dark:border-gray-800 rounded-full p-1 w-max">
 
                         {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
-                                className={`
+                                className={`color-transition
                                     px-5 py-2 text-sm font-medium whitespace-nowrap rounded-full transition
                                     cursor-pointer
 
@@ -94,7 +92,7 @@ export default function FAQPage() {
                         placeholder="Szukaj pytania..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="
+                        className=" color-transition
                             w-full pl-11 pr-4 py-3 rounded-2xl
                             border border-gray-200 dark:border-gray-800
                             bg-transparent
@@ -104,7 +102,6 @@ export default function FAQPage() {
                 </div>
             </div>
 
-            {/* FAQ LIST */}
             <div className="w-full mt-10 px-6 space-y-4">
 
                 {filteredFAQs.length > 0 ? filteredFAQs.map((faq, index) => (
@@ -118,7 +115,7 @@ export default function FAQPage() {
                             transition
                         "
                     >
-                        <div className="flex items-center justify-between gap-4 p-6">
+                        <div className="color-transition flex items-center justify-between gap-4 p-6">
 
                             <span className="text-lg font-semibold">
                                 {faq.question}
@@ -126,7 +123,7 @@ export default function FAQPage() {
 
                             <div className="flex items-center gap-4">
 
-                                <span className="
+                                <span className=" color-transition
                                     flex items-center gap-2 px-4 py-2 text-sm rounded-xl
                                     border border-gray-200 dark:border-gray-800
                                     text-gray-600 dark:text-gray-300

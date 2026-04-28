@@ -48,7 +48,7 @@ const Tile = ({
                 ${isLocked ? "cursor-default" : "cursor-pointer"}
             `}
         >
-            {/* TOP GRADIENT */}
+
             <div
                 className={`
                     h-1 bg-gradient-to-r ${accentClass}
@@ -57,7 +57,6 @@ const Tile = ({
                 `}
             />
 
-            {/* DELETE */}
             {!isLocked && onDelete && (
                 <button
                     onClick={(e) => {
@@ -76,7 +75,6 @@ const Tile = ({
                 </button>
             )}
 
-            {/* DRAG HANDLE */}
             <div
                 {...attributes}
                 {...listeners}
@@ -98,7 +96,6 @@ const Tile = ({
                 <Bars3Icon className="h-5 w-5 color-transition" />
             </div>
 
-            {/* CONTENT */}
             <div className="mt-6 flex items-center gap-4 color-transition">
                 {IconComponent && (
                     <IconComponent

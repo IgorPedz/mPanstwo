@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { DndContext, closestCorners, PointerSensor,  TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
+import { DndContext, closestCorners, PointerSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
 
 import { restrictToParentElement } from "@dnd-kit/modifiers";
 import { SortableContext, rectSortingStrategy, arrayMove } from "@dnd-kit/sortable";

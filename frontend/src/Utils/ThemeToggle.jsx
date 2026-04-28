@@ -22,16 +22,46 @@ const ThemeToggle = () => {
     return (
         <button
             onClick={toggleDarkMode}
-            className="cursor-pointer relative w-20 h-10 flex items-center bg-gray-300 dark:bg-gray-700 rounded-full p-1 shadow-lg transition-colors focus:outline-none color-transition"
+            className="
+                cursor-pointer relative w-20 h-10 flex items-center
+                bg-gray-300 dark:bg-gray-700
+                rounded-full p-1 shadow-lg
+                focus:outline-none
+                color-transition
+            "
             aria-label="Toggle Dark Mode"
         >
-            <div
-                className={`absolute top-1 left-1 w-8 h-8 bg-white dark:bg-gray-200 rounded-full shadow-md transform transition-transform duration-300 ease-in-out color-transition ${darkMode ? "translate-x-10" : "translate-x-0"
-                    }`}
-            ></div>
 
-            <SunIcon className="w-6 h-6 text-yellow-400 absolute left-2 top-1/2 -translate-y-1/2 dark:text-gray-100 color-transition" />
-            <MoonIcon className="w-6 h-6 text-gray-900 dark:text-black-100 absolute right-2 top-1/2 -translate-y-1/2 color-transition" />
+            <div
+                className={`
+                    absolute top-1 left-1 w-8 h-8
+                    bg-white dark:bg-gray-200
+                    rounded-full shadow-md
+                    transform
+                    smooth-transform color-transition
+
+                    ${darkMode ? "translate-x-10" : "translate-x-0"}
+                `}
+            />
+
+            <SunIcon
+                className={`
+                    w-6 h-6 absolute left-2 top-1/2 -translate-y-1/2
+                    color-transition
+                    ${darkMode ? "opacity-0.3 scale-75" : "opacity-100 scale-100 text-yellow-400"}
+                    transition-all duration-300 ease-in-out
+                `}
+            />
+
+            <MoonIcon
+                className={`
+                    w-6 h-6 absolute right-2 top-1/2 -translate-y-1/2
+                    color-transition
+                    ${darkMode ? "opacity-100 scale-100 text-gray-900" : "opacity-0.3 scale-75"}
+                    transition-all duration-300 ease-in-out
+                `}
+            />
+
         </button>
     );
 };

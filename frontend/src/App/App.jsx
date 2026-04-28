@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
 import DashboardPage from "../pages/DashboardPage";
 import AuthPage from "../pages/AuthPage";
 import DocumentsPage from "../pages/DocumentsPage";
@@ -28,7 +27,6 @@ function App() {
             }
           />
 
-          {/* 🔥 TU JEST KLUCZ */}
           <Route element={<Layout />}>
 
             <Route
