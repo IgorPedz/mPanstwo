@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 
 import {
     UserIcon,
@@ -46,45 +45,32 @@ const ProfilePage = () => {
     ];
 
     return (
-        <div className="p-6 space-y-6 min-h-screen">
+        <div className="p-6 space-y-6 min-h-screen">    
 
-            <Tabs activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs} />
+            {activeTab === "profile" && (
+                <>
+                    <ProfileHero user={user} setUser={setUser} />
 
-            <AnimatePresence mode="wait">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                        {stats.map((s, i) => (
+                            <ProfileCard key={i} {...s} />
+                        ))}
+                    </div>
+                </>
+            )}
 
-                <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0, x: 24, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, x: -24, filter: "blur(4px)" }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="space-y-6"
-                >
+            {activeTab === "achievements" && (
+                <div className="text-gray-900 dark:text-white font-semibold">
+                    🏆 Osiągnięcia
+                </div>
+            )}
 
-                    {activeTab === "profile" && (
-                        <>
-                            <ProfileHero user={user} setUser={setUser} />
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-                                {stats.map((s, i) => (
-                                    <ProfileCard key={i} {...s} />
-                                ))}
-                            </div>
-                        </>
-                    )}
-
-                    {activeTab === "achievements" && (
-                        <div className="text-gray-900 dark:text-white font-semibold">
-                            🏆 Osiągnięcia
-                        </div>
-                    )}
-
-                    {activeTab === "polls" && (
-                        <div className="space-y-3">
-                            {polls.map((p) => (
-                                <div
-                                    key={p.id}
-                                    className="
+            {activeTab === "polls" && (
+                <div className="space-y-3">
+                    {polls.map((p) => (
+                        <div
+                            key={p.id}
+                            className="
                                         p-4 rounded-xl
                                         border border-gray-200 dark:border-gray-800
                                         text-gray-900 dark:text-white
@@ -92,40 +78,36 @@ const ProfilePage = () => {
                                         hover:border-gray-300 dark:hover:border-gray-700
                                         transition
                                     "
-                                >
-                                    {p.title} ({p.votes})
-                                </div>
-                            ))}
+                        >
+                            {p.title} ({p.votes})
                         </div>
-                    )}
+                    ))}
+                </div>
+            )}
 
-                    {activeTab === "notifications" && (
-                        <div className="space-y-3">
-                            {notifications.map((n) => (
-                                <div
-                                    key={n.id}
-                                    className="
+            {activeTab === "notifications" && (
+                <div className="space-y-3">
+                    {notifications.map((n) => (
+                        <div
+                            key={n.id}
+                            className="
                                         p-4 rounded-xl
                                         border border-gray-200 dark:border-gray-800
                                         cursor-pointer
                                         hover:border-gray-300 dark:hover:border-gray-700
                                         transition
                                     "
-                                >
-                                    <div className="font-medium text-gray-900 dark:text-white">
-                                        {n.title}
-                                    </div>
-                                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                                        {n.desc}
-                                    </div>
-                                </div>
-                            ))}
+                        >
+                            <div className="font-medium text-gray-900 dark:text-white">
+                                {n.title}
+                            </div>
+                            <div className="text-sm text-gray-500 dark:text-gray-400">
+                                {n.desc}
+                            </div>
                         </div>
-                    )}
-
-                </motion.div>
-
-            </AnimatePresence>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

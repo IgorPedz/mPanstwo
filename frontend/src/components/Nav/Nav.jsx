@@ -96,7 +96,7 @@ export default function Sidebar() {
 
                           ${
                             active
-                              ? "text-blue-600 dark:text-blue-300"
+                              ? "text-blue-600 dark:text-blue-300 bg-blue-50 dark:bg-gray-800/50"
                               : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                           }
                         `}

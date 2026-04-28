@@ -42,6 +42,8 @@ import {
   ComputerDesktopIcon,
   GlobeEuropeAfricaIcon,
   PencilSquareIcon,
+  PhoneIcon,
+  MapPinIcon,
 } from "@heroicons/react/24/outline";
 
 const ICON_MAP = {
@@ -64,7 +66,8 @@ const ICON_MAP = {
   about: QuestionMarkCircleIcon,
   project: PrinterIcon,
   contact: EnvelopeIcon,
-
+  phone: PhoneIcon,
+  map: MapPinIcon,
   // institutions
   countries: BuildingOffice2Icon,
   ministry: BuildingOfficeIcon,

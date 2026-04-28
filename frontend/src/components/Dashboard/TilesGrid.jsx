@@ -1,9 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { DndContext, closestCorners, PointerSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
-
 import { restrictToParentElement } from "@dnd-kit/modifiers";
 import { SortableContext, rectSortingStrategy, arrayMove } from "@dnd-kit/sortable";
-
 import Tile from "./Tile";
 import AddTile from "./AddTile";
 import { motion, AnimatePresence } from "framer-motion";
