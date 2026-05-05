@@ -3,16 +3,15 @@ import AuthInput from "./AuthInput";
 export default function RegisterForm({
   formData,
   setFormData,
+  errors,
+  handleSubmit,
   onSubmit,
-  switchToLogin
+  switchToLogin,
 }) {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(formData);
-  };
+  const handleFormSubmit = handleSubmit(onSubmit, false);
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 color-transition">
+    <form onSubmit={handleFormSubmit} className="space-y-4">
 
       <AuthInput
         label="Nazwa użytkownika"
@@ -21,6 +20,7 @@ export default function RegisterForm({
         placeholder="Wpisz nazwę użytkownika"
         formData={formData}
         setFormData={setFormData}
+        error={errors.name}
       />
 
       <AuthInput
@@ -30,6 +30,7 @@ export default function RegisterForm({
         placeholder="Wpisz email"
         formData={formData}
         setFormData={setFormData}
+        error={errors.email}
       />
 
       <AuthInput
@@ -39,9 +40,10 @@ export default function RegisterForm({
         placeholder="Wpisz hasło"
         formData={formData}
         setFormData={setFormData}
+        error={errors.password}
       />
 
-      <div className="flex flex-col gap-4 mt-4 color-transition">
+      <div className="flex flex-col gap-4 mt-4">
 
         <button
           type="submit"
@@ -49,14 +51,13 @@ export default function RegisterForm({
             cursor-pointer w-full
             bg-indigo-600 hover:bg-indigo-700
             text-white py-4 rounded-xl
-            transition-colors duration-200
-            color-transition
+            transition-colors duration-200 ease-in-out
           "
         >
           Zarejestruj się
         </button>
 
-        <span className="text-gray-700 dark:text-gray-200 font-medium text-center color-transition">
+        <span className="text-gray-700 dark:text-gray-200 font-medium text-center">
           lub
         </span>
 
@@ -69,8 +70,7 @@ export default function RegisterForm({
             text-indigo-600
             py-4 rounded-xl
             hover:bg-indigo-50 dark:hover:bg-gray-800
-            transition-colors duration-200
-            color-transition
+            transition-colors duration-200 ease-in-out
           "
         >
           Masz już konto?

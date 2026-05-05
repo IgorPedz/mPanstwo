@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/outline";
 import { useUser } from "../../Contexts/UserContext";
-import ModalMessage from "../../Utils/ModalMessage";
+import ModalMessage from "../Global/ModalMessage";
 
 export default function LogOut() {
   const { logout } = useUser()

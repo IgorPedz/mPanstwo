@@ -103,6 +103,7 @@ const ICON_MAP = {
   cpu: CpuChipIcon,
   paintbrush: PaintBrushIcon,
   sparkles: SparklesIcon,
+  rocket: RocketLaunchIcon,
 };
 
 export default ICON_MAP;

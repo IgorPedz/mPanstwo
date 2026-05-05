@@ -4,9 +4,10 @@ import { restrictToParentElement } from "@dnd-kit/modifiers";
 import { SortableContext, rectSortingStrategy, arrayMove } from "@dnd-kit/sortable";
 import Tile from "./Tile";
 import AddTile from "./AddTile";
+import EmptyDashboard from "./EmptyDashboard";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, totalPages, setShowAddMenu, isLocked }) {
+export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, totalPages, setShowAddMenu, isLocked, savedTiles }) {
     const handleDragEnd = ({ active, over }) => {
         if (isLocked) return;
         if (!over || active.id === over.id) return;
@@ -46,6 +47,11 @@ export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, 
             document.removeEventListener("touchmove", prevent);
         };
     }, []);
+
+    // Jeśli zapisany układ jest pusty (użytkownik usunął wszystkie kafelki i zapisał) - wyświetl welcome screen
+    if (savedTiles && Array.isArray(savedTiles) && savedTiles.length === 0 && tiles.length === 0) {
+        return <EmptyDashboard setShowAddMenu={setShowAddMenu} />;
+    }
 
     return (
         <DndContext

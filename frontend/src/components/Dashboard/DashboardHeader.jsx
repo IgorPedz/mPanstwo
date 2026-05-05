@@ -9,6 +9,7 @@ export default function WelcomeDashboard({
   saveLayout,
   setShowAddMenu,
   showAddMenu,
+  hasTiles,
 }) {
   const { user } = useUser();
 
@@ -45,26 +46,28 @@ export default function WelcomeDashboard({
         Witaj, {user?.name}!
       </p>
 
-      <button
-        type="button"
-        onClick={toggleLock}
-        aria-label={isLocked ? "Odblokuj edycję" : "Zablokuj edycję"}
-        className="
-          inline-flex items-center justify-center
-          rounded-full border border-gray-200 dark:border-gray-800
-          p-3
-          text-gray-700 dark:text-gray-200
-          hover:border-gray-300 dark:hover:border-gray-700
-          transition
-          cursor-pointer
-        "
-      >
-        {isLocked ? (
-          <LockOpened className="h-5 w-5" />
-        ) : (
-          <LockClosed className="h-5 w-5" />
-        )}
-      </button>
+      {hasTiles && (
+        <button
+          type="button"
+          onClick={toggleLock}
+          aria-label={isLocked ? "Odblokuj edycję" : "Zablokuj edycję"}
+          className="
+            inline-flex items-center justify-center
+            rounded-full border border-gray-200 dark:border-gray-800
+            p-3
+            text-gray-700 dark:text-gray-200
+            hover:border-gray-300 dark:hover:border-gray-700
+            transition
+            cursor-pointer
+          "
+        >
+          {isLocked ? (
+            <LockOpened className="h-5 w-5" />
+          ) : (
+            <LockClosed className="h-5 w-5" />
+          )}
+        </button>
+      )}
 
     </div>
   );

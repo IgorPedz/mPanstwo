@@ -1,8 +1,9 @@
 import { COLOR_MAP, GRADIENT_MAP } from "../../Utils/Colors";
-
-const ProfileCard = ({ title, value, icon: Icon, color = "indigo" }) => {
+import ICON_MAP from "../../Utils/Icons";
+const ProfileCard = ({ title, value, icon, color = "indigo" }) => {
   const textColor = COLOR_MAP[color] || COLOR_MAP.indigo;
   const gradient = GRADIENT_MAP[color] || GRADIENT_MAP.indigo;
+  const ImportedIcon = ICON_MAP[icon] || ICON_MAP.stats;
 
   return (
     <div className="
@@ -31,7 +32,7 @@ const ProfileCard = ({ title, value, icon: Icon, color = "indigo" }) => {
           rounded-xl
           color-transition
         ">
-          <Icon className={`h-6 w-6 ${textColor} color-transition`} />
+          <ImportedIcon className={`h-6 w-6 ${textColor} color-transition`} />
         </div>
 
         <div>

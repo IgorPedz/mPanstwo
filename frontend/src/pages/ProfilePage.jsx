@@ -1,115 +1,67 @@
-import { useState } from "react";
-
-import {
-    UserIcon,
-    TrophyIcon,
-    ChartBarIcon,
-    BellIcon,
-} from "@heroicons/react/24/outline";
+import { useUser } from "../Contexts/UserContext";
+import useProfile from "../Hooks/useProfile";
 
 import ProfileHero from "../components/Social/ProfileHero";
-import Tabs from "../components/Social/SocialTab";
 import ProfileCard from "../components/Social/ProfileCard";
+import ChangeEmailCard from "../components/Social/ChangeEmailCard";
+import ChangePasswordCard from "../components/Social/ChangePasswordCard";
+import DeleteAccountCard from "../components/Social/DeleteAccountCard";
+import ChangeNameCard from "../components/Social/ChangeNameCard";
 
 const ProfilePage = () => {
-    const [user, setUser] = useState({
-        name: "Jan Kowalski",
-        role: "Ekspert",
-        email: "jan.kowalski@example.com",
-    });
+  const { user: authUser } = useUser();
+  const { profile, loading, error, updateProfile, changeEmail, changePassword, deleteAccount } = useProfile(authUser?.id);
 
-    const [activeTab, setActiveTab] = useState("profile");
+  const stats = [
+    { title: "Dni aktywności", value: 24, icon: "calendar", color: "gray" },
+    { title: "Ostatnia aktywność", value: "2h temu", icon: "clock", color: "zinc" },
+    { title: "Śledzone ustawy", value: 7, icon: "documents", color: "indigo" },
+    { title: "Rola", value: "Ekspert", icon: "achievements", color: "purple" },
+    { title: "Oddane głosy", value: 128, icon: "vote", color: "blue" },
+    { title: "Napisane Opinie", value: 34, icon: "comments", color: "emerald" },
+    { title: "Ukończone kursy", value: 6, icon: "courses", color: "purple" },
+    { title: "Punkty reputacji", value: 860, icon: "star", color: "yellow" },
+  ];
 
-    const tabs = [
-        { id: "profile", name: "Profil", icon: UserIcon },
-        { id: "achievements", name: "Osiągnięcia", icon: TrophyIcon },
-        { id: "polls", name: "Ankiety", icon: ChartBarIcon },
-        { id: "notifications", name: "Powiadomienia", icon: BellIcon },
-    ];
-
-    const stats = [
-        { title: "Ustawy", value: 12, icon: ChartBarIcon, color: "indigo" },
-        { title: "Komentarze", value: 34, icon: UserIcon, color: "emerald" },
-        { title: "Powiadomienia", value: 5, icon: BellIcon, color: "amber" },
-        { title: "Rola", value: user.role, icon: TrophyIcon, color: "purple" },
-    ];
-
-    const polls = [
-        { id: 1, title: "Reforma podatkowa?", votes: 124 },
-        { id: 2, title: "Ocena ustawy edukacyjnej", votes: 87 },
-    ];
-
-    const notifications = [
-        { id: 1, title: "Ustawa przyjęta", desc: "Głosowanie zakończone" },
-        { id: 2, title: "Posiedzenie Sejmu", desc: "Jutro 10:00" },
-    ];
-
+  if (loading) {
     return (
-        <div className="p-6 space-y-6 min-h-screen">    
-
-            {activeTab === "profile" && (
-                <>
-                    <ProfileHero user={user} setUser={setUser} />
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-                        {stats.map((s, i) => (
-                            <ProfileCard key={i} {...s} />
-                        ))}
-                    </div>
-                </>
-            )}
-
-            {activeTab === "achievements" && (
-                <div className="text-gray-900 dark:text-white font-semibold">
-                    🏆 Osiągnięcia
-                </div>
-            )}
-
-            {activeTab === "polls" && (
-                <div className="space-y-3">
-                    {polls.map((p) => (
-                        <div
-                            key={p.id}
-                            className="
-                                        p-4 rounded-xl
-                                        border border-gray-200 dark:border-gray-800
-                                        text-gray-900 dark:text-white
-                                        cursor-pointer
-                                        hover:border-gray-300 dark:hover:border-gray-700
-                                        transition
-                                    "
-                        >
-                            {p.title} ({p.votes})
-                        </div>
-                    ))}
-                </div>
-            )}
-
-            {activeTab === "notifications" && (
-                <div className="space-y-3">
-                    {notifications.map((n) => (
-                        <div
-                            key={n.id}
-                            className="
-                                        p-4 rounded-xl
-                                        border border-gray-200 dark:border-gray-800
-                                        cursor-pointer
-                                        hover:border-gray-300 dark:hover:border-gray-700
-                                        transition
-                                    "
-                        >
-                            <div className="font-medium text-gray-900 dark:text-white">
-                                {n.title}
-                            </div>
-                            <div className="text-sm text-gray-500 dark:text-gray-400">
-                                {n.desc}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            )}
-        </div>
+      <div className="p-6 space-y-6 min-h-screen flex items-center justify-center">
+        <div className="text-gray-500 dark:text-gray-400">Ładowanie profilu...</div>
+      </div>
     );
+  }
+
+  if (error) {
+    return (
+      <div className="p-6 space-y-6 min-h-screen flex items-center justify-center">
+        <div className="text-red-500">Błąd: {error}</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-6 space-y-6 min-h-screen">
+      <ProfileHero user={profile} updateProfile={updateProfile} />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+        {stats.map((s, i) => (
+          <ProfileCard key={i} {...s} />
+        ))}
+      </div>
+
+      <div className="mt-12 space-y-4">
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Ustawienia konta</h2>
+          <p className="text-gray-500 dark:text-gray-400">Zarządzaj swoimi danymi i bezpieczeństwem</p>
+        </div>
+
+        <ChangeEmailCard  changeEmail={changeEmail} />
+        <ChangePasswordCard changePassword={changePassword} />
+        <DeleteAccountCard deleteAccount={deleteAccount} />
+        <ChangeNameCard updateProfile={updateProfile} />
+      </div>
+    </div>
+  );
 };
 
 export default ProfilePage;

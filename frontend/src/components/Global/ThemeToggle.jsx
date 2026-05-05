@@ -2,19 +2,23 @@ import { useState, useEffect } from "react";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 
 const ThemeToggle = () => {
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkMode] = useState(() => {
+        const savedMode = localStorage.getItem("darkMode");
+        if (savedMode !== null) {
+            return savedMode === "true";
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    });
 
     useEffect(() => {
-        const savedMode = localStorage.getItem("darkMode") === "true";
-        setDarkMode(savedMode);
-        document.documentElement.classList.toggle("dark", savedMode);
-    }, []);
+        document.documentElement.classList.toggle("dark", darkMode);
+        document.documentElement.classList.remove("no-transition");
+    }, [darkMode]);
 
     const toggleDarkMode = () => {
         setDarkMode((prev) => {
             const newMode = !prev;
             localStorage.setItem("darkMode", newMode);
-            document.documentElement.classList.toggle("dark", newMode);
             return newMode;
         });
     };

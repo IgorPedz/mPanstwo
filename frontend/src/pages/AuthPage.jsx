@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as m, AnimatePresence } from "framer-motion";
 
 import LoginForm from "../components/Auth/LoginForm";
 import RegisterForm from "../components/Auth/RegisterForm";
 import useAuthForm from "../Hooks/useAuthForm";
 import useAuthSubmit from "../Hooks/useAuthSubmit";
-import InfoMessage from "../Utils/InfoMessage";
+import InfoMessage from "../components/Global/InfoMessage";
 import Footer from "../components/Info/Footer";
 import ImageSlider from "../components/Global/ImagesSlider";
 
@@ -17,7 +17,7 @@ import kprmIMG from "../../public/images/KPRP.jpg";
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
-  const { formData, setFormData } = useAuthForm();
+  const { formData, setFormData, errors, handleSubmit } = useAuthForm();
   const { onSubmit, infoMessage, setInfoMessage, messageType, setMessageType, isLeaving } = useAuthSubmit(isLogin);
 
   const navigate = useNavigate();
@@ -27,29 +27,29 @@ export default function AuthPage() {
     if (location.state?.registered) {
       setInfoMessage("Konto zostało zarejestrowane. Zaloguj się.");
       setMessageType(location.state?.messageType || "success");
-      setIsLogin(true);
+      Promise.resolve().then(() => setIsLogin(true));
 
       navigate(location.pathname, { replace: true, state: {} });
     }
-  }, [location, navigate, setInfoMessage]);
+  }, [location, navigate, setInfoMessage, setMessageType]);
 
   return (
-    <motion.div
-      className="relative min-h-screen w-full grid lg:grid-cols-2 bg-gray-50 dark:bg-gray-900"
+    <m.div
+      className="relative min-h-screen w-full grid lg:grid-cols-2 bg-gray-50 dark:bg-gray-900 color-transition"
       initial={{ opacity: 0 }}
       animate={{ opacity: isLeaving ? 0 : 1 }}
       transition={{ duration: 0.4 }}
     >
-      <div className="flex flex-col items-center justify-center px-8">
+      <div className="flex flex-col items-center justify-center px-8 color-transition">
         <div className="w-full max-w-md">
           <h1
-            className="text-5xl font-bold text-gray-900 dark:text-white mb-2"
+            className="text-5xl font-bold text-gray-900 dark:text-white mb-2 color-transition"
             style={{ fontFamily: "'Patrick Hand', cursive" }}
           >
             {isLogin ? "Logowanie" : "Stwórz konto"}
           </h1>
 
-          <p className="text-gray-500 mb-8">
+          <p className="text-gray-500 mb-8 color-transition">
             {isLogin
               ? "Witamy ponownie! Zaloguj się, by kontynuować"
               : "Stwórz konto, by móc korzystać z aplikacji!"}
@@ -76,7 +76,7 @@ export default function AuthPage() {
           <div className="mt-6 relative min-h-[360px]">
             <AnimatePresence mode="wait">
               {isLogin ? (
-                <motion.div
+                <m.div
                   key="login"
                   initial={{ opacity: 0, x: -40, scale: 0.95 }}
                   animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -86,12 +86,14 @@ export default function AuthPage() {
                   <LoginForm
                     formData={formData}
                     setFormData={setFormData}
+                    errors={errors}
+                    handleSubmit={handleSubmit}
                     onSubmit={onSubmit}
                     switchToRegister={() => setIsLogin(false)}
                   />
-                </motion.div>
+                </m.div>
               ) : (
-                <motion.div
+                <m.div
                   key="register"
                   initial={{ opacity: 0, x: 40, scale: 0.95 }}
                   animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -101,10 +103,12 @@ export default function AuthPage() {
                   <RegisterForm
                     formData={formData}
                     setFormData={setFormData}
+                    errors={errors}
+                    handleSubmit={handleSubmit}
                     onSubmit={onSubmit}
                     switchToLogin={() => setIsLogin(true)}
                   />
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           </div>
@@ -121,7 +125,7 @@ export default function AuthPage() {
         />
       </div>
 
-    </motion.div>
+    </m.div>
 
   );
 }

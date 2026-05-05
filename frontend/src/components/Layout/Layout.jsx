@@ -9,7 +9,7 @@ export default function Layout() {
 
   return (
     <div className="flex h-screen overflow-hidden">
-      {user?.id && <Nav className="h-full" />}
+      {user?.id && <Nav />}
 
       <main className="flex-1 h-full overflow-hidden relative">
         <PageWrapper key={location.pathname}>

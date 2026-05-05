@@ -7,7 +7,7 @@ import useNoScroll from "../../Hooks/UseNoScroll";
 import TilesGrid from "./TilesGrid";
 import Pagination from "./Pagination";
 import DropDown from "./DropDown";
-import InfoMessage from "../../Utils/InfoMessage";
+import InfoMessage from "../Global/InfoMessage";
 
 import useDashboard from "../../Hooks/useDashboard";
 import DashboardHeader from "./DashboardHeader";
@@ -33,6 +33,7 @@ export default function Dashboard() {
         saveLayout,
         hasUnsavedChanges,
         infoType,
+        savedTiles,
     } = useDashboard(user, tiles, setTiles, setInfoMessage);
 
     const totalPages = useMemo(() => {
@@ -70,6 +71,7 @@ export default function Dashboard() {
                 setIsLocked={setIsLocked}
                 setShowAddMenu={setShowAddMenu}
                 showAddMenu={showAddMenu}
+                hasTiles={tiles.length > 0}
             />
 
             {infoMessage && (
@@ -88,6 +90,7 @@ export default function Dashboard() {
                 totalPages={totalPages}
                 setShowAddMenu={setShowAddMenu}
                 isLocked={isLocked}
+                savedTiles={savedTiles}
             />
 
             <Pagination

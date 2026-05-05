@@ -32,12 +32,27 @@ html {
   transition: background-color 300ms ease, color 300ms ease;
 }
 
+html.no-transition,
+html.no-transition *,
+html.no-transition *::before,
+html.no-transition *::after {
+  transition: none !important;
+}
+
 /* =======================
    BASE
 ======================= */
 @layer base {
   html {
     scrollbar-gutter: stable;
+  }
+
+  .auth-input {
+    @apply bg-gray-100 text-gray-800 border-gray-300;
+  }
+
+  html.dark .auth-input {
+    @apply bg-gray-800 text-white border-gray-700;
   }
 }
 
