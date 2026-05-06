@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import DashboardPage from "../pages/DashboardPage";
-import AuthPage from "../pages/AuthPage";
-import DocumentsPage from "../pages/DocumentsPage";
-import ContactPage from "../pages/ContactPage";
-import HelpPage from "../pages/HelpPage";
-import ProfilePage from "../pages/ProfilePage";
+import DashboardPage from "../pages/MainPages/DashboardPage";
+import AuthPage from "../pages/AuthPages/AuthPage";
+import DocumentsPage from "../pages/InfoPages/DocumentsPage";
+import ContactPage from "../pages/InfoPages/ContactPage";
+import FAQPage from "../pages/InfoPages/FAQPage";
+import ProfilePage from "../pages/ProfilPages/ProfilePage";
 
 import { UserProvider } from "../Contexts/UserContext";
-import ProtectedRoute from "../Utils/ProtectedRoutes";
-import PublicRoute from "../Utils/PublicRoutes";
+import ProtectedRoute from "../Utils/Routes/ProtectedRoutes";
+import PublicRoute from "../Utils/Routes/PublicRoutes";
 
 import Layout from "../components/Layout/Layout";
 
@@ -49,7 +49,7 @@ function App() {
 
             <Route path="/documents" element={<DocumentsPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/help" element={<HelpPage />} />
+            <Route path="/faq" element={<FAQPage />} />
 
           </Route>
 

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
-import ThemeToggle from "../Global/ThemeToggle";
-import ChangeFonts from "../../Utils/ChangeFonts";
+import ThemeToggle from "./ThemeToggle";
+import ChangeFonts from "./ChangeFonts";
 
 export default function Settings({ size = "md" }) {
   const [openSettings, setOpenSettings] = useState(false);

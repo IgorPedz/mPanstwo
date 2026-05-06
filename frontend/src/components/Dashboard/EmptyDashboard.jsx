@@ -1,58 +1,22 @@
 import { motion } from "framer-motion";
-import ICON_MAP from "../../Utils/Icons";
+import ICON_MAP from "../../Utils/Maps/Icons";
+import { containerVariants, itemVariants, floatingVariants, pulseVariants } from "../../Utils/Animations";
 
 export default function EmptyDashboard({ setShowAddMenu }) {
   const SparklesIcon = ICON_MAP["sparkles"];
   const RocketIcon = ICON_MAP["rocket"];
   const HeartIcon = ICON_MAP["heart"];
 
-  const DummyIcon = ({ className }) => <div className={className} />;
-
-  const safeSparklesIcon = SparklesIcon || DummyIcon;
-  const safeRocketIcon = RocketIcon || DummyIcon;
-  const safeHeartIcon = HeartIcon || DummyIcon;
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
-
-  const floatingVariants = {
-    animate: {
-      y: [0, -20, 0],
-      transition: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-    },
-  };
-
-  const pulseVariants = {
-    animate: {
-      scale: [1, 1.1, 1],
-      opacity: [0.5, 0.8, 0.5],
-      transition: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-    },
-  };
+  const SafeSparklesIcon = SparklesIcon 
+  const SafeRocketIcon = RocketIcon 
+  const SafeHeartIcon = HeartIcon 
 
   return (
     <motion.div
       className="flex flex-col items-center justify-center min-h-[600px] relative overflow-hidden"
       variants={containerVariants}
       initial="hidden"
-      animate="visible"
+      animate="show"
     >
       <motion.div
         className="absolute inset-0 pointer-events-none"
@@ -73,7 +37,7 @@ export default function EmptyDashboard({ setShowAddMenu }) {
           />
           <div className="relative bg-gradient-to-br from-cyan-500 to-violet-600 p-8 rounded-full shadow-2xl">
             <motion.div animate="animate" variants={floatingVariants}>
-              <safeSparklesIcon className="h-16 w-16 text-white" />
+              <SafeSparklesIcon className="h-16 w-16 text-white" />
             </motion.div>
           </div>
         </motion.div>
@@ -97,9 +61,9 @@ export default function EmptyDashboard({ setShowAddMenu }) {
           variants={containerVariants}
         >
           {[
-            { icon: safeRocketIcon, text: "Szybki dostęp" },
-            { icon: safeSparklesIcon, text: "Personalizacja" },
-            { icon: safeHeartIcon, text: "Ulubione" },
+            { icon: SafeRocketIcon, text: "Szybki dostęp" },
+            { icon: SafeSparklesIcon, text: "Personalizacja" },
+            { icon: SafeHeartIcon, text: "Ulubione" },
           ].map((feature, idx) => (
             <motion.div
               key={idx}

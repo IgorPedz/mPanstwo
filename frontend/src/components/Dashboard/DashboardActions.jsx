@@ -1,4 +1,4 @@
-import ICON_MAP from "../../Utils/Icons";
+import ICON_MAP from "../../Utils/Maps/Icons";
 
 export default function DashboardActions({ saveLayout, loadSavedLayout }) {
     const SaveIcon = ICON_MAP["check"] || CheckIcon;

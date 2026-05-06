@@ -48,7 +48,6 @@ export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, 
         };
     }, []);
 
-    // Jeśli zapisany układ jest pusty (użytkownik usunął wszystkie kafelki i zapisał) - wyświetl welcome screen
     if (savedTiles && Array.isArray(savedTiles) && savedTiles.length === 0 && tiles.length === 0) {
         return <EmptyDashboard setShowAddMenu={setShowAddMenu} />;
     }

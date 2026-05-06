@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useUser } from "../../Contexts/UserContext";
-import ICON_MAP from "../../Utils/Icons";
+import ICON_MAP from "../../Utils/Maps/Icons";
 
 export default function WelcomeDashboard({
   isLocked,
@@ -9,7 +9,6 @@ export default function WelcomeDashboard({
   saveLayout,
   setShowAddMenu,
   showAddMenu,
-  hasTiles,
 }) {
   const { user } = useUser();
 
@@ -46,7 +45,6 @@ export default function WelcomeDashboard({
         Witaj, {user?.name}!
       </p>
 
-      {hasTiles && (
         <button
           type="button"
           onClick={toggleLock}
@@ -67,8 +65,6 @@ export default function WelcomeDashboard({
             <LockClosed className="h-5 w-5" />
           )}
         </button>
-      )}
-
     </div>
   );
 }

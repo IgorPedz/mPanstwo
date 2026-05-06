@@ -18,7 +18,7 @@ const LoginFooter = () => {
         </a>
 
         <a
-          href="/help"
+          href="/faq"
           className="flex items-center gap-2 px-4 py-3 
             text-gray-700 dark:text-gray-200
             bg-transparent 

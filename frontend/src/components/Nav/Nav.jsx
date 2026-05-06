@@ -5,8 +5,8 @@ import Settings from "../Global/Settings";
 import LogOut from "../Global/LogOut";
 import Logo from "../Global/Logo";
 
-import SidebarSections from "./SidebarSections";
-import navSections from "./NavSections";
+import NavSections from "./NavSections";
+import { NavData } from "./NavData";
 
 export default function Sidebar() {
   const [openSections, setOpenSections] = useState(() => {
@@ -37,8 +37,8 @@ export default function Sidebar() {
       <Logo />
 
       <nav className="flex-1 min-h-0 overflow-y-auto px-3 mt-4 space-y-3">
-        <SidebarSections
-          navSections={navSections}
+        <NavSections
+          NavData={NavData}
           openSections={openSections}
           toggleSection={toggleSection}
           location={location}

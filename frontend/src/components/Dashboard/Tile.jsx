@@ -1,9 +1,9 @@
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
-import ICON_MAP from "../../Utils/Icons";
-import { ACCENT_MAP } from "../../Utils/Accents";
-import { COLOR_MAP } from "../../Utils/Colors";
+import ICON_MAP from "../../Utils/Maps/Icons";
+import { ACCENT_MAP } from "../../Utils/Maps/Accents";
+import { COLOR_MAP } from "../../Utils/Maps/Colors";
 
 const Tile = ({
     id,
