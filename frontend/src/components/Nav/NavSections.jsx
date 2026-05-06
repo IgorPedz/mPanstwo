@@ -56,9 +56,7 @@ export default function NavSections({
                       `}
                     >
                       <Icon className="h-5 w-5" />
-                      <span className="text-sm font-medium">
-                        {item.name}
-                      </span>
+                      <span className="text-sm font-medium">{item.name}</span>
                     </button>
                   );
                 })}

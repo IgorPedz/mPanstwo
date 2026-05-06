@@ -1,23 +1,12 @@
 import { motion } from "framer-motion";
 import { COLOR_MAP, GRADIENT_MAP } from "../../Utils/Maps/Colors";
 import ICON_MAP from "../../Utils/Maps/Icons";
+import { glowVariants } from "../../Utils/Animations";
 
 const ProfileCard = ({ title, value, icon, color = "indigo" }) => {
   const textColor = COLOR_MAP[color] || COLOR_MAP.indigo;
   const gradient = GRADIENT_MAP[color] || GRADIENT_MAP.indigo;
   const ImportedIcon = ICON_MAP[icon] || ICON_MAP.stats;
-
-  const glowVariants = {
-    animate: {
-      scale: [1, 1.08, 1],
-      opacity: [0.25, 0.4, 0.25],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
 
   return (
     <motion.div
@@ -33,7 +22,6 @@ const ProfileCard = ({ title, value, icon, color = "indigo" }) => {
   "
       whileHover={{ scale: 1.02, y: -2 }}
     >
-      {/* glow */}
       <motion.div
         className={`
           absolute -top-12 -right-12 h-36 w-36
@@ -45,7 +33,6 @@ const ProfileCard = ({ title, value, icon, color = "indigo" }) => {
         animate="animate"
       />
 
-      {/* subtle hover layer */}
       <div
         className="
     absolute inset-0
@@ -57,7 +44,6 @@ const ProfileCard = ({ title, value, icon, color = "indigo" }) => {
       />
 
       <div className="relative flex items-center gap-4 color-transition">
-        {/* ICON */}
         <motion.div
           className="
             flex h-11 w-11 items-center justify-center
@@ -71,7 +57,6 @@ const ProfileCard = ({ title, value, icon, color = "indigo" }) => {
           <ImportedIcon className={`h-6 w-6 ${textColor} color-transition`} />
         </motion.div>
 
-        {/* TEXT */}
         <div className="color-transition">
           <p className="text-xs text-gray-500 dark:text-gray-400 color-transition">
             {title}

@@ -3,8 +3,8 @@ export const pageVariants = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.12,
+      staggerChildren: 0.10,
+      delayChildren: 0.05,
     },
   },
 };
@@ -32,7 +32,7 @@ export const itemVariants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.3, ease: "easeOut" },
+    transition: { duration: 0.2, ease: "easeOut" },
   },
 };
 
@@ -48,5 +48,17 @@ export const pulseVariants = {
     scale: [1, 1.1, 1],
     opacity: [0.5, 0.8, 0.5],
     transition: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+  },
+};
+
+export const glowVariants = {
+  animate: {
+    scale: [1, 1.08, 1],
+    opacity: [0.25, 0.4, 0.25],
+    transition: {
+      duration: 6,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
   },
 };

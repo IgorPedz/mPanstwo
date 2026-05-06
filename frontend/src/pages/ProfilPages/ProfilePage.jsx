@@ -15,13 +15,8 @@ import { pageVariants, itemVariants } from "../../Utils/Animations";
 const ProfilePage = () => {
   const { user: authUser } = useUser();
 
-  const {
-    profile,
-    updateProfile,
-    changeEmail,
-    changePassword,
-    deleteAccount,
-  } = useProfile(authUser?.id);
+  const { profile, updateProfile, changeEmail, changePassword, deleteAccount } =
+    useProfile(authUser?.id);
 
   return (
     <motion.div
@@ -30,19 +25,16 @@ const ProfilePage = () => {
       initial="hidden"
       animate="show"
     >
-      {/* 🌈 Background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-200 dark:bg-cyan-900/30 rounded-full blur-3xl opacity-20 dark:opacity-10" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-violet-200 dark:bg-violet-900/30 rounded-full blur-3xl opacity-20 dark:opacity-10" />
       </div>
 
       <div className="relative z-10 space-y-12">
-        {/* 🧠 HERO */}
         <motion.div variants={itemVariants}>
           <ProfileHero user={profile} updateProfile={updateProfile} />
         </motion.div>
 
-        {/* 📊 STATS */}
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
           variants={pageVariants}
@@ -54,7 +46,6 @@ const ProfilePage = () => {
           ))}
         </motion.div>
 
-        {/* ⚙️ SETTINGS */}
         <motion.div variants={pageVariants} className="space-y-6">
           <motion.div variants={itemVariants}>
             <h2

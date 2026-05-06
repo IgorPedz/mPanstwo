@@ -34,7 +34,6 @@ export default function ModalMessage({
             onClick={onCancel}
           />
 
-          {/* MODAL */}
           <motion.div
             className="relative w-full max-w-md rounded-3xl
                        bg-white dark:bg-gray-900
@@ -46,7 +45,7 @@ export default function ModalMessage({
             exit={{ scale: 0.9, y: 20, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            {/* HEADER */}
+
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-red-100 dark:bg-red-900/30">
@@ -66,12 +65,10 @@ export default function ModalMessage({
               </button>
             </div>
 
-            {/* MESSAGE */}
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               {message}
             </p>
 
-            {/* ACTIONS */}
             <div className="flex gap-3 pt-4">
               <button
                 onClick={onCancel}

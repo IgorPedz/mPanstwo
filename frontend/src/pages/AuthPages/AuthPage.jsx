@@ -18,7 +18,14 @@ import kprmIMG from "../../../public/images/KPRP.jpg";
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
   const { formData, setFormData, errors, handleSubmit } = useAuthForm();
-  const { onSubmit, infoMessage, setInfoMessage, messageType, setMessageType, isLeaving } = useAuthSubmit(isLogin);
+  const {
+    onSubmit,
+    infoMessage,
+    setInfoMessage,
+    messageType,
+    setMessageType,
+    isLeaving,
+  } = useAuthSubmit(isLogin);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -124,8 +131,6 @@ export default function AuthPage() {
           showArrows={true}
         />
       </div>
-
     </m.div>
-
   );
 }

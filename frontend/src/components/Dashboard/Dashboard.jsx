@@ -6,7 +6,7 @@ import useNoScroll from "../../Hooks/UseNoScroll";
 
 import TilesGrid from "./TilesGrid";
 import Pagination from "./Pagination";
-import DropDown from "./DropDown";
+import DropDown from "./Dropdown/DropDown";
 import InfoMessage from "../Global/InfoMessage";
 
 import useDashboard from "../../Hooks/useDashboard";

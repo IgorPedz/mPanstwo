@@ -46,7 +46,7 @@ export default function ModalForm({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          {/* BACKDROP */}
+
           <motion.div
             onClick={handleClose}
             className="
@@ -57,7 +57,6 @@ export default function ModalForm({
             "
           />
 
-          {/* MODAL */}
           <motion.div
             onClick={(e) => e.stopPropagation()}
             initial={{ scale: 0.96, y: 20, opacity: 0 }}
@@ -75,10 +74,9 @@ export default function ModalForm({
               cursor-default
             "
           >
-            {/* TOP GLOW BAR */}
+
             <div className="h-[2px] w-full bg-gradient-to-r from-cyan-500 via-violet-500 to-pink-500" />
 
-            {/* HEADER */}
             <div className="flex items-center justify-between px-6 pt-5 pb-4">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white tracking-tight">
                 {title}
@@ -99,7 +97,6 @@ export default function ModalForm({
               </button>
             </div>
 
-            {/* CONTENT */}
             <div className="px-6 pb-6">
               {customContent ? (
                 customContent
@@ -128,7 +125,6 @@ export default function ModalForm({
                     />
                   ))}
 
-                  {/* STATUS */}
                   {status && (
                     <div
                       className={`
@@ -144,7 +140,6 @@ export default function ModalForm({
                     </div>
                   )}
 
-                  {/* ACTIONS */}
                   <div className="flex gap-3 pt-3">
                     <button
                       type="button"

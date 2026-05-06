@@ -6,6 +6,7 @@ import documents from "../../components/Documents/DocumentsData";
 import { pageVariants, sectionVariants } from "../../Utils/Animations";
 import { useUser } from "../../Contexts/UserContext";
 import ReturnBtn from "../../components/Info/ReturnBtn";
+
 export default function DocumentsPage() {
   const { user } = useUser();
   const isLoggedIn = !!user?.id;
@@ -22,17 +23,15 @@ export default function DocumentsPage() {
             <ReturnBtn />
           </motion.div>
         )}
-        {/* HEADER */}
+
         <motion.div variants={sectionVariants}>
           <DocumentsHeader />
         </motion.div>
 
-        {/* GRID */}
         <motion.div variants={sectionVariants}>
           <DocumentsGrid documents={documents} />
         </motion.div>
 
-        {/* FOOTER */}
         <motion.div variants={sectionVariants}>
           <DocumentsFooterInfo />
         </motion.div>

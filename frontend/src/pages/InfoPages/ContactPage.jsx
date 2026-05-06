@@ -12,7 +12,6 @@ export default function ContactPage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden color-transition">
-      {/* BACKGROUND GLOW (ONLY ONCE) */}
       <div className="absolute top-[-250px] left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
 
       {!isLoggedIn && (

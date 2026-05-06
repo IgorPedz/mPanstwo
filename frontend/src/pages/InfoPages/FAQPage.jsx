@@ -80,7 +80,6 @@ export default function HelpPage() {
         </div>
       </motion.div>
 
-      {/* FOOTER */}
       {!isLoggedIn && (
         <motion.div
           variants={sectionVariants}
