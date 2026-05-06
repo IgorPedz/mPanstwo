@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import ICON_MAP from "../../Utils/Maps/Icons";
-import { containerVariants, itemVariants, floatingVariants, pulseVariants } from "../../Utils/Animations";
+import ICON_MAP from "../../../Utils/Maps/Icons";
+import { containerVariants, itemVariants, floatingVariants, pulseVariants } from "../../../Utils/Animations";
 
 export default function EmptyDashboard({ setShowAddMenu }) {
   const SparklesIcon = ICON_MAP["sparkles"];

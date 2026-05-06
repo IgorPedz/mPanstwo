@@ -1,5 +1,5 @@
-import ICON_MAP from "../../Utils/Maps/Icons";
-import { COLOR_MAP } from "../../Utils/Maps/Colors";
+import ICON_MAP from "../../../Utils/Maps/Icons";
+import { COLOR_MAP } from "../../../Utils/Maps/Colors";
 
 export default function AddTileCard({ tile, isAdded, isSelected, onClick }) {
   const IconComponent = ICON_MAP[tile.icon];

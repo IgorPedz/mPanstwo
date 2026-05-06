@@ -1,15 +1,16 @@
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
-import ICON_MAP from "../../Utils/Maps/Icons";
-import { ACCENT_MAP } from "../../Utils/Maps/Accents";
-import { COLOR_MAP } from "../../Utils/Maps/Colors";
+import ICON_MAP from "../../../Utils/Maps/Icons";
+import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
+import { COLOR_MAP } from "../../../Utils/Maps/Colors";
 
 const Tile = ({
     id,
     name,
     icon,
-    color,
+    iconColor,
+    accent,
     onDelete,
     isLocked
 }) => {
@@ -28,8 +29,8 @@ const Tile = ({
     };
 
     const IconComponent = ICON_MAP[icon];
-    const colorClass = COLOR_MAP[color];
-    const accentClass = ACCENT_MAP[color] || "from-gray-500 to-gray-400";
+    const colorClass = COLOR_MAP[accent] || "text-gray-500";
+    const accentClass = ACCENT_MAP[accent] || "from-gray-500 to-gray-400";
 
     return (
         <div

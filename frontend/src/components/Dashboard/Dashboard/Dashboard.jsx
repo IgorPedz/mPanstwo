@@ -1,15 +1,15 @@
 import { useState, useEffect, useMemo } from "react";
-import { useUser } from "../../Contexts/UserContext";
-import useTiles from "../../Hooks/useTiles";
-import useTilesPerPage from "../../Hooks/useTilesPerPage";
-import useNoScroll from "../../Hooks/UseNoScroll";
+import { useUser } from "../../../Contexts/UserContext";
+import useTiles from "../../../Hooks/useTiles";
+import useTilesPerPage from "../../../Hooks/useTilesPerPage";
+import useNoScroll from "../../../Hooks/UseNoScroll";
 
-import TilesGrid from "./TilesGrid";
-import Pagination from "./Pagination";
-import DropDown from "./Dropdown/DropDown";
-import InfoMessage from "../Global/InfoMessage";
+import TilesGrid from "../DashboardGrid/TilesGrid";
+import Pagination from "../DashboardGrid/Pagination";
+import DropDown from "../Dropdown/DropDown";
+import InfoMessage from "../../Global/InfoMessage";
 
-import useDashboard from "../../Hooks/useDashboard";
+import useDashboard from "../../../Hooks/useDashboard";
 import DashboardHeader from "./DashboardHeader";
 import DashboardActions from "./DashboardActions";
 
@@ -17,7 +17,7 @@ export default function Dashboard() {
   const { user } = useUser();
   const { tiles, setTiles, availableTiles, infoMessage, setInfoMessage } =
     useTiles();
-
+  
   const TILES_PER_PAGE = useTilesPerPage();
 
   const [showAddMenu, setShowAddMenu] = useState(false);

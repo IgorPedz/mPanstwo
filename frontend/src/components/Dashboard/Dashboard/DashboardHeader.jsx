@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useUser } from "../../Contexts/UserContext";
-import ICON_MAP from "../../Utils/Maps/Icons";
+import { useUser } from "../../../Contexts/UserContext";
+import ICON_MAP from "../../../Utils/Maps/Icons";
 
 export default function WelcomeDashboard({
   isLocked,

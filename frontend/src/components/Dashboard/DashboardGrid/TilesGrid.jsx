@@ -4,7 +4,7 @@ import { restrictToParentElement } from "@dnd-kit/modifiers";
 import { SortableContext, rectSortingStrategy, arrayMove } from "@dnd-kit/sortable";
 import Tile from "./Tile";
 import AddTile from "./AddTile";
-import EmptyDashboard from "./EmptyDashboard";
+import EmptyDashboard from "../Dashboard/EmptyDashboard";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, totalPages, setShowAddMenu, isLocked, savedTiles }) {
@@ -51,7 +51,7 @@ export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, 
     if (savedTiles && Array.isArray(savedTiles) && savedTiles.length === 0 && tiles.length === 0) {
         return <EmptyDashboard setShowAddMenu={setShowAddMenu} />;
     }
-
+    
     return (
         <DndContext
             sensors={sensors}
@@ -59,6 +59,7 @@ export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, 
             onDragEnd={handleDragEnd}
             modifiers={[restrictToParentElement]}
         >
+
             <SortableContext items={sortableItems} strategy={rectSortingStrategy}>
                 <div className="relative">
                     <AnimatePresence mode="wait">

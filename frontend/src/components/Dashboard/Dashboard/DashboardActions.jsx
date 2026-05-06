@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import ICON_MAP from "../../Utils/Maps/Icons";
+import ICON_MAP from "../../../Utils/Maps/Icons";
 
 export default function DashboardActions({ saveLayout, loadSavedLayout, isVisible = true }) {
   const SaveIcon = ICON_MAP["check"];
