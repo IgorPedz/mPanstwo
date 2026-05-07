@@ -63,6 +63,7 @@ export default function Dashboard() {
                 flex-1 p-4 sm:p-10 pb-10
                 min-h-dvh
                 color-transition
+                
             "
     >
       {(tiles.length > 0 || hasUnsavedChanges) && (

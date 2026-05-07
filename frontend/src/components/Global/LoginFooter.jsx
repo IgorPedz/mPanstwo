@@ -2,46 +2,40 @@ import { EnvelopeIcon, QuestionMarkCircleIcon, DocumentTextIcon } from "@heroico
 
 const LoginFooter = () => {
   return (
-    <div className="mt-6 mb-6 text-sm text-gray-600 dark:text-gray-300">
-      <div className="flex justify-center">
+    <div className="mt-12 w-full max-w-md border-t-2 border-slate-900/10 dark:border-white/10 pt-6">
+      <div className="flex justify-between items-center px-2">
         
-        <a
-          href="/contact"
-          className="flex items-center gap-2 px-4 py-3 
-            text-gray-700 dark:text-gray-200
-            bg-transparent 
-            hover:bg-gray-100 dark:hover:bg-gray-800
-            transition-all duration-200 color-transition"
-        >
-          <EnvelopeIcon className="h-5 w-5 color-transition" />
-          <span className="text-sm font-medium color-transition">Kontakt</span>
+        <a href="/contact" className="group flex items-center gap-2">
+          <EnvelopeIcon className="h-4 w-4 text-slate-400 group-hover:text-indigo-500 transition-colors" />
+          <span className="text-[15px] font-black uppercase tracking-widest text-slate-500 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
+            Kontakt
+          </span>
         </a>
 
-        <a
-          href="/faq"
-          className="flex items-center gap-2 px-4 py-3 
-            text-gray-700 dark:text-gray-200
-            bg-transparent 
-            hover:bg-gray-100 dark:hover:bg-gray-800
-            transition-all duration-200 color-transition"
-        >
-          <QuestionMarkCircleIcon className="h-5 w-5 color-transition" />
-          <span className="text-sm font-medium color-transition">Pomoc</span>
+
+        <div className="w-1 h-1 bg-slate-300 dark:bg-slate-700 rounded-full" />
+
+        <a href="/faq" className="group flex items-center gap-2">
+          <QuestionMarkCircleIcon className="h-4 w-4 text-slate-400 group-hover:text-indigo-500 transition-colors" />
+          <span className="text-[15px] font-black uppercase tracking-widest text-slate-500 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
+            Pomoc
+          </span>
         </a>
 
-        <a
-          href="/documents"
-          className="flex items-center gap-2 px-4 py-3 
-            text-gray-700 dark:text-gray-200
-            bg-transparent 
-            hover:bg-gray-100 dark:hover:bg-gray-800
-            transition-all duration-200 color-transition"
-        >
-          <DocumentTextIcon className="h-5 w-5 color-transition" />
-          <span className="text-sm font-medium color-transition">Dokumenty</span>
+        <div className="w-1 h-1 bg-slate-300 dark:bg-slate-700 rounded-full" />
+
+        <a href="/documents" className="group flex items-center gap-2">
+          <DocumentTextIcon className="h-4 w-4 text-slate-400 group-hover:text-indigo-500 transition-colors" />
+          <span className="text-[15px] font-black uppercase tracking-widest text-slate-500 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
+            Dokumenty
+          </span>
         </a>
 
       </div>
+      
+      <p className="text-center mt-8 text-[9px] font-medium text-slate-400 dark:text-slate-600 uppercase tracking-[0.3em]">
+        © 2026 mPaństwo. Wszelkie prawa zastrzeżone.
+      </p>
     </div>
   );
 };

@@ -1,11 +1,18 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import DashboardPage from "../pages/MainPages/DashboardPage";
 import AuthPage from "../pages/AuthPages/AuthPage";
 import DocumentsPage from "../pages/InfoPages/DocumentsPage";
 import ContactPage from "../pages/InfoPages/ContactPage";
 import FAQPage from "../pages/InfoPages/FAQPage";
 import ProfilePage from "../pages/ProfilPages/ProfilePage";
-
+import AchievementsPage from "../pages/ProfilPages/AchievementsPage";
+import SurveyBoxPage from "../pages/ProfilPages/SurveyBoxPage";
+import NotificationsPage from "../pages/ProfilPages/NotificationsPage";
 import { UserProvider } from "../Contexts/UserContext";
 import ProtectedRoute from "../Utils/Routes/ProtectedRoutes";
 import PublicRoute from "../Utils/Routes/PublicRoutes";
@@ -17,7 +24,6 @@ function App() {
     <UserProvider>
       <Router>
         <Routes>
-
           <Route
             path="/auth"
             element={
@@ -28,7 +34,6 @@ function App() {
           />
 
           <Route element={<Layout />}>
-
             <Route
               path="/dashboard"
               element={
@@ -46,15 +51,36 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
+            <Route
+              path="/achievements"
+              element={
+                <ProtectedRoute>
+                  <AchievementsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/survey-box"
+              element={
+                <ProtectedRoute>
+                  <SurveyBoxPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/notifications"
+              element={
+                <ProtectedRoute>
+                  <NotificationsPage />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/documents" element={<DocumentsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FAQPage />} />
-
           </Route>
 
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
-
         </Routes>
       </Router>
     </UserProvider>

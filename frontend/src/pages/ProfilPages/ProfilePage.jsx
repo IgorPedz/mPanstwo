@@ -3,78 +3,50 @@ import { useUser } from "../../Contexts/UserContext";
 import useProfile from "../../Hooks/useProfile";
 
 import ProfileHero from "../../components/Profile/ProfileHero";
-import ProfileCard from "../../components/Profile/ProfileCard";
-import ChangeEmailCard from "../../components/Profile/Cards/ChangeEmailCard";
-import ChangePasswordCard from "../../components/Profile/Cards/ChangePasswordCard";
-import DeleteAccountCard from "../../components/Profile/Cards/DeleteAccountCard";
-import ChangeNameCard from "../../components/Profile/Cards/ChangeNameCard";
-import SettingsSection from "../../components/Profile/ProfileSettingsContainer";
+import ProfileStatsGrid from "../../components/Profile/ProfileStatsGrid";
+import ProfileSettingsGrid from "../../components/Profile/ProfileSettingsGrid";
+import ProfileHeader from "../../components/Profile/ProfileHeader";
+
 import { stats } from "../../components/Profile/ProfileData";
-import { pageVariants, itemVariants } from "../../Utils/Animations";
+import { containerVariants } from "../../Utils/Animations";
 
-const ProfilePage = () => {
+export default function ProfilePage() {
   const { user: authUser } = useUser();
-
   const { profile, updateProfile, changeEmail, changePassword, deleteAccount } =
     useProfile(authUser?.id);
 
   return (
-    <motion.div
-      className="relative p-6 min-h-screen overflow-hidden color-transition"
-      variants={pageVariants}
-      initial="hidden"
-      animate="show"
+    <motion.div 
+      className="w-full min-h-screen py-8 px-4 md:px-8 color-transition"
+      initial="hidden" animate="show" variants={containerVariants}
     >
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-200 dark:bg-cyan-900/30 rounded-full blur-3xl opacity-20 dark:opacity-10" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-violet-200 dark:bg-violet-900/30 rounded-full blur-3xl opacity-20 dark:opacity-10" />
-      </div>
+      <div className="max-w-[1800px] mx-auto">
+        
+        <ProfileHeader />
+        <ProfileHero profile={profile} authUser={authUser} />
 
-      <div className="relative z-10 space-y-12">
-        <motion.div variants={itemVariants}>
-          <ProfileHero user={profile} updateProfile={updateProfile} />
-        </motion.div>
+        <ProfileStatsGrid stats={stats} />
 
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-          variants={pageVariants}
-        >
-          {stats.map((s, i) => (
-            <motion.div key={i} variants={itemVariants}>
-              <ProfileCard {...s} />
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <motion.div variants={pageVariants} className="space-y-6">
-          <motion.div variants={itemVariants}>
-            <h2
-              className="
-              text-2xl md:text-3xl font-semibold
-              bg-gradient-to-r from-cyan-500 via-violet-500 to-cyan-500
-              bg-clip-text text-transparent
-            "
-            >
-              Ustawienia konta
+        <header className="flex justify-between items-end border-b border-slate-200 dark:border-slate-800 pb-6 mb-8 color-transition">
+          <div>
+            <h2 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter color-transition">
+              Parametry Systemowe
             </h2>
-
-            <p className="text-gray-500 dark:text-gray-400 mt-1">
-              Zarządzaj swoimi danymi i bezpieczeństwem
+            <p className="text-slate-500 dark:text-slate-400 font-medium color-transition">
+              Zarządzaj dostępem i tożsamością wewnątrz systemu
             </p>
-          </motion.div>
+          </div>
+        </header>
 
-          <motion.div variants={itemVariants}>
-            <SettingsSection>
-              <ChangeNameCard profile={profile} updateProfile={updateProfile} />
-              <ChangeEmailCard changeEmail={changeEmail} />
-              <ChangePasswordCard changePassword={changePassword} />
-              <DeleteAccountCard deleteAccount={deleteAccount} />
-            </SettingsSection>
-          </motion.div>
-        </motion.div>
+        <ProfileSettingsGrid 
+          profile={profile}
+          updateProfile={updateProfile}
+          changeEmail={changeEmail}
+          changePassword={changePassword}
+          deleteAccount={deleteAccount}
+        />
+
       </div>
     </motion.div>
   );
-};
-
-export default ProfilePage;
+}

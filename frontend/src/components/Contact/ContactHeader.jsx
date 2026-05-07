@@ -1,13 +1,15 @@
-
 export default function ContactHeader() {
   return (
-    <div  className="mb-10 sm:mb-14 text-center color-transition">
-      <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-3 sm:mb-4 text-gray-900 dark:text-white">
-        Zostańmy w kontakcie
+    <div className="w-full space-y-3 color-transition">
+      <p className="text-[11px] font-black uppercase tracking-[0.4em] text-indigo-500 color-transition">
+        Strona /
+      </p>
+      <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter leading-none color-transition">
+        Kontakt
       </h1>
-
-      <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-        Masz pytania? Napisz do nas — odpowiadamy szybko i konkretnie.
+      <div className="h-1 w-20 bg-indigo-500 mt-4 color-transition" /> {/* Akcent graficzny */}
+      <p className="text-slate-500 dark:text-slate-400 max-w-2xl font-medium pt-4 text-lg color-transition">
+        Bądźmy w kontakcie! Masz pytania, sugestie lub potrzebujesz pomocy? Skontaktuj się z nami, a nasz zespół chętnie Ci pomoże. Wypełnij formularz kontaktowy lub skorzystaj z poniższych danych kontaktowych, aby się z nami skontaktować. Czekamy na Twoją wiadomość!
       </p>
     </div>
   );

@@ -2,7 +2,7 @@ export const NavData = [
   {
     title: "Główne",
     items: [
-      { name: "Strona główna", icon: "dashboard", href: "/dashboard" },
+      { name: "Dashboard", icon: "dashboard", href: "/dashboard" },
       { name: "Sondaże", icon: "stats", href: "/polls" },
       { name: "Kalendarz wydarzeń", icon: "events", href: "/calendar" },
     ],

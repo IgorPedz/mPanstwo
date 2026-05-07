@@ -1,78 +1,48 @@
-import { motion } from "framer-motion";
-import { COLOR_MAP, GRADIENT_MAP } from "../../Utils/Maps/Colors";
 import ICON_MAP from "../../Utils/Maps/Icons";
-import { glowVariants } from "../../Utils/Animations";
+import { ACCENT_MAP } from "../../Utils/Maps/Accents";
 
-const ProfileCard = ({ title, value, icon, color = "indigo" }) => {
-  const textColor = COLOR_MAP[color] || COLOR_MAP.indigo;
-  const gradient = GRADIENT_MAP[color] || GRADIENT_MAP.indigo;
-  const ImportedIcon = ICON_MAP[icon] || ICON_MAP.stats;
+const ProfileCard = ({ title, value, icon, color }) => {
+  const Icon = ICON_MAP[icon] || ICON_MAP["star"];
+  
+  const gradientClasses = ACCENT_MAP[color] || "from-slate-700 to-slate-500";
 
   return (
-    <motion.div
-      className="
-    group relative overflow-hidden rounded-2xl
-    border border-gray-200 dark:border-gray-800
-    bg-white dark:bg-gray-900/60
-    backdrop-blur
-    p-6
-    shadow-sm
-    cursor-pointer
-    color-transition
-  "
-      whileHover={{ scale: 1.02, y: -2 }}
-    >
-      <motion.div
-        className={`
-          absolute -top-12 -right-12 h-36 w-36
-          rounded-full blur-3xl
-          bg-gradient-to-br ${gradient}
-          opacity-50
-        `}
-        variants={glowVariants}
-        animate="animate"
-      />
+    <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-500 color-transition group relative overflow-hidden h-full">
+      
+      <div className="absolute -right-4 -bottom-4 opacity-[0.03] dark:opacity-[0.05] group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+        <Icon className="h-32 w-32" />
+      </div>
 
-      <div
-        className="
-    absolute inset-0
-    opacity-0 group-hover:opacity-100
-    transition-opacity duration-500
-    bg-black/5 dark:bg-white/5
-    color-transition
-  "
-      />
+      <div className="relative z-10 flex flex-col h-full justify-between">
+        <div className="flex justify-between items-start mb-6">
+          
+          <div className={`
+            p-4 rounded-2xl transition-all duration-500 color-transition
+            bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white
+            group-hover:bg-gradient-to-br group-hover:shadow-lg
+            ${gradientClasses.split(' ').map(c => `group-hover:${c}`).join(' ')}
+          `}>
+            <Icon className="h-6 w-6" />
+          </div>
+          
+          <div className={`h-2.5 w-2.5 rounded-full bg-gradient-to-tr ${gradientClasses} opacity-40 group-hover:opacity-100 transition-opacity duration-500`} />
+        </div>
 
-      <div className="relative flex items-center gap-4 color-transition">
-        <motion.div
-          className="
-            flex h-11 w-11 items-center justify-center
-            rounded-xl
-            bg-gray-100 dark:bg-gray-800
-            color-transition
-          "
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.2 }}
-        >
-          <ImportedIcon className={`h-6 w-6 ${textColor} color-transition`} />
-        </motion.div>
-
-        <div className="color-transition">
-          <p className="text-xs text-gray-500 dark:text-gray-400 color-transition">
+        <div>
+          <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1 color-transition">
             {title}
           </p>
-
-          <motion.p
-            className="text-xl font-bold text-gray-900 dark:text-white color-transition"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          >
+          <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter color-transition">
             {value}
-          </motion.p>
+          </h3>
         </div>
       </div>
-    </motion.div>
+
+      <div className={`
+        absolute bottom-0 left-0 h-1.5 w-0 group-hover:w-full 
+        transition-all duration-700 bg-gradient-to-r ${gradientClasses}
+      `} />
+    </div>
   );
 };
 

@@ -30,7 +30,7 @@ export default function DropDownTiles({
         }
       `}
     >
-      {/* ICON */}
+
       <div
         className={`
           w-14 h-14 rounded-2xl flex items-center justify-center mb-5
@@ -46,7 +46,6 @@ export default function DropDownTiles({
         <DynamicIcon name={tile.icon} className="w-7 h-7" />
       </div>
 
-      {/* TEXT */}
       <div>
         <h3 className="color-transition text-xl font-bold text-gray-900 dark:text-white mb-2">
           {tile.name}
@@ -64,7 +63,6 @@ export default function DropDownTiles({
         </div>
       </div>
 
-      {/* INDICATOR */}
       <div className="absolute top-6 right-6">
         {isAdded ? (
           <span className="bg-gray-200 dark:bg-gray-700 text-[9px] font-black px-2 py-1 rounded-lg text-gray-500 uppercase">

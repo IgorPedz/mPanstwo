@@ -47,10 +47,15 @@ import {
   ClipboardDocumentIcon,
   TrashIcon,
   InformationCircleIcon,
+  StarIcon,
+  ClockIcon,
+  ArrowLeftIcon,
 } from "@heroicons/react/24/outline";
 
 const ICON_MAP = {
   // core
+  left: ArrowLeftIcon,
+  clock: ClockIcon,
   dashboard: HomeIcon,
   clipdocument: ClipboardDocumentIcon,
   stats: ChartBarIcon,
@@ -92,7 +97,7 @@ const ICON_MAP = {
   truck: TruckIcon,
   leaf: GlobeEuropeAfricaIcon,
   tractor: BeakerIcon,
-
+  star: StarIcon,
   // actions
   check: CheckIcon,
   cancel: ArrowUturnLeftIcon,

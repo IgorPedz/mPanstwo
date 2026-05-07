@@ -18,7 +18,7 @@ export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, 
             return arrayMove(items, oldIndex, newIndex);
         });
     };
-
+    
     const sensors = useSensors(
         useSensor(PointerSensor, {
             activationConstraint: {

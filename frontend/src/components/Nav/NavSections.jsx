@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import ICON_MAP from "../../Utils/Maps/Icons";
 
 export default function NavSections({
@@ -10,61 +11,77 @@ export default function NavSections({
   const ChevronDownIcon = ICON_MAP["dropdown"];
 
   return (
-    <>
+    <div className="space-y-4">
       {NavData.map((section) => {
         const isOpen = openSections[section.title];
 
         return (
-          <div key={section.title}>
+          <div key={section.title} className="flex flex-col">
+  
             <button
               onClick={() => toggleSection(section.title)}
-              className="cursor-pointer w-full flex items-center justify-between px-4 py-2 text-xs font-semibold uppercase text-gray-400 hover:text-gray-600 transition-colors"
+              className="group cursor-pointer w-full flex items-center justify-between px-2 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
             >
-              {section.title}
+              <span>{section.title}</span>
               <ChevronDownIcon
-                className={`h-4 w-4 transition-transform duration-300 ${
+                className={`h-3 w-3 transition-transform duration-300 ${
                   isOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
 
-            <div
-              className={`overflow-hidden transition-all duration-300 ${
-                isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-              }`}
-            >
-              <div className="space-y-1 mt-1">
-                {section.items.map((item) => {
-                  const Icon = ICON_MAP[item.icon];
-                  if (!Icon) return null;
+            <div className="relative">
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="space-y-1 mt-2 pb-2">
+                      {section.items.map((item) => {
+                        const Icon = ICON_MAP[item.icon];
+                        if (!Icon) return null;
 
-                  const active = location.pathname === item.href;
+                        const active = location.pathname === item.href;
 
-                  return (
-                    <button
-                      key={item.name}
-                      onClick={() => navigate(item.href)}
-                      className={`
-                        w-full flex items-center gap-3 px-4 py-3 rounded-xl
-                        color-transition cursor-pointer
+                        return (
+                          <button
+                            key={item.name}
+                            onClick={() => navigate(item.href)}
+                            className={`
+                              relative w-full flex items-center gap-3 px-4 py-3 rounded-xl
+                              text-[10px] font-black uppercase tracking-widest
+                              transition-all duration-200 cursor-pointer group
+                              ${
+                                active
+                                  ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-lg shadow-indigo-500/10"
+                                  : "text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900/50 hover:text-slate-900 dark:hover:text-slate-100"
+                              }
+                            `}
+                          >
+                            {active && (
+                              <motion.div
+                                layoutId="nav-active-pill"
+                                className="absolute left-0 w-1 h-4 bg-indigo-500 dark:bg-indigo-400 rounded-r-full"
+                              />
+                            )}
 
-                        ${
-                          active
-                            ? "text-blue-600 dark:text-blue-300 bg-blue-50 dark:bg-gray-800/50"
-                            : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-                        }
-                      `}
-                    >
-                      <Icon className="h-5 w-5" />
-                      <span className="text-sm font-medium">{item.name}</span>
-                    </button>
-                  );
-                })}
-              </div>
+                            <Icon className={`h-4 w-4 transition-transform group-hover:scale-110 ${active ? "opacity-100" : "opacity-70 group-hover:opacity-100"}`} />
+                            <span className="relative">{item.name}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         );
       })}
-    </>
+    </div>
   );
 }

@@ -48,7 +48,7 @@ export default function DropDown({
         className={`
           fixed bottom-0 left-0 right-0 z-[70]
           h-[85vh]
-          pointer-events-none /* Ważne: kliknięcia przechodzą przez ten div do dzieci */
+          pointer-events-none
           transform-gpu will-change-transform
           transition-transform duration-700
           ease-[cubic-bezier(0.22,1,0.36,1)]
@@ -57,13 +57,11 @@ export default function DropDown({
       >
 
         <div className={`
-          pointer-events-auto /* Przywracamy interakcję */
+          pointer-events-auto 
           h-full w-full
           bg-white dark:bg-gray-900
           border-t border-gray-200 dark:border-gray-800
           rounded-t-[40px]
-          shadow-[0_-20px_60px_rgba(0,0,0,0.4)]
-          /* Krótsze przejście dla kolorów, by nie "pływały" przy ruchu */
           transition-colors duration-200 ease-in-out
           flex flex-col overflow-hidden
         `}>

@@ -1,5 +1,5 @@
  export const stats = [
-    { title: "Dni aktywności", value: 24, icon: "calendar", color: "gray" },
+    { title: "Dni aktywności", value: 24, icon: "calendar", color: "red" },
     { title: "Ostatnia aktywność", value: "2h temu", icon: "clock", color: "zinc" },
     { title: "Śledzone ustawy", value: 7, icon: "documents", color: "indigo" },
     { title: "Rola", value: "Ekspert", icon: "achievements", color: "purple" },

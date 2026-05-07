@@ -1,51 +1,33 @@
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
-export default function FAQTabs({
-  categories,
-  activeCategory,
-  setActiveCategory,
-}) {
-  const [indicatorStyle, setIndicatorStyle] = useState({});
-  const buttonsRef = useRef({});
-
-  useEffect(() => {
-    const activeEl = buttonsRef.current[activeCategory];
-    if (!activeEl) return;
-
-    setIndicatorStyle({
-      width: activeEl.offsetWidth,
-      transform: `translateX(${activeEl.offsetLeft}px)`,
-    });
-  }, [activeCategory, categories]);
-
+export default function FAQTabs({ categories, activeCategory, setActiveCategory }) {
   return (
-    <div className="overflow-x-auto">
-      <div className="relative flex border border-gray-200 dark:border-gray-800 rounded-full p-1 w-max">
-
-        <div
-          className="absolute top-1 bottom-1 left-1 bg-blue-500 rounded-full transition-all duration-200 ease-out"
-          style={indicatorStyle}
-        />
-
-        {categories.map((cat) => (
+    <div className="w-fit p-1.5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] flex flex-wrap gap-1 color-transition">
+      {categories.map((cat) => {
+        const isActive = activeCategory === cat;
+        
+        return (
           <button
             key={cat}
-            ref={(el) => (buttonsRef.current[cat] = el)}
             onClick={() => setActiveCategory(cat)}
             className={`
-              relative z-10 px-5 py-2 text-sm font-medium whitespace-nowrap rounded-full
-              transition-colors duration-200 cursor-pointer
-              ${
-                activeCategory === cat
-                  ? "text-white"
-                  : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-              }
+              relative px-6 py-2.5 rounded-[1.1rem] text-[10px] font-black uppercase tracking-widest 
+              transition-colors duration-300 cursor-pointer outline-none color-transition
+              ${isActive ? "text-white dark:text-slate-900" : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"}
             `}
           >
-            {cat}
+            {isActive && (
+              <motion.div
+                layoutId="activeTab"
+                className="color-transition absolute inset-0 bg-slate-900 dark:bg-white rounded-[1.1rem] z-0"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            
+            <span className="relative z-10">{cat}</span>
           </button>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 }

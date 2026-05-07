@@ -1,30 +1,36 @@
-import { DocumentTextIcon, ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import { DocumentArrowDownIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
 
-export default function DocumentCard({ doc }) {
+export default function DocumentsCard({ doc }) {
   return (
-    <div className="group relative color-transition">
+    <div className="group relative w-full p-8 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-[2rem] transition-all duration-200 hover:border-slate-900 dark:hover:border-slate-100 overflow-hidden color-transition">
+      
+      <div className="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none color-transition z-20" />
 
-      <div className="absolute -inset-0.5 bg-blue-500/10 rounded-2xl blur opacity-0 group-hover:opacity-60 transition" />
+      <div className="flex flex-col h-full justify-between gap-8 relative z-10 color-transition">
+        <div className="flex justify-between items-start w-full color-transition">
 
-      <div className="relative rounded-2xl border border-gray-200/70 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-md p-6 shadow-sm hover:shadow-md color-transition">
-
-        <div className="p-3 w-fit rounded-xl bg-gray-100 dark:bg-white/10 text-blue-600 dark:text-blue-400 mb-4 color-transition">
-          <DocumentTextIcon className="w-6 h-6" />
+          <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-2xl group-hover:bg-slate-900 dark:group-hover:bg-white transition-all duration-200 color-transition">
+            <DocumentTextIcon className="h-9 w-9 text-slate-600 dark:text-slate-400 group-hover:text-white dark:group-hover:text-slate-900 color-transition" />
+          </div>
+          
+          <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] bg-slate-50 dark:bg-slate-800/50 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 color-transition">
+            {doc.size || "1.4 MB"}
+          </span>
         </div>
 
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-          {doc.title}
-        </h3>
+        <div className="w-full color-transition">
+          <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter mb-2 color-transition uppercase">
+            {doc.title}
+          </h3>
+          <p className="text-sm text-slate-500 dark:text-slate-500 font-bold leading-snug color-transition">
+            {doc.description}
+          </p>
+        </div>
 
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-          {doc.type} • {doc.size}
-        </p>
-
-        <button className="mt-5 w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium transition color-transition">
-          Pobierz
-          <ArrowDownTrayIcon className="w-5 h-5" />
+        <button className="w-full py-4 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-xl font-black text-xs tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white dark:hover:text-white transition-all cursor-pointer color-transition shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.05)]">
+          <DocumentArrowDownIcon className="h-5 w-5 color-transition" />
+          POBIERZ PLIK
         </button>
-
       </div>
     </div>
   );
