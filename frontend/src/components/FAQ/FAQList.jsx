@@ -10,7 +10,7 @@ export default function FAQList({ faqs, openIndex, onToggle }) {
             <div key={index} className="w-full color-transition">
               <button
                 onClick={() => onToggle(index)}
-                className="w-full flex items-center justify-between p-8 text-left hover:bg-slate-50/50 dark:hover:bg-slate-800/20 transition-all color-transition group"
+                className="cursor-pointer w-full flex items-center justify-between p-8 text-left hover:bg-slate-50/50 dark:hover:bg-slate-800/20 transition-all color-transition group"
               >
                 <span className={`text-lg md:text-xl font-black tracking-tight uppercase color-transition ${isOpen ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-900 dark:text-white'}`}>
                   {faq.question}

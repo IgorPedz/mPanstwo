@@ -7,6 +7,7 @@ const authRoutes = require("./routes/authRoutes");
 const tileRoutes = require("./routes/tileRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const profileRoutes = require("./routes/profileRoutes");
+const surveyRoutes = require("./routes/surveyRoutes");
 const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
@@ -19,7 +20,7 @@ app.use(authRoutes);
 app.use(tileRoutes);
 app.use(dashboardRoutes);
 app.use(profileRoutes);
-
+app.use(surveyRoutes);
 app.use(errorHandler);
 
 const port = process.env.PORT || 4000;

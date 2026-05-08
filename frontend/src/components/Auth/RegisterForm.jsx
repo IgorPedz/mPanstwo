@@ -55,7 +55,7 @@ export default function RegisterForm({
             transition-all duration-200 active:scale-[0.98] hover:bg-indigo-700
           "
         >
-          Utwórz profil
+          Zarejestruj się
         </button>
 
         <div className="relative py-4 flex items-center justify-center">

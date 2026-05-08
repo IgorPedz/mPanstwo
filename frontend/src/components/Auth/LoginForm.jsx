@@ -70,7 +70,7 @@ export default function LoginForm({
         </div>
 
         <span className="text-[11px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 select-none">
-          Pamiętaj mnie na tym urządzeniu
+          Pamiętaj mnie 
         </span>
       </div>
 
@@ -85,7 +85,7 @@ export default function LoginForm({
             transition-all duration-200 active:scale-[0.98] hover:bg-indigo-700
           "
         >
-          Zaloguj do systemu
+          Zaloguj się
         </button>
 
         <div className="relative py-4 flex items-center justify-center">

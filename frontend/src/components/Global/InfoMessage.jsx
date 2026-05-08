@@ -11,7 +11,7 @@ export default function InfoMessage({
   message,
   type = "success",
   onClose,
-  duration = 4000,
+  duration = 6000,
 }) {
   const [show, setShow] = useState(false);
 

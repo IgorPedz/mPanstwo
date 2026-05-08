@@ -17,7 +17,7 @@ export default function Dashboard() {
   const { user } = useUser();
   const { tiles, setTiles, availableTiles, infoMessage, setInfoMessage } =
     useTiles();
-  
+
   const TILES_PER_PAGE = useTilesPerPage();
 
   const [showAddMenu, setShowAddMenu] = useState(false);

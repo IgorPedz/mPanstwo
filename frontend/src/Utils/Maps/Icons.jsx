@@ -50,6 +50,7 @@ import {
   StarIcon,
   ClockIcon,
   ArrowLeftIcon,
+  DocumentCheckIcon,
 } from "@heroicons/react/24/outline";
 
 const ICON_MAP = {
@@ -65,6 +66,7 @@ const ICON_MAP = {
   trash: TrashIcon,
   events: CalendarDaysIcon,
   documents: FolderIcon,
+  documentcheck: DocumentCheckIcon,
   messages: ChatBubbleLeftRightIcon,
   notifications: BellIcon,
   profile: UserIcon,
