@@ -14,6 +14,8 @@
   --scrollbar-thumb-hover: #1d4ed8;
 
   --bg-base: #ffffff;
+
+  --font-scale: 1;
 }
 
 .dark {
@@ -30,6 +32,8 @@
 html {
   background-color: var(--bg-base);
   transition: background-color 300ms ease, color 300ms ease;
+
+   font-size: calc(16px * var(--font-scale));
 }
 
 html.no-transition,

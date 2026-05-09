@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useUser } from "../../Contexts/UserContext";
 
@@ -6,10 +6,9 @@ import SurveyHeader from "../../components/Surveys/SurveyHeader";
 import SurveyModal from "../../components/Surveys/Active/SurveyModal";
 import InfoMessage from "../../components/Global/InfoMessage";
 
-import { containerVariants } from "../../Utils/Animations";
-
 import ActiveSurveysSubPage from "../../components/Surveys/SubPages/ActiveSubPage";
 import ArchiveSurveysSubPage from "../../components/Surveys/SubPages/ArchiveSubPage";
+import ExpiredSurveysSubPage from "../../components/Surveys/SubPages/ExpiredSubPage";
 
 import useSurveysQuestions from "../../Hooks/useSurveysQuestions";
 import useCompletedSurveys from "../../Hooks/useCompletedServeys";
@@ -30,72 +29,124 @@ export default function SurveyBoxPage() {
     surveys = [],
     loading,
     removeSurvey,
-    refetch,
+    refetch: refetchQuestions,
   } = useSurveysQuestions(authUser?.id);
 
-  const { completedSurveys = [], loading: completedLoading } =
-    useCompletedSurveys(authUser?.id);
+  const {
+    completedSurveys = [],
+    loading: completedLoading,
+    refetch: refetchCompleted,
+  } = useCompletedSurveys(authUser?.id);
 
-  const handleNotify = (message, type = "success") => {
+  const now = Date.now();
+
+  const activeSurveys = useMemo(() => {
+    return (Array.isArray(surveys) ? surveys : []).filter((survey) => {
+      const deadlineTime = Date.parse(survey?.deadline);
+
+      return Number.isFinite(deadlineTime) && deadlineTime > Date.now();
+    });
+  }, [surveys]);
+
+  const expiredSurveys = useMemo(() => {
+    const merged = [
+      ...(Array.isArray(surveys) ? surveys : []),
+      ...(Array.isArray(completedSurveys) ? completedSurveys : []),
+    ];
+
+    // remove duplicates
+    const unique = merged.filter(
+      (survey, index, self) =>
+        index === self.findIndex((s) => String(s.id) === String(survey.id)),
+    );
+
+    return unique.filter((survey) => {
+      const deadlineTime = Date.parse(survey?.deadline);
+
+      return Number.isFinite(deadlineTime) && deadlineTime <= Date.now();
+    });
+  }, [surveys, completedSurveys]);
+
+  const archiveSurveys = useMemo(() => {
+    return Array.isArray(completedSurveys) ? completedSurveys : [];
+  }, [completedSurveys]);
+
+  const handleNotify = (message, type = "success") =>
     setInfo({ message, type });
-  };
 
   const handleSurveyFinished = (surveyId) => {
     removeSurvey(surveyId);
     setActiveSurvey(null);
+
+    if (refetchQuestions) refetchQuestions();
+    if (refetchCompleted) refetchCompleted();
+
     handleNotify("Dzięki za udział w ankiecie 🎉", "success");
+  };
+
+  const labels = {
+    active: "Aktywne ankiety",
+    expired: "Zakończone",
+    archive: "Historia odpowiedzi",
   };
 
   return (
     <>
-      <motion.div
-        className="w-full min-h-screen p-8"
-        variants={containerVariants}
-        initial="hidden"
-        animate="show"
-      >
+      <motion.div className="w-full min-h-screen p-8">
         <div className="max-w-[1800px] mx-auto space-y-8">
           <SurveyHeader
-            totalRewards={surveys.reduce(
+            totalRewards={activeSurveys.reduce(
               (acc, s) => acc + (parseInt(s.reward) || 0),
               0,
             )}
             isArchive={tab === "archive"}
+            isExpired={tab === "expired"}
           />
 
           <div className="flex items-center gap-3">
-            {["active", "archive"].map((t) => (
+            {["active", "expired", "archive"].map((t) => (
               <button
                 key={t}
                 onClick={() => setTab(t)}
-                className={`px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest transition-all cursor-pointer ${
+                className={`color-transition px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest cursor-pointer transition-all ${
                   tab === t
-                    ? "bg-blue-600 text-white shadow-xl"
-                    : "bg-slate-200 dark:bg-slate-800 text-slate-500"
+                    ? "bg-blue-600 text-white shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] translate-x-[-2px] translate-y-[-2px]"
+                    : "bg-slate-200 dark:bg-slate-800 text-slate-500 hover:bg-slate-300 dark:hover:bg-slate-700"
                 }`}
               >
-                {t === "active" ? "Aktywne ankiety" : "Historia odpowiedzi"}
+                {labels[t]}
               </button>
             ))}
           </div>
 
-          {tab === "active" && (
-            <ActiveSurveysSubPage
-              surveys={surveys}
-              loading={loading}
-              onStart={setActiveSurvey}
-              onRefetch={refetch}
-            />
-          )}
+          <div className="min-h-[400px]">
+            {tab === "active" && (
+              <ActiveSurveysSubPage
+                surveys={activeSurveys}
+                loading={loading}
+                onStart={setActiveSurvey}
+                onRefetch={refetchQuestions}
+              />
+            )}
 
-          {tab === "archive" && (
-            <ArchiveSurveysSubPage
-              completedSurveys={completedSurveys}
-              loading={completedLoading}
-              selectedArchiveId={selectedArchiveId}
-              setSelectedArchiveId={setSelectedArchiveId}
-            />
-          )}
+            {tab === "expired" && (
+              <ExpiredSurveysSubPage
+                surveys={expiredSurveys}
+                loading={loading}
+                onStart={setActiveSurvey}
+                onRefetch={refetchQuestions}
+              />
+            )}
+
+            {tab === "archive" && (
+              <ArchiveSurveysSubPage
+                completedSurveys={archiveSurveys}
+                loading={completedLoading}
+                selectedArchiveId={selectedArchiveId}
+                setSelectedArchiveId={setSelectedArchiveId}
+              />
+            )}
+          </div>
         </div>
       </motion.div>
 

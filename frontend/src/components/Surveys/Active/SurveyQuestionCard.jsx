@@ -1,11 +1,6 @@
 import { motion } from "framer-motion";
 import ICON_MAP from "../../../Utils/Maps/Icons";
-
-const optionVariants = {
-  idle: { scale: 1 },
-  hover: { scale: 1.02 },
-  tap: { scale: 0.99 },
-};
+import { optionVariants } from "../../../Utils/Animations";
 
 const SurveyQuestionCard = ({
   question,
@@ -46,7 +41,6 @@ const SurveyQuestionCard = ({
         )}
       </div>
 
-      {/* OPTIONS */}
       <div className="flex flex-col gap-3">
         {options.map((opt, index) => {
           const isSelected = selectedValue === opt.value;

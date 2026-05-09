@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import ICON_MAP from "../../Utils/Maps/Icons";
-
+import NavBadge from "../Notifications/NotificationBadge";
 export default function NavSections({
   NavData,
   openSections,
@@ -17,7 +17,6 @@ export default function NavSections({
 
         return (
           <div key={section.title} className="flex flex-col">
-  
             <button
               onClick={() => toggleSection(section.title)}
               className="group cursor-pointer w-full flex items-center justify-between px-2 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
@@ -69,8 +68,14 @@ export default function NavSections({
                               />
                             )}
 
-                            <Icon className={`h-4 w-4 transition-transform group-hover:scale-110 ${active ? "opacity-100" : "opacity-70 group-hover:opacity-100"}`} />
-                            <span className="relative">{item.name}</span>
+                            <Icon
+                              className={`h-4 w-4 transition-transform group-hover:scale-110 ${active ? "opacity-100" : "opacity-70 group-hover:opacity-100"}`}
+                            />
+                            <span className="relative flex items-center gap-2 w-full">
+                              {item.name}
+
+                              {item.badge && <NavBadge type={item.badge} />}
+                            </span>
                           </button>
                         );
                       })}

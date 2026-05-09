@@ -1,17 +1,13 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 
-import getData from "../../../Utils/Dynamic/getData";
-import SurveyResults from "./Results/SurveyResults";
+import SurveyExpiredResults from "../Archive/Results/SurveyExpiredResults";
 
-export default function ArchiveResultsModal({
+export default function ExpiredResults({
   survey,
   onClose,
 }) {
   if (!survey) return null;
-
-  const rawData = survey?.answers;
-  const data = getData(rawData);
 
   const questions = survey?.questions || [];
 
@@ -35,7 +31,7 @@ export default function ArchiveResultsModal({
           border border-slate-200 dark:border-slate-800 overflow-hidden
         "
       >
-        <div className="h-2 w-full bg-blue-600" />
+        <div className="h-2 w-full bg-amber-500" />
 
         <div className="p-8">
           <h2 className="text-2xl font-black text-slate-900 dark:text-white">
@@ -43,14 +39,35 @@ export default function ArchiveResultsModal({
           </h2>
 
           <p className="text-xs text-slate-500 mt-2">
-            Twoje odpowiedzi
+            Wyniki zbiorcze
           </p>
 
-          <div className="mt-6">
-            <SurveyResults
-              questions={questions}
-              data={data}
-            />
+          <div className="mt-4 text-sm font-black">
+            Łączna liczba głosów:{" "}
+            {Object.keys(survey.answers || {}).length / 3}
+          </div>
+
+          <div className="mt-6 space-y-4 max-h-[40vh] overflow-y-auto pr-2">
+            {questions.map((q, i) => (
+              <div
+                key={q.id}
+                className="p-4 rounded-2xl border border-slate-100 dark:border-slate-800"
+              >
+                <p className="text-[10px] uppercase text-slate-400">
+                  Pytanie {i + 1}
+                </p>
+
+                <p className="font-bold text-slate-900 dark:text-white text-sm mt-1">
+                  {q.title}
+                </p>
+
+                <div className="mt-3">
+                  <SurveyExpiredResults
+                    answers={survey.answers}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
 
           <button

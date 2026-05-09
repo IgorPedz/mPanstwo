@@ -19,7 +19,7 @@ export const NavData = [
       { name: "Mój Profil", icon: "profile", href: "/profile" },
       { name: "Osiągnięcia", icon: "achievements", href: "/achievements" },
       { name: "Skrytka ankiet", icon: "survey", href: "/survey-box" },
-      { name: "Powiadomienia", icon: "notifications", href: "/notifications" },
+      { name: "Powiadomienia", icon: "notifications", href: "/notifications", badge:"notifications" },
     ],
   },
   {

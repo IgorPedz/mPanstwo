@@ -1,59 +1,54 @@
 import { useState, useEffect } from "react";
 
+const FONT_SCALES = {
+  "text-sm": 0.9,
+  "text-base": 1,
+  "text-lg": 1.15,
+  "text-xl": 1.3,
+};
+
 export default function ChangeFonts() {
-    const [fontSize, setFontSize] = useState("text-base");
+  const [fontSize, setFontSize] = useState("text-base");
 
-    useEffect(() => {
-        const savedFont = localStorage.getItem("fontSize");
+  useEffect(() => {
+    const saved = localStorage.getItem("fontSize");
 
-        if (savedFont) {
-            setFontSize(savedFont);
-            document.documentElement.classList.add(savedFont);
-        }
-    }, []);
+    if (saved && FONT_SCALES[saved]) {
+      setFontSize(saved);
+      document.documentElement.style.setProperty(
+        "--font-scale",
+        FONT_SCALES[saved]
+      );
+    }
+  }, []);
 
-    const handleFontChange = (size) => {
-        document.documentElement.classList.remove(
-            "text-sm",
-            "text-base",
-            "text-lg",
-            "text-xl"
-        );
+  const handleChange = (value) => {
+    setFontSize(value);
 
-        document.documentElement.classList.add(size);
-        setFontSize(size);
-        localStorage.setItem("fontSize", size);
-    };
-
-    return (
-        <div className="color-transition flex items-center gap-4 p-4 rounded-xl text-gray-700 dark:text-white transition-all duration-300">
-
-            <div className="relative inline-block w-30">
-                <select
-                    value={fontSize}
-                    onChange={(e) => handleFontChange(e.target.value)}
-                    className="appearance-none cursor-pointer px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700 bg-white border-gray-300 color-transition"
-                >
-                    <option value="text-sm">Mała</option>
-                    <option value="text-base">Średnia</option>
-                    <option value="text-lg">Duża</option>
-                    <option value="text-xl">Bardzo duża</option>
-                </select>
-
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500 color-transition">
-                    <svg
-                        className="h-4 w-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </div>
-            </div>
-
-        </div>
-
+    document.documentElement.style.setProperty(
+      "--font-scale",
+      FONT_SCALES[value]
     );
+
+    localStorage.setItem("fontSize", value);
+  };
+
+  return (
+    <div className="flex items-center justify-between w-full">
+      <span className="text-sm font-medium">Czcionka</span>
+
+      <select
+        value={fontSize}
+        onChange={(e) => handleChange(e.target.value)}
+        className="cursor-pointer px-3 py-2 text-xs font-bold uppercase tracking-widest
+                   bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700
+                   text-slate-700 dark:text-slate-200"
+      >
+        <option value="text-sm">Mała</option>
+        <option value="text-base">Średnia</option>
+        <option value="text-lg">Duża</option>
+        <option value="text-xl">Bardzo duża</option>
+      </select>
+    </div>
+  );
 }

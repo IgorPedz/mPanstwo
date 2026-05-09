@@ -11,22 +11,26 @@ export default function LogOut() {
     <>
       <button
         onClick={() => setShowLogoutModal(true)}
-        className="cursor-pointer w-full flex items-center gap-4 px-4 py-3
-                   text-red-600 dark:text-red-400
-                   hover:bg-red-50 dark:hover:bg-red-900/50
-                   hover:text-red-700 dark:hover:text-red-300
+        className="cursor-pointer relative w-full flex items-center gap-3 px-4 py-3
+                   text-red-500 dark:text-red-400
+                   hover:bg-red-500/5 dark:hover:bg-red-500/10
                    transition-all duration-200
-                   group"
+                   group border-l-2 border-transparent hover:border-red-500"
       >
-          <ArrowRightEndOnRectangleIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-        <span className="text-sm font-medium transition-colors duration-200">Wyloguj się</span>
+        <div className="absolute left-0 top-0 h-full w-[2px] bg-red-500 scale-y-0 group-hover:scale-y-100 transition-transform duration-200" />
+
+        <ArrowRightEndOnRectangleIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+
+        <span className="text-xs font-black uppercase tracking-widest">
+          Wyloguj
+        </span>
       </button>
 
       <ModalMessage
         isOpen={showLogoutModal}
-        title="Wylogowanie"
-        message="Czy na pewno chcesz się wylogować z konta?"
-        confirmText="Wyloguj się"
+        title="Zakończenie sesji"
+        message="Czy na pewno chcesz zakończyć sesję użytkownika?"
+        confirmText="Wyloguj"
         cancelText="Anuluj"
         onCancel={() => setShowLogoutModal(false)}
         onConfirm={() => {

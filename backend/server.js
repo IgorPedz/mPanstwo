@@ -2,6 +2,9 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const http = require("http");
+
+const { initSocket } = require("./socket/socket");
 
 const authRoutes = require("./routes/authRoutes");
 const tileRoutes = require("./routes/tileRoutes");
@@ -9,8 +12,11 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const surveyRoutes = require("./routes/surveyRoutes");
 const errorHandler = require("./middleware/errorHandler");
-
+const testRoutes = require("./routes/testRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
+const unreadNotificationRouts = require("./routes/unreadNotificationRoutes")
 const app = express();
+const server = http.createServer(app);
 
 app.use(express.json());
 app.use(cors());
@@ -21,9 +27,15 @@ app.use(tileRoutes);
 app.use(dashboardRoutes);
 app.use(profileRoutes);
 app.use(surveyRoutes);
+app.use(notificationRoutes);
+app.use(testRoutes);
+app.use(unreadNotificationRouts)
 app.use(errorHandler);
 
+initSocket(server);
+
 const port = process.env.PORT || 4000;
-app.listen(port, () => {
+
+server.listen(port, () => {
   console.log(`Serwer działa na porcie ${port}`);
 });

@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  CheckCircleIcon,
-  XMarkIcon,
-  InformationCircleIcon,
-  ExclamationCircleIcon,
-} from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import NOTIFICATION_MAP from "../../Utils/Maps/Info";
 
 export default function InfoMessage({
   message,
@@ -15,29 +11,7 @@ export default function InfoMessage({
 }) {
   const [show, setShow] = useState(false);
 
-  const config = {
-    success: { 
-      base: "bg-emerald-50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-400", 
-      accent: "bg-emerald-500",
-      Icon: CheckCircleIcon 
-    },
-    error: { 
-      base: "bg-red-50 dark:bg-red-500/10 border-red-200 dark:border-red-500/20 text-red-700 dark:text-red-400", 
-      accent: "bg-red-500",
-      Icon: XMarkIcon 
-    },
-    info: { 
-      base: "bg-blue-50 dark:bg-blue-500/10 border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-400", 
-      accent: "bg-blue-500",
-      Icon: InformationCircleIcon 
-    },
-    warning: { 
-      base: "bg-amber-50 dark:bg-amber-500/10 border-amber-200 dark:border-amber-500/20 text-amber-700 dark:text-amber-400", 
-      accent: "bg-amber-500",
-      Icon: ExclamationCircleIcon 
-    },
-  }[type] || config.info;
-
+  const config = NOTIFICATION_MAP[type] || NOTIFICATION_MAP.info;
   const { base, accent, Icon } = config;
 
   useEffect(() => {
@@ -69,7 +43,8 @@ export default function InfoMessage({
               backdrop-blur-xl ${base}
             `}
           >
-            <motion.div 
+            {/* progress bar */}
+            <motion.div
               initial={{ width: "100%" }}
               animate={{ width: "0%" }}
               transition={{ duration: duration / 1000, ease: "linear" }}
@@ -77,15 +52,16 @@ export default function InfoMessage({
             />
 
             <div className="flex items-center gap-3">
-              <div className={`p-2 rounded-xl bg-white dark:bg-black/20 shadow-sm`}>
+              <div className="p-2 rounded-xl bg-white dark:bg-black/20 shadow-sm">
                 <Icon className="h-5 w-5" />
               </div>
-              <div className="flex flex-col">
-                <span className="text-sm font-bold tracking-tight">{message}</span>
-              </div>
+
+              <span className="text-sm font-bold tracking-tight">
+                {message}
+              </span>
             </div>
 
-            <button 
+            <button
               onClick={() => setShow(false)}
               className="p-1.5 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer"
             >

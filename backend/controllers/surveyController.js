@@ -1,5 +1,7 @@
 const db = require("../db");
+const sendNotification = require("../utils/notification");
 
+// 🔥 GET ALL SURVEYS
 const getSurveys = async (req, res) => {
   try {
     const userId = req.query.userId;
@@ -9,7 +11,7 @@ const getSurveys = async (req, res) => {
     const [answers] = userId
       ? await db.query(
           "SELECT survey_id FROM survey_answers WHERE user_id = ?",
-          [userId],
+          [userId]
         )
       : [[]];
 
@@ -19,14 +21,14 @@ const getSurveys = async (req, res) => {
       surveys.map(async (survey) => {
         const [questions] = await db.query(
           "SELECT * FROM questions WHERE survey_id = ?",
-          [survey.id],
+          [survey.id]
         );
 
         const withOptions = await Promise.all(
           questions.map(async (q) => {
             const [options] = await db.query(
               "SELECT label, value FROM options WHERE question_id = ?",
-              [q.id],
+              [q.id]
             );
 
             return {
@@ -34,7 +36,7 @@ const getSurveys = async (req, res) => {
               title: q.title,
               options,
             };
-          }),
+          })
         );
 
         return {
@@ -42,12 +44,12 @@ const getSurveys = async (req, res) => {
           questions: withOptions,
           answered: answeredIds.has(survey.id),
         };
-      }),
+      })
     );
 
     res.json(full);
   } catch (err) {
-    console.error(err);
+    console.error("GET SURVEYS ERROR:", err);
     res.status(500).json({ error: "Failed to fetch surveys" });
   }
 };
@@ -55,7 +57,7 @@ const getSurveys = async (req, res) => {
 const submitSurvey = async (req, res) => {
   try {
     const surveyId = req.params.id;
-    const { answers, userId = null } = req.body;
+    const { answers = {}, userId = null } = req.body;
 
     if (!answers) {
       return res.status(400).json({ error: "No answers provided" });
@@ -64,19 +66,26 @@ const submitSurvey = async (req, res) => {
     await db.query(
       `INSERT INTO survey_answers (survey_id, user_id, answers)
        VALUES (?, ?, ?)`,
-      [surveyId, userId, JSON.stringify(answers)],
+      [surveyId, userId, JSON.stringify(answers)]
     );
 
-    res.json({
+    await sendNotification({
+      type: "SURVEY_COMPLETED",
+      message: "+50 XP za ukończenie ankiety",
+      userId,
+    });
+
+    return res.json({
       success: true,
       message: "Survey saved",
     });
   } catch (err) {
-    console.error("SUBMIT ERROR:", err);
-    res.status(500).json({ error: err.message });
+    console.error("SUBMIT SURVEY ERROR:", err);
+    return res.status(500).json({ error: err.message });
   }
 };
 
+// 🔥 COMPLETED SURVEYS
 const getCompletedSurveys = async (req, res) => {
   try {
     const userId = req.query.userId;
@@ -96,7 +105,7 @@ const getCompletedSurveys = async (req, res) => {
       WHERE sa.user_id = ?
       ORDER BY sa.created_at DESC
       `,
-      [userId],
+      [userId]
     );
 
     const [questions] = await db.query(
@@ -110,7 +119,7 @@ const getCompletedSurveys = async (req, res) => {
       )
       ORDER BY id ASC
       `,
-      [userId],
+      [userId]
     );
 
     const groupedQuestions = questions.reduce((acc, q) => {
@@ -121,17 +130,13 @@ const getCompletedSurveys = async (req, res) => {
 
     const parsed = surveys.map((survey) => ({
       ...survey,
-
       answers: survey.answers ? JSON.parse(survey.answers) : {},
-
-      // 🔥 NOWE: pytania przypisane do ankiety
       questions: groupedQuestions[survey.id] || [],
     }));
 
     res.json(parsed);
   } catch (err) {
-    console.error(err);
-
+    console.error("GET COMPLETED SURVEYS ERROR:", err);
     res.status(500).json({
       error: "Failed to fetch completed surveys",
     });

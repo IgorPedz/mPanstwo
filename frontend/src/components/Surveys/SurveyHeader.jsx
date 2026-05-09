@@ -1,4 +1,4 @@
-const SurveyHeader = ({ totalRewards, isArchive }) => (
+const SurveyHeader = ({ totalRewards, isArchive, isExpired }) => (
   <header className="flex justify-between items-end border-b border-slate-200 dark:border-slate-800 pb-6 color-transition">
     <div>
       <p className="text-[11px] font-black uppercase tracking-[0.4em] text-indigo-500 color-transition">
@@ -15,8 +15,8 @@ const SurveyHeader = ({ totalRewards, isArchive }) => (
         Bierz udział w ankietach i zdobywaj nagrody za swoje opinie!
       </p>
     </div>
-    
-    {!isArchive && (
+
+    {!isArchive && !isExpired && (
       <div className="text-right hidden md:block">
         <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] color-transition">
           Dostępne nagrody: {totalRewards} XP

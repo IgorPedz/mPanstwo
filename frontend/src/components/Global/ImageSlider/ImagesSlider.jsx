@@ -18,8 +18,7 @@ export default function ImageSlider({
   }, [autoPlay, interval, slides.length]);
 
   const activeSlide = slides[current];
-  console.log(slides);
-  console.log(activeSlide);
+
   return (
     <div className="relative w-full h-full overflow-hidden bg-slate-900">
       <AnimatePresence mode="popLayout">
