@@ -1,78 +1,116 @@
 import { motion } from "framer-motion";
 import ICON_MAP from "../../../Utils/Maps/Icons";
-import { containerVariants, itemVariants, floatingVariants, pulseVariants } from "../../../Utils/Animations";
+import { containerVariants, itemVariants } from "../../../Utils/Animations";
 
 export default function EmptyDashboard({ setShowAddMenu }) {
   const SparklesIcon = ICON_MAP["sparkles"];
   const RocketIcon = ICON_MAP["rocket"];
   const HeartIcon = ICON_MAP["heart"];
 
-  const SafeSparklesIcon = SparklesIcon 
-  const SafeRocketIcon = RocketIcon 
-  const SafeHeartIcon = HeartIcon 
-
   return (
     <motion.div
-      className="flex flex-col items-center justify-center min-h-[600px] relative overflow-hidden"
+      className="
+        flex flex-col items-center justify-center
+        min-h-[100dvh] w-full
+        /* Kluczowe: Ukrywamy suwaki na poziomie kontenera */
+        overflow-hidden fixed inset-0
+        color-transition
+      "
       variants={containerVariants}
       initial="hidden"
       animate="show"
     >
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-200 dark:bg-cyan-900/30 rounded-full blur-3xl opacity-20 dark:opacity-10" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-violet-200 dark:bg-violet-900/30 rounded-full blur-3xl opacity-20 dark:opacity-10" />
-      </motion.div>
-
-      <div className="relative z-10 text-center max-w-2xl px-4 mt-10">
-        <motion.div className="mb-8 inline-block relative" variants={itemVariants}>
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-violet-400 rounded-full blur-lg opacity-75"
-            variants={pulseVariants}
-            animate="animate"
+      {/* NOWY DYNAMICZNY BACKGROUND */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0">
+        {/* Efekt Gradientu Mesh */}
+        <div className="absolute inset-0 opacity-40 dark:opacity-20 color-transition">
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-200/50 dark:bg-indigo-600/20 blur-[120px] animate-pulse" />
+          <div
+            className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-200/50 dark:bg-blue-600/20 blur-[120px] animate-pulse"
+            style={{ animationDelay: "2s" }}
           />
-          <div className="relative bg-gradient-to-br from-cyan-500 to-violet-600 p-8 rounded-full shadow-2xl">
-            <motion.div animate="animate" variants={floatingVariants}>
-              <SafeSparklesIcon className="h-16 w-16 text-white" />
-            </motion.div>
-          </div>
+        </div>
+      </div>
+
+      <div className="relative z-10 text-center max-w-3xl px-6">
+        {/* MAIN ICON */}
+        <motion.div className="mb-10 inline-block" variants={itemVariants}>
+          <motion.div
+            className="
+              relative w-24 h-24
+              flex items-center justify-center
+              rounded-[2rem]
+              bg-slate-900 dark:bg-white
+              text-white dark:text-slate-900
+              shadow-2xl shadow-indigo-500/20
+              color-transition
+            "
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <SparklesIcon className="h-10 w-10" />
+            {/* Delikatna poświata pod ikoną */}
+            <div className="absolute inset-0 rounded-[2rem] bg-indigo-500/20 blur-xl -z-10" />
+          </motion.div>
         </motion.div>
 
-        <motion.h2
-          className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-500 via-violet-500 to-cyan-500 dark:from-cyan-400 dark:via-violet-400 dark:to-cyan-400 bg-clip-text text-transparent mb-4"
-          variants={itemVariants}
-        >
-          Witaj na swoim dashboardzie!
-        </motion.h2>
+        {/* TYPOGRAPHY */}
+        <div className="space-y-4 mb-12">
+          <motion.h2
+            className="
+              text-5xl md:text-6xl
+              font-black tracking-tight
+              text-slate-900 dark:text-white
+              color-transition
+            "
+            variants={itemVariants}
+          >
+            Zaprojektuj swój <span className="text-indigo-500">workflow</span>
+          </motion.h2>
 
-        <motion.p
-          className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
-          variants={itemVariants}
-        >
-          Twój dashboard jest pusty. Czas go wypełnić! Dodaj moduły, które będą dla Ciebie przydatne i stwórz idealny pulpit kontrolny.
-        </motion.p>
+          <motion.p
+            className="
+              text-lg md:text-xl
+              max-w-xl mx-auto
+              text-slate-500 dark:text-slate-400
+              leading-relaxed
+              color-transition
+            "
+            variants={itemVariants}
+          >
+            Twój dashboard to czysta karta. Dodaj pierwsze narzędzia, aby zacząć
+            budować swoją przestrzeń.
+          </motion.p>
+        </div>
 
+        {/* FEATURES GRID */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16"
           variants={containerVariants}
         >
           {[
-            { icon: SafeRocketIcon, text: "Szybki dostęp" },
-            { icon: SafeSparklesIcon, text: "Personalizacja" },
-            { icon: SafeHeartIcon, text: "Ulubione" },
+            { icon: RocketIcon, text: "Szybki start" },
+            { icon: SparklesIcon, text: "Customizacja" },
+            { icon: HeartIcon, text: "Ulubione" },
           ].map((feature, idx) => (
             <motion.div
               key={idx}
-              className="color-transition bg-white dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="
+                group p-8
+                rounded-[2.5rem]
+                border border-slate-200/50 dark:border-slate-800/50
+                bg-white/40 dark:bg-slate-900/40
+                backdrop-blur-md
+                hover:bg-white dark:hover:bg-slate-800/60
+                cursor-pointer
+                transition-all duration-500
+                color-transition
+              "
               variants={itemVariants}
-              whileHover={{ scale: 1.05, y: -5 }}
+              whileHover={{ y: -5, scale: 1.02 }}
             >
-              <feature.icon className="h-8 w-8 text-cyan-500 dark:text-cyan-400 mx-auto mb-2" />
-              <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
+              <feature.icon className="h-8 w-8 text-indigo-600 dark:text-indigo-400 mx-auto mb-4 transition-transform group-hover:scale-110" />
+              <p className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-700 dark:text-slate-300">
                 {feature.text}
               </p>
             </motion.div>
@@ -81,46 +119,33 @@ export default function EmptyDashboard({ setShowAddMenu }) {
 
         <motion.button
           onClick={() => setShowAddMenu(true)}
-          className="cursor-pointer relative px-10 py-4 font-semibold text-lg text-white rounded-xl overflow-hidden group"
+          className="
+            relative group
+            px-14 py-7
+            rounded-2xl
+            bg-slate-900 dark:bg-white
+            text-white dark:text-slate-900
+            font-black text-[13px] uppercase tracking-[0.2em]
+            shadow-[0_20px_50px_rgba(0,0,0,0.2)]
+            dark:shadow-[0_20px_50px_rgba(255,255,255,0.05)]
+            cursor-pointer
+            transition-all duration-300
+            hover:scale-105 active:scale-95
+            color-transition
+          "
           variants={itemVariants}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-violet-500 to-cyan-500 dark:from-cyan-600 dark:via-violet-600 dark:to-cyan-600" />
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-violet-600 to-cyan-600 dark:from-cyan-700 dark:via-violet-700 dark:to-cyan-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0"
-            initial={{ x: "-100%" }}
-            whileHover={{ x: "100%", opacity: 0.3 }}
-            transition={{ duration: 0.5 }}
-          />
-
-          <span className="relative flex items-center justify-center gap-2">
-            Dodaj pierwszy moduł
-            <motion.svg
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </motion.svg>
+          <span className="relative z-10 flex items-center gap-2">
+            Stwórz Dashboard <RocketIcon className="h-4 w-4" />
           </span>
+          <div className="absolute inset-0 bg-indigo-500 opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500 rounded-2xl" />
         </motion.button>
 
         <motion.p
-          className="mt-8 text-sm text-gray-500 dark:text-gray-400"
+          className="mt-16 text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 opacity-50 color-transition"
           variants={itemVariants}
         >
-          Możesz zawsze zmienić lub usunąć moduły później
+          mPaństwo • v1.0.4
         </motion.p>
       </div>
     </motion.div>

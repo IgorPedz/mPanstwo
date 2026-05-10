@@ -9,21 +9,46 @@ const getProfile = async (req, res, next) => {
       return res.status(400).json({ message: "Nieprawidłowy użytkownik" });
     }
 
-    const [rows] = await db.query(
+    // USER
+    const [userRows] = await db.query(
       "SELECT id, name, email, created_at FROM users WHERE id = ?",
       [userId]
     );
 
-    if (rows.length === 0) {
+    if (userRows.length === 0) {
       return res.status(404).json({ message: "Użytkownik nie znaleziony" });
     }
 
-    const user = rows[0];
+    const user = userRows[0];
+
+    // STATS
+    const [statsRows] = await db.query(
+      `SELECT 
+        title,
+        value_number,
+        value_text,
+        icon,
+        color
+       FROM profile_stats
+       WHERE user_id = ?
+       ORDER BY id ASC`,
+      [userId]
+    );
+
+    // RESPONSE
     res.json({
       id: user.id,
       name: user.name,
       email: user.email,
       createdAt: user.created_at,
+
+      stats: statsRows.map((s) => ({
+        title: s.title,
+        valueNumber: s.value_number,
+        valueText: s.value_text,
+        icon: s.icon,
+        color: s.color,
+      })),
     });
   } catch (error) {
     next(error);
@@ -167,6 +192,7 @@ const deleteAccount = async (req, res, next) => {
     next(error);
   }
 };
+
 
 module.exports = {
   getProfile,

@@ -9,7 +9,7 @@ import InfoMessage from "../../components/Global/InfoMessage";
 import ActiveSurveysSubPage from "../../components/Surveys/SubPages/ActiveSubPage";
 import ArchiveSurveysSubPage from "../../components/Surveys/SubPages/ArchiveSubPage";
 import ExpiredSurveysSubPage from "../../components/Surveys/SubPages/ExpiredSubPage";
-
+import SurveyTab from "../../components/Surveys/SurveyTab"
 import useSurveysQuestions from "../../Hooks/useSurveysQuestions";
 import useCompletedSurveys from "../../Hooks/useCompletedServeys";
 
@@ -103,22 +103,7 @@ export default function SurveyBoxPage() {
             isExpired={tab === "expired"}
           />
 
-          <div className="flex items-center gap-3">
-            {["active", "expired", "archive"].map((t) => (
-              <button
-                key={t}
-                onClick={() => setTab(t)}
-                className={`color-transition px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest cursor-pointer transition-all ${
-                  tab === t
-                    ? "bg-blue-600 text-white shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] translate-x-[-2px] translate-y-[-2px]"
-                    : "bg-slate-200 dark:bg-slate-800 text-slate-500 hover:bg-slate-300 dark:hover:bg-slate-700"
-                }`}
-              >
-                {labels[t]}
-              </button>
-            ))}
-          </div>
-
+          <SurveyTab labels={labels} tab={tab} setTab={setTab}/>
           <div className="min-h-[400px]">
             {tab === "active" && (
               <ActiveSurveysSubPage

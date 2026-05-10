@@ -35,12 +35,11 @@ export default function ChangeFonts() {
 
   return (
     <div className="flex items-center justify-between w-full">
-      <span className="text-sm font-medium">Czcionka</span>
 
       <select
         value={fontSize}
         onChange={(e) => handleChange(e.target.value)}
-        className="cursor-pointer px-3 py-2 text-xs font-bold uppercase tracking-widest
+        className="color-transition cursor-pointer px-3 py-2 text-xs font-bold uppercase tracking-widest
                    bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700
                    text-slate-700 dark:text-slate-200"
       >

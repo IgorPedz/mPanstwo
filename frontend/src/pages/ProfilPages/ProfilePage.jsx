@@ -7,25 +7,47 @@ import ProfileStatsGrid from "../../components/Profile/ProfileStatsGrid";
 import ProfileSettingsGrid from "../../components/Profile/ProfileSettingsGrid";
 import ProfileHeader from "../../components/Profile/ProfileHeader";
 
-import { stats } from "../../components/Profile/ProfileData";
 import { containerVariants } from "../../Utils/Animations";
 
 export default function ProfilePage() {
   const { user: authUser } = useUser();
-  const { profile, updateProfile, changeEmail, changePassword, deleteAccount } =
-    useProfile(authUser?.id);
 
+  const userId = authUser?.id;
+
+  const {
+    profile,
+    loading,
+    updateProfile,
+    changeEmail,
+    changePassword,
+    deleteAccount,
+  } = useProfile(userId);
+
+  if (!userId || loading) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center text-slate-400 color-transition">
+        Ładowanie profilu...
+      </div>
+    );
+  }
   return (
-    <motion.div 
+    <motion.div
       className="w-full min-h-screen py-8 px-4 md:px-8 color-transition"
-      initial="hidden" animate="show" variants={containerVariants}
+      initial="hidden"
+      animate="show"
+      variants={containerVariants}
     >
       <div className="max-w-[1800px] mx-auto">
-        
-        <ProfileHeader />
-        <ProfileHero profile={profile} authUser={authUser} />
 
-        <ProfileStatsGrid stats={stats} />
+        <ProfileHeader />
+
+        <ProfileHero
+          profile={profile || {}}
+          authUser={authUser}
+        />
+
+        {/* 🔥 SAFE STATS */}
+        <ProfileStatsGrid stats={profile?.stats || []} />
 
         <header className="flex justify-between items-end border-b border-slate-200 dark:border-slate-800 pb-6 mb-8 color-transition">
           <div>
@@ -38,8 +60,8 @@ export default function ProfilePage() {
           </div>
         </header>
 
-        <ProfileSettingsGrid 
-          profile={profile}
+        <ProfileSettingsGrid
+          profile={profile || {}}
           updateProfile={updateProfile}
           changeEmail={changeEmail}
           changePassword={changePassword}
@@ -49,4 +71,4 @@ export default function ProfilePage() {
       </div>
     </motion.div>
   );
-}
+} 

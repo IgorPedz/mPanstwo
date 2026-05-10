@@ -1,5 +1,5 @@
 const express = require("express");
-const { getProfile, updateProfile, changeEmail, changePassword, deleteAccount } = require("../controllers/profileController");
+const { getProfile, updateProfile, changeEmail, changePassword, deleteAccount} = require("../controllers/profileController");
 
 const router = express.Router();
 router.get("/profile/:userId", getProfile);

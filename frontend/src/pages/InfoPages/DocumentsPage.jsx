@@ -47,9 +47,8 @@ export default function DocumentsPage() {
           variants={sectionVariants}
           className="w-full color-transition justify-center flex"
         >
-          <Loginfooter />
+          {!isLoggedIn && <Loginfooter />}
         </motion.div>
-
       </div>
     </motion.div>
   );
