@@ -18,7 +18,6 @@ export default function useUnreadNotifications(userId) {
         },
       );
 
-      // 🔥 INIT ONLY — nie w trakcie działania socketów
       setNotifications(res.data);
     } catch (err) {
       console.error("❌ [HOOK] Axios error:", err.message);

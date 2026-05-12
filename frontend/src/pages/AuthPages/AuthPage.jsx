@@ -37,7 +37,7 @@ export default function AuthPage() {
 
   return (
     <m.div
-      className="transition-colors relative min-h-screen w-full grid lg:grid-cols-2 color-transition overflow-hidden"
+      className="transition-colors relative h-[100vh] w-full grid lg:grid-cols-2 color-transition overflow-hidden "
       initial={{ opacity: 0 }}
       animate={{ opacity: isLeaving ? 0 : 1 }}
       transition={{ duration: 0.4 }}
@@ -47,9 +47,9 @@ export default function AuthPage() {
           <div className="mb-10">
             <h1 className="transition-colors text-6xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter leading-none tracking-tighter">
               {isLogin ? "LOGOWANIE" : "REJESTRACJA"}
-            </h1>
+            </h1> 
 
-            <p className="transition-colorstext-[12px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+            <p className="transition-colors text-[12px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
               {isLogin
                 ? "Masz konto? Zaloguj się"
                 : "Nie masz konta? Zarejestruj się"}
@@ -73,7 +73,7 @@ export default function AuthPage() {
             )}
           </AnimatePresence>
 
-          <div className="mt-2 relative min-h-[450px]">
+          <div className="mt-2 relative min-h-fit">
             <AnimatePresence mode="wait">
               <m.div
                 key={isLogin ? "login" : "register"}
@@ -106,12 +106,12 @@ export default function AuthPage() {
           </div>
         </div>
 
-        <div className="transition-colors mt-auto pt-10 w-full max-w-md border-t border-slate-100 dark:border-slate-900">
+        <div className="transition-colors pt-10 w-full max-w-md border-t border-slate-100 dark:border-slate-900">
           <LoginFooter />
         </div>
       </div>
        
-      <div className="transition-colors hidden lg:block relative w-full h-full border-l-4 border-slate-900 dark:border-slate-800">
+      <div className="transition-colors hidden lg:block relative border-l-4 border-slate-900 dark:border-slate-800">
         <ImageSlider slides={slides} interval={6000} />
 
       </div>

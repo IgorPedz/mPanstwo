@@ -1,7 +1,6 @@
 const db = require("../db");
 const sendNotification = require("../utils/notification");
 
-// 🔥 GET ALL SURVEYS
 const getSurveys = async (req, res) => {
   try {
     const userId = req.query.userId;
@@ -85,7 +84,6 @@ const submitSurvey = async (req, res) => {
   }
 };
 
-// 🔥 COMPLETED SURVEYS
 const getCompletedSurveys = async (req, res) => {
   try {
     const userId = req.query.userId;

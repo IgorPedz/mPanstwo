@@ -1,20 +1,36 @@
+import { useState } from "react";
 import { useModalFlow } from "../../../hooks/useModalFlow";
 import ChangeNameFlow from "../flow/ChangeNameFlow";
 import ModalFlow from "../../Global/Modals/ModalFlow";
+import InfoMessage from "../../Global/InfoMessage"
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
 
 export default function ChangeNameCard({ updateProfile }) {
   const UserIcon = ICON_MAP["user"] || ICON_MAP["star"];
   const flow = useModalFlow(ChangeNameFlow);
-  
+  const [infoMessage, setInfoMessage] = useState("");
+  const [infoType, setInfoType] = useState("success");
+
   const gradientClasses = ACCENT_MAP["indigo"] || "from-indigo-700 to-indigo-500";
 
   const handleSubmit = async (data) => {
     if (!data.name?.trim()) {
-      return { success: false, message: "Imię jest wymagane" };
+      setInfoType("error");
+      setInfoMessage("Imie zostało zmienione");
+      return { success: false };
     }
+
     const res = await updateProfile(data.name);
+
+    if (res?.success) {
+      setInfoType("success");
+      setInfoMessage("IMIĘ ZOSTAŁO ZMIENIONE");
+    } else {
+      setInfoType("error");
+      setInfoMessage(res?.message || "BŁĄD ZMIANY IMIENIA");
+    }
+
     return res;
   };
 
@@ -35,7 +51,7 @@ export default function ChangeNameCard({ updateProfile }) {
 
         <div className="relative z-10 flex flex-col h-full justify-between">
           <div className="flex justify-between items-start mb-6">
-            
+
             <div className={`
               p-4 rounded-2xl transition-all duration-500 color-transition
               bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white
@@ -44,9 +60,9 @@ export default function ChangeNameCard({ updateProfile }) {
             `}>
               <UserIcon className="h-6 w-6" />
             </div>
-            
+
             <div className="text-slate-300 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all duration-300">
-               <span className="text-2xl font-light">→</span>
+              <span className="text-2xl font-light">→</span>
             </div>
           </div>
 
@@ -74,6 +90,14 @@ export default function ChangeNameCard({ updateProfile }) {
         hook={flow}
         onSubmit={handleSubmit}
       />
+
+      {infoMessage && (
+        <InfoMessage
+          message={infoMessage}
+          type={infoType}
+          onClose={() => setInfoMessage("")}
+        />
+      )}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
 import useNoScroll from "../../../Hooks/useNoScroll";
@@ -17,16 +17,44 @@ export default function ModalForm({
 }) {
   useNoScroll(isOpen);
 
-  const [formData, setFormData] = useState(() =>
-    fields.reduce((acc, f) => ({ ...acc, [f.name]: f.defaultValue || "" }), {}),
-  );
+  const createInitialState = () => {
+    const state = {};
+    fields.forEach((f) => {
+      state[f.name] = f.defaultValue || "";
+    });
+    return state;
+  };
+
+  const [formData, setFormData] = useState({});
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (isOpen) {
+      setFormData(createInitialState());
+      setErrors({});
+    }
+  }, [isOpen]);
 
   const handleChange = (name, value) => {
     setFormData((p) => ({ ...p, [name]: value }));
+    setErrors((p) => ({ ...p, [name]: null }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const validate = () => {
+    const newErrors = {};
+
+    fields.forEach((f) => {
+      if (!formData[f.name]?.trim()) {
+        newErrors[f.name] = `${(f.label || f.name).toUpperCase()} JEST WYMAGANE`;
+      }
+    });
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleClick = async () => {
+    if (!validate()) return;
     await onSubmit(formData);
   };
 
@@ -36,155 +64,179 @@ export default function ModalForm({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[9999] flex items-center justify-center px-4"
+          className="
+            fixed inset-0 z-[9999]
+            flex items-center justify-center px-4
+            pointer-events-none
+          "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-
           <motion.div
             onClick={onClose}
-            className="absolute inset-0 bg-slate-950/60 backdrop-blur-xl cursor-pointer"
+            className="
+              absolute inset-0
+              bg-black/60 dark:bg-black/70
+              backdrop-blur-xl
+              pointer-events-auto
+            "
           />
 
           <motion.div
             onClick={(e) => e.stopPropagation()}
-            initial={{ scale: 0.9, y: 40, opacity: 0 }}
+            initial={{ scale: 0.95, y: 30, opacity: 0 }}
             animate={{ scale: 1, y: 0, opacity: 1 }}
-            exit={{ scale: 0.9, y: 40, opacity: 0 }}
+            exit={{ scale: 0.95, y: 30, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="
               relative w-full max-w-md
-              rounded-[2.5rem] overflow-hidden
+              rounded-3xl
+              overflow-hidden
               border border-slate-200 dark:border-slate-800
               bg-white dark:bg-slate-900
-              shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)]
-              cursor-default
+              shadow-2xl
+              pointer-events-auto
+              transition-colors duration-300
             "
           >
 
             <div className="h-1.5 w-full bg-gradient-to-r from-violet-500 via-indigo-500 to-cyan-500" />
 
             <div className="px-8 pt-8 pb-6">
-              <div className="flex items-center justify-between mb-8">
+
+              <div className="flex items-start justify-between mb-8">
                 <div>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">
-                    Konfiguracja Systemu
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
+                    Konfiguracja
                   </p>
-                  <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">
+                  <h2 className="text-3xl font-black text-slate-900 dark:text-white">
                     {title}
                   </h2>
                 </div>
 
                 <button
+                  type="button"
                   onClick={onClose}
-                  className="
-                    p-3 rounded-2xl
-                    text-slate-400 hover:text-red-900 dark:hover:text-red
-                    bg-slate-50 dark:bg-slate-800
-                    hover:scale-110 active:scale-95
+                  className="cursor-pointer
+                    group p-3 rounded-2xl
+                    bg-slate-100 dark:bg-slate-800
+                    hover:bg-red-500/10
                     transition-all duration-200
-                    cursor-pointer 
+                    active:scale-95
                   "
                 >
-                  ✕
+                  <svg
+                    className="
+                      w-5 h-5
+                      text-slate-500 dark:text-slate-300
+                      group-hover:text-red-500
+                      transition-colors duration-200
+                    "
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
                 </button>
               </div>
 
               {customContent ? (
-                <div className="mb-6">{customContent}</div>
+                <div>{customContent}</div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-3">
-                    {fields.map((f) => (
-                      <div key={f.name}>
-                        <input
-                          type={f.type || "text"}
-                          value={formData[f.name]}
-                          onChange={(e) => handleChange(f.name, e.target.value)}
-                          placeholder={f.placeholder}
-                          className="
-                            w-full px-6 py-4
-                            rounded-2xl
-                            bg-slate-50 dark:bg-slate-800/50
-                            border border-slate-100 dark:border-slate-800
-                            text-slate-900 dark:text-white
-                            placeholder-slate-400
-                            outline-none
-                            focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500
-                            transition-all duration-300
-                            cursor-text
-                          "
-                        />
-                      </div>
-                    ))}
-                  </div>
+                <div className="space-y-5">
+                  {fields.map((f) => (
+                    <div key={f.name} className="space-y-1">
+                      <input
+                        type={f.type || "text"}
+                        value={formData[f.name] || ""}
+                        onChange={(e) =>
+                          handleChange(f.name, e.target.value)
+                        }
+                        placeholder={f.placeholder}
+                        className={`
+                          w-full px-5 py-4
+                          rounded-2xl
+                          bg-slate-50 dark:bg-slate-800/50
+                          border
+                          text-slate-900 dark:text-white
+                          outline-none
+                          transition-all duration-300
+                          focus:ring-4 focus:ring-indigo-500/10
+                          focus:border-indigo-500
+                          ${
+                            errors[f.name]
+                              ? "border-red-500"
+                              : "border-slate-200 dark:border-slate-800"
+                          }
+                        `}
+                      />
+
+                      {errors[f.name] && (
+                        <p className="text-[11px] font-black tracking-widest text-red-500">
+                          {errors[f.name]}
+                        </p>
+                      )}
+                    </div>
+                  ))}
 
                   {status && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      className={`
-                        p-4 rounded-2xl text-sm font-bold tracking-tight
-                        ${
-                          status.type === "error"
-                            ? "bg-red-500/10 text-red-500 border border-red-500/20"
-                            : "bg-emerald-500/10 text-emerald-500 border border-emerald-500/20"
-                        }
-                      `}
+                    <p
+                      className={`text-xs font-black tracking-widest ${
+                        status.type === "error"
+                          ? "text-red-500"
+                          : "text-emerald-500"
+                      }`}
                     >
-                      {status.message}
-                    </motion.div>
+                      {status.message.toUpperCase()}
+                    </p>
                   )}
 
                   <div className="flex gap-3 pt-4">
                     <button
                       type="button"
                       onClick={onClose}
-                      className="
+                      className="cursor-pointer
                         flex-[0.8] py-4 rounded-2xl
                         bg-slate-100 dark:bg-slate-800
-                        hover:bg-red-200 dark:hover:bg-red-400
                         text-slate-600 dark:text-slate-300 font-bold
+                        hover:bg-slate-200 dark:hover:bg-slate-700
                         transition-all duration-200
-                        cursor-pointer
                       "
                     >
                       {cancelText}
                     </button>
 
                     <button
-                      type="submit"
+                      type="button"
+                      onClick={handleClick}
                       disabled={loading}
-                      className="
+                      className="cursor-pointer
                         flex-1 py-4 rounded-2xl
                         bg-slate-900 dark:bg-white
                         text-white dark:text-slate-900 font-black
-                        shadow-xl shadow-slate-900/10 dark:shadow-white/5
-                        hover:scale-[1.02] active:scale-[0.98]
+                        hover:scale-[1.02]
+                        active:scale-[0.98]
                         transition-all duration-200
-                        cursor-pointer
                         disabled:opacity-50
                       "
                     >
-                      {loading ? (
-                        <div className="flex items-center justify-center gap-2">
-                          <div className="w-2 h-2 bg-current rounded-full animate-bounce" />
-                          <div className="w-2 h-2 bg-current rounded-full animate-bounce [animation-delay:-.15s]" />
-                          <div className="w-2 h-2 bg-current rounded-full animate-bounce [animation-delay:-.3s]" />
-                        </div>
-                      ) : (
-                        submitText
-                      )}
+                      {loading ? "ŁADOWANIE..." : submitText}
                     </button>
                   </div>
-                </form>
+                </div>
               )}
             </div>
           </motion.div>
         </motion.div>
       )}
     </AnimatePresence>,
-    document.body,
+    document.body
   );
 }

@@ -54,6 +54,7 @@ const ChangeNameFlow = {
       fields: [
         {
           name: "name",
+          label:"Imię",
           type: "text",
           placeholder: "Twoje imię i nazwisko",
           defaultValue: "",

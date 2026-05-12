@@ -46,7 +46,6 @@ export default function ProfilePage() {
           authUser={authUser}
         />
 
-        {/* 🔥 SAFE STATS */}
         <ProfileStatsGrid stats={profile?.stats || []} />
 
         <header className="flex justify-between items-end border-b border-slate-200 dark:border-slate-800 pb-6 mb-8 color-transition">

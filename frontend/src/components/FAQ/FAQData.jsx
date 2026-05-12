@@ -7,12 +7,12 @@ export const faqData = [
     {
         category: "Konto",
         question: "Czy mogę zmienić swoje dane profilowe?",
-        answer: "Tak, wszystkie dane możesz edytować w zakładce 'Mój Profil'."
+        answer: "Tak, wszystkie dane możesz edytować w zakładce „Mój Profil”."
     },
     {
         category: "Konto",
         question: "Jak usunąć konto?",
-        answer: "Opcja usunięcia konta znajduje się w ustawieniach bezpieczeństwa."
+        answer: "Opcja usunięcia konta znajduje się w ustawieniach bezpieczeństwa w zakładce „Mój Profil”."
     },
     {
         category: "Bezpieczeństwo",
@@ -47,12 +47,12 @@ export const faqData = [
     {
         category: "Kontakt",
         question: "Jak zgłosić problem techniczny?",
-        answer: "Problemy techniczne zgłaszaj przez formularz wsparcia w sekcji kontakt."
+        answer: "Problemy techniczne zgłaszaj przez zakładkę „Kontakt”."
     },
     {
         category: "Regulamin",
         question: "Gdzie znajdę regulamin platformy?",
-        answer: "Regulamin dostępny jest w stopce strony w sekcji „Regulamin”."
+        answer: "Regulamin dostępny jest w zakładce „Dokumenty” pod nazwą „Regulamin Platformy”."
     },
     {
         category: "Regulamin",

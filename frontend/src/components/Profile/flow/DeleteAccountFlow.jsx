@@ -49,6 +49,7 @@ const DeleteAccountFlow = {
     2: {
       fields: [
         {
+          label: "Hasło",
           name: "password",
           type: "password",
           placeholder: "Hasło",

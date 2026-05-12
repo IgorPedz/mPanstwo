@@ -1,28 +1,43 @@
+import { useState } from "react";
 import { useModalFlow } from "../../../hooks/useModalFlow";
 import ModalFlow from "../../Global/Modals/ModalFlow";
 import ChangePasswordFlow from "../flow/ChangePasswordFlow";
+import InfoMessage from "../../Global/InfoMessage";
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
 
 export default function ChangePasswordCard({ changePassword }) {
   const flow = useModalFlow(ChangePasswordFlow);
   const LockIcon = ICON_MAP["lock"] || ICON_MAP["shield"];
-  
-  const gradientClasses = ACCENT_MAP["purple"] || "from-purple-700 to-purple-500";
+  const [infoMessage, setInfoMessage] = useState("");
+  const [infoType, setInfoType] = useState("success");
+
+  const gradientClasses =
+    ACCENT_MAP["purple"] || "from-purple-700 to-purple-500";
 
   const handleSubmit = async (data) => {
-    const { old, new: newPass } = data;
 
-    if (!old || !newPass) {
-      return { success: false, message: "Uzupełnij wszystkie pola" };
+    const { oldPassword, newPassword, confirmPassword } = data;
+    try {
+      const res = await changePassword({
+        oldPassword,
+        newPassword,
+        confirmPassword,
+      });
+
+      if (res?.success) {
+        setInfoType("success");
+        setInfoMessage("Hasło zostało zmienione");
+      }
+
+      return res;
+    } catch (err) {
+      return {
+        success: false,
+        message: "BŁĄD SERWERA",
+      };
     }
 
-    if (newPass.length < 6) {
-      return { success: false, message: "Min. 6 znaków" };
-    }
-
-    const res = await changePassword(old, newPass);
-    return res;
   };
 
   return (
@@ -42,18 +57,22 @@ export default function ChangePasswordCard({ changePassword }) {
 
         <div className="relative z-10 flex flex-col h-full justify-between">
           <div className="flex justify-between items-start mb-6">
-            
-            <div className={`
+            <div
+              className={`
               p-4 rounded-2xl transition-all duration-500 color-transition
               bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white
               group-hover:bg-gradient-to-br group-hover:shadow-lg
-              ${gradientClasses.split(' ').map(c => `group-hover:${c}`).join(' ')}
-            `}>
+              ${gradientClasses
+                  .split(" ")
+                  .map((c) => `group-hover:${c}`)
+                  .join(" ")}
+            `}
+            >
               <LockIcon className="h-6 w-6" />
             </div>
-            
+
             <div className="text-slate-300 group-hover:text-purple-500 group-hover:translate-x-1 transition-all duration-300">
-               <span className="text-2xl font-light">→</span>
+              <span className="text-2xl font-light">→</span>
             </div>
           </div>
 
@@ -70,17 +89,23 @@ export default function ChangePasswordCard({ changePassword }) {
           </div>
         </div>
 
-        <div className={`
+        <div
+          className={`
           absolute bottom-0 left-0 h-1.5 w-0 group-hover:w-full 
           transition-all duration-700 bg-gradient-to-r ${gradientClasses}
-        `} />
+        `}
+        />
       </div>
 
-      <ModalFlow
-        flow={ChangePasswordFlow}
-        hook={flow}
-        onSubmit={handleSubmit}
-      />
+      <ModalFlow flow={ChangePasswordFlow} hook={flow} onSubmit={handleSubmit} />
+
+      {infoMessage && (
+        <InfoMessage
+          message={infoMessage}
+          type={infoType}
+          onClose={() => setInfoMessage("")}
+        />
+      )}
     </>
   );
 }

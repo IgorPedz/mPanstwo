@@ -55,18 +55,21 @@ const ChangePasswordFlow = {
     2: {
       fields: [
         {
-          name: "old",
+          name: "oldPassword",
           type: "password",
+          label:"Nowe hasło",
           placeholder: "Stare hasło",
         },
         {
-          name: "new",
+          name: "newPassword",
           type: "password",
+          label:"Stare hasło",
           placeholder: "Nowe hasło",
         },
         {
-          name: "confirm",
+          name: "confirmPassword",
           type: "password",
+          label:"Powtórz nowe hasło",
           placeholder: "Potwierdź nowe hasło",
         },
       ],

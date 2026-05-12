@@ -9,7 +9,7 @@ export default function DocumentsHeader() {
       </h1>
       <div className="h-1 w-20 bg-indigo-500 mt-4 color-transition" /> 
       <p className="text-slate-500 dark:text-slate-400 max-w-2xl font-medium pt-4 text-lg color-transition">
-        Oficjalne instrukcje, specyfikacje techniczne i dokumenty prawne.
+        Najważniejszy dokumenty dotyczące funkcjonowania strony i jej prawnych aspektów.
       </p>
     </div>
   );

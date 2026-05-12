@@ -1,19 +1,29 @@
+import { useState } from "react";
 import { useModalFlow } from "../../../hooks/useModalFlow";
 import ChangeEmailFlow from "../flow/ChangeEmailFlow";
 import ModalFlow from "../../Global/Modals/ModalFlow";
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
+import InfoMessage from "../../Global/InfoMessage";
 
 export default function ChangeEmailCard({ changeEmail }) {
   const EnvelopeIcon = ICON_MAP["contact"];
   const flow = useModalFlow(ChangeEmailFlow);
-  
+
   const gradientClasses = ACCENT_MAP["blue"] || "from-blue-700 to-blue-500";
+
+  const [infoMessage, setInfoMessage] = useState("");
+  const [infoType, setInfoType] = useState("success");
 
   const handleSubmit = async (data) => {
     const res = await changeEmail(data.email, data.password);
-    if (res.success) return { success: true };
-    return { success: false, message: res.message };
+
+    if (res?.success) {
+      setInfoType("success");
+      setInfoMessage("Email został zmieniony");
+      return { success: true };
+    }
+    return { success: false, message: res?.message };
   };
 
   return (
@@ -33,18 +43,22 @@ export default function ChangeEmailCard({ changeEmail }) {
 
         <div className="relative z-10 flex flex-col h-full justify-between">
           <div className="flex justify-between items-start mb-6">
-            
-            <div className={`
-              p-4 rounded-2xl transition-all duration-500 color-transition
-              bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white
-              group-hover:bg-gradient-to-br group-hover:shadow-lg
-              ${gradientClasses.split(' ').map(c => `group-hover:${c}`).join(' ')}
-            `}>
+            <div
+              className={`
+                p-4 rounded-2xl transition-all duration-500 color-transition
+                bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white
+                group-hover:bg-gradient-to-br group-hover:shadow-lg
+                ${gradientClasses
+                  .split(" ")
+                  .map((c) => `group-hover:${c}`)
+                  .join(" ")}
+              `}
+            >
               <EnvelopeIcon className="h-6 w-6" />
             </div>
-            
+
             <div className="text-slate-300 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-300">
-               <span className="text-2xl font-light">→</span>
+              <span className="text-2xl font-light">→</span>
             </div>
           </div>
 
@@ -61,10 +75,12 @@ export default function ChangeEmailCard({ changeEmail }) {
           </div>
         </div>
 
-        <div className={`
-          absolute bottom-0 left-0 h-1.5 w-0 group-hover:w-full 
-          transition-all duration-700 bg-gradient-to-r ${gradientClasses}
-        `} />
+        <div
+          className={`
+            absolute bottom-0 left-0 h-1.5 w-0 group-hover:w-full 
+            transition-all duration-700 bg-gradient-to-r ${gradientClasses}
+          `}
+        />
       </div>
 
       <ModalFlow
@@ -72,6 +88,14 @@ export default function ChangeEmailCard({ changeEmail }) {
         hook={flow}
         onSubmit={handleSubmit}
       />
+
+      {infoMessage && (
+        <InfoMessage
+          message={infoMessage}
+          type={infoType}
+          onClose={() => setInfoMessage("")}
+        />
+      )}
     </>
   );
 }

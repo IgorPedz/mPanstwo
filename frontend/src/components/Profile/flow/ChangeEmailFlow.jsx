@@ -55,11 +55,13 @@ const ChangeEmailFlow = {
       fields: [
         {
           name: "email",
+          label:"Email",
           type: "email",
           placeholder: "Nowy email",
         },
         {
           name: "password",
+          label:"Hasło",
           type: "password",
           placeholder: "Hasło",
         },

@@ -35,7 +35,6 @@ const NotificationItem = ({ notif }) => {
         }
       `}
     >
-
       {isUnread && (
         <motion.div
           initial={{ scale: 0 }}

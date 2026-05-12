@@ -20,7 +20,7 @@ export default function ImageSlider({
   const activeSlide = slides[current];
 
   return (
-    <div className="relative w-full h-full overflow-hidden bg-slate-900">
+    <div className="relative w-full h-[100vh] overflow-hidden bg-slate-900">
       <AnimatePresence mode="popLayout">
         <motion.div
           key={current}

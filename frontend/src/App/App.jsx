@@ -16,7 +16,7 @@ import ProfilePage from "../pages/ProfilPages/ProfilePage";
 import AchievementsPage from "../pages/ProfilPages/AchievementsPage";
 import SurveyBoxPage from "../pages/ProfilPages/SurveyBoxPage";
 import NotificationsPage from "../pages/ProfilPages/NotificationsPage";
-
+import ResetPasswordPage from "../pages/AuthPages/ResetPasswordPage"
 import { useUser } from "../Contexts/UserContext";
 import useNotifications from "../Hooks/useUnreadNotification";
 import ProtectedRoute from "../Utils/Routes/ProtectedRoutes";
@@ -104,6 +104,8 @@ function App() {
           <Route path="/documents" element={<DocumentsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/faq" element={<FAQPage />} />
+
+          <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/dashboard" replace />} />

@@ -54,7 +54,6 @@ export default function SurveyBoxPage() {
       ...(Array.isArray(completedSurveys) ? completedSurveys : []),
     ];
 
-    // remove duplicates
     const unique = merged.filter(
       (survey, index, self) =>
         index === self.findIndex((s) => String(s.id) === String(survey.id)),

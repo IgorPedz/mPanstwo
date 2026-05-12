@@ -14,7 +14,6 @@ export default function SecurityStatus({ score = 100 }) {
   return (
     <div className="flex-1 w-full space-y-4 color-transition">
 
-      {/* HEADER */}
       <div className="flex justify-between items-end">
         <span className="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-2">
           <ShieldCheckIcon className="h-3 w-3" />
@@ -29,7 +28,6 @@ export default function SecurityStatus({ score = 100 }) {
         </span>
       </div>
 
-      {/* BAR */}
       <div className="color-transition h-4 w-full bg-slate-100 dark:bg-slate-800 rounded-full p-1 border border-slate-200 dark:border-slate-700">
         <motion.div
           className={`h-full bg-${meta.color}-500 rounded-full`}

@@ -18,7 +18,7 @@ export default function LoginForm({
   );
 
   return (
-    <form onSubmit={handleFormSubmit} className="space-y-6">
+    <form onSubmit={handleFormSubmit} className="space-y-6 min-h-fit">
       <div className="space-y-2">
         <AuthInput
           label="Adres Email"
@@ -94,7 +94,6 @@ export default function LoginForm({
             Brak konta?
           </span>
         </div>
-        <p></p>
         <button
           type="button"
           onClick={switchToRegister}

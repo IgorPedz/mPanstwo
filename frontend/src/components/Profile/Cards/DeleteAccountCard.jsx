@@ -19,7 +19,7 @@ export default function DeleteAccountCard({ deleteAccount }) {
       setTimeout(() => logout(), 1200);
       return { success: true };
     }
-
+    
     return { success: false, message: res.message };
   };
 

@@ -15,7 +15,6 @@ function sendNotification({ type, message, data = null, userId = null }) {
     timestamp: new Date(),
   };
 
-  // ❌ NIE MA GLOBALA — usuwamy chaos
   if (!userId) {
     console.warn("⚠️ Notification without userId ignored");
     return;

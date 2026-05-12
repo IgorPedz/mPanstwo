@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import axios from "axios";
-
+import { useUser } from "../Contexts/UserContext";
 export default function useProfile(userId) {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const { user } = useUser()
   const fetchProfile = async () => {
     if (!userId) {
       setLoading(false);
@@ -57,18 +57,31 @@ export default function useProfile(userId) {
     }
   };
 
-  const changePassword = async (oldPassword, newPassword) => {
-    if (!userId || !oldPassword || !newPassword) return;
-
+  const changePassword = async ({
+    oldPassword,
+    newPassword,
+    confirmPassword,
+  }) => {
     try {
-      const res = await axios.put(`http://localhost:5000/profile/${userId}/password`, {
-        oldPassword,
-        newPassword,
-      });
-      return { success: true, message: res.data.message };
+      const res = await axios.put(
+        `http://localhost:5000/profile/${user.id}/password`,
+        {
+          oldPassword,
+          newPassword,
+          confirmPassword,
+        }
+      );
+
+      return {
+        success: true,
+        message: res.data.message,
+      };
     } catch (err) {
-      const errorMsg = err.response?.data?.message || "Błąd zmiany hasła";
-      return { success: false, message: errorMsg };
+      return {
+        success: false,
+        message:
+          err.response?.data?.message || "BŁĄD ZMIANY HASŁA",
+      };
     }
   };
 

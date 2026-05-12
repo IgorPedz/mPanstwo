@@ -9,7 +9,6 @@ const getProfile = async (req, res, next) => {
       return res.status(400).json({ message: "Nieprawidłowy użytkownik" });
     }
 
-    // USER
     const [userRows] = await db.query(
       "SELECT id, name, email, created_at FROM users WHERE id = ?",
       [userId]
@@ -21,7 +20,6 @@ const getProfile = async (req, res, next) => {
 
     const user = userRows[0];
 
-    // STATS
     const [statsRows] = await db.query(
       `SELECT 
         title,
@@ -35,7 +33,6 @@ const getProfile = async (req, res, next) => {
       [userId]
     );
 
-    // RESPONSE
     res.json({
       id: user.id,
       name: user.name,
@@ -96,7 +93,6 @@ const changeEmail = async (req, res, next) => {
       return res.status(400).json({ message: "Email i hasło są wymagane" });
     }
 
-    // Weryfikacja hasła
     const [userRows] = await db.query("SELECT password FROM users WHERE id = ?", [userId]);
     if (userRows.length === 0) {
       return res.status(404).json({ message: "Użytkownik nie znaleziony" });
@@ -107,7 +103,6 @@ const changeEmail = async (req, res, next) => {
       return res.status(401).json({ message: "Błędne hasło" });
     }
 
-    // Sprawdzenie czy email już istnieje
     const [emailCheck] = await db.query("SELECT id FROM users WHERE email = ? AND id != ?", [email, userId]);
     if (emailCheck.length > 0) {
       return res.status(400).json({ message: "Email już istnieje w systemie" });
@@ -127,34 +122,89 @@ const changeEmail = async (req, res, next) => {
 const changePassword = async (req, res, next) => {
   try {
     const userId = req.params.userId;
-    const { oldPassword, newPassword } = req.body;
 
-    if (!userId || !oldPassword || !newPassword) {
-      return res.status(400).json({ message: "Stare i nowe hasło są wymagane" });
+    const {
+      oldPassword,
+      newPassword,
+      confirmPassword,
+    } = req.body || {};
+
+    console.log("DEBUG:", {
+      userId,
+      oldPassword,
+      newPassword,
+      confirmPassword,
+    });
+
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: "Brak ID użytkownika",
+      });
     }
 
-    if (newPassword.length < 6) {
-      return res.status(400).json({ message: "Nowe hasło musi mieć co najmniej 6 znaków" });
+    if (!oldPassword || !newPassword || !confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "Stare i nowe hasło są wymagane",
+      });
     }
 
-    // Weryfikacja starego hasła
-    const [userRows] = await db.query("SELECT password FROM users WHERE id = ?", [userId]);
-    if (userRows.length === 0) {
-      return res.status(404).json({ message: "Użytkownik nie znaleziony" });
+    const cleanNew = String(newPassword).trim();
+    const cleanConfirm = String(confirmPassword).trim();
+
+    if (cleanNew !== cleanConfirm) {
+      return res.status(400).json({
+        success: false,
+        message: "NOWE HASŁA NIE SĄ IDENTYCZNE",
+      });
     }
 
-    const validPassword = await bcrypt.compare(oldPassword, userRows[0].password);
+    if (cleanNew.length < 6) {
+      return res.status(400).json({
+        success: false,
+        message: "Nowe hasło musi mieć co najmniej 6 znaków",
+      });
+    }
+
+    const [userRows] = await db.query(
+      "SELECT password FROM users WHERE id = ?",
+      [userId]
+    );
+
+    if (!userRows.length) {
+      return res.status(404).json({
+        success: false,
+        message: "Użytkownik nie znaleziony",
+      });
+    }
+
+    const validPassword = await bcrypt.compare(
+      oldPassword,
+      userRows[0].password
+    );
+
     if (!validPassword) {
-      return res.status(401).json({ message: "Stare hasło jest błędne" });
+      return res.status(401).json({
+        success: false,
+        message: "Stare hasło jest błędne",
+      });
     }
 
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
-    await db.query("UPDATE users SET password = ? WHERE id = ?", [hashedPassword, userId]);
+    const hashedPassword = await bcrypt.hash(cleanNew, 10);
 
-    res.json({
+    await db.query(
+      "UPDATE users SET password = ? WHERE id = ?",
+      [hashedPassword, userId]
+    );
+
+    return res.json({
+      success: true,
       message: "Hasło zostało zmienione",
     });
+
   } catch (error) {
+    console.error("CHANGE PASSWORD ERROR:", error);
     next(error);
   }
 };
@@ -168,7 +218,6 @@ const deleteAccount = async (req, res, next) => {
       return res.status(400).json({ message: "Hasło jest wymagane" });
     }
 
-    // Weryfikacja hasła
     const [userRows] = await db.query("SELECT password FROM users WHERE id = ?", [userId]);
     if (userRows.length === 0) {
       return res.status(404).json({ message: "Użytkownik nie znaleziony" });
@@ -179,10 +228,8 @@ const deleteAccount = async (req, res, next) => {
       return res.status(401).json({ message: "Błędne hasło" });
     }
 
-    // Usuń najpierw user_tiles (foreign key constraint)
     await db.query("DELETE FROM user_tiles WHERE user_id = ?", [userId]);
 
-    // Usuń użytkownika
     await db.query("DELETE FROM users WHERE id = ?", [userId]);
 
     res.json({
@@ -192,7 +239,6 @@ const deleteAccount = async (req, res, next) => {
     next(error);
   }
 };
-
 
 module.exports = {
   getProfile,

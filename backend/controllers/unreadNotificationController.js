@@ -10,7 +10,6 @@ const getNotifications = async (req, res) => {
        ORDER BY created_at DESC`,
       [userId],
     );
-
     res.json(rows);
   } catch (err) {
     console.error("GET NOTIFS ERROR:", err);
@@ -28,7 +27,6 @@ const getUnreadNotifications = async (req, res) => {
        ORDER BY created_at DESC`,
       [userId],
     );
-
     res.json(rows);
   } catch (err) {
     console.error("GET NOTIFS ERROR:", err);
@@ -61,7 +59,6 @@ const markAsRead = async (req, res) => {
 const clearReadNotifications = async (req, res) => {
   try {
     const userId = req.query.userId;
-    console.log("🧹 CLEAR READ HIT, userId:", req.query.userId);
     if (!userId) {
       return res.status(400).json({ error: "Missing userId" });
     }

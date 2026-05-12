@@ -14,7 +14,6 @@ export default function NavFooter() {
         p-3 space-y-2
       ">
 
-        {/* SETTINGS */}
         <div className="color-transition
           border border-slate-200 dark:border-slate-800
           bg-white dark:bg-slate-900 cursor-pointer
@@ -22,7 +21,6 @@ export default function NavFooter() {
           <Settings />
         </div>
 
-        {/* LOGOUT (danger emphasis) */}
         <div className="color-transition
           border border-slate-200 dark:border-slate-800
           bg-white dark:bg-slate-900

@@ -12,23 +12,25 @@ export default function ResetPasswordCard() {
     const gradientClasses = ACCENT_MAP["indigo"] || "from-indigo-700 to-indigo-500";
 
     const handleSubmit = async (data) => {
-        try {
-            const res = await axios.post("http://localhost:5000/reset-password", {
-                email: data.email,
-            });
-
-            if (res.data?.success) return { success: true };
-
+        if (!data.email?.trim()) {
             return {
                 success: false,
-                message: res.data?.message || "Błąd wysyłki",
-            };
-        } catch (err) {
-            return {
-                success: false,
-                message: "Błąd serwera",
+                message: "Email jest wymagany",
             };
         }
+
+        const res = await axios.post("http://localhost:5000/reset-password", {
+            email: data.email,
+        });
+
+        if (res.data?.success) {
+            return { success: true };
+        }
+
+        return {
+            success: false,
+            message: res.data?.message || "Błąd wysyłki",
+        };
     };
 
     return (
@@ -36,8 +38,20 @@ export default function ResetPasswordCard() {
             <div
                 onClick={() => flow.setOpen(true)}
             >
-                <p className="hover:underline uppercase cursor-pointer text-[15px] font-gray-600 text-slate-900 dark:text-white tracking-tighter">
-                    Nie pamiętam hasła
+                <p
+                    className="
+    inline-flex underline
+    items-center
+    gap-1
+    text-sm
+    text-slate-500 dark:text-slate-400
+    hover:text-indigo-500
+    transition-all
+    cursor-pointer
+    font-semibold
+  "
+                >
+                    Nie pamiętasz hasła?
                 </p>
 
                 <div className={`
