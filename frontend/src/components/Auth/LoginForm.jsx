@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import AuthInput from "./AuthInput";
-
+import ResetPasswordCard from "./Reset/ResetPasswordCard";
 export default function LoginForm({
   formData,
   setFormData,
@@ -70,7 +70,7 @@ export default function LoginForm({
         </div>
 
         <span className="text-[11px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 select-none">
-          Pamiętaj mnie 
+          Pamiętaj mnie
         </span>
       </div>
 
@@ -87,14 +87,14 @@ export default function LoginForm({
         >
           Zaloguj się
         </button>
-
+        <ResetPasswordCard/>
         <div className="relative py-4 flex items-center justify-center">
           <div className="absolute inset-0 flex items-center"><div className="transition-colors w-full border-t-2 border-slate-100 dark:border-slate-800"></div></div>
           <span className="transition-colors relative px-4 bg-white dark:bg-[#111827] text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
             Brak konta?
           </span>
         </div>
-
+        <p></p>
         <button
           type="button"
           onClick={switchToRegister}
@@ -113,5 +113,6 @@ export default function LoginForm({
         </button>
       </div>
     </form>
+
   );
 }

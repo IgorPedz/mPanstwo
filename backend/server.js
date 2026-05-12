@@ -14,7 +14,8 @@ const surveyRoutes = require("./routes/surveyRoutes");
 const errorHandler = require("./middleware/errorHandler");
 const testRoutes = require("./routes/testRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
-const unreadNotificationRouts = require("./routes/unreadNotificationRoutes")
+const unreadNotificationRoutes = require("./routes/unreadNotificationRoutes")
+const resendEmailReset = require("./routes/resendEmailRoutes")
 const app = express();
 const server = http.createServer(app);
 
@@ -29,7 +30,8 @@ app.use(profileRoutes);
 app.use(surveyRoutes);
 app.use(notificationRoutes);
 app.use(testRoutes);
-app.use(unreadNotificationRouts)
+app.use(unreadNotificationRoutes)
+app.use(resendEmailReset)
 app.use(errorHandler);
 
 initSocket(server);

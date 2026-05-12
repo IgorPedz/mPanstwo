@@ -1,7 +1,7 @@
 const contactInfo = [
   {
     label: "Email",
-    value: "support@twojadomena.pl",
+    value: "mpanstwosupport@gmail.com",
     icon: "contact", 
   },
   {

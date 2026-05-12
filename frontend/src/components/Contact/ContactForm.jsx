@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import { motion } from "framer-motion"
+import InfoMessage from "../Global/InfoMessage"
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -9,8 +11,8 @@ export default function ContactForm() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-
+  const [infoMessage, setInfoMessage] = useState("")
+  const [infoType, setInfoType] = useState("")
   const inputStyles = `
     w-full p-4 bg-slate-50 dark:bg-slate-800/30
     border border-slate-200 dark:border-slate-800 
@@ -32,10 +34,10 @@ export default function ContactForm() {
     try {
       setLoading(true);
 
-      await axios.post("/api/contact", form);
+      await axios.post("http://localhost:5000/support", form);
 
-      setSuccess(true);
-
+      setInfoMessage("Wysłano wiadomość!")
+      setInfoType("success")
       setForm({
         name: "",
         email: "",
@@ -105,31 +107,33 @@ export default function ContactForm() {
           />
         </div>
 
-        <div className="pt-4 color-transition">
-          <button
-            type="submit"
-            disabled={loading}
+        <div className="pt-4 color-transition flex justify-center">
+          <motion.button
+            whileHover={{ y: -4 }}
+            whileTap={{ scale: 0.95 }}
             className="
-              w-full md:w-fit px-12 py-4 
-              bg-slate-900 dark:bg-white 
-              text-white dark:text-slate-900 
-              rounded-2xl font-black text-xs uppercase tracking-widest
-              hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white
-              transition-all cursor-pointer color-transition
-              shadow-lg shadow-slate-200 dark:shadow-none
-              disabled:opacity-50
-            "
+            color-transition px-10 py-5
+            bg-slate-900 dark:bg-white
+            text-white dark:text-slate-900
+            rounded-2xl
+            font-black text-[12px] uppercase tracking-widest
+            shadow-lg
+            hover:shadow-xl hover:shadow-blue-500/10
+            transition-all
+            cursor-pointer
+          "
           >
-            {loading ? "Wysyłanie..." : "Wyślij wiadomość"}
-          </button>
-
-          {success && (
-            <p className="mt-4 text-sm font-bold text-emerald-500">
-              Wiadomość została wysłana ✨
-            </p>
-          )}
+            Wyślij wiadomość
+          </motion.button>
         </div>
       </form>
+      {infoMessage && (
+        <InfoMessage
+          message={infoMessage}
+          type={infoType}
+          onClose={() => setInfoMessage("")}
+        />
+      )}
     </div>
   );
 }

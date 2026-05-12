@@ -33,7 +33,6 @@ export default function EmptyState({ onRefetch, variant = "active" }) {
         bg-slate-50/30 dark:bg-slate-900/20
       "
     >
-      {/* ICON */}
       <div className="relative mb-8">
         <div className="bg-blue-600/10 p-8 rounded-[2.5rem] color-transition">
           <DocumentIcon className="h-12 w-12 text-blue-500" />
@@ -42,17 +41,14 @@ export default function EmptyState({ onRefetch, variant = "active" }) {
         <div className="absolute -top-2 -right-2 w-8 h-8 bg-blue-500/20 rounded-full blur-xl animate-pulse" />
       </div>
 
-      {/* TITLE */}
       <h2 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight text-center">
         {config.title}
       </h2>
 
-      {/* DESC */}
       <p className="text-slate-500 dark:text-slate-400 mt-3 max-w-[280px] text-center text-sm font-medium leading-relaxed">
         {config.desc}
       </p>
 
-      {/* BUTTON */}
       {onRefetch && (
         <motion.button
           whileHover={{ y: -4 }}

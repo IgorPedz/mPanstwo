@@ -18,7 +18,7 @@ const slides = [
     desc: "Baza orzecznictwa i analiza prawna." 
   },
   { 
-    img: "/images/kprp.jpg", 
+    img: "/images/KPRM.jpg", 
     title: "Kancelaria Premiera", 
     code: "KPRM", 
     desc: "Monitorowanie rozporządzeń i prac rządu." 

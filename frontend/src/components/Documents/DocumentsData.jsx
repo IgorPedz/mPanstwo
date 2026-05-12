@@ -1,10 +1,8 @@
 const documents = [
-    { title: "Regulamin", type: "PDF", size: "1.2 MB" },
-    { title: "Polityka prywatności", type: "PDF", size: "900 KB" },
-    { title: "Umowa współpracy", type: "DOCX", size: "2.1 MB" },
-    { title: "FAQ dla klientów", type: "PDF", size: "700 KB" },
-    { title: "Instrukcja API", type: "PDF", size: "3.4 MB" },
-    { title: "Brand guide", type: "ZIP", size: "5.8 MB" },
-  ];
+  { title: "Regulamin Platformy", type: "PDF", size: "450 KB", file: "docs/Regulamin-mpanstwo.pdf"},
+  { title: "Polityka prywatności", type: "PDF", size: "420 KB", file: "docs/polityka_prywatnosci-mpanstwo.pdf" },
+  { title: "Kodeks społeczności", type: "PDF", size: "410 KB", file: "docs/kodeks_spolecznosci-mpanstwo.pdf" },
+  { title: "Statut platformy", type: "PDF", size: "400 KB", file: "docs/statut-mpanstwo.pdf" },
+];
 
 export default documents;
