@@ -4,11 +4,14 @@ import ModalFlow from "../../Global/Modals/ModalFlow";
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
 import axios from "axios";
+import { useState } from "react";
+import InfoMessage from "../../Global/InfoMessage";
 
 export default function ResetPasswordCard() {
     const EnvelopeIcon = ICON_MAP["contact"];
     const flow = useModalFlow(ResetPasswordFlow);
-
+    const [infoMessage, setInfoMessage] = useState("")
+    const [infoType, setInfoType] = useState('')
     const gradientClasses = ACCENT_MAP["indigo"] || "from-indigo-700 to-indigo-500";
 
     const handleSubmit = async (data) => {
@@ -19,18 +22,38 @@ export default function ResetPasswordCard() {
             };
         }
 
-        const res = await axios.post("http://localhost:5000/reset-password", {
-            email: data.email,
-        });
+        try {
+            const res = await axios.post(
+                "http://localhost:5000/reset-password",
+                {
+                    email: data.email,
+                }
+            );
 
-        if (res.data?.success) {
-            return { success: true };
+            if (res.data?.success) {
+                setInfoMessage("Wysłano maila z resetem hasła!");
+                setInfoType("success");
+
+                return {
+                    success: true,
+                };
+            }
+
+            return {
+                success: false,
+                message: res.data?.message || "Błąd wysyłki",
+            };
+        } catch (err) {
+            console.error(err);
+
+            setInfoMessage("Błąd wysyłania maila");
+            setInfoType("error");
+
+            return {
+                success: false,
+                message: "Błąd serwera",
+            };
         }
-
-        return {
-            success: false,
-            message: res.data?.message || "Błąd wysyłki",
-        };
     };
 
     return (
@@ -65,6 +88,14 @@ export default function ResetPasswordCard() {
                 hook={flow}
                 onSubmit={handleSubmit}
             />
+
+            {infoMessage && (
+                <InfoMessage
+                    message={infoMessage}
+                    type={infoType}
+                    onClose={() => setInfoMessage("")}
+                />
+            )}
         </>
     );
 }

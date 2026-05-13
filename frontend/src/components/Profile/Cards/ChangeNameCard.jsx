@@ -16,8 +16,6 @@ export default function ChangeNameCard({ updateProfile }) {
 
   const handleSubmit = async (data) => {
     if (!data.name?.trim()) {
-      setInfoType("error");
-      setInfoMessage("Imie zostało zmienione");
       return { success: false };
     }
 
@@ -25,7 +23,7 @@ export default function ChangeNameCard({ updateProfile }) {
 
     if (res?.success) {
       setInfoType("success");
-      setInfoMessage("IMIĘ ZOSTAŁO ZMIENIONE");
+      setInfoMessage("Imię zostało zmienione");
     } else {
       setInfoType("error");
       setInfoMessage(res?.message || "BŁĄD ZMIANY IMIENIA");

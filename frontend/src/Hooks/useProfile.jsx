@@ -6,6 +6,7 @@ export default function useProfile(userId) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { user } = useUser()
+
   const fetchProfile = async () => {
     if (!userId) {
       setLoading(false);
@@ -32,7 +33,12 @@ export default function useProfile(userId) {
       const res = await axios.put(`http://localhost:5000/profile/${userId}`, {
         name,
       });
-      setProfile(res.data);
+
+      setProfile((prev) => ({
+        ...prev,       
+        ...res.data,  
+      }));
+
       return { success: true, message: res.data.message };
     } catch (err) {
       const errorMsg = err.response?.data?.message || "Błąd aktualizacji profilu";

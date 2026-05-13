@@ -92,7 +92,6 @@ export default function Settings({ size = "md" }) {
         </span>
       </button>
 
-      {/* PANEL */}
       {open &&
         createPortal(
           <AnimatePresence>
@@ -117,8 +116,7 @@ export default function Settings({ size = "md" }) {
                 color-transition
               "
             >
-              {/* HEADER */}
-              <div className="px-5 py-4 bg-slate-50/50 dark:bg-slate-900/30 border-b border-slate-100 dark:border-slate-800/50 color-transition">
+              <div className="color-transition px-5 py-4 bg-slate-50/50 dark:bg-slate-900/30 border-b border-slate-100 dark:border-slate-800/50 color-transition">
                 <p className="text-[9px] font-black uppercase tracking-[0.5em] text-indigo-500 mb-1 color-transition">
                   Personalizacja /
                 </p>
@@ -127,9 +125,7 @@ export default function Settings({ size = "md" }) {
                 </h3>
               </div>
 
-              {/* CONTENT */}
               <div className="p-5 space-y-5 color-transition">
-                {/* THEME */}
                 <div className="flex items-center justify-between group color-transition">
                   <div className="flex flex-col pr-4 color-transition">
                     <span className="text-sm font-semibold text-slate-700 dark:text-slate-200 color-transition">
@@ -145,9 +141,8 @@ export default function Settings({ size = "md" }) {
                   </div>
                 </div>
 
-                <div className="h-px bg-slate-100 dark:bg-slate-800/50 color-transition" />
+                <div className="color-transition h-px bg-slate-100 dark:bg-slate-800/50 color-transition" />
 
-                {/* FONTS */}
                 <div className="flex items-center justify-between group color-transition">
                   <div className="flex flex-col pr-4 color-transition">
                     <span className="text-sm font-semibold text-slate-700 dark:text-slate-200 color-transition">
@@ -164,8 +159,7 @@ export default function Settings({ size = "md" }) {
                 </div>
               </div>
 
-              {/* FOOTER */}
-              <div className="px-5 py-2 bg-slate-50 dark:bg-slate-900/50 text-[10px] text-center text-slate-400 color-transition">
+              <div className="color-transition px-5 py-2 bg-slate-50 dark:bg-slate-900/50 text-[10px] text-center text-slate-400 color-transition">
                 Wersja v1.0.4
               </div>
             </motion.div>
