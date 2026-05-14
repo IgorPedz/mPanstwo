@@ -1,5 +1,6 @@
 const db = require("../db");
 const bcrypt = require("bcrypt");
+const cardRegistry = require("../config/cardConfig");
 
 const getProfile = async (req, res, next) => {
   try {
@@ -10,42 +11,61 @@ const getProfile = async (req, res, next) => {
     }
 
     const [userRows] = await db.query(
-      "SELECT id, name, email, created_at FROM users WHERE id = ?",
-      [userId]
+      `SELECT id, name, email, login_streak, active_days, created_at
+       FROM users
+       WHERE id = ?`,
+      [userId],
     );
 
-    if (userRows.length === 0) {
+    if (!userRows.length) {
       return res.status(404).json({ message: "Użytkownik nie znaleziony" });
     }
 
     const user = userRows[0];
 
-    const [statsRows] = await db.query(
-      `SELECT 
-        title,
-        value_number,
-        value_text,
-        icon,
-        color
-       FROM profile_stats
-       WHERE user_id = ?
-       ORDER BY id ASC`,
-      [userId]
+    const [rows] = await db.query(
+      `SELECT \`key\`, value_number, value_text
+       FROM user_stats
+       WHERE user_id = ?`,
+      [userId],
     );
 
-    res.json({
+    const statsFromDb = rows.map((s) => {
+      const registry = cardRegistry[s.key] || {};
+
+      return {
+        key: s.key,
+        value: s.value_number ?? s.value_text ?? "-",
+        title: registry.title || s.key,
+        icon: registry.icon || "star",
+        color: registry.color || "slate",
+      };
+    });
+
+    const systemStats = [
+      {
+        key: "loginStreak",
+        value: user.login_streak,
+        title: cardRegistry.loginStreak.title,
+        icon: cardRegistry.loginStreak.icon,
+        color: cardRegistry.loginStreak.color,
+      },
+      {
+        key: "activeDays",
+        value: user.active_days,
+        title: cardRegistry.activeDays.title,
+        icon: cardRegistry.activeDays.icon,
+        color: cardRegistry.activeDays.color,
+      },
+    ];
+
+    return res.json({
       id: user.id,
       name: user.name,
       email: user.email,
-      createdAt: user.created_at,
+      createdAt: user.created_at, 
 
-      stats: statsRows.map((s) => ({
-        title: s.title,
-        valueNumber: s.value_number,
-        valueText: s.value_text,
-        icon: s.icon,
-        color: s.color,
-      })),
+      stats: [...systemStats, ...statsFromDb],
     });
   } catch (error) {
     next(error);
@@ -69,7 +89,7 @@ const updateProfile = async (req, res, next) => {
 
     const [rows] = await db.query(
       "SELECT id, name, email, created_at FROM users WHERE id = ?",
-      [userId]
+      [userId],
     );
 
     res.json({
@@ -93,7 +113,10 @@ const changeEmail = async (req, res, next) => {
       return res.status(400).json({ message: "Email i hasło są wymagane" });
     }
 
-    const [userRows] = await db.query("SELECT password FROM users WHERE id = ?", [userId]);
+    const [userRows] = await db.query(
+      "SELECT password FROM users WHERE id = ?",
+      [userId],
+    );
     if (userRows.length === 0) {
       return res.status(404).json({ message: "Użytkownik nie znaleziony" });
     }
@@ -103,7 +126,10 @@ const changeEmail = async (req, res, next) => {
       return res.status(401).json({ message: "Błędne hasło" });
     }
 
-    const [emailCheck] = await db.query("SELECT id FROM users WHERE email = ? AND id != ?", [email, userId]);
+    const [emailCheck] = await db.query(
+      "SELECT id FROM users WHERE email = ? AND id != ?",
+      [email, userId],
+    );
     if (emailCheck.length > 0) {
       return res.status(400).json({ message: "Email już istnieje w systemie" });
     }
@@ -123,11 +149,7 @@ const changePassword = async (req, res, next) => {
   try {
     const userId = req.params.userId;
 
-    const {
-      oldPassword,
-      newPassword,
-      confirmPassword,
-    } = req.body || {};
+    const { oldPassword, newPassword, confirmPassword } = req.body || {};
 
     console.log("DEBUG:", {
       userId,
@@ -169,7 +191,7 @@ const changePassword = async (req, res, next) => {
 
     const [userRows] = await db.query(
       "SELECT password FROM users WHERE id = ?",
-      [userId]
+      [userId],
     );
 
     if (!userRows.length) {
@@ -181,7 +203,7 @@ const changePassword = async (req, res, next) => {
 
     const validPassword = await bcrypt.compare(
       oldPassword,
-      userRows[0].password
+      userRows[0].password,
     );
 
     if (!validPassword) {
@@ -193,16 +215,15 @@ const changePassword = async (req, res, next) => {
 
     const hashedPassword = await bcrypt.hash(cleanNew, 10);
 
-    await db.query(
-      "UPDATE users SET password = ? WHERE id = ?",
-      [hashedPassword, userId]
-    );
+    await db.query("UPDATE users SET password = ? WHERE id = ?", [
+      hashedPassword,
+      userId,
+    ]);
 
     return res.json({
       success: true,
       message: "Hasło zostało zmienione",
     });
-
   } catch (error) {
     console.error("CHANGE PASSWORD ERROR:", error);
     next(error);
@@ -218,7 +239,10 @@ const deleteAccount = async (req, res, next) => {
       return res.status(400).json({ message: "Hasło jest wymagane" });
     }
 
-    const [userRows] = await db.query("SELECT password FROM users WHERE id = ?", [userId]);
+    const [userRows] = await db.query(
+      "SELECT password FROM users WHERE id = ?",
+      [userId],
+    );
     if (userRows.length === 0) {
       return res.status(404).json({ message: "Użytkownik nie znaleziony" });
     }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function useDashboard(user, tiles, setTiles, setInfoMessage) {
-  const [savedTiles, setSavedTiles] = useState(null);
+  const [savedTiles, setSavedTiles] = useState([]);
   const [infoType, setInfoType] = useState("success");
 
   const loadSavedLayout = async () => {
@@ -13,24 +13,13 @@ export default function useDashboard(user, tiles, setTiles, setInfoMessage) {
         `http://localhost:5000/user_tiles/${user.id}`,
       );
 
-      if (Array.isArray(res.data.tiles)) {
-        setTiles(res.data.tiles);
-        setSavedTiles(res.data.tiles);
+      const dbTiles = res.data.tiles || [];
 
-        if (res.data.tiles.length > 0) {
-          setInfoType("success");
-          setInfoMessage("Wczytano zapisany układ.");
-        }
-      }
+      setTiles(dbTiles);
+      setSavedTiles(dbTiles);
     } catch (error) {
-      if (error.response?.status === 404) {
-        setSavedTiles(tiles);
-      } else {
-        setInfoType("error");
-        setInfoMessage(
-          error.response?.data?.message || "Błąd wczytywania układu.",
-        );
-      }
+      setTiles([]);
+      setSavedTiles([]);
     }
   };
 
@@ -51,7 +40,7 @@ export default function useDashboard(user, tiles, setTiles, setInfoMessage) {
   };
 
   const hasUnsavedChanges =
-    savedTiles !== null && JSON.stringify(tiles) !== JSON.stringify(savedTiles);
+    JSON.stringify(tiles || []) !== JSON.stringify(savedTiles || []);
 
   useEffect(() => {
     loadSavedLayout();

@@ -17,12 +17,7 @@ import slides from "../../components/Global/ImageSlider/AuthSlides";
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
 
-  const {
-    formData,
-    setFormData,
-    errors,
-    handleSubmit,
-  } = useAuthForm();
+  const { formData, setFormData, errors, handleSubmit } = useAuthForm();
 
   const {
     onSubmit,
@@ -41,7 +36,7 @@ export default function AuthPage() {
 
   useEffect(() => {
     if (location.state?.registered) {
-      setInfoMessage("KONTO ZOSTAŁO ZAREJESTROWANE");
+      setInfoMessage("Konto zostało zarejestrowane!");
       setInfoType(location.state?.messageType || "success");
 
       Promise.resolve().then(() => setIsLogin(true));
@@ -184,10 +179,7 @@ export default function AuthPage() {
           border-l-4 border-slate-900 dark:border-slate-800
         "
       >
-        <ImageSlider
-          slides={slides}
-          interval={6000}
-        />
+        <ImageSlider slides={slides} interval={6000} />
       </div>
     </m.div>
   );

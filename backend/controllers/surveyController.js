@@ -10,7 +10,7 @@ const getSurveys = async (req, res) => {
     const [answers] = userId
       ? await db.query(
           "SELECT survey_id FROM survey_answers WHERE user_id = ?",
-          [userId]
+          [userId],
         )
       : [[]];
 
@@ -20,14 +20,14 @@ const getSurveys = async (req, res) => {
       surveys.map(async (survey) => {
         const [questions] = await db.query(
           "SELECT * FROM questions WHERE survey_id = ?",
-          [survey.id]
+          [survey.id],
         );
 
         const withOptions = await Promise.all(
           questions.map(async (q) => {
             const [options] = await db.query(
               "SELECT label, value FROM options WHERE question_id = ?",
-              [q.id]
+              [q.id],
             );
 
             return {
@@ -35,7 +35,7 @@ const getSurveys = async (req, res) => {
               title: q.title,
               options,
             };
-          })
+          }),
         );
 
         return {
@@ -43,7 +43,7 @@ const getSurveys = async (req, res) => {
           questions: withOptions,
           answered: answeredIds.has(survey.id),
         };
-      })
+      }),
     );
 
     res.json(full);
@@ -58,15 +58,24 @@ const submitSurvey = async (req, res) => {
     const surveyId = req.params.id;
     const { answers = {}, userId = null } = req.body;
 
-    if (!answers) {
+    if (!answers || Object.keys(answers).length === 0) {
       return res.status(400).json({ error: "No answers provided" });
     }
 
     await db.query(
       `INSERT INTO survey_answers (survey_id, user_id, answers)
        VALUES (?, ?, ?)`,
-      [surveyId, userId, JSON.stringify(answers)]
+      [surveyId, userId, JSON.stringify(answers)],
     );
+
+    if (userId) {
+      await db.query(
+        `INSERT INTO user_stats (user_id, \`key\`, value_number)
+         VALUES (?, 'votes', 1)
+         ON DUPLICATE KEY UPDATE value_number = value_number + 1`,
+        [userId],
+      );
+    }
 
     await sendNotification({
       type: "SURVEY_COMPLETED",
@@ -103,7 +112,7 @@ const getCompletedSurveys = async (req, res) => {
       WHERE sa.user_id = ?
       ORDER BY sa.created_at DESC
       `,
-      [userId]
+      [userId],
     );
 
     const [questions] = await db.query(
@@ -117,7 +126,7 @@ const getCompletedSurveys = async (req, res) => {
       )
       ORDER BY id ASC
       `,
-      [userId]
+      [userId],
     );
 
     const groupedQuestions = questions.reduce((acc, q) => {

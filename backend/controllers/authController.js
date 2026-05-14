@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const db = require("../db");
+const { updateUserActivity } = require("./activityController");
 
 const register = async (req, res, next) => {
   try {
@@ -10,53 +11,45 @@ const register = async (req, res, next) => {
       return res.status(400).json({ message: "Email i hasło są wymagane" });
     }
 
-    // check user
-    const [userRows] = await db.query("SELECT id FROM users WHERE email = ?", [
-      email,
-    ]);
+    const [userRows] = await db.query(
+      "SELECT id FROM users WHERE email = ?",
+      [email]
+    );
 
     if (userRows.length > 0) {
       return res.status(400).json({ message: "Użytkownik już istnieje" });
     }
 
-    // hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // insert user
     const [result] = await db.query(
       "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-      [name || "Użytkownik", email, hashedPassword],
+      [name || "Użytkownik", email, hashedPassword]
     );
 
     const userId = result.insertId;
 
-    // DEFAULT STATS
     const defaultStats = [
-      ["Dni aktywności", 0, null, "calendar", "red"],
-      ["Ostatnia aktywność", null, new Date().toISOString(), "clock", "zinc"],
-      ["Śledzone ustawy", 0, null, "documents", "indigo"],
-      ["Rola", null, "Użytkownik", "achievements", "purple"],
-      ["Oddane głosy", 0, null, "vote", "blue"],
-      ["Napisane Opinie", 0, null, "comments", "emerald"],
-      ["Ukończone kursy", 0, null, "courses", "purple"],
-      ["Punkty reputacji", 0, null, "star", "yellow"],
+      { key: "trackedLaws", value_number: 0, value_text: null, icon: "documents", color: "indigo" },
+      { key: "role", value_number: null, value_text: "Użytkownik", icon: "achievements", color: "purple" },
+      { key: "votes", value_number: 0, value_text: null, icon: "vote", color: "blue" },
+      { key: "opinions", value_number: 0, value_text: null, icon: "comments", color: "emerald" },
+      { key: "courses", value_number: 0, value_text: null, icon: "courses", color: "purple" },
+      { key: "reputation", value_number: 0, value_text: null, icon: "star", color: "yellow" },
     ];
 
-    // insert stats
     const values = defaultStats.map((s) => [
       userId,
-      s[0], // title
-      s[1], // value_number
-      s[2], // value_text
-      s[3], // icon
-      s[4], // color
+      s.key,
+      s.value_number,
+      s.value_text,
     ]);
 
     await db.query(
-      `INSERT INTO profile_stats 
-       (user_id, title, value_number, value_text, icon, color)
+      `INSERT INTO user_stats
+       (user_id, \`key\`, value_number, value_text)
        VALUES ?`,
-      [values],
+      [values]
     );
 
     res.status(201).json({
@@ -83,16 +76,20 @@ const login = async (req, res, next) => {
     const [rows] = await db.query("SELECT * FROM users WHERE email = ?", [
       email,
     ]);
+
     if (!rows || rows.length === 0) {
       return res.status(400).json({ message: "Hasło lub email jest błędny" });
     }
 
     const user = rows[0];
+
     const validPassword = await bcrypt.compare(password, user.password);
 
     if (!validPassword) {
       return res.status(400).json({ message: "Hasło lub email jest błędny" });
     }
+
+    const streakResult = await updateUserActivity(user.id);
 
     const token = jwt.sign(
       { id: user.id, email: user.email, name: user.name },
@@ -109,14 +106,18 @@ const login = async (req, res, next) => {
 
     res.json({
       token,
-      user: { id: user.id, email: user.email, name: user.name },
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        login_streak: streakResult.streak, // 🔥 dodane
+      },
       message: "Zalogowano pomyślnie",
     });
   } catch (error) {
     next(error);
   }
 };
-
 module.exports = {
   register,
   login,

@@ -22,7 +22,7 @@ export default function ProfilePage() {
     changePassword,
     deleteAccount,
   } = useProfile(userId);
-
+  
   if (!userId || loading) {
     return (
       <div className="w-full min-h-screen flex items-center justify-center text-slate-400 color-transition">

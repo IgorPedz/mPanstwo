@@ -3,7 +3,6 @@ import ICON_MAP from "../../Utils/Maps/Icons";
 import ProfileVerificationStatus from "./ProfileSecurityStatus"
 const ProfileHero = ({ profile }) => {
   const ShieldIcon = ICON_MAP["shield"] || ICON_MAP["zap"];
-
   return (
     <section className="mb-10 bg-white dark:bg-slate-900 rounded-[2rem] p-8 shadow-sm border border-slate-200 dark:border-slate-800 color-transition">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
