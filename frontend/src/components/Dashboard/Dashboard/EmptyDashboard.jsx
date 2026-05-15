@@ -11,8 +11,7 @@ export default function EmptyDashboard({ setShowAddMenu }) {
     <motion.div
       className="
         flex flex-col items-center justify-center
-        min-h-[100dvh] w-full
-        /* Kluczowe: Ukrywamy suwaki na poziomie kontenera */
+        min-h-[100dvh] w-full z-0
         overflow-hidden fixed inset-0
         color-transition
       "
@@ -20,9 +19,7 @@ export default function EmptyDashboard({ setShowAddMenu }) {
       initial="hidden"
       animate="show"
     >
-      {/* NOWY DYNAMICZNY BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        {/* Efekt Gradientu Mesh */}
         <div className="absolute inset-0 opacity-40 dark:opacity-20 color-transition">
           <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-200/50 dark:bg-indigo-600/20 blur-[120px] animate-pulse" />
           <div
@@ -33,7 +30,6 @@ export default function EmptyDashboard({ setShowAddMenu }) {
       </div>
 
       <div className="relative z-10 text-center max-w-3xl px-6">
-        {/* MAIN ICON */}
         <motion.div className="mb-10 inline-block" variants={itemVariants}>
           <motion.div
             className="
@@ -49,12 +45,10 @@ export default function EmptyDashboard({ setShowAddMenu }) {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
             <SparklesIcon className="h-10 w-10" />
-            {/* Delikatna poświata pod ikoną */}
             <div className="absolute inset-0 rounded-[2rem] bg-indigo-500/20 blur-xl -z-10" />
           </motion.div>
         </motion.div>
 
-        {/* TYPOGRAPHY */}
         <div className="space-y-4 mb-12">
           <motion.h2
             className="
@@ -83,7 +77,6 @@ export default function EmptyDashboard({ setShowAddMenu }) {
           </motion.p>
         </div>
 
-        {/* FEATURES GRID */}
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16"
           variants={containerVariants}
@@ -118,7 +111,10 @@ export default function EmptyDashboard({ setShowAddMenu }) {
         </motion.div>
 
         <motion.button
-          onClick={() => setShowAddMenu(true)}
+          onClick={() => {
+            console.log("CLICK");
+            setShowAddMenu(true);
+          }}
           className="
             relative group
             px-14 py-7

@@ -38,16 +38,6 @@ export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, 
         [currentTiles]
     );
 
-    useEffect(() => {
-        const prevent = (e) => e.preventDefault();
-
-        document.addEventListener("touchmove", prevent, { passive: false });
-
-        return () => {
-            document.removeEventListener("touchmove", prevent);
-        };
-    }, []);
-
     if (savedTiles && Array.isArray(savedTiles) && savedTiles.length === 0 && tiles.length === 0) {
         return <EmptyDashboard setShowAddMenu={setShowAddMenu} />;
     }

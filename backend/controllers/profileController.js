@@ -63,7 +63,7 @@ const getProfile = async (req, res, next) => {
       id: user.id,
       name: user.name,
       email: user.email,
-      createdAt: user.created_at, 
+      createdAt: user.created_at,
 
       stats: [...systemStats, ...statsFromDb],
     });
@@ -264,10 +264,51 @@ const deleteAccount = async (req, res, next) => {
   }
 };
 
+const getUserSecurity = async (req, res) => {
+  try {
+    const { userId } = req.body;
+
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: "Brak userId",
+      });
+    }
+
+    const [rows] = await db.execute(
+      `SELECT is_verified, is_strong FROM users WHERE id = ?`,
+      [userId],
+    );
+
+    if (rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Użytkownik nie istnieje",
+      });
+    }
+
+    const user = rows[0];
+
+    return res.json({
+      success: true,
+      is_verified: Boolean(user.is_verified),
+      has_strong_password: Boolean(user.is_strong),
+    });
+  } catch (err) {
+    console.error("SECURITY ERROR:", err);
+
+    return res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
+};
+
 module.exports = {
   getProfile,
   updateProfile,
   changeEmail,
   changePassword,
   deleteAccount,
+  getUserSecurity,
 };

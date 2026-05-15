@@ -1,20 +1,23 @@
 import { useState, useEffect, useMemo } from "react";
 import { useUser } from "../../../Contexts/UserContext";
+
 import useTiles from "../../../Hooks/useTiles";
 import useTilesPerPage from "../../../Hooks/useTilesPerPage";
 import useNoScroll from "../../../Hooks/UseNoScroll";
+import useDashboard from "../../../Hooks/useDashboard";
 
 import TilesGrid from "../DashboardGrid/TilesGrid";
 import Pagination from "../DashboardGrid/Pagination";
 import DropDown from "../Dropdown/DropDown";
-import InfoMessage from "../../Global/InfoMessage";
 
-import useDashboard from "../../../Hooks/useDashboard";
+import InfoMessage from "../../Global/InfoMessage";
+import EmptyDashboard from "./EmptyDashboard";
 import DashboardHeader from "./DashboardHeader";
 import DashboardActions from "./DashboardActions";
 
 export default function Dashboard() {
   const { user } = useUser();
+
   const { tiles, setTiles, availableTiles, infoMessage, setInfoMessage } =
     useTiles();
 
@@ -37,6 +40,9 @@ export default function Dashboard() {
     savedTiles,
   } = useDashboard(user, tiles, setTiles, setInfoMessage);
 
+  const isEmpty =
+    Array.isArray(savedTiles) && savedTiles.length === 0 && tiles.length === 0;
+
   const totalPages = useMemo(() => {
     return Math.max(
       1,
@@ -58,15 +64,8 @@ export default function Dashboard() {
   }, [currentPage, totalPages]);
 
   return (
-    <div
-      className="
-                flex-1 p-4 sm:p-10 pb-10
-                min-h-dvh
-                color-transition
-                
-            "
-    >
-      {(tiles.length > 0 || hasUnsavedChanges) && (
+    <div className="flex-1 p-4 sm:p-10 pb-10 min-h-dvh color-transition relative">
+      {!isEmpty && (tiles.length > 0 || hasUnsavedChanges) && (
         <DashboardHeader
           isLocked={isLocked}
           hasUnsavedChanges={hasUnsavedChanges}
@@ -77,6 +76,29 @@ export default function Dashboard() {
         />
       )}
 
+      {isEmpty ? (
+        <EmptyDashboard setShowAddMenu={setShowAddMenu} />
+      ) : (
+        <>
+          <TilesGrid
+            tiles={tiles}
+            setTiles={setTiles}
+            currentTiles={currentTiles}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setShowAddMenu={setShowAddMenu}
+            isLocked={isLocked}
+            savedTiles={savedTiles}
+          />
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+          />
+        </>
+      )}
+
       {infoMessage && (
         <InfoMessage
           message={infoMessage}
@@ -85,23 +107,6 @@ export default function Dashboard() {
         />
       )}
 
-      <TilesGrid
-        tiles={tiles}
-        setTiles={setTiles}
-        currentTiles={currentTiles}
-        currentPage={currentPage}
-        totalPages={totalPages}
-        setShowAddMenu={setShowAddMenu}
-        isLocked={isLocked}
-        savedTiles={savedTiles}
-      />
-
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        setCurrentPage={setCurrentPage}
-      />
-
       {hasUnsavedChanges && (
         <DashboardActions
           saveLayout={saveLayout}
@@ -109,25 +114,23 @@ export default function Dashboard() {
         />
       )}
 
-      {showAddMenu && !isLocked && (
+      {showAddMenu && (
         <div
-          className="
-                        fixed inset-0
-                        bg-black/20 backdrop-blur-sm
-                        z-40
-                    "
+          className="fixed inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm z-[100]"
           onClick={() => setShowAddMenu(false)}
         />
       )}
 
-      <DropDown
-        showAddMenu={showAddMenu}
-        setShowAddMenu={setShowAddMenu}
-        tiles={tiles}
-        setTiles={setTiles}
-        AVAILABLE_TILES={availableTiles}
-        isLocked={isLocked}
-      />
+      <div className="relative z-[9999]">
+        <DropDown
+          showAddMenu={showAddMenu}
+          setShowAddMenu={setShowAddMenu}
+          tiles={tiles}
+          setTiles={setTiles}
+          AVAILABLE_TILES={availableTiles}
+          isLocked={isLocked && !isEmpty}
+        />
+      </div>
     </div>
   );
 }

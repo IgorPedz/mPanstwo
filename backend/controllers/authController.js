@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const db = require("../db");
 const { updateUserActivity } = require("./activityController");
+const sendNotification = require("../utils/notification");
 
 const register = async (req, res, next) => {
   try {
@@ -11,10 +12,9 @@ const register = async (req, res, next) => {
       return res.status(400).json({ message: "Email i hasło są wymagane" });
     }
 
-    const [userRows] = await db.query(
-      "SELECT id FROM users WHERE email = ?",
-      [email]
-    );
+    const [userRows] = await db.query("SELECT id FROM users WHERE email = ?", [
+      email,
+    ]);
 
     if (userRows.length > 0) {
       return res.status(400).json({ message: "Użytkownik już istnieje" });
@@ -24,18 +24,54 @@ const register = async (req, res, next) => {
 
     const [result] = await db.query(
       "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-      [name || "Użytkownik", email, hashedPassword]
+      [name || "Użytkownik", email, hashedPassword],
     );
 
     const userId = result.insertId;
 
     const defaultStats = [
-      { key: "trackedLaws", value_number: 0, value_text: null, icon: "documents", color: "indigo" },
-      { key: "role", value_number: null, value_text: "Użytkownik", icon: "achievements", color: "purple" },
-      { key: "votes", value_number: 0, value_text: null, icon: "vote", color: "blue" },
-      { key: "opinions", value_number: 0, value_text: null, icon: "comments", color: "emerald" },
-      { key: "courses", value_number: 0, value_text: null, icon: "courses", color: "purple" },
-      { key: "reputation", value_number: 0, value_text: null, icon: "star", color: "yellow" },
+      {
+        key: "trackedLaws",
+        value_number: 0,
+        value_text: null,
+        icon: "documents",
+        color: "indigo",
+      },
+      {
+        key: "role",
+        value_number: null,
+        value_text: "Użytkownik",
+        icon: "achievements",
+        color: "purple",
+      },
+      {
+        key: "votes",
+        value_number: 0,
+        value_text: null,
+        icon: "vote",
+        color: "blue",
+      },
+      {
+        key: "opinions",
+        value_number: 0,
+        value_text: null,
+        icon: "comments",
+        color: "emerald",
+      },
+      {
+        key: "courses",
+        value_number: 0,
+        value_text: null,
+        icon: "courses",
+        color: "purple",
+      },
+      {
+        key: "reputation",
+        value_number: 0,
+        value_text: null,
+        icon: "star",
+        color: "yellow",
+      },
     ];
 
     const values = defaultStats.map((s) => [
@@ -49,7 +85,7 @@ const register = async (req, res, next) => {
       `INSERT INTO user_stats
        (user_id, \`key\`, value_number, value_text)
        VALUES ?`,
-      [values]
+      [values],
     );
 
     res.status(201).json({
@@ -91,6 +127,24 @@ const login = async (req, res, next) => {
 
     const streakResult = await updateUserActivity(user.id);
 
+    if (streakResult.notify) {
+      if (streakResult.streak >= 3 && streakResult.streak <= 6) {
+        await sendNotification({
+          type: "LOGIN_STREAK_SMALL",
+          message: `Masz serię logowań: ${streakResult.streak} dni 🔥 +50 XP`,
+          userId: user.id,
+        });
+      }
+
+      if (streakResult.streak >= 7) {
+        await sendNotification({
+          type: "LOGIN_STREAK_BIG",
+          message: `Legendarna seria logowań: ${streakResult.streak} dni 🚀 +100 XP`,
+          userId: user.id,
+        });
+      }
+    }
+
     const token = jwt.sign(
       { id: user.id, email: user.email, name: user.name },
       process.env.JWT_SECRET,
@@ -110,7 +164,7 @@ const login = async (req, res, next) => {
         id: user.id,
         email: user.email,
         name: user.name,
-        login_streak: streakResult.streak, // 🔥 dodane
+        login_streak: streakResult.streak,
       },
       message: "Zalogowano pomyślnie",
     });
@@ -118,6 +172,7 @@ const login = async (req, res, next) => {
     next(error);
   }
 };
+
 module.exports = {
   register,
   login,

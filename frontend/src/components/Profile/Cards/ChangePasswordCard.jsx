@@ -78,7 +78,7 @@ export default function ChangePasswordCard({ changePassword }) {
 
           <div>
             <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1 color-transition">
-              Zabezpieczenia dostępu
+              Dane Konta
             </p>
             <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter color-transition">
               Zmień Hasło

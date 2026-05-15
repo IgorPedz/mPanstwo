@@ -19,6 +19,16 @@ const EVENT_CONFIG = {
     color: "amber",
     title: "Aktualizacja prawa",
   },
+  LOGIN_STREAK_SMALL: {
+    icon: "🚀",
+    color: "blue",
+    title: "Seria logowań",
+  },
+  LOGIN_STREAK_BIG: {
+    icon: "🔥",
+    color: "red",
+    title: "Długa Seria Logowań",
+  },
 };
 
 module.exports = EVENT_CONFIG;

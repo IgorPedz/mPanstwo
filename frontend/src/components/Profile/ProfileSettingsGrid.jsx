@@ -5,15 +5,20 @@ import ChangeEmailCard from "./Cards/ChangeEmailCard";
 import ChangePasswordCard from "./Cards/ChangePasswordCard";
 import DeleteAccountCard from "./Cards/DeleteAccountCard";
 
-const ProfileSettingsGrid = ({ profile, updateProfile, changeEmail, changePassword, deleteAccount }) => {
+const ProfileSettingsGrid = ({
+  profile,
+  updateProfile,
+  changeEmail,
+  changePassword,
+  deleteAccount,
+}) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <motion.div variants={upwardItemVariants} whileHover={{ y: -5 }}>
-        <ChangeNameCard profile={profile} updateProfile={updateProfile} />
-      </motion.div>
-
-      <motion.div variants={upwardItemVariants} whileHover={{ y: -5 }}>
         <ChangeEmailCard changeEmail={changeEmail} />
+      </motion.div>
+      <motion.div variants={upwardItemVariants} whileHover={{ y: -5 }}>
+        <ChangeNameCard profile={profile} updateProfile={updateProfile} />
       </motion.div>
 
       <motion.div variants={upwardItemVariants} whileHover={{ y: -5 }}>

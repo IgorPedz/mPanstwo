@@ -13,7 +13,6 @@ export default function WelcomeDashboard({
 }) {
   const { user } = useUser();
 
-  // Mapowanie ikon (zakładając, że masz je w ICON_MAP)
   const LockIcon = ICON_MAP["lock"];
   const UnlockIcon = ICON_MAP["unlock"];
 
@@ -88,7 +87,6 @@ export default function WelcomeDashboard({
             )}
           </div>
 
-          {/* Subtelny glow pod kłódką gdy odblokowane */}
           {!isLocked && (
             <div className="absolute inset-0 bg-indigo-500 blur-xl opacity-20 rounded-full" />
           )}

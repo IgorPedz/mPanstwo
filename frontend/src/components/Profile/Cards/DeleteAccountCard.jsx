@@ -57,7 +57,7 @@ export default function DeleteAccountCard({ deleteAccount }) {
 
           <div>
             <p className="text-[10px] font-black text-red-500/60 dark:text-red-400/60 uppercase tracking-[0.2em] mb-1 color-transition">
-              Strefa Zagrożenia
+              Dane Konta
             </p>
             <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter color-transition">
               Usuń Konto

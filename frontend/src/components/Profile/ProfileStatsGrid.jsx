@@ -2,7 +2,7 @@ import ProfileCard from "./ProfileCard";
 
 const ProfileStatsGrid = ({ stats }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
       {stats.map((stat) => (
         <ProfileCard
           key={stat.key}

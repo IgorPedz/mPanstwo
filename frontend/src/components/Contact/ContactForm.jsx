@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import { motion } from "framer-motion"
-import InfoMessage from "../Global/InfoMessage"
+import { motion } from "framer-motion";
+import InfoMessage from "../Global/InfoMessage";
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -11,8 +11,8 @@ export default function ContactForm() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [infoMessage, setInfoMessage] = useState("")
-  const [infoType, setInfoType] = useState("")
+  const [infoMessage, setInfoMessage] = useState("");
+  const [infoType, setInfoType] = useState("");
   const inputStyles = `
     w-full p-4 bg-slate-50 dark:bg-slate-800/30
     border border-slate-200 dark:border-slate-800 
@@ -36,8 +36,8 @@ export default function ContactForm() {
 
       await axios.post("http://localhost:5000/support", form);
 
-      setInfoMessage("Wysłano wiadomość!")
-      setInfoType("success")
+      setInfoMessage("Wysłano wiadomość!");
+      setInfoType("success");
       setForm({
         name: "",
         email: "",
@@ -53,10 +53,7 @@ export default function ContactForm() {
 
   return (
     <div className="w-full p-8 md:p-10 border-2 border-slate-200 dark:border-slate-800 rounded-[2rem] bg-white dark:bg-slate-900/50 color-transition">
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-8 color-transition"
-      >
+      <form onSubmit={handleSubmit} className="space-y-8 color-transition">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 color-transition">
           <div className="space-y-2">
             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">
@@ -109,21 +106,25 @@ export default function ContactForm() {
 
         <div className="pt-4 color-transition flex justify-center">
           <motion.button
-            whileHover={{ y: -4 }}
-            whileTap={{ scale: 0.95 }}
-            className="
-            color-transition px-10 py-5
-            bg-slate-900 dark:bg-white
-            text-white dark:text-slate-900
-            rounded-2xl
-            font-black text-[12px] uppercase tracking-widest
-            shadow-lg
-            hover:shadow-xl hover:shadow-blue-500/10
-            transition-all
-            cursor-pointer
-          "
+            whileHover={!loading ? { y: -4 } : {}}
+            whileTap={!loading ? { scale: 0.95 } : {}}
+            disabled={loading}
+            className={`
+    color-transition px-10 py-5
+    bg-slate-900 dark:bg-white
+    text-white dark:text-slate-900
+    rounded-2xl
+    font-black text-[12px] uppercase tracking-widest
+    shadow-lg
+    transition-all
+    ${
+      loading
+        ? "opacity-60 cursor-not-allowed"
+        : "hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer"
+    }
+  `}
           >
-            Wyślij wiadomość
+            {loading ? "Wysyłanie..." : "Wyślij wiadomość"}
           </motion.button>
         </div>
       </form>
