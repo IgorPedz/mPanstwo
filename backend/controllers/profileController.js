@@ -1,7 +1,7 @@
 const db = require("../db");
 const bcrypt = require("bcrypt");
 const cardRegistry = require("../config/cardConfig");
-
+const isStrongPassword = require("../utils/strongpassword")
 const getProfile = async (req, res, next) => {
   try {
     const userId = req.params.userId;
@@ -215,10 +215,18 @@ const changePassword = async (req, res, next) => {
 
     const hashedPassword = await bcrypt.hash(cleanNew, 10);
 
-    await db.query("UPDATE users SET password = ? WHERE id = ?", [
-      hashedPassword,
-      userId,
-    ]);
+    const strongPassword = isStrongPassword(cleanNew);
+
+    await db.query(
+      `
+    UPDATE users
+    SET
+      password = ?,
+      is_strong = ?
+    WHERE id = ?
+  `,
+      [hashedPassword, strongPassword ? 1 : 0, userId],
+    );
 
     return res.json({
       success: true,

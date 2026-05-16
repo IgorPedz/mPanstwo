@@ -2,7 +2,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const db = require("../db");
 const { updateUserActivity } = require("./activityController");
-const sendNotification = require("../utils/notification");
+const { handleEvent } = require("../services/event.service");
+const isStrongPassword = require("../utils/strongpassword");
 
 const register = async (req, res, next) => {
   try {
@@ -22,9 +23,11 @@ const register = async (req, res, next) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    const strongPassword = isStrongPassword(password);
+
     const [result] = await db.query(
-      "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-      [name || "Użytkownik", email, hashedPassword],
+      "INSERT INTO users (name, email, password, has_strong_password) VALUES (?, ?, ?, ?)",
+      [name || "Użytkownik", email, hashedPassword, strongPassword ? 1 : 0],
     );
 
     const userId = result.insertId;
@@ -128,19 +131,13 @@ const login = async (req, res, next) => {
     const streakResult = await updateUserActivity(user.id);
 
     if (streakResult.notify) {
-      if (streakResult.streak >= 3 && streakResult.streak <= 6) {
-        await sendNotification({
-          type: "LOGIN_STREAK_SMALL",
-          message: `Masz serię logowań: ${streakResult.streak} dni 🔥 +50 XP`,
-          userId: user.id,
-        });
-      }
-
       if (streakResult.streak >= 7) {
-        await sendNotification({
-          type: "LOGIN_STREAK_BIG",
-          message: `Legendarna seria logowań: ${streakResult.streak} dni 🚀 +100 XP`,
-          userId: user.id,
+        await handleEvent(user.id, "LOGIN_STREAK_BIG", {
+          streak: streakResult.streak,
+        });
+      } else if (streakResult.streak >= 3) {
+        await handleEvent(user.id, "LOGIN_STREAK_SMALL", {
+          streak: streakResult.streak,
         });
       }
     }

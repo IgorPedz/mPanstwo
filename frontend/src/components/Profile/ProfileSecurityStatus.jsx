@@ -14,7 +14,7 @@ export default function ProfileSecurityStatus() {
   const { user } = useUser();
 
   const { fetchSecurity } = useUserSecurity();
-  
+
   const [isVerified, setIsVerified] = useState(false);
   const [hasStrongPassword, setHasStrongPassword] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -42,7 +42,6 @@ export default function ProfileSecurityStatus() {
 
   return (
     <div className="w-full space-y-4 color-transition">
-
       {/* HEADER */}
       <div className="flex justify-between items-end">
         <span className="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-2 color-transition">
@@ -57,8 +56,8 @@ export default function ProfileSecurityStatus() {
               score === 100
                 ? "text-emerald-500"
                 : score === 50
-                ? "text-yellow-500"
-                : "text-red-500"
+                  ? "text-yellow-500"
+                  : "text-red-500"
             }
           `}
         >
@@ -71,8 +70,8 @@ export default function ProfileSecurityStatus() {
             score === 100
               ? "bg-emerald-500"
               : score === 50
-              ? "bg-yellow-500"
-              : "bg-red-500"
+                ? "bg-yellow-500"
+                : "bg-red-500"
           }`}
           initial={{ width: 0 }}
           animate={{ width: `${score}%` }}
@@ -81,25 +80,79 @@ export default function ProfileSecurityStatus() {
       </div>
 
       <div className="space-y-1 text-xs font-bold uppercase tracking-widest">
+        {/* WERYFIKACJA */}
+        <div className="relative group w-fit">
+          <p
+            className={`color-transition ${
+              isVerified ? "text-emerald-500" : "text-red-500 cursor-help"
+            }`}
+          >
+            {isVerified ? "ZWERYFIKOWANY" : "NIEZWERYFIKOWANY"}
+          </p>
 
-        <p
-          className={`color-transition ${
-            isVerified ? "text-emerald-500" : "text-red-500"
-          }`}
-        >
-          {isVerified ? "ZWERYFIKOWANY" : "NIEZWERYFIKOWANY"}
-        </p>
+          {!isVerified && (
+            <div
+              className="
+    absolute left-0 top-6 z-20
+    opacity-0 group-hover:opacity-100
+    pointer-events-none
+    transition-all duration-200
 
-        <p
-          className={`color-transition ${
-            hasStrongPassword ? "text-emerald-500" : "text-red-500"
-          }`}
-        >
-          {hasStrongPassword ? "SILNE HASŁO" : "BRAK SILNEGO HASŁA"}
-        </p>
+    bg-white dark:bg-slate-900
+    text-slate-700 dark:text-white
+    border border-slate-200 dark:border-slate-700
 
+    text-[10px] font-semibold
+    normal-case tracking-normal
+
+    px-3 py-2 rounded-xl
+    shadow-xl w-56
+    color-transition
+  "
+            >
+              Zweryfikuj adres e-mail w ustawieniach konta, aby zwiększyć
+              bezpieczeństwo profilu.
+            </div>
+          )}
+        </div>
+
+        <div className="relative group w-fit">
+          <p
+            className={`color-transition ${
+              hasStrongPassword
+                ? "text-emerald-500"
+                : "text-red-500 cursor-help"
+            }`}
+          >
+            {hasStrongPassword ? "SILNE HASŁO" : "BRAK SILNEGO HASŁA"}
+          </p>
+
+          {!hasStrongPassword && (
+            <div
+              className="
+    absolute left-0 top-6 z-20
+    opacity-0 group-hover:opacity-100
+    pointer-events-none
+    transition-all duration-200
+
+    bg-white dark:bg-slate-900
+    text-slate-700 dark:text-white
+    border border-slate-200 dark:border-slate-700
+
+    text-[10px] font-semibold
+    normal-case tracking-normal
+
+    px-3 py-2 rounded-xl
+    shadow-xl w-56
+    color-transition
+  "
+            >
+              Użyj minimum 8 znaków, dużej litery, cyfry oraz znaku specjalnego
+              przy ustalaniu hasła.
+            </div>
+          )}
+        </div>
       </div>
-
     </div>
   );
 }

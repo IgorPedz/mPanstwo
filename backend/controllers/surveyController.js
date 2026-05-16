@@ -1,5 +1,5 @@
 const db = require("../db");
-const sendNotification = require("../utils/notification");
+const { handleEvent } = require("../services/event.service")
 
 const getSurveys = async (req, res) => {
   try {
@@ -77,11 +77,7 @@ const submitSurvey = async (req, res) => {
       );
     }
 
-    await sendNotification({
-      type: "SURVEY_COMPLETED",
-      message: "+50 XP za ukończenie ankiety",
-      userId,
-    });
+    await handleEvent(userId, "SURVEY_COMPLETED");
 
     return res.json({
       success: true,

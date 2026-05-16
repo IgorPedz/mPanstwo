@@ -45,7 +45,8 @@ export default function ModalForm({
 
     fields.forEach((f) => {
       if (!formData[f.name]?.trim()) {
-        newErrors[f.name] = `${(f.label || f.name).toUpperCase()} JEST WYMAGANE`;
+        newErrors[f.name] =
+          `${(f.label || f.name).toUpperCase()} JEST WYMAGANE`;
       }
     });
 
@@ -100,11 +101,9 @@ export default function ModalForm({
               transition-colors duration-300
             "
           >
-
             <div className="h-1.5 w-full bg-gradient-to-r from-violet-500 via-indigo-500 to-cyan-500" />
 
             <div className="px-8 pt-8 pb-6">
-
               <div className="flex items-start justify-between mb-8">
                 <div>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
@@ -153,12 +152,11 @@ export default function ModalForm({
                 <div className="space-y-5">
                   {fields.map((f) => (
                     <div key={f.name} className="space-y-1">
+                      {f.renderBelow?.({ formData, errors })}
                       <input
                         type={f.type || "text"}
                         value={formData[f.name] || ""}
-                        onChange={(e) =>
-                          handleChange(f.name, e.target.value)
-                        }
+                        onChange={(e) => handleChange(f.name, e.target.value)}
                         placeholder={f.placeholder}
                         className={`
                           w-full px-5 py-4
@@ -237,6 +235,6 @@ export default function ModalForm({
         </motion.div>
       )}
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 }

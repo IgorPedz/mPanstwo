@@ -1,56 +1,103 @@
-import { upwardItemVariants } from "../../Utils/Animations";
 import { motion } from "framer-motion";
+import { upwardItemVariants } from "../../Utils/Animations";
+
+import ICON_MAP from "../../Utils/Maps/Icons";
+import { RARITY_STYLES, RARITY_GLOW, RARITY_LABELS } from "../../Utils/Maps/Rarity";
 
 const AchievementCard = ({ item }) => {
-  const Icon = item.icon;
-  const progress = (item.current / item.goal) * 100;
+  const Icon = ICON_MAP[item.icon] || ICON_MAP.star;
+
+  const progressPercent = (item.progress / item.requirementValue) * 100;
 
   return (
     <motion.div
       layout
       variants={upwardItemVariants}
-      initial="hidden" animate="show" exit={{ opacity: 0, scale: 0.9 }}
+      initial="hidden"
+      animate="show"
+      exit={{ opacity: 0, scale: 0.9 }}
       whileHover={{ y: -5 }}
-      className={`group relative p-6 rounded-[1.5rem] border transition-all duration-300 color-transition ${
-        item.unlocked 
-        ? "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 shadow-sm" 
-        : "bg-slate-50/50 dark:bg-slate-900/20 border-dashed border-slate-300 dark:border-slate-800 opacity-60"
-      }`}
+      className={`group relative p-6 rounded-[1.5rem] border transition-all duration-300 color-transition
+        ${RARITY_STYLES[item.rarity]}
+        ${RARITY_GLOW[item.rarity]}
+        ${item.unlocked ? "shadow-sm" : "opacity-60 border-dashed"}
+      `}
     >
       <div className="flex justify-between items-start mb-4">
-        <div className={`p-3 rounded-2xl color-transition ${item.unlocked ? "bg-blue-50 dark:bg-blue-900/30 text-blue-600" : "bg-slate-100 dark:bg-slate-800 text-slate-400"}`}>
+        <div
+          className={`
+          p-3 rounded-2xl transition-all
+          ${
+            item.unlocked
+              ? "bg-emerald-100 text-emerald-600"
+              : "bg-slate-100 text-slate-400"
+          }
+        `}
+        >
           <Icon className="h-6 w-6" />
         </div>
-        <span className="text-[10px] font-black text-slate-400 group-hover:text-blue-500 transition-colors uppercase color-transition">
-          +{item.xp} XP
+
+        <span className="text-[10px] font-black text-slate-400 uppercase">
+          +{item.xpReward} XP
         </span>
       </div>
 
-      <h3 className={`font-bold text-lg mb-1 color-transition ${item.unlocked ? "text-slate-900 dark:text-white" : "text-slate-500"}`}>
+      <h3
+        className={`font-bold text-lg mb-1 transition-colors
+        ${item.unlocked ? "text-slate-900 dark:text-white" : "text-slate-500"}
+      `}
+      >
         {item.title}
       </h3>
-      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-6 h-10 overflow-hidden color-transition">
-        {item.desc}
+
+      <p className="color-transition text-xs text-slate-500 dark:text-slate-400 mb-4 h-10 overflow-hidden">
+        {item.description}
       </p>
 
+      <div className="mb-4">
+        <span
+          className={`
+          text-[10px] font-black uppercase px-2 py-1 rounded-full
+          ${
+            item.rarity === "legendary"
+              ? "bg-yellow-400 text-black"
+              : item.rarity === "epic"
+                ? "bg-purple-500 text-white"
+                : item.rarity === "rare"
+                  ? "bg-blue-500 text-white"
+                  : "bg-slate-200 text-slate-600"
+          }
+        `}
+        >
+          {RARITY_LABELS[item.rarity]}
+        </span>
+      </div>
+
       <div className="space-y-2">
-        <div className="flex justify-between text-[10px] font-black text-slate-400 uppercase color-transition">
-          <span>Cel: {item.goal}</span>
-          <span>{item.current} / {item.goal}</span>
+        <div className="flex justify-between text-[10px] font-black text-slate-400 uppercase">
+          <span>Cel: {item.requirementValue}</span>
+          <span>
+            {item.progress} / {item.requirementValue}
+          </span>
         </div>
-        <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden color-transition">
-          <motion.div 
-            className={`h-full ${item.unlocked ? "bg-emerald-500" : "bg-blue-500"}`}
-            initial={{ width: 0 }} 
-            animate={{ width: `${progress}%` }}
+
+        <div className="color-transition h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <motion.div
+            className={`h-full ${
+              item.unlocked ? "bg-emerald-500" : "bg-blue-500"
+            }`}
+            initial={{ width: 0 }}
+            animate={{
+              width: `${progressPercent}%`,
+            }}
             transition={{ duration: 1, delay: 0.2 }}
           />
         </div>
       </div>
 
       {!item.unlocked && (
-        <div className="absolute inset-0 bg-white/5 dark:bg-black/5 backdrop-blur-[1px] rounded-[1.5rem] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          <div className="bg-slate-900 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow-xl color-transition">
+        <div className="color-transition absolute inset-0 bg-white/5 dark:bg-black/5 backdrop-blur-[1px] rounded-[1.5rem] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="bg-slate-900 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow-xl">
             W trakcie realizacji
           </div>
         </div>

@@ -16,6 +16,10 @@ const testRoutes = require("./routes/testRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 const unreadNotificationRoutes = require("./routes/unreadNotificationRoutes")
 const resendEmailReset = require("./routes/resendEmailRoutes")
+const achievementRoutes = require("./routes/achievementRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
+const progressionRoutes = require("./routes/progressionRoutes");
+
 const app = express();
 const server = http.createServer(app);
 
@@ -32,6 +36,9 @@ app.use(notificationRoutes);
 app.use(testRoutes);
 app.use(unreadNotificationRoutes)
 app.use(resendEmailReset)
+app.use(achievementRoutes)
+app.use(categoryRoutes)
+app.use(progressionRoutes)
 app.use(errorHandler);
 
 initSocket(server);

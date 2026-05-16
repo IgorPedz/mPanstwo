@@ -1,4 +1,5 @@
 import AuthInput from "./AuthInput";
+import PasswordStrength from "./PasswordStrength";
 
 export default function RegisterForm({
   formData,
@@ -43,6 +44,8 @@ export default function RegisterForm({
           error={errors.password}
         />
       </div>
+
+      <PasswordStrength password={formData.password} />
 
       <div className="flex flex-col gap-4 pt-4">
         <button

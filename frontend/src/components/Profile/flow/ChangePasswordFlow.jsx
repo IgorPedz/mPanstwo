@@ -1,4 +1,5 @@
 import ICON_MAP from "../../../Utils/Maps/Icons";
+import PasswordStrength from "../../Auth/PasswordStrength";
 
 const LockIcon = ICON_MAP["lock"];
 
@@ -57,19 +58,25 @@ const ChangePasswordFlow = {
         {
           name: "oldPassword",
           type: "password",
-          label:"Nowe hasło",
+          label: "Stare hasło",
           placeholder: "Stare hasło",
         },
+
         {
           name: "newPassword",
           type: "password",
-          label:"Stare hasło",
+          label: "Nowe hasło",
           placeholder: "Nowe hasło",
+
+          renderBelow: ({ formData }) => (
+            <PasswordStrength password={formData.newPassword} />
+          ),
         },
+
         {
           name: "confirmPassword",
           type: "password",
-          label:"Powtórz nowe hasło",
+          label: "Powtórz nowe hasło",
           placeholder: "Potwierdź nowe hasło",
         },
       ],

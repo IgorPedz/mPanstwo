@@ -9,8 +9,7 @@ const AchievementsHeader = () => (
       </h1>
       <div className="h-1 w-20 bg-indigo-500 mb-5 mt-2 color-transition" />
       <p className="text-slate-400 font-medium color-transition">
-        Przeglądaj swoje osiągnięcia, zdobywaj odznaki i śledź postępy w
-        zdobywaniu nagród!
+        Przeglądaj swoje osiągnięcia i śledź swój postęp
       </p>
     </div>
   </header>
