@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 const db = require("../db");
 const sendMail = require("../utils/mailer");
 
-// RESET PASSWORD
 const resetPassword = async (req, res) => {
   const { email } = req.body;
 
@@ -20,14 +19,18 @@ const resetPassword = async (req, res) => {
     }
 
     const token = crypto.randomUUID();
+
     const link = `http://localhost:5173/reset-password/${token}`;
 
+    // 15 minut od teraz
+    const expires = Date.now() + 15 * 60 * 1000;
+
     await db.execute(
-      `UPDATE users 
-       SET reset_token = ?, 
-           reset_token_exp = DATE_ADD(NOW(), INTERVAL 15 MINUTE)
+      `UPDATE users
+       SET reset_token = ?,
+           reset_token_exp = ?
        WHERE email = ?`,
-      [token, email],
+      [token, expires, email],
     );
 
     await sendMail({
@@ -40,12 +43,14 @@ const resetPassword = async (req, res) => {
       `,
     });
 
-    res.json({
+    return res.json({
       success: true,
       message: "Link resetujący został wysłany",
     });
   } catch (err) {
-    res.status(500).json({
+    console.error("RESET PASSWORD ERROR:", err);
+
+    return res.status(500).json({
       success: false,
       error: err.message,
     });
@@ -87,39 +92,49 @@ const changePassword = async (req, res) => {
     }
 
     const [rows] = await db.execute(
-      `SELECT * FROM users 
-       WHERE reset_token = ? 
-       AND reset_token_exp > NOW()`,
-      [token],
+      `SELECT id, reset_token_exp
+       FROM users
+       WHERE reset_token = ?`,
+      [token.trim()],
     );
 
     if (rows.length === 0) {
       return res.status(400).json({
         success: false,
-        message: "Token nieprawidłowy lub wygasł",
+        message: "Token nieprawidłowy",
       });
     }
 
     const user = rows[0];
 
+    const isExpired = Date.now() > Number(user.reset_token_exp);
+
+    if (isExpired) {
+      return res.status(400).json({
+        success: false,
+        message: "Token wygasł",
+      });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await db.execute(
-      `UPDATE users 
-       SET password = ?, 
-           reset_token = NULL, 
-           reset_token_exp = NULL 
+      `UPDATE users
+       SET password = ?,
+           reset_token = NULL,
+           reset_token_exp = NULL
        WHERE id = ?`,
       [hashedPassword, user.id],
     );
 
-    res.json({
+    return res.json({
       success: true,
       message: "Hasło zmienione",
     });
   } catch (err) {
-    console.error("RESET ERROR:", err);
-    res.status(500).json({
+    console.error("CHANGE PASSWORD ERROR:", err);
+
+    return res.status(500).json({
       success: false,
       message: "Błąd serwera",
     });
@@ -307,7 +322,7 @@ const isVerified = async (req, res) => {
 
     const [rows] = await db.execute(
       `SELECT is_verified FROM users WHERE id = ?`,
-      [userId]
+      [userId],
     );
 
     if (rows.length === 0) {
@@ -321,9 +336,7 @@ const isVerified = async (req, res) => {
       success: true,
       is_verified: Boolean(rows[0].is_verified),
     });
-
   } catch (err) {
-
     return res.status(500).json({
       success: false,
       error: err.message,

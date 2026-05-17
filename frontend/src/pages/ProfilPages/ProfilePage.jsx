@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useUser } from "../../Contexts/UserContext";
 import useProfile from "../../Hooks/useProfile";
-import useVerifyEmail from "../../Hooks/useVerification";
 
 import ProfileHero from "../../components/Profile/ProfileHero";
 import ProfileStatsGrid from "../../components/Profile/ProfileStatsGrid";
@@ -23,12 +22,6 @@ export default function ProfilePage() {
     changePassword,
     deleteAccount,
   } = useProfile(userId);
-
-  const {
-    verifyEmail,
-    loading: verifyLoading,
-    error: verifyError,
-  } = useVerifyEmail();
 
   if (!userId || profileLoading) {
     return (
@@ -82,7 +75,7 @@ export default function ProfilePage() {
           </div>
         </header>
 
-        <ProfileSecurityGrid verifyEmail={verifyEmail} />
+        <ProfileSecurityGrid/>
       </div>
     </motion.div>
   );

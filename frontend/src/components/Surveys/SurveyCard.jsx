@@ -132,7 +132,7 @@ const SurveyCard = ({ survey, onStart }) => {
             `}
             >
               <ZapIcon className="h-4 w-4 fill-current" />
-              {survey.reward}
+              {survey.reward} Reputacji
             </div>
           </div>
         )}

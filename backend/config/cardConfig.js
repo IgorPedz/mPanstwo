@@ -1,7 +1,7 @@
 const cardRegistry = {
   loginStreak: {
     title: "Streak logowania",
-    icon: "fire", // fallback -> zamienimy niżej
+    icon: "fire", 
     color: "orange",
   },
 
@@ -47,8 +47,8 @@ const cardRegistry = {
     color: "violet",
   },
 
-  lastActivity: {
-    title: "Ostatnia aktywność",
+  rank: {
+    title: "Twoja ranga",
     icon: "clock",
     color: "zinc",
   },

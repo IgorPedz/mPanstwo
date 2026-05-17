@@ -111,7 +111,6 @@ const SurveyModal = ({ open, onClose, survey, onInfo, onFinished }) => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Navigation */}
               <div className="mt-12 flex items-center justify-between">
                 <button
                   disabled={currentStep === 0}

@@ -2,17 +2,24 @@ import { create } from "zustand";
 
 export const useNotificationStore = create((set, get) => ({
   notifications: [],
-
   normalize: (n) => ({
-    id: String(n.id), 
+    id: String(n.id),
+
     title: n.title,
     body: n.message,
+
+    icon: n.icon,
+    type: n.type,
+
+    data: typeof n.data === "string" ? JSON.parse(n.data) : n.data,
+
     time: n.created_at
       ? new Date(n.created_at).toLocaleTimeString()
       : new Date().toLocaleTimeString(),
-    urgent: Boolean(n.urgent),
-    type: n.type,
+
     read: Boolean(n.is_read),
+
+    urgent: Boolean(n.urgent ?? false),
   }),
 
   addNotification: (notif) =>
@@ -79,5 +86,4 @@ export const useNotificationStore = create((set, get) => ({
       console.error("CLEAR READ ERROR:", err);
     }
   },
-  
 }));

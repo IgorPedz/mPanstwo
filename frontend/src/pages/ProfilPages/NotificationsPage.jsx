@@ -15,10 +15,10 @@ export default function NotificationsPage() {
   const [showClearModal, setShowClearModal] = useState(false);
   const notifications = useNotificationStore((s) => s.notifications);
   const clearRead = useNotificationStore((s) => s.clearRead);
-  
+
   const unread = notifications.filter((n) => !n.read);
   const read = notifications.filter((n) => n.read);
-  
+
   const handleClearHistory = () => {
     setShowClearModal(true);
   };

@@ -17,7 +17,7 @@ export default function useUnreadNotifications(userId) {
           params: { userId: id },
         },
       );
-
+      console.log(res.data)
       setNotifications(res.data);
     } catch (err) {
       console.error("❌ [HOOK] Axios error:", err.message);

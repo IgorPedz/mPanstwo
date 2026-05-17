@@ -1,16 +1,20 @@
 import { motion } from "framer-motion";
 import { useNotificationStore } from "../../store/useNotificationStore";
 import ICON_MAP from "../../Utils/Maps/Icons";
+import { BellIcon } from "@heroicons/react/24/outline";
 import { itemVariants } from "../../Utils/Animations";
 
 const NotificationItem = ({ notif }) => {
   const markAsRead = useNotificationStore((s) => s.markAsRead);
+  console.log(notif);
+  const normalizeIcon = (icon) => icon?.toLowerCase?.().trim() ?? "";
 
-  const BellIcon = ICON_MAP["bell"] || ICON_MAP["star"];
-  const GavelIcon = ICON_MAP["gavel"] || ICON_MAP["star"];
+  const iconKey = normalizeIcon(notif.icon);
+
+  const Icon = ICON_MAP[iconKey] || BellIcon;
 
   const isUnread = !Boolean(notif.read);
-  console.log(notif)
+
   const handleClick = () => {
     const id = Number(notif.id);
 
@@ -50,11 +54,7 @@ const NotificationItem = ({ notif }) => {
             : "bg-slate-100 dark:bg-slate-800 text-slate-500"
         }`}
       >
-        {notif.type === "law" ? (
-          <GavelIcon className="h-5 w-5" />
-        ) : (
-          <BellIcon className="h-5 w-5" />
-        )}
+        <Icon className="h-5 w-5" />
       </div>
 
       <div className="flex-grow">

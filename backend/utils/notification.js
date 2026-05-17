@@ -11,36 +11,37 @@ async function sendNotification({
   icon,
   color,
 }) {
-  console.log("🚀 sendNotification");
-
   try {
     const io = getIO();
 
     const eventKey =
       typeof type === "string" ? type.trim().toUpperCase() : type;
 
-    const config = EVENT_CONFIG[eventKey];
+    const config = EVENT_CONFIG[eventKey] ||
+      EVENT_CONFIG.SYSTEM_ALERT || {
+        title: "Powiadomienie",
+        icon: "🔔",
+        color: "gray",
+      };
 
-    const finalTitle =
-      title ?? config?.title ?? "Powiadomienie systemowe";
+    const finalTitle = title ?? config.title ?? "Powiadomienie systemowe";
 
-    const finalIcon =
-      icon ?? config?.icon ?? "default";
+    const finalIcon = icon ?? config.icon ?? "🔔";
 
-    const finalColor =
-      color ?? config?.color ?? "gray";
+    const finalColor = color ?? config.color ?? "gray";
 
     const [result] = await db.query(
       `
-      INSERT INTO notifications
-      (user_id, type, title, message, data)
-      VALUES (?, ?, ?, ?, ?)
-      `,
+  INSERT INTO notifications
+  (user_id, icon, type, title, message, data)
+  VALUES (?, ?, ?, ?, ?, ?)
+  `,
       [
         userId || null,
+        finalIcon, // 🔥 FIX
         eventKey,
         finalTitle,
-        message,
+        message ?? "",
         data ? JSON.stringify(data) : null,
       ],
     );
@@ -50,7 +51,7 @@ async function sendNotification({
       user_id: userId,
       type: eventKey,
       title: finalTitle,
-      message,
+      message: message ?? "",
       icon: finalIcon,
       color: finalColor,
       data,
@@ -58,7 +59,10 @@ async function sendNotification({
       created_at: new Date().toISOString(),
     };
 
-    if (!io) return notification;
+    if (!io) {
+      console.log("❌ NO SOCKET IO");
+      return notification;
+    }
 
     if (!userId) {
       io.emit("notification", notification);
@@ -67,9 +71,11 @@ async function sendNotification({
 
     io.to(`user:${userId}`).emit("notification", notification);
 
+    console.log("✅ SENT TO:", userId);
+
     return notification;
   } catch (err) {
-    console.error("DB NOTIFICATION ERROR:", err);
+    console.error("❌ DB NOTIFICATION ERROR:", err);
     return null;
   }
 }

@@ -1,45 +1,71 @@
 const EVENT_CONFIG = {
   SURVEY_NEW: {
-    icon: "📝",
-    color: "blue",
+    icon: "survey_new",
     title: "Nowa ankieta",
-    xp: 0
   },
 
   SURVEY_COMPLETED: {
-    icon: "🎉",
-    color: "green",
+    icon: "survey_completed",
     title: "Ankieta zakończona",
-    xp: 50
+    message: "Wypełniono ankiete",
+    xp: 50,
+    metricKey: "survey_completed",
   },
 
   SURVEY_RESULT: {
-    icon: "📊",
-    color: "indigo",
+    icon: "survey_result",
     title: "Nowe wyniki",
-    xp: 10
   },
 
   LAW_UPDATE: {
-    icon: "⚖️",
-    color: "amber",
+    icon: "law_update",
     title: "Aktualizacja prawa",
-    xp: 25
   },
 
   LOGIN_STREAK_SMALL: {
-    icon: "🚀",
-    color: "blue",
+    icon: "login_streak_small",
     title: "Seria logowań",
-    xp: 20
   },
 
   LOGIN_STREAK_BIG: {
-    icon: "🔥",
-    color: "red",
-    title: "Długa Seria Logowań",
-    xp: 100
-  }
+    icon: "login_streak_big",
+    title: "Długa seria logowań",
+  },
+
+  ACHIEVEMENT_UNLOCK: {
+    icon: "achievement_unlock",
+    title: "Osiągnięcie odblokowane",
+  },
+
+  XP_GAIN: {
+    icon: "xp_gain",
+    title: "Zdobyto XP",
+  },
+
+  PROFILE_UPDATE: {
+    icon: "profile_update",
+    title: "Profil zaktualizowany",
+  },
+
+  VOTE_CAST: {
+    icon: "vote_cast",
+    title: "Oddano głos",
+  },
+
+  OPINION_POSTED: {
+    icon: "opinion_posted",
+    title: "Dodano opinię",
+  },
+
+  COURSE_COMPLETED: {
+    icon: "course_completed",
+    title: "Ukończono kurs",
+  },
+
+  LEVEL_UP: {
+    icon: "level_up",
+    title: "Nowy poziom",
+  },
 };
 
 module.exports = EVENT_CONFIG;

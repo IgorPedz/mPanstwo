@@ -1,45 +1,36 @@
 const { addXP } = require("./xp.service");
 const sendNotification = require("../utils/notification");
 const EVENT_CONFIG = require("../config/eventConfig");
+const { incrementMetric } = require("./metrics.service");
+const { checkAchievements } = require("./achievement.service");
 
 async function handleEvent(userId, eventType, meta = {}) {
-  console.log("EVENT RAW:", eventType);
-
-  if (!userId) {
-    console.log("NO USER ID");
-    return;
-  }
-
-  // 🔥 NORMALIZACJA EVENTU
-  const key =
-    typeof eventType === "string" ? eventType.trim().toUpperCase() : eventType;
+  const key = eventType.trim().toUpperCase();
 
   const config = EVENT_CONFIG[key];
-
-  if (!config) {
-    console.log("UNKNOWN EVENT:", key);
-    return;
-  }
-
-  const xp = config.xp ?? 0;
+  if (!config) return;
 
   let totalXP = null;
 
-  // 🔥 XP ONLY ONCE
-  if (xp > 0) {
-    totalXP = await addXP(userId, xp, key);
+  if (config.xp > 0) {
+    totalXP = await addXP(userId, config.xp, key);
   }
+
+  if (config.metricKey) {
+    await incrementMetric(userId, config.metricKey, 1);
+  }
+
+  await checkAchievements(userId);
 
   await sendNotification({
     type: key,
     userId,
     title: config.title,
-    message: `+${xp} XP za ${config.title}`,
+    message: config.message,
     icon: config.icon,
     color: config.color,
     data: {
-      eventType: key,
-      xp,
+      xp: config.xp ?? 0,
       totalXP,
     },
   });

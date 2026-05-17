@@ -1,7 +1,8 @@
 const db = require("../db");
 const bcrypt = require("bcrypt");
 const cardRegistry = require("../config/cardConfig");
-const isStrongPassword = require("../utils/strongpassword")
+const isStrongPassword = require("../utils/strongpassword");
+
 const getProfile = async (req, res, next) => {
   try {
     const userId = req.params.userId;
@@ -11,7 +12,7 @@ const getProfile = async (req, res, next) => {
     }
 
     const [userRows] = await db.query(
-      `SELECT id, name, email, login_streak, active_days, created_at
+      `SELECT id, name, email, login_streak, active_days, created_at, xp
        FROM users
        WHERE id = ?`,
       [userId],
@@ -22,6 +23,19 @@ const getProfile = async (req, res, next) => {
     }
 
     const user = userRows[0];
+
+    const xp = user.xp;
+
+    const [[currentRank]] = await db.query(
+      `
+      SELECT *
+      FROM ranks
+      WHERE required_xp <= ?
+      ORDER BY required_xp DESC
+      LIMIT 1
+    `,
+      [xp],
+    );
 
     const [rows] = await db.query(
       `SELECT \`key\`, value_number, value_text
@@ -56,6 +70,20 @@ const getProfile = async (req, res, next) => {
         title: cardRegistry.activeDays.title,
         icon: cardRegistry.activeDays.icon,
         color: cardRegistry.activeDays.color,
+      },
+      {
+        key: "reputation",
+        value: user.xp,
+        title: cardRegistry.reputation.title,
+        icon: cardRegistry.reputation.icon,
+        color: cardRegistry.reputation.color,
+      },
+      {
+        key: "rank",
+        value: currentRank.name,
+        title: cardRegistry.rank.title,
+        icon: cardRegistry.rank.icon,
+        color: cardRegistry.rank.color,
       },
     ];
 

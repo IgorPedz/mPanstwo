@@ -8,7 +8,6 @@ export default function AchievementsTabs({
   return (
     <div className="mb-5 w-full lg:w-fit p-1.5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] color-transition">
 
-      {/* SCROLL CONTAINER */}
       <div className="flex gap-1 overflow-x-auto no-scrollbar lg:flex-wrap lg:overflow-visible">
 
         {categories.map((cat) => {

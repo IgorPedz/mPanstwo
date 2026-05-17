@@ -12,7 +12,9 @@ export default function Sidebar() {
     try {
       const saved = localStorage.getItem("mpanstwo-nav-openSections");
       return saved ? JSON.parse(saved) : { Główne: true };
-    } catch { return { Główne: true }; }
+    } catch {
+      return { Główne: true };
+    }
   });
 
   const location = useLocation();
@@ -21,7 +23,7 @@ export default function Sidebar() {
   useEffect(() => setIsOpen(false), [location.pathname]);
 
   const toggleSection = (title) => {
-    setOpenSections(prev => {
+    setOpenSections((prev) => {
       const next = { ...prev, [title]: !prev[title] };
       localStorage.setItem("mpanstwo-nav-openSections", JSON.stringify(next));
       return next;
@@ -45,12 +47,12 @@ export default function Sidebar() {
       </AnimatePresence>
 
       <aside className="hidden lg:flex flex-col w-60 h-screen bg-white dark:bg-slate-950 border-r-2 border-slate-100 dark:border-slate-900 overflow-hidden color-transition">
-        <SidebarContent 
-          NavData={NavData} 
-          openSections={openSections} 
-          toggleSection={toggleSection} 
-          location={location} 
-          navigate={navigate} 
+        <SidebarContent
+          NavData={NavData}
+          openSections={openSections}
+          toggleSection={toggleSection}
+          location={location}
+          navigate={navigate}
         />
       </aside>
 
@@ -63,12 +65,12 @@ export default function Sidebar() {
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="lg:hidden fixed inset-y-0 left-0 z-[90] w-72 h-screen bg-white dark:bg-slate-950 border-r-2 border-slate-900 flex flex-col overflow-hidden shadow-2xl"
           >
-            <SidebarContent 
-              NavData={NavData} 
-              openSections={openSections} 
-              toggleSection={toggleSection} 
-              location={location} 
-              navigate={navigate} 
+            <SidebarContent
+              NavData={NavData}
+              openSections={openSections}
+              toggleSection={toggleSection}
+              location={location}
+              navigate={navigate}
             />
           </motion.aside>
         )}

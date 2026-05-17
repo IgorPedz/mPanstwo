@@ -22,8 +22,8 @@ export default function AuthInput({
   return (
     <div className="flex flex-col gap-2 mb-6 color-transition group">
       {label && (
-        <label 
-          htmlFor={name} 
+        <label
+          htmlFor={name}
           className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-focus-within:text-indigo-500 transition-colors"
         >
           {label}
@@ -42,15 +42,16 @@ export default function AuthInput({
             type === "password"
               ? "current-password"
               : type === "email"
-              ? "email"
-              : "off"
+                ? "email"
+                : "off"
           }
           className={`
             transition-colors w-full px-5 py-4 rounded-2xl border-2 color-transition outline-none
             text-sm font-bold tracking-wide
-            ${isError 
-              ? "bg-red-50 dark:bg-red-950/20 border-red-500 text-red-900 dark:text-red-200" 
-              : "bg-white dark:bg-slate-900 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-white"
+            ${
+              isError
+                ? "bg-red-50 dark:bg-red-950/20 border-red-500 text-red-900 dark:text-red-200"
+                : "bg-white dark:bg-slate-900 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-white"
             }
             placeholder:text-slate-400 dark:placeholder:text-slate-600
           `}

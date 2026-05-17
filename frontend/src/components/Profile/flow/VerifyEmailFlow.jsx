@@ -1,7 +1,10 @@
+import { useState } from "react";
+
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import useVerifyEmail from "../../../Hooks/useVerification";
 
-const ShieldIcon = ICON_MAP["shield"] || ICON_MAP["contact"];
+const ShieldIcon =
+  ICON_MAP["shield"] || ICON_MAP["contact"];
 
 const VerifyEmailFlow = {
   title: "Weryfikacja Email",
@@ -9,6 +12,20 @@ const VerifyEmailFlow = {
   steps: {
     1: ({ setStep }) => {
       const { sendCode } = useVerifyEmail();
+
+      const [loading, setLoading] = useState(false);
+
+      const handleSendCode = async () => {
+        try {
+          setLoading(true);
+
+          await sendCode();
+
+          setStep(2);
+        } finally {
+          setLoading(false);
+        }
+      };
 
       return (
         <div className="space-y-4">
@@ -31,23 +48,28 @@ const VerifyEmailFlow = {
           </div>
 
           <p className="text-xs text-gray-500 dark:text-gray-400">
-            Po przejściu dalej otrzymasz na emaila kod weryfikujący, który bedziesz musiał wpisać.
+            Po przejściu dalej otrzymasz na emaila kod
+            weryfikujący, który będziesz musiał wpisać.
           </p>
+
           <button
-            onClick={async () => {
-              await sendCode();
-              setStep(2);
-            }}
-            className="cursor-pointer
+            onClick={handleSendCode}
+            disabled={loading}
+            className="
+              cursor-pointer
               w-full px-6 py-3 rounded-xl
               font-medium
               bg-gradient-to-r from-emerald-500 to-teal-500
               hover:from-emerald-600 hover:to-teal-600
               text-white
               transition-all duration-200
+              disabled:opacity-60
+              disabled:cursor-not-allowed
             "
           >
-            Wyślij kod
+            {loading
+              ? "Wysyłanie kodu..."
+              : "Wyślij kod"}
           </button>
         </div>
       );

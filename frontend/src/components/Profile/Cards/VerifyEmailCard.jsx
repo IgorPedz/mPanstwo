@@ -11,16 +11,15 @@ import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
 
 import InfoMessage from "../../Global/InfoMessage";
 
-export default function VerifyEmailCard({ verifyEmail }) {
-  const ShieldCheckIcon =
-    ICON_MAP["shield"] || ICON_MAP["contact"];
+export default function VerifyEmailCard() {
+  const ShieldCheckIcon = ICON_MAP["shield"] || ICON_MAP["contact"];
 
   const flow = useModalFlow(VerifyEmailFlow);
 
   const gradientClasses =
     ACCENT_MAP["emerald"] || "from-emerald-600 to-teal-500";
 
-  const { checkVerification } = useVerifyEmail();
+  const { verifyEmail, checkVerification } = useVerifyEmail();
 
   const [isVerified, setIsVerified] = useState(false);
 
@@ -51,17 +50,14 @@ export default function VerifyEmailCard({ verifyEmail }) {
 
       setInfoType("success");
 
-      setInfoMessage(
-        "Adres email został zweryfikowany pomyślnie"
-      );
+      setInfoMessage("Adres email został zweryfikowany pomyślnie");
 
       return { success: true };
     }
 
     return {
       success: false,
-      message:
-        res?.message || "Niepoprawny kod weryfikacyjny",
+      message: res?.message || "Niepoprawny kod weryfikacyjny",
     };
   };
 
@@ -74,9 +70,7 @@ export default function VerifyEmailCard({ verifyEmail }) {
           border border-slate-200 dark:border-slate-800 shadow-sm 
           transition-all duration-500 color-transition group relative 
           overflow-hidden h-full ${
-            isVerified
-              ? "cursor-default"
-              : "cursor-pointer"
+            isVerified ? "cursor-default" : "cursor-pointer"
           }
         `}
       >
@@ -110,9 +104,7 @@ export default function VerifyEmailCard({ verifyEmail }) {
 
             {!isVerified && (
               <div className="text-slate-300 group-hover:text-emerald-500 group-hover:translate-x-1 ">
-                <span className="text-2xl font-light">
-                  →
-                </span>
+                <span className="text-2xl font-light">→</span>
               </div>
             )}
 
@@ -150,11 +142,7 @@ export default function VerifyEmailCard({ verifyEmail }) {
         )}
       </div>
 
-      <ModalFlow
-        flow={VerifyEmailFlow}
-        hook={flow}
-        onSubmit={handleSubmit}
-      />
+      <ModalFlow flow={VerifyEmailFlow} hook={flow} onSubmit={handleSubmit} />
 
       {infoMessage && (
         <InfoMessage

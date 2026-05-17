@@ -26,7 +26,7 @@ const register = async (req, res, next) => {
     const strongPassword = isStrongPassword(password);
 
     const [result] = await db.query(
-      "INSERT INTO users (name, email, password, has_strong_password) VALUES (?, ?, ?, ?)",
+      "INSERT INTO users (name, email, password, is_strong) VALUES (?, ?, ?, ?)",
       [name || "Użytkownik", email, hashedPassword, strongPassword ? 1 : 0],
     );
 
@@ -67,14 +67,7 @@ const register = async (req, res, next) => {
         value_text: null,
         icon: "courses",
         color: "purple",
-      },
-      {
-        key: "reputation",
-        value_number: 0,
-        value_text: null,
-        icon: "star",
-        color: "yellow",
-      },
+      }
     ];
 
     const values = defaultStats.map((s) => [

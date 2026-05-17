@@ -19,7 +19,7 @@ const SurveyHeader = ({ totalRewards, isArchive, isExpired }) => (
     {!isArchive && !isExpired && (
       <div className="text-right hidden md:block">
         <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] color-transition">
-          Dostępne nagrody: {totalRewards} XP
+          Dostępne nagrody: {totalRewards} Reputacji
         </span>
       </div>
     )}

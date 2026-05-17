@@ -4,7 +4,7 @@ exports.getUserAchievements = async (req, res) => {
 
   try {
 
-    const userId = 1;
+    const userId = req.params.id;
 
     const [rows] = await db.query(`
       SELECT

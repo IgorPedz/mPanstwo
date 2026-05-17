@@ -1,8 +1,7 @@
 import ContactInfoCard from "./ContactInfoCard";
 
-export default function ContactInfoGrid({ contactInfo = [] }) { // Dodałem domyślną pustą tablicę
+export default function ContactInfoGrid({ contactInfo = [] }) {
   
-  // Zabezpieczenie: jeśli contactInfo nie jest tablicą lub jest pusta
   if (!Array.isArray(contactInfo) || contactInfo.length === 0) {
     return (
       <div className="w-full p-8 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-[2rem] text-center color-transition">

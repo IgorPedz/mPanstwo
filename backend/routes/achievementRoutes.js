@@ -4,6 +4,6 @@ const router = express.Router();
 
 const { getUserAchievements } = require("../controllers/achievementController");
 
-router.get("/achievements", getUserAchievements);
+router.get("/achievements/:id", getUserAchievements);
 
 module.exports = router;
