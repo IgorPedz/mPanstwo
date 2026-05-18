@@ -5,7 +5,7 @@ export default function Logo() {
 
       <div className="absolute inset-0 opacity-[0.03] bg-[size:12px_12px]" />
 
-      <h1 className="relative text-lg font-black tracking-[0.2em] uppercase text-slate-900 dark:text-white">
+      <h1 className="color-transition relative text-lg font-black tracking-[0.2em] uppercase text-slate-900 dark:text-white">
         m<span className="text-blue-600 dark:text-blue-400">PAŃSTWO</span>
       </h1>
     </div>

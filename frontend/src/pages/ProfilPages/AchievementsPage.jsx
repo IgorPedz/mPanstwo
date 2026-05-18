@@ -15,10 +15,9 @@ import AchievementsFilters from "../../components/Achievements/filters/Achieveme
 export default function GlobalUserAchievements() {
   const { achievements, categories, progression, loading } =
     useGlobalAchievements();
-
   const [rarityFilter, setRarityFilter] = useState("all");
   const [filter, setFilter] = useState("all");
-
+  console.log(progression)
   const filtered = useFilteredAchievements(achievements, filter, rarityFilter);
 
   if (loading || !progression) {
@@ -42,7 +41,9 @@ export default function GlobalUserAchievements() {
         <AchievementStats
           currentLevel={{
             number: progression.currentRank.level,
+            color:progression.currentRank.color,
             name: progression.currentRank.name,
+            icon: progression.currentRank.icon,
             nextName: progression.nextRank?.name || "MAX RANGA",
             currentXP: progression.xp,
             requiredXP: progression.nextRank?.requiredXP || progression.xp,

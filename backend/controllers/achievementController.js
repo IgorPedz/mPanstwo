@@ -15,7 +15,6 @@ exports.getUserAchievements = async (req, res) => {
         a.xp_reward,
         a.requirement_value,
 
-        a.icon,
         a.rarity,
 
         ac.slug AS category_slug,

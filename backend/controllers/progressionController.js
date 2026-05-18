@@ -54,7 +54,9 @@ exports.getProgression = async (req, res) => {
       currentRank: {
         level: currentRank.level,
         name: currentRank.name,
+        color:currentRank.color,
         requiredXP: currentRank.required_xp,
+        icon: currentRank.icon,
       },
 
       nextRank: nextRank

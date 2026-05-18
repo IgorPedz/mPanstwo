@@ -1,48 +1,100 @@
 const db = require("../db");
 const { getIO } = require("../socket/socket");
+const sendNotification = require("../utils/notification");
+
+async function getRankByXP(xp) {
+  const [[rank]] = await db.query(
+    `
+    SELECT *
+    FROM ranks
+    WHERE required_xp <= ?
+    ORDER BY required_xp DESC
+    LIMIT 1
+    `,
+    [xp],
+  );
+
+  return rank;
+}
 
 async function addXP(userId, amount, reason = "unknown") {
   console.log("➕ XP:", amount, reason);
 
-  if (!userId || !amount) return null;
-
-  // 1. UPDATE USERS
-  await db.query(
-    `UPDATE users SET xp = xp + ? WHERE id = ?`,
-    [amount, userId]
-  );
-
-  // 2. GET UPDATED USER
-  const [rows] = await db.query(
-    `SELECT xp FROM users WHERE id = ?`,
-    [userId]
-  );
-
-  if (!rows.length) {
-    console.log("❌ USER NOT FOUND");
+  if (!userId || typeof amount !== "number" || amount <= 0) {
+    console.log("❌ INVALID XP INPUT:", { userId, amount, reason });
     return null;
   }
 
-  const user = rows[0];
+  try {
+    const [[oldUser]] = await db.query(
+      `SELECT xp FROM users WHERE id = ?`,
+      [userId],
+    );
 
-  // 3. LOG XP
-  await db.query(
-    `INSERT INTO xp_logs (user_id, amount, reason) VALUES (?, ?, ?)`,
-    [userId, amount, reason]
-  );
+    if (!oldUser) {
+      console.log("❌ USER NOT FOUND:", userId);
+      return null;
+    }
 
-  // 4. SOCKET
-  const io = getIO();
+    const oldXp = oldUser.xp;
 
-  if (io) {
-    io.to(`user:${userId}`).emit("xp_gained", {
-      amount,
-      total: user.xp,
-      reason
-    });
+    await db.query(
+      `UPDATE users SET xp = xp + ? WHERE id = ?`,
+      [amount, userId],
+    );
+
+    const [[newUser]] = await db.query(
+      `SELECT xp FROM users WHERE id = ?`,
+      [userId],
+    );
+
+    const newXp = newUser.xp;
+
+    await db.query(
+      `INSERT INTO xp_logs (user_id, amount, reason) VALUES (?, ?, ?)`,
+      [userId, amount, reason],
+    );
+
+    const io = getIO();
+
+    if (io) {
+      io.to(`user:${userId}`).emit("xp_gained", {
+        userId,
+        amount,
+        total: newXp,
+        reason,
+      });
+    }
+    const oldRank = await getRankByXP(oldXp);
+    const newRank = await getRankByXP(newXp);
+
+    if (!oldRank || oldRank.id !== newRank.id) {
+
+      await sendNotification({
+        type: "RANK_UP",
+        userId,
+        title: "Awans rangi",
+        message: `Awansowałeś na rangę: ${newRank.name}`,
+        data: {
+          oldRank,
+          newRank,
+          xp: newXp,
+        },
+      });
+
+      if (io) {
+        io.to(`user:${userId}`).emit("rank_up", {
+          oldRank,
+          newRank,
+        });
+      }
+    }
+
+    return newXp;
+  } catch (err) {
+    console.error("❌ ADD XP ERROR:", err);
+    return null;
   }
-
-  return user.xp;
 }
 
 module.exports = { addXP };

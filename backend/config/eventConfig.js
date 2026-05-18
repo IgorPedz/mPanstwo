@@ -25,11 +25,15 @@ const EVENT_CONFIG = {
   LOGIN_STREAK_SMALL: {
     icon: "login_streak_small",
     title: "Seria logowań",
+    message: "Seria trwa!",
+    xp:10,
   },
 
   LOGIN_STREAK_BIG: {
     icon: "login_streak_big",
     title: "Długa seria logowań",
+    message: "Legendarna aktywność!",
+    xp:25,
   },
 
   ACHIEVEMENT_UNLOCK: {
@@ -64,7 +68,8 @@ const EVENT_CONFIG = {
 
   LEVEL_UP: {
     icon: "level_up",
-    title: "Nowy poziom",
+    title: "Nowy ranga",
+    message: "Osiągnięto nową rangę"
   },
 };
 

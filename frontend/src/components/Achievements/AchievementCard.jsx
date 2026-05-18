@@ -11,7 +11,6 @@ import {
 const AchievementCard = ({ item }) => {
   const Icon = ICON_MAP[item.icon] || ICON_MAP.star;
 
-  console.log(item);
   const isUnlocked =
     item.unlocked === 1 || item.unlocked === true || item.unlocked === "1";
 

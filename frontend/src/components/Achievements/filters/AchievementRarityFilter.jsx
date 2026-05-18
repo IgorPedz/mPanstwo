@@ -1,21 +1,49 @@
 import { motion } from "framer-motion";
-
-const RARITIES = [
-  { slug: "all", name: "Wszystkie", color: "text-slate-500" },
-  { slug: "common", name: "Zwykłe", color: "text-slate-500" },
-  { slug: "rare", name: "Rzadkie", color: "text-blue-500" },
-  { slug: "epic", name: "Epickie", color: "text-purple-500" },
-  { slug: "legendary", name: "Legendarne", color: "text-yellow-500" }
-];
+import { RARITIES } from "../AchievementsData";
 
 export default function AchievementRarityFilter({
   activeRarity,
   setActiveRarity
 }) {
   return (
-    <div className="mb-5 w-full lg:w-fit p-1.5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] color-transition">
+    <div className="mb-5 w-fit p-1.5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] color-transition">
 
-      <div className="flex gap-1 overflow-x-auto no-scrollbar lg:flex-wrap lg:overflow-visible">
+      {/* 📱 MOBILE SELECT */}
+      <div className="lg:hidden flex justify-center">
+        <div className="relative w-fit">
+          <select
+            value={activeRarity}
+            onChange={(e) => setActiveRarity(e.target.value)}
+            className="
+              appearance-none
+              px-4 py-2 pr-8
+              rounded-[1.1rem]
+              bg-white dark:bg-slate-900
+              text-[11px] font-black uppercase tracking-widest
+              text-slate-700 dark:text-slate-200
+              outline-none cursor-pointer color-transition
+            "
+          >
+            {/* 👇 placeholder (nie selectable) */}
+            <option value="" disabled hidden>
+              KATEGORIA
+            </option>
+
+            {RARITIES.map((r) => (
+              <option key={r.slug} value={r.slug}>
+                {r.name}
+              </option>
+            ))}
+          </select>
+
+          <div className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 text-[10px]">
+            ▾
+          </div>
+        </div>
+      </div>
+
+      {/* 💻 DESKTOP TABS */}
+      <div className="hidden lg:flex gap-1 justify-center flex-nowrap px-1 overflow-x-auto no-scrollbar">
 
         {RARITIES.map((r) => {
           const isActive = activeRarity === r.slug;
@@ -25,9 +53,10 @@ export default function AchievementRarityFilter({
               key={r.slug}
               onClick={() => setActiveRarity(r.slug)}
               className={`
-                relative flex-shrink-0 px-5 lg:px-6 py-2.5 rounded-[1.1rem]
+                relative flex-shrink-0 px-4 lg:px-6 py-2.5 rounded-[1.1rem]
                 text-[10px] font-black uppercase tracking-widest
                 transition-colors duration-300 cursor-pointer outline-none color-transition
+                scroll-mx-4
 
                 ${isActive
                   ? "text-white dark:text-slate-900"
@@ -46,10 +75,6 @@ export default function AchievementRarityFilter({
                   }}
                 />
               )}
-
-              <motion.div
-                className="absolute inset-0 rounded-[1.1rem] opacity-0 hover:opacity-100 transition-opacity duration-300 bg-slate-200/20 dark:bg-white/10"
-              />
 
               <span className="relative z-10">
                 {r.name}

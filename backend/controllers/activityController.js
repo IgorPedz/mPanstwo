@@ -7,7 +7,7 @@ const updateUserActivity = async (userId) => {
     console.log("\n=== STREAK START ===");
     console.log("USER ID:", userId);
 
-    // 🔥 Wymuszamy format YYYY-MM-DD jako STRING za pomocą DATE_FORMAT
+
     const [[user]] = await conn.query(
       `SELECT 
           login_streak,

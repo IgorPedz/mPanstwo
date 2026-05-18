@@ -9,7 +9,7 @@ export default function AchievementsFilters({
   setRarityFilter,
 }) {
   return (
-    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+     <div className="flex w-full justify-between items-center gap-3">
       <AchievementsTabs
         categories={categories}
         activeCategory={filter}
