@@ -13,16 +13,16 @@ const register = async (req, res, next) => {
       return res.status(400).json({ message: "Email i hasło są wymagane" });
     }
 
-    const [userRows] = await db.query("SELECT id FROM users WHERE email = ?", [
-      email,
-    ]);
+    const [userRows] = await db.query(
+      "SELECT id FROM users WHERE email = ?",
+      [email],
+    );
 
     if (userRows.length > 0) {
       return res.status(400).json({ message: "Użytkownik już istnieje" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
     const strongPassword = isStrongPassword(password);
 
     const [result] = await db.query(
@@ -32,56 +32,9 @@ const register = async (req, res, next) => {
 
     const userId = result.insertId;
 
-    const defaultStats = [
-      {
-        key: "trackedLaws",
-        value_number: 0,
-        value_text: null,
-        icon: "documents",
-        color: "indigo",
-      },
-      {
-        key: "role",
-        value_number: null,
-        value_text: "Użytkownik",
-        icon: "achievements",
-        color: "purple",
-      },
-      {
-        key: "votes",
-        value_number: 0,
-        value_text: null,
-        icon: "vote",
-        color: "blue",
-      },
-      {
-        key: "opinions",
-        value_number: 0,
-        value_text: null,
-        icon: "comments",
-        color: "emerald",
-      },
-      {
-        key: "courses",
-        value_number: 0,
-        value_text: null,
-        icon: "courses",
-        color: "purple",
-      }
-    ];
-
-    const values = defaultStats.map((s) => [
-      userId,
-      s.key,
-      s.value_number,
-      s.value_text,
-    ]);
-
     await db.query(
-      `INSERT INTO user_stats
-       (user_id, \`key\`, value_number, value_text)
-       VALUES ?`,
-      [values],
+      `INSERT INTO user_metrics (user_id) VALUES (?)`,
+      [userId],
     );
 
     res.status(201).json({
@@ -143,8 +96,8 @@ const login = async (req, res, next) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      secure: false,      
+      sameSite: "lax",    
       maxAge: rememberMe ? 30 * 24 * 60 * 60 * 1000 : 60 * 60 * 1000,
     });
 

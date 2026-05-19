@@ -21,7 +21,6 @@ export default function useTiles() {
         const res = await axios.get("http://localhost:5000/dashboard_content");
         setAvailableTiles(res.data);
       } catch (err) {
-        console.log(err);
         setInfoMessage(err.response?.data?.message || "Wystąpił błąd");
       }
     };

@@ -112,7 +112,6 @@ export default function EmptyDashboard({ setShowAddMenu }) {
 
         <motion.button
           onClick={() => {
-            console.log("CLICK");
             setShowAddMenu(true);
           }}
           className="

@@ -60,7 +60,6 @@ async function sendNotification({
     };
 
     if (!io) {
-      console.log("❌ NO SOCKET IO");
       return notification;
     }
 
@@ -70,8 +69,6 @@ async function sendNotification({
     }
 
     io.to(`user:${userId}`).emit("notification", notification);
-
-    console.log("✅ SENT TO:", userId);
 
     return notification;
   } catch (err) {

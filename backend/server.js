@@ -23,9 +23,17 @@ const progressionRoutes = require("./routes/progressionRoutes");
 const app = express();
 const server = http.createServer(app);
 
+const authMiddleware = require("./middleware/authMiddleware");
+const activityMiddleware = require("./middleware/activityMiddleware");
+
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
 app.use(cookieParser());
+app.use(authMiddleware);
+app.use(activityMiddleware);
 
 app.use(authRoutes);
 app.use(tileRoutes);

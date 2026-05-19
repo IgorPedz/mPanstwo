@@ -11,13 +11,13 @@ const cardRegistry = {
     color: "red",
   },
 
-  votes: {
+  survey_completed: {
     title: "Wypełnione ankiety",
     icon: "check",
     color: "emerald",
   },
 
-  trackedLaws: {
+  tracked_laws_count: {
     title: "Śledzone ustawy",
     icon: "documentcheck",
     color: "indigo",
@@ -29,7 +29,7 @@ const cardRegistry = {
     color: "blue",
   },
 
-  courses: {
+  courses_completed: {
     title: "Ukończone kursy",
     icon: "courses",
     color: "purple",

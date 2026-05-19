@@ -14,8 +14,8 @@ export const useNotificationStore = create((set, get) => ({
     data: typeof n.data === "string" ? JSON.parse(n.data) : n.data,
 
     time: n.created_at
-      ? new Date(n.created_at).toLocaleTimeString()
-      : new Date().toLocaleTimeString(),
+      ? new Date(n.created_at).toLocaleString()
+      : new Date().toLocaleString(),
 
     read: Boolean(n.is_read),
 
@@ -57,7 +57,6 @@ export const useNotificationStore = create((set, get) => ({
 
       if (!res.ok) throw new Error("Server error");
 
-      console.log("✅ READ UPDATED:", targetId);
     } catch (err) {
       console.error("❌ MARK AS READ ERROR:", err);
 

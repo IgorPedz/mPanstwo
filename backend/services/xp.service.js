@@ -18,10 +18,8 @@ async function getRankByXP(xp) {
 }
 
 async function addXP(userId, amount, reason = "unknown") {
-  console.log("➕ XP:", amount, reason);
 
   if (!userId || typeof amount !== "number" || amount <= 0) {
-    console.log("❌ INVALID XP INPUT:", { userId, amount, reason });
     return null;
   }
 
@@ -32,7 +30,6 @@ async function addXP(userId, amount, reason = "unknown") {
     );
 
     if (!oldUser) {
-      console.log("❌ USER NOT FOUND:", userId);
       return null;
     }
 

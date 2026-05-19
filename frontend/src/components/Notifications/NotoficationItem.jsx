@@ -6,7 +6,6 @@ import { itemVariants } from "../../Utils/Animations";
 
 const NotificationItem = ({ notif }) => {
   const markAsRead = useNotificationStore((s) => s.markAsRead);
-  console.log(notif);
   const normalizeIcon = (icon) => icon?.toLowerCase?.().trim() ?? "";
 
   const iconKey = normalizeIcon(notif.icon);

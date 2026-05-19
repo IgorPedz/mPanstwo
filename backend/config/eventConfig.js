@@ -10,6 +10,7 @@ const EVENT_CONFIG = {
     message: "Wypełniono ankiete",
     xp: 50,
     metricKey: "survey_completed",
+    metric_source: "users_metrics"
   },
 
   SURVEY_RESULT: {
@@ -26,7 +27,7 @@ const EVENT_CONFIG = {
     icon: "login_streak_small",
     title: "Seria logowań",
     message: "Seria trwa!",
-    xp:10,
+    xp:10,  
   },
 
   LOGIN_STREAK_BIG: {

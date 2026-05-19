@@ -15,7 +15,6 @@ const getNotifications = async (req, res) => {
     );
 
     res.json(rows);
-
   } catch (err) {
     console.error(err);
 

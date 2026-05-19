@@ -41,34 +41,43 @@ const RanksModal = ({ isOpen, onClose }) => {
                         </svg>
                     </button>
                 </div>
-
                 <div className="space-y-3 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
-
                     {ranksData.map((r) => {
-                        const Icon = Icons[r.icon.name] || Icons.user;
+                        const iconName = r?.icon?.name;
+                        const IconComponent = Icons[iconName] || Icons.rank1 || Icons.user;
+
                         return (
                             <div
                                 key={r.nr}
-                                className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/40 dark:hover:bg-slate-800/80 border border-slate-100 dark:border-slate-800/60 color-transition"
+                                className="flex items-center justify-between p-4 rounded-2xl 
+                       bg-slate-50 hover:bg-slate-100 
+                       dark:bg-slate-800/50 dark:hover:bg-slate-800 
+                       border border-slate-200 dark:border-slate-700 
+                       transition-all duration-200 hover:shadow-md"
                             >
-                                <div className="flex items-center gap-3">
-
-                                    <span className={`w-8 h-8 rounded-lg ${r.color} text-white flex items-center justify-center shadow-md`}>
-                                        <Icon className="w-4 h-4" />
-                                    </span>
-
-                                    <span className="font-bold text-slate-800 dark:text-slate-200">
-                                        {r.name}
+                                <div className="flex items-center gap-3.5">
+                                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-lg ${r.color || 'bg-slate-400'}`}>
+                                        <IconComponent className="w-5 h-5 text-white" />
+                                    </div>
+                                    <div>
+                                        <p className="font-semibold text-slate-800 dark:text-slate-100">
+                                            {r.name || 'Nieznana ranga'}
+                                        </p>
+                                        {r.description && (
+                                            <p className="text-xs text-slate-500 dark:text-slate-400">
+                                                {r.description}
+                                            </p>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="text-right">
+                                    <span className="text-sm font-bold text-slate-600 dark:text-slate-400">
+                                        {r.xp}
                                     </span>
                                 </div>
-
-                                <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
-                                    {r.xp}
-                                </span>
                             </div>
                         );
                     })}
-
                 </div>
 
                 <button

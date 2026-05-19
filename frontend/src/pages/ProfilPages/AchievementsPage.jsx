@@ -17,7 +17,6 @@ export default function GlobalUserAchievements() {
     useGlobalAchievements();
   const [rarityFilter, setRarityFilter] = useState("all");
   const [filter, setFilter] = useState("all");
-  console.log(progression)
   const filtered = useFilteredAchievements(achievements, filter, rarityFilter);
 
   if (loading || !progression) {

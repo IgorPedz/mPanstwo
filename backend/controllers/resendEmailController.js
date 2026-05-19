@@ -167,7 +167,6 @@ const sendVerificationEmail = async (req, res) => {
     const user = users[0];
 
     if (user.is_verified) {
-      console.log("INFO: User already verified");
       return res.json({
         success: true,
         message: "Email już zweryfikowany",
@@ -217,7 +216,6 @@ const verifyEmail = async (req, res) => {
     const { userId, code } = req.body;
 
     if (!userId || !code) {
-      console.log("ERROR: Missing userId or code");
       return res.status(400).json({
         success: false,
         message: "Brak userId lub kodu",
@@ -231,7 +229,6 @@ const verifyEmail = async (req, res) => {
     );
 
     if (rows.length === 0) {
-      console.log("ERROR: User not found");
       return res.status(404).json({
         success: false,
         message: "Użytkownik nie istnieje",
@@ -241,7 +238,6 @@ const verifyEmail = async (req, res) => {
     const user = rows[0];
 
     if (user.is_verified) {
-      console.log("INFO: Already verified");
       return res.json({
         success: true,
         message: "Email już zweryfikowany",
@@ -252,7 +248,6 @@ const verifyEmail = async (req, res) => {
       !user.verification_code ||
       String(user.verification_code) !== String(code)
     ) {
-      console.log("ERROR: Invalid code");
       return res.status(400).json({
         success: false,
         message: "Niepoprawny kod weryfikacyjny",
@@ -264,7 +259,6 @@ const verifyEmail = async (req, res) => {
     const now = Date.now();
 
     if (!rawExpires) {
-      console.log("ERROR: verification_expires is NULL/empty");
       return res.status(400).json({
         success: false,
         message: "Brak daty wygaśnięcia kodu",
@@ -272,7 +266,7 @@ const verifyEmail = async (req, res) => {
     }
 
     if (!Number.isFinite(expiresAt)) {
-      console.log("ERROR: invalid verification_expires format");
+
       return res.status(400).json({
         success: false,
         message: "Niepoprawna data wygaśnięcia kodu",
@@ -280,7 +274,6 @@ const verifyEmail = async (req, res) => {
     }
 
     if (expiresAt < now) {
-      console.log("ERROR: code expired");
       return res.status(400).json({
         success: false,
         message: "Kod weryfikacyjny wygasł",

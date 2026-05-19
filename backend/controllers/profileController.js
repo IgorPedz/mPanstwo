@@ -12,9 +12,11 @@ const getProfile = async (req, res, next) => {
     }
 
     const [userRows] = await db.query(
-      `SELECT id, name, email, login_streak, active_days, created_at, xp
-       FROM users
-       WHERE id = ?`,
+      `
+      SELECT id, name, email, login_streak, active_days, created_at, xp, role
+      FROM users
+      WHERE id = ?
+      `,
       [userId],
     );
 
@@ -24,8 +26,6 @@ const getProfile = async (req, res, next) => {
 
     const user = userRows[0];
 
-    const xp = user.xp;
-
     const [[currentRank]] = await db.query(
       `
       SELECT *
@@ -33,58 +33,70 @@ const getProfile = async (req, res, next) => {
       WHERE required_xp <= ?
       ORDER BY required_xp DESC
       LIMIT 1
-    `,
-      [xp],
+      `,
+      [user.xp],
     );
 
-    const [rows] = await db.query(
-      `SELECT \`key\`, value_number, value_text
-       FROM user_stats
-       WHERE user_id = ?`,
+    const [metricRows] = await db.query(
+      `
+      SELECT *
+      FROM user_metrics
+      WHERE user_id = ?
+      `,
       [userId],
     );
 
-    const statsFromDb = rows.map((s) => {
-      const registry = cardRegistry[s.key] || {};
+    const metrics = metricRows[0] || {};
+    const metricCards = Object.keys(cardRegistry)
+      .filter((key) => metrics[key] !== undefined)
+      .map((key) => {
+        const registry = cardRegistry[key];
 
-      return {
-        key: s.key,
-        value: s.value_number ?? s.value_text ?? "-",
-        title: registry.title || s.key,
-        icon: registry.icon || "star",
-        color: registry.color || "slate",
-      };
-    });
+        return {
+          key,
+          value: metrics[key] ?? 0,
+          title: registry.title,
+          icon: registry.icon,
+          color: registry.color,
+        };
+      });
 
     const systemStats = [
       {
         key: "loginStreak",
         value: user.login_streak,
-        title: cardRegistry.loginStreak.title,
-        icon: cardRegistry.loginStreak.icon,
-        color: cardRegistry.loginStreak.color,
+        title: cardRegistry.loginStreak?.title,
+        icon: cardRegistry.loginStreak?.icon,
+        color: cardRegistry.loginStreak?.color,
       },
       {
         key: "activeDays",
         value: user.active_days,
-        title: cardRegistry.activeDays.title,
-        icon: cardRegistry.activeDays.icon,
-        color: cardRegistry.activeDays.color,
+        title: cardRegistry.activeDays?.title,
+        icon: cardRegistry.activeDays?.icon,
+        color: cardRegistry.activeDays?.color,
       },
       {
         key: "reputation",
         value: user.xp,
-        title: cardRegistry.reputation.title,
-        icon: cardRegistry.reputation.icon,
-        color: cardRegistry.reputation.color,
+        title: cardRegistry.reputation?.title,
+        icon: cardRegistry.reputation?.icon,
+        color: cardRegistry.reputation?.color,
       },
       {
         key: "rank",
-        value: currentRank.name,
-        title: cardRegistry.rank.title,
-        icon: cardRegistry.rank.icon,
-        color: cardRegistry.rank.color,
+        value: currentRank?.name || "Brak",
+        title: cardRegistry.rank?.title,
+        icon: cardRegistry.rank?.icon,
+        color: cardRegistry.rank?.color,
       },
+      {
+        key: "role",
+        value: user.role,
+        title: cardRegistry.role?.title,
+        icon: cardRegistry.role?.icon,
+        color: cardRegistry.role?.color,
+      }
     ];
 
     return res.json({
@@ -93,12 +105,13 @@ const getProfile = async (req, res, next) => {
       email: user.email,
       createdAt: user.created_at,
 
-      stats: [...systemStats, ...statsFromDb],
+      stats: [...systemStats, ...metricCards],
     });
   } catch (error) {
     next(error);
   }
 };
+
 
 const updateProfile = async (req, res, next) => {
   try {
@@ -179,12 +192,6 @@ const changePassword = async (req, res, next) => {
 
     const { oldPassword, newPassword, confirmPassword } = req.body || {};
 
-    console.log("DEBUG:", {
-      userId,
-      oldPassword,
-      newPassword,
-      confirmPassword,
-    });
 
     if (!userId) {
       return res.status(400).json({

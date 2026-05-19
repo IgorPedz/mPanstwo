@@ -10,7 +10,6 @@ const SurveyCard = ({ survey, onStart }) => {
   const ClockIcon = ICON_MAP["clock"] || ICON_MAP["calendar"];
 
   const formattedDeadline = useFormatDate(survey.deadline);
-  console.log(survey);
   const isExpired =
     survey.deadline && new Date(survey.deadline).getTime() <= Date.now();
 

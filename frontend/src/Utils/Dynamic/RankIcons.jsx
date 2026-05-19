@@ -1,107 +1,83 @@
-import React from "react";
-
-const base = "w-5 h-5";
-
 export const Icons = {
-  // 1. Iskra / Pomysł: Pojedynczy, czysty element, z którego wszystko się zaczyna.
-  user: (props) => (
-    <svg viewBox="0 0 24 24" className={base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 8l-2 2h4l-2 2" />
+  rank1: (props) => (  // Jajo / Zarodek
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
+      <ellipse cx="12" cy="12" rx="7" ry="9" />
     </svg>
   ),
 
-  // 2. Dialog / Połączenie: Dwa elementy wchodzące w interakcję, tworzące pierwszy link.
-  users: (props) => (
-    <svg viewBox="0 0 24 24" className={base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M7 11c1-1.5 2-2.5 3-2.5s2 1 3 2.5v4h-6v-4z" />
-      <path d="M14 11c1 1.5 2 2.5 3 2.5s2-1 3-2.5v-4h-6v4z" />
+  rank2: (props) => (  // Pęknięte jajo / Larwa
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
+      <ellipse cx="12" cy="13" rx="6.5" ry="8" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8 9 L10 6 M16 9 L14 6" />
     </svg>
   ),
 
-  // 3. Zgromadzenie / Mała Grupa: Grupa połączonych elementów, tworząca strukturę.
-  building: (props) => (
-    <svg viewBox="0 0 24 24" className={base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M3 13h4v8h-4z" />
-      <path d="M17 13h4v8h-4z" />
-      <path d="M10 3h4v18h-4z" />
-      <path d="M3 10l9-7 9 7" />
+  rank3: (props) => (  // Kiełek / Młoda roślina
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4 L12 12" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8 8 C8 6 10 4 12 6 C14 4 16 6 16 8" />
+      <circle cx="12" cy="16" r="3" />
     </svg>
   ),
 
-  // 4. Sieć / Połączenia: Struktura rozszerza się, tworząc skomplikowaną sieć.
-  stats: (props) => (
-    <svg viewBox="0 0 24 24" className={base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <rect x="3" y="10" width="4" height="4" />
-      <rect x="17" y="10" width="4" height="4" />
-      <rect x="10" y="3" width="4" height="4" />
-      <rect x="10" y="17" width="4" height="4" />
-      <line x1="7" y1="12" x2="10" y2="12" />
-      <line x1="14" y1="12" x2="17" y2="12" />
-      <line x1="12" y1="7" x2="12" y2="10" />
-      <line x1="12" y1="14" x2="12" y2="17" />
+  rank4: (props) => (  // Młoda roślina / Zwierzak
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M7 10 Q12 4 17 10" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 10 L12 18" />
+      <circle cx="9" cy="13" r="1.5" />
+      <circle cx="15" cy="13" r="1.5" />
     </svg>
   ),
 
-  // 5. Ruch / Kierunek: Sieć nabiera tempa i kierunku, stając się ruchem społecznym.
-  shield: (props) => (
-    <svg viewBox="0 0 24 24" className={base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <polyline points="20 12 20 22 12 22 12 12 20 12" />
-      <polyline points="12 12 12 2 4 2 4 12 12 12" />
-      <path d="M4 12c1.5 1 3 1.5 4.5 1.5s3-.5 4.5-1.5" />
-      <path d="M20 12c-1.5-1-3-1.5-4.5-1.5s-3 .5-4.5 1.5" />
+  rank5: (props) => (  // Rozwinięta forma
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4 L12 20" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 10 Q12 6 18 10" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M7 16 Q12 13 17 16" />
     </svg>
   ),
 
-  // 6. Głos / Nagłośnienie: Ruch zyskuje potężny, spójny głos.
-  scale: (props) => (
-    <svg viewBox="0 0 24 24" className={base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M22 17l-3.5 1h-8L7 17l2-7.5L7 2l3.5 1h8L22 2z" />
-      <line x1="12" y1="14" x2="12" y2="10" />
-      <path d="M7 10h10" />
+  rank6: (props) => (  // Drzewo / Wojownik
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4 L12 18" />
+      <circle cx="12" cy="9" r="5" />
+      <circle cx="12" cy="15" r="3.5" />
     </svg>
   ),
 
-  // 7. Postulat / Plan: Głos przekształca się w konkretne, strukturalne postulaty lub plany.
-  document: (props) => (
-    <svg viewBox="0 0 24 24" className={base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-      <polyline points="14 2 14 8 20 8" />
-      <path d="M9 13h6" />
-      <path d="M9 17h3" />
+  rank7: (props) => (  // Potężne drzewo / Rycerz
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3 L12 19" />
+      <circle cx="12" cy="8" r="6" />
+      <circle cx="12" cy="15" r="4" />
     </svg>
   ),
 
-  // 8. Instytucja / Fundament: Plan staje się fundamentem nowej instytucji lub prawa.
-  globe: (props) => (
-    <svg viewBox="0 0 24 24" className={base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M3 21h18" />
-      <path d="M4 21V10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11" />
-      <path d="M10 8V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v3" />
-      <rect x="7" y="11" width="3" height="4" />
-      <rect x="14" y="11" width="3" height="4" />
+  rank8: (props) => (  // Kryształ / Legenda
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
+      <polygon points="12,3 19,10 19,17 12,21 5,17 5,10" />
+      <polygon points="12,7 16,11 12,15 8,11" />
     </svg>
   ),
 
-  // 9. Porozumienie / Sukces: Instytucje i grupy osiągają porozumienie, reprezentowane przez splecioną siłę.
-  trophy: (props) => (
-    <svg viewBox="0 0 24 24" className={base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-      <path d="M4 22h16" />
-      <path d="M10 14.66V22" />
-      <path d="M14 14.66V22" />
-      <path d="M18 8A6 6 0 0 1 6 8v3a6 6 0 0 0 12 0V8z" />
+  rank9: (props) => (  // Smok / Mityczna forma
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 10 Q12 4 20 10" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8 14 L12 18 L16 14" />
+      <circle cx="8" cy="11" r="1" />
+      <circle cx="16" cy="11" r="1" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 12 L12 20" />
     </svg>
   ),
 
-  // 10. Postęp / Trwały Efekt: Ostateczny postęp, trwały i rosnący, wyrastający z całej ewolucji.
-  parliament: (props) => (
-    <svg viewBox="0 0 24 24" className={base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <polyline points="20 12 20 22 12 22 12 12 20 12" />
-      <polyline points="12 12 12 2 4 2 4 12 12 12" />
-      <path d="M16 17a4 4 0 0 0-8 0" />
-      <path d="M12 2v4" />
+  rank10: (props) => (  // Boska / Apex / Kosmiczna
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="5" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3 L12 8" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 16 L12 21" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 12 L8 12" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M16 12 L21 12" />
     </svg>
   ),
 };

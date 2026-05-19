@@ -11,7 +11,6 @@ export default function ContactInfoGrid({ contactInfo = [] }) {
       </div>
     );
   }
-  console.log(contactInfo)
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 color-transition">
       {contactInfo.map((info, idx) => (

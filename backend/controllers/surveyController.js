@@ -68,15 +68,6 @@ const submitSurvey = async (req, res) => {
       [surveyId, userId, JSON.stringify(answers)],
     );
 
-    if (userId) {
-      await db.query(
-        `INSERT INTO user_stats (user_id, \`key\`, value_number)
-         VALUES (?, 'votes', 1)
-         ON DUPLICATE KEY UPDATE value_number = value_number + 1`,
-        [userId],
-      );
-    }
-
     await handleEvent(userId, "SURVEY_COMPLETED");
 
     return res.json({

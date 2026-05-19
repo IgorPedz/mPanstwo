@@ -22,7 +22,6 @@ function sendNotification({ type, message, data = null, userId = null }) {
 
   const room = `user:${userId}`;
 
-  console.log("📡 SEND NOTIFICATION TO:", room);
 
   io.to(room).emit("notification", payload);
 }

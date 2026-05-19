@@ -8,7 +8,7 @@ export default function AchievementsTabs({
   return (
     <div className=" mb-5 w-fit p-1.5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] color-transition">
 
-      <div className="lg:hidden flex justify-center">
+      <div className="2xl:hidden flex justify-center">
         <div className="relative w-fit">
           <select
             value={activeCategory}

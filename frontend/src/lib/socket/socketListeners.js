@@ -15,7 +15,6 @@ export const initSocketListeners = () => {
   socket.off("notification");
 
   socket.on("notification", (data) => {
-    console.log("🔔 SOCKET NOTIF:", data);
     addNotification(data);
   });
 };
