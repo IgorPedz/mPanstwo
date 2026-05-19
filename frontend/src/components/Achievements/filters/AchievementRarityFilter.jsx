@@ -8,7 +8,6 @@ export default function AchievementRarityFilter({
   return (
     <div className="mb-5 w-fit p-1.5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] color-transition">
 
-      {/* 📱 MOBILE SELECT */}
       <div className="lg:hidden flex justify-center">
         <div className="relative w-fit">
           <select
@@ -24,7 +23,6 @@ export default function AchievementRarityFilter({
               outline-none cursor-pointer color-transition
             "
           >
-            {/* 👇 placeholder (nie selectable) */}
             <option value="" disabled hidden>
               KATEGORIA
             </option>
@@ -42,7 +40,6 @@ export default function AchievementRarityFilter({
         </div>
       </div>
 
-      {/* 💻 DESKTOP TABS */}
       <div className="hidden lg:flex gap-1 justify-center flex-nowrap px-1 overflow-x-auto no-scrollbar">
 
         {RARITIES.map((r) => {

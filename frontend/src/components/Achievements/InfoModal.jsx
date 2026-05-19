@@ -27,7 +27,7 @@ const InfoModal = ({ isOpen, onClose }) => {
                 <div className="flex justify-between items-center mb-6">
                     <h3 className="text-2xl font-black uppercase tracking-tight flex items-center gap-3 color-transition">
                         <span className="p-2 rounded-xl text-blue-600 text-lg color-transition">⚡</span>
-                        Zarabianie XP
+                        Zbieranie reputacji
                     </h3>
                     <button
                         onClick={onClose}

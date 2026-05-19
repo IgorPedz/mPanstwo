@@ -6,13 +6,14 @@ export default function AchievementsTabs({
   setActiveCategory
 }) {
   return (
-    <div className="2xl:hidden mb-5 w-fit p-1.5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] color-transition">
-      
-      <div className="relative w-fit">
-        <select
-          value={activeCategory}
-          onChange={(e) => setActiveCategory(e.target.value)}
-          className="
+    <div className=" mb-5 w-fit p-1.5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] color-transition">
+
+      <div className="lg:hidden flex justify-center">
+        <div className="relative w-fit">
+          <select
+            value={activeCategory}
+            onChange={(e) => setActiveCategory(e.target.value)}
+            className="
             appearance-none
             min-w-[160px]
             px-4 py-2 pr-8
@@ -22,20 +23,21 @@ export default function AchievementsTabs({
             text-slate-700 dark:text-slate-200
             outline-none cursor-pointer color-transition
           "
-        >
-          {categories.map((cat) => (
-            <option
-              key={cat.slug}
-              value={cat.slug}
-              className="text-left"
-            >
-              {cat.name}
-            </option>
-          ))}
-        </select>
-        
-        <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-[10px]">
-          ▾
+          >
+            {categories.map((cat) => (
+              <option
+                key={cat.slug}
+                value={cat.slug}
+                className="text-left"
+              >
+                {cat.name}
+              </option>
+            ))}
+          </select>
+
+          <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-[10px]">
+            ▾
+          </div>
         </div>
       </div>
 
