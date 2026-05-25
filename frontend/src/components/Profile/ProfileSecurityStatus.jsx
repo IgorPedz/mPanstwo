@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ShieldCheckIcon } from "@heroicons/react/24/outline";
 import { useUser } from "../../Contexts/UserContext";
 import useUserSecurity from "../../Hooks/useUserSecurity";
-
+import { useTranslation } from "react-i18next";
 const calcScore = (isVerified, hasStrongPassword) => {
   if (isVerified && hasStrongPassword) return 100;
   if (isVerified || hasStrongPassword) return 50;
@@ -12,7 +12,7 @@ const calcScore = (isVerified, hasStrongPassword) => {
 
 export default function ProfileSecurityStatus() {
   const { user } = useUser();
-
+  const { t } = useTranslation();
   const { fetchSecurity } = useUserSecurity();
 
   const [isVerified, setIsVerified] = useState(false);
@@ -42,22 +42,20 @@ export default function ProfileSecurityStatus() {
 
   return (
     <div className="w-full space-y-4 color-transition">
-      {/* HEADER */}
       <div className="flex justify-between items-end">
         <span className="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-2 color-transition">
           <ShieldCheckIcon className="h-3 w-3" />
-          Bezpieczeństwo konta
+          {t("profileAccount.accountSecurity")}
         </span>
 
         <span
           className={`
             text-sm font-black color-transition
-            ${
-              score === 100
-                ? "text-emerald-500"
-                : score === 50
-                  ? "text-yellow-500"
-                  : "text-red-500"
+            ${score === 100
+              ? "text-emerald-500"
+              : score === 50
+                ? "text-yellow-500"
+                : "text-red-500"
             }
           `}
         >
@@ -66,13 +64,12 @@ export default function ProfileSecurityStatus() {
       </div>
       <div className="h-4 w-full bg-slate-200 dark:bg-slate-800 rounded-full p-1 color-transition">
         <motion.div
-          className={`h-full rounded-full color-transition ${
-            score === 100
-              ? "bg-emerald-500"
-              : score === 50
-                ? "bg-yellow-500"
-                : "bg-red-500"
-          }`}
+          className={`h-full rounded-full color-transition ${score === 100
+            ? "bg-emerald-500"
+            : score === 50
+              ? "bg-yellow-500"
+              : "bg-red-500"
+            }`}
           initial={{ width: 0 }}
           animate={{ width: `${score}%` }}
           transition={{ duration: 1 }}
@@ -80,14 +77,12 @@ export default function ProfileSecurityStatus() {
       </div>
 
       <div className="space-y-1 text-xs font-bold uppercase tracking-widest">
-        {/* WERYFIKACJA */}
         <div className="relative group w-fit">
           <p
-            className={`color-transition ${
-              isVerified ? "text-emerald-500" : "text-red-500 cursor-help"
-            }`}
+            className={`color-transition ${isVerified ? "text-emerald-500" : "text-red-500 cursor-help"
+              }`}
           >
-            {isVerified ? "ZWERYFIKOWANY" : "NIEZWERYFIKOWANY"}
+            {isVerified ? t("profileAccount.verified") : t("profileAccount.notVerified")}
           </p>
 
           {!isVerified && (
@@ -110,21 +105,19 @@ export default function ProfileSecurityStatus() {
     color-transition
   "
             >
-              Zweryfikuj adres e-mail w ustawieniach konta, aby zwiększyć
-              bezpieczeństwo profilu.
+              {t("profileAccount.notVerifiedEmailDesc")}
             </div>
           )}
         </div>
 
         <div className="relative group w-fit">
           <p
-            className={`color-transition ${
-              hasStrongPassword
-                ? "text-emerald-500"
-                : "text-red-500 cursor-help"
-            }`}
+            className={`color-transition ${hasStrongPassword
+              ? "text-emerald-500"
+              : "text-red-500 cursor-help"
+              }`}
           >
-            {hasStrongPassword ? "SILNE HASŁO" : "BRAK SILNEGO HASŁA"}
+            {hasStrongPassword ? t("profileAccount.strongPassword") : t("profileAccount.badPassword")}
           </p>
 
           {!hasStrongPassword && (
@@ -147,8 +140,7 @@ export default function ProfileSecurityStatus() {
     color-transition
   "
             >
-              Użyj minimum 8 znaków, dużej litery, cyfry oraz znaku specjalnego
-              przy ustalaniu hasła.
+              {t("profileAccount.notStrongPassword")}
             </div>
           )}
         </div>

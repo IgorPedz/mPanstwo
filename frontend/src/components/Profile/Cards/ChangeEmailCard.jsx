@@ -5,7 +5,7 @@ import ModalFlow from "../../Global/Modals/ModalFlow";
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
 import InfoMessage from "../../Global/InfoMessage";
-
+import { useTranslation } from "react-i18next";
 export default function ChangeEmailCard({ changeEmail }) {
   const EnvelopeIcon = ICON_MAP["contact"];
   const flow = useModalFlow(ChangeEmailFlow);
@@ -14,7 +14,7 @@ export default function ChangeEmailCard({ changeEmail }) {
 
   const [infoMessage, setInfoMessage] = useState("");
   const [infoType, setInfoType] = useState("success");
-
+  const { t } = useTranslation();
   const handleSubmit = async (data) => {
     const res = await changeEmail(data.email, data.password);
 
@@ -64,13 +64,13 @@ export default function ChangeEmailCard({ changeEmail }) {
 
           <div>
             <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1 color-transition">
-              Dane konta
+              {t("profileAccount.accountData")}
             </p>
             <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter color-transition">
-              Zmień adres Email
+              {t("profileAccount.changeEmailTitle")}
             </h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              Zaktualizuj swoje główne dane kontaktowe w systemie.
+              {t("profileAccount.changeEmailDesc")}
             </p>
           </div>
         </div>

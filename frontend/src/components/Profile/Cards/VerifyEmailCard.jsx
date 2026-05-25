@@ -10,10 +10,10 @@ import ICON_MAP from "../../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
 
 import InfoMessage from "../../Global/InfoMessage";
-
+import { useTranslation } from "react-i18next";
 export default function VerifyEmailCard() {
   const ShieldCheckIcon = ICON_MAP["shield"] || ICON_MAP["contact"];
-
+  const { t } = useTranslation();
   const flow = useModalFlow(VerifyEmailFlow);
 
   const gradientClasses =
@@ -69,8 +69,7 @@ export default function VerifyEmailCard() {
           bg-white dark:bg-slate-900 p-8 rounded-[2rem] 
           border border-slate-200 dark:border-slate-800 shadow-sm 
           transition-all duration-500 color-transition group relative 
-          overflow-hidden h-full ${
-            isVerified ? "cursor-default" : "cursor-pointer"
+          overflow-hidden h-full ${isVerified ? "cursor-default" : "cursor-pointer"
           }
         `}
       >
@@ -83,19 +82,17 @@ export default function VerifyEmailCard() {
             <div
               className={`
                 p-4 rounded-2xl color-transition
-                ${
-                  isVerified
-                    ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600"
-                    : "bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
+                ${isVerified
+                  ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600"
+                  : "bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
                 }
                 group-hover:bg-gradient-to-br group-hover:shadow-lg
-                ${
-                  !isVerified
-                    ? gradientClasses
-                        .split(" ")
-                        .map((c) => `group-hover:${c}`)
-                        .join(" ")
-                    : ""
+                ${!isVerified
+                  ? gradientClasses
+                    .split(" ")
+                    .map((c) => `group-hover:${c}`)
+                    .join(" ")
+                  : ""
                 }
               `}
             >
@@ -110,24 +107,24 @@ export default function VerifyEmailCard() {
 
             {isVerified && (
               <div className="bg-emerald-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                Zweryfikowany
+                {t("profileAccount.verified")}
               </div>
             )}
           </div>
 
           <div>
             <p className="color-transition text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">
-              Bezpieczeństwo konta
+              {t("profileAccount.accountSecurity")}
             </p>
 
             <h3 className="color-transition text-2xl font-black text-slate-900 dark:text-white tracking-tighter">
-              Weryfikacja Email
+              {t("profileAccount.emailVerification")}
             </h3>
 
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">
               {isVerified
-                ? "Twoja tożsamość została potwierdzona. Konto jest bezpieczne."
-                : "Potwierdź swój adres, aby odblokować wszystkie funkcje systemu."}
+                ? t("profileAccount.verifiedEmailDesc")
+                : t("profileAccount.notVerifiedEmailDesc")}
             </p>
           </div>
         </div>

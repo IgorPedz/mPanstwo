@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import RanksModal from "./RanksModal";
 import InfoModal from "./InfoModal";
 import { Icons } from "../../Utils/Dynamic/RankIcons";
 const AchievementStats = ({ currentLevel, progressPercent }) => {
+  const { t } = useTranslation();
   const [isRanksOpen, setIsRanksOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
 
@@ -19,7 +21,7 @@ const AchievementStats = ({ currentLevel, progressPercent }) => {
         <div className="color-transition flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 pb-6 border-b border-slate-100 dark:border-slate-800/60">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-slate-400 color-transition">
-              Twój Poziom i Grywalizacja
+              {t("achievements.yourLevel")}
             </span>
           </div>
 
@@ -31,7 +33,7 @@ const AchievementStats = ({ currentLevel, progressPercent }) => {
               <svg className="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499c-.151-.326-.504-.545-.882-.545s-.731.219-.882.545l-2.4 5.183-5.674.475c-.372.032-.68.286-.78.643-.1.357.012.744.286.994l4.316 3.931-1.303 5.568c-.085.364.054.743.355.961.301.218.704.225 1.01.018l4.896-3.32 4.896 3.32c.306.207.709.2.1.018.301-.218.44-.597.355-.961l-1.303-5.568 4.316-3.931c.274-.25.386-.637.286-.994-.1-.357-.408-.611-.78-.643l-5.674-.475-2.4-5.183z" />
               </svg>
-              Lista Rang
+              {t("achievements.ranksList")}
             </button>
 
             <button
@@ -41,7 +43,7 @@ const AchievementStats = ({ currentLevel, progressPercent }) => {
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
-              Jak zbierać?
+              {t("achievements.howToCollect")}
             </button>
           </div>
         </div>

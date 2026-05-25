@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useUser } from "../../../Contexts/UserContext";
+import { useTranslation } from "react-i18next";
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,6 +13,7 @@ export default function WelcomeDashboard({
   showAddMenu,
 }) {
   const { user } = useUser();
+  const { t } = useTranslation();
 
   const LockIcon = ICON_MAP["lock"];
   const UnlockIcon = ICON_MAP["unlock"];
@@ -38,7 +40,7 @@ export default function WelcomeDashboard({
     <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
       <div className="space-y-0">
         <p className="text-[11px] font-black uppercase tracking-[0.4em] text-indigo-500 color-transition">
-          Strona Główna / Dashboard
+          {t("dashboard.homePage")}
         </p>
 
         <motion.h1
@@ -47,7 +49,7 @@ export default function WelcomeDashboard({
           transition={{ delay: 0.1 }}
           className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter leading-none color-transition"
         >
-          Witaj, {user?.name}
+          {t("dashboard.welcome", { name: user?.name })}
         </motion.h1>
       </div>
 
@@ -60,7 +62,7 @@ export default function WelcomeDashboard({
               exit={{ opacity: 0, scale: 0.9 }}
               className="text-[10px] font-bold py-2 px-4 rounded-full bg-indigo-500/10 text-indigo-500 uppercase tracking-widest border border-indigo-500/20"
             >
-              Tryb Edycji
+              {t("dashboard.editMode")}
             </motion.span>
           )}
         </AnimatePresence>

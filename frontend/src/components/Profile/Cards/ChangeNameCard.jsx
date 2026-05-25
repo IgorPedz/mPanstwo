@@ -5,13 +5,13 @@ import ModalFlow from "../../Global/Modals/ModalFlow";
 import InfoMessage from "../../Global/InfoMessage"
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
-
+import { useTranslation } from "react-i18next";
 export default function ChangeNameCard({ updateProfile }) {
   const UserIcon = ICON_MAP["user"] || ICON_MAP["star"];
   const flow = useModalFlow(ChangeNameFlow);
   const [infoMessage, setInfoMessage] = useState("");
   const [infoType, setInfoType] = useState("success");
-
+  const { t } = useTranslation();
   const gradientClasses = ACCENT_MAP["indigo"] || "from-indigo-700 to-indigo-500";
 
   const handleSubmit = async (data) => {
@@ -66,13 +66,13 @@ export default function ChangeNameCard({ updateProfile }) {
 
           <div>
             <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1 color-transition">
-              Dane Konta
+              {t("profileAccount.accountData")}
             </p>
             <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter color-transition">
-              Zmień Nazwę
+              {t("profileAccount.changeNameTitle")}
             </h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              Zaktualizuj swoje imię lub pseudonim widoczny w systemie.
+              {t("profileAccount.changeNameDesc")}
             </p>
           </div>
         </div>

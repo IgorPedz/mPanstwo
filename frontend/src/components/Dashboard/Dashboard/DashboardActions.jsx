@@ -1,7 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import ICON_MAP from "../../../Utils/Maps/Icons";
 
 export default function DashboardActions({ saveLayout, loadSavedLayout, isVisible = true }) {
+  const { t } = useTranslation();
   const SaveIcon = ICON_MAP["check"];
   const CancelIcon = ICON_MAP["cancel"];
 
@@ -28,7 +30,7 @@ export default function DashboardActions({ saveLayout, loadSavedLayout, isVisibl
                        hover:bg-gray-100 dark:hover:bg-gray-800 color-transition cursor-pointer"
           >
             <CancelIcon className="h-5 w-5 group-hover:rotate-[-45deg] transition-transform duration-300" />
-            <span>Anuluj</span>
+            <span>{t("common.cancel")}</span>
           </motion.button>
 
           <div className="w-px h-6 bg-gray-200 dark:bg-gray-800 mx-1" />
@@ -42,7 +44,7 @@ export default function DashboardActions({ saveLayout, loadSavedLayout, isVisibl
                        shadow-lg shadow-blue-500/30 hover:bg-blue-500 
                        transition-all active:shadow-inner cursor-pointer"
           >
-            <span>Zapisz zmiany</span>
+            <span>{t("dashboard.saveChanges")}</span>
             <SaveIcon className="h-5 w-5" />
           </motion.button>
         </motion.div>

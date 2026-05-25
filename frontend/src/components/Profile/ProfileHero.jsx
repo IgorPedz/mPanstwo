@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import ICON_MAP from "../../Utils/Maps/Icons";
 import ProfileVerificationStatus from "./ProfileSecurityStatus"
+import { useTranslation } from "react-i18next";
 const ProfileHero = ({ profile }) => {
   const ShieldIcon = ICON_MAP["shield"] || ICON_MAP["zap"];
+  const { t } = useTranslation();
   return (
     <section className="mb-10 bg-white dark:bg-slate-900 rounded-[2rem] p-8 shadow-sm border border-slate-200 dark:border-slate-800 color-transition">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -12,7 +14,7 @@ const ProfileHero = ({ profile }) => {
               {profile?.name?.charAt(0) || "U"}
             </div>
             <div className="absolute -bottom-2 -right-2 bg-blue-600 text-white text-[10px] font-black px-2 py-1 rounded-md border-2 border-white dark:border-slate-900 color-transition uppercase">
-              Konto
+              {t("profileAccount.account")}
             </div>
           </div>
           <div>
@@ -30,7 +32,7 @@ const ProfileHero = ({ profile }) => {
               val: profile?.createdAt
                 ? new Date(profile.createdAt).getFullYear()
                 : "—",
-              label: "Dołączył",
+              label: t("profileAccount.joined"),
             },
           ].map((item, i) => (
             <div

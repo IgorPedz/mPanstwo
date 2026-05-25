@@ -4,11 +4,12 @@ import ICON_MAP from "../../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
 import DeleteAccountFlow from "../flow/DeleteAccountFlow";
 import ModalFlow from "../../Global/Modals/ModalFlow";
-
+import { useTranslation } from "react-i18next";
 export default function DeleteAccountCard({ deleteAccount }) {
   const { logout } = useUser();
   const flow = useModalFlow(DeleteAccountFlow);
   const TrashIcon = ICON_MAP["trash"] || ICON_MAP["zap"];
+  const { t } = useTranslation();
 
   const gradientClasses = ACCENT_MAP["red"] || "from-red-700 to-red-500";
 
@@ -57,13 +58,13 @@ export default function DeleteAccountCard({ deleteAccount }) {
 
           <div>
             <p className="text-[10px] font-black text-red-500/60 dark:text-red-400/60 uppercase tracking-[0.2em] mb-1 color-transition">
-              Dane Konta
+              {t("profileAccount.accountData")}
             </p>
             <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter color-transition">
-              Usuń Konto
+              {t("profileAccount.deleteAccountTitle")}
             </h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              Trwałe usunięcie wszystkich danych z bazy systemu.
+              {t("profileAccount.deleteAccountDesc")}
             </p>
           </div>
         </div>

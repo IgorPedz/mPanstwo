@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { useUser } from "../../Contexts/UserContext";
 import useProfile from "../../Hooks/useProfile";
 
@@ -12,6 +13,7 @@ import { containerVariants } from "../../Utils/Animations";
 import LoadingSpinner from "../../components/Global/LoadingSpinner";
 
 export default function ProfilePage() {
+  const { t } = useTranslation();
   const { user: authUser } = useUser();
   const userId = authUser?.id;
 
@@ -45,10 +47,10 @@ export default function ProfilePage() {
         <header className="color-transition flex justify-between items-end border-b border-slate-200 dark:border-slate-800 pb-6 mb-8 color-transition">
           <div>
             <h2 className="color-transition text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
-              Parametry Systemowe
+              {t("profile.systemParams")}
             </h2>
             <p className="color-transition text-slate-500 dark:text-slate-400 font-medium">
-              Zarządzaj dostępem i danymi swojego konta
+              {t("profile.manageAccess")}
             </p>
           </div>
         </header>
@@ -64,10 +66,10 @@ export default function ProfilePage() {
         <header className="color-transition flex justify-between items-end border-b border-slate-200 dark:border-slate-800 pb-6 mb-8 mt-8">
           <div>
             <h2 className="color-transition text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
-              Bezpieczeństwo Konta
+              {t("profile.accountSecurity")}
             </h2>
             <p className="color-transition text-slate-500 dark:text-slate-400 font-medium">
-              Zarządzaj bezpieczeństwem swojego konta
+              {t("profile.manageSecurity")}
             </p>
           </div>
         </header>

@@ -1,6 +1,8 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function PasswordStrength({ password }) {
+  const { t } = useTranslation();
   if(!password) return null
   const strength = useMemo(() => {
 
@@ -14,7 +16,7 @@ export default function PasswordStrength({ password }) {
     if (score <= 1) {
       return {
         score,
-        label: "Słabe hasło",
+        label: t("auth.passwordStrength.weak"),
         color: "bg-red-500",
         text: "text-red-500",
         width: "33%",
@@ -24,7 +26,7 @@ export default function PasswordStrength({ password }) {
     if (score <= 3) {
       return {
         score,
-        label: "Średnie hasło",
+        label: t("auth.passwordStrength.medium"),
         color: "bg-yellow-500",
         text: "text-yellow-500",
         width: "66%",
@@ -33,12 +35,12 @@ export default function PasswordStrength({ password }) {
 
     return {
       score,
-      label: "Silne hasło",
+      label: t("auth.passwordStrength.strong"),
       color: "bg-emerald-500",
       text: "text-emerald-500",
       width: "100%",
     };
-  }, [password]);
+  }, [password, t]);
 
   return (
     <div className="space-y-2">
@@ -57,7 +59,7 @@ export default function PasswordStrength({ password }) {
         </span>
 
         <span className="text-[10px] text-slate-400">
-          min. 8 znaków
+          {t("auth.passwordStrength.minCharacters")}
         </span>
       </div>
     </div>

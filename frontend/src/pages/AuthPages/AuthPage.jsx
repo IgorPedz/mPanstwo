@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion as m, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import LoginForm from "../../components/Auth/LoginForm";
 import RegisterForm from "../../components/Auth/RegisterForm";
@@ -15,6 +16,7 @@ import ImageSlider from "../../components/Global/ImageSlider/ImagesSlider";
 import slides from "../../components/Global/ImageSlider/AuthSlides";
 
 export default function AuthPage() {
+  const { t } = useTranslation();
   const [isLogin, setIsLogin] = useState(true);
 
   const { formData, setFormData, errors, handleSubmit } = useAuthForm();
@@ -86,7 +88,7 @@ export default function AuthPage() {
                 mb-4 uppercase tracking-tighter leading-none
               "
             >
-              {isLogin ? "LOGOWANIE" : "REJESTRACJA"}
+              {isLogin ? t("auth.loginHeading") : t("auth.registerHeading")}
             </h1>
 
             <p
@@ -97,8 +99,8 @@ export default function AuthPage() {
               "
             >
               {isLogin
-                ? "Masz konto? Zaloguj się"
-                : "Nie masz konta? Zarejestruj się"}
+                ? t("auth.hasAccount")
+                : t("auth.noAccount")}
             </p>
           </div>
 

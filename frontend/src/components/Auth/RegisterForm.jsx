@@ -1,5 +1,6 @@
 import AuthInput from "./AuthInput";
 import PasswordStrength from "./PasswordStrength";
+import { useTranslation } from "react-i18next";
 
 export default function RegisterForm({
   formData,
@@ -9,36 +10,37 @@ export default function RegisterForm({
   onSubmit,
   switchToLogin,
 }) {
+  const { t } = useTranslation();
   const handleFormSubmit = handleSubmit(onSubmit, false);
 
   return (
     <form onSubmit={handleFormSubmit} className="space-y-6">
       <div className="space-y-2">
         <AuthInput
-          label="Nazwa użytkownika"
+          label={t("auth.username")}
           type="text"
           name="name"
-          placeholder="Nazwa"
+          placeholder={t("auth.username")}
           formData={formData}
           setFormData={setFormData}
           error={errors.name}
         />
 
         <AuthInput
-          label="Adres Email"
+          label={t("auth.email")}
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={t("auth.email")}
           formData={formData}
           setFormData={setFormData}
           error={errors.email}
         />
 
         <AuthInput
-          label="Hasło"
+          label={t("auth.password")}
           type="password"
           name="password"
-          placeholder="Hasło"
+          placeholder={t("auth.password")}
           formData={formData}
           setFormData={setFormData}
           error={errors.password}
@@ -58,7 +60,7 @@ export default function RegisterForm({
             transition-all duration-200 active:scale-[0.98] hover:bg-indigo-700
           "
         >
-          Zarejestruj się
+          {t("auth.register")}
         </button>
 
         <div className="relative py-4 flex items-center justify-center">
@@ -66,7 +68,7 @@ export default function RegisterForm({
             <div className="transition-colors w-full border-t-2 border-slate-100 dark:border-slate-800"></div>
           </div>
           <span className="transition-colors relative px-4 bg-white dark:bg-[#111827] text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-            Posiadasz już dostęp?
+            {t("auth.haveAccountQuestion")}
           </span>
         </div>
 
@@ -84,7 +86,7 @@ export default function RegisterForm({
             transition-all active:scale-[0.98]
           "
         >
-          Zaloguj się
+          {t("auth.login")}
         </button>
       </div>
     </form>

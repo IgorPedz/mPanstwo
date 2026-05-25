@@ -1,32 +1,36 @@
 export const NavData = [
   {
-    title: "Główne",
+    key: "main",
+    title: "nav.sections.main",
     items: [
-      { name: "Dashboard", icon: "dashboard", href: "/dashboard" },
+      { name: "nav.items.dashboard", icon: "dashboard", href: "/dashboard" },
     ],
   },
   {
-    title: "Edukacja",
+    key: "education",
+    title: "nav.sections.education",
     items: [
-      { name: "Kursy", icon: "courses", href: "/courses" },
-      { name: "Samouczek", icon: "courses", href: "/tutorial" },
+      { name: "nav.items.courses", icon: "courses", href: "/courses" },
+      { name: "nav.items.tutorial", icon: "courses", href: "/tutorial" },
     ],
   },
   {
-    title: "Profil",
+    key: "profile",
+    title: "nav.sections.profile",
     items: [
-      { name: "Mój Profil", icon: "profile", href: "/profile" },
-      { name: "Osiągnięcia", icon: "achievements", href: "/achievements" },
-      { name: "Skrytka ankiet", icon: "survey", href: "/survey-box" },
-      { name: "Powiadomienia", icon: "notifications", href: "/notifications", badge:"notifications" },
+      { name: "nav.items.myProfile", icon: "profile", href: "/profile" },
+      { name: "nav.items.achievements", icon: "achievements", href: "/achievements" },
+      { name: "nav.items.surveyBox", icon: "survey", href: "/survey-box" },
+      { name: "nav.items.notifications", icon: "notifications", href: "/notifications", badge: "notifications" },
     ],
   },
   {
-    title: "Strona",
+    key: "page",
+    title: "nav.sections.page",
     items: [
-      { name: "Dokumenty", icon: "documents", href: "/documents" },
-      { name: "Kontakt", icon: "contact", href: "/contact" },
-      { name: "Pomoc", icon: "about", href: "/faq" },
+      { name: "nav.items.documents", icon: "documents", href: "/documents" },
+      { name: "nav.items.contact", icon: "contact", href: "/contact" },
+      { name: "nav.items.help", icon: "about", href: "/faq" },
     ],
   },
 ];

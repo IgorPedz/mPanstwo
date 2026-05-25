@@ -23,6 +23,21 @@
         "login": "Log In",
         "register": "Register",
         "logout": "Log Out",
+        "loginHeading": "LOG IN",
+        "registerHeading": "REGISTER",
+        "hasAccount": "Have an account? Log in",
+        "noAccount": "Don't have an account? Register",
+        "createAccount": "Create New Account",
+        "rememberMeLabel": "Remember me",
+        "username": "Username",
+        "noAccountQuestion": "Don't have an account?",
+        "haveAccountQuestion": "Already have access?",
+        "passwordStrength": {
+            "weak": "Weak Password",
+            "medium": "Medium Password",
+            "strong": "Strong Password",
+            "minCharacters": "min. 8 characters"
+        },
         "email": "Email",
         "password": "Password",
         "confirmPassword": "Confirm Password",
@@ -56,12 +71,18 @@
         "security": "Security",
         "stats": "Statistics",
         "save": "Save",
+        "saveChanges": "Save Changes",
         "update": "Update",
         "delete": "Delete",
         "confirm": "Confirm",
         "currentPassword": "Current Password",
+        "oldPassword": "Old Password",
         "newPassword": "New Password",
-        "confirmNewPassword": "Confirm New Password"
+        "confirmNewPassword": "Confirm New Password",
+        "systemParams": "System Parameters",
+        "manageAccess": "Manage access and account data",
+        "accountSecurity": "Account Security",
+        "manageSecurity": "Manage account security"
     },
     "achievements": {
         "achievements": "Achievements",
@@ -73,7 +94,12 @@
         "common": "Common",
         "rare": "Rare",
         "epic": "Epic",
-        "legendary": "Legendary"
+        "legendary": "Legendary",
+        "reputation": "Reputation",
+        "yourLevel": "Your Level and Gamification",
+        "ranksList": "Ranks List",
+        "howToCollect": "How to Collect?",
+        "rank": "RANK"
     },
     "surveys": {
         "surveys": "Surveys",
@@ -81,6 +107,9 @@
         "activeSurveys": "Active Surveys",
         "completedSurveys": "Completed Surveys",
         "expiredSurveys": "Expired Surveys",
+        "expired": "Expired",
+        "voted": "Voted",
+        "noVote": "No vote",
         "noActiveSurveys": "No active surveys",
         "noCompletedSurveys": "You haven't participated in any survey yet",
         "noExpiredSurveys": "No expired surveys",
@@ -96,9 +125,12 @@
         "notifications": "Notifications",
         "noNotifications": "No notifications",
         "markAsRead": "Mark as read",
+        "clearHistory": "Clear History",
         "delete": "Delete",
         "deleteAll": "Delete all",
-        "unreadNotifications": "Unread notifications"
+        "unreadNotifications": "Unread notifications",
+        "description": "Here you will find everything you participated in!",
+        "page": "Profile /"
     },
     "documents": {
         "documents": "Documents",
@@ -212,13 +244,15 @@
         "welcome": "Welcome, {{name}}!",
         "editMode": "Edit Mode",
         "saveLayout": "Save Layout",
+        "saveChanges": "Save Changes",
         "loadLayout": "Load Last Layout",
         "addCard": "Add Card",
         "lock": "Lock",
         "unlock": "Unlock",
         "locked": "Panel is locked",
         "unlocked": "Panel is unlocked",
-        "unsavedChanges": "You have unsaved changes"
+        "unsavedChanges": "You have unsaved changes",
+        "homePage": "Home / Dashboard"
     },
     "settings": {
         "settings": "Settings",
@@ -269,5 +303,41 @@
         "unauthorized": "Unauthorized",
         "authorizationRequired": "Authorization required",
         "forbidden": "Forbidden"
+    },
+    "reset": {
+        "resetPassword": "Reset Password",
+        "resetTitle": "Reset Password",
+        "resetDescription": "A password reset link will be sent to your email.",
+        "resetNextStep": "In the next step, you will provide your email address where we will send a password reset link.",
+        "continueButton": "Continue",
+        "sendLinkButton": "Send Reset Link",
+        "emailPlaceholder": "Your email"
+    },
+    "profileAccount": {
+        "accountData": "Account Data",
+        "account": "Account",
+        "accountSecurity": "Account Security",
+        "verified": "Verified",
+        "notVerified": "Not Verified",
+        "emailVerification": "Email Verification",
+        "verifiedEmailDesc": "Your identity has been confirmed. Your account is secure.",
+        "notVerifiedEmailDesc": "Confirm your address to unlock all system features.",
+        "strongPassword": "Strong Password",
+        "badPassword": "Weak Password",
+        "notStrongPassword": "Your password is too weak. We recommend using a combination of letters, numbers, and special characters.",
+        "joined": "Joined",
+        "changePasswordTitle": "Change Password",
+        "changePasswordDesc": "Changing your password regularly increases the security of your data.",
+        "changeEmailTitle": "Change Email",
+        "changeEmailDesc": "Your email is the key to accessing your account.",
+        "changeNameTitle": "Change Name",
+        "changeNameDesc": "Update your display name.",
+        "deleteAccountTitle": "Delete Account",
+        "deleteAccountDesc": "Permanently delete all account data.",
+        "verifyEmailTitle": "Verify Email",
+        "verifyEmailDesc": "Confirm your email address.",
+        "passwordChanged": "Password has been changed",
+        "emailChanged": "Email has been changed",
+        "nameChanged": "Name has been changed"
     }
 }

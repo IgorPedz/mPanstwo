@@ -23,6 +23,21 @@
         "login": "Anmelden",
         "register": "Registrieren",
         "logout": "Abmelden",
+        "loginHeading": "ANMELDEN",
+        "registerHeading": "REGISTRIEREN",
+        "hasAccount": "Haben Sie ein Konto? Melden Sie sich an",
+        "noAccount": "Haben Sie kein Konto? Registrieren Sie sich",
+        "createAccount": "Neues Konto erstellen",
+        "rememberMeLabel": "Passwort merken",
+        "username": "Benutzername",
+        "noAccountQuestion": "Kein Konto?",
+        "haveAccountQuestion": "Haben Sie bereits Zugang?",
+        "passwordStrength": {
+            "weak": "Schwaches Passwort",
+            "medium": "Mittleres Passwort",
+            "strong": "Starkes Passwort",
+            "minCharacters": "min. 8 Zeichen"
+        },
         "email": "E-Mail",
         "password": "Passwort",
         "confirmPassword": "Passwort bestätigen",
@@ -56,12 +71,18 @@
         "security": "Sicherheit",
         "stats": "Statistiken",
         "save": "Speichern",
+        "saveChanges": "Änderungen speichern",
         "update": "Aktualisieren",
         "delete": "Löschen",
         "confirm": "Bestätigen",
         "currentPassword": "Aktuelles Passwort",
+        "oldPassword": "Altes Passwort",
         "newPassword": "Neues Passwort",
-        "confirmNewPassword": "Neues Passwort bestätigen"
+        "confirmNewPassword": "Neues Passwort bestätigen",
+        "systemParams": "Systemparameter",
+        "manageAccess": "Verwalten Sie den Zugriff und die Kontodaten",
+        "accountSecurity": "Kontosicherheit",
+        "manageSecurity": "Verwalten Sie die Kontosicherheit"
     },
     "achievements": {
         "achievements": "Erfolge",
@@ -73,7 +94,12 @@
         "common": "Häufig",
         "rare": "Selten",
         "epic": "Episch",
-        "legendary": "Legendär"
+        "legendary": "Legendär",
+        "reputation": "Ruf",
+        "yourLevel": "Ihr Level und Gamification",
+        "ranksList": "Rangliste",
+        "howToCollect": "Wie sammeln?",
+        "rank": "RANG"
     },
     "surveys": {
         "surveys": "Umfragen",
@@ -81,6 +107,9 @@
         "activeSurveys": "Aktive Umfragen",
         "completedSurveys": "Abgeschlossene Umfragen",
         "expiredSurveys": "Abgelaufene Umfragen",
+        "expired": "Abgelaufen",
+        "voted": "Abgestimmt",
+        "noVote": "Keine Abstimmung",
         "noActiveSurveys": "Keine aktiven Umfragen",
         "noCompletedSurveys": "Sie haben noch nicht an einer Umfrage teilgenommen",
         "noExpiredSurveys": "Keine abgelaufenen Umfragen",
@@ -96,9 +125,12 @@
         "notifications": "Benachrichtigungen",
         "noNotifications": "Keine Benachrichtigungen",
         "markAsRead": "Als gelesen markieren",
+        "clearHistory": "Verlauf löschen",
         "delete": "Löschen",
         "deleteAll": "Alle löschen",
-        "unreadNotifications": "Ungelesene Benachrichtigungen"
+        "unreadNotifications": "Ungelesene Benachrichtigungen",
+        "description": "Hier finden Sie alles, woran Sie teilgenommen haben!",
+        "page": "Profil /"
     },
     "documents": {
         "documents": "Dokumente",
@@ -212,13 +244,15 @@
         "welcome": "Willkommen, {{name}}!",
         "editMode": "Bearbeitungsmodus",
         "saveLayout": "Layout speichern",
+        "saveChanges": "Änderungen speichern",
         "loadLayout": "Letztes Layout laden",
         "addCard": "Karte hinzufügen",
         "lock": "Sperren",
         "unlock": "Entsperren",
         "locked": "Bereich ist gesperrt",
         "unlocked": "Bereich ist entsperrt",
-        "unsavedChanges": "Sie haben ungespeicherte Änderungen"
+        "unsavedChanges": "Sie haben ungespeicherte Änderungen",
+        "homePage": "Startseite / Dashboard"
     },
     "settings": {
         "settings": "Einstellungen",
@@ -269,5 +303,41 @@
         "unauthorized": "Nicht autorisiert",
         "authorizationRequired": "Autorisierung erforderlich",
         "forbidden": "Verboten"
+    },
+    "reset": {
+        "resetPassword": "Passwort zurücksetzen",
+        "resetTitle": "Passwort zurücksetzen",
+        "resetDescription": "Ein Link zum Zurücksetzen des Passworts wird an Ihre E-Mail gesendet.",
+        "resetNextStep": "Im nächsten Schritt geben Sie Ihre E-Mail-Adresse an, an die wir einen Link zum Zurücksetzen des Passworts senden.",
+        "continueButton": "Fortfahren",
+        "sendLinkButton": "Reset-Link senden",
+        "emailPlaceholder": "Ihre E-Mail"
+    },
+    "profileAccount": {
+        "accountData": "Kontodaten",
+        "account": "Konto",
+        "accountSecurity": "Kontosicherheit",
+        "verified": "Verifiziert",
+        "notVerified": "Nicht verifiziert",
+        "emailVerification": "E-Mail-Verifizierung",
+        "verifiedEmailDesc": "Ihre Identität wurde bestätigt. Das Konto ist sicher.",
+        "notVerifiedEmailDesc": "Bestätigen Sie Ihre E-Mail-Adresse, um alle Funktionen des Systems freizuschalten.",
+        "strongPassword": "Starkes Passwort",
+        "badPassword": "Schwaches Passwort",
+        "notStrongPassword": "Ihr Passwort ist zu schwach. Wir empfehlen, eine Kombination aus Buchstaben, Zahlen und Sonderzeichen zu verwenden.",
+        "joined": "Beigetreten",    
+        "changePasswordTitle": "Passwort ändern",
+        "changePasswordDesc": "Das regelmäßige Ändern des Passworts erhöht die Sicherheit Ihrer Daten.",
+        "changeEmailTitle": "E-Mail ändern",
+        "changeEmailDesc": "Ihre E-Mail ist der Schlüssel zum Zugriff auf Ihr Konto.",
+        "changeNameTitle": "Namen ändern",
+        "changeNameDesc": "Aktualisieren Sie Ihren Anzeigenamen.",
+        "deleteAccountTitle": "Konto löschen",
+        "deleteAccountDesc": "Alle Kontodaten dauerhaft löschen.",
+        "verifyEmailTitle": "E-Mail verifizieren",
+        "verifyEmailDesc": "Bestätigen Sie Ihre E-Mail-Adresse.",
+        "passwordChanged": "Passwort wurde geändert",
+        "emailChanged": "E-Mail wurde geändert",
+        "nameChanged": "Name wurde geändert"
     }
 }

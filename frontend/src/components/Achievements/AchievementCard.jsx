@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { upwardItemVariants } from "../../Utils/Animations";
 
 import ICON_MAP from "../../Utils/Maps/Icons";
@@ -9,6 +10,7 @@ import {
 } from "../../Utils/Maps/Rarity";
 
 const AchievementCard = ({ item }) => {
+  const { t } = useTranslation();
   const Icon = ICON_MAP[item.icon] || ICON_MAP.star;
 
   const isUnlocked =
@@ -48,7 +50,7 @@ const AchievementCard = ({ item }) => {
         </div>
 
         <span className="text-[10px] font-black text-slate-400 uppercase">
-          +{item.xpReward} Reputacji
+          +{item.xpReward} {t("achievements.reputation")}
         </span>
       </div>
 

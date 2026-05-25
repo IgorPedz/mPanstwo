@@ -49,7 +49,7 @@ const SurveyCard = ({ survey, onStart }) => {
         color-transition
       "
           >
-            Zakończona
+            {t("surveys.expired")}
           </div>
 
           <div
@@ -68,7 +68,7 @@ const SurveyCard = ({ survey, onStart }) => {
         }
       `}
           >
-            {hasVoted ? "Oddano głos" : "Brak głosu"}
+            {hasVoted ? t("surveys.voted") : t("surveys.noVote")}
           </div>
         </>
       )}

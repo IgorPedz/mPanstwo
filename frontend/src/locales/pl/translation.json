@@ -23,6 +23,21 @@
         "login": "Zaloguj się",
         "register": "Zarejestruj się",
         "logout": "Wyloguj się",
+        "loginHeading": "LOGOWANIE",
+        "registerHeading": "REJESTRACJA",
+        "hasAccount": "Masz konto? Zaloguj się",
+        "noAccount": "Nie masz konta? Zarejestruj się",
+        "createAccount": "Stwórz nowe konto",
+        "rememberMeLabel": "Pamiętaj mnie",
+        "username": "Nazwa użytkownika",
+        "noAccountQuestion": "Brak konta?",
+        "haveAccountQuestion": "Posiadasz już dostęp?",
+        "passwordStrength": {
+            "weak": "Słabe hasło",
+            "medium": "Średnie hasło",
+            "strong": "Silne hasło",
+            "minCharacters": "min. 8 znaków"
+        },
         "email": "E-mail",
         "password": "Hasło",
         "confirmPassword": "Potwierdź hasło",
@@ -56,12 +71,18 @@
         "security": "Bezpieczeństwo",
         "stats": "Statystyki",
         "save": "Zapisz",
+        "saveChanges": "Zapisz zmiany",
         "update": "Aktualizuj",
         "delete": "Usuń",
         "confirm": "Potwierdź",
         "currentPassword": "Obecne hasło",
+        "oldPassword": "Stare hasło",
         "newPassword": "Nowe hasło",
-        "confirmNewPassword": "Potwierdź nowe hasło"
+        "confirmNewPassword": "Potwierdź nowe hasło",
+        "systemParams": "Parametry Systemowe",
+        "manageAccess": "Zarządzaj dostępem i danymi swojego konta",
+        "accountSecurity": "Bezpieczeństwo Konta",
+        "manageSecurity": "Zarządzaj bezpieczeństwem swojego konta"
     },
     "achievements": {
         "achievements": "Osiągnięcia",
@@ -73,7 +94,12 @@
         "common": "Zwykłe",
         "rare": "Rzadkie",
         "epic": "Epickie",
-        "legendary": "Legendarne"
+        "legendary": "Legendarne",
+        "reputation": "Reputacji",
+        "yourLevel": "Twój Poziom i Grywalizacja",
+        "ranksList": "Lista Rang",
+        "howToCollect": "Jak zbierać?",
+        "rank": "RANGA"
     },
     "surveys": {
         "surveys": "Ankiety",
@@ -81,6 +107,9 @@
         "activeSurveys": "Aktywne ankiety",
         "completedSurveys": "Ukończone ankiety",
         "expiredSurveys": "Zakończone ankiety",
+        "expired": "Zakończona",
+        "voted": "Oddano głos",
+        "noVote": "Brak głosu",
         "noActiveSurveys": "Brak aktywnych ankiet",
         "noCompletedSurveys": "Nie brałeś jeszcze udziału w żadnej ankiecie",
         "noExpiredSurveys": "Brak zakończonych ankiet",
@@ -96,9 +125,12 @@
         "notifications": "Powiadomienia",
         "noNotifications": "Brak powiadomień",
         "markAsRead": "Oznacz jako przeczytane",
+        "clearHistory": "Wyczyść historię",
         "delete": "Usuń",
         "deleteAll": "Usuń wszystkie",
-        "unreadNotifications": "Nieprzeczytane powiadomienia"
+        "unreadNotifications": "Nieprzeczytane powiadomienia",
+        "description": "Tu znajdziesz wszystko w czym brałeś udział!",
+        "page": "Profil /"
     },
     "documents": {
         "documents": "Dokumenty",
@@ -212,13 +244,15 @@
         "welcome": "Witaj, {{name}}!",
         "editMode": "Tryb Edycji",
         "saveLayout": "Zapisz układ",
+        "saveChanges": "Zapisz zmiany",
         "loadLayout": "Załaduj ostatni układ",
         "addCard": "Dodaj kartę",
         "lock": "Zablokuj",
         "unlock": "Odblokuj",
         "locked": "Panel jest zablokowany",
         "unlocked": "Panel jest odblokowany",
-        "unsavedChanges": "Masz niezapisane zmiany"
+        "unsavedChanges": "Masz niezapisane zmiany",
+        "homePage": "Strona Główna / Dashboard"
     },
     "settings": {
         "settings": "Ustawienia",
@@ -269,5 +303,41 @@
         "unauthorized": "Brak autoryzacji",
         "authorizationRequired": "Wymagana autoryzacja",
         "forbidden": "Dostęp zabroniony"
+    },
+    "reset": {
+        "resetPassword": "Reset hasła",
+        "resetTitle": "Reset hasła",
+        "resetDescription": "Na Twój email zostanie wysłany link do ustawienia nowego hasła.",
+        "resetNextStep": "W kolejnym kroku podasz adres email, na który wyślemy link resetujący hasło.",
+        "continueButton": "Kontynuuj",
+        "sendLinkButton": "Wyślij link resetu",
+        "emailPlaceholder": "Twój email"
+    },
+    "profileAccount": {
+        "accountData": "Dane Konta",
+        "account": "Konto",
+        "accountSecurity": "Bezpieczeństwo Konta",
+        "verified": "Zweryfikowany",
+        "notVerified": "Niezweryfikowany",
+        "emailVerification": "Weryfikacja email",
+        "verifiedEmailDesc": "Twoja tożsamość została potwierdzona. Konto jest bezpieczne.",
+        "notVerifiedEmailDesc": "Potwierdź swój adres, aby odblokować wszystkie funkcje systemu.",
+        "strongPassword": "Silne hasło",
+        "badPassword": "Słabe hasło",
+        "notStrongPassword": "Hasło jest zbyt słabe. Zalecamy użycie kombinacji liter, cyfr i znaków specjalnych.",
+        "joined": "Dołączył",
+        "changePasswordTitle": "Zmień Hasło",
+        "changePasswordDesc": "Regularna zmiana hasła zwiększa bezpieczeństwo Twoich danych.",
+        "changeEmailTitle": "Zmień Email",
+        "changeEmailDesc": "Twój email to klucz do dostępu do konta.",
+        "changeNameTitle": "Zmień Nazwę",
+        "changeNameDesc": "Zaktualizuj swoją nazwę wyświetlaną.",
+        "deleteAccountTitle": "Usuń Konto",
+        "deleteAccountDesc": "Trwale usunąć wszystkie dane konta.",
+        "verifyEmailTitle": "Weryfikuj Email",
+        "verifyEmailDesc": "Potwierdź posiadanie adresu email.",
+        "passwordChanged": "Hasło zostało zmienione",
+        "emailChanged": "Email został zmieniony",
+        "nameChanged": "Nazwa została zmieniona"
     }
 }

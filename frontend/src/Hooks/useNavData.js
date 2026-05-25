@@ -5,12 +5,14 @@ export const useNavData = () => {
 
   return [
     {
+      key: "main", // <-- DODANE
       title: t("nav.sections.main"),
       items: [
         { name: t("nav.items.dashboard"), icon: "dashboard", href: "/dashboard" },
       ],
     },
     {
+      key: "education", // <-- DODANE
       title: t("nav.sections.education"),
       items: [
         { name: t("nav.items.courses"), icon: "courses", href: "/courses" },
@@ -18,7 +20,8 @@ export const useNavData = () => {
       ],
     },
     {
-      title: t("nav.sections.profile"),
+      key: "profile", // <-- DODANE
+      title: t("profile.myProfile"),
       items: [
         { name: t("nav.items.myProfile"), icon: "profile", href: "/profile" },
         { name: t("nav.items.achievements"), icon: "achievements", href: "/achievements" },
@@ -32,6 +35,7 @@ export const useNavData = () => {
       ],
     },
     {
+      key: "page", // <-- DODANE
       title: t("nav.sections.page"),
       items: [
         { name: t("nav.items.documents"), icon: "documents", href: "/documents" },

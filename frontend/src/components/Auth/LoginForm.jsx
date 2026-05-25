@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import AuthInput from "./AuthInput";
 import ResetPasswordCard from "./Reset/ResetPasswordCard";
 export default function LoginForm({
@@ -10,6 +11,7 @@ export default function LoginForm({
   onSubmit,
   switchToRegister,
 }) {
+  const { t } = useTranslation();
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleFormSubmit = handleSubmit(
@@ -21,20 +23,20 @@ export default function LoginForm({
     <form onSubmit={handleFormSubmit} className="space-y-6 min-h-fit">
       <div className="space-y-2">
         <AuthInput
-          label="Adres Email"
+          label={t("auth.email")}
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={t("auth.email")}
           formData={formData}
           setFormData={setFormData}
           error={errors.email}
         />
 
         <AuthInput
-          label="Hasło"
+          label={t("auth.password")}
           type="password"
           name="password"
-          placeholder="Hasło"
+          placeholder={t("auth.password")}
           formData={formData}
           setFormData={setFormData}
           error={errors.password}
@@ -70,7 +72,7 @@ export default function LoginForm({
         </div>
 
         <span className="text-[11px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 select-none">
-          Pamiętaj mnie
+          {t("auth.rememberMeLabel")}
         </span>
       </div>
 
@@ -85,13 +87,13 @@ export default function LoginForm({
             transition-all duration-200 active:scale-[0.98] hover:bg-indigo-700
           "
         >
-          Zaloguj się
+          {t("auth.login")}
         </button>
         <ResetPasswordCard/>
         <div className="relative py-4 flex items-center justify-center">
           <div className="absolute inset-0 flex items-center"><div className="transition-colors w-full border-t-2 border-slate-100 dark:border-slate-800"></div></div>
           <span className="transition-colors relative px-4 bg-white dark:bg-[#111827] text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-            Brak konta?
+            {t("auth.noAccountQuestion")}
           </span>
         </div>
         <button
@@ -108,7 +110,7 @@ export default function LoginForm({
             transition-all active:scale-[0.98]
           "
         >
-          Stwórz nowe konto
+          {t("auth.createAccount")}
         </button>
       </div>
     </form>
