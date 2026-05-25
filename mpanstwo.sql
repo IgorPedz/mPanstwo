@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Maj 17, 2026 at 06:29 PM
+-- Generation Time: Maj 25, 2026 at 11:10 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -35,9 +35,9 @@ CREATE TABLE `achievements` (
   `category_id` bigint(20) NOT NULL,
   `xp_reward` int(11) DEFAULT 0,
   `metric_key` varchar(50) NOT NULL,
+  `metric_source` varchar(50) NOT NULL,
   `requirement_value` int(11) NOT NULL,
   `rarity` enum('common','rare','epic','legendary') DEFAULT 'common',
-  `icon` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `active` tinyint(1) DEFAULT 1,
   `hidden` tinyint(1) DEFAULT 0
@@ -47,12 +47,27 @@ CREATE TABLE `achievements` (
 -- Dumping data for table `achievements`
 --
 
-INSERT INTO `achievements` (`id`, `slug`, `title`, `description`, `category_id`, `xp_reward`, `metric_key`, `requirement_value`, `rarity`, `icon`, `created_at`, `active`, `hidden`) VALUES
-(44, 'survey_first', 'Pierwsza ankieta', 'Wypełnij pierwszą ankietę', 2, 10, 'survey_completed', 1, 'common', '📝', '2026-05-17 14:28:21', 1, 0),
-(45, 'survey_5', 'Aktywny uczestnik', 'Wypełnij 5 ankiet', 2, 25, 'survey_completed', 5, 'common', '📊', '2026-05-17 14:28:21', 1, 0),
-(46, 'survey_10', 'Głos społeczności', 'Wypełnij 10 ankiet', 2, 50, 'survey_completed', 10, 'rare', '📈', '2026-05-17 14:28:21', 1, 0),
-(47, 'survey_25', 'Ekspert opinii', 'Wypełnij 25 ankiet', 2, 100, 'survey_completed', 25, 'epic', '🏆', '2026-05-17 14:28:21', 1, 0),
-(48, 'survey_50', 'Legenda ankiet', 'Wypełnij 50 ankiet', 2, 200, 'survey_completed', 50, 'legendary', '👑', '2026-05-17 14:28:21', 1, 0);
+INSERT INTO `achievements` (`id`, `slug`, `title`, `description`, `category_id`, `xp_reward`, `metric_key`, `metric_source`, `requirement_value`, `rarity`, `created_at`, `active`, `hidden`) VALUES
+(44, 'survey_first', 'Pierwsza ankieta', 'Wypełnij pierwszą ankietę', 2, 10, 'survey_completed', 'users_metrics', 1, 'common', '2026-05-17 14:28:21', 1, 0),
+(45, 'survey_5', 'Aktywny uczestnik', 'Wypełnij 5 ankiet', 2, 25, 'survey_completed', 'users_metrics', 5, 'common', '2026-05-17 14:28:21', 1, 0),
+(46, 'survey_10', 'Głos społeczności', 'Wypełnij 10 ankiet', 2, 50, 'survey_completed', 'users_metrics', 10, 'rare', '2026-05-17 14:28:21', 1, 0),
+(47, 'survey_25', 'Ekspert opinii', 'Wypełnij 25 ankiet', 2, 100, 'survey_completed', 'users_metrics', 25, 'epic', '2026-05-17 14:28:21', 1, 0),
+(48, 'survey_50', 'Legenda ankiet', 'Wypełnij 50 ankiet', 2, 200, 'survey_completed', 'users_metrics', 50, 'legendary', '2026-05-17 14:28:21', 1, 0),
+(49, 'xp_100', 'Pierwsze kroki', 'Zdobądź 100 XP', 1, 20, 'xp', 'users', 100, 'common', '2026-05-18 18:21:36', 1, 0),
+(50, 'xp_1000', 'Rosnąca siła', 'Zdobądź 1000 XP', 1, 100, 'xp', 'users', 1000, 'rare', '2026-05-18 18:21:36', 1, 0),
+(51, 'xp_5000', 'Elita systemu', 'Zdobądź 5000 XP', 1, 300, 'xp', 'users', 5000, 'epic', '2026-05-18 18:21:36', 1, 0),
+(52, 'login_3', 'Regularność', '3 dni z rzędu logowania', 1, 25, 'login_streak', 'users', 3, 'common', '2026-05-18 18:20:40', 1, 0),
+(53, 'login_7', 'Wytrwałość', '7 dni z rzędu logowania', 1, 50, 'login_streak', 'users', 7, 'rare', '2026-05-18 18:20:40', 1, 0),
+(54, 'login_14', 'Konsekwentność', '14 dni z rzędu logowania', 1, 120, 'login_streak', 'users', 14, 'epic', '2026-05-18 18:20:40', 1, 0),
+(55, 'login_30', 'Niezłomność', '30 dni z rzędu logowania', 1, 250, 'login_streak', 'users', 30, 'legendary', '2026-05-18 18:27:38', 1, 0),
+(60, 'active_1', 'Pierwszy ślad', 'Pierwszy dzień aktywności', 1, 10, 'active_days', 'users', 1, 'common', '2026-05-18 18:30:47', 1, 0),
+(61, 'active_7', 'Tygodniowy rytm', 'Tydzień aktywności', 1, 50, 'active_days', 'users', 7, 'common', '2026-05-18 18:30:47', 1, 0),
+(62, 'active_14', 'Stały rytm', 'Dwa tygodnie aktywności', 1, 100, 'active_days', 'users', 14, 'rare', '2026-05-18 18:30:47', 1, 0),
+(63, 'active_30', 'Ugruntowana obecność', 'Miesiąc aktywności', 1, 300, 'active_days', 'users', 30, 'rare', '2026-05-18 18:30:47', 1, 0),
+(64, 'active_60', 'Nawyk systemu', 'Dwa miesiące aktywności', 1, 700, 'active_days', 'users', 60, 'rare', '2026-05-18 18:30:47', 1, 0),
+(65, 'active_100', 'Zautomatyzowana rutyna', '100 dni aktywności', 1, 1000, 'active_days', 'users', 100, 'epic', '2026-05-18 18:30:47', 1, 0),
+(66, 'active_180', 'Półroczna ciągłość', '180 dni aktywności', 1, 2500, 'active_days', 'users', 180, 'epic', '2026-05-18 18:30:47', 1, 0),
+(67, 'active_365', 'Pełny cykl', 'Rok nieprzerwanej obecności', 1, 5000, 'active_days', 'users', 365, 'legendary', '2026-05-18 18:30:47', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -133,6 +148,33 @@ INSERT INTO `dashboard_content` (`id`, `type`, `name`, `accent`, `icon`, `iconCo
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `category` varchar(50) NOT NULL,
+  `source` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `starts_at` datetime NOT NULL,
+  `ends_at` datetime DEFAULT NULL,
+  `importance` int(11) DEFAULT 1,
+  `url` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `title`, `description`, `category`, `source`, `location`, `starts_at`, `ends_at`, `importance`, `url`, `created_at`) VALUES
+(1, 'Posiedzenie Sejmu', NULL, 'parliament', NULL, NULL, '2026-05-28 09:00:00', NULL, 3, NULL, '2026-05-20 15:00:45');
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `notifications`
 --
 
@@ -158,9 +200,18 @@ INSERT INTO `notifications` (`id`, `user_id`, `type`, `title`, `message`, `data`
 (56, 6, 'SURVEY_COMPLETED', 'Ankieta zakończona', '+50 XP za ukończenie ankiety', 'null', NULL, 1, '2026-05-15 12:13:46'),
 (146, 7, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągniecię: Pierwsza ankieta', '{\"achievementId\":44,\"xp\":10}', 'achievement_unlock', 1, '2026-05-17 14:49:42'),
 (147, 7, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', 1, '2026-05-17 14:49:42'),
-(148, 4, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":4980}', 'survey_completed', 1, '2026-05-17 15:33:23'),
-(149, 4, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":5030}', 'survey_completed', 1, '2026-05-17 15:36:34'),
-(150, 4, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":5080}', 'survey_completed', 1, '2026-05-17 16:27:47');
+(190, 8, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągnięcie: Pierwsza ankieta', '{\"achievementId\":44,\"xp\":10}', 'trophy', 1, '2026-05-19 19:15:37'),
+(191, 8, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągnięcie: Pierwszy ślad', '{\"achievementId\":60,\"xp\":10}', 'trophy', 1, '2026-05-19 19:15:37'),
+(192, 8, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', 1, '2026-05-19 19:15:37'),
+(193, 8, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągnięcie: Pierwsze kroki', '{\"achievementId\":49,\"xp\":20}', 'trophy', 1, '2026-05-19 19:16:23'),
+(194, 8, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":120}', 'survey_completed', 1, '2026-05-19 19:16:23'),
+(195, 8, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":190}', 'survey_completed', 1, '2026-05-19 19:16:25'),
+(196, 8, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":240}', 'survey_completed', 1, '2026-05-19 19:16:28'),
+(197, 9, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągnięcie: Pierwsza ankieta', '{\"achievementId\":44,\"xp\":10}', 'trophy', 1, '2026-05-19 19:18:44'),
+(198, 9, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągnięcie: Pierwszy ślad', '{\"achievementId\":60,\"xp\":10}', 'trophy', 1, '2026-05-19 19:18:44'),
+(199, 9, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', 1, '2026-05-19 19:18:44'),
+(206, 4, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągnięcie: Ekspert opinii', '{\"achievementId\":47,\"xp\":100}', 'trophy', 1, '2026-05-20 14:56:32'),
+(207, 4, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":7890}', 'survey_completed', 1, '2026-05-20 14:56:32');
 
 -- --------------------------------------------------------
 
@@ -256,16 +307,16 @@ CREATE TABLE `ranks` (
 --
 
 INSERT INTO `ranks` (`id`, `level`, `name`, `required_xp`, `icon`, `color`, `created_at`) VALUES
-(6, 1, 'Obywatel', 0, 'user', '#9CA3AF', '2026-05-17 13:17:07'),
-(7, 2, 'Działacz Lokalny', 500, 'users', '#22C55E', '2026-05-17 13:17:07'),
-(8, 3, 'Radny Społeczny', 1500, 'building', '#14B8A6', '2026-05-17 13:17:07'),
-(9, 4, 'Analityk Sejmowy', 3000, 'bar-chart-3', '#3B82F6', '2026-05-17 13:17:07'),
-(10, 5, 'Komisarz Obywatelski', 6000, 'shield', '#6366F1', '2026-05-17 13:17:07'),
-(11, 6, 'Strażnik Demokracji', 10000, 'scale', '#8B5CF6', '2026-05-17 13:17:07'),
-(12, 7, 'Ekspert Legislacyjny', 16000, 'scroll-text', '#A855F7', '2026-05-17 13:17:07'),
-(13, 8, 'Obserwator Państwowy', 25000, 'eye', '#D946EF', '2026-05-17 13:17:07'),
-(14, 9, 'Marszałek Debaty', 40000, 'crown', '#F59E0B', '2026-05-17 13:17:07'),
-(15, 10, 'Architekt Demokracji', 65000, 'landmark', '#EF4444', '2026-05-17 13:17:07');
+(6, 1, 'Obywatel', 0, 'rank1', '#9CA3AF', '2026-05-17 13:17:07'),
+(7, 2, 'Działacz Lokalny', 500, 'rank2', '#22C55E', '2026-05-17 13:17:07'),
+(8, 3, 'Radny Społeczny', 1500, 'rank3', '#14B8A6', '2026-05-17 13:17:07'),
+(9, 4, 'Analityk Sejmowy', 3000, 'rank4', '#3B82F6', '2026-05-17 13:17:07'),
+(10, 5, 'Komisarz Obywatelski', 6000, 'rank5', '#6366F1', '2026-05-17 13:17:07'),
+(11, 6, 'Strażnik Demokracji', 10000, 'rank6', '#8B5CF6', '2026-05-17 13:17:07'),
+(12, 7, 'Ekspert Legislacyjny', 16000, 'rank7', '#A855F7', '2026-05-17 13:17:07'),
+(13, 8, 'Obserwator Państwowy', 25000, 'rank8', '#D946EF', '2026-05-17 13:17:07'),
+(14, 9, 'Marszałek Debaty', 40000, 'rank9', '#F59E0B', '2026-05-17 13:17:07'),
+(15, 10, 'Architekt Demokracji', 65000, 'rank10', '#EF4444', '2026-05-17 13:17:07');
 
 -- --------------------------------------------------------
 
@@ -313,11 +364,8 @@ CREATE TABLE `survey_answers` (
 --
 
 INSERT INTO `survey_answers` (`id`, `survey_id`, `user_id`, `answers`, `created_at`) VALUES
-(183, 1, 4, '{\"1\":\"yes\",\"2\":\"yes\",\"3\":\"yes\"}', '2026-05-17 14:29:10'),
-(184, 1, 7, '{\"1\":\"yes\",\"2\":\"yes\",\"3\":\"yes\"}', '2026-05-17 14:49:42'),
-(185, 2, 4, '{\"4\":\"yes\",\"5\":\"yes\",\"6\":\"yes\"}', '2026-05-17 15:33:23'),
-(186, 3, 4, '{\"7\":\"yes\",\"8\":\"yes\",\"9\":\"yes\"}', '2026-05-17 15:36:34'),
-(187, 4, 4, '{\"10\":\"yes\",\"11\":\"yes\",\"12\":\"yes\"}', '2026-05-17 16:27:47');
+(219, 1, 4, '{\"1\":\"yes\",\"2\":\"yes\",\"3\":\"yes\"}', '2026-05-20 14:56:02'),
+(220, 2, 4, '{\"4\":\"no\",\"5\":\"no\",\"6\":\"no\"}', '2026-05-20 14:56:32');
 
 -- --------------------------------------------------------
 
@@ -342,21 +390,24 @@ CREATE TABLE `users` (
   `verification_expires` bigint(20) DEFAULT NULL,
   `last_streak_notified_date` date DEFAULT NULL,
   `xp` int(11) DEFAULT 0,
-  `level` int(11) NOT NULL DEFAULT 1
+  `level` int(11) NOT NULL DEFAULT 1,
+  `role` varchar(20) NOT NULL DEFAULT 'Użytkownik'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `is_strong`, `created_at`, `reset_token`, `reset_token_exp`, `login_streak`, `last_login_date`, `active_days`, `is_verified`, `verification_code`, `verification_expires`, `last_streak_notified_date`, `xp`, `level`) VALUES
-(1, '', 'igorrpedziwilk@gmail.com', '$2b$10$KoKNM42i0rsw3C0F31thPuOMx4kiUi/zPY8NkS/HHKgl/aMiZ5uDa', 0, '2026-02-24 20:36:07', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1),
-(2, 'qwe', 'igor@wp.pl', '$2b$10$nGHb96MKg/ozPM/yBSl3iONFyrhrgyxpfePYt9oVyxON/AuTkqGI.', 0, '2026-02-24 20:45:14', '56fb4d26-e893-4a29-a772-7529ac6ec39c', 20260514, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1),
-(3, 'IgorPedz', 'pedz@wp.pl', '$2b$10$L10qTJ1I9g3wQEnhIOwvfuJAmtu8Aj6wjZwj2clDfs41aZiYPUySK', 0, '2026-05-10 12:18:39', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1),
-(4, 'igor', 'qigorq@wp.pl', '$2b$10$P4AlEULBNpKLfexNz/DqD.A4GsKn74S27bYX5jh9tLxTiJH2OaPQy', 1, '2026-05-14 18:56:00', NULL, NULL, 9, '2026-05-17', 17, 1, NULL, NULL, '2026-05-17', 5080, 3),
-(5, 'test', 'test@wp.pl', '$2b$10$QGBop034Lo4eRK5mtynH0O.aauocBwppzn6YnuR/8CHnZ12SR4olO', 0, '2026-05-14 20:34:46', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1),
-(6, 'testowekonto', 'testtest@wp.pl', '$2b$10$OCUhJzWMZVnWlR3vTIaM8uv4joGWMUJkZG44IVTHlfkD/Zv72Jh66', 0, '2026-05-15 12:12:30', NULL, NULL, 1, '2026-05-15', 1, 0, NULL, NULL, NULL, 0, 1),
-(7, 'igorpedzi', 'pedziwilk@gmail.com', '$2b$10$5jqt3ellaNs2D5bmibQ9X.62s9kfLf1br780mOJVBtMqDLhI.E2..', 1, '2026-05-17 14:49:27', NULL, NULL, 1, '2026-05-17', 1, 0, NULL, NULL, '2026-05-17', 60, 1);
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `is_strong`, `created_at`, `reset_token`, `reset_token_exp`, `login_streak`, `last_login_date`, `active_days`, `is_verified`, `verification_code`, `verification_expires`, `last_streak_notified_date`, `xp`, `level`, `role`) VALUES
+(1, '', 'igorrpedziwilk@gmail.com', '$2b$10$KoKNM42i0rsw3C0F31thPuOMx4kiUi/zPY8NkS/HHKgl/aMiZ5uDa', 0, '2026-02-24 20:36:07', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
+(2, 'qwe', 'igor@wp.pl', '$2b$10$nGHb96MKg/ozPM/yBSl3iONFyrhrgyxpfePYt9oVyxON/AuTkqGI.', 0, '2026-02-24 20:45:14', '56fb4d26-e893-4a29-a772-7529ac6ec39c', 20260514, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
+(3, 'IgorPedz', 'pedz@wp.pl', '$2b$10$L10qTJ1I9g3wQEnhIOwvfuJAmtu8Aj6wjZwj2clDfs41aZiYPUySK', 0, '2026-05-10 12:18:39', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
+(4, 'igor', 'qigorq@wp.pl', '$2b$10$P4AlEULBNpKLfexNz/DqD.A4GsKn74S27bYX5jh9tLxTiJH2OaPQy', 1, '2026-05-14 18:56:00', NULL, NULL, 3, '2026-05-25', 25, 1, NULL, NULL, '2026-05-25', 7990, 3, 'Użytkownik'),
+(5, 'test', 'test@wp.pl', '$2b$10$QGBop034Lo4eRK5mtynH0O.aauocBwppzn6YnuR/8CHnZ12SR4olO', 0, '2026-05-14 20:34:46', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
+(6, 'testowekonto', 'testtest@wp.pl', '$2b$10$OCUhJzWMZVnWlR3vTIaM8uv4joGWMUJkZG44IVTHlfkD/Zv72Jh66', 0, '2026-05-15 12:12:30', NULL, NULL, 1, '2026-05-15', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
+(7, 'igorpedzi', 'pedziwilk@gmail.com', '$2b$10$5jqt3ellaNs2D5bmibQ9X.62s9kfLf1br780mOJVBtMqDLhI.E2..', 1, '2026-05-17 14:49:27', NULL, NULL, 1, '2026-05-17', 1, 0, NULL, NULL, '2026-05-17', 60, 1, 'Użytkownik'),
+(8, 'IgorTest', 'testtesttest@wp.pl', '$2b$10$t9JNYXg5xvtESp3BawVX4uQeJH8pRKseRaMN7oHHcCaX9kmzq8VbG', 0, '2026-05-19 19:15:07', NULL, NULL, 1, '2026-05-19', 1, 0, NULL, NULL, '2026-05-19', 240, 1, 'Użytkownik'),
+(9, 'testowekonto', 'test@gmail.com', '$2b$10$SjSHuuE0rgyB2iaYVkil/OQMswW/oAJHWh36btr5x.ZSKZqSaIcJq', 1, '2026-05-19 19:18:34', NULL, NULL, 1, '2026-05-19', 1, 0, NULL, NULL, '2026-05-19', 70, 1, 'Użytkownik');
 
 -- --------------------------------------------------------
 
@@ -379,16 +430,66 @@ CREATE TABLE `user_achievements` (
 --
 
 INSERT INTO `user_achievements` (`id`, `user_id`, `achievement_id`, `progress`, `unlocked`, `unlocked_at`, `created_at`) VALUES
-(159, 4, 44, 1, 1, '2026-05-17 16:14:44', '2026-05-17 16:14:44'),
-(160, 4, 45, 5, 1, '2026-05-17 16:29:10', '2026-05-17 16:14:44'),
-(161, 4, 46, 8, 0, NULL, '2026-05-17 16:14:44'),
-(162, 4, 47, 8, 0, NULL, '2026-05-17 16:14:44'),
-(163, 4, 48, 8, 0, NULL, '2026-05-17 16:14:44'),
-(180, 7, 44, 1, 1, '2026-05-17 16:49:42', '2026-05-17 16:49:42'),
-(181, 7, 45, 1, 0, NULL, '2026-05-17 16:49:42'),
-(182, 7, 46, 1, 0, NULL, '2026-05-17 16:49:42'),
-(183, 7, 47, 1, 0, NULL, '2026-05-17 16:49:42'),
-(184, 7, 48, 1, 0, NULL, '2026-05-17 16:49:42');
+(205, 4, 44, 1, 1, '2026-05-18 18:05:27', '2026-05-18 18:05:27'),
+(206, 4, 45, 5, 1, '2026-05-18 18:06:21', '2026-05-18 18:05:56'),
+(207, 4, 46, 10, 1, '2026-05-19 19:25:51', '2026-05-18 18:05:56'),
+(208, 4, 47, 25, 1, '2026-05-20 16:56:32', '2026-05-18 18:05:56'),
+(209, 4, 48, 25, 0, NULL, '2026-05-18 18:05:56'),
+(353, 4, 49, 100, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
+(354, 4, 50, 1000, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
+(355, 4, 51, 5000, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
+(356, 4, 52, 3, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
+(357, 4, 53, 7, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
+(358, 4, 54, 14, 1, '2026-05-19 22:01:59', '2026-05-19 19:36:41'),
+(359, 4, 55, 16, 0, NULL, '2026-05-19 19:36:41'),
+(360, 4, 60, 1, 1, '2026-05-19 19:49:31', '2026-05-19 19:36:41'),
+(361, 4, 61, 7, 1, '2026-05-19 19:49:31', '2026-05-19 19:36:41'),
+(362, 4, 62, 14, 1, '2026-05-19 19:49:31', '2026-05-19 19:36:41'),
+(363, 4, 63, 24, 0, NULL, '2026-05-19 19:36:41'),
+(364, 4, 64, 24, 0, NULL, '2026-05-19 19:36:41'),
+(365, 4, 65, 24, 0, NULL, '2026-05-19 19:36:41'),
+(366, 4, 66, 24, 0, NULL, '2026-05-19 19:36:41'),
+(367, 4, 67, 24, 0, NULL, '2026-05-19 19:36:41'),
+(490, 8, 44, 1, 1, '2026-05-19 21:15:37', '2026-05-19 21:15:37'),
+(491, 8, 45, 4, 0, NULL, '2026-05-19 21:15:37'),
+(492, 8, 46, 4, 0, NULL, '2026-05-19 21:15:37'),
+(493, 8, 47, 4, 0, NULL, '2026-05-19 21:15:37'),
+(494, 8, 48, 4, 0, NULL, '2026-05-19 21:15:37'),
+(495, 8, 49, 100, 1, '2026-05-19 21:16:23', '2026-05-19 21:15:37'),
+(496, 8, 50, 240, 0, NULL, '2026-05-19 21:15:37'),
+(497, 8, 51, 240, 0, NULL, '2026-05-19 21:15:37'),
+(498, 8, 52, 1, 0, NULL, '2026-05-19 21:15:37'),
+(499, 8, 53, 1, 0, NULL, '2026-05-19 21:15:37'),
+(500, 8, 54, 1, 0, NULL, '2026-05-19 21:15:37'),
+(501, 8, 55, 1, 0, NULL, '2026-05-19 21:15:37'),
+(502, 8, 60, 1, 1, '2026-05-19 21:15:37', '2026-05-19 21:15:37'),
+(503, 8, 61, 1, 0, NULL, '2026-05-19 21:15:37'),
+(504, 8, 62, 1, 0, NULL, '2026-05-19 21:15:37'),
+(505, 8, 63, 1, 0, NULL, '2026-05-19 21:15:37'),
+(506, 8, 64, 1, 0, NULL, '2026-05-19 21:15:37'),
+(507, 8, 65, 1, 0, NULL, '2026-05-19 21:15:37'),
+(508, 8, 66, 1, 0, NULL, '2026-05-19 21:15:37'),
+(509, 8, 67, 1, 0, NULL, '2026-05-19 21:15:37'),
+(562, 9, 44, 1, 1, '2026-05-19 21:18:44', '2026-05-19 21:18:44'),
+(563, 9, 45, 1, 0, NULL, '2026-05-19 21:18:44'),
+(564, 9, 46, 1, 0, NULL, '2026-05-19 21:18:44'),
+(565, 9, 47, 1, 0, NULL, '2026-05-19 21:18:44'),
+(566, 9, 48, 1, 0, NULL, '2026-05-19 21:18:44'),
+(567, 9, 49, 50, 0, NULL, '2026-05-19 21:18:44'),
+(568, 9, 50, 50, 0, NULL, '2026-05-19 21:18:44'),
+(569, 9, 51, 50, 0, NULL, '2026-05-19 21:18:44'),
+(570, 9, 52, 1, 0, NULL, '2026-05-19 21:18:44'),
+(571, 9, 53, 1, 0, NULL, '2026-05-19 21:18:44'),
+(572, 9, 54, 1, 0, NULL, '2026-05-19 21:18:44'),
+(573, 9, 55, 1, 0, NULL, '2026-05-19 21:18:44'),
+(574, 9, 60, 1, 1, '2026-05-19 21:18:44', '2026-05-19 21:18:44'),
+(575, 9, 61, 1, 0, NULL, '2026-05-19 21:18:44'),
+(576, 9, 62, 1, 0, NULL, '2026-05-19 21:18:44'),
+(577, 9, 63, 1, 0, NULL, '2026-05-19 21:18:44'),
+(578, 9, 64, 1, 0, NULL, '2026-05-19 21:18:44'),
+(579, 9, 65, 1, 0, NULL, '2026-05-19 21:18:44'),
+(580, 9, 66, 1, 0, NULL, '2026-05-19 21:18:44'),
+(581, 9, 67, 1, 0, NULL, '2026-05-19 21:18:44');
 
 -- --------------------------------------------------------
 
@@ -409,19 +510,15 @@ CREATE TABLE `user_activity` (
 
 CREATE TABLE `user_metrics` (
   `user_id` int(11) NOT NULL,
-  `xp` int(11) DEFAULT 0,
   `votes_count` int(11) DEFAULT 0,
   `survey_completed` int(11) DEFAULT 0,
   `opinions_written` int(11) DEFAULT 0,
   `courses_completed` int(11) DEFAULT 0,
-  `login_streak` int(11) DEFAULT 0,
-  `max_login_streak` int(11) DEFAULT 0,
   `tracked_laws_count` int(11) DEFAULT 0,
   `comments_count` int(11) DEFAULT 0,
   `likes_received` int(11) DEFAULT 0,
   `achievements_unlocked` int(11) DEFAULT 0,
   `created_surveys` int(11) DEFAULT 0,
-  `reputation` int(11) DEFAULT 0,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -429,46 +526,11 @@ CREATE TABLE `user_metrics` (
 -- Dumping data for table `user_metrics`
 --
 
-INSERT INTO `user_metrics` (`user_id`, `xp`, `votes_count`, `survey_completed`, `opinions_written`, `courses_completed`, `login_streak`, `max_login_streak`, `tracked_laws_count`, `comments_count`, `likes_received`, `achievements_unlocked`, `created_surveys`, `reputation`, `updated_at`) VALUES
-(4, 50, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2026-05-17 18:27:47'),
-(7, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2026-05-17 16:49:42');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `user_stats`
---
-
-CREATE TABLE `user_stats` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `key` varchar(50) NOT NULL,
-  `value_number` int(11) DEFAULT NULL,
-  `value_text` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `user_stats`
---
-
-INSERT INTO `user_stats` (`id`, `user_id`, `key`, `value_number`, `value_text`) VALUES
-(1, 4, 'votes', 213, NULL),
-(2, 4, 'courses', 6, NULL),
-(4, 4, 'role', NULL, 'Użytkownik'),
-(6, 4, 'opinions', 10, NULL),
-(8, 5, 'role', NULL, 'Użytkownik'),
-(9, 5, 'votes', 1, NULL),
-(10, 5, 'opinions', 0, NULL),
-(11, 5, 'courses', 0, NULL),
-(15, 6, 'role', NULL, 'Użytkownik'),
-(16, 6, 'votes', 1, NULL),
-(17, 6, 'opinions', 0, NULL),
-(18, 6, 'courses', 0, NULL),
-(103, 7, 'trackedLaws', 0, NULL),
-(104, 7, 'role', NULL, 'Użytkownik'),
-(105, 7, 'votes', 1, NULL),
-(106, 7, 'opinions', 0, NULL),
-(107, 7, 'courses', 0, NULL);
+INSERT INTO `user_metrics` (`user_id`, `votes_count`, `survey_completed`, `opinions_written`, `courses_completed`, `tracked_laws_count`, `comments_count`, `likes_received`, `achievements_unlocked`, `created_surveys`, `updated_at`) VALUES
+(4, 0, 25, 0, 0, 0, 0, 0, 0, 0, '2026-05-20 16:56:32'),
+(7, 0, 1, 0, 0, 0, 0, 0, 0, 0, '2026-05-17 16:49:42'),
+(8, 0, 4, 0, 0, 0, 0, 0, 0, 0, '2026-05-19 21:16:28'),
+(9, 0, 1, 0, 0, 0, 0, 0, 0, 0, '2026-05-19 21:18:44');
 
 -- --------------------------------------------------------
 
@@ -594,7 +656,64 @@ INSERT INTO `xp_logs` (`id`, `user_id`, `amount`, `reason`, `created_at`) VALUES
 (81, 7, 10, 'ACHIEVEMENT', '2026-05-17 16:49:42'),
 (82, 4, 50, 'SURVEY_COMPLETED', '2026-05-17 17:33:23'),
 (83, 4, 50, 'SURVEY_COMPLETED', '2026-05-17 17:36:34'),
-(84, 4, 50, 'SURVEY_COMPLETED', '2026-05-17 18:27:47');
+(84, 4, 50, 'SURVEY_COMPLETED', '2026-05-17 18:27:47'),
+(85, 4, 50, 'SURVEY_COMPLETED', '2026-05-18 17:25:52'),
+(86, 4, 50, 'SURVEY_COMPLETED', '2026-05-18 17:26:17'),
+(87, 4, 50, 'ACHIEVEMENT', '2026-05-18 17:26:17'),
+(88, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-18 17:51:53'),
+(89, 4, 50, 'SURVEY_COMPLETED', '2026-05-18 18:05:27'),
+(90, 4, 10, 'ACHIEVEMENT', '2026-05-18 18:05:27'),
+(91, 4, 50, 'SURVEY_COMPLETED', '2026-05-18 18:05:56'),
+(92, 4, 50, 'SURVEY_COMPLETED', '2026-05-18 18:06:07'),
+(93, 4, 50, 'SURVEY_COMPLETED', '2026-05-18 18:06:10'),
+(94, 4, 50, 'SURVEY_COMPLETED', '2026-05-18 18:06:20'),
+(95, 4, 25, 'ACHIEVEMENT', '2026-05-18 18:06:21'),
+(96, 4, 50, 'SURVEY_COMPLETED', '2026-05-18 18:11:07'),
+(97, 4, 50, 'SURVEY_COMPLETED', '2026-05-18 18:11:32'),
+(98, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-19 18:53:10'),
+(99, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:09:33'),
+(100, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:25:48'),
+(101, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:25:51'),
+(102, 4, 50, 'ACHIEVEMENT', '2026-05-19 19:25:51'),
+(103, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:32:29'),
+(104, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:35:13'),
+(105, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:36:11'),
+(106, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:36:41'),
+(107, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:36:54'),
+(108, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:41:14'),
+(109, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:43:20'),
+(110, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:44:44'),
+(111, 4, 20, 'ACHIEVEMENT', '2026-05-19 19:44:44'),
+(112, 4, 100, 'ACHIEVEMENT', '2026-05-19 19:44:44'),
+(113, 4, 300, 'ACHIEVEMENT', '2026-05-19 19:44:44'),
+(114, 4, 25, 'ACHIEVEMENT', '2026-05-19 19:44:44'),
+(115, 4, 50, 'ACHIEVEMENT', '2026-05-19 19:44:44'),
+(116, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:48:12'),
+(117, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:48:26'),
+(118, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:49:30'),
+(119, 4, 10, 'ACHIEVEMENT', '2026-05-19 19:49:31'),
+(120, 4, 50, 'ACHIEVEMENT', '2026-05-19 19:49:31'),
+(121, 4, 100, 'ACHIEVEMENT', '2026-05-19 19:49:31'),
+(122, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 19:51:07'),
+(123, 4, 50, 'SURVEY_COMPLETED', '2026-05-19 20:15:58'),
+(124, 8, 50, 'SURVEY_COMPLETED', '2026-05-19 21:15:37'),
+(125, 8, 10, 'ACHIEVEMENT', '2026-05-19 21:15:37'),
+(126, 8, 10, 'ACHIEVEMENT', '2026-05-19 21:15:37'),
+(127, 8, 50, 'SURVEY_COMPLETED', '2026-05-19 21:16:23'),
+(128, 8, 20, 'ACHIEVEMENT', '2026-05-19 21:16:23'),
+(129, 8, 50, 'SURVEY_COMPLETED', '2026-05-19 21:16:25'),
+(130, 8, 50, 'SURVEY_COMPLETED', '2026-05-19 21:16:28'),
+(131, 9, 50, 'SURVEY_COMPLETED', '2026-05-19 21:18:44'),
+(132, 9, 10, 'ACHIEVEMENT', '2026-05-19 21:18:44'),
+(133, 9, 10, 'ACHIEVEMENT', '2026-05-19 21:18:44'),
+(134, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-19 21:51:27'),
+(135, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-19 22:01:59'),
+(136, 4, 120, 'ACHIEVEMENT', '2026-05-19 22:01:59'),
+(137, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-19 22:17:32'),
+(138, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-20 16:55:01'),
+(139, 4, 50, 'SURVEY_COMPLETED', '2026-05-20 16:56:02'),
+(140, 4, 50, 'SURVEY_COMPLETED', '2026-05-20 16:56:32'),
+(141, 4, 100, 'ACHIEVEMENT', '2026-05-20 16:56:32');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -619,6 +738,12 @@ ALTER TABLE `achievement_categories`
 -- Indeksy dla tabeli `dashboard_content`
 --
 ALTER TABLE `dashboard_content`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `events`
+--
+ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -688,13 +813,6 @@ ALTER TABLE `user_metrics`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Indeksy dla tabeli `user_stats`
---
-ALTER TABLE `user_stats`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `unique_user_key` (`user_id`,`key`);
-
---
 -- Indeksy dla tabeli `user_tiles`
 --
 ALTER TABLE `user_tiles`
@@ -717,7 +835,7 @@ ALTER TABLE `xp_logs`
 -- AUTO_INCREMENT for table `achievements`
 --
 ALTER TABLE `achievements`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `achievement_categories`
@@ -732,10 +850,16 @@ ALTER TABLE `dashboard_content`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- AUTO_INCREMENT for table `options`
@@ -765,31 +889,25 @@ ALTER TABLE `surveys`
 -- AUTO_INCREMENT for table `survey_answers`
 --
 ALTER TABLE `survey_answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=188;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user_achievements`
 --
 ALTER TABLE `user_achievements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
-
---
--- AUTO_INCREMENT for table `user_stats`
---
-ALTER TABLE `user_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=632;
 
 --
 -- AUTO_INCREMENT for table `xp_logs`
 --
 ALTER TABLE `xp_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 
 --
 -- Constraints for dumped tables
