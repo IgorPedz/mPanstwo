@@ -3,14 +3,13 @@ export const NavData = [
     title: "Główne",
     items: [
       { name: "Dashboard", icon: "dashboard", href: "/dashboard" },
-      { name: "Sondaże", icon: "stats", href: "/polls" },
-      { name: "Kalendarz wydarzeń", icon: "events", href: "/calendar" },
     ],
   },
   {
     title: "Edukacja",
     items: [
-      { name: "Kursy i samouczki", icon: "courses", href: "/courses" },
+      { name: "Kursy", icon: "courses", href: "/courses" },
+      { name: "Samouczek", icon: "courses", href: "/tutorial" },
     ],
   },
   {
