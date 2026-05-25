@@ -2,7 +2,7 @@ import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
 import useNoScroll from "../../../Hooks/UseNoScroll";
-
+import { useTranslation } from "react-i18next";
 export default function ModalMessage({
   isOpen,
   title = "Potwierdzenie",
@@ -12,6 +12,7 @@ export default function ModalMessage({
   onConfirm,
   onCancel,
 }) {
+  const { t } = useTranslation();
   useNoScroll(isOpen);
 
   if (typeof window === "undefined") return null;
@@ -54,7 +55,7 @@ export default function ModalMessage({
               </div>
 
               <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.2em] mb-1">
-                Wymagana Autoryzacja
+                {t("common.authorizationRequired")}
               </p>
               <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">
                 {title}

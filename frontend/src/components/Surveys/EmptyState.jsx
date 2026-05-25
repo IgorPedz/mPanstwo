@@ -1,21 +1,23 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import ICON_MAP from "../../Utils/Maps/Icons";
 
 export default function EmptyState({ onRefetch, variant = "active" }) {
+  const { t } = useTranslation();
   const DocumentIcon = ICON_MAP["documentcheck"];
 
   const config = {
     active: {
-      title: "Brak aktywnych ankiet",
-      desc: "Aktualnie nie mamy nowych ankiet. Wróć później po kolejne wyzwania i punkty.",
+      title: t("surveys.noActiveSurveys"),
+      desc: t("surveys.noActiveSurveys"),
     },
     archive: {
-      title: "Brak historii odpowiedzi",
-      desc: "Nie brałeś jeszcze udziału w żadnej ankiecie.",
+      title: t("surveys.noCompletedSurveys"),
+      desc: t("surveys.noCompletedSurveys"),
     },
     expired: {
-      title: "Brak zakończonych ankiet",
-      desc: "Nie znaleziono ankiet, które już się zakończyły.",
+      title: t("surveys.noExpiredSurveys"),
+      desc: t("surveys.noExpiredSurveys"),
     },
   }[variant];
 

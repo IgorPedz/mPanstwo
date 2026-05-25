@@ -49,6 +49,7 @@ export default function DocumentsPage() {
         >
           {!isLoggedIn && <Loginfooter />}
         </motion.div>
+        <DocumentsFooterInfo />
       </div>
     </motion.div>
   );

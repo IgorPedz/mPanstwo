@@ -1,0 +1,273 @@
+{
+    "nav": {
+        "sections": {
+            "main": "Hauptseite",
+            "education": "Bildung",
+            "profile": "Profil",
+            "page": "Seite"
+        },
+        "items": {
+            "dashboard": "Dashboard",
+            "courses": "Kurse",
+            "tutorial": "Anleitung",
+            "myProfile": "Mein Profil",
+            "achievements": "Erfolge",
+            "surveyBox": "Umfragebox",
+            "notifications": "Benachrichtigungen",
+            "documents": "Dokumente",
+            "contact": "Kontakt",
+            "help": "Hilfe"
+        }
+    },
+    "auth": {
+        "login": "Anmelden",
+        "register": "Registrieren",
+        "logout": "Abmelden",
+        "email": "E-Mail",
+        "password": "Passwort",
+        "confirmPassword": "Passwort bestätigen",
+        "rememberMe": "Passwort merken",
+        "forgotPassword": "Passwort vergessen?",
+        "resetPassword": "Passwort zurücksetzen",
+        "dontHaveAccount": "Haben Sie noch kein Konto?",
+        "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
+        "signUp": "Konto erstellen",
+        "submit": "Absenden",
+        "cancel": "Abbrechen",
+        "errorEmailRequired": "E-Mail ist erforderlich",
+        "errorPasswordRequired": "Passwort ist erforderlich",
+        "errorInvalidEmail": "Ungültiges E-Mail-Format",
+        "errorWeakPassword": "Passwort ist zu schwach",
+        "errorPasswordsDontMatch": "Passwörter stimmen nicht überein",
+        "errorLoginFailed": "Anmeldung fehlgeschlagen",
+        "errorRegisterFailed": "Registrierung fehlgeschlagen",
+        "sessionLogOut": "Möchten Sie sich wirklich abmelden?"
+    },
+    "profile": {
+        "myProfile": "Mein Profil",
+        "profileUser": "Benutzerprofil",
+        "manage": "Verwalten Sie Ihr Profil und passen Sie Ihre Einstellungen an!",
+        "editProfile": "Profil bearbeiten",
+        "changeEmail": "E-Mail ändern",
+        "changePassword": "Passwort ändern",
+        "deleteAccount": "Konto löschen",
+        "loading": "Profil wird geladen...",
+        "settings": "Einstellungen",
+        "security": "Sicherheit",
+        "stats": "Statistiken",
+        "save": "Speichern",
+        "update": "Aktualisieren",
+        "delete": "Löschen",
+        "confirm": "Bestätigen",
+        "currentPassword": "Aktuelles Passwort",
+        "newPassword": "Neues Passwort",
+        "confirmNewPassword": "Neues Passwort bestätigen"
+    },
+    "achievements": {
+        "achievements": "Erfolge",
+        "loading": "Erfolge werden geladen...",
+        "noAchievements": "Keine Erfolge",
+        "filter": "Filter",
+        "rarity": "Seltenheit",
+        "all": "Alle",
+        "common": "Häufig",
+        "rare": "Selten",
+        "epic": "Episch",
+        "legendary": "Legendär"
+    },
+    "surveys": {
+        "surveys": "Umfragen",
+        "surveyBox": "Umfragebox",
+        "activeSurveys": "Aktive Umfragen",
+        "completedSurveys": "Abgeschlossene Umfragen",
+        "expiredSurveys": "Abgelaufene Umfragen",
+        "noActiveSurveys": "Keine aktiven Umfragen",
+        "noCompletedSurveys": "Sie haben noch nicht an einer Umfrage teilgenommen",
+        "noExpiredSurveys": "Keine abgelaufenen Umfragen",
+        "viewDetails": "Details anzeigen",
+        "startSurvey": "Umfrage starten",
+        "completeSurvey": "Umfrage abschließen",
+        "nextPage": "Nächste Seite",
+        "previousPage": "Vorherige Seite",
+        "submit": "Absenden",
+        "backToBox": "Zurück zur Box"
+    },
+    "notifications": {
+        "notifications": "Benachrichtigungen",
+        "noNotifications": "Keine Benachrichtigungen",
+        "markAsRead": "Als gelesen markieren",
+        "delete": "Löschen",
+        "deleteAll": "Alle löschen",
+        "unreadNotifications": "Ungelesene Benachrichtigungen"
+    },
+    "documents": {
+        "documents": "Dokumente",
+        "page": "Seite /",
+        "description": "Wichtige Dokumente bezüglich der Funktionsweise der Website und ihrer rechtlichen Aspekte.",
+        "download": "Herunterladen",
+        "size": "Größe",
+        "type": "Typ",
+        "pdf": "PDF",
+        "terms": "Nutzungsbedingungen",
+        "privacy": "Datenschutzrichtlinie",
+        "community": "Community-Regeln",
+        "statute": "Plattform-Statut",
+        "aktualizationDate": "Zuletzt aktualisiert"
+    },
+    "contact": {
+        "contact": "Kontakt",
+        "description": "Lass uns in Kontakt bleiben! Hast du Fragen, Anregungen oder benötigst Unterstützung? Kontaktiere uns und unser Team hilft dir gerne weiter. Fülle das Kontaktformular aus oder nutze die untenstehenden Kontaktdaten, um dich mit uns in Verbindung zu setzen. Wir freuen uns auf deine Nachricht!",
+        "getInTouch": "Kontaktieren Sie uns",
+        "sendMessage": "Nachricht senden",
+        "name": "Name",
+        "message": "Nachricht",
+        "messagePlaceholder": "Wie können wir Ihnen helfen?",
+        "send": "Senden",
+        "successMessage": "Nachricht erfolgreich versendet!",
+        "errorMessage": "Fehler beim Versenden der Nachricht",
+        "email": {
+            "label": "E-Mail",
+            "value": "mpanstwosupport@gmail.com"
+        },
+        "responseTime": {
+            "label": "Antwortzeit",
+            "value": "24–48h"
+        },
+        "support": {
+            "label": "Support",
+            "value": "7 Tage die Woche"
+        }
+    },
+    "faq": {
+        "faq": "Hilfe",
+        "frequentlyAskedQuestions": "Häufig gestellte Fragen",
+        "searchQuestions": "Fragen durchsuchen...",
+        "noResults": "Keine passenden Fragen gefunden",
+        "description": "Antwort auf die am häufigsten gestellten Fragen zur Nutzung der mPanstwo-Plattform. Finden Sie schnelle Lösungen und Tipps, um das Beste aus unserem Service herauszuholen. Wenn Sie keine Antwort finden, kontaktieren Sie uns direkt!",
+        "categories": {
+            "all": "Alle",
+            "account": "Konto",
+            "security": "Sicherheit",
+            "about": "Über die Seite",
+            "contact": "Kontakt",
+            "terms": "Regeln"
+        },
+        "items": {
+            "createAccount": {
+                "question": "Wie kann ich ein Konto erstellen?",
+                "answer": "Klicke auf die Registrierungs-Schaltfläche und fülle das Formular zur Kontoerstellung aus."
+            },
+            "editProfile": {
+                "question": "Kann ich meine Profildaten ändern?",
+                "answer": "Ja, alle Daten können im Bereich „Mein Profil“ bearbeitet werden."
+            },
+            "deleteAccount": {
+                "question": "Wie kann ich mein Konto löschen?",
+                "answer": "Die Option zum Löschen des Kontos befindet sich in den Sicherheitseinstellungen im Bereich „Mein Profil“."
+            },
+            "resetPassword": {
+                "question": "Wie kann ich mein Passwort zurücksetzen?",
+                "answer": "Klicke auf „Passwort vergessen“ im Anmeldebildschirm und folge den Anweisungen."
+            },
+            "dataSecurity": {
+                "question": "Sind meine Daten sicher?",
+                "answer": "Ja, die Benutzerdaten werden verschlüsselt und entsprechend gesichert."
+            },
+            "accountHijacked": {
+                "question": "Was soll ich tun, wenn jemand mein Konto übernommen hat?",
+                "answer": "Ändere sofort dein Passwort und kontaktiere die Administration der Plattform."
+            },
+            "freeUsage": {
+                "question": "Ist die Nutzung der Website vollständig kostenlos?",
+                "answer": "Ja, die Website ist für die öffentliche Nutzung bestimmt und komplett kostenlos."
+            },
+            "contentModeration": {
+                "question": "Werden die Inhalte auf der Website moderiert?",
+                "answer": "Ja, die Inhalte werden von der Administration moderiert, um beleidigende und vulgäre Kommentare zu entfernen."
+            },
+            "contactAdmin": {
+                "question": "Wie kann ich die Administration kontaktieren?",
+                "answer": "Du kannst das Kontaktformular verwenden oder eine E-Mail an mpanstwosupport@gmail.com senden."
+            },
+            "technicalProblem": {
+                "question": "Wie melde ich ein technisches Problem?",
+                "answer": "Technische Probleme können über den Bereich „Kontakt“ gemeldet werden."
+            },
+            "platformRules": {
+                "question": "Wo finde ich die Regeln der Plattform?",
+                "answer": "Die Regeln befinden sich im Bereich „Dokumente“ unter „Plattformregeln“."
+            },
+            "reportViolation": {
+                "question": "Wie kann ich einen Verstoß gegen die Community-Regeln melden?",
+                "answer": "Jeder Kommentar besitzt eine Funktion zum Melden eines Verstoßes."
+            },
+            "rulePenalties": {
+                "question": "Welche Strafen gelten für Regelverstöße?",
+                "answer": "Alle Strafen sind in den Plattformregeln beschrieben."
+            }
+        }
+    },
+    "dashboard": {
+        "dashboard": "Dashboard",
+        "welcome": "Willkommen, {{name}}!",
+        "editMode": "Bearbeitungsmodus",
+        "saveLayout": "Layout speichern",
+        "loadLayout": "Letztes Layout laden",
+        "addCard": "Karte hinzufügen",
+        "lock": "Sperren",
+        "unlock": "Entsperren",
+        "locked": "Bereich ist gesperrt",
+        "unlocked": "Bereich ist entsperrt",
+        "unsavedChanges": "Sie haben ungespeicherte Änderungen"
+    },
+    "settings": {
+        "settings": "Einstellungen",
+        "systemSettings": "Systemeinstellungen",
+        "theme": "Design",
+        "language": "Sprache",
+        "langText": "Wählen Sie Ihre bevorzugte Sprache",
+        "darkMode": "Dunkler Modus",
+        "lightMode": "Heller Modus",
+        "polish": "Polski",
+        "english": "English",
+        "german": "Deutsch",
+        "font": "Schrift",
+        "fontSize": "Schriftgröße",
+        "fontSmall": "Klein",
+        "fontMedium": "Mittel",
+        "fontLarge": "Groß",
+        "fontExtraLarge": "Extra Groß",
+        "version": "Version"
+    },
+    "common": {
+        "loading": "Wird geladen...",
+        "sending": "Wird gesendet...",
+        "error": "Fehler",
+        "success": "Erfolg",
+        "warning": "Warnung",
+        "info": "Information",
+        "close": "Schließen",
+        "save": "Speichern",
+        "cancel": "Abbrechen",
+        "delete": "Löschen",
+        "edit": "Bearbeiten",
+        "add": "Hinzufügen",
+        "back": "Zurück",
+        "next": "Weiter",
+        "previous": "Zurück",
+        "confirm": "Bestätigen",
+        "yes": "Ja",
+        "no": "Nein",
+        "search": "Suchen",
+        "filter": "Filter",
+        "sort": "Sortieren",
+        "retry": "Erneut versuchen",
+        "unknown": "Unbekannt",
+        "notFound": "Nicht gefunden",
+        "serverError": "Serverfehler",
+        "networkError": "Netzwerkfehler",
+        "unauthorized": "Nicht autorisiert",
+        "authorizationRequired": "Autorisierung erforderlich",
+        "forbidden": "Verboten"
+    }
+}

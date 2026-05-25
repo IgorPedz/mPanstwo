@@ -1,18 +1,15 @@
 const contactInfo = [
   {
-    label: "Email",
-    value: "mpanstwosupport@gmail.com",
-    icon: "contact", 
+    key: "email",
+    icon: "contact",
   },
   {
-    label: "Czas odpowiedzi",
-    value: "24–48h",
-    icon: "clock", 
+    key: "responseTime",
+    icon: "clock",
   },
   {
-    label: "Wsparcie",
-    value: "7 dni w tygodniu",
-    icon: "phone", 
+    key: "support",
+    icon: "phone",
   },
 ];
 

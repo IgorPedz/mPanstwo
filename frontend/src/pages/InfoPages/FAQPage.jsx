@@ -16,7 +16,7 @@ import { sectionVariants, pageVariants } from "../../Utils/Animations";
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeCategory, setActiveCategory] = useState("Wszystkie");
+  const [activeCategory, setActiveCategory] = useState("all");
 
   const { user } = useUser();
   const isLoggedIn = !!user?.id;

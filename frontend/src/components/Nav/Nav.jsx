@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { NavData } from "./NavData";
+import { useNavData } from "../../Hooks/useNavData";
 
 import SidebarMobileTrigger from "./NavMobile";
 import SidebarContent from "./NavContent";
 
 export default function Sidebar() {
+  const navData = useNavData();
   const [isOpen, setIsOpen] = useState(false);
   const [openSections, setOpenSections] = useState(() => {
     try {
       const saved = localStorage.getItem("mpanstwo-nav-openSections");
-      return saved ? JSON.parse(saved) : { Główne: true };
+      // Use the first section title from navData if not saved
+      const firstSection = navData[0]?.title || "Main";
+      return saved ? JSON.parse(saved) : { [firstSection]: true };
     } catch {
-      return { Główne: true };
+      const firstSection = navData[0]?.title || "Main";
+      return { [firstSection]: true };
     }
   });
 
@@ -48,7 +52,7 @@ export default function Sidebar() {
 
       <aside className="hidden lg:flex flex-col w-60 h-screen bg-white dark:bg-slate-950 border-r-2 border-slate-100 dark:border-slate-900 overflow-hidden color-transition">
         <SidebarContent
-          NavData={NavData}
+          NavData={navData}
           openSections={openSections}
           toggleSection={toggleSection}
           location={location}
@@ -66,7 +70,7 @@ export default function Sidebar() {
             className="lg:hidden fixed inset-y-0 left-0 z-[90] w-72 h-screen bg-white dark:bg-slate-950 border-r-2 border-slate-900 flex flex-col overflow-hidden shadow-2xl"
           >
             <SidebarContent
-              NavData={NavData}
+              NavData={navData}
               openSections={openSections}
               toggleSection={toggleSection}
               location={location}

@@ -11,6 +11,7 @@ import { useGlobalAchievements } from "../../Hooks/useGlobalAchievements";
 import { useFilteredAchievements } from "../../Hooks/useFilteredAchievements";
 
 import AchievementsFilters from "../../components/Achievements/filters/AchievementsFilter";
+import LoadingSpinner from "../../components/Global/LoadingSpinner";
 
 export default function GlobalUserAchievements() {
   const { achievements, categories, progression, loading } =
@@ -20,11 +21,7 @@ export default function GlobalUserAchievements() {
   const filtered = useFilteredAchievements(achievements, filter, rarityFilter);
 
   if (loading || !progression) {
-    return (
-      <div className="w-full min-h-screen flex items-center justify-center">
-        <p className="text-lg font-medium">Ładowanie osiągnięć...</p>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   return (

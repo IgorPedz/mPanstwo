@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import ICON_MAP from "../../Utils/Maps/Icons";
 import { upwardItemVariants } from "../../Utils/Animations";
 import useFormatDate from "../../Utils/Dynamic/useFormatDate";
 import { useUser } from "../../Contexts/UserContext";
 const SurveyCard = ({ survey, onStart }) => {
+  const { t } = useTranslation();
   const { user: authUser } = useUser();
   const ClipboardIcon = ICON_MAP["clipboard"] || ICON_MAP["star"];
   const ZapIcon = ICON_MAP["zap"] || ICON_MAP["sparkles"];

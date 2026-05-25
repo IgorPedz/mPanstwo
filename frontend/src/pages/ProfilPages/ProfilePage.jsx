@@ -9,6 +9,7 @@ import ProfileHeader from "../../components/Profile/ProfileHeader";
 import ProfileSecurityGrid from "../../components/Profile/ProfileSecurityGrid";
 
 import { containerVariants } from "../../Utils/Animations";
+import LoadingSpinner from "../../components/Global/LoadingSpinner";
 
 export default function ProfilePage() {
   const { user: authUser } = useUser();
@@ -24,11 +25,7 @@ export default function ProfilePage() {
   } = useProfile(userId);
 
   if (!userId || profileLoading) {
-    return (
-      <div className="w-full min-h-screen flex items-center justify-center text-slate-400 color-transition">
-        Ładowanie profilu...
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   return (

@@ -53,7 +53,6 @@ export default function InfoMessage({
               ${base}
             `}
           >
-            {/* progress bar */}
             <div className="absolute bottom-0 left-4 right-4 h-[2px] opacity-20 rounded-full overflow-hidden">
               <motion.div
                 initial={{ width: "100%" }}

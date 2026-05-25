@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 import { useUser } from "../../Contexts/UserContext";
 import ModalMessage from "../Global/Modals/ModalMessage";
 
 export default function LogOut() {
+  const { t } = useTranslation();
   const { logout } = useUser();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
@@ -22,16 +24,16 @@ export default function LogOut() {
         <ArrowRightEndOnRectangleIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
 
         <span className="text-xs font-black uppercase tracking-widest">
-          Wyloguj
+          {t("auth.logout")}
         </span>
       </button>
 
       <ModalMessage
         isOpen={showLogoutModal}
-        title="Zakończenie sesji"
-        message="Czy na pewno chcesz zakończyć sesję użytkownika?"
-        confirmText="Wyloguj"
-        cancelText="Anuluj"
+        title={t("auth.logout")}
+        message={t("auth.sessionLogOut")}
+        confirmText={t("auth.logout")}
+        cancelText={t("common.cancel")}
         onCancel={() => setShowLogoutModal(false)}
         onConfirm={() => {
           logout();

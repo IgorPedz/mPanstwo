@@ -1,24 +1,31 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { faqData } from "../components/FAQ/FAQData";
 
-export function useFAQ(searchTerm, activeCategory) {
+export function useFAQ(searchTerm = "", activeCategory = "all") {
+  const { t } = useTranslation();
+
+  // Generowanie unikalnych kategorii z dodaniem "all" na początku
   const categories = useMemo(() => {
-    return ["Wszystkie", ...new Set(faqData.map((f) => f.category))];
+    return ["all", ...new Set(faqData.map((f) => f.category))];
   }, []);
 
   const filteredFAQs = useMemo(() => {
     return faqData.filter((faq) => {
       const matchesCategory =
-        activeCategory === "Wszystkie" ||
+        !activeCategory ||
+        activeCategory === "all" ||
         faq.category === activeCategory;
 
-      const matchesSearch = faq.question
+      const question = t(`faq.items.${faq.key}.question`, "") || "";
+
+      const matchesSearch = question
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
 
       return matchesCategory && matchesSearch;
     });
-  }, [searchTerm, activeCategory]);
+  }, [searchTerm, activeCategory, t]);
 
   return {
     faqs: filteredFAQs,

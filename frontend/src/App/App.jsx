@@ -32,6 +32,11 @@ function App() {
 
   useNotifications(user?.id);
 
+  // Remove no-transition class on app initialization to enable animations
+  useEffect(() => {
+    document.documentElement.classList.remove("no-transition");
+  }, []);
+
   useEffect(() => {
     if (!user?.id) return;
 

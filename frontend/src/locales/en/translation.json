@@ -1,0 +1,273 @@
+{
+    "nav": {
+        "sections": {
+            "main": "Main",
+            "education": "Education",
+            "profile": "Profile",
+            "page": "Page"
+        },
+        "items": {
+            "dashboard": "Dashboard",
+            "courses": "Courses",
+            "tutorial": "Tutorial",
+            "myProfile": "My Profile",
+            "achievements": "Achievements",
+            "surveyBox": "Survey Box",
+            "notifications": "Notifications",
+            "documents": "Documents",
+            "contact": "Contact",
+            "help": "Help"
+        }
+    },
+    "auth": {
+        "login": "Log In",
+        "register": "Register",
+        "logout": "Log Out",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "rememberMe": "Remember me",
+        "forgotPassword": "Forgot password?",
+        "resetPassword": "Reset Password",
+        "dontHaveAccount": "Don't have an account?",
+        "alreadyHaveAccount": "Already have an account?",
+        "signUp": "Sign Up",
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "errorEmailRequired": "Email is required",
+        "errorPasswordRequired": "Password is required",
+        "errorInvalidEmail": "Invalid email format",
+        "errorWeakPassword": "Password is too weak",
+        "errorPasswordsDontMatch": "Passwords don't match",
+        "errorLoginFailed": "Login failed",
+        "errorRegisterFailed": "Registration failed",
+        "sessionLogOut": "Are you sure you want to log out?"
+    },
+    "profile": {
+        "myProfile": "My Profile",
+        "profileUser": "User Profile",
+        "manage": "Manage your profile and customize your settings!",
+        "editProfile": "Edit Profile",
+        "changeEmail": "Change Email",
+        "changePassword": "Change Password",
+        "deleteAccount": "Delete Account",
+        "loading": "Loading profile...",
+        "settings": "Settings",
+        "security": "Security",
+        "stats": "Statistics",
+        "save": "Save",
+        "update": "Update",
+        "delete": "Delete",
+        "confirm": "Confirm",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmNewPassword": "Confirm New Password"
+    },
+    "achievements": {
+        "achievements": "Achievements",
+        "loading": "Loading achievements...",
+        "noAchievements": "No achievements",
+        "filter": "Filter",
+        "rarity": "Rarity",
+        "all": "All",
+        "common": "Common",
+        "rare": "Rare",
+        "epic": "Epic",
+        "legendary": "Legendary"
+    },
+    "surveys": {
+        "surveys": "Surveys",
+        "surveyBox": "Survey Box",
+        "activeSurveys": "Active Surveys",
+        "completedSurveys": "Completed Surveys",
+        "expiredSurveys": "Expired Surveys",
+        "noActiveSurveys": "No active surveys",
+        "noCompletedSurveys": "You haven't participated in any survey yet",
+        "noExpiredSurveys": "No expired surveys",
+        "viewDetails": "View Details",
+        "startSurvey": "Start Survey",
+        "completeSurvey": "Complete Survey",
+        "nextPage": "Next Page",
+        "previousPage": "Previous Page",
+        "submit": "Submit",
+        "backToBox": "Back to Box"
+    },
+    "notifications": {
+        "notifications": "Notifications",
+        "noNotifications": "No notifications",
+        "markAsRead": "Mark as read",
+        "delete": "Delete",
+        "deleteAll": "Delete all",
+        "unreadNotifications": "Unread notifications"
+    },
+    "documents": {
+        "documents": "Documents",
+        "page": "Page /",
+        "description": "Important documents regarding the functioning of the website and its legal aspects.",
+        "download": "Download",
+        "size": "Size",
+        "type": "Type",
+        "pdf": "PDF",
+        "terms": "Terms of Service",
+        "privacy": "Privacy Policy",
+        "community": "Community Guidelines",
+        "statute": "Platform Statute",
+        "aktualizationDate": "Last updated"
+    },
+    "contact": {
+        "contact": "Contact",
+        "description": "Let's get in touch! Do you have any questions, suggestions, or need assistance? Contact us and our team will be happy to help you. Fill out the contact form or use the contact details below to reach out to us. We look forward to hearing from you!",
+        "getInTouch": "Get in Touch",
+        "sendMessage": "Send Message",
+        "name": "Name",
+        "message": "Message",
+        "messagePlaceholder": "How can we help you?",
+        "send": "Send",
+        "successMessage": "Message sent successfully!",
+        "errorMessage": "Error sending message",
+        "email": {
+            "label": "Email",
+            "value": "mpanstwosupport@gmail.com"
+        },
+        "responseTime": {
+            "label": "Response time",
+            "value": "24–48h"
+        },
+        "support": {
+            "label": "Support",
+            "value": "7 days a week"
+        }
+    },
+    "faq": {
+        "faq": "Help",
+        "frequentlyAskedQuestions": "Frequently Asked Questions",
+        "searchQuestions": "Search questions...",
+        "noResults": "No matching questions found",
+        "description": "Answer to the most frequently asked questions about using the mPanstwo platform. Find quick solutions and tips to make the most of our service. If you can't find an answer, contact us directly!",
+        "categories": {
+            "all": "All",
+            "account": "Account",
+            "security": "Security",
+            "about": "About",
+            "contact": "Contact",
+            "terms": "Terms"
+        },
+        "items": {
+            "createAccount": {
+                "question": "How can I create an account?",
+                "answer": "Click the registration button and fill out the account creation form."
+            },
+            "editProfile": {
+                "question": "Can I change my profile information?",
+                "answer": "Yes, you can edit all your information in the “My Profile” section."
+            },
+            "deleteAccount": {
+                "question": "How can I delete my account?",
+                "answer": "The account deletion option is available in the security settings under the “My Profile” section."
+            },
+            "resetPassword": {
+                "question": "How can I reset my password?",
+                "answer": "Click “Forgot password” on the login screen and follow the instructions."
+            },
+            "dataSecurity": {
+                "question": "Is my data secure?",
+                "answer": "Yes, user data is encrypted and properly secured."
+            },
+            "accountHijacked": {
+                "question": "What should I do if someone gains access to my account?",
+                "answer": "Immediately change your password and contact the platform administration."
+            },
+            "freeUsage": {
+                "question": "Is the website completely free to use?",
+                "answer": "Yes, the website is intended for public use and is completely free."
+            },
+            "contentModeration": {
+                "question": "Is the content on the website moderated?",
+                "answer": "Yes, content is moderated by the platform administration to remove offensive and vulgar comments."
+            },
+            "contactAdmin": {
+                "question": "How can I contact the administration?",
+                "answer": "You can use the contact form or email mpanstwosupport@gmail.com."
+            },
+            "technicalProblem": {
+                "question": "How can I report a technical issue?",
+                "answer": "Report technical issues through the “Contact” section."
+            },
+            "platformRules": {
+                "question": "Where can I find the platform rules?",
+                "answer": "The rules are available in the “Documents” section under “Platform Rules”."
+            },
+            "reportViolation": {
+                "question": "How can I report a community guideline violation?",
+                "answer": "Each comment has an option to report violations."
+            },
+            "rulePenalties": {
+                "question": "What penalties apply to users who violate the rules?",
+                "answer": "All penalties are described in the platform regulations."
+            }
+        }
+    },
+    "dashboard": {
+        "dashboard": "Dashboard",
+        "welcome": "Welcome, {{name}}!",
+        "editMode": "Edit Mode",
+        "saveLayout": "Save Layout",
+        "loadLayout": "Load Last Layout",
+        "addCard": "Add Card",
+        "lock": "Lock",
+        "unlock": "Unlock",
+        "locked": "Panel is locked",
+        "unlocked": "Panel is unlocked",
+        "unsavedChanges": "You have unsaved changes"
+    },
+    "settings": {
+        "settings": "Settings",
+        "systemSettings": "System Settings",
+        "theme": "Theme",
+        "language": "Language",
+        "langText": "Select your preferred language",
+        "darkMode": "Dark Mode",
+        "lightMode": "Light Mode",
+        "polish": "Polski",
+        "english": "English",
+        "german": "Deutsch",
+        "font": "Font",
+        "fontSize": "Font Size",
+        "fontSmall": "Small",
+        "fontMedium": "Medium",
+        "fontLarge": "Large",
+        "fontExtraLarge": "Extra Large",
+        "version": "Version"
+    },
+    "common": {
+        "loading": "Loading...",
+        "sending": "Sending...",
+        "error": "Error",
+        "success": "Success",
+        "warning": "Warning",
+        "info": "Information",
+        "close": "Close",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
+        "add": "Add",
+        "back": "Back",
+        "next": "Next",
+        "previous": "Previous",
+        "confirm": "Confirm",
+        "yes": "Yes",
+        "no": "No",
+        "search": "Search",
+        "filter": "Filter",
+        "sort": "Sort",
+        "retry": "Retry",
+        "unknown": "Unknown",
+        "notFound": "Not found",
+        "serverError": "Server error",
+        "networkError": "Network error",
+        "unauthorized": "Unauthorized",
+        "authorizationRequired": "Authorization required",
+        "forbidden": "Forbidden"
+    }
+}

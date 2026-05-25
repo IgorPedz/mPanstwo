@@ -4,6 +4,7 @@ import "./index.css";
 import App from "../App/App.jsx";
 import { UserProvider } from "../Contexts/UserContext.jsx";
 import axios from "axios";
+import "../i18n.js"; // Initialize i18n
 
 axios.defaults.withCredentials = true;
 

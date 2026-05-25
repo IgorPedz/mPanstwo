@@ -2,10 +2,13 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 import ThemeToggle from "./ThemeToggle";
 import ChangeFonts from "./ChangeFonts";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Settings({ size = "md" }) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [coords, setCoords] = useState({ top: 0, left: 0 });
 
@@ -88,7 +91,7 @@ export default function Settings({ size = "md" }) {
         />
 
         <span className="text-xs font-bold uppercase tracking-[0.15em] color-transition">
-          Ustawienia
+          {t("settings.settings")}
         </span>
       </button>
 
@@ -118,49 +121,28 @@ export default function Settings({ size = "md" }) {
             >
               <div className="color-transition px-5 py-4 bg-slate-50/50 dark:bg-slate-900/30 border-b border-slate-100 dark:border-slate-800/50 color-transition">
                 <p className="text-[9px] font-black uppercase tracking-[0.5em] text-indigo-500 mb-1 color-transition">
-                  Personalizacja /
+                  {t("settings.settings")} /
                 </p>
                 <h3 className="text-sm font-bold text-slate-900 dark:text-white color-transition">
-                  Ustawienia Systemu
+                  {t("settings.systemSettings")}
                 </h3>
               </div>
 
               <div className="p-5 space-y-5 color-transition">
-                <div className="flex items-center justify-between group color-transition">
-                  <div className="flex flex-col pr-4 color-transition">
-                    <span className="text-sm font-semibold text-slate-700 dark:text-slate-200 color-transition">
-                      Motyw wizualny
-                    </span>
-                    <span className="text-[11px] text-slate-500 color-transition">
-                      Jasny / Ciemny tryb
-                    </span>
-                  </div>
 
-                  <div className="shrink-0">
-                    <ThemeToggle />
-                  </div>
-                </div>
+                <ThemeToggle />
 
                 <div className="color-transition h-px bg-slate-100 dark:bg-slate-800/50 color-transition" />
 
-                <div className="flex items-center justify-between group color-transition">
-                  <div className="flex flex-col pr-4 color-transition">
-                    <span className="text-sm font-semibold text-slate-700 dark:text-slate-200 color-transition">
-                      Typografia
-                    </span>
-                    <span className="text-[11px] text-slate-500 color-transition">
-                      Zmień krój pisma
-                    </span>
-                  </div>
+                <ChangeFonts />
 
-                  <div className="shrink-0">
-                    <ChangeFonts />
-                  </div>
-                </div>
+                <div className="color-transition h-px bg-slate-100 dark:bg-slate-800/50 color-transition" />
+
+                <LanguageSwitcher size={isSmall ? "sm" : "md"} />
               </div>
 
               <div className="color-transition px-5 py-2 bg-slate-50 dark:bg-slate-900/50 text-[10px] text-center text-slate-400 color-transition">
-                Wersja v1.0.4
+                {t("settings.version")} v1.0.4
               </div>
             </motion.div>
           </AnimatePresence>,

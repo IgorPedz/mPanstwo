@@ -2,8 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import InfoMessage from "../Global/InfoMessage";
-
+import { useTranslation } from "react-i18next";
 export default function ContactForm() {
+  const { t } = useTranslation();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -36,7 +37,7 @@ export default function ContactForm() {
 
       await axios.post("http://localhost:5000/support", form);
 
-      setInfoMessage("Wysłano wiadomość!");
+      setInfoMessage(t("contact.successMessage"));
       setInfoType("success");
       setForm({
         name: "",
@@ -45,7 +46,6 @@ export default function ContactForm() {
       });
     } catch (err) {
       console.error(err);
-      alert("Nie udało się wysłać wiadomości");
     } finally {
       setLoading(false);
     }
@@ -57,7 +57,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 color-transition">
           <div className="space-y-2">
             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">
-              Imię i Nazwisko
+              {t("contact.name")}
             </label>
 
             <input
@@ -73,7 +73,7 @@ export default function ContactForm() {
 
           <div className="space-y-2">
             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">
-              Adres E-mail
+              {t("contact.email.label")}
             </label>
 
             <input
@@ -90,7 +90,7 @@ export default function ContactForm() {
 
         <div className="space-y-2 color-transition">
           <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">
-            Wiadomość
+            {t("contact.message")}
           </label>
 
           <textarea
@@ -98,7 +98,7 @@ export default function ContactForm() {
             name="message"
             value={form.message}
             onChange={handleChange}
-            placeholder="W czym możemy pomóc?"
+            placeholder={t("contact.messagePlaceholder")}
             className={`${inputStyles} resize-none`}
             required
           />
@@ -124,7 +124,7 @@ export default function ContactForm() {
     }
   `}
           >
-            {loading ? "Wysyłanie..." : "Wyślij wiadomość"}
+            {loading ? t("common.sending") : t("contact.send")}
           </motion.button>
         </div>
       </form>
