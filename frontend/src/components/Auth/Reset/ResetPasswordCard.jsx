@@ -19,7 +19,7 @@ export default function ResetPasswordCard() {
         if (!data.email?.trim()) {
             return {
                 success: false,
-                message: "Email jest wymagany",
+                message: t("common.messages.emailRequired"),
             };
         }
 
@@ -32,7 +32,7 @@ export default function ResetPasswordCard() {
             );
 
             if (res.data?.success) {
-                setInfoMessage("Wysłano maila z resetem hasła!");
+                setInfoMessage(t("common.messages.resetEmailSent"));
                 setInfoType("success");
 
                 return {
@@ -42,17 +42,17 @@ export default function ResetPasswordCard() {
 
             return {
                 success: false,
-                message: res.data?.message || "Błąd wysyłki",
+                message: res.data?.message || t("common.messages.resetSendError"),
             };
         } catch (err) {
             console.error(err);
 
-            setInfoMessage("Błąd wysyłania maila");
+            setInfoMessage(t("common.messages.resetSendError"));
             setInfoType("error");
 
             return {
                 success: false,
-                message: "Błąd serwera",
+                message: t("common.messages.errorOccurred"),
             };
         }
     };

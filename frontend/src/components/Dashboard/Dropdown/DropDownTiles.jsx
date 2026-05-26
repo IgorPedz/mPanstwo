@@ -2,14 +2,16 @@ import { CheckIcon } from "@heroicons/react/24/solid";
 import DynamicIcon from "../../../Utils/Dynamic/DynamicIcons";
 import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
 
+import { useTranslation } from "react-i18next";
+
 export default function DropDownTiles({
   tile,
   isAdded,
   isSelected,
   onClick,
 }) {
+  const { t } = useTranslation();
   const accent = ACCENT_MAP[tile.accent] || ACCENT_MAP.blue;
-
   return (
     <div
       onClick={() => !isAdded && onClick()}
@@ -48,7 +50,7 @@ export default function DropDownTiles({
 
       <div>
         <h3 className="color-transition text-xl font-bold text-gray-900 dark:text-white mb-2">
-          {tile.name}
+          {t(`dashboard.dashboardContent.${tile.slug}.title`)}
         </h3>
 
         <div className="flex items-center gap-2">
@@ -58,7 +60,7 @@ export default function DropDownTiles({
           />
 
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">
-            {tile.type}
+            {t(`dashboard.dashboardContent.${tile.slug}.type`)}
           </p>
         </div>
       </div>
@@ -66,7 +68,7 @@ export default function DropDownTiles({
       <div className="absolute top-6 right-6">
         {isAdded ? (
           <span className="bg-gray-200 dark:bg-gray-700 text-[9px] font-black px-2 py-1 rounded-lg text-gray-500 uppercase">
-            W użyciu
+            {t("dashboard.dropdown.inUse")}
           </span>
         ) : isSelected ? (
           <div

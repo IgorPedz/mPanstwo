@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { RARITIES } from "../AchievementsData";
 
 export default function AchievementRarityFilter({
   activeRarity,
   setActiveRarity
 }) {
+  const { t } = useTranslation();
   return (
     <div className="mb-5 w-fit p-1.5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] color-transition">
 
@@ -24,12 +26,12 @@ export default function AchievementRarityFilter({
             "
           >
             <option value="" disabled hidden>
-              KATEGORIA
+              {t("achievements.category")}
             </option>
 
             {RARITIES.map((r) => (
               <option key={r.slug} value={r.slug}>
-                {r.name}
+                {t(r.nameKey)}
               </option>
             ))}
           </select>
@@ -74,9 +76,8 @@ export default function AchievementRarityFilter({
               )}
 
               <span className="relative z-10">
-                {r.name}
+                  {t(r.nameKey)}
               </span>
-
             </button>
           );
         })}

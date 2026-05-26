@@ -61,6 +61,15 @@ const getProfile = async (req, res, next) => {
         };
       });
 
+    const mapRoleTranslationKey = (role) => {
+      const map = {
+        "Użytkownik": "user",
+        "Administrator": "admin",
+        "Moderator": "moderator",
+      };
+      return map[role] || String(role).toLowerCase().replace(/\s+/g, "_");
+    };
+
     const systemStats = [
       {
         key: "loginStreak",
@@ -89,6 +98,7 @@ const getProfile = async (req, res, next) => {
         title: cardRegistry.rank?.title,
         icon: cardRegistry.rank?.icon,
         color: cardRegistry.rank?.color,
+        translationKey: currentRank?.icon,
       },
       {
         key: "role",
@@ -96,6 +106,7 @@ const getProfile = async (req, res, next) => {
         title: cardRegistry.role?.title,
         icon: cardRegistry.role?.icon,
         color: cardRegistry.role?.color,
+        translationKey: mapRoleTranslationKey(user.role),
       }
     ];
 

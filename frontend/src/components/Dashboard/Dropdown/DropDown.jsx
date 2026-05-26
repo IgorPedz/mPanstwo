@@ -18,17 +18,17 @@ export default function DropDown({
 
   if (isLocked) return null;
 
-  const toggleTile = (type) => {
+  const toggleTile = (slug) => {
     setSelectedTiles((prev) =>
-      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
+      prev.includes(slug) ? prev.filter((t) => t !== slug) : [...prev, slug]
     );
   };
 
   const addSelectedTiles = () => {
     const newTiles = selectedTiles
-      .filter((type) => !tiles.some((t) => t.type === type))
-      .map((type) => {
-        const tileData = AVAILABLE_TILES.find((t) => t.type === type);
+      .filter((slug) => !tiles.some((t) => t.slug === slug))
+      .map((slug) => {
+        const tileData = AVAILABLE_TILES.find((t) => t.slug === slug);
         return { ...tileData, id: uuidv4() };
       });
 

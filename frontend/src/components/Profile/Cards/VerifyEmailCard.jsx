@@ -50,14 +50,14 @@ export default function VerifyEmailCard() {
 
       setInfoType("success");
 
-      setInfoMessage("Adres email został zweryfikowany pomyślnie");
+      setInfoMessage(t("common.messages.emailVerified"));
 
       return { success: true };
     }
 
     return {
       success: false,
-      message: res?.message || "Niepoprawny kod weryfikacyjny",
+      message: res?.message || t("common.messages.invalidVerificationCode"),
     };
   };
 

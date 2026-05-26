@@ -1,7 +1,9 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 import { useUser } from "../Contexts/UserContext";
 export default function useProfile(userId) {
+  const { t } = useTranslation();
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,7 +21,7 @@ export default function useProfile(userId) {
       setProfile(res.data);
       setError(null);
     } catch (err) {
-      setError(err.response?.data?.message || "Błąd pobierania profilu");
+      setError(err.response?.data?.message || t("common.messages.fetchProfileError"));
       setProfile(null);
     } finally {
       setLoading(false);
@@ -41,7 +43,7 @@ export default function useProfile(userId) {
 
       return { success: true, message: res.data.message };
     } catch (err) {
-      const errorMsg = err.response?.data?.message || "Błąd aktualizacji profilu";
+      const errorMsg = err.response?.data?.message || t("common.messages.updateProfileError");
       setError(errorMsg);
       return { success: false, message: errorMsg };
     }
@@ -58,7 +60,7 @@ export default function useProfile(userId) {
       setProfile((prev) => ({ ...prev, email }));
       return { success: true, message: res.data.message };
     } catch (err) {
-      const errorMsg = err.response?.data?.message || "Błąd zmiany emaila";
+      const errorMsg = err.response?.data?.message || t("common.messages.changeEmailError");
       return { success: false, message: errorMsg };
     }
   };
@@ -86,7 +88,7 @@ export default function useProfile(userId) {
       return {
         success: false,
         message:
-          err.response?.data?.message || "BŁĄD ZMIANY HASŁA",
+          err.response?.data?.message || t("common.messages.changePasswordError"),
       };
     }
   };
@@ -100,7 +102,7 @@ export default function useProfile(userId) {
       });
       return { success: true, message: res.data.message };
     } catch (err) {
-      const errorMsg = err.response?.data?.message || "Błąd usunięcia konta";
+      const errorMsg = err.response?.data?.message || t("common.messages.deleteAccountError");
       return { success: false, message: errorMsg };
     }
   };

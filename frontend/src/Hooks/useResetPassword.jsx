@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function useResetPassword(token, navigate) {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
 
@@ -8,7 +10,7 @@ export default function useResetPassword(token, navigate) {
     if (password !== repeatPassword) {
       return setMessage({
         type: "error",
-        text: "Hasła nie są takie same",
+        text: t("common.messages.passwordMismatch"),
       });
     }
 
@@ -30,18 +32,18 @@ export default function useResetPassword(token, navigate) {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.message || "Błąd resetu hasła");
+        throw new Error(data.message || t("common.messages.resetPasswordError"));
       }
 
       setMessage({
         type: "success",
-        text: "Hasło zostało zmienione",
+        text: t("profileAccount.passwordChanged"),
       });
 
       setTimeout(() => {
         navigate("/auth", {
           state: {
-            infoMessage: "Hasło zostało zmienione!",
+            infoMessage: t("profileAccount.passwordChanged"),
             infoType: "success",
           },
         });

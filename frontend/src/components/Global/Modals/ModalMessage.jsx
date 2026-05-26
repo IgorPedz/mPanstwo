@@ -5,15 +5,18 @@ import useNoScroll from "../../../Hooks/UseNoScroll";
 import { useTranslation } from "react-i18next";
 export default function ModalMessage({
   isOpen,
-  title = "Potwierdzenie",
+  title,
   message,
-  confirmText = "Potwierdź",
-  cancelText = "Anuluj",
+  confirmText,
+  cancelText,
   onConfirm,
   onCancel,
 }) {
   const { t } = useTranslation();
   useNoScroll(isOpen);
+  const modalTitle = title || t("common.confirm");
+  const modalConfirmText = confirmText || t("common.confirm");
+  const modalCancelText = cancelText || t("common.cancel");
 
   if (typeof window === "undefined") return null;
 
@@ -58,7 +61,7 @@ export default function ModalMessage({
                 {t("common.authorizationRequired")}
               </p>
               <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">
-                {title}
+                {modalTitle}
               </h2>
             </div>
 
@@ -76,7 +79,7 @@ export default function ModalMessage({
                            font-bold transition-all duration-200
                            cursor-pointer active:scale-95"
               >
-                {cancelText}
+                {modalCancelText}
               </button>
 
               <button
@@ -87,7 +90,7 @@ export default function ModalMessage({
                            transition-all duration-200
                            cursor-pointer active:scale-95"
               >
-                {confirmText}
+                {modalConfirmText}
               </button>
             </div>
           </motion.div>

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import useFormatDate from "../../../Utils/Dynamic/useFormatDate";
 
@@ -9,6 +10,7 @@ export default function ArchiveSurveyCard({ survey, onOpen }) {
   const ClockIcon =
     ICON_MAP["clock"] || ICON_MAP["calendar"];
 
+  const { t } = useTranslation();
   const isExpired =
     survey.deadline &&
     new Date(survey.deadline) < new Date();
@@ -53,8 +55,8 @@ export default function ArchiveSurveyCard({ survey, onOpen }) {
 
             <span className="text-[10px] font-black uppercase tracking-wider">
               {isExpired
-                ? "Zakończona"
-                : `Do ${formattedDeadline}`}
+                ? t("surveys.expired")
+                : t("surveys.endsOn", { date: formattedDeadline })}
             </span>
           </div>
         </div>
@@ -102,7 +104,7 @@ export default function ArchiveSurveyCard({ survey, onOpen }) {
           color-transition
         "
       >
-        Moje odpowiedzi
+        {t("surveys.myAnswers")}
       </button>
     </motion.div>
   );

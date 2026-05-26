@@ -38,7 +38,7 @@ export default function AuthPage() {
 
   useEffect(() => {
     if (location.state?.registered) {
-      setInfoMessage("Konto zostało zarejestrowane!");
+      setInfoMessage(t("common.messages.registrationSuccess"));
       setInfoType(location.state?.messageType || "success");
 
       Promise.resolve().then(() => setIsLogin(true));

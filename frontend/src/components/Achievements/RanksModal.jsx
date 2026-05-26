@@ -1,9 +1,11 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { ranksData } from "./AchievementsData";
 import { Icons } from "../../Utils/Dynamic/RankIcons";
 
 const RanksModal = ({ isOpen, onClose }) => {
+    const { t } = useTranslation();
     if (!isOpen || typeof window === "undefined") return null;
 
     return createPortal(
@@ -29,7 +31,7 @@ const RanksModal = ({ isOpen, onClose }) => {
                 <div className="flex justify-between items-center mb-6">
                     <h3 className="text-2xl font-black uppercase tracking-tight flex items-center gap-3">
                         <span className="p-2 rounded-xl text-amber-500 text-lg">★</span>
-                        Lista Rang
+                        {t("achievements.ranksList")}
                     </h3>
 
                     <button
@@ -61,7 +63,7 @@ const RanksModal = ({ isOpen, onClose }) => {
                                     </div>
                                     <div>
                                         <p className="font-semibold text-slate-800 dark:text-slate-100">
-                                            {r.name || 'Nieznana ranga'}
+                                            {t(r.nameKey, { defaultValue: t("achievements.noRank") })}
                                         </p>
                                         {r.description && (
                                             <p className="text-xs text-slate-500 dark:text-slate-400">
@@ -72,7 +74,7 @@ const RanksModal = ({ isOpen, onClose }) => {
                                 </div>
                                 <div className="text-right">
                                     <span className="text-sm font-bold text-slate-600 dark:text-slate-400">
-                                        {r.xp}
+                                        {t(r.xpKey)}
                                     </span>
                                 </div>
                             </div>
@@ -94,7 +96,7 @@ const RanksModal = ({ isOpen, onClose }) => {
                         transition
                     "
                 >
-                    Rozumiem
+                    {t("achievements.understand")}
                 </button>
             </motion.div>
         </div>,

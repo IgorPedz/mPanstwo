@@ -50,7 +50,7 @@ export default function ModalForm({
 
     fields.forEach((f) => {
       if (!formData[f.name]?.trim()) {
-        newErrors[f.name] = t("validation.requiredField", {
+        newErrors[f.name] = t("common.messages.requiredField", {
           field: t(f.label || f.name).toUpperCase(),
         });
       }

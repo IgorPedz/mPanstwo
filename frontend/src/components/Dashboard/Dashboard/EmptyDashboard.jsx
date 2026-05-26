@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import { containerVariants, itemVariants } from "../../../Utils/Animations";
+import { useTranslation } from "react-i18next";
 
 export default function EmptyDashboard({ setShowAddMenu }) {
+  const { t } = useTranslation();
   const SparklesIcon = ICON_MAP["sparkles"];
   const RocketIcon = ICON_MAP["rocket"];
   const HeartIcon = ICON_MAP["heart"];
@@ -59,7 +61,7 @@ export default function EmptyDashboard({ setShowAddMenu }) {
             "
             variants={itemVariants}
           >
-            Zaprojektuj swój <span className="text-indigo-500">workflow</span>
+            {t("dashboard.empty.title")} <span className="text-indigo-500">workflow</span>
           </motion.h2>
 
           <motion.p
@@ -72,8 +74,7 @@ export default function EmptyDashboard({ setShowAddMenu }) {
             "
             variants={itemVariants}
           >
-            Twój dashboard to czysta karta. Dodaj pierwsze narzędzia, aby zacząć
-            budować swoją przestrzeń.
+            {t("dashboard.empty.description")}
           </motion.p>
         </div>
 
@@ -82,9 +83,9 @@ export default function EmptyDashboard({ setShowAddMenu }) {
           variants={containerVariants}
         >
           {[
-            { icon: RocketIcon, text: "Szybki start" },
-            { icon: SparklesIcon, text: "Customizacja" },
-            { icon: HeartIcon, text: "Ulubione" },
+            { icon: RocketIcon, text: t("dashboard.empty.features.quickStart") },
+            { icon: SparklesIcon, text: t("dashboard.empty.features.customization") },
+            { icon: HeartIcon, text: t("dashboard.empty.features.favorites") },
           ].map((feature, idx) => (
             <motion.div
               key={idx}
@@ -131,7 +132,7 @@ export default function EmptyDashboard({ setShowAddMenu }) {
           variants={itemVariants}
         >
           <span className="relative z-10 flex items-center gap-2">
-            Stwórz Dashboard <RocketIcon className="h-4 w-4" />
+            {t("dashboard.empty.buttonCreate")} <RocketIcon className="h-4 w-4" />
           </span>
           <div className="absolute inset-0 bg-indigo-500 opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500 rounded-2xl" />
         </motion.button>
@@ -140,7 +141,7 @@ export default function EmptyDashboard({ setShowAddMenu }) {
           className="mt-16 text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 opacity-50 color-transition"
           variants={itemVariants}
         >
-          mPaństwo • v1.0.4
+          {t("dashboard.empty.version", { version: "v1.0.4" })}
         </motion.p>
       </div>
     </motion.div>

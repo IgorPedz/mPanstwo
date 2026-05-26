@@ -9,8 +9,7 @@ exports.getUserAchievements = async (req, res) => {
     const [rows] = await db.query(`
       SELECT
         a.id,
-        a.title,
-        a.description,
+        a.slug,
 
         a.xp_reward,
         a.requirement_value,
@@ -18,7 +17,6 @@ exports.getUserAchievements = async (req, res) => {
         a.rarity,
 
         ac.slug AS category_slug,
-        ac.name AS category_name,
 
         ua.progress,
         ua.unlocked
@@ -37,9 +35,7 @@ exports.getUserAchievements = async (req, res) => {
 
     const formatted = rows.map(item => ({
       id: item.id,
-
-      title: item.title,
-      description: item.description,
+      slug: item.slug,
 
       xpReward: item.xp_reward,
 
@@ -53,8 +49,7 @@ exports.getUserAchievements = async (req, res) => {
       unlocked: !!item.unlocked,
 
       category: {
-        slug: item.category_slug,
-        name: item.category_name
+        slug: item.category_slug
       }
     }));
 

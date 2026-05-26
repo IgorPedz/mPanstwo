@@ -1,11 +1,13 @@
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
 import { COLOR_MAP } from "../../../Utils/Maps/Colors";
 
-const Tile = ({ id, name, icon, accent, type, onDelete, isLocked }) => {
+const Tile = ({ id, slug, icon, accent, onDelete, isLocked }) => {
+  const { t } = useTranslation();
   const {
     attributes,
     listeners,
@@ -14,7 +16,6 @@ const Tile = ({ id, name, icon, accent, type, onDelete, isLocked }) => {
     transition,
     isDragging,
   } = useSortable({ id, disabled: isLocked });
-
   const style = {
     transform: CSS.Translate.toString(transform),
     transition,
@@ -73,7 +74,7 @@ const Tile = ({ id, name, icon, accent, type, onDelete, isLocked }) => {
         ) : (
           <div className="color-transition flex items-center gap-2 px-3 py-1 bg-slate-100/50 dark:bg-slate-800/50 rounded-full border border-slate-200/50 dark:border-slate-700/50">
              <div className="w-1 h-1 rounded-full bg-slate-400 animate-pulse" />
-             <span className="text-[8px] font-black uppercase tracking-[0.2em] text-slate-500">{type}</span>
+             <span className="text-[8px] font-black uppercase tracking-[0.2em] text-slate-500">{t(`dashboard.dashboardContent.${slug}.type`)}</span>
           </div>
         )}
       </div>
@@ -92,10 +93,10 @@ const Tile = ({ id, name, icon, accent, type, onDelete, isLocked }) => {
         
         <div className="overflow-hidden">
           <h3 className="color-transition font-black text-lg text-slate-900 dark:text-white tracking-tighter uppercase leading-none truncate">
-            {name}
+            {t(`dashboard.dashboardContent.${slug}.title`)}
           </h3>
           <p className="text-[9px] text-slate-400 dark:text-slate-500 font-black uppercase tracking-[0.2em] mt-1.5 color-transition">
-            {isLocked ? "Kliknij by otworzyć" : "Najedź by przesunąć lub usunąć"}
+            {isLocked ? t("dashboard.tile.lockedHint") : t("dashboard.tile.hoverHint")}
           </p>
         </div>
       </div>

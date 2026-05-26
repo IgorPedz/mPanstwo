@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 export default function useDashboard(user, tiles, setTiles, setInfoMessage) {
+  const { t } = useTranslation();
   const [savedTiles, setSavedTiles] = useState([]);
   const [infoType, setInfoType] = useState("success");
 
@@ -32,10 +34,10 @@ export default function useDashboard(user, tiles, setTiles, setInfoMessage) {
 
       setSavedTiles(tiles);
       setInfoType("success");
-      setInfoMessage("Układ został zapisany.");
+      setInfoMessage(t("common.messages.layoutSaved"));
     } catch (error) {
       setInfoType("error");
-      setInfoMessage(error.response?.data?.message || "Błąd zapisu układu.");
+      setInfoMessage(error.response?.data?.message || t("common.messages.layoutSaveError"));
     }
   };
 

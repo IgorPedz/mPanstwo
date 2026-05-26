@@ -1,4 +1,8 @@
+import { useTranslation } from "react-i18next";
+
 function AddTile({ onClick, disabled }) {
+  const { t } = useTranslation();
+
   return (
     <div
       onClick={disabled ? undefined : onClick}
@@ -12,7 +16,7 @@ function AddTile({ onClick, disabled }) {
     >
       <div className="text-4xl text-blue-700 dark:text-blue-400 color-transition">+</div>
       <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 color-transition">
-        {disabled ? "Edycja zablokowana" : "Dodaj moduł"}
+        {disabled ? t("dashboard.addTile.locked") : t("dashboard.addTile.addModule")}
       </p>
     </div>
   );

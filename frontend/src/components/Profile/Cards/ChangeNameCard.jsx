@@ -23,10 +23,10 @@ export default function ChangeNameCard({ updateProfile }) {
 
     if (res?.success) {
       setInfoType("success");
-      setInfoMessage("Imię zostało zmienione");
+      setInfoMessage(t("common.messages.nameChanged"));
     } else {
       setInfoType("error");
-      setInfoMessage(res?.message || "BŁĄD ZMIANY IMIENIA");
+      setInfoMessage(res?.message || t("common.messages.nameChangeError"));
     }
 
     return res;

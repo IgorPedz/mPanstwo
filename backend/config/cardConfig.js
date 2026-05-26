@@ -1,57 +1,57 @@
 const cardRegistry = {
   loginStreak: {
-    title: "Streak logowania",
+    title: "loginStreak",
     icon: "fire", 
     color: "orange",
   },
 
   activeDays: {
-    title: "Dni aktywności",
+    title: "activity",
     icon: "calendar",
     color: "red",
   },
 
   survey_completed: {
-    title: "Wypełnione ankiety",
+    title: "surveys",
     icon: "check",
     color: "emerald",
   },
 
   tracked_laws_count: {
-    title: "Śledzone ustawy",
+    title: "trackedLaws",
     icon: "documentcheck",
     color: "indigo",
   },
 
   opinions: {
-    title: "Napisane opinie",
+    title: "opinions",
     icon: "messages",
     color: "blue",
   },
 
   courses_completed: {
-    title: "Ukończone kursy",
+    title: "courses",
     icon: "courses",
     color: "purple",
   },
 
   reputation: {
-    title: "Punkty reputacji",
+    title: "reputation",
     icon: "star",
     color: "yellow",
   },
 
   role: {
-    title: "Rola",
+    title: "role",
     icon: "shield",
     color: "violet",
   },
 
   rank: {
-    title: "Twoja ranga",
+    title: "rank",
     icon: "clock",
     color: "zinc",
   },
 };
 
-module.exports = cardRegistry;
+module.exports = cardRegistry;  

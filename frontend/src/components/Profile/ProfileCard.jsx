@@ -1,11 +1,18 @@
 import ICON_MAP from "../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../Utils/Maps/Accents";
-
-const ProfileCard = ({ title, value, icon, color }) => {
+import { useTranslation } from "react-i18next";
+const ProfileCard = ({ title, value, translationKey, icon, color }) => {
   const Icon = ICON_MAP[icon] || ICON_MAP["star"];
-  
+  const { t } = useTranslation();
   const gradientClasses = ACCENT_MAP[color] || "from-slate-700 to-slate-500";
 
+  const translatedValue =
+    title === "rank" && translationKey
+      ? t(`achievements.ranks.${translationKey}.name`, value)
+      : title === "role" && translationKey
+      ? t(`profile.roleValues.${translationKey}`, value)
+      : value;
+  console.log(translationKey, translatedValue);
   return (
     <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-500 color-transition group relative overflow-hidden h-full">
       
@@ -30,10 +37,10 @@ const ProfileCard = ({ title, value, icon, color }) => {
 
         <div>
           <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1 color-transition">
-            {title}
+            {t(`profile.profileCards.${title}`)}
           </p>
           <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter color-transition">
-            {value}
+            {translatedValue}
           </h3>
         </div>
       </div>

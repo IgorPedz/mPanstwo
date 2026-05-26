@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import Logo from "../../components/Global/Logo";
 import AuthInput from "../../components/Auth/Reset/ResetInput";
@@ -12,6 +13,7 @@ import { containerVariants } from "../../Utils/Animations";
 export default function ResetPasswordPage() {
   const { token } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -65,31 +67,31 @@ export default function ResetPasswordPage() {
 
             <div className="text-center mb-8">
               <p className="text-[10px] font-black tracking-[0.3em] uppercase text-slate-400 mb-2">
-                Bezpieczeństwo konta
+                {t("auth.resetPasswordLabel")}
               </p>
 
               <h1 className="text-4xl font-black tracking-tighter text-slate-900 dark:text-white">
-                Reset Hasła
+                {t("auth.resetPasswordTitle")}
               </h1>
 
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-3 leading-relaxed">
-                Ustaw nowe hasło do swojego konta i odzyskaj dostęp do systemu.
+                {t("auth.resetPasswordDescription")}
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <AuthInput
-                label="Nowe Hasło"
+                label={t("auth.newPassword")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Wprowadź nowe hasło"
+                placeholder={t("auth.enterNewPassword")}
               />
 
               <AuthInput
-                label="Powtórz Hasło"
+                label={t("auth.confirmPassword")}
                 value={repeatPassword}
                 onChange={(e) => setRepeatPassword(e.target.value)}
-                placeholder="Powtórz nowe hasło"
+                placeholder={t("auth.repeatNewPassword")}
               />
 
               {message && (
@@ -122,7 +124,7 @@ export default function ResetPasswordPage() {
                   disabled:opacity-50
                 "
               >
-                {loading ? "ZMIANA HASŁA..." : "ZMIEŃ HASŁO"}
+                {loading ? t("auth.changingPassword") : t("auth.changePassword")}
               </button>
             </form>
           </div>

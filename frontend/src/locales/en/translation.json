@@ -44,6 +44,13 @@
         "rememberMe": "Remember me",
         "forgotPassword": "Forgot password?",
         "resetPassword": "Reset Password",
+        "resetPasswordLabel": "Account security",
+        "resetPasswordTitle": "Reset Password",
+        "resetPasswordDescription": "Set a new password for your account and regain system access.",
+        "newPassword": "New Password",
+        "enterNewPassword": "Enter a new password",
+        "repeatNewPassword": "Repeat new password",
+        "changingPassword": "CHANGING PASSWORD...",
         "dontHaveAccount": "Don't have an account?",
         "alreadyHaveAccount": "Already have an account?",
         "signUp": "Sign Up",
@@ -59,7 +66,7 @@
         "errorLoginFailed": "Login failed",
         "errorRegisterFailed": "Registration failed",
         "sessionLogOut": "Are you sure you want to log out?",
-        "loginFooter":"© 2026 mPaństwo. All rights reserved."
+        "loginFooter": "© 2026 mPaństwo. All rights reserved."
     },
     "slider": {
         "sejm": {
@@ -103,7 +110,24 @@
         "systemParams": "System Parameters",
         "manageAccess": "Manage access and account data",
         "accountSecurity": "Account Security",
-        "manageSecurity": "Manage account security"
+        "manageSecurity": "Manage account security",
+        "defaultUser": "User",
+        "profileCards": {
+            "activity": "Activity Days",
+            "loginStreak": "Login Streak",
+            "surveys": "Completed Surveys",
+            "trackedLaws": "Tracked Laws",
+            "opinions": "Written Opinions",
+            "courses": "Completed Courses",
+            "reputation": "Reputation Points",
+            "role": "Role",
+            "rank": "Your Rank"
+        },
+        "roleValues": {
+            "user": "User",
+            "admin": "Admin",
+            "ekspert": "Expert"
+        }   
     },
     "achievements": {
         "achievements": "Achievements",
@@ -120,7 +144,168 @@
         "yourLevel": "Your Level and Gamification",
         "ranksList": "Ranks List",
         "howToCollect": "How to Collect?",
-        "rank": "RANK"
+        "rank": "RANK",
+        "headerDescription": "Browse your achievements and track your progress",
+        "rankLabel": "RANK",
+        "totalReputation": "Total Reputation:",
+        "progressTo": "Progress to: ",
+        "progressValues": "{{current}} / {{required}}",
+        "goal": "Goal: {{value}}",
+        "inProgress": "In progress",
+        "category": "CATEGORY",
+        "noRank": "Unknown rank",
+        "understand": "Got it",
+        "reputationSources": {
+            "heading": "Earning Reputation",
+            "subtitle": "Boost your ranking by completing the activities below on the platform:",
+            "surveys": {
+                "title": "Completing Surveys",
+                "desc": "Earn reputation for civic activity and participating in surveys.",
+                "val": "+50 Reputation"
+            },
+            "loginStreak": {
+                "title": "Login Streaks",
+                "desc": "Daily activity increases your reputation.",
+                "val": "+10 / +25 Reputation"
+            },
+            "unlockAchievements": {
+                "title": "Unlocking Achievements",
+                "desc": "Earn special achievements.",
+                "val": "+25-500 Reputation"
+            }
+        },
+        "ranks": {
+            "rank1": {
+                "name": "Citizen",
+                "xp": "0 Reputation"
+            },
+            "rank2": {
+                "name": "Local Activist",
+                "xp": "500 Reputation"
+            },
+            "rank3": {
+                "name": "Social Councilor",
+                "xp": "1,500 Reputation"
+            },
+            "rank4": {
+                "name": "Parliament Analyst",
+                "xp": "3,000 Reputation"
+            },
+            "rank5": {
+                "name": "Civic Commissioner",
+                "xp": "6,000 Reputation"
+            },
+            "rank6": {
+                "name": "Guardian of Democracy",
+                "xp": "10,000 Reputation"
+            },
+            "rank7": {
+                "name": "Legislative Expert",
+                "xp": "16,000 Reputation"
+            },
+            "rank8": {
+                "name": "State Observer",
+                "xp": "25,000 Reputation"
+            },
+            "rank9": {
+                "name": "Debate Marshal",
+                "xp": "40,000 Reputation"
+            },
+            "rank10": {
+                "name": "Architecture of Democracy",
+                "xp": "65,000 Reputation"
+            }
+        },
+        "categories": {
+            "all": "All",
+            "activity": "Activity",
+            "surveys": "Surveys",
+            "opinions": "Opinions",
+            "marks": "Marks",
+            "special": "Special"
+        },
+        "achievementsData": {
+            "survey_first": {
+                "title": "First Survey",
+                "desc": "Complete your first survey"
+            },
+            "survey_5": {
+                "title": "Active Participant",
+                "desc": "Complete 5 surveys"
+            },
+            "survey_10": {
+                "title": "Voice of the Community",
+                "desc": "Complete 10 surveys"
+            },
+            "survey_25": {
+                "title": "Opinion Expert",
+                "desc": "Complete 25 surveys"
+            },
+            "survey_50": {
+                "title": "Survey Legend",
+                "desc": "Complete 50 surveys"
+            },
+            "xp_100": {
+                "title": "First Steps",
+                "desc": "Earn 100 XP"
+            },
+            "xp_1000": {
+                "title": "Growing Power",
+                "desc": "Earn 1000 XP"
+            },
+            "xp_5000": {
+                "title": "System Elite",
+                "desc": "Earn 5000 XP"
+            },
+            "login_3": {
+                "title": "Consistency",
+                "desc": "Log in 3 days in a row"
+            },
+            "login_7": {
+                "title": "Persistence",
+                "desc": "Log in 7 days in a row"
+            },
+            "login_14": {
+                "title": "Dedication",
+                "desc": "Log in 14 days in a row"
+            },
+            "login_30": {
+                "title": "Unbreakable",
+                "desc": "Log in 30 days in a row"
+            },
+            "active_1": {
+                "title": "First Trace",
+                "desc": "First active day"
+            },
+            "active_7": {
+                "title": "Weekly Rhythm",
+                "desc": "One week of activity"
+            },
+            "active_14": {
+                "title": "Steady Rhythm",
+                "desc": "Two weeks of activity"
+            },
+            "active_30": {
+                "title": "Established Presence",
+                "desc": "One month of activity"
+            },
+            "active_60": {
+                "title": "System Habit",
+                "desc": "Two months of activity"
+            },
+            "active_100": {
+                "title": "Automated Routine",
+                "desc": "100 days of activity"
+            },
+            "active_180": {
+                "title": "Half-Year Continuity",
+                "desc": "180 days of activity"
+            },
+            "active_365": {
+                "title": "Full Cycle",
+                "desc": "One full year of uninterrupted presence"
+            }
+        }
     },
     "surveys": {
         "page": "Profile /",
@@ -152,6 +337,7 @@
         "reward": "Reward",
         "from": "From",
         "to": "To",
+        "endsOn": "Until {{date}}",
         "back": "← Back",
         "closeSurvey": "Close survey",
         "yourAnswers": "Your Answers",
@@ -299,7 +485,160 @@
         "locked": "Panel is locked",
         "unlocked": "Panel is unlocked",
         "unsavedChanges": "You have unsaved changes",
-        "homePage": "Home / Dashboard"
+        "homePage": "Home / Dashboard",
+        "empty": {
+            "title": "Welcome to Your",
+            "description": "Start customizing your dashboard by adding modules that interest you.",
+            "buttonCreate": "Create Dashboard",
+            "version": "mPaństwo • {{version}}",
+            "features": {
+                "quickStart": "Quick start",
+                "customization": "Full customization",
+                "favorites": "Favorite modules"
+            }
+        },
+        "addTile": {
+            "locked": "Editing locked",
+            "addModule": "Add module"
+        },
+        "tile": {
+            "lockedHint": "Click to open",
+            "hoverHint": "Hover to move or delete"
+        },
+        "dropdown": {
+            "addModule": "Add module",
+            "inUse": "In use"
+        },
+        "dashboardContent": {
+            "members_of_parliament": {
+                "title": "Members of Parliament",
+                "type": "parliament"
+            },
+            "senators": {
+                "title": "Senators",
+                "type": "parliament"
+            },
+            "parliamentary_clubs": {
+                "title": "Parliamentary Clubs",
+                "type": "parliament"
+            },
+            "sejm": {
+                "title": "Sejm",
+                "type": "parliament"
+            },
+            "senate": {
+                "title": "Senate",
+                "type": "parliament"
+            },
+            "council_of_ministers": {
+                "title": "Council of Ministers",
+                "type": "government"
+            },
+            "laws": {
+                "title": "Laws",
+                "type": "law"
+            },
+            "presidential_chancellery": {
+                "title": "Presidential Chancellery",
+                "type": "presidency"
+            },
+            "president": {
+                "title": "President",
+                "type": "presidency"
+            },
+            "uokik": {
+                "title": "Office of Competition and Consumer Protection",
+                "type": "agency"
+            },
+            "constitutional_tribunal": {
+                "title": "Constitutional Tribunal",
+                "type": "judiciary"
+            },
+            "supreme_administrative_court": {
+                "title": "Supreme Administrative Court",
+                "type": "judiciary"
+            },
+            "national_council_of_the_judiciary": {
+                "title": "National Council of the Judiciary",
+                "type": "judiciary"
+            },
+            "ministry_of_finance": {
+                "title": "Ministry of Finance",
+                "type": "ministry"
+            },
+            "ministry_of_health": {
+                "title": "Ministry of Health",
+                "type": "ministry"
+            },
+            "ministry_of_national_defence": {
+                "title": "Ministry of National Defence",
+                "type": "ministry"
+            },
+            "ministry_of_justice": {
+                "title": "Ministry of Justice",
+                "type": "ministry"
+            },
+            "ministry_of_foreign_affairs": {
+                "title": "Ministry of Foreign Affairs",
+                "type": "ministry"
+            },
+            "ministry_of_infrastructure": {
+                "title": "Ministry of Infrastructure",
+                "type": "ministry"
+            },
+            "ministry_of_agriculture": {
+                "title": "Ministry of Agriculture and Rural Development",
+                "type": "ministry"
+            },
+            "ministry_of_climate_and_environment": {
+                "title": "Ministry of Climate and Environment",
+                "type": "ministry"
+            },
+            "ministry_of_state_assets": {
+                "title": "Ministry of State Assets",
+                "type": "ministry"
+            },
+            "ministry_of_culture_and_national_heritage": {
+                "title": "Ministry of Culture and National Heritage",
+                "type": "ministry"
+            },
+            "ministry_of_sport_and_tourism": {
+                "title": "Ministry of Sport and Tourism",
+                "type": "ministry"
+            },
+            "ministry_of_family_labour_and_social_policy": {
+                "title": "Ministry of Family, Labour and Social Policy",
+                "type": "ministry"
+            },
+            "ministry_of_energy": {
+                "title": "Ministry of Energy",
+                "type": "ministry"
+            },
+            "ministry_of_education": {
+                "title": "Ministry of Education",
+                "type": "ministry"
+            },
+            "ministry_of_funds_and_regional_policy": {
+                "title": "Ministry of Funds and Regional Policy",
+                "type": "ministry"
+            },
+            "ministry_of_science_and_higher_education": {
+                "title": "Ministry of Science and Higher Education",
+                "type": "ministry"
+            },
+            "ministry_of_internal_affairs_and_administration": {
+                "title": "Ministry of Internal Affairs and Administration",
+                "type": "ministry"
+            },
+            "ministry_of_digital_affairs": {
+                "title": "Ministry of Digital Affairs",
+                "type": "ministry"
+            },
+            "chancellery_of_the_prime_minister": {
+                "title": "Chancellery of the Prime Minister",
+                "type": "government"
+            }
+        }
     },
     "settings": {
         "settings": "Settings",
@@ -338,7 +677,7 @@
         "next": "Next",
         "previous": "Previous",
         "confirm": "Confirm",
-        "configuration":"Configuration",
+        "configuration": "Configuration",
         "yes": "Yes",
         "no": "No",
         "search": "Search",
@@ -352,7 +691,43 @@
         "unauthorized": "Unauthorized",
         "authorizationRequired": "Authorization required",
         "forbidden": "Forbidden",
-        "continue": "Continue"
+        "continue": "Continue",
+        "messages": {
+            "registrationSuccess": "Account successfully registered!",
+            "layoutSaved": "Layout saved successfully.",
+            "layoutSaveError": "Failed to save layout.",
+            "allFieldsRequired": "All fields are required",
+            "emailRequired": "Email is required",
+            "passwordRequired": "Password is required",
+            "passwordMinLength": "Password must be at least 6 characters",
+            "usernameRequired": "Username is required",
+            "errorOccurred": "An error occurred",
+            "resetEmailSent": "Password reset email sent!",
+            "resetSendError": "Failed to send reset email",
+            "passwordMismatch": "Passwords do not match",
+            "resetPasswordError": "Password reset failed",
+            "passwordChanged": "Password changed successfully",
+            "missingUserId": "Missing user ID",
+            "verificationCodeSent": "Verification code sent",
+            "verificationCodeSendError": "Failed to send verification code",
+            "verifyEmailError": "Email verification failed",
+            "verifyStatusError": "Failed to check verification status",
+            "emailChanged": "Email changed successfully",
+            "nameChanged": "Name changed successfully",
+            "nameChangeError": "Failed to change name",
+            "emailVerified": "Email address verified successfully",
+            "invalidVerificationCode": "Invalid verification code",
+            "surveyCompleted": "Survey completed: {{title}}",
+            "surveyFinished": "You completed {{title}} and earned {{reward}} XP. Results will be available {{deadline}}.",
+            "saveSurveyError": "Error saving survey",
+            "fetchSecurityError": "Error fetching security status",
+            "fetchProfileError": "Error fetching profile",
+            "updateProfileError": "Error updating profile",
+            "changeEmailError": "Error changing email",
+            "changePasswordError": "Error changing password",
+            "deleteAccountError": "Error deleting account",
+            "requiredField": "This field is required"
+        }
     },
     "reset": {
         "resetPassword": "Reset Password",

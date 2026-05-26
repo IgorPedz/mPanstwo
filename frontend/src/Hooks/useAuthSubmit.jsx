@@ -2,8 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import { useUser } from "../Contexts/UserContext";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function useAuthSubmit(isLogin) {
+  const { t } = useTranslation();
   const [infoMessage, setInfoMessage] = useState("");
   const [isLeaving, setIsLeaving] = useState(false);
   const [messageType, setMessageType] = useState("");
@@ -15,20 +17,20 @@ export default function useAuthSubmit(isLogin) {
     const allEmpty = requiredFields.every(field => !data[field] || data[field].trim() === '');
 
     if (allEmpty) {
-      return { valid: false, message: "Wymagane są wszystkie pola" };
+      return { valid: false, message: t("common.messages.allFieldsRequired") };
     }
 
     if (!data.email) {
-      return { valid: false, message: "Email jest wymagany" };
+      return { valid: false, message: t("common.messages.emailRequired") };
     }
     if (!data.password) {
-      return { valid: false, message: "Hasło jest wymagane" };
+      return { valid: false, message: t("common.messages.passwordRequired") };
     }
     if (data.password.length < 6) {
-      return { valid: false, message: "Hasło musi mieć minimum 6 znaków" };
+      return { valid: false, message: t("common.messages.passwordMinLength") };
     }
     if (!isLogin && !data.name) {
-      return { valid: false, message: "Nazwa użytkownika jest wymagana" };
+      return { valid: false, message: t("common.messages.usernameRequired") };
     }
     return { valid: true };
   };
@@ -76,7 +78,7 @@ export default function useAuthSubmit(isLogin) {
       }
     } catch (error) {
       setMessageType("error");
-      setInfoMessage(error.response?.data?.message || "Wystąpił błąd");
+      setInfoMessage(error.response?.data?.message || t("common.messages.errorOccurred"));
     }
   };
 

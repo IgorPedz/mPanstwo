@@ -19,7 +19,7 @@ const ProfileHero = ({ profile }) => {
           </div>
           <div>
             <h2 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-none color-transition">
-              {profile?.name || "Użytkownik"}
+              {profile?.name || t("profile.defaultUser")}
             </h2>
           </div>
         </div>

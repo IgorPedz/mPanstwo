@@ -1,10 +1,13 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
+import { useTranslation } from "react-i18next";
 
 export default function DropDownHeader({ setShowAddMenu }) {
+  const { t } = useTranslation();
+
   return (
     <div className="color-transition px-8 pt-6 pb-4 flex justify-between items-center border-b border-gray-100 dark:border-gray-800">
       <h2 className="text-2xl font-bold dark:text-white color-transition">
-        DODAJ MODUŁ
+        {t("dashboard.dropdown.addModule")}
       </h2>
 
       <button

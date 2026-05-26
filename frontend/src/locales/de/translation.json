@@ -44,6 +44,13 @@
         "rememberMe": "Passwort merken",
         "forgotPassword": "Passwort vergessen?",
         "resetPassword": "Passwort zurücksetzen",
+        "resetPasswordLabel": "Kontosicherheit",
+        "resetPasswordTitle": "Passwort zurücksetzen",
+        "resetPasswordDescription": "Legen Sie ein neues Passwort für Ihr Konto fest und erhalten Sie wieder Zugriff auf das System.",
+        "newPassword": "Neues Passwort",
+        "enterNewPassword": "Neues Passwort eingeben",
+        "repeatNewPassword": "Neues Passwort wiederholen",
+        "changingPassword": "PASSWORT WIRD GEÄNDERT...",
         "dontHaveAccount": "Haben Sie noch kein Konto?",
         "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
         "signUp": "Konto erstellen",
@@ -59,7 +66,7 @@
         "errorLoginFailed": "Anmeldung fehlgeschlagen",
         "errorRegisterFailed": "Registrierung fehlgeschlagen",
         "sessionLogOut": "Möchten Sie sich wirklich abmelden?",
-        "loginFooter":"© 2026 mPaństwo. Alle Rechte vorbehalten."
+        "loginFooter": "© 2026 mPaństwo. Alle Rechte vorbehalten."
     },
     "slider": {
         "sejm": {
@@ -103,7 +110,23 @@
         "systemParams": "Systemparameter",
         "manageAccess": "Verwalten Sie den Zugriff und die Kontodaten",
         "accountSecurity": "Kontosicherheit",
-        "manageSecurity": "Verwalten Sie die Kontosicherheit"
+        "manageSecurity": "Verwalten Sie die Kontosicherheit",
+        "profileCards": {
+            "activity": "Aktivitätstage",
+            "loginStreak": "Login-Serie",
+            "surveys": "Abgeschlossene Umfragen",
+            "trackedLaws": "Verfolgte Gesetze",
+            "opinions": "Geschriebene Meinungen",
+            "courses": "Abgeschlossene Kurse",
+            "reputation": "Punkte der Reputations",
+            "role": "Rolle",
+            "rank": "Ihre Rang"
+        },
+        "roleValues": {
+            "user": "Benutzer",
+            "admin": "Administrator",
+            "ekspert": "Experte"
+        }
     },
     "achievements": {
         "achievements": "Erfolge",
@@ -120,7 +143,168 @@
         "yourLevel": "Ihr Level und Gamification",
         "ranksList": "Rangliste",
         "howToCollect": "Wie sammeln?",
-        "rank": "RANG"
+        "rank": "RANG",
+        "headerDescription": "Durchsuchen Sie Ihre Erfolge und verfolgen Sie Ihren Fortschritt",
+        "rankLabel": "RANG",
+        "totalReputation": "Gesamter Ruf:",
+        "progressTo": "Fortschritt bis: ",
+        "progressValues": "{{current}} / {{required}}",
+        "goal": "Ziel: {{value}}",
+        "inProgress": "In Arbeit",
+        "category": "KATEGORIE",
+        "noRank": "Unbekannter Rang",
+        "understand": "Verstanden",
+        "reputationSources": {
+            "heading": "Ruf verdienen",
+            "subtitle": "Steigern Sie Ihr Ranking, indem Sie die folgenden Aktivitäten auf der Plattform abschließen:",
+            "surveys": {
+                "title": "Umfragen ausfüllen",
+                "desc": "Verdienen Sie Ruf für bürgerschaftliches Engagement und Teilnahme an Umfragen.",
+                "val": "+50 Ruf"
+            },
+            "loginStreak": {
+                "title": "Login-Serien",
+                "desc": "Tägliche Aktivität erhöht Ihren Ruf.",
+                "val": "+10 / +25 Ruf"
+            },
+            "unlockAchievements": {
+                "title": "Erfolge freischalten",
+                "desc": "Sammeln Sie besondere Erfolge.",
+                "val": "+25-500 Ruf"
+            }
+        },
+        "ranks": {
+            "rank1": {
+                "name": "Staatsbürger",
+                "xp": "0 Ruf"
+            },
+            "rank2": {
+                "name": "Lokaler Aktivist",
+                "xp": "500 Ruf"
+            },
+            "rank3": {
+                "name": "Sozialer Ratsherr",
+                "xp": "1.500 Ruf"
+            },
+            "rank4": {
+                "name": "Parlamentsanalyst",
+                "xp": "3.000 Ruf"
+            },
+            "rank5": {
+                "name": "Bürgerkommissar",
+                "xp": "6.000 Ruf"
+            },
+            "rank6": {
+                "name": "Wächter der Demokratie",
+                "xp": "10.000 Ruf"
+            },
+            "rank7": {
+                "name": "Gesetzgebungsexperte",
+                "xp": "16.000 Ruf"
+            },
+            "rank8": {
+                "name": "Staatsbeobachter",
+                "xp": "25.000 Ruf"
+            },
+            "rank9": {
+                "name": "Debattenmarschall",
+                "xp": "40.000 Ruf"
+            },
+            "rank10": {
+                "name": "Architekt der Demokratie",
+                "xp": "65.000 Ruf"
+            }
+        },
+        "categories": {
+            "all": "Alle",
+            "activity": "Aktivität",
+            "surveys": "Umfragen",
+            "opinions": "Meinungen",
+            "marks": "Noten",
+            "special": "Spezial"
+        },
+        "achievementsData": {
+            "survey_first": {
+                "title": "Erste Umfrage",
+                "desc": "Fülle deine erste Umfrage aus"
+            },
+            "survey_5": {
+                "title": "Aktiver Teilnehmer",
+                "desc": "Fülle 5 Umfragen aus"
+            },
+            "survey_10": {
+                "title": "Stimme der Gemeinschaft",
+                "desc": "Fülle 10 Umfragen aus"
+            },
+            "survey_25": {
+                "title": "Meinungsexperte",
+                "desc": "Fülle 25 Umfragen aus"
+            },
+            "survey_50": {
+                "title": "Umfrage-Legende",
+                "desc": "Fülle 50 Umfragen aus"
+            },
+            "xp_100": {
+                "title": "Erste Schritte",
+                "desc": "Erreiche 100 XP"
+            },
+            "xp_1000": {
+                "title": "Wachsende Stärke",
+                "desc": "Erreiche 1000 XP"
+            },
+            "xp_5000": {
+                "title": "Systemelite",
+                "desc": "Erreiche 5000 XP"
+            },
+            "login_3": {
+                "title": "Regelmäßigkeit",
+                "desc": "3 Tage in Folge einloggen"
+            },
+            "login_7": {
+                "title": "Ausdauer",
+                "desc": "7 Tage in Folge einloggen"
+            },
+            "login_14": {
+                "title": "Beständigkeit",
+                "desc": "14 Tage in Folge einloggen"
+            },
+            "login_30": {
+                "title": "Unerschütterlich",
+                "desc": "30 Tage in Folge einloggen"
+            },
+            "active_1": {
+                "title": "Erste Spur",
+                "desc": "Erster aktiver Tag"
+            },
+            "active_7": {
+                "title": "Wöchentlicher Rhythmus",
+                "desc": "Eine Woche Aktivität"
+            },
+            "active_14": {
+                "title": "Stetiger Rhythmus",
+                "desc": "Zwei Wochen Aktivität"
+            },
+            "active_30": {
+                "title": "Gefestigte Präsenz",
+                "desc": "Ein Monat Aktivität"
+            },
+            "active_60": {
+                "title": "Systemgewohnheit",
+                "desc": "Zwei Monate Aktivität"
+            },
+            "active_100": {
+                "title": "Automatisierte Routine",
+                "desc": "100 Tage Aktivität"
+            },
+            "active_180": {
+                "title": "Halbjährige Kontinuität",
+                "desc": "180 Tage Aktivität"
+            },
+            "active_365": {
+                "title": "Voller Zyklus",
+                "desc": "Ein Jahr ununterbrochene Präsenz"
+            }
+        }
     },
     "surveys": {
         "page": "Profil /",
@@ -151,6 +335,7 @@
         "reward": "Belohnung",
         "from": "Von",
         "to": "Bis",
+        "endsOn": "Bis {{date}}",
         "back": "← Zurück",
         "closeSurvey": "Umfrage schließen",
         "yourAnswers": "Ihre Antworten",
@@ -299,7 +484,160 @@
         "locked": "Bereich ist gesperrt",
         "unlocked": "Bereich ist entsperrt",
         "unsavedChanges": "Sie haben ungespeicherte Änderungen",
-        "homePage": "Startseite / Dashboard"
+        "homePage": "Startseite / Dashboard",
+        "empty": {
+            "title": "Willkommen auf Ihrem",
+            "description": "Fügen Sie Module hinzu, um Ihr Dashboard zu personalisieren und die Informationen zu erhalten, die für Sie am wichtigsten sind.",
+            "buttonCreate": "Dashboard erstellen",
+            "version": "mPaństwo • {{version}}",
+            "features": {
+                "quickStart": "Schnellstart",
+                "customization": "Volle Anpassung",
+                "favorites": "Favoritenmodule"
+            }
+        },
+        "addTile": {
+            "locked": "Bearbeitung gesperrt",
+            "addModule": "Modul hinzufügen"
+        },
+        "tile": {
+            "lockedHint": "Klicken zum Öffnen",
+            "hoverHint": "Zum Verschieben oder Löschen hovern"
+        },
+        "dropdown": {
+            "addModule": "Modul hinzufügen",
+            "inUse": "In Verwendung"
+        },
+        "dashboardContent": {
+            "members_of_parliament": {
+                "title": "Abgeordnete",
+                "type": "parlament"
+            },
+            "senators": {
+                "title": "Senatoren",
+                "type": "parlament"
+            },
+            "parliamentary_clubs": {
+                "title": "Parlamentsklubs",
+                "type": "parlament"
+            },
+            "sejm": {
+                "title": "Sejm",
+                "type": "parlament"
+            },
+            "senate": {
+                "title": "Senat",
+                "type": "parlament"
+            },
+            "council_of_ministers": {
+                "title": "Ministerrat",
+                "type": "regierung"
+            },
+            "laws": {
+                "title": "Gesetze",
+                "type": "recht"
+            },
+            "presidential_chancellery": {
+                "title": "Präsidialkanzlei",
+                "type": "präsidentschaft"
+            },
+            "president": {
+                "title": "Präsident",
+                "type": "präsidentschaft"
+            },
+            "uokik": {
+                "title": "Amt für Wettbewerbs- und Verbraucherschutz",
+                "type": "behörde"
+            },
+            "constitutional_tribunal": {
+                "title": "Verfassungsgerichtshof",
+                "type": "justiz"
+            },
+            "supreme_administrative_court": {
+                "title": "Oberstes Verwaltungsgericht",
+                "type": "justiz"
+            },
+            "national_council_of_the_judiciary": {
+                "title": "Landesjustizrat",
+                "type": "justiz"
+            },
+            "ministry_of_finance": {
+                "title": "Finanzministerium",
+                "type": "ministerium"
+            },
+            "ministry_of_health": {
+                "title": "Gesundheitsministerium",
+                "type": "ministerium"
+            },
+            "ministry_of_national_defence": {
+                "title": "Verteidigungsministerium",
+                "type": "ministerium"
+            },
+            "ministry_of_justice": {
+                "title": "Justizministerium",
+                "type": "ministerium"
+            },
+            "ministry_of_foreign_affairs": {
+                "title": "Außenministerium",
+                "type": "ministerium"
+            },
+            "ministry_of_infrastructure": {
+                "title": "Infrastrukturministerium",
+                "type": "ministerium"
+            },
+            "ministry_of_agriculture": {
+                "title": "Ministerium für Landwirtschaft und ländliche Entwicklung",
+                "type": "ministerium"
+            },
+            "ministry_of_climate_and_environment": {
+                "title": "Ministerium für Klima und Umwelt",
+                "type": "ministerium"
+            },
+            "ministry_of_state_assets": {
+                "title": "Ministerium für Staatsvermögen",
+                "type": "ministerium"
+            },
+            "ministry_of_culture_and_national_heritage": {
+                "title": "Ministerium für Kultur und nationales Erbe",
+                "type": "ministerium"
+            },
+            "ministry_of_sport_and_tourism": {
+                "title": "Ministerium für Sport und Tourismus",
+                "type": "ministerium"
+            },
+            "ministry_of_family_labour_and_social_policy": {
+                "title": "Ministerium für Familie, Arbeit und Sozialpolitik",
+                "type": "ministerium"
+            },
+            "ministry_of_energy": {
+                "title": "Energieministerium",
+                "type": "ministerium"
+            },
+            "ministry_of_education": {
+                "title": "Bildungsministerium",
+                "type": "ministerium"
+            },
+            "ministry_of_funds_and_regional_policy": {
+                "title": "Ministerium für Fonds und Regionalpolitik",
+                "type": "ministerium"
+            },
+            "ministry_of_science_and_higher_education": {
+                "title": "Ministerium für Wissenschaft und Hochschulbildung",
+                "type": "ministerium"
+            },
+            "ministry_of_internal_affairs_and_administration": {
+                "title": "Ministerium für Inneres und Verwaltung",
+                "type": "ministerium"
+            },
+            "ministry_of_digital_affairs": {
+                "title": "Ministerium für Digitalisierung",
+                "type": "ministerium"
+            },
+            "chancellery_of_the_prime_minister": {
+                "title": "Kanzlei des Premierministers",
+                "type": "regierung"
+            }
+        }
     },
     "settings": {
         "settings": "Einstellungen",
@@ -338,7 +676,7 @@
         "next": "Weiter",
         "previous": "Zurück",
         "confirm": "Bestätigen",
-        "configuration":"Konfiguration",
+        "configuration": "Konfiguration",
         "yes": "Ja",
         "no": "Nein",
         "search": "Suchen",
@@ -352,7 +690,43 @@
         "unauthorized": "Nicht autorisiert",
         "authorizationRequired": "Autorisierung erforderlich",
         "forbidden": "Verboten",
-        "continue": "Weiter"
+        "continue": "Weiter",
+        "messages": {
+            "registrationSuccess": "Konto erfolgreich registriert!",
+            "layoutSaved": "Layout erfolgreich gespeichert.",
+            "layoutSaveError": "Fehler beim Speichern des Layouts.",
+            "allFieldsRequired": "Alle Felder sind erforderlich",
+            "emailRequired": "E-Mail ist erforderlich",
+            "passwordRequired": "Passwort ist erforderlich",
+            "passwordMinLength": "Passwort muss mindestens 6 Zeichen lang sein",
+            "usernameRequired": "Benutzername ist erforderlich",
+            "errorOccurred": "Ein Fehler ist aufgetreten",
+            "resetEmailSent": "Passwort-Reset-E-Mail gesendet!",
+            "resetSendError": "Fehler beim Senden der Reset-E-Mail",
+            "passwordMismatch": "Passwörter stimmen nicht überein",
+            "resetPasswordError": "Passwort-Zurücksetzung fehlgeschlagen",
+            "passwordChanged": "Passwort erfolgreich geändert",
+            "missingUserId": "Benutzer-ID fehlt",
+            "verificationCodeSent": "Verifizierungscode gesendet",
+            "verificationCodeSendError": "Fehler beim Senden des Verifizierungscodes",
+            "verifyEmailError": "E-Mail-Verifizierung fehlgeschlagen",
+            "verifyStatusError": "Überprüfung des Verifizierungsstatus fehlgeschlagen",
+            "emailChanged": "E-Mail erfolgreich geändert",
+            "nameChanged": "Name erfolgreich geändert",
+            "nameChangeError": "Fehler beim Ändern des Namens",
+            "emailVerified": "E-Mail-Adresse erfolgreich verifiziert",
+            "invalidVerificationCode": "Ungültiger Verifizierungscode",
+            "surveyCompleted": "Umfrage abgeschlossen: {{title}}",
+            "surveyFinished": "Sie haben {{title}} abgeschlossen und {{reward}} XP erhalten. Ergebnisse sind verfügbar {{deadline}}.",
+            "saveSurveyError": "Fehler beim Speichern der Umfrage",
+            "fetchSecurityError": "Fehler beim Abrufen des Sicherheitsstatus",
+            "fetchProfileError": "Fehler beim Laden des Profils",
+            "updateProfileError": "Fehler beim Aktualisieren des Profils",
+            "changeEmailError": "Fehler beim Ändern der E-Mail",
+            "changePasswordError": "Fehler beim Ändern des Passworts",
+            "deleteAccountError": "Fehler beim Löschen des Kontos",
+            "requiredField": "Dieses Feld ist erforderlich"
+        }
     },
     "reset": {
         "resetPassword": "Passwort zurücksetzen",

@@ -1,8 +1,10 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { reputationSources } from "./AchievementsData";
 
 const InfoModal = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
     if (!isOpen || typeof window === "undefined") return null;
 
     return createPortal(
@@ -27,7 +29,7 @@ const InfoModal = ({ isOpen, onClose }) => {
                 <div className="flex justify-between items-center mb-6">
                     <h3 className="text-2xl font-black uppercase tracking-tight flex items-center gap-3 color-transition">
                         <span className="p-2 rounded-xl text-blue-600 text-lg color-transition">⚡</span>
-                        Zbieranie reputacji
+                        {t("achievements.reputationSources.heading")}
                     </h3>
                     <button
                         onClick={onClose}
@@ -38,16 +40,16 @@ const InfoModal = ({ isOpen, onClose }) => {
                 </div>
 
                 <div className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
-                    <p className="font-medium text-slate-500 dark:text-slate-400 color-transition">Zwiększaj swoją pozycję w rankingu wykonując poniższe aktywności na platformie:</p>
+                    <p className="font-medium text-slate-500 dark:text-slate-400 color-transition">{t("achievements.reputationSources.subtitle")}</p>
 
                     <div className="space-y-2.5">
                         {reputationSources.map((item, idx) => (
                             <div key={idx} className="flex items-start justify-between gap-4 p-4 rounded-2xl bg-blue-50/40 hover:bg-blue-50/80 dark:bg-blue-950/10 dark:hover:bg-blue-950/20 border border-blue-100/40 dark:border-blue-950/30 color-transition">
                                 <div>
-                                    <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-0.5 color-transition">{item.title}</h4>
-                                    <p className="text-xs text-slate-500 dark:text-slate-400 color-transition">{item.desc}</p>
+                                    <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-0.5 color-transition">{t(item.titleKey)}</h4>
+                                    <p className="text-xs text-slate-500 dark:text-slate-400 color-transition">{t(item.descKey)}</p>
                                 </div>
-                                <span className="text-xs font-black text-blue-600 dark:text-blue-400 bg-blue-100/60 dark:bg-blue-500/20 px-2.5 py-1 rounded-lg shrink-0 color-transition">{item.val}</span>
+                                <span className="text-xs font-black text-blue-600 dark:text-blue-400 bg-blue-100/60 dark:bg-blue-500/20 px-2.5 py-1 rounded-lg shrink-0 color-transition">{t(item.valKey)}</span>
                             </div>
                         ))}
                     </div>
@@ -67,7 +69,7 @@ const InfoModal = ({ isOpen, onClose }) => {
         transition
       "
                 >
-                    Świetnie
+                    {t("achievements.understand")}
                 </button>
             </motion.div>
         </div>,

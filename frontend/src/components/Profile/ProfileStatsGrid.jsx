@@ -8,6 +8,7 @@ const ProfileStatsGrid = ({ stats }) => {
           key={stat.key}
           title={stat.title}
           value={stat.value}
+          translationKey={stat.translationKey}
           icon={stat.icon}
           color={stat.color}
         />

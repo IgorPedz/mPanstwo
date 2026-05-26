@@ -16,7 +16,7 @@ export default function SurveyBoxPage() {
   const [tab, setTab] = useState("active");
   const [selectedArchiveId, setSelectedArchiveId] = useState(null);
   const [info, setInfo] = useState({ message: "", type: "success" });
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const {
     surveys,
     completedSurveys,
@@ -37,14 +37,19 @@ export default function SurveyBoxPage() {
   const handleNotify = (message, type = "success") =>
     setInfo({ message, type });
 
-  const handleSurveyFinished = (surveyId) => {
+  const handleSurveyFinished = (surveyId, surveyTitle) => {
     removeSurvey(surveyId);
     setActiveSurvey(null);
 
     refetchQuestions?.();
     refetchCompleted?.();
 
-    handleNotify("Wypełniono ankietę", "success");
+    handleNotify(
+      t("common.messages.surveyCompleted", {
+        title: surveyTitle,
+      }),
+      "success"
+    );
   };
 
   return (
@@ -92,7 +97,7 @@ export default function SurveyBoxPage() {
         survey={activeSurvey}
         onClose={() => setActiveSurvey(null)}
         onInfo={handleNotify}
-        onFinished={handleSurveyFinished}
+        onFinished={(surveyId) => handleSurveyFinished(surveyId, activeSurvey?.title)}
       />
     </>
   );

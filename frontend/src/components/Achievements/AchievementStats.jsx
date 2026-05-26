@@ -56,30 +56,31 @@ const AchievementStats = ({ currentLevel, progressPercent }) => {
               </div>
 
               <div className="absolute -bottom-2 -right-2 bg-amber-400 text-slate-900 text-xs font-black px-2 py-1 rounded-md border-2 border-white dark:border-slate-900 color-transition">
-                RANGA
+                {t("achievements.rankLabel")}
               </div>
             </div>
 
             <div>
               <h2 className="color-transition text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-none color-transition">
-                {currentLevel.name}
+                {t(`achievements.ranks.${currentLevel.name.trim()}.name`)}
               </h2>
               <p className="text-slate-500 mt-2 font-medium color-transition">
-                Łączna Reputacja:{" "}
-                <span className="color-transition text-blue-600 dark:text-blue-400">
-                  {currentLevel.totalPoints.toLocaleString()} Reputacji
+                {t("achievements.totalReputation")} <span className="color-transition text-blue-600 dark:text-blue-400">
+                  {currentLevel.totalPoints.toLocaleString()} {t("achievements.reputation")}
                 </span>
               </p>
             </div>
           </div>
-
           <div className="flex-1 w-full space-y-4">
             <div className="flex justify-between items-end">
               <span className="text-xs font-bold uppercase tracking-widest text-slate-400 color-transition">
-                Postęp do: {currentLevel.nextName}
+                {t("achievements.progressTo")} {t(`achievements.ranks.${currentLevel.nextName.trim()}.name`)}
               </span>
               <span className="text-sm font-black text-slate-900 dark:text-white color-transition">
-                {currentLevel.currentXP} Reputacji / {currentLevel.requiredXP} Reputacji
+                {t("achievements.progressValues", {
+                  current: currentLevel.currentXP.toLocaleString(),
+                  required: currentLevel.requiredXP.toLocaleString(),
+                })}
               </span>
             </div>
 

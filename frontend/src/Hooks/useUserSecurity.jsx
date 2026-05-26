@@ -1,14 +1,16 @@
 import { useState, useCallback } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 export default function useUserSecurity() {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchSecurity = useCallback(async (userId) => {
 
     if (!userId) {
-      setError("Brak userId");
+      setError(t("common.messages.missingUserId"));
 
       return {
         success: false,
@@ -31,7 +33,7 @@ export default function useUserSecurity() {
       };
     } catch (err) {
       const message =
-        err?.response?.data?.message || "Błąd pobierania security status";
+        err?.response?.data?.message || t("common.messages.fetchSecurityError");
 
       setError(message);
 

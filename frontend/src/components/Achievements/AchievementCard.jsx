@@ -6,7 +6,6 @@ import ICON_MAP from "../../Utils/Maps/Icons";
 import {
   RARITY_STYLES,
   RARITY_GLOW,
-  RARITY_LABELS,
 } from "../../Utils/Maps/Rarity";
 
 const AchievementCard = ({ item }) => {
@@ -20,7 +19,7 @@ const AchievementCard = ({ item }) => {
   const requirement = item.requirementValue ?? 1;
 
   const progressPercent = Math.min((progress / requirement) * 100, 100);
-  
+  console.log(item)
   return (
     <motion.div
       layout
@@ -39,10 +38,9 @@ const AchievementCard = ({ item }) => {
         <div
           className={`
             p-3 rounded-2xl transition-all
-            ${
-              isUnlocked
-                ? "bg-emerald-100 text-emerald-600"
-                : "bg-slate-100 text-slate-400"
+            ${isUnlocked
+              ? "bg-emerald-100 text-emerald-600"
+              : "bg-slate-100 text-slate-400"
             }
           `}
         >
@@ -59,45 +57,45 @@ const AchievementCard = ({ item }) => {
           ${isUnlocked ? "text-slate-900 dark:text-white" : "text-slate-500"}
         `}
       >
-        {item.title}
+        {t(`achievements.achievementsData.${item.slug}.title`)}
       </h3>
 
       <p className="color-transition text-xs text-slate-500 dark:text-slate-400 mb-4 h-10 overflow-hidden">
-        {item.description}
+        {t(`achievements.achievementsData.${item.slug}.desc`)}
       </p>
 
       <div className="mb-4">
         <span
           className={`
             text-[10px] font-black uppercase px-2 py-1 rounded-full
-            ${
-              item.rarity === "legendary"
-                ? "bg-yellow-400 text-black"
-                : item.rarity === "epic"
-                  ? "bg-purple-500 text-white"
-                  : item.rarity === "rare"
-                    ? "bg-blue-500 text-white"
-                    : "bg-slate-200 text-slate-600"
+            ${item.rarity === "legendary"
+              ? "bg-yellow-400 text-black"
+              : item.rarity === "epic"
+                ? "bg-purple-500 text-white"
+                : item.rarity === "rare"
+                  ? "bg-blue-500 text-white"
+                  : "bg-slate-200 text-slate-600"
             }
           `}
         >
-          {RARITY_LABELS[item.rarity]}
+          {t(`achievements.${item.rarity}`)}
         </span>
       </div>
-
       <div className="space-y-2">
         <div className="flex justify-between text-[10px] font-black text-slate-400 uppercase">
-          <span>Cel: {requirement}</span>
+          <span>{t("achievements.goal", { value: requirement.toLocaleString() })}</span>
           <span>
-            {progress} / {requirement}
+            {t("achievements.progressValues", {
+              current: progress.toLocaleString(),
+              required: requirement.toLocaleString(),
+            })}
           </span>
         </div>
 
         <div className="color-transition h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
           <motion.div
-            className={`h-full ${
-              isUnlocked ? "bg-emerald-500" : "bg-blue-500"
-            }`}
+            className={`h-full ${isUnlocked ? "bg-emerald-500" : "bg-blue-500"
+              }`}
             initial={{ width: 0 }}
             animate={{
               width: `${progressPercent}%`,
@@ -110,7 +108,7 @@ const AchievementCard = ({ item }) => {
       {!isUnlocked && (
         <div className="color-transition absolute inset-0 bg-white/5 dark:bg-black/5 backdrop-blur-[1px] rounded-[1.5rem] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
           <div className="bg-slate-900 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow-xl">
-            W trakcie realizacji
+            {t("achievements.inProgress")}
           </div>
         </div>
       )}

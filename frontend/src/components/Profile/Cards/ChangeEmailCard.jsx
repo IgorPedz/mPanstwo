@@ -20,7 +20,7 @@ export default function ChangeEmailCard({ changeEmail }) {
 
     if (res?.success) {
       setInfoType("success");
-      setInfoMessage("Email został zmieniony");
+      setInfoMessage(t("common.messages.emailChanged"));
       return { success: true };
     }
     return { success: false, message: res?.message };

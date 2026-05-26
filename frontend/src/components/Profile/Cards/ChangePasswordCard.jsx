@@ -1,4 +1,4 @@
-  import { useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useModalFlow } from "../../../hooks/useModalFlow";
 import ModalFlow from "../../Global/Modals/ModalFlow";
@@ -18,8 +18,8 @@ export default function ChangePasswordCard({ changePassword }) {
     ACCENT_MAP["purple"] || "from-purple-700 to-purple-500";
 
   const handleSubmit = async (data) => {
-
     const { oldPassword, newPassword, confirmPassword } = data;
+
     try {
       const res = await changePassword({
         oldPassword,
@@ -36,10 +36,9 @@ export default function ChangePasswordCard({ changePassword }) {
     } catch (err) {
       return {
         success: false,
-        message: "BŁĄD SERWERA",
+        message: t("common.messages.serverError"),
       };
     }
-
   };
 
   return (
@@ -61,14 +60,14 @@ export default function ChangePasswordCard({ changePassword }) {
           <div className="flex justify-between items-start mb-6">
             <div
               className={`
-              p-4 rounded-2xl transition-all duration-500 color-transition
-              bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white
-              group-hover:bg-gradient-to-br group-hover:shadow-lg
-              ${gradientClasses
+                p-4 rounded-2xl transition-all duration-500 color-transition
+                bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white
+                group-hover:bg-gradient-to-br group-hover:shadow-lg
+                ${gradientClasses
                   .split(" ")
                   .map((c) => `group-hover:${c}`)
                   .join(" ")}
-            `}
+              `}
             >
               <LockIcon className="h-6 w-6" />
             </div>
@@ -93,9 +92,9 @@ export default function ChangePasswordCard({ changePassword }) {
 
         <div
           className={`
-          absolute bottom-0 left-0 h-1.5 w-0 group-hover:w-full 
-          transition-all duration-700 bg-gradient-to-r ${gradientClasses}
-        `}
+            absolute bottom-0 left-0 h-1.5 w-0 group-hover:w-full 
+            transition-all duration-700 bg-gradient-to-r ${gradientClasses}
+          `}
         />
       </div>
 
@@ -109,5 +108,5 @@ export default function ChangePasswordCard({ changePassword }) {
         />
       )}
     </>
-  );
+  );  
 }

@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-
+import { useTranslation } from "react-i18next";
 export default function AchievementsTabs({
   categories,
   activeCategory,
   setActiveCategory
 }) {
+  const { t } = useTranslation();
   return (
     <div className=" mb-5 w-fit p-1.5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] color-transition">
 
@@ -30,7 +31,7 @@ export default function AchievementsTabs({
                 value={cat.slug}
                 className="text-left"
               >
-                {cat.name}
+                {t(`achievements.categories.${cat.slug}`)}
               </option>
             ))}
           </select>

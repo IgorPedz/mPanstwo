@@ -31,9 +31,8 @@ export default function SurveyResults({ questions = [], data = {} }) {
             <p className="color-transition font-bold text-slate-900 dark:text-white text-sm mt-1">
               {q.title}
             </p>
-
             <p className="color-transition mt-3 text-sm text-blue-600 dark:text-blue-400 font-black uppercase tracking-wide">
-              {answer ?? "Brak odpowiedzi"}
+              {t(`common.${answer}`)}
             </p>
           </motion.div>
         );

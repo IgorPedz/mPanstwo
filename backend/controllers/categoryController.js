@@ -7,15 +7,13 @@ exports.getCategories = async (req, res) => {
     const [rows] = await db.query(`
       SELECT
         id,
-        slug,
-        name
+        slug
       FROM achievement_categories
     `);
 
     res.json([
       {
-        slug: "all",
-        name: "Wszystkie"
+        slug: "all"
       },
       ...rows
     ]);

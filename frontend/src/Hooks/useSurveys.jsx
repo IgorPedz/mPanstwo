@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 import { useUser } from "../Contexts/UserContext";
 import useFormatDate from "../Utils/Dynamic/useFormatDate";
 
@@ -12,6 +13,7 @@ export default function useSurveys(open, survey, onClose, onInfo, onFinished) {
   const question = questions[currentStep];
 
   const { user: authUser } = useUser();
+  const { t } = useTranslation();
 
   const storageKey = useMemo(
     () => (survey?.id ? `survey_${survey.id}` : null),
@@ -57,7 +59,14 @@ export default function useSurveys(open, survey, onClose, onInfo, onFinished) {
         answers: finalAnswers,
       });
 
-      onInfo?.(`Ukończyłeś ankiete ${survey.title} otrzymałeś ${survey.reward} XP. Wyniki będa dostępne ${useFormatDate(survey.deadline)} w zakładce Zakończone ankiety!`, "success");
+      onInfo?.(
+        t("common.messages.surveyFinished", {
+          title: survey.title,
+          reward: survey.reward,
+          deadline: useFormatDate(survey.deadline),
+        }),
+        "success"
+      );
 
       onFinished?.(survey.id);
 
@@ -65,7 +74,7 @@ export default function useSurveys(open, survey, onClose, onInfo, onFinished) {
     } catch (err) {
       console.error(err);
 
-      onInfo?.("Błąd podczas zapisywania ankiety", "error");
+      onInfo?.(t("common.messages.saveSurveyError"), "error");
     }
   };
 
