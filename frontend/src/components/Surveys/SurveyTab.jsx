@@ -28,10 +28,9 @@ export default function Tabs({ labels, tab, setTab }) {
               transition-colors duration-300
               cursor-pointer outline-none
               color-transition
-              ${
-                isActive
-                  ? "text-white dark:text-slate-900"
-                  : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+              ${isActive
+                ? "text-white dark:text-slate-900"
+                : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
               }
             `}
           >

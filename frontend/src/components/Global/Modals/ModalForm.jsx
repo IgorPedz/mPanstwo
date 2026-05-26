@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
-import useNoScroll from "../../../Hooks/useNoScroll";
+import { useTranslation } from "react-i18next";
+import useNoScroll from "../../../Hooks/UseNoScroll";
 
 export default function ModalForm({
   isOpen,
@@ -9,19 +10,23 @@ export default function ModalForm({
   title,
   fields = [],
   onSubmit,
-  submitText = "Zapisz zmiany",
-  cancelText = "Anuluj",
+  submitText = "common.saveChanges",
+  cancelText = "common.cancel",
   loading = false,
   status = null,
   customContent = null,
 }) {
+  const { t } = useTranslation();
+
   useNoScroll(isOpen);
 
   const createInitialState = () => {
     const state = {};
+
     fields.forEach((f) => {
       state[f.name] = f.defaultValue || "";
     });
+
     return state;
   };
 
@@ -45,17 +50,20 @@ export default function ModalForm({
 
     fields.forEach((f) => {
       if (!formData[f.name]?.trim()) {
-        newErrors[f.name] =
-          `${(f.label || f.name).toUpperCase()} JEST WYMAGANE`;
+        newErrors[f.name] = t("validation.requiredField", {
+          field: t(f.label || f.name).toUpperCase(),
+        });
       }
     });
 
     setErrors(newErrors);
+
     return Object.keys(newErrors).length === 0;
   };
 
   const handleClick = async () => {
     if (!validate()) return;
+
     await onSubmit(formData);
   };
 
@@ -107,17 +115,19 @@ export default function ModalForm({
               <div className="flex items-start justify-between mb-8">
                 <div>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
-                    Konfiguracja
+                    {t("common.configuration")}
                   </p>
+
                   <h2 className="text-3xl font-black text-slate-900 dark:text-white">
-                    {title}
+                    {t(title)}
                   </h2>
                 </div>
 
                 <button
                   type="button"
                   onClick={onClose}
-                  className="cursor-pointer
+                  className="
+                    cursor-pointer
                     group p-3 rounded-2xl
                     bg-slate-100 dark:bg-slate-800
                     hover:bg-red-500/10
@@ -153,11 +163,14 @@ export default function ModalForm({
                   {fields.map((f) => (
                     <div key={f.name} className="space-y-1">
                       {f.renderBelow?.({ formData, errors })}
+
                       <input
                         type={f.type || "text"}
                         value={formData[f.name] || ""}
-                        onChange={(e) => handleChange(f.name, e.target.value)}
-                        placeholder={f.placeholder}
+                        onChange={(e) =>
+                          handleChange(f.name, e.target.value)
+                        }
+                        placeholder={t(f.placeholder)}
                         className={`
                           w-full px-5 py-4
                           rounded-2xl
@@ -192,7 +205,7 @@ export default function ModalForm({
                           : "text-emerald-500"
                       }`}
                     >
-                      {status.message.toUpperCase()}
+                      {t(status.message).toUpperCase()}
                     </p>
                   )}
 
@@ -200,7 +213,8 @@ export default function ModalForm({
                     <button
                       type="button"
                       onClick={onClose}
-                      className="cursor-pointer
+                      className="
+                        cursor-pointer
                         flex-[0.8] py-4 rounded-2xl
                         bg-slate-100 dark:bg-slate-800
                         text-slate-600 dark:text-slate-300 font-bold
@@ -208,14 +222,15 @@ export default function ModalForm({
                         transition-all duration-200
                       "
                     >
-                      {cancelText}
+                      {t(cancelText)}
                     </button>
 
                     <button
                       type="button"
                       onClick={handleClick}
                       disabled={loading}
-                      className="cursor-pointer
+                      className="
+                        cursor-pointer
                         flex-1 py-4 rounded-2xl
                         bg-slate-900 dark:bg-white
                         text-white dark:text-slate-900 font-black
@@ -225,7 +240,9 @@ export default function ModalForm({
                         disabled:opacity-50
                       "
                     >
-                      {loading ? "ŁADOWANIE..." : submitText}
+                      {loading
+                        ? t("common.loading")
+                        : t(submitText)}
                     </button>
                   </div>
                 </div>

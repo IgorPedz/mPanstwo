@@ -2,10 +2,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import useSurvey from "../../../Hooks/useSurveys";
-
+import { useTranslation } from "react-i18next";
 const SurveyModal = ({ open, onClose, survey, onInfo, onFinished }) => {
   const ZapIcon = ICON_MAP["zap"] || ICON_MAP["sparkles"];
-
+  const {t} = useTranslation()
   const { currentStep, question, handleAnswer, handleBack, progress } =
     useSurvey(open, survey, onClose, onInfo, onFinished);
 
@@ -53,7 +53,7 @@ const SurveyModal = ({ open, onClose, survey, onInfo, onFinished }) => {
                   </span>
                   <div className="h-px flex-1 bg-slate-200 dark:bg-slate-700" />
                   <span className="text-xl font-bold uppercase tracking-tighter">
-                    Pytanie
+                    {t("surveys.question")}
                   </span>
                 </div>
                 <div className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -117,13 +117,13 @@ const SurveyModal = ({ open, onClose, survey, onInfo, onFinished }) => {
                   onClick={handleBack}
                   className={`cursor-pointer text-sm font-black uppercase tracking-widest transition-opacity ${currentStep === 0 ? "opacity-0" : "opacity-40 hover:opacity-100 text-slate-900 dark:text-white"}`}
                 >
-                  ← Wróć
+                  {t("surveys.back")}
                 </button>
                 <button
                   onClick={onClose}
                   className="cursor-pointer text-xs font-bold text-slate-400 hover:text-red-500 transition-colors uppercase tracking-widest"
                 >
-                  Zamknij ankietę
+                  {t("surveys.closeSurvey")}
                 </button>
               </div>
             </div>

@@ -1,11 +1,10 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
-
 import SurveyExpiredResults from "../Archive/Results/SurveyExpiredResults";
-
+import { useTranslation } from "react-i18next";
 export default function ExpiredResults({ survey, onClose }) {
   if (!survey) return null;
-
+  const { t } = useTranslation()
   const questions = survey?.questions || [];
   const answersAmout = Object.keys(survey.answers || {}).length / 3;
 
@@ -36,7 +35,7 @@ export default function ExpiredResults({ survey, onClose }) {
             {survey.title}
           </h2>
 
-          <p className="text-xs text-slate-500 mt-2">Wyniki zbiorcze</p>
+          <p className="text-xs text-slate-500 mt-2">{t("surveys.viewResultsAll")}</p>
           {!answersAmout ? (
             <div className="py-12 flex flex-col items-center justify-center text-center">
               <div
@@ -51,11 +50,11 @@ export default function ExpiredResults({ survey, onClose }) {
               </div>
 
               <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-                Brak głosów
+                {t("surveys.noVote")}
               </h3>
 
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-[240px]">
-                Użytkownicy nie oddali żadnego głosu w tej ankiecie.
+                {t("surveys.noVotesDescription")}
               </p>
 
               <button
@@ -72,7 +71,7 @@ export default function ExpiredResults({ survey, onClose }) {
         transition
       "
               >
-                Zamknij
+                {t("common.close")}
               </button>
             </div>
           ) : (
@@ -104,7 +103,7 @@ export default function ExpiredResults({ survey, onClose }) {
           "
                   >
                     <p className="text-[10px] uppercase text-slate-400 tracking-wider">
-                      Pytanie {i + 1}
+                      {t("surveys.question")} {i + 1}
                     </p>
 
                     <p className="font-bold text-slate-900 dark:text-white text-sm mt-1">
@@ -132,7 +131,7 @@ export default function ExpiredResults({ survey, onClose }) {
         transition
       "
               >
-                Zamknij
+                {t("common.close")}
               </button>
             </div>
           )}

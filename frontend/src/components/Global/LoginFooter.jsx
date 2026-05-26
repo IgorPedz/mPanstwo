@@ -37,7 +37,7 @@ const LoginFooter = () => {
       </div>
       
       <p className="text-center mt-8 text-[9px] font-medium text-slate-400 dark:text-slate-600 uppercase tracking-[0.3em]">
-        © 2026 mPaństwo. Wszelkie prawa zastrzeżone.
+        {t("auth.loginFooter")}
       </p>
     </div>
   );

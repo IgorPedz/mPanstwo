@@ -1,8 +1,9 @@
 import ICON_MAP from "../../Utils/Maps/Icons"
 import { Link } from "react-router-dom"; 
-
+import { useTranslation } from "react-i18next";
 const  ArrowLeftIcon  = ICON_MAP["left"];
 export default function ReturnBtn() {
+    const { t } = useTranslation()
     return (
         <div className="absolute top-6 left-6 z-20">
             <Link
@@ -22,7 +23,7 @@ export default function ReturnBtn() {
                 "
             >
                 <ArrowLeftIcon className="w-4 h-4 stroke-[3] transition-transform group-hover:-translate-x-1" />
-                Powrót
+                {t("common.return")}
             </Link>
         </div>
     )

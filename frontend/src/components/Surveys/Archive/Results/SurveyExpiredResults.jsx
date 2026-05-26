@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-
+import { useTranslation } from "react-i18next";
 export default function SurveyResultBar({ answers = {} }) {
+  const {t} = useTranslation()
   const parsedAnswers =
     typeof answers === "string"
       ? JSON.parse(answers)
@@ -32,11 +33,11 @@ export default function SurveyResultBar({ answers = {} }) {
     <div className="space-y-3">
       <div className="flex items-center justify-between text-[11px] font-black uppercase tracking-widest">
         <span className="text-rose-500">
-          NIE {noPercent}%
+          {t("surveys.no")} {noPercent}%
         </span>
 
         <span className="text-emerald-500">
-          TAK {yesPercent}%
+          {t("surveys.yes")} {yesPercent}%
         </span>
       </div>
 

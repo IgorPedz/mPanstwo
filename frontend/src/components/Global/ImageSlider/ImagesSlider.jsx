@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
-
+import { useTranslation } from "react-i18next";
 export default function ImageSlider({
   slides = [],
   autoPlay = true,
   interval = 5000,
 }) {
   const [current, setCurrent] = useState(0);
-
+  const { t } = useTranslation()
   useEffect(() => {
     if (!autoPlay || slides.length <= 1) return;
     const timer = setInterval(() => {
@@ -18,7 +18,7 @@ export default function ImageSlider({
   }, [autoPlay, interval, slides.length]);
 
   const activeSlide = slides[current];
-
+  
   return (
     <div className="relative w-full h-[100vh] overflow-hidden bg-slate-900">
       <AnimatePresence mode="popLayout">
@@ -54,13 +54,13 @@ export default function ImageSlider({
         >
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-xl font-black uppercase tracking-tighter">
-              {activeSlide.title}
+              {t("slider."+activeSlide.title)}
             </h3>
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.8)]"></div>
           </div>
 
           <p className="text-[11px] font-medium leading-relaxed opacity-70 border-t border-white/10 pt-3">
-            {activeSlide.desc}
+            {t("slider."+activeSlide.desc)}
           </p>
 
           <div className="mt-4 flex gap-1">

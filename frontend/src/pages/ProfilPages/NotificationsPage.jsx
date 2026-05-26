@@ -9,8 +9,9 @@ import NotificationsList from "../../components/Notifications/NotoficationList";
 
 import { useNotificationStore } from "../../store/useNotificationStore";
 import { useUser } from "../../Contexts/UserContext";
-
+import { useTranslation } from "react-i18next";
 export default function NotificationsPage() {
+  const { t } = useTranslation()
   const { user } = useUser();
   const [showClearModal, setShowClearModal] = useState(false);
   const notifications = useNotificationStore((s) => s.notifications);
@@ -39,25 +40,25 @@ export default function NotificationsPage() {
         <NotificationsHeader onClearHistory={handleClearHistory} />
 
         <NotificationsList
-          title="Nowe"
+          title={t("notifications.new")}
           items={unread}
-          emptyText="Brak nowych powiadomień"
+          emptyText={t("notifications.noNewNotifications")}
         />
 
         <NotificationsList
-          title="Historia"
+          title={t("notifications.history")}
           items={read}
-          emptyText="Brak historii"
+          emptyText={t("notifications.noHistory")}
         />
 
         <NotificationFooter />
 
         <ModalMessage
           isOpen={showClearModal}
-          title="Usuwanie historii"
-          message="Czy na pewno chcesz usunąć przeczytane powiadomienia?"
-          confirmText="Usuń"
-          cancelText="Anuluj"
+          title={t("notifications.clearHistory")}
+          message={t("notifications.clearMessage")}
+          confirmText={t("common.delete")}
+          cancelText={t("common.cancel")}
           onCancel={() => setShowClearModal(false)}
           onConfirm={handleConfirmClear}
         />

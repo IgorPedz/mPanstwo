@@ -1,6 +1,7 @@
 import { useState } from "react";
-
+import { useTranslation } from "react-i18next";
 export default function useAuthForm(initialValues = { name: "", email: "", password: "" }) {
+  const { t } = useTranslation()
   const [formData, setFormData] = useState(initialValues);
   const [errors, setErrors] = useState({});
 
@@ -8,17 +9,17 @@ export default function useAuthForm(initialValues = { name: "", email: "", passw
     const newErrors = {};
 
     if (!formData.email?.trim()) {
-      newErrors.email = "Email jest wymagany";
+      newErrors.email = t("auth.errorEmailRequired");
     }
 
     if (!formData.password?.trim()) {
-      newErrors.password = "Hasło jest wymagane";
+      newErrors.password = t("auth.errorPasswordRequired");
     } else if (formData.password.length < 6) {
-      newErrors.password = "Hasło min 6 znaków";
+      newErrors.password = t("auth.errorPasswordMin");
     }
 
     if (!isLogin && !formData.name?.trim()) {
-      newErrors.name = "Nazwa użytkownika jest wymagana";
+      newErrors.name = t("auth.errorNameRequired");
     }
 
     return newErrors;

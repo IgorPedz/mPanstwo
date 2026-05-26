@@ -51,12 +51,33 @@
         "cancel": "Abbrechen",
         "errorEmailRequired": "E-Mail ist erforderlich",
         "errorPasswordRequired": "Passwort ist erforderlich",
+        "errorPasswordMin": "Passwort mindestens 6 Zeichen",
+        "errorNameRequired": "Benutzername ist erforderlich",
         "errorInvalidEmail": "Ungültiges E-Mail-Format",
         "errorWeakPassword": "Passwort ist zu schwach",
         "errorPasswordsDontMatch": "Passwörter stimmen nicht überein",
         "errorLoginFailed": "Anmeldung fehlgeschlagen",
         "errorRegisterFailed": "Registrierung fehlgeschlagen",
-        "sessionLogOut": "Möchten Sie sich wirklich abmelden?"
+        "sessionLogOut": "Möchten Sie sich wirklich abmelden?",
+        "loginFooter":"© 2026 mPaństwo. Alle Rechte vorbehalten."
+    },
+    "slider": {
+        "sejm": {
+            "title": "Parlament der Republik Polen",
+            "desc": "Überwachung von Gesetzgebungsverfahren und Parlamentssitzungen."
+        },
+        "kprp": {
+            "title": "Präsidentenpalast",
+            "desc": "Überprüfung von Unterschriften und Ratifizierungsprozessen."
+        },
+        "sn": {
+            "title": "Oberster Gerichtshof",
+            "desc": "Rechtsprechungsdatenbank und juristische Analyse."
+        },
+        "kprm": {
+            "title": "Kanzlei des Premierministers",
+            "desc": "Überwachung von Verordnungen und Regierungsarbeiten."
+        }
     },
     "profile": {
         "myProfile": "Mein Profil",
@@ -102,14 +123,15 @@
         "rank": "RANG"
     },
     "surveys": {
+        "page": "Profil /",
         "surveys": "Umfragen",
         "surveyBox": "Umfragebox",
+        "surveyBoxDesc": "Nehmen Sie an Umfragen teil und verdienen Sie Belohnungen für Ihre Meinungen!",
         "activeSurveys": "Aktive Umfragen",
         "completedSurveys": "Abgeschlossene Umfragen",
         "expiredSurveys": "Abgelaufene Umfragen",
         "expired": "Abgelaufen",
         "voted": "Abgestimmt",
-        "noVote": "Keine Abstimmung",
         "noActiveSurveys": "Keine aktiven Umfragen",
         "noCompletedSurveys": "Sie haben noch nicht an einer Umfrage teilgenommen",
         "noExpiredSurveys": "Keine abgelaufenen Umfragen",
@@ -119,7 +141,26 @@
         "nextPage": "Nächste Seite",
         "previousPage": "Vorherige Seite",
         "submit": "Absenden",
-        "backToBox": "Zurück zur Box"
+        "backToBox": "Zurück zur Box",
+        "availableRewards": "Verfügbare Belohnungen",
+        "refresh": "Aktualisieren",
+        "viewResults": "Ergebnisse anzeigen",
+        "myAnswers": "Meine Antworten",
+        "start": "Start",
+        "reputation": "Ruf",
+        "reward": "Belohnung",
+        "from": "Von",
+        "to": "Bis",
+        "back": "← Zurück",
+        "closeSurvey": "Umfrage schließen",
+        "yourAnswers": "Ihre Antworten",
+        "viewResultsAll": "Ergebnisübersicht",
+        "question": "Frage",
+        "noVote": "Keine Stimmen",
+        "noVotesDescription": "Benutzer haben in dieser Umfrage keine Stimme abgegeben.",
+        "totalVotes": "Gesamtanzahl der Stimmen:",
+        "no": "Nein",
+        "yes": "Ja"
     },
     "notifications": {
         "notifications": "Benachrichtigungen",
@@ -127,10 +168,16 @@
         "markAsRead": "Als gelesen markieren",
         "clearHistory": "Verlauf löschen",
         "delete": "Löschen",
-        "deleteAll": "Alle löschen",
+        "deleteAll": "Alles löschen",
         "unreadNotifications": "Ungelesene Benachrichtigungen",
-        "description": "Hier finden Sie alles, woran Sie teilgenommen haben!",
-        "page": "Profil /"
+        "description": "Hier finden Sie alles, an dem Sie teilgenommen haben!",
+        "page": "Profil /",
+        "new": "Neu",
+        "history": "Verlauf",
+        "noNewNotifications": "Keine neuen Benachrichtigungen",
+        "noHistory": "Kein Verlauf",
+        "endOfTransmission": "Ende der Datenübertragung",
+        "clearMessage": "Sind Sie sicher, dass Sie alle gelesenen Benachrichtigungen löschen möchten?"
     },
     "documents": {
         "documents": "Dokumente",
@@ -280,6 +327,7 @@
         "success": "Erfolg",
         "warning": "Warnung",
         "info": "Information",
+        "return": "Rückkehr",
         "close": "Schließen",
         "save": "Speichern",
         "cancel": "Abbrechen",
@@ -290,6 +338,7 @@
         "next": "Weiter",
         "previous": "Zurück",
         "confirm": "Bestätigen",
+        "configuration":"Konfiguration",
         "yes": "Ja",
         "no": "Nein",
         "search": "Suchen",
@@ -302,16 +351,17 @@
         "networkError": "Netzwerkfehler",
         "unauthorized": "Nicht autorisiert",
         "authorizationRequired": "Autorisierung erforderlich",
-        "forbidden": "Verboten"
+        "forbidden": "Verboten",
+        "continue": "Weiter"
     },
     "reset": {
         "resetPassword": "Passwort zurücksetzen",
         "resetTitle": "Passwort zurücksetzen",
-        "resetDescription": "Ein Link zum Zurücksetzen des Passworts wird an Ihre E-Mail gesendet.",
-        "resetNextStep": "Im nächsten Schritt geben Sie Ihre E-Mail-Adresse an, an die wir einen Link zum Zurücksetzen des Passworts senden.",
-        "continueButton": "Fortfahren",
-        "sendLinkButton": "Reset-Link senden",
-        "emailPlaceholder": "Ihre E-Mail"
+        "resetDescription": "Ein Link zum Festlegen eines neuen Passworts wird an deine E-Mail gesendet.",
+        "resetNextStep": "Im nächsten Schritt gibst du die E-Mail-Adresse ein, an die wir den Zurücksetzungslink senden.",
+        "continueButton": "Weiter",
+        "sendLinkButton": "Link senden",
+        "emailPlaceholder": "Deine E-Mail"
     },
     "profileAccount": {
         "accountData": "Kontodaten",
@@ -325,19 +375,29 @@
         "strongPassword": "Starkes Passwort",
         "badPassword": "Schwaches Passwort",
         "notStrongPassword": "Ihr Passwort ist zu schwach. Wir empfehlen, eine Kombination aus Buchstaben, Zahlen und Sonderzeichen zu verwenden.",
-        "joined": "Beigetreten",    
+        "joined": "Beigetreten",
         "changePasswordTitle": "Passwort ändern",
         "changePasswordDesc": "Das regelmäßige Ändern des Passworts erhöht die Sicherheit Ihrer Daten.",
         "changeEmailTitle": "E-Mail ändern",
-        "changeEmailDesc": "Ihre E-Mail ist der Schlüssel zum Zugriff auf Ihr Konto.",
-        "changeNameTitle": "Namen ändern",
-        "changeNameDesc": "Aktualisieren Sie Ihren Anzeigenamen.",
+        "changeEmailCardDesc": "Die neue E-Mail wird zum Einloggen und für Benachrichtigungen verwendet.",
+        "changeEmailStepText": "Im nächsten Schritt gibst du die neue Adresse und das Bestätigungspasswort ein.",
+        "newEmailPlaceholder": "Neue E-Mail",
+        "changeNameTitle": "Name ändern",
+        "changeNameCardDesc": "Du änderst den angezeigten Namen im gesamten System.",
+        "changeNameStepText": "Der Name wird für andere Benutzer sichtbar sein.",
+        "nameLabel": "Name",
+        "namePlaceholder": "Dein Vor- und Nachname",
         "deleteAccountTitle": "Konto löschen",
-        "deleteAccountDesc": "Alle Kontodaten dauerhaft löschen.",
-        "verifyEmailTitle": "E-Mail verifizieren",
-        "verifyEmailDesc": "Bestätigen Sie Ihre E-Mail-Adresse.",
-        "passwordChanged": "Passwort wurde geändert",
-        "emailChanged": "E-Mail wurde geändert",
-        "nameChanged": "Name wurde geändert"
+        "deleteAccountDesc": "Alle Daten werden dauerhaft gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden.",
+        "changePasswordCardDesc": "Stelle sicher, dass das neue Passwort sicher ist.",
+        "changePasswordStepText": "Nach dem Weiterklicken gibst du das alte und neue Passwort ein.",
+        "verifyEmailTitle": "E-Mail-Verifizierung",
+        "verifyEmailCardDesc": "Klicke auf den Button, um einen Code an die E-Mail zu senden.",
+        "verifyEmailStepText": "Nach dem Weiterklicken erhältst du einen Verifizierungscode per E-Mail, den du eingeben musst.",
+        "sendVerificationCode": "Code senden",
+        "sendingCode": "Code wird gesendet...",
+        "verificationCodeLabel": "Verifizierungscode",
+        "verificationCodePlaceholder": "000000",
+        "verify": "Verifizieren"
     }
 }

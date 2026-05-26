@@ -7,7 +7,7 @@
             "page": "Strona"
         },
         "items": {
-            "dashboard": "Dashboard",
+            "dashboard": "Pulpit",
             "courses": "Kursy",
             "tutorial": "Samouczek",
             "myProfile": "Mój Profil",
@@ -51,12 +51,33 @@
         "cancel": "Anuluj",
         "errorEmailRequired": "Email jest wymagany",
         "errorPasswordRequired": "Hasło jest wymagane",
+        "errorPasswordMin": "Hasło min 6 znaków",
+        "errorNameRequired": "Nazwa użytkownika jest wymagana",
         "errorInvalidEmail": "Niepoprawny format emailu",
         "errorWeakPassword": "Hasło jest za słabe",
         "errorPasswordsDontMatch": "Hasła nie pasują do siebie",
         "errorLoginFailed": "Błąd logowania",
         "errorRegisterFailed": "Błąd rejestracji",
-        "sessionLogOut": "Czy na pewno chcesz się wylogować?"
+        "sessionLogOut": "Czy na pewno chcesz się wylogować?",
+        "lohinFooter":"© 2026 mPaństwo. Wszelkie prawa zastrzeżone."
+    },
+    "slider": {
+        "sejm": {
+            "title": "Sejm Rzeczypospolitej",
+            "desc": "Monitorowanie procesów ustawodawczych i posiedzeń."
+        },
+        "kprp": {
+            "title": "Pałac Prezydencki",
+            "desc": "Weryfikacja podpisów i procesów ratyfikacji."
+        },
+        "sn": {
+            "title": "Sąd Najwyższy",
+            "desc": "Baza orzecznictwa i analiza prawna."
+        },
+        "kprm": {
+            "title": "Kancelaria Premiera",
+            "desc": "Monitorowanie rozporządzeń i prac rządu."
+        }
     },
     "profile": {
         "myProfile": "Mój Profil",
@@ -102,8 +123,10 @@
         "rank": "RANGA"
     },
     "surveys": {
+        "page": "Profil /",
         "surveys": "Ankiety",
         "surveyBox": "Skrytka ankiet",
+        "surveyBoxDesc": "Bierz udział w ankietach i zdobywaj nagrody za swoje opinie!",
         "activeSurveys": "Aktywne ankiety",
         "completedSurveys": "Ukończone ankiety",
         "expiredSurveys": "Zakończone ankiety",
@@ -119,23 +142,45 @@
         "nextPage": "Następna strona",
         "previousPage": "Poprzednia strona",
         "submit": "Wyślij",
-        "backToBox": "Wróć do skrytki"
+        "backToBox": "Wróć do skrytki",
+        "availableRewards": "Dostępne nagrody",
+        "refresh": "Odśwież",
+        "viewResults": "Zobacz wyniki",
+        "myAnswers": "Moje odpowiedzi",
+        "start": "Rozpocznij",
+        "reputation": "Reputacja",
+        "reward": "Nagroda",
+        "from": "Od",
+        "to": "Do",
+        "back": "← Wróć",
+        "closeSurvey": "Zamknij ankietę",
+        "yourAnswers": "Twoje odpowiedzi",
+        "viewResultsAll": "Wyniki zbiorcze",
+        "question": "Pytanie",
+        "noVotesDescription": "Użytkownicy nie oddali żadnego głosu w tej ankiecie.",
+        "totalVotes": "Łączna liczba głosów:",
+        "no": "Nie",
+        "yes": "Tak"
     },
     "notifications": {
         "notifications": "Powiadomienia",
-        "noNotifications": "Brak powiadomień",
+        "noNewNotifications": "Brak nowych powiadomień",
+        "noHistory": "Brak historii",
         "markAsRead": "Oznacz jako przeczytane",
         "clearHistory": "Wyczyść historię",
         "delete": "Usuń",
         "deleteAll": "Usuń wszystkie",
-        "unreadNotifications": "Nieprzeczytane powiadomienia",
+        "history": "Historia",
+        "new": "Nowe",
+        "endOfTransmission": "Koniec transmisji danych",
         "description": "Tu znajdziesz wszystko w czym brałeś udział!",
-        "page": "Profil /"
+        "page": "Profil /",
+        "clearMessage": "Czy na pewno chcesz usunąć historię powiadomień?"
     },
     "documents": {
         "documents": "Dokumenty",
         "page": "Strona /",
-        "description": "Najważniejszy dokumenty dotyczące funkcjonowania strony i jej prawnych aspektów.",
+        "description": "Najważniejsze dokumenty dotyczące funkcjonowania strony i jej prawnych aspektów.",
         "download": "Pobierz",
         "size": "Rozmiar",
         "type": "Typ",
@@ -240,7 +285,7 @@
         }
     },
     "dashboard": {
-        "dashboard": "Dashboard",
+        "dashboard": "Pulpit",
         "welcome": "Witaj, {{name}}!",
         "editMode": "Tryb Edycji",
         "saveLayout": "Zapisz układ",
@@ -252,7 +297,7 @@
         "locked": "Panel jest zablokowany",
         "unlocked": "Panel jest odblokowany",
         "unsavedChanges": "Masz niezapisane zmiany",
-        "homePage": "Strona Główna / Dashboard"
+        "homePage": "Strona Główna / Pulpit"
     },
     "settings": {
         "settings": "Ustawienia",
@@ -280,6 +325,7 @@
         "success": "Sukces",
         "warning": "Ostrzeżenie",
         "info": "Informacja",
+        "return": "Powrót",
         "close": "Zamknij",
         "save": "Zapisz",
         "cancel": "Anuluj",
@@ -290,6 +336,7 @@
         "next": "Dalej",
         "previous": "Poprzedni",
         "confirm": "Potwierdź",
+        "configuration":"Konfiguracja",
         "yes": "Tak",
         "no": "Nie",
         "search": "Szukaj",
@@ -302,7 +349,8 @@
         "networkError": "Błąd połączenia",
         "unauthorized": "Brak autoryzacji",
         "authorizationRequired": "Wymagana autoryzacja",
-        "forbidden": "Dostęp zabroniony"
+        "forbidden": "Dostęp zabroniony",
+        "continue": "Kontynuuj"
     },
     "reset": {
         "resetPassword": "Reset hasła",
@@ -334,10 +382,26 @@
         "changeNameDesc": "Zaktualizuj swoją nazwę wyświetlaną.",
         "deleteAccountTitle": "Usuń Konto",
         "deleteAccountDesc": "Trwale usunąć wszystkie dane konta.",
-        "verifyEmailTitle": "Weryfikuj Email",
+        "verifyEmailTitle": "Weryfikacja Email",
         "verifyEmailDesc": "Potwierdź posiadanie adresu email.",
         "passwordChanged": "Hasło zostało zmienione",
         "emailChanged": "Email został zmieniony",
-        "nameChanged": "Nazwa została zmieniona"
+        "nameChanged": "Nazwa została zmieniona",
+        "changeEmailCardDesc": "Nowy email będzie używany do logowania i powiadomień.",
+        "changeEmailStepText": "W kolejnym kroku podasz nowy adres oraz hasło potwierdzające zmianę.",
+        "nameLabel": "Imię",
+        "namePlaceholder": "Twoje imię i nazwisko",
+        "changeNameCardDesc": "Zmienisz nazwę wyświetlaną w całym systemie.",
+        "changeNameStepText": "Imię będzie widoczne dla innych użytkowników.",
+        "changePasswordCardDesc": "Upewnij się, że nowe hasło jest silne.",
+        "changePasswordStepText": "Po przejściu dalej wpiszesz stare i nowe hasło.",
+        "verifyEmailCardDesc": "Kliknij przycisk aby wysłać kod na email.",
+        "verifyEmailStepText": "Po przejściu dalej otrzymasz na emaila kod weryfikujący, który będziesz musiał wpisać.",
+        "sendVerificationCode": "Wyślij kod",
+        "sendingCode": "Wysyłanie kodu...",
+        "verificationCodeLabel": "Kod weryfikacyjny",
+        "verificationCodePlaceholder": "000000",
+        "verify": "Zweryfikuj",
+        "newEmailPlaceholder": "Nowy email"
     }
 }

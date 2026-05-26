@@ -9,19 +9,14 @@ import SurveyTabsContent from "../../components/Surveys/SubPages/SurveyTabConten
 
 import { useSurveyData } from "../../Hooks/useSurveyData";
 import { useSurveyBoxLogic } from "../../Hooks/useSurveyBoxLogic";
-
-const LABELS = {
-  active: "Aktywne ankiety",
-  expired: "Zakończone",
-  archive: "Historia odpowiedzi",
-};
+import { useTranslation } from "react-i18next";
 
 export default function SurveyBoxPage() {
   const [activeSurvey, setActiveSurvey] = useState(null);
   const [tab, setTab] = useState("active");
   const [selectedArchiveId, setSelectedArchiveId] = useState(null);
   const [info, setInfo] = useState({ message: "", type: "success" });
-
+  const { t } = useTranslation()
   const {
     surveys,
     completedSurveys,
@@ -31,7 +26,11 @@ export default function SurveyBoxPage() {
     refetchQuestions,
     refetchCompleted,
   } = useSurveyData();
-
+  const LABELS = {
+    active: t("surveys.activeSurveys"),
+    expired: t("surveys.expiredSurveys"),
+    archive: t("surveys.completedSurveys")
+  };
   const { activeSurveys, expiredSurveys, archiveSurveys, totalRewards } =
     useSurveyBoxLogic(surveys, completedSurveys);
 

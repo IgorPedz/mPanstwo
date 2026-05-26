@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 
 import getData from "../../../Utils/Dynamic/getData";
 import SurveyResults from "./Results/SurveyResults";
-
+import { useTranslation } from "react-i18next";
 export default function ArchiveResultsModal({
   survey,
   onClose,
 }) {
   if (!survey) return null;
-
+  const {t} = useTranslation()
   const rawData = survey?.answers;
   const data = getData(rawData);
 
@@ -43,7 +43,7 @@ export default function ArchiveResultsModal({
           </h2>
 
           <p className="text-xs text-slate-500 mt-2">
-            Twoje odpowiedzi
+            {t("surveys.yourAnswers")}
           </p>
 
           <div className="mt-6">
@@ -64,7 +64,7 @@ export default function ArchiveResultsModal({
               cursor-pointer
             "
           >
-            Zamknij
+            {t("common.close")}
           </button>
         </div>
       </motion.div>

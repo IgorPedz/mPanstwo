@@ -51,12 +51,33 @@
         "cancel": "Cancel",
         "errorEmailRequired": "Email is required",
         "errorPasswordRequired": "Password is required",
+        "errorPasswordMin": "Password min 6 characters",
+        "errorNameRequired": "Username is required",
         "errorInvalidEmail": "Invalid email format",
         "errorWeakPassword": "Password is too weak",
         "errorPasswordsDontMatch": "Passwords don't match",
         "errorLoginFailed": "Login failed",
         "errorRegisterFailed": "Registration failed",
-        "sessionLogOut": "Are you sure you want to log out?"
+        "sessionLogOut": "Are you sure you want to log out?",
+        "loginFooter":"© 2026 mPaństwo. All rights reserved."
+    },
+    "slider": {
+        "sejm": {
+            "title": "Parliament of the Republic of Poland",
+            "desc": "Monitoring legislative processes and parliamentary sessions."
+        },
+        "kprp": {
+            "title": "Presidential Palace",
+            "desc": "Verification of signatures and ratification processes."
+        },
+        "sn": {
+            "title": "Supreme Court",
+            "desc": "Case law database and legal analysis."
+        },
+        "kprm": {
+            "title": "Prime Minister's Office",
+            "desc": "Monitoring regulations and government activities."
+        }
     },
     "profile": {
         "myProfile": "My Profile",
@@ -102,8 +123,10 @@
         "rank": "RANK"
     },
     "surveys": {
+        "page": "Profile /",
         "surveys": "Surveys",
         "surveyBox": "Survey Box",
+        "surveyBoxDesc": "Participate in surveys and earn rewards for your opinions!",
         "activeSurveys": "Active Surveys",
         "completedSurveys": "Completed Surveys",
         "expiredSurveys": "Expired Surveys",
@@ -119,7 +142,25 @@
         "nextPage": "Next Page",
         "previousPage": "Previous Page",
         "submit": "Submit",
-        "backToBox": "Back to Box"
+        "backToBox": "Back to Box",
+        "availableRewards": "Available Rewards",
+        "refresh": "Refresh",
+        "viewResults": "View Results",
+        "myAnswers": "My Answers",
+        "start": "Start",
+        "reputation": "Reputation",
+        "reward": "Reward",
+        "from": "From",
+        "to": "To",
+        "back": "← Back",
+        "closeSurvey": "Close survey",
+        "yourAnswers": "Your Answers",
+        "viewResultsAll": "Results overview",
+        "question": "Question",
+        "noVotesDescription": "Users haven't cast any votes in this survey.",
+        "totalVotes": "Total votes:",
+        "no": "No",
+        "yes": "Yes"
     },
     "notifications": {
         "notifications": "Notifications",
@@ -130,7 +171,13 @@
         "deleteAll": "Delete all",
         "unreadNotifications": "Unread notifications",
         "description": "Here you will find everything you participated in!",
-        "page": "Profile /"
+        "page": "Profile /",
+        "new": "New",
+        "history": "History",
+        "noNewNotifications": "No new notifications",
+        "noHistory": "No history",
+        "endOfTransmission": "End of data transmission",
+        "clearMessage": "Are you sure you want to delete all read notifications?"
     },
     "documents": {
         "documents": "Documents",
@@ -280,6 +327,7 @@
         "success": "Success",
         "warning": "Warning",
         "info": "Information",
+        "return": "Return",
         "close": "Close",
         "save": "Save",
         "cancel": "Cancel",
@@ -290,6 +338,7 @@
         "next": "Next",
         "previous": "Previous",
         "confirm": "Confirm",
+        "configuration":"Configuration",
         "yes": "Yes",
         "no": "No",
         "search": "Search",
@@ -302,7 +351,8 @@
         "networkError": "Network error",
         "unauthorized": "Unauthorized",
         "authorizationRequired": "Authorization required",
-        "forbidden": "Forbidden"
+        "forbidden": "Forbidden",
+        "continue": "Continue"
     },
     "reset": {
         "resetPassword": "Reset Password",
@@ -338,6 +388,22 @@
         "verifyEmailDesc": "Confirm your email address.",
         "passwordChanged": "Password has been changed",
         "emailChanged": "Email has been changed",
-        "nameChanged": "Name has been changed"
+        "nameChanged": "Name has been changed",
+        "changeEmailCardDesc": "The new email will be used for login and notifications.",
+        "changeEmailStepText": "In the next step you will enter the new address and the password to confirm the change.",
+        "newEmailPlaceholder": "New email",
+        "changeNameCardDesc": "You will change the display name used throughout the system.",
+        "changeNameStepText": "The name will be visible to other users.",
+        "nameLabel": "Name",
+        "namePlaceholder": "Your full name",
+        "changePasswordCardDesc": "Make sure the new password is strong.",
+        "changePasswordStepText": "After continuing you will enter the old and new password.",
+        "verifyEmailCardDesc": "Click the button to send a code to your email.",
+        "verifyEmailStepText": "After continuing you will receive a verification code by email that you will need to enter.",
+        "sendVerificationCode": "Send code",
+        "sendingCode": "Sending code...",
+        "verificationCodeLabel": "Verification code",
+        "verificationCodePlaceholder": "000000",
+        "verify": "Verify"
     }
 }

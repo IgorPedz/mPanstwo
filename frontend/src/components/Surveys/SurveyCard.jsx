@@ -93,7 +93,7 @@ const SurveyCard = ({ survey, onStart }) => {
       `}
           >
             <ClockIcon className="h-3 w-3" />
-            Do {formattedDeadline}
+            {t("surveys.from")} {formattedDeadline}
           </motion.div>
         </div>
       )}
@@ -124,7 +124,7 @@ const SurveyCard = ({ survey, onStart }) => {
         {!isExpired && (
           <div className="flex flex-col">
             <span className="text-[10px] uppercase text-slate-400 font-bold tracking-widest mb-0.5">
-              Nagroda
+              {t("surveys.reward")}
             </span>
 
             <div
@@ -133,7 +133,7 @@ const SurveyCard = ({ survey, onStart }) => {
             `}
             >
               <ZapIcon className="h-4 w-4 fill-current" />
-              {survey.reward} Reputacji
+              {survey.reward} {t("surveys.reputation")}
             </div>
           </div>
         )}
@@ -144,7 +144,7 @@ const SurveyCard = ({ survey, onStart }) => {
           text-white dark:text-slate-900 px-7 py-3 rounded-2xl hover:shadow-lg"
           >
             {" "}
-            Zobacz wyniki{" "}
+            {t("surveys.viewResults")}{" "}
           </button>
         ) : (
           <button
@@ -153,7 +153,7 @@ const SurveyCard = ({ survey, onStart }) => {
           text-white dark:text-slate-900 px-7 py-3 rounded-2xl hover:shadow-lg"
           >
             {" "}
-            Rozpocznij{" "}
+            {t("surveys.start")}{" "}
           </button>
         )}
       </div>
