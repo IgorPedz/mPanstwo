@@ -69,7 +69,7 @@ export default function EmptyState({ onRefetch, variant = "active" }) {
             cursor-pointer
           "
         >
-          Odśwież tablicę
+          {t("surveys.refresh")}
         </motion.button>
       )}
     </motion.div>

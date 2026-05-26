@@ -43,10 +43,9 @@ export default function ArchiveSurveyCard({ survey, onOpen }) {
               shadow-lg
               color-transition
 
-              ${
-                isExpired
-                  ? "bg-slate-600 shadow-slate-600/20"
-                  : "bg-rose-500 shadow-rose-500/20"
+              ${isExpired
+                ? "bg-slate-600 shadow-slate-600/20"
+                : "bg-rose-500 shadow-rose-500/20"
               }
             `}
           >

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-
+import { useTranslation } from "react-i18next";
 export default function SurveyResults({ questions = [], data = {} }) {
+  const { t } = useTranslation()
   if (questions.length === 0) {
     return <p className="text-xs text-slate-400 italic">Brak danych</p>;
   }
@@ -24,7 +25,7 @@ export default function SurveyResults({ questions = [], data = {} }) {
             "
           >
             <p className="text-[10px] uppercase text-slate-400 font-bold tracking-widest">
-              Pytanie {index + 1}
+              {t("surveys.question")} {index + 1}
             </p>
 
             <p className="color-transition font-bold text-slate-900 dark:text-white text-sm mt-1">

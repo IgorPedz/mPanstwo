@@ -3,8 +3,17 @@ import { useTranslation } from "react-i18next";
 
 export default function PasswordStrength({ password }) {
   const { t } = useTranslation();
-  if(!password) return null
+
   const strength = useMemo(() => {
+    if (!password) {
+      return {
+        score: 0,
+        label: "",
+        color: "bg-transparent",
+        text: "text-transparent",
+        width: "0%",
+      };
+    }
 
     let score = 0;
 
@@ -41,6 +50,8 @@ export default function PasswordStrength({ password }) {
       width: "100%",
     };
   }, [password, t]);
+
+  if (!password) return null;
 
   return (
     <div className="space-y-2">

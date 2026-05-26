@@ -1,27 +1,27 @@
 const slides = [
   { 
     img: "/images/sejmRP.jpg",
-    title: "Sejm Rzeczypospolitej", 
+    title: "sejm.title", 
     code: "Sejm RP", 
-    desc: "Monitorowanie procesów ustawodawczych i posiedzeń." 
+    desc: "sejm.desc" 
   },
   { 
     img: "/images/palacRP.jpg", 
-    title: "Pałac Prezydencki", 
+    title: "kprp.title", 
     code: "KPRP", 
-    desc: "Weryfikacja podpisów i procesów ratyfikacji." 
+    desc: "kprp.desc" 
   },
   { 
     img: "/images/sadRP.jpeg", 
-    title: "Sąd Najwyższy", 
+    title: "sn.title", 
     code: "SN", 
-    desc: "Baza orzecznictwa i analiza prawna." 
+    desc: "sn.desc" 
   },
   { 
     img: "/images/KPRM.jpg", 
-    title: "Kancelaria Premiera", 
+    title: "kprm.title", 
     code: "KPRM", 
-    desc: "Monitorowanie rozporządzeń i prac rządu." 
+    desc: "kprm.desc" 
   }
 ];
 

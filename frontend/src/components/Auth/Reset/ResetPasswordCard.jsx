@@ -6,9 +6,10 @@ import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
 import axios from "axios";
 import { useState } from "react";
 import InfoMessage from "../../Global/InfoMessage";
-
+import { useTranslation } from "react-i18next";
 export default function ResetPasswordCard() {
     const EnvelopeIcon = ICON_MAP["contact"];
+    const { t } = useTranslation()
     const flow = useModalFlow(ResetPasswordFlow);
     const [infoMessage, setInfoMessage] = useState("")
     const [infoType, setInfoType] = useState('')
@@ -74,7 +75,7 @@ export default function ResetPasswordCard() {
     font-semibold
   "
                 >
-                    Nie pamiętasz hasła?
+                    {t("auth.forgotPassword")}
                 </p>
 
                 <div className={`

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import useVerifyEmail from "../../../Hooks/useVerification";
@@ -7,10 +8,11 @@ const ShieldIcon =
   ICON_MAP["shield"] || ICON_MAP["contact"];
 
 const VerifyEmailFlow = {
-  title: "Weryfikacja Email",
+  title: "profileAccount.verifyEmailTitle",
 
   steps: {
     1: ({ setStep }) => {
+      const { t } = useTranslation();
       const { sendCode } = useVerifyEmail();
 
       const [loading, setLoading] = useState(false);
@@ -37,19 +39,18 @@ const VerifyEmailFlow = {
 
               <div>
                 <h3 className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">
-                  Weryfikacja email
+                  {t("profileAccount.verifyEmailTitle")}
                 </h3>
 
                 <p className="text-xs text-emerald-600/80 dark:text-emerald-400">
-                  Kliknij przycisk aby wysłać kod na email.
+                  {t("profileAccount.verifyEmailCardDesc")}
                 </p>
               </div>
             </div>
           </div>
 
           <p className="text-xs text-gray-500 dark:text-gray-400">
-            Po przejściu dalej otrzymasz na emaila kod
-            weryfikujący, który będziesz musiał wpisać.
+            {t("profileAccount.verifyEmailStepText")}
           </p>
 
           <button
@@ -68,8 +69,8 @@ const VerifyEmailFlow = {
             "
           >
             {loading
-              ? "Wysyłanie kodu..."
-              : "Wyślij kod"}
+              ? t("profileAccount.sendingCode")
+              : t("profileAccount.sendVerificationCode")}
           </button>
         </div>
       );
@@ -79,15 +80,15 @@ const VerifyEmailFlow = {
       fields: [
         {
           name: "code",
-          label: "Kod weryfikacyjny",
+          label: "profileAccount.verificationCodeLabel",
           type: "text",
-          placeholder: "000000",
+          placeholder: "profileAccount.verificationCodePlaceholder",
           maxLength: 6,
         },
       ],
 
-      submitText: "Zweryfikuj",
-      cancelText: "Wróć",
+      submitText: "profileAccount.verify",
+      cancelText: "common.back",
     },
   },
 };
