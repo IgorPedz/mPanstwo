@@ -6,6 +6,7 @@ const EVENT_CONFIG = {
 
   SURVEY_COMPLETED: {
     icon: "survey_completed",
+    color:  "emerald",
     title: "Ankieta zakończona",
     message: "Wypełniono ankiete",
     xp: 50,
@@ -25,16 +26,18 @@ const EVENT_CONFIG = {
 
   LOGIN_STREAK_SMALL: {
     icon: "login_streak_small",
+    color: "red",
     title: "Seria logowań",
     message: "Seria trwa!",
-    xp:10,  
+    xp: 10,
   },
 
   LOGIN_STREAK_BIG: {
     icon: "login_streak_big",
+    color: "orange",
     title: "Długa seria logowań",
     message: "Legendarna aktywność!",
-    xp:25,
+    xp: 25,
   },
 
   ACHIEVEMENT_UNLOCK: {
@@ -68,9 +71,10 @@ const EVENT_CONFIG = {
   },
 
   LEVEL_UP: {
-    icon: "level_up",
-    title: "Nowy ranga",
-    message: "Osiągnięto nową rangę"
+    icon: "trophy",
+    color: "amber",
+    title: "Awans rangi",
+    message: "Awansowałeś na rangę {{rankName}}",
   },
 };
 

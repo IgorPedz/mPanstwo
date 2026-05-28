@@ -68,10 +68,8 @@ async function addXP(userId, amount, reason = "unknown") {
     if (!oldRank || oldRank.id !== newRank.id) {
 
       await sendNotification({
-        type: "RANK_UP",
+        type: "LEVEL_UP",
         userId,
-        title: "Awans rangi",
-        message: `Awansowałeś na rangę: ${newRank.name}`,
         data: {
           oldRank,
           newRank,

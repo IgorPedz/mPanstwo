@@ -1,12 +1,24 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { ranksData } from "./AchievementsData";
 import { Icons } from "../../Utils/Dynamic/RankIcons";
+import { useRanks } from "../../Hooks/useRanks";
 
 const RanksModal = ({ isOpen, onClose }) => {
     const { t } = useTranslation();
+    const { ranks, loading, error } = useRanks();
     if (!isOpen || typeof window === "undefined") return null;
+
+    if (loading) {
+        return null;
+    }
+
+    if (error) {
+        console.error("❌ RANKS MODAL ERROR:", error);
+    }
+
+    const normalizeIcon = (icon) =>
+        typeof icon === "string" ? icon.toLowerCase() : "";
 
     return createPortal(
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
@@ -43,38 +55,57 @@ const RanksModal = ({ isOpen, onClose }) => {
                         </svg>
                     </button>
                 </div>
+
                 <div className="space-y-3 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
-                    {ranksData.map((r) => {
-                        const iconName = r?.icon?.name;
-                        const IconComponent = Icons[iconName] || Icons.rank1 || Icons.user;
+                    {ranks.map((r) => {
+                        const IconComponent =
+                            (typeof r.icon === "function" ? r.icon : Icons[r.icon]) ||
+                            Icons.rank1 ||
+                            Icons.user;
 
                         return (
                             <div
-                                key={r.nr}
+                                key={r.id ?? r.nr ?? r.level}
                                 className="flex items-center justify-between p-4 rounded-2xl 
-                       bg-slate-50 hover:bg-slate-100 
-                       dark:bg-slate-800/50 dark:hover:bg-slate-800 
-                       border border-slate-200 dark:border-slate-700 
-                       transition-all duration-200 hover:shadow-md"
+                                bg-slate-50 hover:bg-slate-100 
+                                dark:bg-slate-800/50 dark:hover:bg-slate-800 
+                                border border-slate-200 dark:border-slate-700 
+                                transition-all duration-200 hover:shadow-md"
                             >
                                 <div className="flex items-center gap-3.5">
-                                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-lg ${r.color || 'bg-slate-400'}`}>
+                                    <div
+                                        className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg"
+                                        style={{ backgroundColor: r.color || "#94a3b8" }} 
+                                    >
                                         <IconComponent className="w-5 h-5 text-white" />
                                     </div>
+
                                     <div>
                                         <p className="font-semibold text-slate-800 dark:text-slate-100">
-                                            {t(r.nameKey, { defaultValue: t("achievements.noRank") })}
+                                            {r.nameKey
+                                                ? t(r.nameKey, {
+                                                    defaultValue: r.slug,
+                                                })
+                                                : r.name || r.slug}
                                         </p>
-                                        {r.description && (
+
+                                        {r.descriptionKey && (
                                             <p className="text-xs text-slate-500 dark:text-slate-400">
-                                                {r.description}
+                                                {t(r.descriptionKey, {
+                                                    defaultValue: "",
+                                                })}
                                             </p>
                                         )}
                                     </div>
                                 </div>
+
                                 <div className="text-right">
                                     <span className="text-sm font-bold text-slate-600 dark:text-slate-400">
-                                        {t(r.xpKey)}
+                                        {r.xpKey
+                                            ? t(r.xpKey, {
+                                                defaultValue: r.xp,
+                                            })
+                                            : r.xp || r.required_xp}
                                     </span>
                                 </div>
                             </div>

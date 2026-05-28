@@ -13,7 +13,6 @@ export const COLOR_MAP = {
   cyan: "text-cyan-700",
   teal: "text-teal-700",
 
-  // specjalne (gradientowe ministerstwa)
   "emerald-gradient": "text-emerald-500",
   "red-gradient": "text-red-500",
   "slate-gradient": "text-slate-700",
@@ -41,4 +40,19 @@ export const GRADIENT_MAP = {
   yellow: "from-yellow-500/30 to-yellow-500/0",
   cyan: "from-cyan-500/30 to-cyan-500/0",
   teal: "from-teal-500/30 to-teal-500/0",
+};
+
+export const NOTIFICATION_COLOR_MAP =  {
+  amber:
+    "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-300",
+
+  emerald:
+    "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-300",
+
+  red:
+    "bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-300",
+  orange:
+    "bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-300",
+  blue:
+    "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300",
 };

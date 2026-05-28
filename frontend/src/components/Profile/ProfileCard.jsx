@@ -8,11 +8,11 @@ const ProfileCard = ({ title, value, translationKey, icon, color }) => {
 
   const translatedValue =
     title === "rank" && translationKey
-      ? t(`achievements.ranks.${translationKey}.name`, value)
+      ? t(`achievements.ranks.${translationKey.trim()}.name`, value)
       : title === "role" && translationKey
       ? t(`profile.roleValues.${translationKey}`, value)
       : value;
-  console.log(translationKey, translatedValue);
+  console.log(title)
   return (
     <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-500 color-transition group relative overflow-hidden h-full">
       

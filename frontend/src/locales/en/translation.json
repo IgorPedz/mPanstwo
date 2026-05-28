@@ -214,7 +214,11 @@
             "rank10": {
                 "name": "Architecture of Democracy",
                 "xp": "65,000 Reputation"
+            },
+            "maxRank": {
+                "name": "Maximum Rank"
             }
+            
         },
         "categories": {
             "all": "All",
@@ -350,6 +354,21 @@
     },
     "notifications": {
         "notifications": "Notifications",
+        "events": {
+            "SURVEY_NEW": { "title": "New survey", "message": "You have a new survey to complete." },
+            "SURVEY_COMPLETED": { "title": "Survey completed", "message": "The survey has been completed." },
+            "SURVEY_RESULT": { "title": "New results", "message": "New survey results are available." },
+            "LAW_UPDATE": { "title": "Law update", "message": "A new legal update is available." },
+            "LOGIN_STREAK_SMALL": { "title": "Login streak", "message": "Your streak is still going!" },
+            "LOGIN_STREAK_BIG": { "title": "Long login streak", "message": "Legendary activity!" },
+            "ACHIEVEMENT_UNLOCK": { "title": "Achievement unlocked", "message": "You unlocked: {{achievementName}}" },
+            "XP_GAIN": { "title": "XP earned", "message": "You received extra XP." },
+            "PROFILE_UPDATE": { "title": "Profile updated", "message": "Your profile was updated." },
+            "VOTE_CAST": { "title": "Vote cast", "message": "Your vote has been recorded." },
+            "OPINION_POSTED": { "title": "Opinion posted", "message": "Your opinion has been published." },
+            "COURSE_COMPLETED": { "title": "Course completed", "message": "You completed a course." },
+            "LEVEL_UP": { "title": "Rank promoted", "message": "You advanced to rank {{rankName}}." }
+        },
         "noNotifications": "No notifications",
         "markAsRead": "Mark as read",
         "clearHistory": "Clear History",

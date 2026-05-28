@@ -26,7 +26,7 @@ const getSurveys = async (req, res) => {
         const withOptions = await Promise.all(
           questions.map(async (q) => {
             const [options] = await db.query(
-              "SELECT label, value FROM options WHERE question_id = ?",
+              "SELECT value FROM options WHERE question_id = ?",
               [q.id],
             );
 

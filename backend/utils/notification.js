@@ -4,8 +4,6 @@ const EVENT_CONFIG = require("../config/eventConfig");
 
 async function sendNotification({
   type,
-  title,
-  message,
   userId = null,
   data = null,
   icon,
@@ -19,29 +17,25 @@ async function sendNotification({
 
     const config = EVENT_CONFIG[eventKey] ||
       EVENT_CONFIG.SYSTEM_ALERT || {
-        title: "Powiadomienie",
         icon: "🔔",
         color: "gray",
       };
 
-    const finalTitle = title ?? config.title ?? "Powiadomienie systemowe";
-
     const finalIcon = icon ?? config.icon ?? "🔔";
 
     const finalColor = color ?? config.color ?? "gray";
-
+      console.log(finalIcon, finalColor);
     const [result] = await db.query(
       `
   INSERT INTO notifications
-  (user_id, icon, type, title, message, data)
-  VALUES (?, ?, ?, ?, ?, ?)
+  (user_id, icon, color, type, data)
+  VALUES (?, ?, ?, ?, ?)
   `,
       [
         userId || null,
-        finalIcon, // 🔥 FIX
+        finalIcon,
+        finalColor,
         eventKey,
-        finalTitle,
-        message ?? "",
         data ? JSON.stringify(data) : null,
       ],
     );
@@ -50,8 +44,6 @@ async function sendNotification({
       id: result.insertId,
       user_id: userId,
       type: eventKey,
-      title: finalTitle,
-      message: message ?? "",
       icon: finalIcon,
       color: finalColor,
       data,

@@ -98,7 +98,7 @@ const getProfile = async (req, res, next) => {
         title: cardRegistry.rank?.title,
         icon: cardRegistry.rank?.icon,
         color: cardRegistry.rank?.color,
-        translationKey: currentRank?.icon,
+        translationKey: currentRank?.name,
       },
       {
         key: "role",

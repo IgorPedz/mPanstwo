@@ -90,11 +90,10 @@ async function checkAchievements(userId) {
         await sendNotification({
           type: "ACHIEVEMENT_UNLOCK",
           userId,
-          title: "Osiągnięcie odblokowane",
-          message: `Zdobyto osiągnięcie: ${ach.title}`,
           icon: ach.icon || "trophy",
           data: {
             achievementId: ach.id,
+            achievementSlug: ach.slug,
             xp: ach.xp_reward,
           },
         });

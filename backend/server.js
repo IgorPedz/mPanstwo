@@ -19,6 +19,7 @@ const resendEmailReset = require("./routes/resendEmailRoutes")
 const achievementRoutes = require("./routes/achievementRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const progressionRoutes = require("./routes/progressionRoutes");
+const rankRoutes = require("./routes/rankRoutes");
 
 const app = express();
 const server = http.createServer(app);
@@ -48,6 +49,7 @@ app.use(resendEmailReset)
 app.use(achievementRoutes)
 app.use(categoryRoutes)
 app.use(progressionRoutes)
+app.use(rankRoutes)
 app.use(errorHandler);
 
 initSocket(server);

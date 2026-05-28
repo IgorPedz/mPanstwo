@@ -25,8 +25,6 @@ async function handleEvent(userId, eventType, meta = {}) {
   await sendNotification({
     type: key,
     userId,
-    title: config.title,
-    message: config.message,
     icon: config.icon,
     color: config.color,
     data: {

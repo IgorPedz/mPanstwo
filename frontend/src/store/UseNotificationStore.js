@@ -1,26 +1,92 @@
 import { create } from "zustand";
+import i18n from "../i18n";
+
+const getLocalizedEventText = (notif) => {
+  const eventMap = i18n.t("notifications.events", {
+    defaultValue: {},
+    returnObjects: true,
+  });
+
+  const event = eventMap?.[notif?.type] || {};
+
+  const achievementSlug = notif?.data?.achievementSlug;
+  const achievementName = achievementSlug
+    ? i18n.t(`achievements.achievementsData.${achievementSlug}.title`, {
+      defaultValue: achievementSlug,
+    })
+    : "";
+
+  const rankSlug =
+    notif?.data?.newRank?.icon ||
+    notif?.data?.newRank?.slug ||
+    notif?.data?.newRank?.name;
+
+  const rankName = rankSlug
+    ? i18n.t(`achievements.ranks.${rankSlug}.name`, {
+      defaultValue: notif?.data?.newRank?.name || rankSlug,
+    })
+    : "";
+
+  return {
+    title: event.title || notif?.type || "Notification",
+    body: i18n.t(`notifications.events.${notif?.type}.message`, {
+      defaultValue: event.message || "",
+      achievementName,
+      rankName,
+    }),
+  };
+};
 
 export const useNotificationStore = create((set, get) => ({
   notifications: [],
-  normalize: (n) => ({
-    id: String(n.id),
+  normalize: (n) => {
+    const parsedData =
+      typeof n.data === "string" ? JSON.parse(n.data) : n.data;
 
-    title: n.title,
-    body: n.message,
+    const normalizedNotif = {
+      ...n,
+      data: parsedData,
+    };
 
-    icon: n.icon,
-    type: n.type,
+    const localized = getLocalizedEventText(normalizedNotif);
 
-    data: typeof n.data === "string" ? JSON.parse(n.data) : n.data,
+    return {
+      id: String(n.id),
 
-    time: n.created_at
-      ? new Date(n.created_at).toLocaleString()
-      : new Date().toLocaleString(),
+      title: localized.title,
+      body: localized.body,
 
-    read: Boolean(n.is_read),
+      icon: n.icon,
+      type: n.type,
+      color: n.color,
 
-    urgent: Boolean(n.urgent ?? false),
-  }),
+      data: parsedData,
+
+      time: (() => {
+        const raw = String(n.created_at || "").trim();
+
+        if (!raw) return new Date().toLocaleString();
+
+        if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}(\.\d+)?$/.test(raw)) {
+          const [datePart, timePart] = raw.split(" ");
+          const [year, month, day] = datePart.split("-").map(Number);
+          const [hour, minute, second = 0] = timePart.split(":").map(Number);
+
+          return new Date(year, month - 1, day, hour, minute, second).toLocaleString();
+        }
+
+        const parsed = new Date(raw);
+
+        return Number.isNaN(parsed.getTime())
+          ? new Date(raw.replace(" ", "T")).toLocaleString()
+          : parsed.toLocaleString();
+      })(),
+
+      read: Boolean(n.is_read),
+
+      urgent: Boolean(n.urgent ?? false),
+    };
+  },
 
   addNotification: (notif) =>
     set((state) => {

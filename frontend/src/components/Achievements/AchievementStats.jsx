@@ -12,7 +12,7 @@ const AchievementStats = ({ currentLevel, progressPercent }) => {
   if (!currentLevel) return null;
 
 
-  const Icon = Icons[currentLevel.icon];
+  const Icon = Icons[currentLevel.name.trim()];
 
   return (
     <>

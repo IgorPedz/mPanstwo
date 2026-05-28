@@ -214,6 +214,9 @@
             "rank10": {
                 "name": "Architekt Demokracji",
                 "xp": "65 000 Reputacji"
+            },
+            "maxRank": {
+                "name": "Maksymalna ranga"
             }
         },
         "categories": {
@@ -350,6 +353,21 @@
     },
     "notifications": {
         "notifications": "Powiadomienia",
+        "events": {
+            "SURVEY_NEW": { "title": "Nowa ankieta", "message": "Masz nową ankietę do wypełnienia." },
+            "SURVEY_COMPLETED": { "title": "Ankieta zakończona", "message": "Wypełniono ankietę." },
+            "SURVEY_RESULT": { "title": "Nowe wyniki", "message": "Dostępne są nowe wyniki ankiety." },
+            "LAW_UPDATE": { "title": "Aktualizacja prawa", "message": "Pojawiła się nowa aktualizacja w prawie." },
+            "LOGIN_STREAK_SMALL": { "title": "Seria logowań", "message": "Twoja seria logowań trwa!" },
+            "LOGIN_STREAK_BIG": { "title": "Długa seria logowań", "message": "Legendarna aktywność!" },
+            "ACHIEVEMENT_UNLOCK": { "title": "Osiągnięcie odblokowane", "message": "Odblokowałeś osiągnięcie: {{achievementName}}" },
+            "XP_GAIN": { "title": "Zdobyto XP", "message": "Otrzymałeś dodatkowe XP." },
+            "PROFILE_UPDATE": { "title": "Profil zaktualizowany", "message": "Twój profil został zaktualizowany." },
+            "VOTE_CAST": { "title": "Oddano głos", "message": "Twój głos został zapisany." },
+            "OPINION_POSTED": { "title": "Dodano opinię", "message": "Twoja opinia została opublikowana." },
+            "COURSE_COMPLETED": { "title": "Ukończono kurs", "message": "Ukończyłeś kurs." },
+            "LEVEL_UP": { "title": "Awans rangi", "message": "Awansowałeś na rangę {{rankName}}." }
+        },
         "noNewNotifications": "Brak nowych powiadomień",
         "noHistory": "Brak historii",
         "markAsRead": "Oznacz jako przeczytane",

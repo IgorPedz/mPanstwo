@@ -19,7 +19,6 @@ const AchievementCard = ({ item }) => {
   const requirement = item.requirementValue ?? 1;
 
   const progressPercent = Math.min((progress / requirement) * 100, 100);
-  console.log(item)
   return (
     <motion.div
       layout

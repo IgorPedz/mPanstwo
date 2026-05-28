@@ -213,6 +213,9 @@
             "rank10": {
                 "name": "Architekt der Demokratie",
                 "xp": "65.000 Ruf"
+            },
+            "maxRank": {
+                "name": "Maximaler Rang"
             }
         },
         "categories": {
@@ -349,6 +352,21 @@
     },
     "notifications": {
         "notifications": "Benachrichtigungen",
+        "events": {
+            "SURVEY_NEW": { "title": "Neue Umfrage", "message": "Sie haben eine neue Umfrage zu bearbeiten." },
+            "SURVEY_COMPLETED": { "title": "Umfrage abgeschlossen", "message": "Die Umfrage wurde abgeschlossen." },
+            "SURVEY_RESULT": { "title": "Neue Ergebnisse", "message": "Neue Umfrageergebnisse sind verfügbar." },
+            "LAW_UPDATE": { "title": "Rechtsaktualisierung", "message": "Eine neue Rechtsaktualisierung ist verfügbar." },
+            "LOGIN_STREAK_SMALL": { "title": "Anmelde-Serie", "message": "Ihre Serie geht weiter!" },
+            "LOGIN_STREAK_BIG": { "title": "Lange Anmelde-Serie", "message": "Legendäre Aktivität!" },
+            "ACHIEVEMENT_UNLOCK": { "title": "Errungenschaft freigeschaltet", "message": "Sie haben freigeschaltet: {{achievementName}}" },
+            "XP_GAIN": { "title": "XP erhalten", "message": "Sie haben zusätzliche XP erhalten." },
+            "PROFILE_UPDATE": { "title": "Profil aktualisiert", "message": "Ihr Profil wurde aktualisiert." },
+            "VOTE_CAST": { "title": "Stimme abgegeben", "message": "Ihre Stimme wurde gespeichert." },
+            "OPINION_POSTED": { "title": "Meinung gepostet", "message": "Ihre Meinung wurde veröffentlicht." },
+            "COURSE_COMPLETED": { "title": "Kurs abgeschlossen", "message": "Sie haben einen Kurs abgeschlossen." },
+            "LEVEL_UP": { "title": "Rang aufgestiegen", "message": "Sie sind auf Rang {{rankName}} aufgestiegen." }
+        },
         "noNotifications": "Keine Benachrichtigungen",
         "markAsRead": "Als gelesen markieren",
         "clearHistory": "Verlauf löschen",

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Maj 25, 2026 at 11:10 PM
+-- Generation Time: Maj 28, 2026 at 08:11 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -30,8 +30,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `achievements` (
   `id` bigint(20) NOT NULL,
   `slug` varchar(100) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `description` text DEFAULT NULL,
   `category_id` bigint(20) NOT NULL,
   `xp_reward` int(11) DEFAULT 0,
   `metric_key` varchar(50) NOT NULL,
@@ -47,27 +45,27 @@ CREATE TABLE `achievements` (
 -- Dumping data for table `achievements`
 --
 
-INSERT INTO `achievements` (`id`, `slug`, `title`, `description`, `category_id`, `xp_reward`, `metric_key`, `metric_source`, `requirement_value`, `rarity`, `created_at`, `active`, `hidden`) VALUES
-(44, 'survey_first', 'Pierwsza ankieta', 'Wypełnij pierwszą ankietę', 2, 10, 'survey_completed', 'users_metrics', 1, 'common', '2026-05-17 14:28:21', 1, 0),
-(45, 'survey_5', 'Aktywny uczestnik', 'Wypełnij 5 ankiet', 2, 25, 'survey_completed', 'users_metrics', 5, 'common', '2026-05-17 14:28:21', 1, 0),
-(46, 'survey_10', 'Głos społeczności', 'Wypełnij 10 ankiet', 2, 50, 'survey_completed', 'users_metrics', 10, 'rare', '2026-05-17 14:28:21', 1, 0),
-(47, 'survey_25', 'Ekspert opinii', 'Wypełnij 25 ankiet', 2, 100, 'survey_completed', 'users_metrics', 25, 'epic', '2026-05-17 14:28:21', 1, 0),
-(48, 'survey_50', 'Legenda ankiet', 'Wypełnij 50 ankiet', 2, 200, 'survey_completed', 'users_metrics', 50, 'legendary', '2026-05-17 14:28:21', 1, 0),
-(49, 'xp_100', 'Pierwsze kroki', 'Zdobądź 100 XP', 1, 20, 'xp', 'users', 100, 'common', '2026-05-18 18:21:36', 1, 0),
-(50, 'xp_1000', 'Rosnąca siła', 'Zdobądź 1000 XP', 1, 100, 'xp', 'users', 1000, 'rare', '2026-05-18 18:21:36', 1, 0),
-(51, 'xp_5000', 'Elita systemu', 'Zdobądź 5000 XP', 1, 300, 'xp', 'users', 5000, 'epic', '2026-05-18 18:21:36', 1, 0),
-(52, 'login_3', 'Regularność', '3 dni z rzędu logowania', 1, 25, 'login_streak', 'users', 3, 'common', '2026-05-18 18:20:40', 1, 0),
-(53, 'login_7', 'Wytrwałość', '7 dni z rzędu logowania', 1, 50, 'login_streak', 'users', 7, 'rare', '2026-05-18 18:20:40', 1, 0),
-(54, 'login_14', 'Konsekwentność', '14 dni z rzędu logowania', 1, 120, 'login_streak', 'users', 14, 'epic', '2026-05-18 18:20:40', 1, 0),
-(55, 'login_30', 'Niezłomność', '30 dni z rzędu logowania', 1, 250, 'login_streak', 'users', 30, 'legendary', '2026-05-18 18:27:38', 1, 0),
-(60, 'active_1', 'Pierwszy ślad', 'Pierwszy dzień aktywności', 1, 10, 'active_days', 'users', 1, 'common', '2026-05-18 18:30:47', 1, 0),
-(61, 'active_7', 'Tygodniowy rytm', 'Tydzień aktywności', 1, 50, 'active_days', 'users', 7, 'common', '2026-05-18 18:30:47', 1, 0),
-(62, 'active_14', 'Stały rytm', 'Dwa tygodnie aktywności', 1, 100, 'active_days', 'users', 14, 'rare', '2026-05-18 18:30:47', 1, 0),
-(63, 'active_30', 'Ugruntowana obecność', 'Miesiąc aktywności', 1, 300, 'active_days', 'users', 30, 'rare', '2026-05-18 18:30:47', 1, 0),
-(64, 'active_60', 'Nawyk systemu', 'Dwa miesiące aktywności', 1, 700, 'active_days', 'users', 60, 'rare', '2026-05-18 18:30:47', 1, 0),
-(65, 'active_100', 'Zautomatyzowana rutyna', '100 dni aktywności', 1, 1000, 'active_days', 'users', 100, 'epic', '2026-05-18 18:30:47', 1, 0),
-(66, 'active_180', 'Półroczna ciągłość', '180 dni aktywności', 1, 2500, 'active_days', 'users', 180, 'epic', '2026-05-18 18:30:47', 1, 0),
-(67, 'active_365', 'Pełny cykl', 'Rok nieprzerwanej obecności', 1, 5000, 'active_days', 'users', 365, 'legendary', '2026-05-18 18:30:47', 1, 0);
+INSERT INTO `achievements` (`id`, `slug`, `category_id`, `xp_reward`, `metric_key`, `metric_source`, `requirement_value`, `rarity`, `created_at`, `active`, `hidden`) VALUES
+(44, 'survey_first', 2, 10, 'survey_completed', 'users_metrics', 1, 'common', '2026-05-17 14:28:21', 1, 0),
+(45, 'survey_5', 2, 25, 'survey_completed', 'users_metrics', 5, 'common', '2026-05-17 14:28:21', 1, 0),
+(46, 'survey_10', 2, 50, 'survey_completed', 'users_metrics', 10, 'rare', '2026-05-17 14:28:21', 1, 0),
+(47, 'survey_25', 2, 100, 'survey_completed', 'users_metrics', 25, 'epic', '2026-05-17 14:28:21', 1, 0),
+(48, 'survey_50', 2, 200, 'survey_completed', 'users_metrics', 50, 'legendary', '2026-05-17 14:28:21', 1, 0),
+(49, 'xp_100', 1, 20, 'xp', 'users', 100, 'common', '2026-05-18 18:21:36', 1, 0),
+(50, 'xp_1000', 1, 100, 'xp', 'users', 1000, 'rare', '2026-05-18 18:21:36', 1, 0),
+(51, 'xp_5000', 1, 300, 'xp', 'users', 5000, 'epic', '2026-05-18 18:21:36', 1, 0),
+(52, 'login_3', 1, 25, 'login_streak', 'users', 3, 'common', '2026-05-18 18:20:40', 1, 0),
+(53, 'login_7', 1, 50, 'login_streak', 'users', 7, 'rare', '2026-05-18 18:20:40', 1, 0),
+(54, 'login_14', 1, 120, 'login_streak', 'users', 14, 'epic', '2026-05-18 18:20:40', 1, 0),
+(55, 'login_30', 1, 250, 'login_streak', 'users', 30, 'legendary', '2026-05-18 18:27:38', 1, 0),
+(60, 'active_1', 1, 10, 'active_days', 'users', 1, 'common', '2026-05-18 18:30:47', 1, 0),
+(61, 'active_7', 1, 50, 'active_days', 'users', 7, 'common', '2026-05-18 18:30:47', 1, 0),
+(62, 'active_14', 1, 100, 'active_days', 'users', 14, 'rare', '2026-05-18 18:30:47', 1, 0),
+(63, 'active_30', 1, 300, 'active_days', 'users', 30, 'rare', '2026-05-18 18:30:47', 1, 0),
+(64, 'active_60', 1, 700, 'active_days', 'users', 60, 'rare', '2026-05-18 18:30:47', 1, 0),
+(65, 'active_100', 1, 1000, 'active_days', 'users', 100, 'epic', '2026-05-18 18:30:47', 1, 0),
+(66, 'active_180', 1, 2500, 'active_days', 'users', 180, 'epic', '2026-05-18 18:30:47', 1, 0),
+(67, 'active_365', 1, 5000, 'active_days', 'users', 365, 'legendary', '2026-05-18 18:30:47', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -77,20 +75,19 @@ INSERT INTO `achievements` (`id`, `slug`, `title`, `description`, `category_id`,
 
 CREATE TABLE `achievement_categories` (
   `id` bigint(20) NOT NULL,
-  `slug` varchar(50) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `slug` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `achievement_categories`
 --
 
-INSERT INTO `achievement_categories` (`id`, `slug`, `name`) VALUES
-(1, 'activity', 'Aktywność'),
-(2, 'surveys', 'Ankiety'),
-(3, 'opinions', 'Opinie'),
-(4, 'marks', 'Oceny'),
-(5, 'special', 'Specjalne');
+INSERT INTO `achievement_categories` (`id`, `slug`) VALUES
+(1, 'activity'),
+(4, 'marks'),
+(3, 'opinions'),
+(5, 'special'),
+(2, 'surveys');
 
 -- --------------------------------------------------------
 
@@ -100,8 +97,7 @@ INSERT INTO `achievement_categories` (`id`, `slug`, `name`) VALUES
 
 CREATE TABLE `dashboard_content` (
   `id` int(11) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL,
   `accent` varchar(100) NOT NULL,
   `icon` varchar(100) NOT NULL,
   `iconColor` varchar(100) NOT NULL
@@ -111,66 +107,39 @@ CREATE TABLE `dashboard_content` (
 -- Dumping data for table `dashboard_content`
 --
 
-INSERT INTO `dashboard_content` (`id`, `type`, `name`, `accent`, `icon`, `iconColor`) VALUES
-(1, 'poslowie', 'Posłowie', 'blue', 'userGroup', 'blue'),
-(2, 'senatorowie', 'Senatorowie', 'indigo', 'user', 'indigo'),
-(3, 'kluby', 'Kluby Parlamentarne', 'purple', 'scale', 'purple'),
-(4, 'sejm', 'Sejm RP', 'emerald', 'parliament', 'emerald'),
-(5, 'senat', 'Senat RP', 'orange', 'parliament', 'orange'),
-(6, 'rada', 'Rada Ministrów', 'rose', 'ministry', 'rose'),
-(7, 'ustawy', 'Ustawy', 'green', 'document', 'green'),
-(8, 'kancelaria_prezydenta', 'Kancelaria Prezydenta RP', 'teal', 'briefcase', 'teal'),
-(9, 'prezydent', 'Prezydent RP', 'red', 'flag', 'red'),
-(10, 'uokik', 'UOKiK', 'pink', 'banknotes', 'pink'),
-(11, 'tk', 'Trybunał Konstytucyjny', 'yellow', 'courses', 'yellow'),
-(12, 'nsa', 'Naczelny Sąd Administracyjny', 'cyan', 'ministry', 'cyan'),
-(13, 'krs', 'Krajowa Rada Sądownictwa', 'teal', 'ministry', 'teal'),
-(14, 'finanse', 'Ministerstwo Finansów i Gospodarki', 'emerald-gradient', 'banknotes', 'emerald-gradient'),
-(15, 'zdrowie', 'Ministerstwo Zdrowia', 'red-gradient', 'heart', 'red-gradient'),
-(16, 'obrona', 'Ministerstwo Obrony Narodowej', 'cyan', 'shield', 'cyan'),
-(17, 'sprawiedliwosc', 'Ministerstwo Sprawiedliwości', 'purple-gradient', 'scale', 'purple-gradient'),
-(18, 'zagranica', 'Ministerstwo Spraw Zagranicznych', 'sky-gradient', 'globe', 'sky-gradient'),
-(19, 'infrastruktura', 'Ministerstwo Infrastruktury', 'orange-gradient', 'truck', 'orange-gradient'),
-(20, 'rolnictwo', 'Min. Rolnictwa i Rozwoju Wsi', 'lime-gradient', 'tractor', 'lime-gradient'),
-(21, 'klimat', 'Ministerstwo Klimatu i Środowiska', 'emerald-gradient', 'leaf', 'emerald-gradient'),
-(22, 'aktywa', 'Ministerstwo Aktywów Państwowych', 'amber-gradient', 'factory', 'amber-gradient'),
-(23, 'kultura', 'Min. Kultury i Dziedzictwa Narod.', 'pink-gradient', 'paintbrush', 'pink-gradient'),
-(24, 'sport', 'Ministerstwo Sportu i Turystyki', 'cyan-gradient', 'trophy', 'cyan-gradient'),
-(25, 'rodzina', 'Min. Rod. Pracy i Pol. Społecznej', 'rose-gradient', 'users', 'rose-gradient'),
-(26, 'energia', 'Ministerstwo Energii', 'yellow', 'lighting', 'yellow'),
-(27, 'edukacja', 'Ministerstwo Edukacji', 'emerald', 'courses', 'emerald'),
-(28, 'fundusze', 'Ministerstwo Funduszy i Pol. Regionalnej', 'pink', 'euro', 'pink'),
-(29, 'nauka', 'Min. Nauki i Szkol. Wyższego', 'lime-gradient', 'courses', 'lime-gradient'),
-(30, 'wewnetrzne', 'Min. Spraw Wew. i Administracji', 'cyan-gradient', 'tablet', 'cyan-gradient'),
-(31, 'cyfryzacja', 'Ministerstwo Cyfryzacji', 'amber-gradient', 'computer', 'amber-gradient'),
-(32, 'kprm', 'Kancelaria Prezesa Rady Ministrów', 'rose-gradient', 'briefcase', 'rose-gradient');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `events`
---
-
-CREATE TABLE `events` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
-  `category` varchar(50) NOT NULL,
-  `source` varchar(255) DEFAULT NULL,
-  `location` varchar(255) DEFAULT NULL,
-  `starts_at` datetime NOT NULL,
-  `ends_at` datetime DEFAULT NULL,
-  `importance` int(11) DEFAULT 1,
-  `url` text DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `events`
---
-
-INSERT INTO `events` (`id`, `title`, `description`, `category`, `source`, `location`, `starts_at`, `ends_at`, `importance`, `url`, `created_at`) VALUES
-(1, 'Posiedzenie Sejmu', NULL, 'parliament', NULL, NULL, '2026-05-28 09:00:00', NULL, 3, NULL, '2026-05-20 15:00:45');
+INSERT INTO `dashboard_content` (`id`, `slug`, `accent`, `icon`, `iconColor`) VALUES
+(1, 'members_of_parliament', 'blue', 'userGroup', 'blue'),
+(2, 'senators', 'indigo', 'user', 'indigo'),
+(3, 'parliamentary_clubs', 'purple', 'scale', 'purple'),
+(4, 'sejm', 'emerald', 'parliament', 'emerald'),
+(5, 'senate', 'orange', 'parliament', 'orange'),
+(6, 'council_of_ministers', 'rose', 'ministry', 'rose'),
+(7, 'laws', 'green', 'document', 'green'),
+(8, 'presidential_chancellery', 'teal', 'briefcase', 'teal'),
+(9, 'president', 'red', 'flag', 'red'),
+(10, 'uokik', 'pink', 'banknotes', 'pink'),
+(11, 'constitutional_tribunal', 'yellow', 'courses', 'yellow'),
+(12, 'supreme_administrative_court', 'cyan', 'ministry', 'cyan'),
+(13, 'national_council_of_the_judiciary', 'teal', 'ministry', 'teal'),
+(14, 'ministry_of_finance', 'emerald-gradient', 'banknotes', 'emerald-gradient'),
+(15, 'ministry_of_health', 'red-gradient', 'heart', 'red-gradient'),
+(16, 'ministry_of_national_defence', 'cyan', 'shield', 'cyan'),
+(17, 'ministry_of_justice', 'purple-gradient', 'scale', 'purple-gradient'),
+(18, 'ministry_of_foreign_affairs', 'sky-gradient', 'globe', 'sky-gradient'),
+(19, 'ministry_of_infrastructure', 'orange-gradient', 'truck', 'orange-gradient'),
+(20, 'ministry_of_agriculture', 'lime-gradient', 'tractor', 'lime-gradient'),
+(21, 'ministry_of_climate_and_environment', 'emerald-gradient', 'leaf', 'emerald-gradient'),
+(22, 'ministry_of_state_assets', 'amber-gradient', 'factory', 'amber-gradient'),
+(23, 'ministry_of_culture_and_national_heritage', 'pink-gradient', 'paintbrush', 'pink-gradient'),
+(24, 'ministry_of_sport_and_tourism', 'cyan-gradient', 'trophy', 'cyan-gradient'),
+(25, 'ministry_of_family_labour_and_social_policy', 'rose-gradient', 'users', 'rose-gradient'),
+(26, 'ministry_of_energy', 'yellow', 'lighting', 'yellow'),
+(27, 'ministry_of_education', 'emerald', 'courses', 'emerald'),
+(28, 'ministry_of_funds_and_regional_policy', 'pink', 'euro', 'pink'),
+(29, 'ministry_of_science_and_higher_education', 'lime-gradient', 'courses', 'lime-gradient'),
+(30, 'ministry_of_internal_affairs_and_administration', 'cyan-gradient', 'tablet', 'cyan-gradient'),
+(31, 'ministry_of_digital_affairs', 'amber-gradient', 'computer', 'amber-gradient'),
+(32, 'chancellery_of_the_prime_minister', 'rose-gradient', 'briefcase', 'rose-gradient');
 
 -- --------------------------------------------------------
 
@@ -182,10 +151,9 @@ CREATE TABLE `notifications` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `type` varchar(50) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `message` text NOT NULL,
   `data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`data`)),
   `icon` varchar(50) DEFAULT NULL,
+  `color` varchar(50) NOT NULL,
   `is_read` tinyint(1) DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -194,24 +162,24 @@ CREATE TABLE `notifications` (
 -- Dumping data for table `notifications`
 --
 
-INSERT INTO `notifications` (`id`, `user_id`, `type`, `title`, `message`, `data`, `icon`, `is_read`, `created_at`) VALUES
-(53, 2, 'SURVEY_COMPLETED', 'Ankieta zakończona', '+50 XP za ukończenie ankiety', 'null', NULL, 1, '2026-05-10 10:00:14'),
-(55, 5, 'SURVEY_COMPLETED', 'Ankieta zakończona', '+50 XP za ukończenie ankiety', 'null', NULL, 1, '2026-05-14 20:44:46'),
-(56, 6, 'SURVEY_COMPLETED', 'Ankieta zakończona', '+50 XP za ukończenie ankiety', 'null', NULL, 1, '2026-05-15 12:13:46'),
-(146, 7, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągniecię: Pierwsza ankieta', '{\"achievementId\":44,\"xp\":10}', 'achievement_unlock', 1, '2026-05-17 14:49:42'),
-(147, 7, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', 1, '2026-05-17 14:49:42'),
-(190, 8, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągnięcie: Pierwsza ankieta', '{\"achievementId\":44,\"xp\":10}', 'trophy', 1, '2026-05-19 19:15:37'),
-(191, 8, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągnięcie: Pierwszy ślad', '{\"achievementId\":60,\"xp\":10}', 'trophy', 1, '2026-05-19 19:15:37'),
-(192, 8, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', 1, '2026-05-19 19:15:37'),
-(193, 8, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągnięcie: Pierwsze kroki', '{\"achievementId\":49,\"xp\":20}', 'trophy', 1, '2026-05-19 19:16:23'),
-(194, 8, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":120}', 'survey_completed', 1, '2026-05-19 19:16:23'),
-(195, 8, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":190}', 'survey_completed', 1, '2026-05-19 19:16:25'),
-(196, 8, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":240}', 'survey_completed', 1, '2026-05-19 19:16:28'),
-(197, 9, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągnięcie: Pierwsza ankieta', '{\"achievementId\":44,\"xp\":10}', 'trophy', 1, '2026-05-19 19:18:44'),
-(198, 9, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągnięcie: Pierwszy ślad', '{\"achievementId\":60,\"xp\":10}', 'trophy', 1, '2026-05-19 19:18:44'),
-(199, 9, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', 1, '2026-05-19 19:18:44'),
-(206, 4, 'ACHIEVEMENT_UNLOCK', 'Osiągnięcie odblokowane', 'Zdobyto osiągnięcie: Ekspert opinii', '{\"achievementId\":47,\"xp\":100}', 'trophy', 1, '2026-05-20 14:56:32'),
-(207, 4, 'SURVEY_COMPLETED', 'Ankieta zakończona', 'Wypełniono ankiete', '{\"xp\":50,\"totalXP\":7890}', 'survey_completed', 1, '2026-05-20 14:56:32');
+INSERT INTO `notifications` (`id`, `user_id`, `type`, `data`, `icon`, `color`, `is_read`, `created_at`) VALUES
+(53, 2, 'SURVEY_COMPLETED', 'null', NULL, '', 1, '2026-05-10 10:00:14'),
+(55, 5, 'SURVEY_COMPLETED', 'null', NULL, '', 1, '2026-05-14 20:44:46'),
+(56, 6, 'SURVEY_COMPLETED', 'null', NULL, '', 1, '2026-05-15 12:13:46'),
+(146, 7, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":44,\"xp\":10}', 'achievement_unlock', '', 1, '2026-05-17 14:49:42'),
+(147, 7, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', '', 1, '2026-05-17 14:49:42'),
+(190, 8, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":44,\"xp\":10}', 'trophy', '', 1, '2026-05-19 19:15:37'),
+(191, 8, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":60,\"xp\":10}', 'trophy', '', 1, '2026-05-19 19:15:37'),
+(192, 8, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', '', 1, '2026-05-19 19:15:37'),
+(193, 8, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":49,\"xp\":20}', 'trophy', '', 1, '2026-05-19 19:16:23'),
+(194, 8, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":120}', 'survey_completed', '', 1, '2026-05-19 19:16:23'),
+(195, 8, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":190}', 'survey_completed', '', 1, '2026-05-19 19:16:25'),
+(196, 8, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":240}', 'survey_completed', '', 1, '2026-05-19 19:16:28'),
+(197, 9, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":44,\"xp\":10}', 'trophy', '', 1, '2026-05-19 19:18:44'),
+(198, 9, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":60,\"xp\":10}', 'trophy', '', 1, '2026-05-19 19:18:44'),
+(199, 9, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', '', 1, '2026-05-19 19:18:44'),
+(246, 4, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":840}', 'survey_completed', 'emerald', 1, '2026-05-28 17:59:45'),
+(247, 4, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":890}', 'survey_completed', 'emerald', 1, '2026-05-28 17:59:48');
 
 -- --------------------------------------------------------
 
@@ -222,7 +190,6 @@ INSERT INTO `notifications` (`id`, `user_id`, `type`, `title`, `message`, `data`
 CREATE TABLE `options` (
   `id` int(11) NOT NULL,
   `question_id` int(11) DEFAULT NULL,
-  `label` varchar(255) DEFAULT NULL,
   `value` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -230,31 +197,31 @@ CREATE TABLE `options` (
 -- Dumping data for table `options`
 --
 
-INSERT INTO `options` (`id`, `question_id`, `label`, `value`) VALUES
-(17, 1, 'Tak', 'yes'),
-(18, 1, 'Nie', 'no'),
-(19, 2, 'Tak', 'yes'),
-(20, 2, 'Nie', 'no'),
-(21, 3, 'Tak', 'yes'),
-(22, 3, 'Nie', 'no'),
-(23, 4, 'Tak', 'yes'),
-(24, 4, 'Nie', 'no'),
-(25, 5, 'Tak', 'yes'),
-(26, 5, 'Nie', 'no'),
-(27, 6, 'Tak', 'yes'),
-(28, 6, 'Nie', 'no'),
-(29, 7, 'Tak', 'yes'),
-(30, 7, 'Nie', 'no'),
-(31, 8, 'Tak', 'yes'),
-(32, 8, 'Nie', 'no'),
-(33, 9, 'Tak', 'yes'),
-(34, 9, 'Nie', 'no'),
-(35, 10, 'Tak', 'yes'),
-(36, 10, 'Nie', 'no'),
-(37, 11, 'Tak', 'yes'),
-(38, 11, 'Nie', 'no'),
-(39, 12, 'Tak', 'yes'),
-(40, 12, 'Nie', 'no');
+INSERT INTO `options` (`id`, `question_id`, `value`) VALUES
+(17, 1, 'yes'),
+(18, 1, 'no'),
+(19, 2, 'yes'),
+(20, 2, 'no'),
+(21, 3, 'yes'),
+(22, 3, 'no'),
+(23, 4, 'yes'),
+(24, 4, 'no'),
+(25, 5, 'yes'),
+(26, 5, 'no'),
+(27, 6, 'yes'),
+(28, 6, 'no'),
+(29, 7, 'yes'),
+(30, 7, 'no'),
+(31, 8, 'yes'),
+(32, 8, 'no'),
+(33, 9, 'yes'),
+(34, 9, 'no'),
+(35, 10, 'yes'),
+(36, 10, 'no'),
+(37, 11, 'yes'),
+(38, 11, 'no'),
+(39, 12, 'yes'),
+(40, 12, 'no');
 
 -- --------------------------------------------------------
 
@@ -297,7 +264,6 @@ CREATE TABLE `ranks` (
   `level` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `required_xp` int(11) NOT NULL,
-  `icon` varchar(255) DEFAULT NULL,
   `color` varchar(20) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -306,17 +272,17 @@ CREATE TABLE `ranks` (
 -- Dumping data for table `ranks`
 --
 
-INSERT INTO `ranks` (`id`, `level`, `name`, `required_xp`, `icon`, `color`, `created_at`) VALUES
-(6, 1, 'Obywatel', 0, 'rank1', '#9CA3AF', '2026-05-17 13:17:07'),
-(7, 2, 'Działacz Lokalny', 500, 'rank2', '#22C55E', '2026-05-17 13:17:07'),
-(8, 3, 'Radny Społeczny', 1500, 'rank3', '#14B8A6', '2026-05-17 13:17:07'),
-(9, 4, 'Analityk Sejmowy', 3000, 'rank4', '#3B82F6', '2026-05-17 13:17:07'),
-(10, 5, 'Komisarz Obywatelski', 6000, 'rank5', '#6366F1', '2026-05-17 13:17:07'),
-(11, 6, 'Strażnik Demokracji', 10000, 'rank6', '#8B5CF6', '2026-05-17 13:17:07'),
-(12, 7, 'Ekspert Legislacyjny', 16000, 'rank7', '#A855F7', '2026-05-17 13:17:07'),
-(13, 8, 'Obserwator Państwowy', 25000, 'rank8', '#D946EF', '2026-05-17 13:17:07'),
-(14, 9, 'Marszałek Debaty', 40000, 'rank9', '#F59E0B', '2026-05-17 13:17:07'),
-(15, 10, 'Architekt Demokracji', 65000, 'rank10', '#EF4444', '2026-05-17 13:17:07');
+INSERT INTO `ranks` (`id`, `level`, `name`, `required_xp`, `color`, `created_at`) VALUES
+(6, 1, 'rank1', 0, '#9CA3AF', '2026-05-17 13:17:07'),
+(7, 2, 'rank2', 500, '#22C55E', '2026-05-17 13:17:07'),
+(8, 3, 'rank3', 1500, '#14B8A6', '2026-05-17 13:17:07'),
+(9, 4, 'rank4', 3000, '#3B82F6', '2026-05-17 13:17:07'),
+(10, 5, 'rank5', 6000, '#6366F1', '2026-05-17 13:17:07'),
+(11, 6, 'rank6', 10000, '#8B5CF6', '2026-05-17 13:17:07'),
+(12, 7, 'rank7', 16000, '#A855F7', '2026-05-17 13:17:07'),
+(13, 8, 'rank8', 25000, '#D946EF', '2026-05-17 13:17:07'),
+(14, 9, 'rank9', 40000, '#F59E0B', '2026-05-17 13:17:07'),
+(15, 10, 'rank10', 65000, '#EF4444', '2026-05-17 13:17:07');
 
 -- --------------------------------------------------------
 
@@ -364,8 +330,8 @@ CREATE TABLE `survey_answers` (
 --
 
 INSERT INTO `survey_answers` (`id`, `survey_id`, `user_id`, `answers`, `created_at`) VALUES
-(219, 1, 4, '{\"1\":\"yes\",\"2\":\"yes\",\"3\":\"yes\"}', '2026-05-20 14:56:02'),
-(220, 2, 4, '{\"4\":\"no\",\"5\":\"no\",\"6\":\"no\"}', '2026-05-20 14:56:32');
+(247, 1, 4, '{\"1\":\"yes\",\"2\":\"yes\",\"3\":\"yes\"}', '2026-05-28 17:59:45'),
+(248, 2, 4, '{\"4\":\"yes\",\"5\":\"yes\",\"6\":\"yes\"}', '2026-05-28 17:59:48');
 
 -- --------------------------------------------------------
 
@@ -402,7 +368,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `is_strong`, `created_at
 (1, '', 'igorrpedziwilk@gmail.com', '$2b$10$KoKNM42i0rsw3C0F31thPuOMx4kiUi/zPY8NkS/HHKgl/aMiZ5uDa', 0, '2026-02-24 20:36:07', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
 (2, 'qwe', 'igor@wp.pl', '$2b$10$nGHb96MKg/ozPM/yBSl3iONFyrhrgyxpfePYt9oVyxON/AuTkqGI.', 0, '2026-02-24 20:45:14', '56fb4d26-e893-4a29-a772-7529ac6ec39c', 20260514, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
 (3, 'IgorPedz', 'pedz@wp.pl', '$2b$10$L10qTJ1I9g3wQEnhIOwvfuJAmtu8Aj6wjZwj2clDfs41aZiYPUySK', 0, '2026-05-10 12:18:39', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
-(4, 'igor', 'qigorq@wp.pl', '$2b$10$P4AlEULBNpKLfexNz/DqD.A4GsKn74S27bYX5jh9tLxTiJH2OaPQy', 1, '2026-05-14 18:56:00', NULL, NULL, 3, '2026-05-25', 25, 1, NULL, NULL, '2026-05-25', 7990, 3, 'Użytkownik'),
+(4, 'igor', 'qigorq@wp.pl', '$2b$10$P4AlEULBNpKLfexNz/DqD.A4GsKn74S27bYX5jh9tLxTiJH2OaPQy', 1, '2026-05-14 18:56:00', 'c5be64bf-e8cb-4c0e-9dc8-64b27b0f323b', 1779820035820, 7, '2026-05-28', 30, 1, NULL, NULL, '2026-05-28', 890, 3, 'Użytkownik'),
 (5, 'test', 'test@wp.pl', '$2b$10$QGBop034Lo4eRK5mtynH0O.aauocBwppzn6YnuR/8CHnZ12SR4olO', 0, '2026-05-14 20:34:46', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
 (6, 'testowekonto', 'testtest@wp.pl', '$2b$10$OCUhJzWMZVnWlR3vTIaM8uv4joGWMUJkZG44IVTHlfkD/Zv72Jh66', 0, '2026-05-15 12:12:30', NULL, NULL, 1, '2026-05-15', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
 (7, 'igorpedzi', 'pedziwilk@gmail.com', '$2b$10$5jqt3ellaNs2D5bmibQ9X.62s9kfLf1br780mOJVBtMqDLhI.E2..', 1, '2026-05-17 14:49:27', NULL, NULL, 1, '2026-05-17', 1, 0, NULL, NULL, '2026-05-17', 60, 1, 'Użytkownik'),
@@ -434,22 +400,22 @@ INSERT INTO `user_achievements` (`id`, `user_id`, `achievement_id`, `progress`, 
 (206, 4, 45, 5, 1, '2026-05-18 18:06:21', '2026-05-18 18:05:56'),
 (207, 4, 46, 10, 1, '2026-05-19 19:25:51', '2026-05-18 18:05:56'),
 (208, 4, 47, 25, 1, '2026-05-20 16:56:32', '2026-05-18 18:05:56'),
-(209, 4, 48, 25, 0, NULL, '2026-05-18 18:05:56'),
+(209, 4, 48, 50, 1, NULL, '2026-05-18 18:05:56'),
 (353, 4, 49, 100, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
 (354, 4, 50, 1000, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
 (355, 4, 51, 5000, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
 (356, 4, 52, 3, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
 (357, 4, 53, 7, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
 (358, 4, 54, 14, 1, '2026-05-19 22:01:59', '2026-05-19 19:36:41'),
-(359, 4, 55, 16, 0, NULL, '2026-05-19 19:36:41'),
+(359, 4, 55, 7, 0, NULL, '2026-05-19 19:36:41'),
 (360, 4, 60, 1, 1, '2026-05-19 19:49:31', '2026-05-19 19:36:41'),
 (361, 4, 61, 7, 1, '2026-05-19 19:49:31', '2026-05-19 19:36:41'),
 (362, 4, 62, 14, 1, '2026-05-19 19:49:31', '2026-05-19 19:36:41'),
-(363, 4, 63, 24, 0, NULL, '2026-05-19 19:36:41'),
-(364, 4, 64, 24, 0, NULL, '2026-05-19 19:36:41'),
-(365, 4, 65, 24, 0, NULL, '2026-05-19 19:36:41'),
-(366, 4, 66, 24, 0, NULL, '2026-05-19 19:36:41'),
-(367, 4, 67, 24, 0, NULL, '2026-05-19 19:36:41'),
+(363, 4, 63, 30, 1, '2026-05-28 17:48:35', '2026-05-19 19:36:41'),
+(364, 4, 64, 30, 0, NULL, '2026-05-19 19:36:41'),
+(365, 4, 65, 30, 0, NULL, '2026-05-19 19:36:41'),
+(366, 4, 66, 30, 0, NULL, '2026-05-19 19:36:41'),
+(367, 4, 67, 30, 0, NULL, '2026-05-19 19:36:41'),
 (490, 8, 44, 1, 1, '2026-05-19 21:15:37', '2026-05-19 21:15:37'),
 (491, 8, 45, 4, 0, NULL, '2026-05-19 21:15:37'),
 (492, 8, 46, 4, 0, NULL, '2026-05-19 21:15:37'),
@@ -494,17 +460,6 @@ INSERT INTO `user_achievements` (`id`, `user_id`, `achievement_id`, `progress`, 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `user_activity`
---
-
-CREATE TABLE `user_activity` (
-  `user_id` int(11) NOT NULL,
-  `activity_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Struktura tabeli dla tabeli `user_metrics`
 --
 
@@ -527,7 +482,7 @@ CREATE TABLE `user_metrics` (
 --
 
 INSERT INTO `user_metrics` (`user_id`, `votes_count`, `survey_completed`, `opinions_written`, `courses_completed`, `tracked_laws_count`, `comments_count`, `likes_received`, `achievements_unlocked`, `created_surveys`, `updated_at`) VALUES
-(4, 0, 25, 0, 0, 0, 0, 0, 0, 0, '2026-05-20 16:56:32'),
+(4, 0, 69, 0, 0, 0, 0, 0, 0, 0, '2026-05-28 19:59:48'),
 (7, 0, 1, 0, 0, 0, 0, 0, 0, 0, '2026-05-17 16:49:42'),
 (8, 0, 4, 0, 0, 0, 0, 0, 0, 0, '2026-05-19 21:16:28'),
 (9, 0, 1, 0, 0, 0, 0, 0, 0, 0, '2026-05-19 21:18:44');
@@ -549,7 +504,7 @@ CREATE TABLE `user_tiles` (
 --
 
 INSERT INTO `user_tiles` (`id`, `user_id`, `tiles`) VALUES
-(0, 4, '[{\"id\":\"9050c1bc-ca5d-41ba-ab56-ee62065730ef\",\"type\":\"zdrowie\",\"name\":\"Ministerstwo Zdrowia\",\"accent\":\"red-gradient\",\"icon\":\"heart\",\"iconColor\":\"red-gradient\"},{\"id\":\"c8ce28b9-9fef-463c-853b-fbc7bfd76e90\",\"type\":\"obrona\",\"name\":\"Ministerstwo Obrony Narodowej\",\"accent\":\"cyan\",\"icon\":\"shield\",\"iconColor\":\"cyan\"},{\"id\":\"ccf220b8-61f2-4cf0-8317-067c14722866\",\"type\":\"sprawiedliwosc\",\"name\":\"Ministerstwo Sprawiedliwości\",\"accent\":\"purple-gradient\",\"icon\":\"scale\",\"iconColor\":\"purple-gradient\"}]'),
+(0, 4, '[{\"id\":\"747b5163-f09d-4b3a-8ade-f2241d216095\",\"slug\":\"members_of_parliament\",\"accent\":\"blue\",\"icon\":\"userGroup\",\"iconColor\":\"blue\"},{\"id\":\"1abe991b-28ae-4c82-9fb8-a9ed7a09615f\",\"slug\":\"senators\",\"accent\":\"indigo\",\"icon\":\"user\",\"iconColor\":\"indigo\"},{\"id\":\"97bf3f3e-6c4e-4d80-91e9-7e306d6e81ab\",\"slug\":\"parliamentary_clubs\",\"accent\":\"purple\",\"icon\":\"scale\",\"iconColor\":\"purple\"},{\"id\":\"8df633e9-9ded-4f57-b87f-cf9b18cf5d75\",\"slug\":\"laws\",\"accent\":\"green\",\"icon\":\"document\",\"iconColor\":\"green\"},{\"id\":\"9c40940a-bdaf-4347-a5e8-815eae5179c1\",\"slug\":\"council_of_ministers\",\"accent\":\"rose\",\"icon\":\"ministry\",\"iconColor\":\"rose\"},{\"id\":\"8dcae28d-5dc1-4eb9-8d32-6492109ba0b0\",\"slug\":\"senate\",\"accent\":\"orange\",\"icon\":\"parliament\",\"iconColor\":\"orange\"},{\"id\":\"7ff695f0-a6b4-4497-8bc7-946d16ce8c65\",\"slug\":\"ministry_of_science_and_higher_education\",\"accent\":\"lime-gradient\",\"icon\":\"courses\",\"iconColor\":\"lime-gradient\"}]'),
 (1, 6, '[]'),
 (2, 5, '[{\"id\":\"bed47375-71d2-4fae-b705-67a2d2cfbe52\",\"type\":\"senatorowie\",\"name\":\"Senatorowie\",\"accent\":\"indigo\",\"icon\":\"user\",\"iconColor\":\"indigo\"},{\"id\":\"e247bbb8-086a-49c7-9dfb-2a1a82822717\",\"type\":\"rada\",\"name\":\"Rada Ministrów\",\"accent\":\"rose\",\"icon\":\"ministry\",\"iconColor\":\"rose\"},{\"id\":\"45350418-3aff-499a-970e-2c9efbb79dcd\",\"type\":\"uokik\",\"name\":\"UOKiK\",\"accent\":\"pink\",\"icon\":\"banknotes\",\"iconColor\":\"pink\"},{\"id\":\"f5fada37-f4b0-49e4-b2a2-baf2b883f408\",\"type\":\"prezydent\",\"name\":\"Prezydent RP\",\"accent\":\"red\",\"icon\":\"flag\",\"iconColor\":\"red\"},{\"id\":\"88a950a9-e9df-4537-89e6-4eab9b339ab8\",\"type\":\"senat\",\"name\":\"Senat RP\",\"accent\":\"orange\",\"icon\":\"parliament\",\"iconColor\":\"orange\"},{\"id\":\"3ea6f6b3-5bbc-4406-89c4-48dbec122b7e\",\"type\":\"poslowie\",\"name\":\"Posłowie\",\"accent\":\"blue\",\"icon\":\"userGroup\",\"iconColor\":\"blue\"}]'),
 (3, 3, '[{\"id\":\"5b69f735-23c1-4505-bf6d-650e824a934f\",\"type\":\"senatorowie\",\"name\":\"Senatorowie\",\"accent\":\"indigo\",\"icon\":\"user\",\"iconColor\":\"indigo\"}]');
@@ -713,7 +668,42 @@ INSERT INTO `xp_logs` (`id`, `user_id`, `amount`, `reason`, `created_at`) VALUES
 (138, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-20 16:55:01'),
 (139, 4, 50, 'SURVEY_COMPLETED', '2026-05-20 16:56:02'),
 (140, 4, 50, 'SURVEY_COMPLETED', '2026-05-20 16:56:32'),
-(141, 4, 100, 'ACHIEVEMENT', '2026-05-20 16:56:32');
+(141, 4, 100, 'ACHIEVEMENT', '2026-05-20 16:56:32'),
+(142, 4, 10, 'LOGIN_STREAK_SMALL', '2026-05-26 19:41:02'),
+(143, 4, 50, 'SURVEY_COMPLETED', '2026-05-26 22:11:13'),
+(144, 4, 10, 'LOGIN_STREAK_SMALL', '2026-05-27 00:33:49'),
+(145, 4, 50, 'SURVEY_COMPLETED', '2026-05-27 00:39:54'),
+(146, 4, 50, 'SURVEY_COMPLETED', '2026-05-27 00:42:26'),
+(147, 4, 50, 'SURVEY_COMPLETED', '2026-05-27 00:43:46'),
+(148, 4, 50, 'SURVEY_COMPLETED', '2026-05-27 00:45:06'),
+(149, 4, 50, 'SURVEY_COMPLETED', '2026-05-27 00:46:22'),
+(150, 4, 10, 'LOGIN_STREAK_SMALL', '2026-05-28 17:28:48'),
+(151, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 17:34:01'),
+(152, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 17:37:47'),
+(153, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-28 17:48:35'),
+(154, 4, 300, 'ACHIEVEMENT', '2026-05-28 17:48:35'),
+(155, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 17:51:49'),
+(156, 4, 200, 'ACHIEVEMENT', '2026-05-28 17:51:49'),
+(157, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 17:57:45'),
+(158, 4, 200, 'ACHIEVEMENT', '2026-05-28 17:57:45'),
+(159, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 18:04:10'),
+(160, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 18:07:04'),
+(161, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 18:11:15'),
+(162, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 18:12:23'),
+(163, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 18:24:03'),
+(164, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 18:24:14'),
+(165, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 18:25:03'),
+(166, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 18:40:01'),
+(167, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 18:40:33'),
+(168, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 18:43:57'),
+(169, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:50:32'),
+(170, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:51:12'),
+(171, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:54:33'),
+(172, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:57:52'),
+(173, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:58:22'),
+(174, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:58:33'),
+(175, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:59:45'),
+(176, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:59:48');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -738,12 +728,6 @@ ALTER TABLE `achievement_categories`
 -- Indeksy dla tabeli `dashboard_content`
 --
 ALTER TABLE `dashboard_content`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeksy dla tabeli `events`
---
-ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -801,12 +785,6 @@ ALTER TABLE `user_achievements`
   ADD KEY `achievement_id` (`achievement_id`);
 
 --
--- Indeksy dla tabeli `user_activity`
---
-ALTER TABLE `user_activity`
-  ADD PRIMARY KEY (`user_id`,`activity_date`);
-
---
 -- Indeksy dla tabeli `user_metrics`
 --
 ALTER TABLE `user_metrics`
@@ -847,19 +825,13 @@ ALTER TABLE `achievement_categories`
 -- AUTO_INCREMENT for table `dashboard_content`
 --
 ALTER TABLE `dashboard_content`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
---
--- AUTO_INCREMENT for table `events`
---
-ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
 
 --
 -- AUTO_INCREMENT for table `options`
@@ -889,7 +861,7 @@ ALTER TABLE `surveys`
 -- AUTO_INCREMENT for table `survey_answers`
 --
 ALTER TABLE `survey_answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -901,13 +873,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_achievements`
 --
 ALTER TABLE `user_achievements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=632;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=818;
 
 --
 -- AUTO_INCREMENT for table `xp_logs`
 --
 ALTER TABLE `xp_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
 -- Constraints for dumped tables
@@ -937,12 +909,6 @@ ALTER TABLE `questions`
 ALTER TABLE `user_achievements`
   ADD CONSTRAINT `user_achievements_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `user_achievements_ibfk_2` FOREIGN KEY (`achievement_id`) REFERENCES `achievements` (`id`);
-
---
--- Constraints for table `user_activity`
---
-ALTER TABLE `user_activity`
-  ADD CONSTRAINT `user_activity_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `user_metrics`

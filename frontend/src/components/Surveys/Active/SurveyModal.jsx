@@ -99,7 +99,7 @@ const SurveyModal = ({ open, onClose, survey, onInfo, onFinished }) => {
                             {String.fromCharCode(65 + idx)}
                           </span>
                           <span className="text-xl font-bold text-slate-700 dark:text-slate-200">
-                            {opt.label}
+                            {t(`surveys.${opt.value}`)}
                           </span>
                         </span>
                         <div className="opacity-0 group-hover:opacity-100 transition-opacity text-blue-600">
