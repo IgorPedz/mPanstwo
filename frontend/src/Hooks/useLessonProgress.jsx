@@ -2,24 +2,28 @@ import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useUser } from "../Contexts/UserContext";
 
-export function useLessonProgress(lessonId) {
+export function useLessonProgress(lessonId, courseId) {
   const { user } = useUser();
 
   const [lessonProgress, setLessonProgress] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const fetchProgress = useCallback(async () => {
-    if (!user?.id || !lessonId) return;
+    if (!user?.id || !lessonId || !courseId) return;
 
     try {
       setLoading(true);
 
-      const { data } = await axios.get(`http://localhost:5000/courses/lesson-progress`, {
-        params: {
-          userId: user.id,
-          lessonId,
+      const { data } = await axios.get(
+        `http://localhost:5000/courses/lesson-progress`,
+        {
+          params: {
+            userId: user.id,
+            lessonId,
+            courseId,
+          },
         },
-      });
+      );
 
       setLessonProgress(data);
     } catch (err) {
@@ -27,7 +31,7 @@ export function useLessonProgress(lessonId) {
     } finally {
       setLoading(false);
     }
-  }, [user?.id, lessonId]);
+  }, [user?.id, lessonId, courseId]);
 
   useEffect(() => {
     fetchProgress();
@@ -38,6 +42,7 @@ export function useLessonProgress(lessonId) {
       await axios.post(`http://localhost:5000/courses/lesson/complete`, {
         userId: user.id,
         lessonId,
+        courseId: courseId,
       });
 
       setLessonProgress((prev) => ({
@@ -54,6 +59,7 @@ export function useLessonProgress(lessonId) {
       await axios.post(`http://localhost:5000/courses/lesson/quiz-complete`, {
         userId: user.id,
         lessonId,
+        courseId: courseId,
       });
 
       setLessonProgress((prev) => ({

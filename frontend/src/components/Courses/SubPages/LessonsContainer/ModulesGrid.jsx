@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 
 export default function LessonModulesGrid({
   modules,
+  courseSlug,
+  lessonSlug,
   progress,
   modulesDone,
   setActiveModule,

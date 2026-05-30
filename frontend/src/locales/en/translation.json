@@ -127,7 +127,7 @@
             "user": "User",
             "admin": "Admin",
             "ekspert": "Expert"
-        }   
+        }
     },
     "achievements": {
         "achievements": "Achievements",
@@ -218,7 +218,6 @@
             "maxRank": {
                 "name": "Maximum Rank"
             }
-            
         },
         "categories": {
             "all": "All",
@@ -352,8 +351,25 @@
         "no": "No",
         "yes": "Yes"
     },
+    "lessonSidebar": {
+        "progressTitle": "Your Progress",
+        "completedModules": "Completed modules",
+        "allSections": "All sections",
+        "quiz": "Quiz test",
+        "ready": "Ready",
+        "locked": "Locked",
+        "percentage": "Percentage score",
+        "navigation": "Quick navigation",
+        "closeModule": "Close module",
+        "confirmChanges": "Confirm changes",
+        "hint": "Tip",
+        "hintText": "You can return to completed modules anytime to refresh your knowledge."
+    },
     "courses": {
         "page": "Education /",
+        "mappage": "Education / Courses",
+        "lessonpage": "Education / Courses / Lesson",
+        "lessonfooter": "Complete all theoretical modules to unlock the final knowledge test.",
         "courses": "Courses",
         "description": "Expand your knowledge with our comprehensive course library. Learn at your own pace and earn achievements!",
         "total": "Total Courses",
@@ -375,32 +391,2193 @@
         "duration": "Duration",
         "startDate": "Start Date",
         "lesson": "Lessons",
+        "lessons": "Lesson",
         "courseStarted": "Course started successfully",
         "courseCompleted": "Course completed successfully",
         "category": "Category",
         "parlamentary_course": {
-            "title": "Basics of Parliamentary Functioning",
-            "description": "Learn about the structure, roles, and legislative processes in the Polish parliament.",
+            "title": "Basics of Parliament Functioning",
+            "description": "Learn about the structure, roles, and legislative processes of the Polish parliament.",
             "level": "Basic",
-            "category": "Politics and State"
+            "category": "Politics and State",
+            "desc": "In this course you will learn how the Polish parliament works and how the legislative process takes place. You will also learn about key institutions and roles in the Polish political system!",
+            "lessons": {
+                "l1": {
+                    "title": "Lesson 1: Introduction to Parliamentarism",
+                    "modules": [
+                        {
+                            "title": "Separation of Powers",
+                            "text": "The Polish political system is based on the separation of legislative, executive, and judicial powers."
+                        },
+                        {
+                            "title": "Legislative Power",
+                            "text": "In Poland, legislative power is exercised by the Sejm and the Senate, forming a bicameral parliament."
+                        },
+                        {
+                            "title": "Role of Parliament",
+                            "text": "The main task of parliament is law-making, i.e. passing national laws."
+                        },
+                        {
+                            "title": "Sejm and Senate",
+                            "text": "Both chambers work separately but cooperate in the legislative process on each bill."
+                        },
+                        {
+                            "title": "Principle of Representation",
+                            "text": "Members of Parliament and senators represent the entire Nation, not only their voters."
+                        },
+                        {
+                            "title": "Parliamentary Term",
+                            "text": "The term of the Sejm and Senate lasts 4 years and begins on the day of the first sitting."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "What is legislative power?",
+                            "answers": [
+                                "Law-making",
+                                "Executing laws",
+                                "Judging"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "How long is the term of the Sejm and Senate?",
+                            "answers": [
+                                "2 years",
+                                "4 years",
+                                "5 years"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who exercises legislative power in Poland?",
+                            "answers": [
+                                "The President",
+                                "The Council of Ministers",
+                                "The Sejm and Senate"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                "l2": {
+                    "title": "Lesson 2: Structure of the Sejm of the Republic of Poland",
+                    "modules": [
+                        {
+                            "title": "Number of Deputies",
+                            "text": "The Sejm of the Republic of Poland consists of 460 deputies elected in general elections."
+                        },
+                        {
+                            "title": "Marshal of the Sejm",
+                            "text": "The Marshal of the Sejm presides over sessions, represents the Sejm, and safeguards its rights."
+                        },
+                        {
+                            "title": "Presidium of the Sejm",
+                            "text": "The Presidium of the Sejm consists of the Marshal and Deputy Marshals."
+                        },
+                        {
+                            "title": "Council of Seniors",
+                            "text": "The Council of Seniors is a body ensuring cooperation between parliamentary clubs and groups."
+                        },
+                        {
+                            "title": "Clubs and Groups",
+                            "text": "Deputies may form clubs (at least 15 deputies) or groups (at least 3 deputies)."
+                        },
+                        {
+                            "title": "Chancellery of the Sejm",
+                            "text": "The Chancellery of the Sejm provides organizational and technical support for deputies."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "How many deputies are in the Sejm of the Republic of Poland?",
+                            "answers": [
+                                "100",
+                                "460",
+                                "560"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who presides over the Sejm sessions?",
+                            "answers": [
+                                "The Prime Minister",
+                                "The President",
+                                "The Marshal of the Sejm"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "What is the Council of Seniors?",
+                            "answers": [
+                                "A body coordinating clubs and groups",
+                                "A group of experienced deputies",
+                                "A council of elderly deputies"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l3": {
+                    "title": "Lesson 3: Structure of the Senate of the Republic of Poland",
+                    "modules": [
+                        {
+                            "title": "Number of Senators",
+                            "text": "The Senate of the Republic of Poland consists of 100 senators elected in single-member constituencies."
+                        },
+                        {
+                            "title": "House of Reflection",
+                            "text": "The Senate is often called the 'chamber of reflection' on legislation from the Sejm."
+                        },
+                        {
+                            "title": "Marshal of the Senate",
+                            "text": "The Marshal of the Senate represents the chamber and presides over its sessions."
+                        },
+                        {
+                            "title": "Presidium of the Senate",
+                            "text": "The Presidium of the Senate consists of the Marshal and Deputy Marshals."
+                        },
+                        {
+                            "title": "Senate Elections",
+                            "text": "Senators are elected in universal, direct, and secret ballot elections."
+                        },
+                        {
+                            "title": "Single-member districts",
+                            "text": "In Senate elections, one senator is elected from each electoral district."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "How many senators are in the Senate of the Republic of Poland?",
+                            "answers": [
+                                "100",
+                                "460",
+                                "200"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "In what districts are senators elected?",
+                            "answers": [
+                                "Multi-member",
+                                "Single-member",
+                                "National"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who presides over Senate sessions?",
+                            "answers": [
+                                "The Prime Minister",
+                                "The President",
+                                "The Marshal of the Senate"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                "l4": {
+                    "title": "Lesson 4: Parliamentary Mandate",
+                    "modules": [
+                        {
+                            "title": "Free Mandate",
+                            "text": "A parliamentarian is not bound by voters' instructions and cannot be recalled."
+                        },
+                        {
+                            "title": "Parliamentary Immunity",
+                            "text": "Immunity protects a parliamentarian from criminal liability without the consent of the chamber."
+                        },
+                        {
+                            "title": "Inviolability",
+                            "text": "A deputy or senator cannot be detained without consent of the chamber unless caught in the act."
+                        },
+                        {
+                            "title": "Rights of a Deputy",
+                            "text": "Parliamentarians have the right to vote and submit interpellations."
+                        },
+                        {
+                            "title": "Duties",
+                            "text": "The main duty is active participation in parliamentary and committee work."
+                        },
+                        {
+                            "title": "Parliamentary Ethics",
+                            "text": "Deputies' conduct is supervised by the Parliamentary Ethics Committee, which may issue reprimands."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "What does a free mandate mean?",
+                            "answers": [
+                                "Obligation to follow party instructions",
+                                "No obligation to follow voters' instructions",
+                                "Free work"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "What protects a parliamentarian from arrest?",
+                            "answers": [
+                                "Veto",
+                                "Immunity",
+                                "Parliamentary allowance"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who may reprimand a deputy for ethical violations?",
+                            "answers": [
+                                "The President",
+                                "The Parliamentary Ethics Committee",
+                                "The Marshal of the Sejm"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l5": {
+                    "title": "Lesson 5: Parliamentary Committees",
+                    "modules": [
+                        {
+                            "title": "Role of Committees",
+                            "text": "Committees are groups of deputies or senators appointed to examine specific issues and draft laws."
+                        },
+                        {
+                            "title": "Standing Committees",
+                            "text": "Standing committees operate throughout the entire term (e.g. Foreign Affairs, Finance)."
+                        },
+                        {
+                            "title": "Ad hoc Committees",
+                            "text": "Ad hoc committees are created to perform a single specific task."
+                        },
+                        {
+                            "title": "Inquiry Committees",
+                            "text": "The Sejm may appoint an inquiry committee to investigate a specific public issue."
+                        },
+                        {
+                            "title": "Composition of Committees",
+                            "text": "Committee composition reflects the proportional representation of parliamentary clubs."
+                        },
+                        {
+                            "title": "Subcommittees",
+                            "text": "Committees may create smaller working subcommittees for detailed analysis of bills."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Which committee investigates special matters?",
+                            "answers": [
+                                "Standing",
+                                "Ad hoc",
+                                "Inquiry"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "What determines committee composition?",
+                            "answers": [
+                                "Decision of the President",
+                                "Proportion of parliamentary clubs",
+                                "Random draw"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Which committees operate throughout the term?",
+                            "answers": [
+                                "Standing",
+                                "Ad hoc",
+                                "Inquiry"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l6": {
+                    "title": "Lesson 6: Legislative Initiative",
+                    "modules": [
+                        {
+                            "title": "Definition",
+                            "text": "Legislative initiative is the right to submit a draft law to the Sejm."
+                        },
+                        {
+                            "title": "Authorized Entities",
+                            "text": "This right belongs to Deputies, the Senate, the President, the Council of Ministers, and citizens."
+                        },
+                        {
+                            "title": "Parliamentary Initiative",
+                            "text": "A bill may be submitted by at least 15 deputies or a parliamentary committee."
+                        },
+                        {
+                            "title": "Citizens' Initiative",
+                            "text": "At least 100,000 citizens with voting rights may submit a bill."
+                        },
+                        {
+                            "title": "Government Initiative",
+                            "text": "Government bills make up the majority of adopted laws."
+                        },
+                        {
+                            "title": "Formal Requirements",
+                            "text": "Each bill must include justification and financial consequences."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "How many deputies are needed for a parliamentary bill?",
+                            "answers": [
+                                "At least 15",
+                                "Exactly 460",
+                                "At least 5"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "How many signatures are required for a citizens' initiative?",
+                            "answers": [
+                                "1,000",
+                                "10,000",
+                                "100,000"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Who can submit a bill to the Sejm?",
+                            "answers": [
+                                "Only deputies",
+                                "Deputies, Senate, President, Council of Ministers, and citizens",
+                                "Only the President"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l7": {
+                    "title": "Lesson 7: Three Readings in the Sejm",
+                    "modules": [
+                        {
+                            "title": "First Reading",
+                            "text": "The first reading involves presenting the bill and takes place in the Sejm or committee."
+                        },
+                        {
+                            "title": "Committee Work",
+                            "text": "After the first reading, the bill goes to committee for detailed analysis."
+                        },
+                        {
+                            "title": "Second Reading",
+                            "text": "The second reading includes committee reports and proposed amendments."
+                        },
+                        {
+                            "title": "Third Reading",
+                            "text": "The third reading is a final vote on the bill including amendments."
+                        },
+                        {
+                            "title": "Majority Vote",
+                            "text": "Most laws are passed by a simple majority in the presence of at least half of deputies."
+                        },
+                        {
+                            "title": "Quorum",
+                            "text": "Quorum is the minimum number of deputies (half, i.e. 230) required for a valid vote."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "How many readings does a bill go through?",
+                            "answers": [
+                                "One",
+                                "Two",
+                                "Three"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "What is the quorum in the Sejm?",
+                            "answers": [
+                                "100 deputies",
+                                "230 deputies",
+                                "460 deputies"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "What happens during the second reading?",
+                            "answers": [
+                                "Final vote",
+                                "Committee report and amendments",
+                                "Presentation of the bill"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l8": {
+                    "title": "Lesson 8: Role of the Senate and the President",
+                    "modules": [
+                        {
+                            "title": "Submission to the Senate",
+                            "text": "The Marshal of the Sejm sends the adopted bill to the Senate."
+                        },
+                        {
+                            "title": "Senate Timeframe",
+                            "text": "The Senate has 30 days to adopt, amend, or reject a bill."
+                        },
+                        {
+                            "title": "Overriding Senate Veto",
+                            "text": "The Sejm may reject Senate amendments or veto by absolute majority."
+                        },
+                        {
+                            "title": "Role of the President",
+                            "text": "After parliamentary approval, the bill is sent to the President for signature."
+                        },
+                        {
+                            "title": "Presidential Veto",
+                            "text": "The President may veto a bill and return it to the Sejm."
+                        },
+                        {
+                            "title": "Constitutional Tribunal",
+                            "text": "The President may refer a bill to the Constitutional Tribunal before signing."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "How many days does the Senate have to review a bill?",
+                            "answers": [
+                                "14 days",
+                                "30 days",
+                                "90 days"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "To whom does a bill go after passing the Sejm and Senate?",
+                            "answers": [
+                                "Prime Minister",
+                                "Supreme Court",
+                                "President"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "What can the President do with a bill they do not want to sign?",
+                            "answers": [
+                                "Return it with veto",
+                                "Ignore it",
+                                "Send it to State Tribunal"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l9": {
+                    "title": "Lesson 9: Control Function of the Sejm",
+                    "modules": [
+                        {
+                            "title": "Nature of Control",
+                            "text": "The Sejm controls the Council of Ministers and other state administration bodies."
+                        },
+                        {
+                            "title": "Parliamentary Interpellation",
+                            "text": "A deputy may submit an interpellation to a minister on important matters."
+                        },
+                        {
+                            "title": "Parliamentary Questions",
+                            "text": "Questions concern individual or specific issues."
+                        },
+                        {
+                            "title": "Vote of No Confidence",
+                            "text": "The Sejm may pass a vote of no confidence against a minister or government."
+                        },
+                        {
+                            "title": "Constructive Vote of No Confidence",
+                            "text": "Must include a named candidate for Prime Minister."
+                        },
+                        {
+                            "title": "Supreme Audit Office",
+                            "text": "The Supreme Audit Office is subordinate to the Sejm and is the main audit body."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Which chamber has a constitutional control function?",
+                            "answers": [
+                                "Only Sejm",
+                                "Only Senate",
+                                "Both equally"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "What is a constructive vote of no confidence?",
+                            "answers": [
+                                "Simple",
+                                "Constructive",
+                                "Absolute"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Which body is subordinate to the Sejm and controls the state?",
+                            "answers": [
+                                "Constitutional Tribunal",
+                                "Supreme Audit Office",
+                                "Council of Ministers"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l10": {
+                    "title": "Lesson 10: National Assembly",
+                    "modules": [
+                        {
+                            "title": "Definition",
+                            "text": "The National Assembly is a joint sitting of deputies and senators chaired by the Marshal of the Sejm."
+                        },
+                        {
+                            "title": "Presidential Oath",
+                            "text": "Its main task is to administer the oath of office to the President of Poland."
+                        },
+                        {
+                            "title": "Presidential Address",
+                            "text": "It also listens to official addresses of the President."
+                        },
+                        {
+                            "title": "Determining Incapacity",
+                            "text": "It may declare the President permanently incapable of holding office."
+                        },
+                        {
+                            "title": "Impeachment",
+                            "text": "It may bring the President before the State Tribunal."
+                        },
+                        {
+                            "title": "Qualified Majority",
+                            "text": "Requires a 2/3 majority of the statutory number of members."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Who forms the National Assembly?",
+                            "answers": [
+                                "Government and courts",
+                                "Deputies and senators",
+                                "Voivodes"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who presides over the National Assembly?",
+                            "answers": [
+                                "Marshal of the Sejm",
+                                "President",
+                                "Prime Minister"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "What majority is required to impeach the President?",
+                            "answers": [
+                                "Simple majority",
+                                "2/3 majority",
+                                "3/4 majority"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l11": {
+                    "title": "Budget Act",
+                    "modules": [
+                        {
+                            "title": "Most Important Act",
+                            "text": "The budget act is the annual financial plan of the state."
+                        },
+                        {
+                            "title": "Government Exclusivity",
+                            "text": "Only the Council of Ministers may submit the draft budget."
+                        },
+                        {
+                            "title": "Role of the Senate",
+                            "text": "The Senate may propose amendments but cannot reject the budget."
+                        },
+                        {
+                            "title": "Presidential Deadline",
+                            "text": "The President must sign the budget within 7 days and cannot veto it."
+                        },
+                        {
+                            "title": "Parliament Dissolution",
+                            "text": "If the budget is not submitted within 4 months, the President may dissolve parliament."
+                        },
+                        {
+                            "title": "Report",
+                            "text": "The government must submit an execution report and the Sejm decides on discharge."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Who has exclusive right to submit the budget bill?",
+                            "answers": [
+                                "President",
+                                "Council of Ministers",
+                                "Group of deputies"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Can the President veto the budget act?",
+                            "answers": [
+                                "Yes",
+                                "No",
+                                "Only partially"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "What can the President do if the budget is not submitted within 4 months?",
+                            "answers": [
+                                "Veto it",
+                                "Dissolve parliament",
+                                "Ignore it"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l12": {
+                    "title": "Constitutional Responsibility",
+                    "modules": [
+                        {
+                            "title": "Nature of Responsibility",
+                            "text": "Deputies and senators may be held accountable for violating the Constitution or laws."
+                        },
+                        {
+                            "title": "State Tribunal",
+                            "text": "The State Tribunal judges top state officials and parliamentarians."
+                        },
+                        {
+                            "title": "Ban on Business Activity",
+                            "text": "MPs are forbidden from conducting business using state property."
+                        },
+                        {
+                            "title": "Asset Declarations",
+                            "text": "MPs and senators must submit annual public asset declarations."
+                        },
+                        {
+                            "title": "Waiving Immunity",
+                            "text": "A parliamentarian may waive immunity voluntarily."
+                        },
+                        {
+                            "title": "Loss of Mandate",
+                            "text": "A final conviction for an intentional crime results in loss of mandate."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Which body judges MPs for constitutional violations?",
+                            "answers": [
+                                "Supreme Court",
+                                "State Tribunal",
+                                "Constitutional Tribunal"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "What causes automatic loss of mandate?",
+                            "answers": [
+                                "Change of views",
+                                "Final conviction for intentional crime",
+                                "Missing one vote"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Can a parliamentarian waive immunity?",
+                            "answers": [
+                                "Yes",
+                                "No",
+                                "Only with Sejm approval"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                }
+            }
+        },
+        "executive_course": {
+            "title": "The Role and Functioning of the Government",
+            "description": "Understand how the government works, its structures and decision-making processes.",
+            "level": "Beginner",
+            "category": "Politics and the State",
+            "desc": "In this course, you will learn how the Polish government works, its structures and decision-making processes. You will also get to know the key institutions and roles in the Polish political system!",
+            "lessons": {
+                "l1": {
+                    "title": "Lesson 1: Executive Power in Poland",
+                    "modules": [
+                        {
+                            "title": "Dualism of the Executive",
+                            "text": "Executive power in Poland is shared by two entities: the President of the Republic of Poland and the Council of Ministers."
+                        },
+                        {
+                            "title": "Council of Ministers",
+                            "text": "The Council of Ministers, i.e. the government, conducts the day-to-day internal and foreign policy of the state."
+                        },
+                        {
+                            "title": "President as Arbiter",
+                            "text": "The President is the supreme representative of the Republic of Poland, ensures compliance with the Constitution and acts as an arbiter."
+                        },
+                        {
+                            "title": "Division of Tasks",
+                            "text": "The government manages administration and finances, while the President is responsible for supreme command of the armed forces and representation."
+                        },
+                        {
+                            "title": "Constitutional Role of the Government",
+                            "text": "The Council of Ministers is responsible for all state policy matters not reserved for other bodies."
+                        },
+                        {
+                            "title": "Coordination",
+                            "text": "The government ensures the implementation of laws by issuing executive acts and directing government administration."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Who creates the dualism of executive power in Poland?",
+                            "answers": [
+                                "The Sejm and the Senate",
+                                "The President and the Council of Ministers",
+                                "Courts and the Prosecutor's Office"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who conducts the day-to-day internal and foreign policy?",
+                            "answers": [
+                                "Council of Ministers",
+                                "Marshal of the Sejm",
+                                "Supreme Court"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "What is the role of the President in the executive power system?",
+                            "answers": [
+                                "Leads the government",
+                                "Ensures compliance with the Constitution and acts as arbiter",
+                                "Conducts foreign policy"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l2": {
+                    "title": "Lesson 2: Composition and Structure of the Government",
+                    "modules": [
+                        {
+                            "title": "Prime Minister",
+                            "text": "The government is headed by the President of the Council of Ministers, commonly known as the Prime Minister."
+                        },
+                        {
+                            "title": "Deputy Prime Ministers",
+                            "text": "The government may include Deputy Presidents of the Council of Ministers (Deputy Prime Ministers)."
+                        },
+                        {
+                            "title": "Ministers in Charge of Ministries",
+                            "text": "Ministers head specific branches of administration (e.g. Minister of Health)."
+                        },
+                        {
+                            "title": "Ministers without Portfolio",
+                            "text": "These are ministers who do not head a specific ministry but perform tasks assigned by the Prime Minister."
+                        },
+                        {
+                            "title": "Government Committees",
+                            "text": "Government committees operate within the government structure (e.g. the Standing Committee of the Council of Ministers) preparing draft documents."
+                        },
+                        {
+                            "title": "Collegiality of the Government",
+                            "text": "The Council of Ministers takes the most important decisions collectively in the form of resolutions."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Who heads the Council of Ministers?",
+                            "answers": [
+                                "President",
+                                "Prime Minister",
+                                "Marshal of the Sejm"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "What is a minister without portfolio?",
+                            "answers": [
+                                "A minister without a ministry performing tasks assigned by the Prime Minister",
+                                "An opposition MP",
+                                "A local official"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "What committees operate within the government structure?",
+                            "answers": [
+                                "Sejm Committees",
+                                "Government Committees (e.g. Standing Committee of the Council of Ministers)",
+                                "Senate Committees"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l3": {
+                    "title": "Lesson 3: Forming the Government",
+                    "modules": [
+                        {
+                            "title": "First Step",
+                            "text": "The President designates the Prime Minister, who proposes the composition of the Council of Ministers."
+                        },
+                        {
+                            "title": "Appointment by the President",
+                            "text": "The President appoints the Prime Minister and ministers within 14 days of the first sitting of the Sejm."
+                        },
+                        {
+                            "title": "Exposé and Vote of Confidence",
+                            "text": "The Prime Minister presents the government's programme (exposé) to the Sejm and requests a vote of confidence."
+                        },
+                        {
+                            "title": "Absolute Majority",
+                            "text": "The Sejm passes a vote of confidence by an absolute majority of votes in the presence of at least half of the MPs."
+                        },
+                        {
+                            "title": "Second Step (Sejm)",
+                            "text": "If the government does not receive a vote of confidence, within 14 days the Sejm elects the Prime Minister and the government by absolute majority."
+                        },
+                        {
+                            "title": "Third Step",
+                            "text": "If the Sejm fails, the President appoints the government again, but then the Sejm requires only a simple majority."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "What is the name of the Prime Minister's programmatic speech in the Sejm?",
+                            "answers": [
+                                "Interpellation",
+                                "Exposé",
+                                "Vote"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who elects the government in the second constitutional step?",
+                            "answers": [
+                                "President",
+                                "Sejm",
+                                "Nation in a referendum"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "By what majority does the Sejm pass a vote of confidence for the government?",
+                            "answers": [
+                                "Simple majority",
+                                "Absolute majority",
+                                "Two-thirds majority"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l4": {
+                    "title": "Lesson 4: Role and Tasks of the Prime Minister",
+                    "modules": [
+                        {
+                            "title": "Managing the Work",
+                            "text": "The Prime Minister represents the Council of Ministers and directs its work."
+                        },
+                        {
+                            "title": "Coordination of Ministers",
+                            "text": "The Prime Minister coordinates and supervises the work of all other government ministers."
+                        },
+                        {
+                            "title": "Issuing Regulations",
+                            "text": "The Prime Minister is a one-person body and has the right to issue his/her own regulations."
+                        },
+                        {
+                            "title": "Superior of Civil Servants",
+                            "text": "The Prime Minister is the service superior of all civil service employees."
+                        },
+                        {
+                            "title": "Division of Duties",
+                            "text": "The Prime Minister decides on the scope of duties and competences of ministers."
+                        },
+                        {
+                            "title": "Government Resignation",
+                            "text": "The resignation of the Prime Minister automatically means the resignation of the entire Council of Ministers."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "What happens to the government when the Prime Minister resigns?",
+                            "answers": [
+                                "It continues unchanged",
+                                "The entire government resigns",
+                                "A new Deputy Prime Minister is elected"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who is the superior of the civil service corps?",
+                            "answers": [
+                                "President",
+                                "Prime Minister",
+                                "Head of the Ministry of Interior"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Does the Prime Minister have the right to issue his/her own regulations?",
+                            "answers": [
+                                "Yes",
+                                "No",
+                                "Only with the consent of the Sejm"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l5": {
+                    "title": "Lesson 5: Ministries and Central Offices",
+                    "modules": [
+                        {
+                            "title": "Role of a Ministry",
+                            "text": "A ministry is an office that provides support to the minister implementing state policy."
+                        },
+                        {
+                            "title": "Secretaries of State",
+                            "text": "Deputy ministers (secretaries and undersecretaries of state) assist the minister in managing the department."
+                        },
+                        {
+                            "title": "Director General",
+                            "text": "The Director General ensures the continuity of the ministry's work and manages administrative matters."
+                        },
+                        {
+                            "title": "Central Offices",
+                            "text": "In addition to ministries, central offices operate under ministers (e.g. Statistics Poland)."
+                        },
+                        {
+                            "title": "Branches of Administration",
+                            "text": "One minister may head several branches of government administration (e.g. education and science)."
+                        },
+                        {
+                            "title": "Regulations",
+                            "text": "Ministers issue regulations based on explicit authorisation contained in statutes."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Who is responsible for the continuity of operations and administrative matters in a ministry?",
+                            "answers": [
+                                "Minister",
+                                "Director General",
+                                "Press Spokesman"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "On what basis can a minister issue a regulation?",
+                            "answers": [
+                                "Own discretion",
+                                "Explicit authorisation in a statute",
+                                "Opposition consent"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Can one minister head several branches of government administration?",
+                            "answers": [
+                                "Yes",
+                                "No",
+                                "Only during a crisis"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l6": {
+                    "title": "Lesson 6: Decision-Making Process",
+                    "modules": [
+                        {
+                            "title": "Government Initiative",
+                            "text": "Ministries prepare assumptions for draft laws and regulations."
+                        },
+                        {
+                            "title": "Public Consultations",
+                            "text": "Government drafts undergo mandatory inter-ministerial and public consultations."
+                        },
+                        {
+                            "title": "Legislative Council",
+                            "text": "The Legislative Council reviews drafts for compliance with the Polish legal system."
+                        },
+                        {
+                            "title": "Standing Committee",
+                            "text": "The Standing Committee of the Council of Ministers resolves disputes between ministers before the government meeting."
+                        },
+                        {
+                            "title": "Government Meeting",
+                            "text": "The government debates drafts at closed meetings and adopts documents."
+                        },
+                        {
+                            "title": "Public Information Bulletin",
+                            "text": "All adopted government drafts and plans are published in the BIP system."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Where does a government draft go before the full Council of Ministers meeting to resolve disputes?",
+                            "answers": [
+                                "To the Sejm",
+                                "To the Standing Committee of the Council of Ministers",
+                                "To the Tribunal"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Are Council of Ministers meetings generally open to the public?",
+                            "answers": [
+                                "Yes",
+                                "No (they are closed)",
+                                "Yes, broadcast on TV"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Where can one find information about adopted government drafts?",
+                            "answers": [
+                                "On the Sejm website",
+                                "In the Public Information Bulletin (BIP)",
+                                "On the President's website"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l7": {
+                    "title": "Lesson 7: Voivode and Territorial Administration",
+                    "modules": [
+                        {
+                            "title": "Government Representative",
+                            "text": "The Voivode is the representative of the Council of Ministers in each of the 16 voivodeships."
+                        },
+                        {
+                            "title": "Supervision of Local Government",
+                            "text": "The Voivode supervises the legality of resolutions adopted by communes, districts and regional assemblies."
+                        },
+                        {
+                            "title": "Integrated Administration",
+                            "text": "The Voivode manages services responsible for security (e.g. Police, Fire Service in the voivodeship)."
+                        },
+                        {
+                            "title": "Appointment of Voivode",
+                            "text": "The Voivode is appointed and dismissed by the Prime Minister at the request of the minister responsible for administration."
+                        },
+                        {
+                            "title": "Local Law Acts",
+                            "text": "The Voivode has the power to issue regulations and local law acts in crisis situations."
+                        },
+                        {
+                            "title": "Crisis Management",
+                            "text": "The Voivode coordinates rescue operations in the voivodeship during natural disasters."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Who is the Voivode?",
+                            "answers": [
+                                "Representative of the government in the voivodeship",
+                                "Head of a local court",
+                                "City mayor"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Who appoints the Voivode?",
+                            "answers": [
+                                "President of the Republic of Poland",
+                                "Marshal of the Voivodeship",
+                                "Prime Minister"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "What role does the Voivode play during natural disasters?",
+                            "answers": [
+                                "No role",
+                                "Coordinates rescue operations",
+                                "Manages evacuation of the entire country"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l8": {
+                    "title": "Lesson 8: Civil Service",
+                    "modules": [
+                        {
+                            "title": "Task of the Civil Service",
+                            "text": "The civil service corps ensures professional, reliable and apolitical performance of state tasks."
+                        },
+                        {
+                            "title": "Apolitical Nature",
+                            "text": "Civil service officials may not manifest political views or form political parties."
+                        },
+                        {
+                            "title": "Strike Ban",
+                            "text": "Appointed civil service officials may not take actions that disrupt the work of the office (e.g. strikes)."
+                        },
+                        {
+                            "title": "Recruitment",
+                            "text": "Recruitment to the civil service is open, competitive and based on competence criteria."
+                        },
+                        {
+                            "title": "Head of the Civil Service",
+                            "text": "The work of the corps is directed by the Head of the Civil Service, who reports directly to the Prime Minister."
+                        },
+                        {
+                            "title": "Continuity of the State",
+                            "text": "Thanks to the civil service, offices operate stably even during a change of the ruling party."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "What key characteristic must a civil service official have?",
+                            "answers": [
+                                "Party membership",
+                                "Apolitical nature",
+                                "Volunteer work"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "To whom does the Head of the Civil Service report?",
+                            "answers": [
+                                "President",
+                                "Prime Minister",
+                                "Supreme Court"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Can civil service officials strike?",
+                            "answers": [
+                                "Yes",
+                                "No",
+                                "Only in exceptional situations"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l9": {
+                    "title": "Lesson 9: Security and Defence",
+                    "modules": [
+                        {
+                            "title": "Government Responsibility",
+                            "text": "The Council of Ministers is responsible for ensuring the external and internal security of the state."
+                        },
+                        {
+                            "title": "Defence Ministry",
+                            "text": "The Minister of National Defence directs the army and implements the government's defence policy."
+                        },
+                        {
+                            "title": "Internal Security",
+                            "text": "The Minister of the Interior and Administration supervises the Police, Border Guard and SOP."
+                        },
+                        {
+                            "title": "Government Crisis Team",
+                            "text": "In threat situations, the Government Crisis Management Team meets under the chairmanship of the Prime Minister."
+                        },
+                        {
+                            "title": "Extraordinary States",
+                            "text": "The government may request the President to introduce a state of emergency or martial law."
+                        },
+                        {
+                            "title": "Army Funding",
+                            "text": "The government ensures stable funding for the armed forces through the state budget."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Which minister is responsible for supervising the Police and Border Guard?",
+                            "answers": [
+                                "Minister of Justice",
+                                "Minister of the Interior and Administration",
+                                "Minister of National Defence"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who chairs the Government Crisis Management Team?",
+                            "answers": [
+                                "Prime Minister",
+                                "Police Commander",
+                                "Chief of the General Staff"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Can the government request the introduction of a state of emergency?",
+                            "answers": [
+                                "Yes",
+                                "No",
+                                "Only in wartime"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l10": {
+                    "title": "Lesson 10: Foreign Policy",
+                    "modules": [
+                        {
+                            "title": "Conducting Policy",
+                            "text": "The Council of Ministers exercises general direction in relations with other states."
+                        },
+                        {
+                            "title": "Role of MFA",
+                            "text": "The Minister of Foreign Affairs coordinates the implementation of foreign policy and supervises embassies."
+                        },
+                        {
+                            "title": "International Agreements",
+                            "text": "The government concludes international agreements, which sometimes require ratification by parliament or the President."
+                        },
+                        {
+                            "title": "Representation in the EU",
+                            "text": "The Prime Minister and ministers represent Poland's interests in the European Council and the Council of the EU."
+                        },
+                        {
+                            "title": "Cooperation with the President",
+                            "text": "The government is obliged to cooperate with the President on foreign policy matters."
+                        },
+                        {
+                            "title": "Ambassadors",
+                            "text": "The government proposes the appointment of ambassadors, who are officially appointed by the President of the Republic of Poland."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Who directly coordinates foreign policy and supervises embassies?",
+                            "answers": [
+                                "Minister of Foreign Affairs",
+                                "President",
+                                "Voivode"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Where does the Prime Minister represent Poland at the highest EU level?",
+                            "answers": [
+                                "In the European Council",
+                                "In the US Congress",
+                                "In the UN"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Who officially appoints ambassadors?",
+                            "answers": [
+                                "Prime Minister",
+                                "President of the Republic of Poland",
+                                "Sejm"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l11": {
+                    "title": "Lesson 11: Control over the Government",
+                    "modules": [
+                        {
+                            "title": "Political Accountability",
+                            "text": "The Council of Ministers is politically accountable to the Sejm of the Republic of Poland."
+                        },
+                        {
+                            "title": "Vote of Confidence During Term",
+                            "text": "The Prime Minister may at any time ask the Sejm for a vote of confidence in the government."
+                        },
+                        {
+                            "title": "Vote of No Confidence in a Minister",
+                            "text": "The Sejm may pass a vote of no confidence in an individual minister on the motion of at least 69 MPs."
+                        },
+                        {
+                            "title": "Resignation after Elections",
+                            "text": "The Prime Minister always submits the resignation of the government at the first sitting of the newly elected Sejm."
+                        },
+                        {
+                            "title": "Tribunal of State",
+                            "text": "Members of the government are accountable before the Tribunal of State for violations of law or the Constitution."
+                        },
+                        {
+                            "title": "NIK Control",
+                            "text": "The Supreme Audit Office regularly examines government expenditure and the legality of ministry actions."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "When does the Prime Minister have a constitutional obligation to submit the government's resignation?",
+                            "answers": [
+                                "Every year",
+                                "At the first sitting of the new Sejm",
+                                "When requested by the opposition"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Before whom are members of the government accountable for violating the Constitution?",
+                            "answers": [
+                                "Before the Tribunal of State",
+                                "Before the media",
+                                "Before the Prime Minister"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "How many MPs' signatures are needed to submit a vote of no confidence in a minister?",
+                            "answers": [
+                                "At least 69",
+                                "At least 100",
+                                "At least 50"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l12": {
+                    "title": "Lesson 12: Relations with the President",
+                    "modules": [
+                        {
+                            "title": "Countersignature",
+                            "text": "Most legal acts of the President require the signature (countersignature) of the Prime Minister to take effect."
+                        },
+                        {
+                            "title": "Prerogative Acts",
+                            "text": "Prerogatives are the President's personal powers that do not require the Prime Minister's countersignature (e.g. right of pardon)."
+                        },
+                        {
+                            "title": "Cabinet Council",
+                            "text": "The Cabinet Council is the government meeting under the chairmanship of the President. It has no decision-making powers of the government."
+                        },
+                        {
+                            "title": "Purpose of the Council",
+                            "text": "The President convenes the Cabinet Council on matters of particular importance to the state."
+                        },
+                        {
+                            "title": "Supreme Command of the Armed Forces",
+                            "text": "The President is the Supreme Commander of the Armed Forces, but in peacetime exercises this through the Minister of National Defence."
+                        },
+                        {
+                            "title": "Consultations",
+                            "text": "Regular meetings between the Prime Minister and the President are crucial for the stability of state policy."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "What is the Prime Minister's signature on the President's act?",
+                            "answers": [
+                                "Veto",
+                                "Countersignature",
+                                "Prerogative"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Can the Cabinet Council under the President make government resolutions?",
+                            "answers": [
+                                "Yes",
+                                "No (it has only a consultative character)",
+                                "Yes, with the consent of the Sejm"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who is the Supreme Commander of the Armed Forces in peacetime?",
+                            "answers": [
+                                "President directly",
+                                "Prime Minister",
+                                "President through the Minister of National Defence"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                }
+            }
         }
+    },
+    "court_course": {
+        "title": "The Judicial System in Poland",
+        "description": "Learn about the structure and functioning of the Polish judicial system.",
+        "level": "Beginner",
+        "category": "Law",
+        "desc": "In this course, you will learn how the Polish judicial system works, its structures and decision-making processes. You will also get to know the key institutions and roles in the Polish legal system!",
+        "lessons": [
+            {
+                "slug": "l1",
+                "title": "Lesson 1: Judicial Power",
+                "modules": [
+                    {
+                        "title": "The Third Power",
+                        "text": "Judicial power is independent from legislative and executive power."
+                    },
+                    {
+                        "title": "Courts and Tribunals",
+                        "text": "Judicial power in Poland is exercised by courts and independent tribunals."
+                    },
+                    {
+                        "title": "Judicial Independence",
+                        "text": "Judges are independent, meaning they are subject only to the Constitution and statutes."
+                    },
+                    {
+                        "title": "Appeal and Instances",
+                        "text": "Court proceedings in Poland are at least two-instance (it is possible to appeal)."
+                    },
+                    {
+                        "title": "Issuing Judgments",
+                        "text": "Courts issue judgments in the name of the Republic of Poland."
+                    },
+                    {
+                        "title": "Public Hearings",
+                        "text": "Court hearings are public unless the law allows exclusion of the public for reasons of morality or security."
+                    }
+                ],
+                "quiz": [
+                    {
+                        "question": "To whom are independent judges subject?",
+                        "answers": [
+                            "The Prime Minister",
+                            "Only the Constitution and statutes",
+                            "The President"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "How many instances are court proceedings in Poland?",
+                        "answers": [
+                            "Single-instance",
+                            "At least two-instance",
+                            "Four-instance"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "Are court hearings in Poland public?",
+                        "answers": [
+                            "Yes, always",
+                            "No, never",
+                            "Yes, unless the law provides otherwise"
+                        ],
+                        "correct": 2
+                    }
+                ]
+            },
+            {
+                "slug": "l2",
+                "title": "Lesson 2: Common Courts",
+                "modules": [
+                    {
+                        "title": "District Courts",
+                        "text": "District courts are the lowest level and handle most minor civil and criminal cases."
+                    },
+                    {
+                        "title": "Regional Courts",
+                        "text": "Regional courts hear more serious cases as the first instance and appeals from district courts."
+                    },
+                    {
+                        "title": "Courts of Appeal",
+                        "text": "Courts of Appeal deal exclusively with appeals against judgments of regional courts."
+                    },
+                    {
+                        "title": "Court Divisions",
+                        "text": "Courts are divided into divisions: civil, criminal, family, labour, and commercial."
+                    },
+                    {
+                        "title": "Lay Judges",
+                        "text": "In some cases, citizens – lay judges – sit alongside professional judges."
+                    },
+                    {
+                        "title": "Territorial Jurisdiction",
+                        "text": "Court jurisdiction depends on the defendant's place of residence or the place where the offence was committed."
+                    }
+                ],
+                "quiz": [
+                    {
+                        "question": "Which court is usually the first instance for simple cases?",
+                        "answers": [
+                            "Court of Appeal",
+                            "District Court",
+                            "Supreme Court"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "What is a lay judge in court?",
+                        "answers": [
+                            "A professional judge",
+                            "A citizen participating in adjudication",
+                            "A prosecutor"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "What determines court jurisdiction?",
+                        "answers": [
+                            "The type of case",
+                            "The defendant's place of residence or the place of the offence",
+                            "The prosecutor's decision"
+                        ],
+                        "correct": 1
+                    }
+                ]
+            },
+            {
+                "slug": "l3",
+                "title": "Lesson 3: Supreme Court",
+                "modules": [
+                    {
+                        "title": "Judicial Supervision",
+                        "text": "The Supreme Court exercises supervision over the activities of common and military courts in the field of adjudication."
+                    },
+                    {
+                        "title": "Cassation Appeal",
+                        "text": "A cassation appeal may be filed with the Supreme Court against a final judgment of the second instance."
+                    },
+                    {
+                        "title": "Chambers of the Supreme Court",
+                        "text": "The Supreme Court is divided into specialized chambers (e.g. Criminal Chamber, Civil Chamber)."
+                    },
+                    {
+                        "title": "Resolutions of the Supreme Court",
+                        "text": "The Supreme Court adopts resolutions aimed at clarifying legal provisions that raise doubts."
+                    },
+                    {
+                        "title": "First President of the Supreme Court",
+                        "text": "The work of the Supreme Court is directed by the First President, appointed by the President for a 6-year term."
+                    },
+                    {
+                        "title": "Seat",
+                        "text": "The seat of the Supreme Court is located in Warsaw."
+                    }
+                ],
+                "quiz": [
+                    {
+                        "question": "What is the name of the legal remedy directed to the Supreme Court?",
+                        "answers": [
+                            "Appeal",
+                            "Cassation (cassation appeal)",
+                            "Complaint"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "How long is the term of office of the First President of the Supreme Court?",
+                        "answers": [
+                            "2 years",
+                            "4 years",
+                            "6 years"
+                        ],
+                        "correct": 2
+                    },
+                    {
+                        "question": "Where is the seat of the Supreme Court?",
+                        "answers": [
+                            "In Kraków",
+                            "In Gdańsk",
+                            "In Warsaw"
+                        ],
+                        "correct": 2
+                    }
+                ]
+            },
+            {
+                "slug": "l4",
+                "title": "Lesson 4: Administrative Courts",
+                "modules": [
+                    {
+                        "title": "Control of Administration",
+                        "text": "Administrative courts control the legality of decisions issued by offices and public authorities."
+                    },
+                    {
+                        "title": "WSA",
+                        "text": "Voivodeship Administrative Courts (WSA) hear complaints against administrative decisions in the first instance."
+                    },
+                    {
+                        "title": "NSA",
+                        "text": "The Supreme Administrative Court (NSA) in Warsaw hears appeals against WSA judgments."
+                    },
+                    {
+                        "title": "Legality Criterion",
+                        "text": "An administrative court examines only whether the authority acted in accordance with the law, it does not assess expediency."
+                    },
+                    {
+                        "title": "Annulment of a Decision",
+                        "text": "In case of a breach of law, the administrative court annuls the challenged decision."
+                    },
+                    {
+                        "title": "Complaint for Inaction",
+                        "text": "It is also possible to complain to the administrative court about an authority’s failure to respond within the deadline (inaction)."
+                    }
+                ],
+                "quiz": [
+                    {
+                        "question": "What do administrative courts deal with?",
+                        "answers": [
+                            "Sentencing criminals",
+                            "Controlling the legality of administrative decisions",
+                            "Divorces"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "Where is the Supreme Administrative Court (NSA) located?",
+                        "answers": [
+                            "In Gdańsk",
+                            "In Kraków",
+                            "In Warsaw"
+                        ],
+                        "correct": 2
+                    },
+                    {
+                        "question": "Does an administrative court assess the expediency of an authority’s actions?",
+                        "answers": [
+                            "Yes",
+                            "No (it only examines legality)",
+                            "Only in financial matters"
+                        ],
+                        "correct": 1
+                    }
+                ]
+            },
+            {
+                "slug": "l5",
+                "title": "Lesson 5: Validity of Elections",
+                "modules": [
+                    {
+                        "title": "Role of the Supreme Court Chamber",
+                        "text": "The Supreme Court is the competent body for declaring the validity of elections and referendums."
+                    },
+                    {
+                        "title": "Election Protests",
+                        "text": "Citizens have the right to file protests with the Supreme Court regarding the validity of elections within a specified deadline."
+                    },
+                    {
+                        "title": "Analysis of Protests",
+                        "text": "The Supreme Court examines whether the reported procedural violations affected the final election result."
+                    },
+                    {
+                        "title": "Resolution on Validity",
+                        "text": "After examining the protests, the Supreme Court adopts a comprehensive resolution on the validity of parliamentary or presidential elections."
+                    },
+                    {
+                        "title": "EP Elections",
+                        "text": "The Supreme Court also decides on the validity of elections to the European Parliament in Poland."
+                    },
+                    {
+                        "title": "Referendum",
+                        "text": "The same procedure applies to nationwide referendums and confirming their legality."
+                    }
+                ],
+                "quiz": [
+                    {
+                        "question": "Which institution declares the validity of parliamentary elections in Poland?",
+                        "answers": [
+                            "State Election Commission",
+                            "Supreme Court",
+                            "Constitutional Tribunal"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "Who can file an election protest with the Supreme Court?",
+                        "answers": [
+                            "Only the Prime Minister",
+                            "Any voter entitled to participate in the elections",
+                            "Only the police"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "Can the Supreme Court invalidate elections?",
+                        "answers": [
+                            "Yes, if procedural violations affected the result",
+                            "No, the Supreme Court only declares validity",
+                            "Yes, at the request of the President"
+                        ],
+                        "correct": 0
+                    }
+                ]
+            },
+            {
+                "slug": "l6",
+                "title": "Lesson 6: Constitutional Tribunal",
+                "modules": [
+                    {
+                        "title": "Court over the Law",
+                        "text": "The Constitutional Tribunal (TK) examines the conformity of statutes with the Constitution of the Republic of Poland."
+                    },
+                    {
+                        "title": "Composition of the Tribunal",
+                        "text": "The Constitutional Tribunal consists of 15 judges elected by the Sejm for a 9-year term."
+                    },
+                    {
+                        "title": "Constitutional Complaint",
+                        "text": "Any citizen, after exhausting the judicial path, may file a constitutional complaint if they believe a provision has violated their rights."
+                    },
+                    {
+                        "title": "Legal Questions",
+                        "text": "Courts may refer legal questions to the Constitutional Tribunal if they have doubts about the constitutionality of a provision."
+                    },
+                    {
+                        "title": "Finality of Judgments",
+                        "text": "Rulings of the Constitutional Tribunal have universally binding force and are final."
+                    },
+                    {
+                        "title": "Derogation",
+                        "text": "A provision declared unconstitutional by the Tribunal loses its legal force."
+                    }
+                ],
+                "quiz": [
+                    {
+                        "question": "How many judges sit in the Constitutional Tribunal?",
+                        "answers": [
+                            "9",
+                            "12",
+                            "15"
+                        ],
+                        "correct": 2
+                    },
+                    {
+                        "question": "Can one appeal against a judgment of the Constitutional Tribunal?",
+                        "answers": [
+                            "Yes, to the Sejm",
+                            "No, the judgments are final",
+                            "Yes, to the Supreme Court"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "Who can file a constitutional complaint with the Tribunal?",
+                        "answers": [
+                            "Any citizen after exhausting the judicial path",
+                            "Only MPs",
+                            "Only judges"
+                        ],
+                        "correct": 0
+                    }
+                ]
+            },
+            {
+                "slug": "l7",
+                "title": "Lesson 7: Tribunal of State",
+                "modules": [
+                    {
+                        "title": "Criminal Liability of Officials",
+                        "text": "The Tribunal of State tries the highest state officials for violations of the Constitution or statutes."
+                    },
+                    {
+                        "title": "Who is Accountable",
+                        "text": "The Tribunal of State hears cases against, among others, the President, Prime Minister, government members, and the President of the Supreme Audit Office."
+                    },
+                    {
+                        "title": "Chairman",
+                        "text": "The Chairman of the Tribunal of State is, by virtue of office, the current First President of the Supreme Court."
+                    },
+                    {
+                        "title": "Election of Members",
+                        "text": "The remaining members of the Tribunal of State are elected by the Sejm for the term of its office from persons outside the group of MPs."
+                    },
+                    {
+                        "title": "Punishments",
+                        "text": "The Tribunal of State may impose penalties such as loss of voting rights, prohibition on holding public positions, or deprivation of orders."
+                    },
+                    {
+                        "title": "Separate Nature",
+                        "text": "The Tribunal of State is not a common court and convenes only to adjudicate specific indictments."
+                    }
+                ],
+                "quiz": [
+                    {
+                        "question": "Who serves as Chairman of the Tribunal of State by virtue of office?",
+                        "answers": [
+                            "President of the Republic of Poland",
+                            "First President of the Supreme Court",
+                            "Minister of Justice"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "What penalty can the Tribunal of State impose?",
+                        "answers": [
+                            "Fine for a party",
+                            "Prohibition on holding public positions",
+                            "Community service"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "Is the Tribunal of State a common court?",
+                        "answers": [
+                            "Yes",
+                            "No, it is a separate body",
+                            "Yes, but only in Warsaw"
+                        ],
+                        "correct": 1
+                    }
+                ]
+            },
+            {
+                "slug": "l8",
+                "title": "Lesson 8: National Council of the Judiciary",
+                "modules": [
+                    {
+                        "title": "Guardian of Independence",
+                        "text": "The National Council of the Judiciary (KRS) guards the independence of courts and the impartiality of judges."
+                    },
+                    {
+                        "title": "Judicial Appointments",
+                        "text": "The KRS reviews candidacies for judges and presents proposals to the President for their appointment."
+                    },
+                    {
+                        "title": "Composition of the KRS",
+                        "text": "The KRS consists of 25 members, including representatives of judges, MPs, senators, and the President."
+                    },
+                    {
+                        "title": "Minister in the KRS",
+                        "text": "The Minister of Justice is also a member of the KRS by virtue of office."
+                    },
+                    {
+                        "title": "Term of Office",
+                        "text": "The term of office of elected members of the National Council of the Judiciary is 4 years."
+                    },
+                    {
+                        "title": "Opinions",
+                        "text": "The KRS issues opinions on draft legal acts concerning the judiciary and court system."
+                    }
+                ],
+                "quiz": [
+                    {
+                        "question": "What is the main role of the National Council of the Judiciary (KRS)?",
+                        "answers": [
+                            "Issuing criminal judgments",
+                            "Guarding the independence of courts and nominating judges",
+                            "Managing the prison system"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "How many members does the National Council of the Judiciary have?",
+                        "answers": [
+                            "15",
+                            "25",
+                            "460"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "Who is a member of the KRS by virtue of office?",
+                        "answers": [
+                            "President of the Republic of Poland",
+                            "Prime Minister",
+                            "Minister of Justice"
+                        ],
+                        "correct": 2
+                    }
+                ]
+            },
+            {
+                "slug": "l9",
+                "title": "Lesson 9: Status of a Judge",
+                "modules": [
+                    {
+                        "title": "Appointment",
+                        "text": "Judges are appointed by the President of the Republic of Poland upon the motion of the National Council of the Judiciary."
+                    },
+                    {
+                        "title": "Irremovability",
+                        "text": "Judges are irremovable – they cannot be dismissed except by a final decision of a disciplinary court."
+                    },
+                    {
+                        "title": "Judicial Immunity",
+                        "text": "A judge cannot be held criminally liable or detained without the consent of a disciplinary court."
+                    },
+                    {
+                        "title": "Apolitical Nature of Judges",
+                        "text": "A judge may not belong to a political party or engage in public activity incompatible with the judicial office."
+                    },
+                    {
+                        "title": "Protection from Pressure",
+                        "text": "No one is allowed to influence a judge’s decisions or instruct them on how to adjudicate."
+                    },
+                    {
+                        "title": "Retirement",
+                        "text": "Upon reaching a certain age, judges retire (judicial pension)."
+                    }
+                ],
+                "quiz": [
+                    {
+                        "question": "Who officially appoints judges in Poland?",
+                        "answers": [
+                            "The Sejm",
+                            "The President of the Republic of Poland",
+                            "The Prime Minister"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "Can a judge in Poland belong to a political party?",
+                        "answers": [
+                            "Yes",
+                            "No, judges must remain apolitical",
+                            "Yes, with the Minister’s consent"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "What does judicial immunity mean?",
+                        "answers": [
+                            "A judge cannot be held criminally liable without the consent of a disciplinary court",
+                            "A judge is immune from punishment",
+                            "A judge does not have to pay taxes"
+                        ],
+                        "correct": 0
+                    }
+                ]
+            },
+            {
+                "slug": "l10",
+                "title": "Lesson 10: Public Prosecution in Poland",
+                "modules": [
+                    {
+                        "title": "Role of the Prosecution",
+                        "text": "The Public Prosecution Service is responsible for prosecuting crimes and safeguarding the rule of law."
+                    },
+                    {
+                        "title": "Prosecutor General",
+                        "text": "The head of the prosecution service is the Prosecutor General, who is currently the Minister of Justice by virtue of office."
+                    },
+                    {
+                        "title": "National Prosecutor",
+                        "text": "The National Prosecutor is the direct head of the operational structures of the prosecution service and reports to the Prosecutor General."
+                    },
+                    {
+                        "title": "Indictment",
+                        "text": "After collecting evidence by the Police, the prosecutor prepares and files an indictment with the court."
+                    },
+                    {
+                        "title": "Public Accuser",
+                        "text": "In criminal proceedings, the prosecutor acts as the public accuser before the court."
+                    },
+                    {
+                        "title": "Independence of Investigation",
+                        "text": "A prosecutor conducting an investigation has autonomy in making procedural decisions."
+                    }
+                ],
+                "quiz": [
+                    {
+                        "question": "Who serves as Prosecutor General in Poland by virtue of office?",
+                        "answers": [
+                            "The President",
+                            "The Minister of Justice",
+                            "The First President of the Supreme Court"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "What is the name of the document filed by the prosecutor to initiate criminal proceedings?",
+                        "answers": [
+                            "Civil lawsuit",
+                            "Indictment",
+                            "Cassation"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "Does a prosecutor have the right to conduct investigations independently?",
+                        "answers": [
+                            "Yes, they have autonomy in procedural decisions",
+                            "No, they must consult with the Minister",
+                            "Yes, but only in civil cases"
+                        ],
+                        "correct": 0
+                    }
+                ]
+            },
+            {
+                "slug": "l11",
+                "title": "Lesson 11: Citizen’s Rights in Court",
+                "modules": [
+                    {
+                        "title": "Right to a Court",
+                        "text": "Everyone has the right to a fair and public hearing of their case without undue delay."
+                    },
+                    {
+                        "title": "Presumption of Innocence",
+                        "text": "Everyone is presumed innocent until proven guilty by a final court judgment."
+                    },
+                    {
+                        "title": "Right to Defence",
+                        "text": "The accused in criminal proceedings has the right to defence and the assistance of a lawyer."
+                    },
+                    {
+                        "title": "Two-Instance Proceedings",
+                        "text": "A citizen who disagrees with a first-instance judgment has the right to file an appeal."
+                    },
+                    {
+                        "title": "Right to an Interpreter",
+                        "text": "A person who does not speak Polish has the right to free interpreter assistance in court."
+                    },
+                    {
+                        "title": "Complaint about Delay",
+                        "text": "If a case is taking too long, the citizen may file a complaint about the length of proceedings."
+                    }
+                ],
+                "quiz": [
+                    {
+                        "question": "What does the presumption of innocence mean?",
+                        "answers": [
+                            "The accused must prove they are innocent",
+                            "The accused is considered innocent until a final judgment",
+                            "The court always acquits"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "What can a citizen do if they disagree with a first-instance judgment?",
+                        "answers": [
+                            "File an appeal to a higher court",
+                            "Write a complaint to the Prime Minister",
+                            "Ignore the judgment"
+                        ],
+                        "correct": 0
+                    },
+                    {
+                        "question": "Does a person who does not speak Polish have the right to an interpreter in court?",
+                        "answers": [
+                            "Yes, they have the right to free interpreter assistance",
+                            "No, they must know Polish",
+                            "Yes, but they must pay for it"
+                        ],
+                        "correct": 0
+                    }
+                ]
+            },
+            {
+                "slug": "l12",
+                "title": "Lesson 12: Legal Professions",
+                "modules": [
+                    {
+                        "title": "Judge",
+                        "text": "A judge is an impartial arbiter who presides over hearings and issues judgments based on evidence."
+                    },
+                    {
+                        "title": "Advocate (Attorney)",
+                        "text": "An advocate (defence counsel) represents clients, advises them, and defends the accused in criminal trials."
+                    },
+                    {
+                        "title": "Legal Advisor",
+                        "text": "A legal advisor provides legal assistance, prepares legal opinions, and represents parties before civil and administrative courts."
+                    },
+                    {
+                        "title": "Legal Apprenticeship",
+                        "text": "To practice these professions, after law studies one must complete several years of practical training – legal apprenticeship."
+                    },
+                    {
+                        "title": "Notary",
+                        "text": "A notary is a public trust person authorized to draw up notarial deeds and certifications."
+                    },
+                    {
+                        "title": "Court Bailiff",
+                        "text": "A court bailiff is a public official who enforces court judgments by compulsory means (e.g. debt collection)."
+                    }
+                ],
+                "quiz": [
+                    {
+                        "question": "Who represents the interests of the accused as their defence counsel in a criminal trial?",
+                        "answers": [
+                            "Prosecutor",
+                            "Advocate",
+                            "Notary"
+                        ],
+                        "correct": 1
+                    },
+                    {
+                        "question": "What is the name of the practical training after law studies preparing for professions such as judge or legal advisor?",
+                        "answers": [
+                            "Legal apprenticeship",
+                            "Abolicja",
+                            "Term of office"
+                        ],
+                        "correct": 0
+                    },
+                    {
+                        "question": "What is the role of a notary in the legal system?",
+                        "answers": [
+                            "Drawing up notarial deeds and certifications",
+                            "Issuing court judgments",
+                            "Representing clients in court"
+                        ],
+                        "correct": 0
+                    }
+                ]
+            }
+        ]
     },
     "notifications": {
         "notifications": "Notifications",
         "events": {
-            "SURVEY_NEW": { "title": "New survey", "message": "You have a new survey to complete." },
-            "SURVEY_COMPLETED": { "title": "Survey completed", "message": "The survey has been completed." },
-            "SURVEY_RESULT": { "title": "New results", "message": "New survey results are available." },
-            "LAW_UPDATE": { "title": "Law update", "message": "A new legal update is available." },
-            "LOGIN_STREAK_SMALL": { "title": "Login streak", "message": "Your streak is still going!" },
-            "LOGIN_STREAK_BIG": { "title": "Long login streak", "message": "Legendary activity!" },
-            "ACHIEVEMENT_UNLOCK": { "title": "Achievement unlocked", "message": "You unlocked: {{achievementName}}" },
-            "XP_GAIN": { "title": "XP earned", "message": "You received extra XP." },
-            "PROFILE_UPDATE": { "title": "Profile updated", "message": "Your profile was updated." },
-            "VOTE_CAST": { "title": "Vote cast", "message": "Your vote has been recorded." },
-            "OPINION_POSTED": { "title": "Opinion posted", "message": "Your opinion has been published." },
-            "COURSE_COMPLETED": { "title": "Course completed", "message": "You completed a course." },
-            "LEVEL_UP": { "title": "Rank promoted", "message": "You advanced to rank {{rankName}}." }
+            "SURVEY_NEW": {
+                "title": "New survey",
+                "message": "You have a new survey to complete."
+            },
+            "SURVEY_COMPLETED": {
+                "title": "Survey completed",
+                "message": "The survey has been completed."
+            },
+            "SURVEY_RESULT": {
+                "title": "New results",
+                "message": "New survey results are available."
+            },
+            "LAW_UPDATE": {
+                "title": "Law update",
+                "message": "A new legal update is available."
+            },
+            "LOGIN_STREAK_SMALL": {
+                "title": "Login streak",
+                "message": "Your streak is still going!"
+            },
+            "LOGIN_STREAK_BIG": {
+                "title": "Long login streak",
+                "message": "Legendary activity!"
+            },
+            "ACHIEVEMENT_UNLOCK": {
+                "title": "Achievement unlocked",
+                "message": "You unlocked: {{achievementName}}"
+            },
+            "XP_GAIN": {
+                "title": "XP earned",
+                "message": "You received extra XP."
+            },
+            "PROFILE_UPDATE": {
+                "title": "Profile updated",
+                "message": "Your profile was updated."
+            },
+            "VOTE_CAST": {
+                "title": "Vote cast",
+                "message": "Your vote has been recorded."
+            },
+            "OPINION_POSTED": {
+                "title": "Opinion posted",
+                "message": "Your opinion has been published."
+            },
+            "COURSE_COMPLETED": {
+                "title": "Course completed",
+                "message": "You completed a course."
+            },
+            "LEVEL_UP": {
+                "title": "Rank promoted",
+                "message": "You advanced to rank {{rankName}}."
+            }
         },
         "noNotifications": "No notifications",
         "markAsRead": "Mark as read",

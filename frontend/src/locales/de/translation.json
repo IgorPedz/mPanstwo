@@ -350,8 +350,25 @@
         "no": "Nein",
         "yes": "Ja"
     },
+    "lessonSidebar": {
+        "progressTitle": "Dein Fortschritt",
+        "completedModules": "Abgeschlossene Module",
+        "allSections": "Alle Abschnitte",
+        "quiz": "Abschlusstest",
+        "ready": "Bereit",
+        "locked": "Gesperrt",
+        "percentage": "Prozentsatz",
+        "navigation": "Schnelle Navigation",
+        "closeModule": "Modul schließen",
+        "confirmChanges": "Änderungen bestätigen",
+        "hint": "Tipp",
+        "hintText": "Du kannst jederzeit zu abgeschlossenen Modulen zurückkehren, um dein Wissen aufzufrischen."
+    },
     "courses": {
         "page": "Bildung /",
+        "mappage": "Bildung / Kurse",
+        "lessonpage": "Bildung / Kurse / Lektion",
+        "lessonfooter": "Schließe alle theoretischen Module ab, um den abschließenden Wissenstest freizuschalten.",
         "courses": "Kurse",
         "description": "Erweitern Sie Ihr Wissen mit unserer umfassenden Kursbibliothek. Lernen Sie in Ihrem eigenen Tempo und verdienen Sie Erfolge!",
         "total": "Gesamtkurse",
@@ -377,28 +394,2154 @@
         "courseCompleted": "Kurs erfolgreich abgeschlossen",
         "category": "Kategorie",
         "parlamentary_course": {
-            "title": "Grundlagen der parlamentarischen Funktionsweise",
-            "description": "Erfahren Sie mehr über die Struktur, Rollen und Gesetzgebungsprozesse im polnischen Parlament.",
+            "title": "Grundlagen der Funktionsweise des Parlaments",
+            "description": "Lerne die Struktur, Rollen und Gesetzgebungsprozesse des polnischen Parlaments kennen.",
             "level": "Grundlegend",
-            "category": "Politik und Staat"
+            "category": "Politik und Staat",
+            "desc": "In diesem Kurs erfährst du, wie das polnische Parlament funktioniert und wie der Gesetzgebungsprozess abläuft. Du lernst außerdem wichtige Institutionen und Rollen im polnischen politischen System kennen!",
+            "lessons": [
+                {
+                    "slug": "l1",
+                    "title": "Lektion 1: Einführung in den Parlamentarismus",
+                    "modules": [
+                        {
+                            "title": "Gewaltenteilung",
+                            "text": "Das polnische System basiert auf der Gewaltenteilung zwischen gesetzgebender, ausführender und rechtsprechender Gewalt."
+                        },
+                        {
+                            "title": "Legislative Gewalt",
+                            "text": "Die gesetzgebende Gewalt in Polen wird vom Sejm und vom Senat ausgeübt, die gemeinsam ein Zweikammerparlament bilden."
+                        },
+                        {
+                            "title": "Rolle des Parlaments",
+                            "text": "Die Hauptaufgabe des Parlaments ist die Gesetzgebung, also das Verabschieden von Gesetzen."
+                        },
+                        {
+                            "title": "Sejm und Senat",
+                            "text": "Beide Kammern arbeiten getrennt, kooperieren jedoch im Gesetzgebungsverfahren."
+                        },
+                        {
+                            "title": "Repräsentationsprinzip",
+                            "text": "Abgeordnete und Senatoren vertreten die gesamte Nation und nicht nur ihre Wähler."
+                        },
+                        {
+                            "title": "Legislaturperiode",
+                            "text": "Die Amtszeit des Sejm und des Senats beträgt 4 Jahre und beginnt mit der ersten Sitzung."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Was ist gesetzgebende Gewalt?",
+                            "answers": [
+                                "Gesetze erlassen",
+                                "Gesetze ausführen",
+                                "Urteilen"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Wie lange dauert die Amtszeit des Parlaments?",
+                            "answers": [
+                                "2 Jahre",
+                                "4 Jahre",
+                                "5 Jahre"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer übt die gesetzgebende Gewalt in Polen aus?",
+                            "answers": [
+                                "Der Präsident",
+                                "Der Ministerrat",
+                                "Der Sejm und der Senat"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                {
+                    "slug": "l2",
+                    "title": "Lektion 2: Struktur des Sejm der Republik Polen",
+                    "modules": [
+                        {
+                            "title": "Anzahl der Abgeordneten",
+                            "text": "Der Sejm der Republik Polen besteht aus 460 Abgeordneten, die in allgemeinen Wahlen gewählt werden."
+                        },
+                        {
+                            "title": "Sejmmarschall",
+                            "text": "Der Sejmmarschall leitet die Sitzungen, vertritt den Sejm und wacht über seine Rechte."
+                        },
+                        {
+                            "title": "Präsidium des Sejm",
+                            "text": "Das Präsidium des Sejm besteht aus dem Marschall und den Vize-Marschällen."
+                        },
+                        {
+                            "title": "Ältestenrat",
+                            "text": "Der Ältestenrat gewährleistet die Zusammenarbeit der parlamentarischen Klubs und Gruppen."
+                        },
+                        {
+                            "title": "Klubs und Gruppen",
+                            "text": "Abgeordnete können Klubs (mindestens 15 Abgeordnete) oder Gruppen (mindestens 3 Abgeordnete) bilden."
+                        },
+                        {
+                            "title": "Kanzlei des Sejm",
+                            "text": "Die Kanzlei des Sejm bietet organisatorische und technische Unterstützung für die Abgeordneten."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wie viele Abgeordnete gibt es im Sejm der Republik Polen?",
+                            "answers": [
+                                "100",
+                                "460",
+                                "560"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer leitet die Sitzungen des Sejm?",
+                            "answers": [
+                                "Der Premierminister",
+                                "Der Präsident",
+                                "Der Sejmmarschall"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Was ist der Ältestenrat?",
+                            "answers": [
+                                "Ein Gremium zur Zusammenarbeit der Klubs und Gruppen",
+                                "Eine Gruppe erfahrener Abgeordneter",
+                                "Ein Rat älterer Abgeordneter"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l3",
+                    "title": "Lektion 3: Struktur des Senats der Republik Polen",
+                    "modules": [
+                        {
+                            "title": "Anzahl der Senatoren",
+                            "text": "Der Senat der Republik Polen besteht aus 100 Senatoren, die in Einmandatswahlkreisen gewählt werden."
+                        },
+                        {
+                            "title": "Kammer der Reflexion",
+                            "text": "Der Senat wird oft als „Kammer der Reflexion“ bezeichnet."
+                        },
+                        {
+                            "title": "Senatsmarschall",
+                            "text": "Der Senatsmarschall vertritt die Kammer und leitet ihre Sitzungen."
+                        },
+                        {
+                            "title": "Präsidium des Senats",
+                            "text": "Das Präsidium des Senats besteht aus dem Marschall und den Vize-Marschällen."
+                        },
+                        {
+                            "title": "Senatswahlen",
+                            "text": "Senatoren werden in allgemeinen, direkten und geheimen Wahlen gewählt."
+                        },
+                        {
+                            "title": "Einmandatswahlkreise",
+                            "text": "In jedem Wahlkreis wird genau ein Senator gewählt."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wie viele Senatoren gibt es im Senat der Republik Polen?",
+                            "answers": [
+                                "100",
+                                "460",
+                                "200"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "In welchen Wahlkreisen werden Senatoren gewählt?",
+                            "answers": [
+                                "Mehrmandatswahlkreise",
+                                "Einmandatswahlkreise",
+                                "Landesweite Wahlkreise"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer leitet die Sitzungen des Senats?",
+                            "answers": [
+                                "Der Premierminister",
+                                "Der Präsident",
+                                "Der Senatsmarschall"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                {
+                    "slug": "l4",
+                    "title": "Lektion 4: Parlamentarisches Mandat",
+                    "modules": [
+                        {
+                            "title": "Freies Mandat",
+                            "text": "Ein Parlamentarier ist nicht an Weisungen der Wähler gebunden und kann nicht abberufen werden."
+                        },
+                        {
+                            "title": "Parlamentarische Immunität",
+                            "text": "Die Immunität schützt Parlamentarier vor strafrechtlicher Verfolgung ohne Zustimmung der Kammer."
+                        },
+                        {
+                            "title": "Unverletzlichkeit",
+                            "text": "Ein Abgeordneter oder Senator darf nicht ohne Zustimmung der Kammer festgenommen werden, außer bei Ergreifen auf frischer Tat."
+                        },
+                        {
+                            "title": "Rechte der Abgeordneten",
+                            "text": "Parlamentarier haben das Recht, an Abstimmungen teilzunehmen und Interpellationen einzureichen."
+                        },
+                        {
+                            "title": "Pflichten",
+                            "text": "Die Hauptpflicht ist die aktive Teilnahme an der parlamentarischen Arbeit."
+                        },
+                        {
+                            "title": "Parlamentarische Ethik",
+                            "text": "Das Verhalten der Abgeordneten wird von der Ethikkommission überwacht."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Was bedeutet freies Mandat?",
+                            "answers": [
+                                "Bindung an Parteianweisungen",
+                                "Keine Bindung an Wähler",
+                                "Kostenloses Mandat"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Was schützt Parlamentarier vor Festnahme?",
+                            "answers": [
+                                "Veto",
+                                "Immunität",
+                                "Gehalt"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer kann einen Abgeordneten wegen Ethikverstößen rügen?",
+                            "answers": [
+                                "Der Präsident",
+                                "Die Ethikkommission",
+                                "Der Sejmmarschall"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l5",
+                    "title": "Lektion 5: Parlamentarische Ausschüsse",
+                    "modules": [
+                        {
+                            "title": "Rolle der Ausschüsse",
+                            "text": "Ausschüsse prüfen Gesetzesentwürfe und bearbeiten spezielle Themen."
+                        },
+                        {
+                            "title": "Ständige Ausschüsse",
+                            "text": "Ständige Ausschüsse arbeiten während der gesamten Legislaturperiode."
+                        },
+                        {
+                            "title": "Außerordentliche Ausschüsse",
+                            "text": "Werden für eine bestimmte Aufgabe eingesetzt."
+                        },
+                        {
+                            "title": "Untersuchungsausschüsse",
+                            "text": "Dienen der Untersuchung wichtiger öffentlicher Angelegenheiten."
+                        },
+                        {
+                            "title": "Zusammensetzung",
+                            "text": "Spiegelt die Stärke der Fraktionen im Parlament wider."
+                        },
+                        {
+                            "title": "Unterausschüsse",
+                            "text": "Dienen der detaillierten Analyse von Gesetzen."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Welche Ausschüsse untersuchen spezielle Fälle?",
+                            "answers": [
+                                "Ständige",
+                                "Außerordentliche",
+                                "Untersuchungsausschüsse"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Wovon hängt die Zusammensetzung der Ausschüsse ab?",
+                            "answers": [
+                                "Vom Präsidenten",
+                                "Von der Stärke der Fraktionen",
+                                "Vom Zufall"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Welche Ausschüsse arbeiten dauerhaft?",
+                            "answers": [
+                                "Ständige",
+                                "Außerordentliche",
+                                "Untersuchungsausschüsse"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l6",
+                    "title": "Lektion 6: Gesetzesinitiative",
+                    "modules": [
+                        {
+                            "title": "Definition",
+                            "text": "Recht, Gesetzesentwürfe einzubringen."
+                        },
+                        {
+                            "title": "Berechtigte Akteure",
+                            "text": "Abgeordnete, Senat, Präsident, Ministerrat und Bürger."
+                        },
+                        {
+                            "title": "Parlamentarische Initiative",
+                            "text": "Mindestens 15 Abgeordnete oder eine Kommission."
+                        },
+                        {
+                            "title": "Bürgerinitiative",
+                            "text": "Mindestens 100.000 Bürger mit Wahlrecht."
+                        },
+                        {
+                            "title": "Regierungsinitiative",
+                            "text": "Die meisten Gesetze stammen von der Regierung."
+                        },
+                        {
+                            "title": "Formale Anforderungen",
+                            "text": "Jeder Entwurf benötigt Begründung und Finanzanalyse."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wie viele Abgeordnete sind für eine Initiative nötig?",
+                            "answers": [
+                                "Mindestens 15",
+                                "460",
+                                "5"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Wie viele Unterschriften braucht eine Bürgerinitiative?",
+                            "answers": [
+                                "1.000",
+                                "10.000",
+                                "100.000"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Wer kann Gesetze einbringen?",
+                            "answers": [
+                                "Nur Abgeordnete",
+                                "Mehrere Institutionen",
+                                "Nur Präsident"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l7",
+                    "title": "Lektion 7: Drei Lesungen im Sejm",
+                    "modules": [
+                        {
+                            "title": "Erste Lesung",
+                            "text": "Vorstellung des Gesetzentwurfs."
+                        },
+                        {
+                            "title": "Ausschussarbeit",
+                            "text": "Detaillierte Analyse des Entwurfs."
+                        },
+                        {
+                            "title": "Zweite Lesung",
+                            "text": "Änderungen und Berichte."
+                        },
+                        {
+                            "title": "Dritte Lesung",
+                            "text": "Endabstimmung über das Gesetz."
+                        },
+                        {
+                            "title": "Mehrheit",
+                            "text": "Einfache Mehrheit bei Anwesenheit der Hälfte der Abgeordneten."
+                        },
+                        {
+                            "title": "Quorum",
+                            "text": "Mindestens 230 Abgeordnete."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wie viele Lesungen gibt es?",
+                            "answers": [
+                                "1",
+                                "2",
+                                "3"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Was ist das Quorum?",
+                            "answers": [
+                                "100 Abgeordnete",
+                                "230 Abgeordnete",
+                                "460 Abgeordnete"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Was passiert in der zweiten Lesung?",
+                            "answers": [
+                                "Abstimmung",
+                                "Berichte und Änderungen",
+                                "Einbringung des Gesetzes"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l8",
+                    "title": "Lektion 8: Rolle von Senat und Präsident",
+                    "modules": [
+                        {
+                            "title": "Weiterleitung",
+                            "text": "Gesetz geht vom Sejm an den Senat."
+                        },
+                        {
+                            "title": "Senatsfrist",
+                            "text": "30 Tage zur Prüfung."
+                        },
+                        {
+                            "title": "Überstimmung",
+                            "text": "Sejm kann Senat überstimmen."
+                        },
+                        {
+                            "title": "Präsident",
+                            "text": "Unterzeichnet Gesetze."
+                        },
+                        {
+                            "title": "Veto",
+                            "text": "Präsident kann Gesetz zurückweisen."
+                        },
+                        {
+                            "title": "Verfassungsgericht",
+                            "text": "Kann Gesetz prüfen."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wie lange prüft der Senat ein Gesetz?",
+                            "answers": [
+                                "14 Tage",
+                                "30 Tage",
+                                "90 Tage"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer unterschreibt Gesetze?",
+                            "answers": [
+                                "Premier",
+                                "Präsident",
+                                "Senat"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Was kann der Präsident tun?",
+                            "answers": [
+                                "Veto einlegen",
+                                "Ignorieren",
+                                "Aufheben"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l9",
+                    "title": "Lektion 9: Kontrollfunktion des Sejm",
+                    "modules": [
+                        {
+                            "title": "Kontrolle",
+                            "text": "Kontrolliert die Regierung."
+                        },
+                        {
+                            "title": "Interpellation",
+                            "text": "Anfragen an Minister."
+                        },
+                        {
+                            "title": "Misstrauensvotum",
+                            "text": "Kann Regierung stürzen."
+                        },
+                        {
+                            "title": "Konstruktives Misstrauensvotum",
+                            "text": "Mit neuem Premier."
+                        },
+                        {
+                            "title": "Rechnungshof",
+                            "text": "Kontrollorgan unter dem Sejm."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer wird kontrolliert?",
+                            "answers": [
+                                "Regierung",
+                                "Gerichte",
+                                "Präsident"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l10",
+                    "title": "Lektion 10: Nationalversammlung",
+                    "modules": [
+                        {
+                            "title": "Definition",
+                            "text": "Gemeinsame Sitzung von Sejm und Senat."
+                        },
+                        {
+                            "title": "Eid des Präsidenten",
+                            "text": "Vereidigung des Präsidenten."
+                        },
+                        {
+                            "title": "Rede des Präsidenten",
+                            "text": "Anhören von Reden."
+                        },
+                        {
+                            "title": "Unfähigkeit",
+                            "text": "Kann Präsident für handlungsunfähig erklären."
+                        },
+                        {
+                            "title": "Anklage",
+                            "text": "Vor Staatsgerichtshof."
+                        },
+                        {
+                            "title": "Mehrheit",
+                            "text": "2/3 Mehrheit erforderlich."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer gehört zur Nationalversammlung?",
+                            "answers": [
+                                "Abgeordnete und Senatoren",
+                                "Nur Regierung",
+                                "Militär"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l11",
+                    "title": "Lektion 11: Haushaltsgesetz",
+                    "modules": [
+                        {
+                            "title": "Budget",
+                            "text": "Jährlicher Finanzplan."
+                        },
+                        {
+                            "title": "Regierung",
+                            "text": "Hat Initiativrecht."
+                        },
+                        {
+                            "title": "Senat",
+                            "text": "Kann Änderungen vorschlagen."
+                        },
+                        {
+                            "title": "Präsident",
+                            "text": "Muss schnell unterschreiben."
+                        },
+                        {
+                            "title": "Auflösung",
+                            "text": "Möglich bei Verzögerung."
+                        },
+                        {
+                            "title": "Bericht",
+                            "text": "Abrechnung der Ausgaben."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer erstellt das Budget?",
+                            "answers": [
+                                "Regierung",
+                                "Präsident",
+                                "Parlament"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l12",
+                    "title": "Lektion 12: Verfassungsrechtliche Verantwortung",
+                    "modules": [
+                        {
+                            "title": "Verantwortung",
+                            "text": "Haftung für Verfassungsverstöße."
+                        },
+                        {
+                            "title": "Staatsgerichtshof",
+                            "text": "Sondergericht für höchste Amtsträger."
+                        },
+                        {
+                            "title": "Geschäftsverbot",
+                            "text": "Verbot von Nutzung staatlicher Mittel."
+                        },
+                        {
+                            "title": "Vermögenserklärung",
+                            "text": "Jährliche Pflicht."
+                        },
+                        {
+                            "title": "Immunität",
+                            "text": "Kann aufgehoben werden."
+                        },
+                        {
+                            "title": "Mandatsverlust",
+                            "text": "Bei rechtskräftiger Verurteilung."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer beurteilt Verfassungsverstöße?",
+                            "answers": [
+                                "Staatsgerichtshof",
+                                "Polizei",
+                                "Verwaltung"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Wann verliert man das Mandat automatisch?",
+                            "answers": [
+                                "Meinungsänderung",
+                                "Verurteilung wegen vorsätzlicher Straftat",
+                                "Fehlzeit"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kann ein Abgeordneter Immunität aufgeben?",
+                            "answers": [
+                                "Ja",
+                                "Nein",
+                                "Nur Gericht"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        "executive_course": {
+            "title": "Rolle und Funktionsweise der Regierung",
+            "description": "Verstehen Sie die Arbeitsweise der Regierung, ihre Strukturen und Entscheidungsprozesse.",
+            "level": "Grundstufe",
+            "category": "Politik und Staat",
+            "desc": "In diesem Kurs lernen Sie, wie die polnische Regierung funktioniert, welche Strukturen und Entscheidungsprozesse sie hat. Sie lernen auch die wichtigsten Institutionen und Rollen im polnischen politischen System kennen!",
+            "lessons": [
+                {
+                    "slug": "l1",
+                    "title": "Lektion 1: Exekutive Gewalt in Polen",
+                    "modules": [
+                        {
+                            "title": "Dualismus der Exekutive",
+                            "text": "Die exekutive Gewalt in Polen wird von zwei Organen ausgeübt: dem Präsidenten der Republik Polen und dem Ministerrat."
+                        },
+                        {
+                            "title": "Ministerrat",
+                            "text": "Der Ministerrat, also die Regierung, führt die laufende Innen- und Außenpolitik des Staates."
+                        },
+                        {
+                            "title": "Präsident als Schiedsrichter",
+                            "text": "Der Präsident ist der höchste Repräsentant der Republik Polen, wacht über die Einhaltung der Verfassung und fungiert als Schiedsrichter."
+                        },
+                        {
+                            "title": "Aufgabenteilung",
+                            "text": "Die Regierung verwaltet die Verwaltung und Finanzen, während der Präsident die Oberbefehlsgewalt über das Militär und die Repräsentation innehat."
+                        },
+                        {
+                            "title": "Verfassungsrolle der Regierung",
+                            "text": "Dem Ministerrat obliegen alle Angelegenheiten der Staatspolitik, die nicht anderen Organen vorbehalten sind."
+                        },
+                        {
+                            "title": "Koordinierung",
+                            "text": "Die Regierung sorgt für die Ausführung der Gesetze, indem sie Durchführungsakte erlässt und die Regierungsverwaltung leitet."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer bildet den Dualismus der exekutiven Gewalt in Polen?",
+                            "answers": [
+                                "Sejm und Senat",
+                                "Präsident und Ministerrat",
+                                "Gerichte und Staatsanwaltschaft"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer führt die laufende Innen- und Außenpolitik?",
+                            "answers": [
+                                "Ministerrat",
+                                "Marschall des Sejm",
+                                "Oberstes Gericht"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Welche Rolle hat der Präsident im System der exekutiven Gewalt?",
+                            "answers": [
+                                "Leitet die Regierung",
+                                "Wacht über die Verfassung und fungiert als Schiedsrichter",
+                                "Führt die Außenpolitik"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l2",
+                    "title": "Lektion 2: Zusammensetzung und Struktur der Regierung",
+                    "modules": [
+                        {
+                            "title": "Ministerpräsident",
+                            "text": "An der Spitze der Regierung steht der Präsident des Ministerrates, allgemein bekannt als Ministerpräsident."
+                        },
+                        {
+                            "title": "Vize-Ministerpräsidenten",
+                            "text": "Der Regierung können Vizepräsidenten des Ministerrates (Vize-Ministerpräsidenten) angehören."
+                        },
+                        {
+                            "title": "Ressortminister",
+                            "text": "Ressortminister leiten bestimmte Bereiche der Verwaltung (z. B. Minister für Gesundheit)."
+                        },
+                        {
+                            "title": "Minister ohne Geschäftsbereich",
+                            "text": "Dies sind Minister, die kein konkretes Ministerium leiten, sondern Aufgaben ausführen, die ihnen vom Ministerpräsidenten übertragen wurden."
+                        },
+                        {
+                            "title": "Regierungsausschüsse",
+                            "text": "In der Regierungsstruktur arbeiten Ausschüsse (z. B. Ständiger Ausschuss des Ministerrates), die Entwürfe vorbereiten."
+                        },
+                        {
+                            "title": "Kollegialität der Regierung",
+                            "text": "Der Ministerrat trifft die wichtigsten Entscheidungen gemeinsam (kollegial) in Form von Beschlüssen."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer steht an der Spitze des Ministerrates?",
+                            "answers": [
+                                "Präsident",
+                                "Ministerpräsident",
+                                "Marschall des Sejm"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Was ist ein Minister ohne Geschäftsbereich?",
+                            "answers": [
+                                "Ein Minister ohne Ministerium, der Aufgaben des Ministerpräsidenten ausführt",
+                                "Abgeordneter der Opposition",
+                                "Lokaler Beamter"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Welche Ausschüsse gibt es in der Regierungsstruktur?",
+                            "answers": [
+                                "Sejm-Ausschüsse",
+                                "Regierungsausschüsse (z. B. Ständiger Ausschuss des Ministerrates)",
+                                "Senatsausschüsse"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l3",
+                    "title": "Lektion 3: Bildung der Regierung",
+                    "modules": [
+                        {
+                            "title": "Erster Schritt",
+                            "text": "Der Präsident designiert den Ministerpräsidenten, der die Zusammensetzung des Ministerrates vorschlägt."
+                        },
+                        {
+                            "title": "Ernennung durch den Präsidenten",
+                            "text": "Der Präsident ernennt den Ministerpräsidenten und die Minister innerhalb von 14 Tagen nach der ersten Sitzung des Sejm."
+                        },
+                        {
+                            "title": "Exposé und Vertrauensvotum",
+                            "text": "Der Ministerpräsident stellt dem Sejm das Regierungsprogramm (Exposé) vor und beantragt ein Vertrauensvotum."
+                        },
+                        {
+                            "title": "Absolute Mehrheit",
+                            "text": "Der Sejm beschließt das Vertrauensvotum mit absoluter Mehrheit der Stimmen bei Anwesenheit von mindestens der Hälfte der Abgeordneten."
+                        },
+                        {
+                            "title": "Zweiter Schritt (Sejm)",
+                            "text": "Erhält die Regierung kein Vertrauensvotum, wählt der Sejm innerhalb von 14 Tagen den Ministerpräsidenten und die Regierung mit absoluter Mehrheit."
+                        },
+                        {
+                            "title": "Dritter Schritt",
+                            "text": "Scheitert der Sejm, ernennt der Präsident die Regierung erneut, wobei der Sejm dann nur eine einfache Mehrheit benötigt."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wie heißt die programmatische Rede des Ministerpräsidenten im Sejm?",
+                            "answers": [
+                                "Interpellation",
+                                "Exposé",
+                                "Votum"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer wählt die Regierung im zweiten Verfassungsschritt?",
+                            "answers": [
+                                "Präsident",
+                                "Sejm",
+                                "Volk im Referendum"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Mit welcher Mehrheit beschließt der Sejm das Vertrauensvotum für die Regierung?",
+                            "answers": [
+                                "Einfacher Mehrheit",
+                                "Absoluter Mehrheit",
+                                "Mehrheit von 2/3"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l4",
+                    "title": "Lektion 4: Rolle und Aufgaben des Ministerpräsidenten",
+                    "modules": [
+                        {
+                            "title": "Leitung der Arbeiten",
+                            "text": "Der Ministerpräsident vertritt den Ministerrat und leitet dessen Arbeiten."
+                        },
+                        {
+                            "title": "Koordinierung der Minister",
+                            "text": "Der Ministerpräsident koordiniert und kontrolliert die Arbeit aller übrigen Minister der Regierung."
+                        },
+                        {
+                            "title": "Erlass von Anordnungen",
+                            "text": "Der Ministerpräsident ist ein Einpersonenorgan und hat das Recht, eigene Anordnungen zu erlassen."
+                        },
+                        {
+                            "title": "Dienstvorgesetzter der Beamten",
+                            "text": "Der Ministerpräsident ist der dienstliche Vorgesetzte aller Beschäftigten des öffentlichen Dienstes."
+                        },
+                        {
+                            "title": "Aufgabenteilung",
+                            "text": "Der Ministerpräsident entscheidet über den Umfang der Aufgaben und Zuständigkeiten der Ressortminister."
+                        },
+                        {
+                            "title": "Rücktritt der Regierung",
+                            "text": "Der Rücktritt des Ministerpräsidenten bedeutet automatisch den Rücktritt des gesamten Ministerrates."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Was passiert mit der Regierung, wenn der Ministerpräsident zurücktritt?",
+                            "answers": [
+                                "Sie arbeitet unverändert weiter",
+                                "Die gesamte Regierung tritt zurück",
+                                "Es wird ein neuer Vize-Ministerpräsident gewählt"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer ist der Vorgesetzte des Korps des öffentlichen Dienstes?",
+                            "answers": [
+                                "Präsident",
+                                "Ministerpräsident",
+                                "Leiter des Innenministeriums"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Hat der Ministerpräsident das Recht, eigene Anordnungen zu erlassen?",
+                            "answers": [
+                                "Ja",
+                                "Nein",
+                                "Nur mit Zustimmung des Sejm"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l5",
+                    "title": "Lektion 5: Ministerien und zentrale Ämter",
+                    "modules": [
+                        {
+                            "title": "Rolle eines Ministeriums",
+                            "text": "Ein Ministerium ist eine Behörde, die den Minister bei der Umsetzung der Staatspolitik unterstützt."
+                        },
+                        {
+                            "title": "Staatssekretäre",
+                            "text": "Stellvertretende Minister (Staatssekretäre und Unterstaatssekretäre) unterstützen den Minister bei der Leitung des Ressorts."
+                        },
+                        {
+                            "title": "Generaldirektor",
+                            "text": "Der Generaldirektor gewährleistet die Kontinuität der Arbeit des Ministeriums und leitet die Verwaltungsangelegenheiten."
+                        },
+                        {
+                            "title": "Zentrale Ämter",
+                            "text": "Neben den Ministerien gibt es zentrale Ämter, die den Ministern unterstellt sind (z. B. Statistisches Zentralamt)."
+                        },
+                        {
+                            "title": "Verwaltungsbereiche",
+                            "text": "Ein Minister kann mehrere Bereiche der Regierungsverwaltung leiten (z. B. Bildung und Wissenschaft)."
+                        },
+                        {
+                            "title": "Verordnungen",
+                            "text": "Minister erlassen Verordnungen auf Grundlage ausdrücklicher Ermächtigung in Gesetzen."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer ist für die Kontinuität der Arbeit und die Verwaltungsangelegenheiten im Ministerium verantwortlich?",
+                            "answers": [
+                                "Minister",
+                                "Generaldirektor",
+                                "Pressesprecher"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Auf welcher Grundlage kann ein Minister eine Verordnung erlassen?",
+                            "answers": [
+                                "Eigenem Ermessen",
+                                "Ausdrücklicher Ermächtigung im Gesetz",
+                                "Zustimmung der Opposition"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kann ein Minister mehrere Bereiche der Regierungsverwaltung leiten?",
+                            "answers": [
+                                "Ja",
+                                "Nein",
+                                "Nur in Krisenzeiten"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l6",
+                    "title": "Lektion 6: Entscheidungsprozess",
+                    "modules": [
+                        {
+                            "title": "Regierungsinitiative",
+                            "text": "Ministerien bereiten Annahmen für Gesetzes- und Verordnungsentwürfe vor."
+                        },
+                        {
+                            "title": "Öffentliche Konsultationen",
+                            "text": "Regierungsentwürfe durchlaufen obligatorische interministerielle und gesellschaftliche Abstimmungen."
+                        },
+                        {
+                            "title": "Gesetzgebungsrat",
+                            "text": "Der Gesetzgebungsrat begutachtet Entwürfe hinsichtlich ihrer Übereinstimmung mit dem polnischen Rechtssystem."
+                        },
+                        {
+                            "title": "Ständiger Ausschuss",
+                            "text": "Der Ständige Ausschuss des Ministerrates löst Streitigkeiten zwischen Ministern vor der Regierungssitzung."
+                        },
+                        {
+                            "title": "Regierungssitzung",
+                            "text": "Die Regierung berät über Entwürfe in geschlossenen Sitzungen und nimmt Dokumente an."
+                        },
+                        {
+                            "title": "Öffentliches Informationsbulletin",
+                            "text": "Alle angenommenen Regierungsentwürfe und Pläne werden im BIP-System veröffentlicht."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wohin geht ein Regierungsentwurf vor der Sitzung des gesamten Ministerrates zur Lösung von Streitigkeiten?",
+                            "answers": [
+                                "Zum Sejm",
+                                "Zum Ständigen Ausschuss des Ministerrates",
+                                "Zum Verfassungsgericht"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Sind die Sitzungen des Ministerrates grundsätzlich öffentlich?",
+                            "answers": [
+                                "Ja",
+                                "Nein (sie sind geschlossen)",
+                                "Ja, im Fernsehen übertragen"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wo findet man Informationen zu angenommenen Regierungsentwürfen?",
+                            "answers": [
+                                "Auf der Website des Sejm",
+                                "Im Öffentlichen Informationsbulletin (BIP)",
+                                "Auf der Website des Präsidenten"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l7",
+                    "title": "Lektion 7: Woiwode und territoriale Verwaltung",
+                    "modules": [
+                        {
+                            "title": "Vertreter der Regierung",
+                            "text": "Der Woiwode ist der Vertreter des Ministerrates in jedem der 16 Woiwodschaften."
+                        },
+                        {
+                            "title": "Aufsicht über die Selbstverwaltung",
+                            "text": "Der Woiwode kontrolliert die Rechtmäßigkeit der Beschlüsse von Gemeinden, Kreisen und Woiwodschaftstagen."
+                        },
+                        {
+                            "title": "Gebündelte Verwaltung",
+                            "text": "Der Woiwode leitet die für die Sicherheit zuständigen Dienste (z. B. Polizei, Feuerwehr in der Woiwodschaft)."
+                        },
+                        {
+                            "title": "Ernennung des Woiwoden",
+                            "text": "Der Woiwode wird vom Ministerpräsidenten auf Vorschlag des zuständigen Ministers für Verwaltung ernannt und abberufen."
+                        },
+                        {
+                            "title": "Rechtsakte des Ortsrechts",
+                            "text": "Der Woiwode hat das Recht, Anordnungen und Rechtsakte des Ortsrechts in Krisensituationen zu erlassen."
+                        },
+                        {
+                            "title": "Krisenmanagement",
+                            "text": "Der Woiwode koordiniert Rettungsaktionen im Gebiet der Woiwodschaft bei Naturkatastrophen."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer ist der Woiwode?",
+                            "answers": [
+                                "Vertreter der Regierung in der Woiwodschaft",
+                                "Leiter eines lokalen Gerichts",
+                                "Stadtpräsident"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Wer ernennt den Woiwoden?",
+                            "answers": [
+                                "Präsident der Republik Polen",
+                                "Marschall der Woiwodschaft",
+                                "Ministerpräsident"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Welche Rolle spielt der Woiwode bei Naturkatastrophen?",
+                            "answers": [
+                                "Keine Rolle",
+                                "Koordiniert Rettungsaktionen",
+                                "Leitet die Evakuierung des ganzen Landes"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l8",
+                    "title": "Lektion 8: Öffentlicher Dienst",
+                    "modules": [
+                        {
+                            "title": "Aufgabe des öffentlichen Dienstes",
+                            "text": "Das Korps des öffentlichen Dienstes gewährleistet die professionelle, zuverlässige und unpolitische Erfüllung staatlicher Aufgaben."
+                        },
+                        {
+                            "title": "Unpolitischkeit",
+                            "text": "Beamte des öffentlichen Dienstes dürfen keine politischen Ansichten manifestieren oder politische Parteien gründen."
+                        },
+                        {
+                            "title": "Streikverbot",
+                            "text": "Ernannte Beamte des öffentlichen Dienstes dürfen keine Handlungen vornehmen, die die Arbeit der Behörde stören (z. B. Streiks)."
+                        },
+                        {
+                            "title": "Einstellung",
+                            "text": "Die Einstellung in den öffentlichen Dienst ist offen, wettbewerbsorientiert und basiert auf Kompetenzkriterien."
+                        },
+                        {
+                            "title": "Leiter des öffentlichen Dienstes",
+                            "text": "Die Arbeit des Korps leitet der Leiter des öffentlichen Dienstes, der direkt dem Ministerpräsidenten unterstellt ist."
+                        },
+                        {
+                            "title": "Kontinuität des Staates",
+                            "text": "Dank des öffentlichen Dienstes arbeiten die Behörden stabil, auch bei einem Wechsel der Regierungspartei."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Welche Schlüsselqualität muss ein Beamter des öffentlichen Dienstes haben?",
+                            "answers": [
+                                "Parteizugehörigkeit",
+                                "Unpolitischkeit",
+                                "Ehrenamtliche Arbeit"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wem untersteht der Leiter des öffentlichen Dienstes?",
+                            "answers": [
+                                "Präsidenten",
+                                "Ministerpräsidenten",
+                                "Oberstem Gericht"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Dürfen Beamte des öffentlichen Dienstes streiken?",
+                            "answers": [
+                                "Ja",
+                                "Nein",
+                                "Nur in Ausnahmesituationen"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l9",
+                    "title": "Lektion 9: Sicherheit und Verteidigung",
+                    "modules": [
+                        {
+                            "title": "Verantwortung der Regierung",
+                            "text": "Der Ministerrat ist für die Gewährleistung der äußeren und inneren Sicherheit des Staates verantwortlich."
+                        },
+                        {
+                            "title": "Verteidigungsressort",
+                            "text": "Der Minister für Nationale Verteidigung leitet die Armee und setzt die Verteidigungspolitik der Regierung um."
+                        },
+                        {
+                            "title": "Innere Sicherheit",
+                            "text": "Der Minister für Inneres und Verwaltung beaufsichtigt Polizei, Grenzschutz und SOP."
+                        },
+                        {
+                            "title": "Regierungskrisenteam",
+                            "text": "In Bedrohungssituationen tritt das Regierungsteam für Krisenmanagement unter Vorsitz des Ministerpräsidenten zusammen."
+                        },
+                        {
+                            "title": "Außergewöhnliche Zustände",
+                            "text": "Die Regierung kann beim Präsidenten die Einführung des Ausnahmezustands oder des Kriegszustands beantragen."
+                        },
+                        {
+                            "title": "Finanzierung der Armee",
+                            "text": "Die Regierung gewährleistet eine stabile Finanzierung der Streitkräfte über den Staatshaushalt."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Welcher Minister ist für die Aufsicht über Polizei und Grenzschutz verantwortlich?",
+                            "answers": [
+                                "Justizminister",
+                                "Minister für Inneres und Verwaltung",
+                                "Minister für Nationale Verteidigung"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer leitet das Regierungsteam für Krisenmanagement?",
+                            "answers": [
+                                "Ministerpräsident",
+                                "Polizeipräsident",
+                                "Generalstabschef"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Kann die Regierung die Einführung des Ausnahmezustands beantragen?",
+                            "answers": [
+                                "Ja",
+                                "Nein",
+                                "Nur im Kriegsfall"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l10",
+                    "title": "Lektion 10: Außenpolitik",
+                    "modules": [
+                        {
+                            "title": "Führung der Politik",
+                            "text": "Der Ministerrat übt die allgemeine Leitung im Bereich der Beziehungen zu anderen Staaten aus."
+                        },
+                        {
+                            "title": "Rolle des Außenministeriums",
+                            "text": "Der Außenminister koordiniert die Umsetzung der Außenpolitik und beaufsichtigt die Botschaften."
+                        },
+                        {
+                            "title": "Internationale Verträge",
+                            "text": "Die Regierung schließt internationale Verträge, die teilweise der Ratifizierung durch das Parlament oder den Präsidenten bedürfen."
+                        },
+                        {
+                            "title": "Vertretung in der EU",
+                            "text": "Der Ministerpräsident und die Minister vertreten die Interessen Polens im Europäischen Rat und im Rat der EU."
+                        },
+                        {
+                            "title": "Zusammenarbeit mit dem Präsidenten",
+                            "text": "Die Regierung ist verpflichtet, mit dem Präsidenten in außenpolitischen Angelegenheiten zusammenzuarbeiten."
+                        },
+                        {
+                            "title": "Botschafter",
+                            "text": "Die Regierung beantragt die Ernennung von Botschaftern, die offiziell vom Präsidenten der Republik Polen ernannt werden."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer koordiniert direkt die Außenpolitik und beaufsichtigt die Botschaften?",
+                            "answers": [
+                                "Außenminister",
+                                "Präsident",
+                                "Woiwode"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Wo vertritt der Ministerpräsident Polen auf höchster EU-Ebene?",
+                            "answers": [
+                                "Im Europäischen Rat",
+                                "Im US-Kongress",
+                                "In der UNO"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Wer ernennt offiziell die Botschafter?",
+                            "answers": [
+                                "Ministerpräsident",
+                                "Präsident der Republik Polen",
+                                "Sejm"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l11",
+                    "title": "Lektion 11: Kontrolle über die Regierung",
+                    "modules": [
+                        {
+                            "title": "Politische Verantwortung",
+                            "text": "Der Ministerrat trägt die politische Verantwortung vor dem Sejm der Republik Polen."
+                        },
+                        {
+                            "title": "Vertrauensvotum während der Amtszeit",
+                            "text": "Der Ministerpräsident kann jederzeit den Sejm um ein Vertrauensvotum für die Regierung ersuchen."
+                        },
+                        {
+                            "title": "Misstrauensvotum gegen einen Minister",
+                            "text": "Der Sejm kann ein Misstrauensvotum gegen einen einzelnen Minister auf Antrag von mindestens 69 Abgeordneten aussprechen."
+                        },
+                        {
+                            "title": "Rücktritt nach Wahlen",
+                            "text": "Der Ministerpräsident legt immer den Rücktritt der Regierung auf der ersten Sitzung des neu gewählten Sejm ein."
+                        },
+                        {
+                            "title": "Staatsgerichtshof",
+                            "text": "Mitglieder der Regierung sind vor dem Staatsgerichtshof für Verletzungen des Rechts oder der Verfassung verantwortlich."
+                        },
+                        {
+                            "title": "NIK-Kontrolle",
+                            "text": "Die Oberste Rechnungskammer prüft regelmäßig die Ausgaben der Regierung und die Rechtmäßigkeit der Handlungen der Ministerien."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wann hat der Ministerpräsident die verfassungsrechtliche Pflicht, den Rücktritt der Regierung einzureichen?",
+                            "answers": [
+                                "Jedes Jahr",
+                                "Auf der ersten Sitzung des neuen Sejm",
+                                "Wenn die Opposition es verlangt"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Vor wem sind Regierungsmitglieder für die Verletzung der Verfassung verantwortlich?",
+                            "answers": [
+                                "Vor dem Staatsgerichtshof",
+                                "Vor den Medien",
+                                "Vor dem Ministerpräsidenten"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Wie viele Unterschriften von Abgeordneten sind für ein Misstrauensvotum gegen einen Minister erforderlich?",
+                            "answers": [
+                                "Mindestens 69",
+                                "Mindestens 100",
+                                "Mindestens 50"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l12",
+                    "title": "Lektion 12: Beziehungen zum Präsidenten",
+                    "modules": [
+                        {
+                            "title": "Kontrasignatur",
+                            "text": "Die meisten Rechtsakte des Präsidenten erfordern die Unterschrift (Kontrasignatur) des Ministerpräsidenten, um in Kraft zu treten."
+                        },
+                        {
+                            "title": "Prärogativakte",
+                            "text": "Prärogativen sind persönliche Befugnisse des Präsidenten, die keiner Kontrasignatur des Ministerpräsidenten bedürfen (z. B. das Begnadigungsrecht)."
+                        },
+                        {
+                            "title": "Kabinettsrat",
+                            "text": "Der Kabinettsrat ist eine Sitzung der Regierung unter dem Vorsitz des Präsidenten. Er besitzt keine Entscheidungsbefugnisse der Regierung."
+                        },
+                        {
+                            "title": "Zweck des Rates",
+                            "text": "Der Präsident beruft den Kabinettsrat zu Angelegenheiten von besonderer Bedeutung für den Staat ein."
+                        },
+                        {
+                            "title": "Oberbefehl über die Streitkräfte",
+                            "text": "Der Präsident ist der Oberbefehlshaber der Streitkräfte, übt diese Befugnis jedoch in Friedenszeiten über den Minister für Nationale Verteidigung aus."
+                        },
+                        {
+                            "title": "Konsultationen",
+                            "text": "Regelmäßige Treffen zwischen Ministerpräsident und Präsident sind entscheidend für die Stabilität der Staatspolitik."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Was ist die Unterschrift des Ministerpräsidenten auf einem Akt des Präsidenten?",
+                            "answers": [
+                                "Veto",
+                                "Kontrasignatur",
+                                "Prärogative"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kann der Kabinettsrat unter Vorsitz des Präsidenten Regierungsbeschlüsse fassen?",
+                            "answers": [
+                                "Ja",
+                                "Nein (er hat nur konsultativen Charakter)",
+                                "Ja, mit Zustimmung des Sejm"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer ist in Friedenszeiten Oberbefehlshaber der Streitkräfte?",
+                            "answers": [
+                                "Der Präsident direkt",
+                                "Der Ministerpräsident",
+                                "Der Präsident über den Minister für Nationale Verteidigung"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        "court_course": {
+            "title": "Gerichtssystem in Polen",
+            "description": "Erfahren Sie mehr über die Struktur und Funktionsweise des polnischen Gerichtssystems.",
+            "level": "Grundstufe",
+            "category": "Recht",
+            "desc": "In diesem Kurs lernen Sie, wie das polnische Gerichtssystem funktioniert, welche Strukturen und Entscheidungsprozesse es hat. Sie lernen auch die wichtigsten Institutionen und Rollen im polnischen Rechtssystem kennen!",
+            "lessons": [
+                {
+                    "slug": "l1",
+                    "title": "Lektion 1: Judikative Gewalt",
+                    "modules": [
+                        {
+                            "title": "Dritte Gewalt",
+                            "text": "Die judikative Gewalt ist unabhängig von der gesetzgebenden und der ausführenden Gewalt."
+                        },
+                        {
+                            "title": "Gerichte und Tribunale",
+                            "text": "Die judikative Gewalt in Polen wird durch Gerichte und unabhängige Tribunale ausgeübt."
+                        },
+                        {
+                            "title": "Unabhängigkeit der Richter",
+                            "text": "Richter sind unabhängig, was bedeutet, dass sie nur der Verfassung und den Gesetzen unterliegen."
+                        },
+                        {
+                            "title": "Berufung und Instanzen",
+                            "text": "Gerichtsverfahren in Polen sind mindestens zweinstanzlich (man kann Berufung einlegen)."
+                        },
+                        {
+                            "title": "Urteilsverkündung",
+                            "text": "Gerichte sprechen Urteile im Namen der Republik Polen."
+                        },
+                        {
+                            "title": "Öffentlichkeit der Verhandlungen",
+                            "text": "Gerichtsverhandlungen sind öffentlich, es sei denn, das Gesetz erlaubt den Ausschluss der Öffentlichkeit aus Gründen der Moral oder der Sicherheit."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wem unterliegen unabhängige Richter?",
+                            "answers": [
+                                "Dem Ministerpräsidenten",
+                                "Nur der Verfassung und den Gesetzen",
+                                "Dem Präsidenten"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wie viele Instanzen hat ein Gerichtsverfahren in Polen?",
+                            "answers": [
+                                "Einstanzlich",
+                                "Mindestens zweinstanzlich",
+                                "Vierinstanzlich"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Sind Gerichtsverhandlungen in Polen öffentlich?",
+                            "answers": [
+                                "Ja, immer",
+                                "Nein, nie",
+                                "Ja, es sei denn, das Gesetz sieht etwas anderes vor"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                {
+                    "slug": "l2",
+                    "title": "Lektion 2: Allgemeine Gerichte",
+                    "modules": [
+                        {
+                            "title": "Amtsgerichte",
+                            "text": "Amtsgerichte (Sądy rejonowe) sind die unterste Ebene und bearbeiten die meisten einfachen Zivil- und Strafsachen."
+                        },
+                        {
+                            "title": "Kreisgerichte",
+                            "text": "Kreisgerichte (Sądy okręgowe) verhandeln schwerere Fälle in erster Instanz und Berufungen gegen Urteile der Amtsgerichte."
+                        },
+                        {
+                            "title": "Berufungsgerichte",
+                            "text": "Berufungsgerichte (Sądy apelacyjne) befassen sich ausschließlich mit Berufungen gegen Urteile der Kreisgerichte."
+                        },
+                        {
+                            "title": "Kammern des Gerichts",
+                            "text": "Gerichte gliedern sich in Kammern: Zivilkammer, Strafkammer, Familienkammer, Arbeitskammer oder Wirtschaftskammer."
+                        },
+                        {
+                            "title": "Schöffen",
+                            "text": "In manchen Verfahren sitzen neben dem Berufsrichter auch Bürger – Schöffen – als Laienrichter."
+                        },
+                        {
+                            "title": "Zuständigkeit",
+                            "text": "Die Zuständigkeit des Gerichts hängt vom Wohnort des Beklagten oder vom Ort der Tat ab."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Welches Gericht ist in der Regel das Gericht erster Instanz für einfache Fälle?",
+                            "answers": [
+                                "Berufungsgericht",
+                                "Amtsgericht",
+                                "Oberstes Gericht"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Was ist ein Schöffe im Gericht?",
+                            "answers": [
+                                "Ein Berufsrichter",
+                                "Ein Bürger, der am Urteil mitwirkt",
+                                "Ein Staatsanwalt"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Woraus ergibt sich die Zuständigkeit eines Gerichts?",
+                            "answers": [
+                                "Aus der Art des Falls",
+                                "Aus dem Wohnort des Beklagten oder dem Tatort",
+                                "Aus der Entscheidung des Staatsanwalts"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l3",
+                    "title": "Lektion 3: Oberstes Gericht",
+                    "modules": [
+                        {
+                            "title": "Judikative Aufsicht",
+                            "text": "Das Oberste Gericht übt die Aufsicht über die Tätigkeit der allgemeinen und militärischen Gerichte im Bereich der Rechtsprechung aus."
+                        },
+                        {
+                            "title": "Kassationsbeschwerde",
+                            "text": "Gegen ein rechtskräftiges Urteil der zweiten Instanz kann eine Kassationsbeschwerde beim Obersten Gericht eingelegt werden."
+                        },
+                        {
+                            "title": "Kammern des Obersten Gerichts",
+                            "text": "Das Oberste Gericht gliedert sich in spezialisierte Kammern (z. B. Strafkammer, Zivilkammer)."
+                        },
+                        {
+                            "title": "Beschlüsse des Obersten Gerichts",
+                            "text": "Das Oberste Gericht fasst Beschlüsse zur Klärung von Rechtsvorschriften, die Zweifel hervorrufen."
+                        },
+                        {
+                            "title": "Erster Präsident des Obersten Gerichts",
+                            "text": "Die Arbeit des Obersten Gerichts leitet der Erste Präsident, der vom Präsidenten für eine 6-jährige Amtszeit ernannt wird."
+                        },
+                        {
+                            "title": "Sitz",
+                            "text": "Der Sitz des Obersten Gerichts befindet sich in Warschau."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wie heißt das Rechtsmittel, das an das Oberste Gericht gerichtet wird?",
+                            "answers": [
+                                "Berufung",
+                                "Kassation (Kassationsbeschwerde)",
+                                "Beschwerde"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wie lange dauert die Amtszeit des Ersten Präsidenten des Obersten Gerichts?",
+                            "answers": [
+                                "2 Jahre",
+                                "4 Jahre",
+                                "6 Jahre"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Wo befindet sich der Sitz des Obersten Gerichts?",
+                            "answers": [
+                                "In Krakau",
+                                "In Danzig",
+                                "In Warschau"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                {
+                    "slug": "l4",
+                    "title": "Lektion 4: Verwaltungsgerichte",
+                    "modules": [
+                        {
+                            "title": "Kontrolle der Verwaltung",
+                            "text": "Verwaltungsgerichte kontrollieren die Rechtmäßigkeit von Entscheidungen öffentlicher Behörden."
+                        },
+                        {
+                            "title": "WSA",
+                            "text": "Die Wojewodschaftsverwaltungsgerichte (WSA) entscheiden in erster Instanz über Klagen gegen Verwaltungsentscheidungen."
+                        },
+                        {
+                            "title": "NSA",
+                            "text": "Das Oberste Verwaltungsgericht (NSA) in Warschau entscheidet über Berufungen gegen Urteile der WSA."
+                        },
+                        {
+                            "title": "Kriterium der Rechtmäßigkeit",
+                            "text": "Das Verwaltungsgericht prüft ausschließlich, ob die Behörde rechtmäßig gehandelt hat, nicht die Zweckmäßigkeit."
+                        },
+                        {
+                            "title": "Aufhebung einer Entscheidung",
+                            "text": "Bei Rechtsverletzung hebt das Verwaltungsgericht die angefochtene Entscheidung auf."
+                        },
+                        {
+                            "title": "Klage wegen Untätigkeit",
+                            "text": "Man kann eine Behörde auch wegen Nichterledigung innerhalb der Frist (Untätigkeit) verklagen."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Womit befassen sich Verwaltungsgerichte?",
+                            "answers": [
+                                "Mit der Verurteilung von Straftätern",
+                                "Mit der Kontrolle der Rechtmäßigkeit von Behördenentscheidungen",
+                                "Mit Scheidungen"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wo befindet sich das Oberste Verwaltungsgericht (NSA)?",
+                            "answers": [
+                                "In Danzig",
+                                "In Krakau",
+                                "In Warschau"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Bewertet das Verwaltungsgericht die Zweckmäßigkeit des Handelns einer Behörde?",
+                            "answers": [
+                                "Ja",
+                                "Nein (es prüft nur die Rechtmäßigkeit)",
+                                "Nur in Finanzangelegenheiten"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l5",
+                    "title": "Lektion 5: Gültigkeit von Wahlen",
+                    "modules": [
+                        {
+                            "title": "Rolle der Kammer des Obersten Gerichts",
+                            "text": "Das Oberste Gericht ist das zuständige Organ für die Feststellung der Gültigkeit von Wahlen und Referenden."
+                        },
+                        {
+                            "title": "Wahlbeschwerden",
+                            "text": "Bürger haben das Recht, beim Obersten Gericht Beschwerden gegen die Gültigkeit von Wahlen innerhalb einer bestimmten Frist einzureichen."
+                        },
+                        {
+                            "title": "Prüfung der Beschwerden",
+                            "text": "Das Oberste Gericht prüft, ob die gemeldeten Verfahrensverstöße Einfluss auf das Wahlergebnis hatten."
+                        },
+                        {
+                            "title": "Beschluss über die Gültigkeit",
+                            "text": "Nach Prüfung der Beschwerden fasst das Oberste Gericht einen Gesamtbeschluss über die Gültigkeit der Parlaments- oder Präsidentschaftswahlen."
+                        },
+                        {
+                            "title": "Wahlen zum EP",
+                            "text": "Das Oberste Gericht entscheidet auch über die Gültigkeit der Wahlen zum Europäischen Parlament in Polen."
+                        },
+                        {
+                            "title": "Referendum",
+                            "text": "Dieselbe Verfahren gilt für landesweite Referenden und die Bestätigung ihrer Rechtmäßigkeit."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Welche Institution stellt die Gültigkeit der Parlamentswahlen in Polen fest?",
+                            "answers": [
+                                "Staatliche Wahlkommission",
+                                "Oberstes Gericht",
+                                "Verfassungsgericht"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer kann eine Wahlbeschwerde beim Obersten Gericht einreichen?",
+                            "answers": [
+                                "Nur der Ministerpräsident",
+                                "Jeder Wahlberechtigte",
+                                "Nur die Polizei"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kann das Oberste Gericht Wahlen für ungültig erklären?",
+                            "answers": [
+                                "Ja, wenn Verfahrensverstöße das Ergebnis beeinflusst haben",
+                                "Nein, es stellt nur die Gültigkeit fest",
+                                "Ja, auf Antrag des Präsidenten"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l6",
+                    "title": "Lektion 6: Verfassungsgericht",
+                    "modules": [
+                        {
+                            "title": "Gericht über das Recht",
+                            "text": "Das Verfassungsgericht (TK) prüft die Übereinstimmung von Gesetzen mit der Verfassung der Republik Polen."
+                        },
+                        {
+                            "title": "Zusammensetzung des Gerichts",
+                            "text": "Das Verfassungsgericht besteht aus 15 Richtern, die vom Sejm für eine 9-jährige Amtszeit gewählt werden."
+                        },
+                        {
+                            "title": "Verfassungsbeschwerde",
+                            "text": "Jeder Bürger kann nach Ausschöpfung des Rechtsweges eine Verfassungsbeschwerde einreichen, wenn er der Ansicht ist, dass eine Vorschrift seine Rechte verletzt hat."
+                        },
+                        {
+                            "title": "Rechtsfragen",
+                            "text": "Gerichte können dem Verfassungsgericht Rechtsfragen vorlegen, wenn sie Zweifel an der Verfassungsmäßigkeit einer Vorschrift haben."
+                        },
+                        {
+                            "title": "Endgültigkeit der Urteile",
+                            "text": "Die Entscheidungen des Verfassungsgerichts haben allgemein verbindliche Kraft und sind endgültig."
+                        },
+                        {
+                            "title": "Außerkraftsetzung",
+                            "text": "Eine Vorschrift, die vom Verfassungsgericht für verfassungswidrig erklärt wurde, verliert ihre Rechtskraft."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wie viele Richter gehören dem Verfassungsgericht an?",
+                            "answers": [
+                                "9",
+                                "12",
+                                "15"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Kann man gegen ein Urteil des Verfassungsgerichts Berufung einlegen?",
+                            "answers": [
+                                "Ja, zum Sejm",
+                                "Nein, die Urteile sind endgültig",
+                                "Ja, zum Obersten Gericht"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer kann eine Verfassungsbeschwerde beim Verfassungsgericht einreichen?",
+                            "answers": [
+                                "Jeder Bürger nach Ausschöpfung des Rechtsweges",
+                                "Nur Abgeordnete",
+                                "Nur Richter"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l7",
+                    "title": "Lektion 7: Staatsgerichtshof",
+                    "modules": [
+                        {
+                            "title": "Strafrechtliche Verantwortung von Amtsträgern",
+                            "text": "Der Staatsgerichtshof verurteilt höchste Staatsbeamte wegen Verletzung der Verfassung oder von Gesetzen."
+                        },
+                        {
+                            "title": "Wer ist verantwortlich",
+                            "text": "Vor dem Staatsgerichtshof stehen u. a. der Präsident, der Ministerpräsident, Regierungsmitglieder und der Präsident der Obersten Rechnungskammer."
+                        },
+                        {
+                            "title": "Vorsitzender",
+                            "text": "Vorsitzender des Staatsgerichtshofs ist von Amts wegen der Erste Präsident des Obersten Gerichts."
+                        },
+                        {
+                            "title": "Wahl der Mitglieder",
+                            "text": "Die übrigen Mitglieder des Staatsgerichtshofs wählt der Sejm für die Dauer seiner Amtszeit aus Personen außerhalb des Abgeordnetenamtes."
+                        },
+                        {
+                            "title": "Strafen des Staatsgerichtshofs",
+                            "text": "Der Staatsgerichtshof kann u. a. mit Verlust des Wahlrechts, Verbot der Ausübung öffentlicher Ämter oder Aberkennung von Orden bestrafen."
+                        },
+                        {
+                            "title": "Eigenständigkeit",
+                            "text": "Der Staatsgerichtshof ist kein allgemeines Gericht und tritt nur zur Verhandlung konkreter Anklagen zusammen."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer ist von Amts wegen Vorsitzender des Staatsgerichtshofs?",
+                            "answers": [
+                                "Präsident der Republik Polen",
+                                "Erster Präsident des Obersten Gerichts",
+                                "Justizminister"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Welche Strafe kann der Staatsgerichtshof verhängen?",
+                            "answers": [
+                                "Geldstrafe zugunsten einer Partei",
+                                "Verbot der Ausübung öffentlicher Ämter",
+                                "Gemeinnützige Arbeit"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Ist der Staatsgerichtshof ein allgemeines Gericht?",
+                            "answers": [
+                                "Ja",
+                                "Nein, er ist ein eigenständiges Organ",
+                                "Ja, aber nur in Warschau"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                {
+                    "slug": "l8",
+                    "title": "Lektion 8: Nationaler Richterrat",
+                    "modules": [
+                        {
+                            "title": "Wächter der Unabhängigkeit",
+                            "text": "Der Nationale Richterrat (KRS) wacht über die Unabhängigkeit der Gerichte und die Unabhängigkeit der Richter."
+                        },
+                        {
+                            "title": "Richterernennungen",
+                            "text": "Der KRS prüft Kandidaturen für Richterämter und legt dem Präsidenten Vorschläge zur Ernennung vor."
+                        },
+                        {
+                            "title": "Zusammensetzung des KRS",
+                            "text": "Der KRS besteht aus 25 Mitgliedern, darunter Vertreter der Richter, Abgeordnete, Senatoren und der Präsident."
+                        },
+                        {
+                            "title": "Justizminister im KRS",
+                            "text": "Von Amts wegen gehört auch der Justizminister dem KRS an."
+                        },
+                        {
+                            "title": "Amtszeit",
+                            "text": "Die Amtszeit der gewählten Mitglieder des Nationalen Richterrats beträgt 4 Jahre."
+                        },
+                        {
+                            "title": "Stellungnahmen",
+                            "text": "Der KRS gibt Stellungnahmen zu Gesetzesentwürfen betreffend die Rechtsprechung und die Gerichtsverfassung ab."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Was ist die Hauptaufgabe des Nationalen Richterrats (KRS)?",
+                            "answers": [
+                                "Strafurteile fällen",
+                                "Wahrung der Unabhängigkeit der Gerichte und Ernennung von Richtern",
+                                "Verwaltung des Strafvollzugs"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wie viele Mitglieder hat der Nationale Richterrat?",
+                            "answers": [
+                                "15",
+                                "25",
+                                "460"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wer gehört dem KRS von Amts wegen an?",
+                            "answers": [
+                                "Präsident der Republik Polen",
+                                "Ministerpräsident",
+                                "Justizminister"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                {
+                    "slug": "l9",
+                    "title": "Lektion 9: Status des Richters",
+                    "modules": [
+                        {
+                            "title": "Ernennung",
+                            "text": "Richter werden vom Präsidenten der Republik Polen auf Vorschlag des Nationalen Richterrats ernannt."
+                        },
+                        {
+                            "title": "Unabsetzbarkeit",
+                            "text": "Richter sind unabsetzbar – sie dürfen nur aufgrund eines rechtskräftigen Disziplinarurteils entlassen werden."
+                        },
+                        {
+                            "title": "Richterliche Immunität",
+                            "text": "Ein Richter darf nicht strafrechtlich verfolgt oder festgenommen werden ohne Zustimmung des Disziplinargerichts."
+                        },
+                        {
+                            "title": "Politische Neutralität der Richter",
+                            "text": "Ein Richter darf keiner politischen Partei angehören und keine öffentliche Tätigkeit ausüben, die mit dem Richteramt unvereinbar ist."
+                        },
+                        {
+                            "title": "Kein Einflussnahme",
+                            "text": "Niemand darf auf die Entscheidungen eines Richters Einfluss nehmen oder ihn anweisen, wie er zu urteilen hat."
+                        },
+                        {
+                            "title": "Ruhestand",
+                            "text": "Nach Erreichen eines bestimmten Alters treten Richter in den Ruhestand (Richterpension)."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer ernennt offiziell die Richter in Polen?",
+                            "answers": [
+                                "Sejm",
+                                "Präsident der Republik Polen",
+                                "Ministerpräsident"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Darf ein Richter in Polen einer politischen Partei angehören?",
+                            "answers": [
+                                "Ja",
+                                "Nein, er muss politisch neutral sein",
+                                "Ja, mit Zustimmung des Ministers"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Was bedeutet die richterliche Immunität?",
+                            "answers": [
+                                "Ein Richter darf ohne Zustimmung des Disziplinargerichts nicht strafrechtlich verfolgt werden",
+                                "Ein Richter ist straffrei",
+                                "Ein Richter muss keine Steuern zahlen"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l10",
+                    "title": "Lektion 10: Staatsanwaltschaft in Polen",
+                    "modules": [
+                        {
+                            "title": "Rolle der Staatsanwaltschaft",
+                            "text": "Die Staatsanwaltschaft ist für die Verfolgung von Straftaten und den Schutz der Rechtsordnung zuständig."
+                        },
+                        {
+                            "title": "Generalstaatsanwalt",
+                            "text": "An der Spitze der Staatsanwaltschaft steht der Generalstaatsanwalt, der von Amts wegen der Justizminister ist."
+                        },
+                        {
+                            "title": "Nationaler Staatsanwalt",
+                            "text": "Der Nationale Staatsanwalt ist der direkte Leiter der operativen Strukturen der Staatsanwaltschaft und untersteht dem Generalstaatsanwalt."
+                        },
+                        {
+                            "title": "Anklageschrift",
+                            "text": "Der Staatsanwalt verfasst nach Abschluss der polizeilichen Ermittlungen die Anklageschrift und reicht sie beim Gericht ein."
+                        },
+                        {
+                            "title": "Öffentlicher Ankläger",
+                            "text": "Im Strafprozess tritt der Staatsanwalt vor Gericht als öffentlicher Ankläger auf."
+                        },
+                        {
+                            "title": "Unabhängigkeit der Ermittlungen",
+                            "text": "Der ermittelnde Staatsanwalt hat Autonomie bei prozessualen Entscheidungen."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer ist von Amts wegen Generalstaatsanwalt in Polen?",
+                            "answers": [
+                                "Präsident",
+                                "Justizminister",
+                                "Erster Präsident des Obersten Gerichts"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wie heißt das Dokument, mit dem der Staatsanwalt ein Strafverfahren einleitet?",
+                            "answers": [
+                                "Zivilklage",
+                                "Anklageschrift",
+                                "Kassation"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Darf ein Staatsanwalt Ermittlungen selbstständig führen?",
+                            "answers": [
+                                "Ja, er hat Autonomie bei prozessualen Entscheidungen",
+                                "Nein, er muss sich mit dem Minister abstimmen",
+                                "Ja, aber nur in Zivilsachen"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l11",
+                    "title": "Lektion 11: Rechte des Bürgers vor Gericht",
+                    "modules": [
+                        {
+                            "title": "Recht auf Gericht",
+                            "text": "Jeder hat das Recht auf eine faire und öffentliche Verhandlung seiner Sache ohne unangemessene Verzögerung."
+                        },
+                        {
+                            "title": "Unschuldsvermutung",
+                            "text": "Jeder gilt als unschuldig, bis seine Schuld durch ein rechtskräftiges Urteil nachgewiesen ist."
+                        },
+                        {
+                            "title": "Recht auf Verteidigung",
+                            "text": "Der Angeklagte im Strafprozess hat das Recht auf Verteidigung und die Inanspruchnahme eines Rechtsanwalts."
+                        },
+                        {
+                            "title": "Zweinstanzlichkeit",
+                            "text": "Ein Bürger, der mit dem Urteil der ersten Instanz nicht einverstanden ist, hat das Recht, Rechtsmittel (Berufung) einzulegen."
+                        },
+                        {
+                            "title": "Recht auf Dolmetscher",
+                            "text": "Personen, die der polnischen Sprache nicht mächtig sind, haben Anspruch auf unentgeltliche Dolmetscherhilfe vor Gericht."
+                        },
+                        {
+                            "title": "Beschwerde wegen Verfahrensverzögerung",
+                            "text": "Wenn ein Verfahren zu lange dauert, kann der Bürger eine Beschwerde wegen Verfahrensverzögerung einreichen."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Was bedeutet die Unschuldsvermutung?",
+                            "answers": [
+                                "Der Angeklagte muss beweisen, dass er unschuldig ist",
+                                "Der Angeklagte gilt als unschuldig bis zu einem rechtskräftigen Urteil",
+                                "Das Gericht spricht immer frei"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Was kann ein Bürger tun, wenn er mit dem Urteil der ersten Instanz nicht einverstanden ist?",
+                            "answers": [
+                                "Berufung beim Gericht höherer Instanz einlegen",
+                                "Beschwerde beim Ministerpräsidenten einreichen",
+                                "Das Urteil ignorieren"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Hat eine Person, die kein Polnisch spricht, Anspruch auf einen Dolmetscher vor Gericht?",
+                            "answers": [
+                                "Ja, sie hat Anspruch auf unentgeltliche Dolmetscherhilfe",
+                                "Nein, sie muss Polnisch können",
+                                "Ja, muss aber selbst bezahlen"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "slug": "l12",
+                    "title": "Lektion 12: Juristische Berufe",
+                    "modules": [
+                        {
+                            "title": "Richter",
+                            "text": "Der Richter ist ein unparteiischer Schiedsrichter, der die Verhandlung leitet und auf Grundlage der Beweise ein Urteil fällt."
+                        },
+                        {
+                            "title": "Rechtsanwalt (Adwokat)",
+                            "text": "Der Rechtsanwalt (Verteidiger) vertritt Mandanten, berät sie und verteidigt Angeklagte in Strafprozessen."
+                        },
+                        {
+                            "title": "Rechtsberater (Radca prawny)",
+                            "text": "Der Rechtsberater leistet Rechtsberatung, erstellt Gutachten und vertritt Parteien vor Zivil- und Verwaltungsgerichten."
+                        },
+                        {
+                            "title": "Juristische Ausbildung",
+                            "text": "Um diese Berufe auszuüben, muss man nach dem Jurastudium eine mehrjährige praktische Ausbildung (Aplikacja) absolvieren."
+                        },
+                        {
+                            "title": "Notar",
+                            "text": "Der Notar ist eine Person des öffentlichen Vertrauens, die notarielle Urkunden und Beglaubigungen erstellt."
+                        },
+                        {
+                            "title": "Gerichtsvollzieher",
+                            "text": "Der Gerichtsvollzieher ist ein Vollstreckungsbeamter, der gerichtliche Urteile zwangsweise vollstreckt (z. B. Schulden eintreibt)."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Wer vertritt im Strafprozess die Interessen des Angeklagten als sein Verteidiger?",
+                            "answers": [
+                                "Staatsanwalt",
+                                "Rechtsanwalt",
+                                "Notar"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Wie heißt die praktische Ausbildung nach dem Jurastudium zur Vorbereitung auf Berufe wie Richter oder Rechtsberater?",
+                            "answers": [
+                                "Aplikacja",
+                                "Abolicja",
+                                "Kadencja"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Was ist die Aufgabe eines Notars im Rechtssystem?",
+                            "answers": [
+                                "Erstellung notarieller Urkunden und Beglaubigungen",
+                                "Urteilsverkündung",
+                                "Vertretung von Mandanten vor Gericht"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                }
+            ]
         }
     },
     "notifications": {
         "notifications": "Benachrichtigungen",
         "events": {
-            "SURVEY_NEW": { "title": "Neue Umfrage", "message": "Sie haben eine neue Umfrage zu bearbeiten." },
-            "SURVEY_COMPLETED": { "title": "Umfrage abgeschlossen", "message": "Die Umfrage wurde abgeschlossen." },
-            "SURVEY_RESULT": { "title": "Neue Ergebnisse", "message": "Neue Umfrageergebnisse sind verfügbar." },
-            "LAW_UPDATE": { "title": "Rechtsaktualisierung", "message": "Eine neue Rechtsaktualisierung ist verfügbar." },
-            "LOGIN_STREAK_SMALL": { "title": "Anmelde-Serie", "message": "Ihre Serie geht weiter!" },
-            "LOGIN_STREAK_BIG": { "title": "Lange Anmelde-Serie", "message": "Legendäre Aktivität!" },
-            "ACHIEVEMENT_UNLOCK": { "title": "Errungenschaft freigeschaltet", "message": "Sie haben freigeschaltet: {{achievementName}}" },
-            "XP_GAIN": { "title": "XP erhalten", "message": "Sie haben zusätzliche XP erhalten." },
-            "PROFILE_UPDATE": { "title": "Profil aktualisiert", "message": "Ihr Profil wurde aktualisiert." },
-            "VOTE_CAST": { "title": "Stimme abgegeben", "message": "Ihre Stimme wurde gespeichert." },
-            "OPINION_POSTED": { "title": "Meinung gepostet", "message": "Ihre Meinung wurde veröffentlicht." },
-            "COURSE_COMPLETED": { "title": "Kurs abgeschlossen", "message": "Sie haben einen Kurs abgeschlossen." },
-            "LEVEL_UP": { "title": "Rang aufgestiegen", "message": "Sie sind auf Rang {{rankName}} aufgestiegen." }
+            "SURVEY_NEW": {
+                "title": "Neue Umfrage",
+                "message": "Sie haben eine neue Umfrage zu bearbeiten."
+            },
+            "SURVEY_COMPLETED": {
+                "title": "Umfrage abgeschlossen",
+                "message": "Die Umfrage wurde abgeschlossen."
+            },
+            "SURVEY_RESULT": {
+                "title": "Neue Ergebnisse",
+                "message": "Neue Umfrageergebnisse sind verfügbar."
+            },
+            "LAW_UPDATE": {
+                "title": "Rechtsaktualisierung",
+                "message": "Eine neue Rechtsaktualisierung ist verfügbar."
+            },
+            "LOGIN_STREAK_SMALL": {
+                "title": "Anmelde-Serie",
+                "message": "Ihre Serie geht weiter!"
+            },
+            "LOGIN_STREAK_BIG": {
+                "title": "Lange Anmelde-Serie",
+                "message": "Legendäre Aktivität!"
+            },
+            "ACHIEVEMENT_UNLOCK": {
+                "title": "Errungenschaft freigeschaltet",
+                "message": "Sie haben freigeschaltet: {{achievementName}}"
+            },
+            "XP_GAIN": {
+                "title": "XP erhalten",
+                "message": "Sie haben zusätzliche XP erhalten."
+            },
+            "PROFILE_UPDATE": {
+                "title": "Profil aktualisiert",
+                "message": "Ihr Profil wurde aktualisiert."
+            },
+            "VOTE_CAST": {
+                "title": "Stimme abgegeben",
+                "message": "Ihre Stimme wurde gespeichert."
+            },
+            "OPINION_POSTED": {
+                "title": "Meinung gepostet",
+                "message": "Ihre Meinung wurde veröffentlicht."
+            },
+            "COURSE_COMPLETED": {
+                "title": "Kurs abgeschlossen",
+                "message": "Sie haben einen Kurs abgeschlossen."
+            },
+            "LEVEL_UP": {
+                "title": "Rang aufgestiegen",
+                "message": "Sie sind auf Rang {{rankName}} aufgestiegen."
+            }
         },
         "noNotifications": "Keine Benachrichtigungen",
         "markAsRead": "Als gelesen markieren",

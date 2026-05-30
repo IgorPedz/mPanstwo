@@ -351,8 +351,25 @@
         "no": "Nie",
         "yes": "Tak"
     },
+    "lessonSidebar": {
+        "progressTitle": "Twój Postęp",
+        "completedModules": "Ukończono moduły",
+        "allSections": "Wszystkie sekcje",
+        "quiz": "Test sprawdzający",
+        "ready": "Gotowy",
+        "locked": "Zablokowany",
+        "percentage": "Wynik procentowy",
+        "navigation": "Szybkie nawigowanie",
+        "closeModule": "Zamknięcie modułu",
+        "confirmChanges": "Zatwierdzenie zmian",
+        "hint": "Wskazówka",
+        "hintText": "Możesz wracać do ukończonych modułów w dowolnym momencie, aby odświeżyć swoją wiedzę."
+    },
     "courses": {
-        "page":"Edukacja /",
+        "page": "Edukacja /",
+        "mappage": "Edukacja / Kursy",
+        "lessonpage": "Edukacja / Kursy / Lekcja",
+        "lessonfooter": "Ukończ wszystkie moduły teoretyczne, aby odblokować końcowy test wiedzy.",
         "courses": "Kursy",
         "description": "Poszerz swoją wiedzę dzięki naszej bibliotece kursów. Ucz się w swoim tempie i zdobywaj osiągnięcia!",
         "total": "Razem kursów",
@@ -374,6 +391,7 @@
         "duration": "Czas trwania",
         "startDate": "Data rozpoczęcia",
         "lesson": "Lekcji",
+        "lessons": "Lekcja",
         "courseStarted": "Kurs rozpoczęty pomyślnie",
         "courseCompleted": "Kurs ukończony pomyślnie",
         "category": "Kategoria",
@@ -381,25 +399,2173 @@
             "title": "Podstawy funkcjonowania parlamentu",
             "description": "Poznaj strukturę, role i procesy legislacyjne w polskim parlamencie.",
             "level": "Podstawowy",
-            "category": "Polityka i państwo"
+            "category": "Polityka i państwo",
+            "desc": "W tym kursie dowiesz się, jak działa polski parlament oraz jak przebiega proces legislacyjny. Poznasz też kluczowe instytucje i role w polskim systemie politycznym!",
+            "lessons": {
+                "l1": {
+                    "title": "Wstęp do parlamentaryzmu",
+                    "modules": [
+                        {
+                            "title": "Trójpodział władzy",
+                            "text": "Polski ustrój opiera się na podziale na władzę ustawodawczą, wykonawczą i sądowniczą."
+                        },
+                        {
+                            "title": "Władza ustawodawcza",
+                            "text": "Władzę ustawodawczą w Polsce sprawują Sejm i Senat, tworzące dwuizbowy parlament."
+                        },
+                        {
+                            "title": "Rola parlamentu",
+                            "text": "Głównym zadaniem parlamentu jest stanowienie prawa, czyli uchwalanie ustaw państwowych."
+                        },
+                        {
+                            "title": "Sejm i Senat",
+                            "text": "Obie izby pracują osobno, ale współpracują w procesie legislacyjnym nad każdą ustawą."
+                        },
+                        {
+                            "title": "Zasada reprezentacji",
+                            "text": "Posłowie i senatorowie są przedstawicielami całego Narodu, a nie tylko swoich wyborców."
+                        },
+                        {
+                            "title": "Kadencja parlamentu",
+                            "text": "Kadencja Sejmu i Senatu trwa 4 lata i rozpoczyna się od dnia pierwszego posiedzenia."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Czym jest władza ustawodawcza?",
+                            "answers": [
+                                "Tworzenie prawa",
+                                "Wykonywanie prawa",
+                                "Sądzenie"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Ile trwa kadencja Sejmu i Senatu?",
+                            "answers": [
+                                "2 lata",
+                                "4 lata",
+                                "5 lat"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto sprawuje władzę ustawodawczą w Polsce?",
+                            "answers": [
+                                "Prezydent",
+                                "Rada Ministrów",
+                                "Sejm i Senat"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                "l2": {
+                    "title": "Struktura Sejmu RP",
+                    "modules": [
+                        {
+                            "title": "Liczba posłów",
+                            "text": "Sejm RP składa się z 460 posłów wybieranych w wyborach powszechnych."
+                        },
+                        {
+                            "title": "Marszałek Sejmu",
+                            "text": "Marszałek Sejmu przewodniczy obradom, reprezentuje Sejm i stoi na straży jego praw."
+                        },
+                        {
+                            "title": "Prezydium Sejmu",
+                            "text": "Prezydium Sejmu tworzą Marszałek oraz wicemarszałkowie izby."
+                        },
+                        {
+                            "title": "Konwent Seniorów",
+                            "text": "Konwent Seniorów to organ zapewniający współdziałanie klubów i kół parlamentarnych."
+                        },
+                        {
+                            "title": "Kluby i koła",
+                            "text": "Posłowie mogą zrzeszać się w kluby (min. 15 posłów) lub koła (min. 3 posłów)."
+                        },
+                        {
+                            "title": "Kancelaria Sejmu",
+                            "text": "Kancelaria Sejmu to urząd zapewniający organizacyjne i techniczne wsparcie posłom."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Ilu posłów zasiada w Sejmie RP?",
+                            "answers": [
+                                "100",
+                                "460",
+                                "560"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto przewodniczy obradom Sejmu?",
+                            "answers": [
+                                "Premier",
+                                "Prezydent",
+                                "Marszałek Sejmu"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Co to jest Konwent Seniorów?",
+                            "answers": [
+                                "Organ współdziałający kluby i koła",
+                                "Grupa doświadczonych posłów",
+                                "Rada starszych posłów"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l3": {
+                    "title": "Struktura Senatu RP",
+                    "modules": [
+                        {
+                            "title": "Liczba senatorów",
+                            "text": "Senat RP składa się ze 100 senatorów wybieranych w jednomandatowych okręgach."
+                        },
+                        {
+                            "title": "Izba refleksji",
+                            "text": "Senat często nazywany jest 'izbą zadumy' lub 'refleksji' nad prawem z Sejmu."
+                        },
+                        {
+                            "title": "Marszałek Senatu",
+                            "text": "Marszałek Senatu reprezentuje izbę i przewodniczy jej posiedzeniom."
+                        },
+                        {
+                            "title": "Prezydium Senatu",
+                            "text": "W skład Prezydium Senatu wchodzą Marszałek oraz wicemarszałkowie Senatu."
+                        },
+                        {
+                            "title": "Wybory do Senatu",
+                            "text": "Senatorowie są wybierani w wyborach powszechnych, bezpośrednich i w głosowaniu tajnym."
+                        },
+                        {
+                            "title": "Okręgi jednomandatowe",
+                            "text": "W wyborach do Senatu z każdego okręgu wyborczego wybiera się dokładnie jednego senatora."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Ilu senatorów zasiada w Senacie RP?",
+                            "answers": [
+                                "100",
+                                "460",
+                                "200"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "W jakich okręgach są wybierani senatorowie?",
+                            "answers": [
+                                "Wielomandatowych",
+                                "Jednomandatowych",
+                                "Krajowych"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto przewodniczy posiedzeniom Senatu?",
+                            "answers": [
+                                "Premier",
+                                "Prezydent",
+                                "Marszałek Senatu"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                "l4": {
+                    "title": "Mandat parlamentarzysty",
+                    "modules": [
+                        {
+                            "title": "Mandat wolny",
+                            "text": "Parlamentarzysta nie jest związany instrukcjami wyborców i nie można go odwołać."
+                        },
+                        {
+                            "title": "Immunitet poselski",
+                            "text": "Immunitet chroni parlamentarzystę przed pociągnięciem do odpowiedzialności karnej bez zgody izby."
+                        },
+                        {
+                            "title": "Nietykalność",
+                            "text": "Poseł lub senator nie może być zatrzymany bez zgody odpowiedniej izby, chyba że na gorącym uczynku."
+                        },
+                        {
+                            "title": "Prawa posła",
+                            "text": "Parlamentarzyści mają prawo do brania udziału w głosowaniach oraz zgłaszania interpelacji."
+                        },
+                        {
+                            "title": "Obowiązki",
+                            "text": "Głównym obowiązkiem jest czynny udział w pracach izby oraz komisji parlamentarnych."
+                        },
+                        {
+                            "title": "Etyka poselska",
+                            "text": "Nad zachowaniem posłów czuwa Komisja Etyki Poselskiej, która może udzielać upomnień."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Co oznacza mandat wolny?",
+                            "answers": [
+                                "Związanie instrukcjami partii",
+                                "Brak związania instrukcjami wyborców",
+                                "Darmową pracę"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Co chroni parlamentarzystę przed zatrzymaniem karnym?",
+                            "answers": [
+                                "Weto",
+                                "Immunitet",
+                                "Dieta parlamentarna"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto może udzielić upomnienia posłowi za naruszenie etyki?",
+                            "answers": [
+                                "Prezydent",
+                                "Komisja Etyki Poselskiej",
+                                "Marszałek Sejmu"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l5": {
+                    "title": "Komisje parlamentarne",
+                    "modules": [
+                        {
+                            "title": "Rola komisji",
+                            "text": "Komisje to zespoły posłów lub senatorów powołane do rozpatrywania konkretnych spraw i projektów ustaw."
+                        },
+                        {
+                            "title": "Komisje stałe",
+                            "text": "Komisje stałe funkcjonują przez całą kadencję (np. Komisja Spraw Zagranicznych, Finansów)."
+                        },
+                        {
+                            "title": "Komisje nadzwyczajne",
+                            "text": "Komisje nadzwyczajne są powoływane do wykonania jednego, określonego zadania."
+                        },
+                        {
+                            "title": "Komisje śledcze",
+                            "text": "Sejm może powołać komisję śledczą do zbadania konkretnej, ważnej sprawy publicznej."
+                        },
+                        {
+                            "title": "Skład komisji",
+                            "text": "Skład komisji odzwierciedla proporcjonalnie reprezentację klubów w całym Sejmie."
+                        },
+                        {
+                            "title": "Podkomisje",
+                            "text": "Dla szczegółowego zbadania ustawy komisje mogą powoływać mniejsze podkomisje robocze."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Jaka komisja badająca sprawę ma specjalne uprawnienia śledcze?",
+                            "answers": [
+                                "Stała",
+                                "Nadzwyczajna",
+                                "Śledcza"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Od czego zależy skład osobowy komisji?",
+                            "answers": [
+                                "Od decyzji Prezydenta",
+                                "Od proporcji klubów w Sejmie",
+                                "Od losowania"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Jakie komisje działają przez całą kadencję?",
+                            "answers": [
+                                "Stałe",
+                                "Nadzwyczajne",
+                                "Śledcze"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l6": {
+                    "title": "Inicjatywa ustawodawcza",
+                    "modules": [
+                        {
+                            "title": "Definicja inicjatywy",
+                            "text": "Inicjatywa ustawodawcza to prawo do zgłoszenia projektu nowej ustawy do Sejmu."
+                        },
+                        {
+                            "title": "Uprawnione podmioty",
+                            "text": "Prawo to przysługuje Posłom, Senatowi, Prezydentowi, Radzie Ministrów oraz obywatelom."
+                        },
+                        {
+                            "title": "Inicjatywa poselska",
+                            "text": "Projekt ustawy może zgłosić grupa co najmniej 15 posłów lub komisja sejmowa."
+                        },
+                        {
+                            "title": "Inicjatywa obywatelska",
+                            "text": "Grupa co najmniej 100 000 obywateli mających prawo wybierania może zgłosić własny projekt."
+                        },
+                        {
+                            "title": "Inicjatywa rządowa",
+                            "text": "Projekty rządowe (Rady Ministrów) stanowią statystycznie większość uchwalanego prawa."
+                        },
+                        {
+                            "title": "Wymogi formalne",
+                            "text": "Każdy projekt musi zawierać uzasadnienie oraz skutki finansowe wprowadzenia ustawy."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Ilu posłów potrzeba, by zgłosić poselski projekt ustawy?",
+                            "answers": [
+                                "Co najmniej 15",
+                                "Dokładnie 460",
+                                "Minimum 5"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Ile podpisów obywateli wymaga inicjatywa obywatelska?",
+                            "answers": [
+                                "1 000",
+                                "10 000",
+                                "100 000"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Kto może zgłosić projekt ustawy do Sejmu?",
+                            "answers": [
+                                "Tylko posłowie",
+                                "Posłowie, Senat, Prezydent, Rada Ministrów i obywatele",
+                                "Tylko Prezydent"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l7": {
+                    "title": "Trzy czytania w Sejmie",
+                    "modules": [
+                        {
+                            "title": "Pierwsze czytanie",
+                            "text": "Pierwsze czytanie polega na uzasadnieniu projektu i odbywa się na posiedzeniu Sejmu lub w komisji."
+                        },
+                        {
+                            "title": "Praca w komisjach",
+                            "text": "Po pierwszym czytaniu projekt trafia do komisji, która szczegółowo analizuje każdy artykuł."
+                        },
+                        {
+                            "title": "Drugie czytanie",
+                            "text": "Drugie czytanie obejmuje przedstawienie sprawozdania komisji oraz zgłaszanie poprawek przez posłów."
+                        },
+                        {
+                            "title": "Trzecie czytanie",
+                            "text": "Trzecie czytanie to głosowanie nad całością projektu ustawy wraz z przyjętymi poprawkami."
+                        },
+                        {
+                            "title": "Większość głosów",
+                            "text": "Większość ustaw Sejm uchwala zwykłą większością głosów w obecności co najmniej połowy posłów."
+                        },
+                        {
+                            "title": "Quorum",
+                            "text": "Quorum to minimalna liczba posłów (połowa, czyli 230), przy której głosowanie jest ważne."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Ile czytań projektu ustawy odbywa się w Sejmie?",
+                            "answers": [
+                                "Jedno",
+                                "Dwa",
+                                "Trzy"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Ile wynosi quorum w Sejmie RP?",
+                            "answers": [
+                                "100 posłów",
+                                "230 posłów",
+                                "460 posłów"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Co się dzieje podczas drugiego czytania projektu ustawy?",
+                            "answers": [
+                                "Głosowanie nad całością projektu",
+                                "Przedstawienie sprawozdania komisji i zgłaszanie poprawek",
+                                "Uzasadnienie projektu"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l8": {
+                    "title": "Rola Senatu i Prezydenta",
+                    "modules": [
+                        {
+                            "title": "Przekazanie do Senatu",
+                            "text": "Ustawę uchwaloną przez Sejm Marszałek Sejmu przekazuje do Senatu."
+                        },
+                        {
+                            "title": "Czas dla Senatu",
+                            "text": "Senat ma 30 dni na przyjęcie ustawy bez zmian, uchwalenie poprawek lub jej odrzucenie."
+                        },
+                        {
+                            "title": "Odrzucenie veta Senatu",
+                            "text": "Sejm może odrzucić poprawki lub weto Senatu bezwzględną większością głosów."
+                        },
+                        {
+                            "title": "Rola Prezydenta",
+                            "text": "Uchwalona przez parlament ustawa trafia do podpisu Prezydenta RP."
+                        },
+                        {
+                            "title": "Weto prezydenckie",
+                            "text": "Prezydent może odmówić podpisu (weto) i przekazać ustawę Sejmowi do ponownego rozpatrzenia."
+                        },
+                        {
+                            "title": "Trybunał Konstytucyjny",
+                            "text": "Przed podpisaniem ustawy Prezydent może skierować ją do Trybunału Konstytucyjnego."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Ile dni ma Senat na rozpatrzenie ustawy z Sejmu?",
+                            "answers": [
+                                "14 dni",
+                                "30 dni",
+                                "90 dni"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Do kogo trafia ustawa po przejściu przez Sejm i Senat?",
+                            "answers": [
+                                "Do Premiera",
+                                "Do Sądu Najwyższego",
+                                "Do Prezydenta"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Co może zrobić Prezydent z ustawą, której nie chce podpisać?",
+                            "answers": [
+                                "Odesłać do Sejmu z weto",
+                                "Zignorować i ustawa staje się prawem",
+                                "Skierować do Trybunału Stanu"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l9": {
+                    "title": "Funkcja kontrolna Sejmu",
+                    "modules": [
+                        {
+                            "title": "Istota kontroli",
+                            "text": "Sejm kontroluje działalność Rady Ministrów (rządu) oraz innych organów administracji państwowej."
+                        },
+                        {
+                            "title": "Interpelacja poselska",
+                            "text": "Poseł może złożyć pismo (interpelację) do ministra w sprawach o zasadniczym charakterze."
+                        },
+                        {
+                            "title": "Zapytanie poselskie",
+                            "text": "Zapytania składa się w sprawach o charakterze jednostkowym i indywidualnym."
+                        },
+                        {
+                            "title": "Wotum nieufności",
+                            "text": "Sejm może wyrazić wotum nieufności wobec ministra lub całego rządu, zmuszając ich do dymisji."
+                        },
+                        {
+                            "title": "Konstruktywne wotum",
+                            "text": "Wotum nieufności dla rządu musi wskazywać imiennie nowego kandydata na Premiera."
+                        },
+                        {
+                            "title": "Najwyższa Izba Kontroli",
+                            "text": "NIK podlega Sejmowi i jest naczelnym organem kontroli państwowej w Polsce."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Która izba parlamentu posiada konstytucyjną funkcję kontrolną?",
+                            "answers": [
+                                "Tylko Sejm",
+                                "Tylko Senat",
+                                "Obie izby po równo"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Jak nazywa się wotum nieufności dla rządu wskazujące nowego Premiera?",
+                            "answers": [
+                                "Zwykłe",
+                                "Konstruktywne",
+                                "Absolutne"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Jaki organ podlega Sejmowi i jest naczelnym organem kontroli państwowej?",
+                            "answers": [
+                                "Trybunał Konstytucyjny",
+                                "Najwyższa Izba Kontroli",
+                                "Rada Ministrów"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l10": {
+                    "title": "Zgromadzenie Narodowe",
+                    "modules": [
+                        {
+                            "title": "Definicja",
+                            "text": "Zgromadzenie Narodowe to wspólne posiedzenie posłów i senatorów obradujących pod przewodnictwem Marszałka Sejmu."
+                        },
+                        {
+                            "title": "Zaprzysiężenie Prezydenta",
+                            "text": "Głównym zadaniem Zgromadzenia jest odebranie przysięgi od nowo wybranego Prezydenta RP."
+                        },
+                        {
+                            "title": "Orędzie Prezydenta",
+                            "text": "Zgromadzenie Narodowe wysłuchuje również uroczystych orędzi Prezydenta RP."
+                        },
+                        {
+                            "title": "Uznanie niezdolności",
+                            "text": "Zgromadzenie może uznać trwałą niezdolność Prezydenta do sprawowania urzędu ze względu na stan zdrowia."
+                        },
+                        {
+                            "title": "Postawienie przed TS",
+                            "text": "Zgromadzenie Narodowe ma prawo postawić Prezydenta RP w stan oskarżenia przed Trybunałem Stanu."
+                        },
+                        {
+                            "title": "Większość kwalifikowana",
+                            "text": "Postawienie Prezydenta przed TS wymaga większości co najmniej 2/3 głosów ustawowej liczby członków Zgromadzenia."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Kto tworzy Zgromadzenie Narodowe?",
+                            "answers": [
+                                "Rząd i Sądy",
+                                "Posłowie i Senatorowie wspólnie",
+                                "Wojewodowie"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto przewodniczy obradom Zgromadzenia Narodowego?",
+                            "answers": [
+                                "Marszałek Sejmu",
+                                "Prezydent",
+                                "Premier"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Jaką większością głosów można postawić Prezydenta przed Trybunałem Stanu?",
+                            "answers": [
+                                "Zwykłą większością",
+                                "Większością 2/3",
+                                "Większością 3/4"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l11": {
+                    "title": "Ustawa budżetowa",
+                    "modules": [
+                        {
+                            "title": "Najważniejsza ustawa",
+                            "text": "Ustawa budżetowa to roczny plan finansowy państwa określający dochody i wydatki."
+                        },
+                        {
+                            "title": "Wyłączność rządu",
+                            "text": "Inicjatywa ustawodawcza w sprawie budżetu przysługuje wyłącznie Radzie Ministrów."
+                        },
+                        {
+                            "title": "Rola Senatu",
+                            "text": "Senat może uchwalić poprawki do budżetu, ale nie ma prawa odrzucić ustawy w całości."
+                        },
+                        {
+                            "title": "Czas dla Prezydenta",
+                            "text": "Prezydent ma tylko 7 dni na podpisanie budżetu i nie może zastosować wobec niego weta."
+                        },
+                        {
+                            "title": "Skrócenie kadencji",
+                            "text": "Jeśli budżet nie trafi do Prezydenta w ciągu 4 miesięcy od projektu, może on skrócić kadencję parlamentu."
+                        },
+                        {
+                            "title": "Sprawozdanie",
+                            "text": "Rząd musi złożyć Sejmowi sprawozdanie z wykonania budżetu, a Sejm decyduje o absolutorium."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Kto ma wyłączne prawo do zgłoszenia projektu ustawy budżetowej?",
+                            "answers": [
+                                "Prezydent",
+                                "Rada Ministrów (Rząd)",
+                                "Grupa posłów"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Czy Prezydent może zawetować ustawę budżetową?",
+                            "answers": [
+                                "Tak",
+                                "Nie",
+                                "Tak, ale tylko część wydatków"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Co może zrobić Prezydent, jeśli budżet nie trafi do niego w ciągu 4 miesięcy od projektu?",
+                            "answers": [
+                                "Zastosować weto",
+                                "Skrócić kadencję parlamentu",
+                                "Zignorować i budżet staje się prawem"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l12": {
+                    "title": "Odpowiedzialność konstytucyjna",
+                    "modules": [
+                        {
+                            "title": "Istota odpowiedzialności",
+                            "text": "Posłowie i senatorowie mogą odpowiadać za naruszenie Konstytucji lub ustaw w związku ze stanowiskiem."
+                        },
+                        {
+                            "title": "Trybunał Stanu",
+                            "text": "Organem powołanym do sądzenia najwyższych urzędników i parlamentarzystów jest Trybunał Stanu."
+                        },
+                        {
+                            "title": "Zakaz działalności gospodarczej",
+                            "text": "Parlamentarzystom zabrania się prowadzenia działalności z wykorzystaniem mienia państwowego."
+                        },
+                        {
+                            "title": "Oświadczenia majątkowe",
+                            "text": "Posłowie i senatorowie są zobowiązani do składania corocznych jawnych oświadczeń majątkowych."
+                        },
+                        {
+                            "title": "Zrzeczenie się immunitetu",
+                            "text": "Parlamentarzysta może sam zrzec się immunitetu, by poddać się odpowiedzialności przed sądem powszechnym."
+                        },
+                        {
+                            "title": "Wygaśnięcie mandatu",
+                            "text": "Skazanie prawomocnym wyrokiem na karę więzienia za przestępstwo umyślne powoduje utratę mandatu."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Jaki organ sądzi parlamentarzystów za naruszenie Konstytucji?",
+                            "answers": [
+                                "Sąd Najwyższy",
+                                "Trybunał Stanu",
+                                "Trybunał Konstytucyjny"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Co powoduje automatyczną utratę mandatu posła?",
+                            "answers": [
+                                "Zmiana poglądów",
+                                "Prawomocny wyrok za umyślne przestępstwo",
+                                "Nieobecność na jednym głosowaniu"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Czy parlamentarzysta może sam zrzec się immunitetu?",
+                            "answers": [
+                                "Tak",
+                                "Nie",
+                                "Tylko za zgodą Sejmu"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                }
+            }
+        },
+        "executive_course": {
+            "title": "Rola i funkcjonowanie rządu",
+            "description": "Zrozum działanie rządu, jego struktury i procesy decyzyjne.",
+            "level": "Podstawowy",
+            "category": "Polityka i państwo",
+            "desc": "W tym kursie dowiesz się, jak działa polski rząd, jakie są jego struktury i procesy decyzyjne. Poznasz też kluczowe instytucje i role w polskim systemie politycznym!",
+            "lessons": {
+                "l1": {
+                    "title": "Władza wykonawcza w Polsce",
+                    "modules": [
+                        {
+                            "title": "Dualizm egzekutywy",
+                            "text": "Władzę wykonawczą (egzekutywę) w Polsce dzielą dwa podmioty: Prezydent RP oraz Rada Ministrów."
+                        },
+                        {
+                            "title": "Rada Ministrów",
+                            "text": "Rada Ministrów, czyli rząd, prowadzi bieżącą politykę wewnętrzną i zagraniczną państwa."
+                        },
+                        {
+                            "title": "Prezydent jako arbiter",
+                            "text": "Prezydent jest najwyższym przedstawicielem RP, czuwa nad przestrzeganiem Konstytucji i jest arbitrem."
+                        },
+                        {
+                            "title": "Podział zadań",
+                            "text": "Rząd zarządza administracją i finansami, a Prezydent odpowiada za zwierzchnictwo nad wojskiem i reprezentację."
+                        },
+                        {
+                            "title": "Konstytucyjna rola rządu",
+                            "text": "Do Rady Ministrów należą sprawy polityki państwa niezastrzeżone dla innych organów."
+                        },
+                        {
+                            "title": "Koordynacja",
+                            "text": "Rząd zapewnia wykonanie ustaw wydając akty wykonawcze i kierując administracją rządową."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Kto w Polsce tworzy dualizm władzy wykonawczej?",
+                            "answers": [
+                                "Sejm i Senat",
+                                "Prezydent i Rada Ministrów",
+                                "Sądy i Prokuratura"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto prowadzi bieżącą politykę wewnętrzną i zagraniczną?",
+                            "answers": [
+                                "Rada Ministrów",
+                                "Marszałek Sejmu",
+                                "Sąd Najwyższy"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Jaka jest rola Prezydenta w systemie władzy wykonawczej?",
+                            "answers": [
+                                "Kieruje rządem",
+                                "Czuwa nad Konstytucją i jest arbitrem",
+                                "Prowadzi politykę zagraniczną"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l2": {
+                    "title": "Skład i struktura rządu",
+                    "modules": [
+                        {
+                            "title": "Prezes Rady Ministrów",
+                            "text": "Na czele rządu stoi Prezes Rady Ministrów, powszechnie nazywany Premierem."
+                        },
+                        {
+                            "title": "Wicepremierzy",
+                            "text": "W skład rządu mogą wchodzić wiceprezesi Rady Ministrów (wicepremierzy)."
+                        },
+                        {
+                            "title": "Ministrowie resortowi",
+                            "text": "Ministrowie resortowi kierują określonymi działami administracji (np. Minister Zdrowia)."
+                        },
+                        {
+                            "title": "Ministrowie bez teki",
+                            "text": "Są to ministrowie, którzy nie kierują konkretnym ministerstwem, lecz wykonują zadania powierzone przez Premiera."
+                        },
+                        {
+                            "title": "Komitety rządowe",
+                            "text": "W strukturze rządu działają komitety (np. Stały Komitet Rady Ministrów) przygotowujące projekty."
+                        },
+                        {
+                            "title": "Kolegialność rządu",
+                            "text": "Rada Ministrów podejmuje najważniejsze decyzje wspólnie (kolegialnie) w formie uchwał."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Kto stoi na czele Rady Ministrów?",
+                            "answers": [
+                                "Prezydent",
+                                "Prezes Rady Ministrów",
+                                "Marszałek Sejmu"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kim jest minister bez teki?",
+                            "answers": [
+                                "Ministrem bez ministerstwa wykonującym zadania Premiera",
+                                "Posłem opozycji",
+                                "Urzędnikiem lokalnym"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Jakie komitety działają w strukturze rządu?",
+                            "answers": [
+                                "Komitety Sejmowe",
+                                "Komitety Rządowe (np. Stały Komitet Rady Ministrów)",
+                                "Komitety Senackie"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l3": {
+                    "title": "Powoływanie rządu",
+                    "modules": [
+                        {
+                            "title": "Pierwszy krok",
+                            "text": "Prezydent desygnuje Premiera, który proponuje skład Rady Ministrów."
+                        },
+                        {
+                            "title": "Powołanie przez Prezydenta",
+                            "text": "Prezydent powołuje Premiera i ministrów w ciągu 14 dni od pierwszego posiedzenia Sejmu."
+                        },
+                        {
+                            "title": "Exposé i wotum zaufania",
+                            "text": "Premier przedstawia Sejmowi program działania rządu (exposé) i prosi o wotum zaufania."
+                        },
+                        {
+                            "title": "Większość bezwzględna",
+                            "text": "Sejm uchwala wotum zaufania bezwzględną większością głosów w obecności min. połowy posłów."
+                        },
+                        {
+                            "title": "Drugi krok (Sejmowy)",
+                            "text": "Jeśli rząd nie uzyska wotum, w ciągu 14 dni to Sejm wybiera Premiera i rząd większością bezwzględną."
+                        },
+                        {
+                            "title": "Trzeci krok",
+                            "text": "Jeśli Sejm zawiedzie, Prezydent ponownie powołuje rządu, ale Sejm wymaga wtedy większości zwykłej."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Jak nazywa się programowe przemówienie Premiera w Sejmie?",
+                            "answers": [
+                                "Interpelacja",
+                                "Exposé",
+                                "Wotum"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto wybiera rząd w drugim kroku konstytucyjnym?",
+                            "answers": [
+                                "Prezydent",
+                                "Sejm",
+                                "Naród w referendum"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Jaką większością głosów Sejm uchwala wotum zaufania dla rządu?",
+                            "answers": [
+                                "Zwykłą większością",
+                                "Bezwzględną większością",
+                                "Większością 2/3"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l4": {
+                    "title": "Rola i zadania Premiera",
+                    "modules": [
+                        {
+                            "title": "Kierowanie pracami",
+                            "text": "Premier reprezentuje Radę Ministrów i kieruje jej pracami."
+                        },
+                        {
+                            "title": "Koordynacja ministrów",
+                            "text": "Premier koordynuje i kontroluje pracę wszystkich pozostałych ministrów rządu."
+                        },
+                        {
+                            "title": "Wydawanie zarządzeń",
+                            "text": "Premier jest organem jednoosobowym i ma prawo wydawać własne zarządzenia."
+                        },
+                        {
+                            "title": "Zwierzchnik urzędników",
+                            "text": "Premier jest służbowym zwierzchnikiem wszystkich pracowników służby cywilnej."
+                        },
+                        {
+                            "title": "Podział obowiązków",
+                            "text": "Premier decyduje o zakresie obowiązków i kompetencji ministrów resortowych."
+                        },
+                        {
+                            "title": "Dymisja rządu",
+                            "text": "Rezygnacja Premiera oznacza automatyczną dymisję całej Rady Ministrów."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Co się dzieje z rządem, gdy Premier składa rezygnację?",
+                            "answers": [
+                                "Działa dalej bez zmian",
+                                "Cały rząd podaje się do dymisji",
+                                "Wybiera się nowego wicepremiera"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto jest zwierzchnikiem korpusu służby cywilnej?",
+                            "answers": [
+                                "Prezydent",
+                                "Prezes Rady Ministrów",
+                                "Szef MSWiA"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Czy Premier ma prawo wydawać własne zarządzenia?",
+                            "answers": [
+                                "Tak",
+                                "Nie",
+                                "Tylko za zgodą Sejmu"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l5": {
+                    "title": "Ministerstwa i urzędy centralne",
+                    "modules": [
+                        {
+                            "title": "Rola ministerstwa",
+                            "text": "Ministerstwo to urząd zapewniający obsługę ministra realizującego politykę państwa."
+                        },
+                        {
+                            "title": "Sekretarze stanu",
+                            "text": "Wiceministrowie (sekretarze i podsekretarze stanu) pomagają ministrowi w zarządzaniu resortem."
+                        },
+                        {
+                            "title": "Dyrektor generalny",
+                            "text": "Dyrektor generalny zapewnia ciągłość pracy ministerstwa i kieruje sprawami urzędniczymi."
+                        },
+                        {
+                            "title": "Urzędy centralne",
+                            "text": "Obok ministerstw działają urzędy centralne podległe ministrom (np. Główny Urząd Statystyczny)."
+                        },
+                        {
+                            "title": "Działy administracji",
+                            "text": "Jeden minister może kierować kilkoma działami administracji rządowej (np. edukacja i nauka)."
+                        },
+                        {
+                            "title": "Rozporządzenia",
+                            "text": "Ministrowie wydają rozporządzenia na podstawie wyraźnych upowaźnień zawartych w ustawach."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Kto odpowiada za ciągłość działania i sprawy urzędnicze w ministerstwie?",
+                            "answers": [
+                                "Minister",
+                                "Dyrektor generalny",
+                                "Rzecznik prasowy"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Na jakiej podstawie minister może wydać rozporządzenie?",
+                            "answers": [
+                                "Własnego widzimisię",
+                                "Wyraźnego upoważnienia w ustawie",
+                                "Zgody opozycji"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Czy jeden minister może kierować kilkoma działami administracji rządowej?",
+                            "answers": [
+                                "Tak",
+                                "Nie",
+                                "Tylko w czasie kryzysu"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l6": {
+                    "title": "Proces podejmowania decyzji",
+                    "modules": [
+                        {
+                            "title": "Inicjatywa rządowa",
+                            "text": "Ministerstwa przygotowują założenia do projektów ustaw i rozporządzeń."
+                        },
+                        {
+                            "title": "Konsultacje publiczne",
+                            "text": "Projekty rządowe przechodzą przez obowiązkowe uzgodnienia międzyresortowe i społeczne."
+                        },
+                        {
+                            "title": "Rada Legislacyjna",
+                            "text": "Rada Legislacyjna opiniuje projekty pod kątem ich zgodności z polskim systemem prawnym."
+                        },
+                        {
+                            "title": "Stały Komitet",
+                            "text": "Stały Komitet Rady Ministrów rozstrzyga spory między ministrami przed posiedzeniem rządu."
+                        },
+                        {
+                            "title": "Posiedzenie rządu",
+                            "text": "Rząd debatuje nad projektami na zamkniętych posiedzeniach, przyjmując je dokumenty."
+                        },
+                        {
+                            "title": "Biuletyn Informacji Publicznej",
+                            "text": "Wszystkie przyjęte projekty i plany rządu są publikowane w systemie BIP."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Gdzie trafia projekt rządu przed posiedzeniem całej Rady Ministrów w celu rozstrzygnięcia sporów?",
+                            "answers": [
+                                "Do Sejmu",
+                                "Do Stałego Komitetu Rady Ministrów",
+                                "Do Trybunału"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Czy posiedzenia Rady Ministrów są z zasady jawne dla publiczności?",
+                            "answers": [
+                                "Tak",
+                                "Nie (są zamknięte)",
+                                "Tak, transmitowane w TV"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Gdzie można znaleźć informacje o przyjętych projektach rządu?",
+                            "answers": [
+                                "Na stronie Sejmu",
+                                "W Biuletynie Informacji Publicznej (BIP)",
+                                "Na stronie Prezydenta"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l7": {
+                    "title": "Wojewoda i administracja terenowa",
+                    "modules": [
+                        {
+                            "title": "Przedstawiciel rządu",
+                            "text": "Wojewoda jest przedstawicielem Rady Ministrów w każdym z 16 województw."
+                        },
+                        {
+                            "title": "Nadzór nad samorządem",
+                            "text": "Wojewoda kontroluje legalność uchwał podejmowanych przez gminy, powiaty i sejmiki."
+                        },
+                        {
+                            "title": "Administracja zespolona",
+                            "text": "Wojewoda kieruje służbami odpowiedzialnymi za bezpieczeństwo (np. Policja, Straż Pożarna w województwie)."
+                        },
+                        {
+                            "title": "Powoływanie wojewody",
+                            "text": "Wojewodę powołuje i odwołuje Premier na wniosek ministra właściwego do spraw administracji."
+                        },
+                        {
+                            "title": "Akty prawa miejscowego",
+                            "text": "Wojewoda ma uprawnienie do wydawania zarządzeń i aktów prawa miejscowego w sytuacjach kryzysowych."
+                        },
+                        {
+                            "title": "Zarządzanie kryzysowe",
+                            "text": "Wojewoda koordynuje akcje ratunkowe na terenie województwa podczas klęsk żywiołowych."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Kim jest wojewoda?",
+                            "answers": [
+                                "Przedstawicielem rządu w województwie",
+                                "Szefem lokalnego sądu",
+                                "Prezydentem miasta"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Kto powołuje wojewodę?",
+                            "answers": [
+                                "Prezydent RP",
+                                "Marszałek Województwa",
+                                "Premier"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Jaką rolę pełni wojewoda podczas klęsk żywiołowych?",
+                            "answers": [
+                                "Nie ma żadnej roli",
+                                "Koordynuje akcje ratunkowe",
+                                "Zarządza ewakuacją całego kraju"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l8": {
+                    "title": "Służba cywilna",
+                    "modules": [
+                        {
+                            "title": "Zadanie służby cywilnej",
+                            "text": "Korpus służby cywilnej zapewnia zawodowe, rzetelne i apolityczne wykonywanie zadań państwa."
+                        },
+                        {
+                            "title": "Apolityczność",
+                            "text": "Urzędnicy służby cywilnej nie mogą manifestować poglądów politycznych ani tworzyć partii."
+                        },
+                        {
+                            "title": "Zakaz strajków",
+                            "text": "Urzędnicy mianowani w służbie cywilnej nie mogą podejmować działań zakłócających pracę urzędu (np. strajku)."
+                        },
+                        {
+                            "title": "Nabór",
+                            "text": "Nabór do służby cywilnej jest otwarty, konkurencyjny i opiera się na kryteriach kompetencyjnych."
+                        },
+                        {
+                            "title": "Szef Służby Cywilnej",
+                            "text": "Pracami korpusu kieruje Szef Służby Cywilnej podległy bezpośrednio Premierowi."
+                        },
+                        {
+                            "title": "Ciągłość państwa",
+                            "text": "Dzięki służbie cywilnej urzędy działają stabilnie nawet podczas zmiany partii rządzącej."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Jaka kluczowa cecha musi charakteryzować urzędnika służby cywilnej?",
+                            "answers": [
+                                "Przynależność partyjna",
+                                "Apolityczność",
+                                "Praca wolontariacka"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Komu podlega Szef Służby Cywilnej?",
+                            "answers": [
+                                "Prezydentowi",
+                                "Premierowi",
+                                "Sądowi Najwyższemu"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Czy urzędnicy służby cywilnej mogą strajkować?",
+                            "answers": [
+                                "Tak",
+                                "Nie",
+                                "Tylko w wyjątkowych sytuacjach"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l9": {
+                    "title": "Bezpieczeństwo i obronność",
+                    "modules": [
+                        {
+                            "title": "Odpowiedzialność rządu",
+                            "text": "Rada Ministrów odpowiada za zapewnienie bezpieczeństwa zewnętrznego i wewnętrznego państwa."
+                        },
+                        {
+                            "title": "Resort obrony",
+                            "text": "Minister Obrony Narodowej kieruje armią i realizuje politykę obronną rządu."
+                        },
+                        {
+                            "title": "Bezpieczeństwo wewnętrzne",
+                            "text": "Minister Spraw Wewnętrznych i Administracji nadzoruje Policję, Straż Graniczną i SOP."
+                        },
+                        {
+                            "title": "Rządowy Zespół Kryzysowy",
+                            "text": "W sytuacjach zagrożeń zbiera się Rządowy Zespół Zarządzania Kryzysowego pod przewodnictwem Premiera."
+                        },
+                        {
+                            "title": "Stany nadzwyczajne",
+                            "text": "Rząd może wnioskować do Prezydenta o wprowadzenie stanu wyjątkowego lub wojennego."
+                        },
+                        {
+                            "title": "Finansowanie armii",
+                            "text": "Rząd zapewnia stabilne finansowanie sił zbrojnych poprzez budżet państwa."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Który minister odpowiada za nadzór nad Policją i Strażą Graniczną?",
+                            "answers": [
+                                "Minister Sprawiedliwości",
+                                "Minister Spraw Wewnętrznych i Administracji",
+                                "Minister Obrony Narodowej"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto przewodniczy Rządowemu Zespołowi Zarządzania Kryzysowego?",
+                            "answers": [
+                                "Premier",
+                                "Komendant Policji",
+                                "Szef Sztabu Generalnego"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Czy rząd może wnioskować o wprowadzenie stanu wyjątkowego?",
+                            "answers": [
+                                "Tak",
+                                "Nie",
+                                "Tylko w czasie wojny"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l10": {
+                    "title": "Polityka zagraniczna",
+                    "modules": [
+                        {
+                            "title": "Prowadzenie polityki",
+                            "text": "Rada Ministrów prowadzi ogólne kierownictwo w dziedzinie stosunków z innymi państwami."
+                        },
+                        {
+                            "title": "Rola MSZ",
+                            "text": "Minister Spraw Zagranicznych koordynuje realizację polityki zagranicznej i nadzoruje ambasady."
+                        },
+                        {
+                            "title": "Umowy międzynarodowe",
+                            "text": "Rząd zawiera umowy międzynarodowe wymagające niekiedy ratyfikacji przez parlament lub Prezydenta."
+                        },
+                        {
+                            "title": "Reprezentacja w UE",
+                            "text": "Premier i ministrowie reprezentują interesy Polski w Radzie Europejskiej i Radzie UE."
+                        },
+                        {
+                            "title": "Współpraca z Prezydentem",
+                            "text": "Rząd ma obowiązek współdziałać z Prezydentem w sprawach polityki zagranicznej."
+                        },
+                        {
+                            "title": "Ambasadorowie",
+                            "text": "Rząd wnioskuje o powołanie ambasadorów, których oficjalnie mianuje Prezydent RP."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Kto bezpośrednio koordynuje politykę zagraniczną i nadzoruje ambasady?",
+                            "answers": [
+                                "Minister Spraw Zagranicznych",
+                                "Prezydent",
+                                "Wojewoda"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Gdzie Premier reprezentuje Polskę na najwyższym szczeblu unijnym?",
+                            "answers": [
+                                "W Radzie Europejskiej",
+                                "W Kongresie USA",
+                                "W ONZ"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Kto oficjalnie mianuje ambasadorów?",
+                            "answers": [
+                                "Premier",
+                                "Prezydent RP",
+                                "Sejm"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l11": {
+                    "title": "Kontrola nad rządem",
+                    "modules": [
+                        {
+                            "title": "Odpowiedzialność polityczna",
+                            "text": "Rada Ministrów ponosi odpowiedzialność polityczną przed Sejmem RP."
+                        },
+                        {
+                            "title": "Wotum zaufania w trakcie kadencji",
+                            "text": "Premier może w każdym momencie zwrócić się do Sejmu o wyrażenie wotum zaufania dla rządu."
+                        },
+                        {
+                            "title": "Wotum nieufności dla ministra",
+                            "text": "Sejm może wyrazić wotum nieufności pojedynczemu ministrowi na wniosek min. 69 posłów."
+                        },
+                        {
+                            "title": "Dymisja po wyborach",
+                            "text": "Premier zawsze składa dymisję rządu na pierwszym posiedzeniu nowo wybranego Sejmu."
+                        },
+                        {
+                            "title": "Trybunał Stanu",
+                            "text": "Członkowie rządu odpowiadają przed TS za naruszenie prawa lub Konstytucji."
+                        },
+                        {
+                            "title": "Kontrola NIK",
+                            "text": "Najwyższa Izba Kontroli regularnie bada wydatki rządowe i legalność działań ministerstw."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Kiedy Premier ma konstytucyjny obowiązek złożyć dymisję rządu?",
+                            "answers": [
+                                "Co roku",
+                                "Na pierwszym posiedzeniu nowego Sejmu",
+                                "Gdy zażąda tego opozycja"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Przed kim członkowie rządu odpowiadają za złamanie Konstytucji?",
+                            "answers": [
+                                "Przed Trybunałem Stanu",
+                                "Przed mediami",
+                                "Przed Premierem"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Ile podpisów posłów trzeba zebrać, aby złożyć wotum nieufności dla ministra?",
+                            "answers": [
+                                "Co najmniej 69",
+                                "Co najmniej 100",
+                                "Co najmniej 50"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l12": {
+                    "title": "Relacje z Prezydentem",
+                    "modules": [
+                        {
+                            "title": "Kontrasygnata",
+                            "text": "Większość aktów prawnych Prezydenta wymaga podpisu (kontrasygnaty) Premiera, by weszły w życie."
+                        },
+                        {
+                            "title": "Akty prerogatywne",
+                            "text": "Prerogatywy to osobiste uprawnienia Prezydenta niewymagające kontrasygnaty Premiera (np. prawo łaski)."
+                        },
+                        {
+                            "title": "Rada Gabinetowa",
+                            "text": "Rada Gabinetowa to obradujący pod przewodnictwem Prezydenta rząd. Nie ma ona uprawnień decyzyjnych rządu."
+                        },
+                        {
+                            "title": "Cel Rady",
+                            "text": "Radę Gabinetową zwołuje Prezydent w sprawach o szczególnej wadze dla państwa."
+                        },
+                        {
+                            "title": "Zwierzchnictwo nad armią",
+                            "text": "Prezydent jest zwierzchnikiem Sił Zbrojnych, ale w czasie pokoju sprawuje je za pośrednictwem MON."
+                        },
+                        {
+                            "title": "Konsultacje",
+                            "text": "Regularne spotkania Premiera i Prezydenta są kluczowe dla stabilności polityki państwa."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Czym jest podpis Premiera na akcie Prezydenta?",
+                            "answers": [
+                                "Wetem",
+                                "Kontrasygnatą",
+                                "Prerogatywą"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Czy Rada Gabinetowa pod przewodnictwem Prezydenta może podejmować uchwały rządu?",
+                            "answers": [
+                                "Tak",
+                                "Nie (ma charakter wyłącznie konsultacyjny)",
+                                "Tak, za zgodą Sejmu"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto jest zwierzchnikiem Sił Zbrojnych w czasie pokoju?",
+                            "answers": [
+                                "Prezydent bezpośrednio",
+                                "Premier",
+                                "Prezydent za pośrednictwem MON"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                }
+            }
+        },
+        "court_course": {
+            "title": "System sądowniczy w Polsce",
+            "description": "Dowiedz się o strukturze i funkcjonowaniu polskiego systemu sądowniczego.",
+            "level": "Podstawowy",
+            "category": "Prawo",
+            "desc": "W tym kursie dowiesz się, jak działa polski system sądowniczy, jakie są jego struktury i procesy decyzyjne. Poznasz też kluczowe instytucje i role w polskim systemie prawnym!",
+            "lessons": {
+                "l1": {
+                    "title": "Władza sądownicza",
+                    "modules": [
+                        {
+                            "title": "Trzecia władza",
+                            "text": "Władza sądownicza jest niezależna od władzy ustawodawczej i wykonawczej."
+                        },
+                        {
+                            "title": "Sądy i Trybunały",
+                            "text": "Władzę sądowniczą w Polsce sprawują sądy oraz niezależne trybunały."
+                        },
+                        {
+                            "title": "Niezawisłość sędziów",
+                            "text": "Sędziowie są niezawisli, co oznacza, że podlegają tylko Konstytucji oraz ustawom."
+                        },
+                        {
+                            "title": "Apelacja i instancje",
+                            "text": "Postępowanie sądowe w Polsce jest co najmniej dwuinstancyjne (można się odwołać)."
+                        },
+                        {
+                            "title": "Wydawanie wyroków",
+                            "text": "Sądy wydają wyroki w imieniu Rzeczypospolitej Polskiej."
+                        },
+                        {
+                            "title": "Jawność rozpraw",
+                            "text": "Rozprawy sądowe są jawne, chyba że ustawa pozwala na wyłączenie jawności ze względu na moralność lub bezpieczeństwo."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Komu podlegają niezawiśli sędziowie?",
+                            "answers": [
+                                "Premierowi",
+                                "Tylko Konstytucji i ustawom",
+                                "Prezydentowi"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Iluinstancyjne jest postępowanie sądowe w Polsce?",
+                            "answers": [
+                                "Jednoinstancyjne",
+                                "Co najmniej dwuinstancyjne",
+                                "Czteroinstancyjne"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Czy rozprawy sądowe w Polsce są jawne?",
+                            "answers": [
+                                "Tak, zawsze",
+                                "Nie, nigdy",
+                                "Tak, chyba że ustawa stanowi inaczej"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                "l2": {
+                    "title": "Sądy powszechne",
+                    "modules": [
+                        {
+                            "title": "Sądy rejonowe",
+                            "text": "Sądy rejonowe to najniższy szczebel, rozpatrujący większość drobnych spraw cywilnych i karnych."
+                        },
+                        {
+                            "title": "Sądy okręgowe",
+                            "text": "Sądy okręgowe rozpatrują poważniejsze sprawy jako pierwsza instancja oraz odwołania od sądów rejonowych."
+                        },
+                        {
+                            "title": "Sądy apelacyjne",
+                            "text": "Sądy apelacyjne zajmują się wyłącznie odwołaniami od wyroków sądów okręgowych."
+                        },
+                        {
+                            "title": "Wydziały sądu",
+                            "text": "Sądy dzielą się na wydziały: cywilny, karny, rodzinny, pracy czy gospodarczy."
+                        },
+                        {
+                            "title": "Ławnicy",
+                            "text": "W niektórych sprawach obok sędziego zawodowego zasiadają obywatele – ławnicy."
+                        },
+                        {
+                            "title": "Obszar właściwości",
+                            "text": "Właściwość sądu zależy od miejsca zamieszkania pozwanego lub popełnienia czynu."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Który sąd jest zazwyczaj sądem pierwszej instancji dla prostych spraw?",
+                            "answers": [
+                                "Sąd Apelacyjny",
+                                "Sąd Rejonowy",
+                                "Sąd Najwyższy"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kim jest ławnik w sądzie?",
+                            "answers": [
+                                "Sędzią zawodowym",
+                                "Członkiem społecznym biorącym udział w sądzeniu",
+                                "Prokuratorem"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Na czym polega właściwość sądu?",
+                            "answers": [
+                                "Na rodzaju sprawy",
+                                "Na miejscu zamieszkania pozwanego lub popełnienia czynu",
+                                "Na decyzji Prokuratora"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l3": {
+                    "title": "Sąd Najwyższy",
+                    "modules": [
+                        {
+                            "title": "Nadzór judykacyjny",
+                            "text": "Sąd Najwyższy sprawuje nadzór nad działalnością sądów powszechnych i wojskowych w zakresie orzekania."
+                        },
+                        {
+                            "title": "Skarga kasacyjna",
+                            "text": "Do Sądu Najwyższego można wnieść skargę kasacyjną od prawomocnego wyroku sądu drugiej instancji."
+                        },
+                        {
+                            "title": "Izby Sądu Najwyższego",
+                            "text": "Sąd Najwyższy dzieli się na wyspecjalizowane izby (np. Izba Karna, Izba Cywilna)."
+                        },
+                        {
+                            "title": "Uchwały SN",
+                            "text": "SN podejmuje uchwały mające na celu wyjaśnienie przepisów prawnych budzących wątpliwości."
+                        },
+                        {
+                            "title": "Pierwszy Prezes SN",
+                            "text": "Pracami Sądu Najwyższego kieruje Pierwszy Prezes SN, powoływany przez Prezydenta na 6-letnią kadencję."
+                        },
+                        {
+                            "title": "Siedziba",
+                            "text": "Siedziba Sądu Najwyższego znajduje się w Warszawie."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Jak nazywa się środek odwoławczy kierowany do Sądu Najwyższego?",
+                            "answers": [
+                                "Apelacja",
+                                "Kasacja (skarga kasacyjna)",
+                                "Zażalenie"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Ile trwa kadencja Pierwszego Prezesa Sądu Najwyższego?",
+                            "answers": [
+                                "2 lata",
+                                "4 lata",
+                                "6 lat"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Gdzie znajduje się siedziba Sądu Najwyższego?",
+                            "answers": [
+                                "W Krakowie",
+                                "W Gdańsku",
+                                "W Warszawie"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                "l4": {
+                    "title": "Sądy administracyjne",
+                    "modules": [
+                        {
+                            "title": "Kontrola administracji",
+                            "text": "Sądy administracyjne kontrolują legalność decyzji wydawanych przez urzędy i organy publiczne."
+                        },
+                        {
+                            "title": "WSA",
+                            "text": "Wojewódzkie Sądy Administracyjne (WSA) rozpatrują skargi na decyzje administracyjne w pierwszej instancji."
+                        },
+                        {
+                            "title": "NSA",
+                            "text": "Naczelny Sąd Administracyjny (NSA) w Warszawie rozpatruje odwołania od wyroków sądów WSA."
+                        },
+                        {
+                            "title": "Kryterium legalności",
+                            "text": "Sąd administracyjny bada wyłącznie, czy urząd działał zgodnie z prawem, nie ocenia celowości."
+                        },
+                        {
+                            "title": "Uchylenie decyzji",
+                            "text": "W przypadku złamania prawa sąd administracyjny uchyla zaskarżoną decyzję urzędu."
+                        },
+                        {
+                            "title": "Skarga na bezczynność",
+                            "text": "Do sądu administracyjnego można zaskarżyć urząd również za brak odpowiedzi w terminie (bezczynność)."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Czym zajmują się sądy administracyjne?",
+                            "answers": [
+                                "Sądzeniem przestępców",
+                                "Kontrolą legalności decyzji urzędów",
+                                "Rozwodami"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Gdzie mieści się Naczelny Sąd Administracyjny (NSA)?",
+                            "answers": [
+                                "W Gdańsku",
+                                "W Krakowie",
+                                "W Warszawie"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Czy sąd administracyjny ocenia celowość działania urzędu?",
+                            "answers": [
+                                "Tak",
+                                "Nie (bada tylko legalność)",
+                                "Tylko w sprawach finansowych"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l5": {
+                    "title": "Ważność wyborów",
+                    "modules": [
+                        {
+                            "title": "Rola Izby SN",
+                            "text": "Sąd Najwyższy jest organem właściwym do stwierdzania ważności wyborów i referendów."
+                        },
+                        {
+                            "title": "Protesty wyborcze",
+                            "text": "Obywatele mają prawo wnoszenia do SN protestów przeciwko ważności wyborów w określonym terminie."
+                        },
+                        {
+                            "title": "Analiza protestów",
+                            "text": "Sąd Najwyższy bada, czy zgłoszone naruszenia procedury miały wpływ na ostateczny wynik wyborczy."
+                        },
+                        {
+                            "title": "Uchwała o ważności",
+                            "text": "Po rozpatrzeniu protestów SN podejmuje całościową uchwałę o ważności wyborów parlamentarnych lub prezydenckich."
+                        },
+                        {
+                            "title": "Wybory do PE",
+                            "text": "Sąd Najwyższy decyduje również o ważności wyborów do Parlamentu Europejskiego w Polsce."
+                        },
+                        {
+                            "title": "Referendum",
+                            "text": "Ta sama procedura dotyczy ogólnokrajowych referendów i zatwierdzania ich legalności."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Jaka instytucja stwierdza ważność wyborów parlamentarnych w Polsce?",
+                            "answers": [
+                                "Państwowa Komisja Wyborcza",
+                                "Sąd Najwyższy",
+                                "Trybunał Konstytucyjny"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto może złożyć protest wyborczy do Sądu Najwyższego?",
+                            "answers": [
+                                "Tylko Premier",
+                                "Wyborca posiadający prawo udziału w wyborach",
+                                "Tylko policja"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Czy Sąd Najwyższy może unieważnić wybory?",
+                            "answers": [
+                                "Tak, jeśli naruszenia procedury miały wpływ na wynik",
+                                "Nie, SN tylko stwierdza ważność",
+                                "Tak, na wniosek Prezydenta"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l6": {
+                    "title": "Trybunał Konstytucyjny",
+                    "modules": [
+                        {
+                            "title": "Sąd nad prawem",
+                            "text": "Trybunał Konstytucyjny (TK) bada zgodność ustaw z Konstytucją RP."
+                        },
+                        {
+                            "title": "Skład Trybunału",
+                            "text": "TK składa się z 15 sędziów wybieranych przez Sejm na 9-letnią kadencję."
+                        },
+                        {
+                            "title": "Skarga konstytucyjna",
+                            "text": "Każdy obywatel, po wyczerpaniu drogi sądowej, może złożyć skargę do TK, jeśli uważa, że przepis naruszył jego prawa."
+                        },
+                        {
+                            "title": "Pytania prawne",
+                            "text": "Sądy mogą kierować do TK pytania prawne, jeśli mają wątpliwości co do konstytucyjności przepisu."
+                        },
+                        {
+                            "title": "Ostateczność wyroków",
+                            "text": "Orzeczenia Trybunału Konstytucyjnego mają moc powszechnie obowiązującą i są ostateczne."
+                        },
+                        {
+                            "title": "Derogacja",
+                            "text": "Przepis uznany przez TK za niezgodny z Konstytucją traci moc prawną."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Ilu sędziów zasiada w Trybunale Konstytucyjnym?",
+                            "answers": [
+                                "9",
+                                "12",
+                                "15"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Czy od wyroku Trybunału Konstytucyjnego można się odwołać?",
+                            "answers": [
+                                "Tak, do Sejmu",
+                                "Nie, wyroki są ostateczne",
+                                "Tak, do Sądu Najwyższego"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto może złożyć skargę konstytucyjną do TK?",
+                            "answers": [
+                                "Każdy obywatel po wyczerpaniu drogi sądowej",
+                                "Tylko posłowie",
+                                "Tylko sędziowie"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l7": {
+                    "title": "Trybunał Stanu",
+                    "modules": [
+                        {
+                            "title": "Odpowiedzialność karna urzędników",
+                            "text": "Trybunał Stanu sądzi najwyższych urzędników państwowych za naruszenie Konstytucji lub ustaw."
+                        },
+                        {
+                            "title": "Kto odpowiada",
+                            "text": "Przed TS odpowiadają m.in. Prezydent, Premier, członkowie rządu oraz Prezes NIK."
+                        },
+                        {
+                            "title": "Przewodniczący",
+                            "text": "Przewodniczącym Trybunału Stanu jest z urzędu urzędujący Pierwszy Prezes Sądu Najwyższego."
+                        },
+                        {
+                            "title": "Wybór członków",
+                            "text": "Pozostałych członków Trybunału Stanu wybiera Sejm na okres swojej kadencji spoza grona posłów."
+                        },
+                        {
+                            "title": "Kary TS",
+                            "text": "TS może ukarać m.in. utratą prawa wyborczego, zakazem zajmowania stanowisk lub pozbawieniem orderów."
+                        },
+                        {
+                            "title": "Odrębność",
+                            "text": "Trybunał Stanu nie jest sądem powszechnym, zbiera się wyłącznie do osądzenia konkretnych aktów oskarżenia."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Kto z urzędu pełni funkcję Przewodniczącego Trybunału Stanu?",
+                            "answers": [
+                                "Prezydent RP",
+                                "Pierwszy Prezes Sądu Najwyższego",
+                                "Minister Sprawiedliwości"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Jaką karę może orzec Trybunał Stanu?",
+                            "answers": [
+                                "Grzywnę na rzecz partii",
+                                "Zakaz zajmowania stanowisk państwowych",
+                                "Prace społeczne w gminie"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Czy Trybunał Stanu jest sądem powszechnym?",
+                            "answers": [
+                                "Tak",
+                                "Nie, jest odrębnym organem",
+                                "Tak, ale tylko w Warszawie"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l8": {
+                    "title": "Krajowa Rada Sądownictwa",
+                    "modules": [
+                        {
+                            "title": "Stanie na straży",
+                            "text": "Krajowa Rada Sądownictwa (KRS) stoi na straży niezależności sądów i niezawisłości sędziów."
+                        },
+                        {
+                            "title": "Nominacje sędziowskie",
+                            "text": "KRS rozpatruje kandydatury na sędziów i przedstawia Prezydentowi wnioski o ich powołanie."
+                        },
+                        {
+                            "title": "Skład KRS",
+                            "text": "KRS składa się z 25 członków, w tym przedstawicieli sędziów, posłów, senatorów i Prezydenta."
+                        },
+                        {
+                            "title": "Minister w KRS",
+                            "text": "Członkiem KRS z urzędu jest również Minister Sprawiedliwości."
+                        },
+                        {
+                            "title": "Kadencja",
+                            "text": "Kadencja wybranych członków Krajowej Rady Sądownictwa trwa 4 lata."
+                        },
+                        {
+                            "title": "Opiniowanie",
+                            "text": "KRS opiniuje projekty aktów prawnych dotyczących sądownictwa i ustroju sądów."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Jaka jest główna rola Krajowej Rady Sądownictwa (KRS)?",
+                            "answers": [
+                                "Wydawanie wyroków karnych",
+                                "Stanie na straży niezależności sądów i nominowanie sędziów",
+                                "Zarządzanie więziennictwem"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Ilu członków liczy Krajowa Rada Sądownictwa?",
+                            "answers": [
+                                "15",
+                                "25",
+                                "460"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Kto z urzędu jest członkiem KRS?",
+                            "answers": [
+                                "Prezydent RP",
+                                "Premier",
+                                "Minister Sprawiedliwości"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                "l9": {
+                    "title": "Status sędziego",
+                    "modules": [
+                        {
+                            "title": "Powołanie",
+                            "text": "Sędziowie są powoływani przez Prezydenta RP na wniosek Krajowej Rady Sądownictwa."
+                        },
+                        {
+                            "title": "Nieusuwalność",
+                            "text": "Sędziowie są nieusuwalni – nie można ich zwolnić, z wyjątkiem prawomocnego orzeczenia sądu dyscyplinarnego."
+                        },
+                        {
+                            "title": "Immunitet sędziowski",
+                            "text": "Sędzia nie może być pociągnięty do odpowiedzialności karnej ani zatrzymany bez zgody sądu dyscyplinarnego."
+                        },
+                        {
+                            "title": "Apolityczność sędziów",
+                            "text": "Sędzia nie może należeć do partii politycznej ani prowadzić działalności publicznej nie dającej się pogodzić z urzędem."
+                        },
+                        {
+                            "title": "Niepodatność na naciski",
+                            "text": "Nikomu nie wolno wpływać na decyzje sędziego ani instruować go, jak ma orzekać."
+                        },
+                        {
+                            "title": "Stan spoczynku",
+                            "text": "Po osiągnięciu określonego wieku sędziowie przechodzą w stan spoczynku (emeryturę sędziowską)."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Kto oficjalnie powołuje sędziów w Polsce?",
+                            "answers": [
+                                "Sejm",
+                                "Prezydent RP",
+                                "Premier"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Czy sędzia w Polsce może należeć do partii politycznej?",
+                            "answers": [
+                                "Tak",
+                                "Nie, obowiązuje go apolityczność",
+                                "Tak, za zgodą Ministra"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Co oznacza immunitet sędziowski?",
+                            "answers": [
+                                "Sędzia nie może być pociągnięty do odpowiedzialności karnej bez zgody sądu dyscyplinarnego",
+                                "Sędzia jest bezkarny",
+                                "Sędzia nie musi płacić podatków"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l10": {
+                    "title": "Prokuratura w Polsce",
+                    "modules": [
+                        {
+                            "title": "Rola Prokuratury",
+                            "text": "Prokuratura odpowiada za ściganie przestępstw oraz strzeżenie praworządności."
+                        },
+                        {
+                            "title": "Prokurator Generalny",
+                            "text": "Na czele prokuratury stoi Prokurator Generalny, którym obecnie z urzędu jest Minister Sprawiedliwości."
+                        },
+                        {
+                            "title": "Prokurator Krajowy",
+                            "text": "Prokurator Krajowy to bezpośredni szef struktur wykonawczych prokuratury, podległy Generalnemu."
+                        },
+                        {
+                            "title": "Akt oskarżenia",
+                            "text": "Prokurator, po zebraniu dowodów przez Policję, sporządza i wnosi do sądu akt oskarżenia."
+                        },
+                        {
+                            "title": "Oskarżyciel publiczny",
+                            "text": "W procesie karnym prokurator występuje przed sądem jako oskarżyciel publiczny."
+                        },
+                        {
+                            "title": "Niezależność śledztwa",
+                            "text": "Prokurator prowadzący śledztwo ma autonomię w podejmowaniu decyzji procesowych."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Kto z urzędu pełni funkcję Prokuratora Generalnego w Polsce?",
+                            "answers": [
+                                "Prezydent",
+                                "Minister Sprawiedliwości",
+                                "Pierwszy Prezes SN"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Jak nazywa się dokument wnoszony przez prokuratora do sądu rozpoczynający proces karny?",
+                            "answers": [
+                                "Pozew cywilny",
+                                "Akt oskarżenia",
+                                "Kasacja"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Czy prokurator ma prawo do samodzielnego prowadzenia śledztwa?",
+                            "answers": [
+                                "Tak, ma autonomię w podejmowaniu decyzji procesowych",
+                                "Nie, musi konsultować się z Ministrem",
+                                "Tak, ale tylko w sprawach cywilnych"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l11": {
+                    "title": "Prawa obywatela w sądzie",
+                    "modules": [
+                        {
+                            "title": "Prawo do sądu",
+                            "text": "Każdy ma prawo do sprawiedliwego i jawnego rozpatrzenia sprawy bez nieuzasadnionej zwłoki."
+                        },
+                        {
+                            "title": "Domniemanie niewinności",
+                            "text": "Każdego uważa się za niewinnego, dopóki jego wina nie zostanie udowodniona prawomocnym wyrokiem."
+                        },
+                        {
+                            "title": "Prawo do obrony",
+                            "text": "Oskarżony w procesie karnym ma prawo do obrony oraz korzystania z pomocy obrońcy (adwokata)."
+                        },
+                        {
+                            "title": "Dwuinstancyjność",
+                            "text": "Obywatel niezadowolony z wyroku sądu pierwszej instancji ma prawo wnieść środek odwoławczy (apelację)."
+                        },
+                        {
+                            "title": "Prawo do tłumacza",
+                            "text": "Osoba nieznająca języka polskiego ma prawo do bezpłatnej pomocy tłumacza przed sądem."
+                        },
+                        {
+                            "title": "Skarga na przewlekłość",
+                            "text": "Jeśli sprawa ciągnie się zbyt wolno, obywatel może złożyć skargę na przewlekłość postępowania."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Co oznacza zasada domniemania niewinności?",
+                            "answers": [
+                                "Oskarżony musi udowodnić, że jest niewinny",
+                                "Oskarżonego uważa się za niewinnego do czasu prawomocnego wyroku",
+                                "Sąd zawsze uniewinnia"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Co może zrobić obywatel, jeśli nie zgadza się z wyrokiem sądu pierwszej instancji?",
+                            "answers": [
+                                "Złożyć apelację do sądu wyższej instancji",
+                                "Napisać skargę do Premiera",
+                                "Zignorować wyrok"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Czy osoba nieznająca języka polskiego ma prawo do tłumacza w sądzie?",
+                            "answers": [
+                                "Tak, ma prawo do bezpłatnej pomocy tłumacza",
+                                "Nie, musi znać język polski",
+                                "Tak, ale musi za niego zapłacić"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l12": {
+                    "title": "Zawody prawnicze",
+                    "modules": [
+                        {
+                            "title": "Sędzia",
+                            "text": "Sędzia to bezstronny arbiter przewodniczący rozprawie i wydający wyrok na podstawie dowodów."
+                        },
+                        {
+                            "title": "Adwokat",
+                            "text": "Adwokat (obrońca) reprezentuje klientów, doradza im i broni oskarżonych w procesach karnych."
+                        },
+                        {
+                            "title": "Radca prawny",
+                            "text": "Radca prawny świadczy pomoc prawną, sporządza opinie i reprezentuje strony przed sądami cywilnymi i administracyjnymi."
+                        },
+                        {
+                            "title": "Aplikacja prawnicza",
+                            "text": "Aby wykonywać te zawody, po studiach prawniczych należy odbyć kilkuletnie szkolenie praktyczne – aplikację."
+                        },
+                        {
+                            "title": "Notariusz",
+                            "text": "Notariusz to osoba zaufania publicznego powołana do sporządzania aktów notarialnych i poświadczeń."
+                        },
+                        {
+                            "title": "Komornik sądowy",
+                            "text": "Komornik to funkcjonariusz publiczny zajmujący się przymusowym egzekwowaniem wyroków sądowych (np. ściąganiem długów)."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Kto w procesie karnym reprezentuje interesy oskarżonego jako jego obrońca?",
+                            "answers": [
+                                "Prokurator",
+                                "Adwokat",
+                                "Notariusz"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Jak nazywa się praktyczne szkolenie po studiach prawniczych przygotowujące do zawodu np. sędziego lub radcy?",
+                            "answers": [
+                                "Aplikacja",
+                                "Abolicja",
+                                "Kadencja"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Jaka jest rola notariusza w systemie prawnym?",
+                            "answers": [
+                                "Sporządzanie aktów notarialnych i poświadczeń",
+                                "Wydawanie wyroków",
+                                "Reprezentowanie klientów w sądzie"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                }
+            }
         }
     },
     "notifications": {
         "notifications": "Powiadomienia",
         "events": {
-            "SURVEY_NEW": { "title": "Nowa ankieta", "message": "Masz nową ankietę do wypełnienia." },
-            "SURVEY_COMPLETED": { "title": "Ankieta zakończona", "message": "Wypełniono ankietę." },
-            "SURVEY_RESULT": { "title": "Nowe wyniki", "message": "Dostępne są nowe wyniki ankiety." },
-            "LAW_UPDATE": { "title": "Aktualizacja prawa", "message": "Pojawiła się nowa aktualizacja w prawie." },
-            "LOGIN_STREAK_SMALL": { "title": "Seria logowań", "message": "Twoja seria logowań trwa!" },
-            "LOGIN_STREAK_BIG": { "title": "Długa seria logowań", "message": "Legendarna aktywność!" },
-            "ACHIEVEMENT_UNLOCK": { "title": "Osiągnięcie odblokowane", "message": "Odblokowałeś osiągnięcie: {{achievementName}}" },
-            "XP_GAIN": { "title": "Zdobyto XP", "message": "Otrzymałeś dodatkowe XP." },
-            "PROFILE_UPDATE": { "title": "Profil zaktualizowany", "message": "Twój profil został zaktualizowany." },
-            "VOTE_CAST": { "title": "Oddano głos", "message": "Twój głos został zapisany." },
-            "OPINION_POSTED": { "title": "Dodano opinię", "message": "Twoja opinia została opublikowana." },
-            "COURSE_COMPLETED": { "title": "Ukończono kurs", "message": "Ukończyłeś kurs." },
-            "LEVEL_UP": { "title": "Awans rangi", "message": "Awansowałeś na rangę {{rankName}}." }
+            "SURVEY_NEW": {
+                "title": "Nowa ankieta",
+                "message": "Masz nową ankietę do wypełnienia."
+            },
+            "SURVEY_COMPLETED": {
+                "title": "Ankieta zakończona",
+                "message": "Wypełniono ankietę."
+            },
+            "SURVEY_RESULT": {
+                "title": "Nowe wyniki",
+                "message": "Dostępne są nowe wyniki ankiety."
+            },
+            "LAW_UPDATE": {
+                "title": "Aktualizacja prawa",
+                "message": "Pojawiła się nowa aktualizacja w prawie."
+            },
+            "LOGIN_STREAK_SMALL": {
+                "title": "Seria logowań",
+                "message": "Twoja seria logowań trwa!"
+            },
+            "LOGIN_STREAK_BIG": {
+                "title": "Długa seria logowań",
+                "message": "Legendarna aktywność!"
+            },
+            "ACHIEVEMENT_UNLOCK": {
+                "title": "Osiągnięcie odblokowane",
+                "message": "Odblokowałeś osiągnięcie: {{achievementName}}"
+            },
+            "XP_GAIN": {
+                "title": "Zdobyto XP",
+                "message": "Otrzymałeś dodatkowe XP."
+            },
+            "PROFILE_UPDATE": {
+                "title": "Profil zaktualizowany",
+                "message": "Twój profil został zaktualizowany."
+            },
+            "VOTE_CAST": {
+                "title": "Oddano głos",
+                "message": "Twój głos został zapisany."
+            },
+            "OPINION_POSTED": {
+                "title": "Dodano opinię",
+                "message": "Twoja opinia została opublikowana."
+            },
+            "COURSE_COMPLETED": {
+                "title": "Ukończono kurs",
+                "message": "Ukończyłeś kurs."
+            },
+            "LEVEL_UP": {
+                "title": "Awans rangi",
+                "message": "Awansowałeś na rangę {{rankName}}."
+            }
         },
         "noNewNotifications": "Brak nowych powiadomień",
         "noHistory": "Brak historii",
@@ -776,7 +2942,7 @@
             "changePasswordError": "Błąd zmiany hasła",
             "deleteAccountError": "Błąd usunięcia konta",
             "requiredField": "Wymagane pola"
-        }   
+        }
     },
     "reset": {
         "resetPassword": "Reset hasła",

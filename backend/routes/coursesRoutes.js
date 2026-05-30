@@ -11,6 +11,7 @@ const {
   completeQuiz,
   getLessonProgress,
   getCourseProgress,
+  getLessonQuiz,
 } = require("../controllers/courseController");
 
 router.get("/courses", getAllCourses);
@@ -19,6 +20,7 @@ router.get("/courses/lesson/progress", getModuleProgress);
 router.get("/courses/lesson/:id", getLesson);
 router.get("/course/:courseId/progress", getCourseProgress);
 router.get("/courses/lesson-progress", getLessonProgress);
+router.get("/courses/lesson/:lessonId/quiz", getLessonQuiz);
 router.post("/courses/lesson/module-complete", completeModule);
 router.post("/courses/lesson/complete", completeLesson);
 router.post("/courses/lesson/quiz-complete", completeQuiz);

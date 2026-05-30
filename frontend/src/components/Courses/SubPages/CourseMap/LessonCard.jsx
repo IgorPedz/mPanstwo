@@ -1,8 +1,7 @@
-export default function LessonCard({
-  lesson,
-  actualIndex,
-  unlocked,
-}) {
+import { useTranslation } from "react-i18next";
+
+export default function LessonCard({ lesson, actualIndex, unlocked }) {
+  const { t } = useTranslation();
   return (
     <div
       className={`
@@ -43,14 +42,10 @@ export default function LessonCard({
           tracking-[0.2em]
           mb-2
 
-          ${
-            unlocked
-              ? "text-blue-600 dark:text-blue-400"
-              : "text-slate-400"
-          }
+          ${unlocked ? "text-blue-600 dark:text-blue-400" : "text-slate-400"}
         `}
       >
-        Lekcja {actualIndex + 1}
+        {t("courses.lessons")} {actualIndex + 1}
       </span>
 
       <h3
@@ -66,7 +61,7 @@ export default function LessonCard({
           }
         `}
       >
-        {lesson.title}
+        {t(`courses.${lesson.course_slug}.lessons.${lesson.slug}.title`)}
       </h3>
     </div>
   );

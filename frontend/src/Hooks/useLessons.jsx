@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useUser } from "../Contexts/UserContext";
 
-export function useLesson(lessonId) {
+export function useLesson(courseId, lessonId) {
   const { user } = useUser();
   const [lesson, setLesson] = useState(null);
   const [progress, setProgress] = useState({});
@@ -21,7 +21,7 @@ export function useLesson(lessonId) {
       setError(null);
 
       const { data } = await axios.get(
-        `http://localhost:5000/courses/lesson/${lessonId}?userId=${user.id}`
+        `http://localhost:5000/courses/lesson/${lessonId}?userId=${user.id}&courseId=${courseId}`
       );
 
       setLesson(data);
