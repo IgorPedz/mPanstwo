@@ -28,8 +28,8 @@ async function sendNotification({
     const [result] = await db.query(
       `
   INSERT INTO notifications
-  (user_id, icon, color, type, data)
-  VALUES (?, ?, ?, ?, ?)
+  (user_id, icon, color, type, data, created_at)
+  VALUES (?, ?, ?, ?, ?, UTC_TIMESTAMP())
   `,
       [
         userId || null,

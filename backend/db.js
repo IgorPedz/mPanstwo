@@ -9,7 +9,7 @@ const pool = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0,
 
-  timezone: "Z",
+  timezone: "+00:00",
 });
 
 const db = pool.promise();

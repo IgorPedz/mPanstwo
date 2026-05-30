@@ -1,7 +1,7 @@
 {
     "nav": {
         "sections": {
-            "main": "Główne",
+            "main": "Główna",
             "education": "Edukacja",
             "profile": "Profil",
             "page": "Strona"
@@ -351,6 +351,39 @@
         "no": "Nie",
         "yes": "Tak"
     },
+    "courses": {
+        "page":"Edukacja /",
+        "courses": "Kursy",
+        "description": "Poszerz swoją wiedzę dzięki naszej bibliotece kursów. Ucz się w swoim tempie i zdobywaj osiągnięcia!",
+        "total": "Razem kursów",
+        "inProgress": "W trakcie",
+        "completed": "Ukończone",
+        "hoursLearned": "Godzin nauki",
+        "availableCourses": "Dostępne kursy",
+        "completedCourses": "Ukończone kursy",
+        "noActiveCourses": "Brak dostępnych kursów w tym momencie",
+        "noInProgressCourses": "Nie rozpocząłeś jeszcze żadnego kursu",
+        "noCompletedCourses": "Nie ukończyłeś jeszcze żadnego kursu",
+        "noCourses": "Brak dostępnych kursów w tym momencie",
+        "progress": "Postęp",
+        "hours": "godzin",
+        "start": "Rozpocznij kurs",
+        "continue": "Kontynuuj",
+        "review": "Przejrzyj",
+        "started": "Rozpoczęty",
+        "duration": "Czas trwania",
+        "startDate": "Data rozpoczęcia",
+        "lesson": "Lekcji",
+        "courseStarted": "Kurs rozpoczęty pomyślnie",
+        "courseCompleted": "Kurs ukończony pomyślnie",
+        "category": "Kategoria",
+        "parlamentary_course": {
+            "title": "Podstawy funkcjonowania parlamentu",
+            "description": "Poznaj strukturę, role i procesy legislacyjne w polskim parlamencie.",
+            "level": "Podstawowy",
+            "category": "Polityka i państwo"
+        }
+    },
     "notifications": {
         "notifications": "Powiadomienia",
         "events": {
@@ -501,7 +534,7 @@
         "locked": "Panel jest zablokowany",
         "unlocked": "Panel jest odblokowany",
         "unsavedChanges": "Masz niezapisane zmiany",
-        "homePage": "Strona Główna / Pulpit",
+        "homePage": "Główna / Pulpit",
         "empty": {
             "title": "Witamy na Twoim",
             "description": "Zacznij dostosowywać swój pulpit, dodając moduły, które Cię interesują.",

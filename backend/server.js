@@ -20,7 +20,8 @@ const achievementRoutes = require("./routes/achievementRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const progressionRoutes = require("./routes/progressionRoutes");
 const rankRoutes = require("./routes/rankRoutes");
-
+const coursesRoutes = require("./routes/coursesRoutes");
+const blocksRoutes = require("./routes/blocksRoutes");
 const app = express();
 const server = http.createServer(app);
 
@@ -50,6 +51,8 @@ app.use(achievementRoutes)
 app.use(categoryRoutes)
 app.use(progressionRoutes)
 app.use(rankRoutes)
+app.use(coursesRoutes)
+app.use(blocksRoutes);
 app.use(errorHandler);
 
 initSocket(server);

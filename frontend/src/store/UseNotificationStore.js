@@ -67,19 +67,21 @@ export const useNotificationStore = create((set, get) => ({
 
         if (!raw) return new Date().toLocaleString();
 
+        // Parse MySQL DATETIME/TIMESTAMP format (YYYY-MM-DD HH:MM:SS) as UTC
         if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}(\.\d+)?$/.test(raw)) {
-          const [datePart, timePart] = raw.split(" ");
-          const [year, month, day] = datePart.split("-").map(Number);
-          const [hour, minute, second = 0] = timePart.split(":").map(Number);
-
-          return new Date(year, month - 1, day, hour, minute, second).toLocaleString();
+          // Convert MySQL format to ISO UTC format
+          const isoString = raw.replace(" ", "T") + "Z";
+          return new Date(isoString).toLocaleString();
         }
 
+        // Try parsing as ISO string
         const parsed = new Date(raw);
+        if (!Number.isNaN(parsed.getTime())) {
+          return parsed.toLocaleString();
+        }
 
-        return Number.isNaN(parsed.getTime())
-          ? new Date(raw.replace(" ", "T")).toLocaleString()
-          : parsed.toLocaleString();
+        // Fallback: try adding 'Z' for UTC
+        return new Date(raw.replace(" ", "T") + "Z").toLocaleString();
       })(),
 
       read: Boolean(n.is_read),

@@ -350,6 +350,39 @@
         "no": "Nein",
         "yes": "Ja"
     },
+    "courses": {
+        "page": "Bildung /",
+        "courses": "Kurse",
+        "description": "Erweitern Sie Ihr Wissen mit unserer umfassenden Kursbibliothek. Lernen Sie in Ihrem eigenen Tempo und verdienen Sie Erfolge!",
+        "total": "Gesamtkurse",
+        "inProgress": "In Bearbeitung",
+        "completed": "Abgeschlossen",
+        "hoursLearned": "Lernstunden",
+        "availableCourses": "Verfügbare Kurse",
+        "completedCourses": "Abgeschlossene Kurse",
+        "noActiveCourses": "Derzeit keine verfügbaren Kurse",
+        "noInProgressCourses": "Sie haben noch keinen Kurs gestartet",
+        "noCompletedCourses": "Sie haben noch keinen Kurs abgeschlossen",
+        "noCourses": "Derzeit keine verfügbaren Kurse",
+        "progress": "Fortschritt",
+        "hours": "Stunden",
+        "start": "Kurs starten",
+        "continue": "Fortfahren",
+        "review": "Überprüfen",
+        "started": "Gestartet",
+        "duration": "Dauer",
+        "startDate": "Startdatum",
+        "lesson": "Lektionen",
+        "courseStarted": "Kurs erfolgreich gestartet",
+        "courseCompleted": "Kurs erfolgreich abgeschlossen",
+        "category": "Kategorie",
+        "parlamentary_course": {
+            "title": "Grundlagen der parlamentarischen Funktionsweise",
+            "description": "Erfahren Sie mehr über die Struktur, Rollen und Gesetzgebungsprozesse im polnischen Parlament.",
+            "level": "Grundlegend",
+            "category": "Politik und Staat"
+        }
+    },
     "notifications": {
         "notifications": "Benachrichtigungen",
         "events": {
@@ -502,7 +535,7 @@
         "locked": "Bereich ist gesperrt",
         "unlocked": "Bereich ist entsperrt",
         "unsavedChanges": "Sie haben ungespeicherte Änderungen",
-        "homePage": "Startseite / Dashboard",
+        "homePage": "Hauptseite / Dashboard",
         "empty": {
             "title": "Willkommen auf Ihrem",
             "description": "Fügen Sie Module hinzu, um Ihr Dashboard zu personalisieren und die Informationen zu erhalten, die für Sie am wichtigsten sind.",

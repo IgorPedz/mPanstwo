@@ -63,9 +63,8 @@ export default function NavSections({
 
                         if (!Icon) return null;
 
-                        const active =
-                          location.pathname === item.href;
-
+                        const active = location.pathname.startsWith(item.href);
+                        console.log(active, location.pathname, item.href);
                         return (
                           <button
                             key={item.href}
@@ -122,9 +121,7 @@ export default function NavSections({
                             <span className="relative flex items-center gap-2 w-full">
                               {t(item.name)}
 
-                              {item.badge && (
-                                <NavBadge type={item.badge} />
-                              )}
+                              {item.badge && <NavBadge type={item.badge} />}
                             </span>
                           </button>
                         );

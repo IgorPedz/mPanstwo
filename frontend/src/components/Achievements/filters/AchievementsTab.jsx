@@ -3,12 +3,11 @@ import { useTranslation } from "react-i18next";
 export default function AchievementsTabs({
   categories,
   activeCategory,
-  setActiveCategory
+  setActiveCategory,
 }) {
   const { t } = useTranslation();
   return (
     <div className=" mb-5 w-fit p-1.5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] color-transition">
-
       <div className="2xl:hidden flex justify-center">
         <div className="relative w-fit">
           <select
@@ -26,11 +25,7 @@ export default function AchievementsTabs({
           "
           >
             {categories.map((cat) => (
-              <option
-                key={cat.slug}
-                value={cat.slug}
-                className="text-left"
-              >
+              <option key={cat.slug} value={cat.slug} className="text-left">
                 {t(`achievements.categories.${cat.slug}`)}
               </option>
             ))}
@@ -42,8 +37,7 @@ export default function AchievementsTabs({
         </div>
       </div>
 
-      <div className="hidden 2xl:flex gap-1 justify-center flex-nowrap px-1 overflow-x-auto no-scrollbar mt-3">
-
+      <div className="hidden 2xl:flex gap-1 justify-center flex-nowrap px-1 overflow-x-auto no-scrollbar">
         {categories.map((cat) => {
           const isActive = activeCategory === cat.slug;
 
@@ -57,9 +51,10 @@ export default function AchievementsTabs({
                 color-transition duration-300 cursor-pointer outline-none color-transition
                 scroll-mx-4
 
-                ${isActive
-                  ? "text-white dark:text-slate-900"
-                  : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                ${
+                  isActive
+                    ? "text-white dark:text-slate-900"
+                    : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                 }
               `}
             >
@@ -70,19 +65,18 @@ export default function AchievementsTabs({
                   transition={{
                     type: "spring",
                     bounce: 0.2,
-                    duration: 0.6
+                    duration: 0.6,
                   }}
                 />
               )}
 
               <span className="relative z-10">
-                {cat.name}
+                {t(`achievements.categories.${cat.slug}`)}
               </span>
             </button>
           );
         })}
       </div>
-
     </div>
   );
 }

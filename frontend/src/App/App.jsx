@@ -8,6 +8,7 @@ import {
 import { useEffect } from "react";
 
 import DashboardPage from "../pages/MainPages/DashboardPage";
+import CoursesPage from "../pages/EducationPages/CoursesPage";
 import AuthPage from "../pages/AuthPages/AuthPage";
 import DocumentsPage from "../pages/InfoPages/DocumentsPage";
 import ContactPage from "../pages/InfoPages/ContactPage";
@@ -16,7 +17,9 @@ import ProfilePage from "../pages/ProfilPages/ProfilePage";
 import AchievementsPage from "../pages/ProfilPages/AchievementsPage";
 import SurveyBoxPage from "../pages/ProfilPages/SurveyBoxPage";
 import NotificationsPage from "../pages/ProfilPages/NotificationsPage";
-import ResetPasswordPage from "../pages/AuthPages/ResetPasswordPage"
+import ResetPasswordPage from "../pages/AuthPages/ResetPasswordPage";
+import CourseMapPage from "../pages/EducationPages/CourseMapPage";
+import LessonPage from "../pages/EducationPages/LessonPage";
 import { useUser } from "../Contexts/UserContext";
 import useNotifications from "../Hooks/useUnreadNotification";
 import ProtectedRoute from "../Utils/Routes/ProtectedRoutes";
@@ -32,7 +35,6 @@ function App() {
 
   useNotifications(user?.id);
 
-  // Remove no-transition class on app initialization to enable animations
   useEffect(() => {
     document.documentElement.classList.remove("no-transition");
   }, []);
@@ -70,6 +72,31 @@ function App() {
             }
           />
 
+          <Route
+            path="/courses"
+            element={
+              <ProtectedRoute>
+                <CoursesPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/courses/:id"
+            element={
+              <ProtectedRoute>
+                <CourseMapPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/courses/:courseId/lesson/:lessonId"
+            element={
+              <ProtectedRoute>
+                <LessonPage />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/profile"
             element={
@@ -110,7 +137,10 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/faq" element={<FAQPage />} />
 
-          <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+          <Route
+            path="/reset-password/:token"
+            element={<ResetPasswordPage />}
+          />
         </Route>
 
         <Route path="*" element={<Navigate to="/dashboard" replace />} />

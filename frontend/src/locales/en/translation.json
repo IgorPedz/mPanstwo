@@ -352,6 +352,39 @@
         "no": "No",
         "yes": "Yes"
     },
+    "courses": {
+        "page": "Education /",
+        "courses": "Courses",
+        "description": "Expand your knowledge with our comprehensive course library. Learn at your own pace and earn achievements!",
+        "total": "Total Courses",
+        "inProgress": "In Progress",
+        "completed": "Completed",
+        "hoursLearned": "Hours Learned",
+        "availableCourses": "Available Courses",
+        "completedCourses": "Completed Courses",
+        "noActiveCourses": "No active courses available at the moment",
+        "noInProgressCourses": "You haven't started any courses yet",
+        "noCompletedCourses": "You haven't completed any courses yet",
+        "noCourses": "No courses available at the moment",
+        "progress": "Progress",
+        "hours": "hours",
+        "start": "Start Course",
+        "continue": "Continue",
+        "review": "Review",
+        "started": "Started",
+        "duration": "Duration",
+        "startDate": "Start Date",
+        "lesson": "Lessons",
+        "courseStarted": "Course started successfully",
+        "courseCompleted": "Course completed successfully",
+        "category": "Category",
+        "parlamentary_course": {
+            "title": "Basics of Parliamentary Functioning",
+            "description": "Learn about the structure, roles, and legislative processes in the Polish parliament.",
+            "level": "Basic",
+            "category": "Politics and State"
+        }
+    },
     "notifications": {
         "notifications": "Notifications",
         "events": {
@@ -504,7 +537,7 @@
         "locked": "Panel is locked",
         "unlocked": "Panel is unlocked",
         "unsavedChanges": "You have unsaved changes",
-        "homePage": "Home / Dashboard",
+        "homePage": "Main / Dashboard",
         "empty": {
             "title": "Welcome to Your",
             "description": "Start customizing your dashboard by adding modules that interest you.",
