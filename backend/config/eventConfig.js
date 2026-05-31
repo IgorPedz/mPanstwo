@@ -19,10 +19,6 @@ const EVENT_CONFIG = {
     metric_source: "users_metrics",
   },
 
-  COURSE_COMPLETED: {
-    metricKey: "courses_completed",
-    metric_source: "users_metrics",
-  },
 
   LOGIN_STREAK_SMALL: {
     icon: "login_streak_small",
@@ -60,9 +56,12 @@ const EVENT_CONFIG = {
     title: "Dodano opinię",
   },
 
-  COURSE_COMPLETED: {
+  COURSES_COMPLETED: {
     icon: "course_completed",
-    title: "Ukończono kurs",
+    color: "amber",
+    xp: 200,
+    metricKey: "courses_completed",
+    metric_source: "users_metrics",
   },
 
   LEVEL_UP: {

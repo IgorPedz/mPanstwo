@@ -13,10 +13,7 @@ export default function CoursePath({
   const [pathLength, setPathLength] = useState(0);
   const [targetOffset, setTargetOffset] = useState(0);
 
-  // 1. Mapujemy wszystkie lekcje na format z informacją czy są ukończone
   const completedSet = new Set(completedLessons);
-  
-  // 2. Szukamy pierwszej lekcji, która NIE JEST ukończona
   const nextLessonIndex = lessons.findIndex((l) => !completedSet.has(l.id));
 
   useEffect(() => {
@@ -26,34 +23,32 @@ export default function CoursePath({
     const totalLength = svgPath.getTotalLength();
     setPathLength(totalLength);
 
-    // Przypadek A: Wszystkie lekcje są ukończone (brak nieukończonych) -> cała linia pełna
+    // Wszystkie lekcje ukończone → linia dochodzi do egzaminu (odblokowany)
     if (nextLessonIndex === -1) {
       setTargetOffset(0);
       return;
     }
 
-    // Przypadek B: Nawet pierwsza lekcja nie jest zrobiona -> linia pusta (stoi na lekcji 1)
+    // Nawet pierwsza lekcja nie jest zrobiona
     if (nextLessonIndex === 0) {
       const firstPoint = points.find((p) => p.id === lessons[0].id);
       if (firstPoint) {
-        const targetLength = findLengthAtPoint(svgPath, firstPoint.x, firstPoint.y, totalLength);
-        setTargetOffset(totalLength - targetLength);
+        const len = findLengthAtPoint(svgPath, firstPoint.x, firstPoint.y, totalLength);
+        setTargetOffset(totalLength - len);
       } else {
         setTargetOffset(totalLength);
       }
       return;
     }
 
-    // Przypadek C: Rysujemy linię do pierwszej NIEUKOŃCZONEJ lekcji
+    // Rysuj do pierwszej nieukończonej lekcji
     const targetLesson = lessons[nextLessonIndex];
     const targetPoint = points.find((p) => p.id === targetLesson.id);
 
     if (targetPoint) {
-      // Szukamy fizycznej długości ścieżki w miejscu, gdzie stoi kropka nieukończonej lekcji
-      const targetLength = findLengthAtPoint(svgPath, targetPoint.x, targetPoint.y, totalLength);
-      setTargetOffset(totalLength - targetLength);
+      const len = findLengthAtPoint(svgPath, targetPoint.x, targetPoint.y, totalLength);
+      setTargetOffset(totalLength - len);
     } else {
-      // Rezerwa procentowa w razie problemów z punktami
       const ratio = nextLessonIndex / (lessons.length - 1);
       setTargetOffset(totalLength * (1 - ratio));
     }
@@ -91,9 +86,9 @@ export default function CoursePath({
       viewBox={`0 0 ${svgDimensions.width} ${svgDimensions.height}`}
     >
       <defs>
-        <linearGradient id="coursePathGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id="coursePathGradient" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" stopColor="#2563eb" />
-          <stop offset="50%" stopColor="#3b82f6" />
+          <stop offset="70%" stopColor="#3b82f6" />
           <stop offset="100%" stopColor="#60a5fa" />
         </linearGradient>
       </defs>

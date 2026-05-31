@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom"; // <-- DODANY useNavigate
+import { useParams } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import ModuleModal from "../../components/Courses/SubPages/LessonsContainer/Modules/ModuleModal";
 import QuizModal from "../../components/Courses/SubPages/LessonsContainer/LessonQuiz";
 import { useLesson } from "../../Hooks/useLessons";
 import { useModuleProgress } from "../../Hooks/useModulProgress";
 import { useLessonProgress } from "../../Hooks/useLessonProgress";
+import useCourseMap from "../../Hooks/useCourseMap";
+import { useCourseCompletion } from "../../hooks/useCourseCompletion";
 
 import LessonHeader from "../../components/Courses/SubPages/LessonsContainer/LessonHeader";
 import LessonModulesGrid from "../../components/Courses/SubPages/LessonsContainer/ModulesGrid";
@@ -21,6 +23,13 @@ export default function LessonPage() {
 
   const { lessonProgress } = useLessonProgress(lessonId, courseId);
   const isQuizAlreadyDone = !!lessonProgress?.quizCompleted;
+
+  const { course: courseMap } = useCourseMap(courseId);
+  const isLastLesson =
+    courseMap?.lessons?.length > 0 &&
+    courseMap.lessons[courseMap.lessons.length - 1]?.id === parseInt(lessonId);
+
+  const { completed: examPassed } = useCourseCompletion(courseId);
 
   if (loading) {
     return (
@@ -66,6 +75,8 @@ export default function LessonPage() {
             courseId={courseId}
             lessonId={lessonId}
             setQuizOpen={setQuizOpen}
+            isLastLesson={isLastLesson}
+            examPassed={examPassed}
           />
         </div>
 
@@ -93,6 +104,7 @@ export default function LessonPage() {
         <QuizModal
           courseSlug={lesson.course_slug}
           lessonSlug={lesson.slug}
+          isLastLesson={isLastLesson}
           onClose={() => setQuizOpen(false)}
         />
       )}

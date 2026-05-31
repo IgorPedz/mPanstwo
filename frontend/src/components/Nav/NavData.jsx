@@ -4,6 +4,7 @@ export const NavData = [
     title: "nav.sections.main",
     items: [
       { name: "nav.items.dashboard", icon: "dashboard", href: "/dashboard" },
+      { name: "nav.items.ministries", icon: "ministry", href: "/ministries" },
     ],
   },
   {

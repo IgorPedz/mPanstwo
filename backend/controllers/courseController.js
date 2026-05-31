@@ -11,33 +11,43 @@ exports.getAllCourses = async (req, res) => {
     // 2. lekcje
     const [lessons] = await db.query("SELECT id, course_id FROM lessons");
 
-    // 3. progress usera
+    // 3. progress lekcji usera
     const [progress] = await db.query(
-      `
-      SELECT lesson_id, completed
-      FROM user_lesson_progress
-      WHERE user_id = ?
-        AND completed = 1
-      `,
+      `SELECT lesson_id, completed
+       FROM user_lesson_progress
+       WHERE user_id = ? AND completed = 1`,
+      [userId],
+    );
+
+    // 4. ukończone kursy (egzamin końcowy)
+    const [courseCompletions] = await db.query(
+      `SELECT course_id, exam_score, completed_at
+       FROM user_courses WHERE user_id = ? AND completed = 1`,
       [userId],
     );
 
     const completedSet = new Set(progress.map((p) => p.lesson_id));
+    const completionMap = new Map(
+      courseCompletions.map((c) => [c.course_id, { examScore: c.exam_score, completedAt: c.completed_at }])
+    );
 
-    // 4. mapowanie kursów
+    // 5. mapowanie kursów
     const result = courses.map((course) => {
       const courseLessons = lessons.filter((l) => l.course_id === course.id);
-
       const totalLessons = courseLessons.length;
-
       const completedLessonsCount = courseLessons.filter((l) =>
         completedSet.has(l.id),
       ).length;
+
+      const completion = completionMap.get(course.id);
 
       return {
         ...course,
         totalLessons,
         completedLessonsCount,
+        courseCompleted: !!completion,
+        examScore: completion?.examScore ?? null,
+        completedAt: completion?.completedAt ?? null,
       };
     });
 
@@ -332,6 +342,59 @@ exports.getLessonQuiz = async (req, res) => {
     }));
 
     res.json({ quiz });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.completeCourse = async (req, res) => {
+  const { userId, courseId, score } = req.body;
+
+  if (!userId || !courseId) {
+    return res.status(400).json({ error: "Missing data" });
+  }
+
+  try {
+    await db.query(
+      `INSERT INTO user_courses (user_id, course_id, completed, exam_score, completed_at)
+       VALUES (?, ?, 1, ?, NOW())
+       ON DUPLICATE KEY UPDATE completed = 1, exam_score = ?, completed_at = NOW()`,
+      [userId, courseId, score ?? null, score ?? null]
+    );
+
+    await handleEvent(userId, "COURSES_COMPLETED");
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.getCourseCompletion = async (req, res) => {
+  const { userId, courseId } = req.query;
+
+  if (!userId || !courseId) {
+    return res.status(400).json({ error: "Missing data" });
+  }
+
+  try {
+    const [rows] = await db.query(
+      `SELECT completed, exam_score, completed_at
+       FROM user_courses
+       WHERE user_id = ? AND course_id = ?`,
+      [userId, courseId]
+    );
+
+    if (!rows.length) {
+      return res.json({ completed: false, examScore: null, completedAt: null });
+    }
+
+    res.json({
+      completed: rows[0].completed === 1,
+      examScore: rows[0].exam_score,
+      completedAt: rows[0].completed_at,
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useUser } from "../../../../Contexts/UserContext";
 import { useLessonQuiz } from "../../../../Hooks/useLessonQuiz";
 
-export default function QuizModal({ courseSlug, lessonSlug, onClose }) {
+export default function QuizModal({ courseSlug, lessonSlug, isLastLesson, onClose }) {
   const [step, setStep] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState(null);
@@ -247,15 +247,21 @@ export default function QuizModal({ courseSlug, lessonSlug, onClose }) {
                   onClick={async () => {
                     await completeQuiz();
 
-                    navigate(
-                      `/courses/${courseId}/lesson/${parseInt(lessonId) + 1}`,
-                    );
+                    if (isLastLesson) {
+                      navigate(`/courses/${courseId}`, {
+                        state: { openFinalExam: true },
+                      });
+                    } else {
+                      navigate(
+                        `/courses/${courseId}/lesson/${parseInt(lessonId) + 1}`,
+                      );
+                    }
 
                     onClose();
                   }}
                   className="w-full mb-3 p-4 rounded-xl font-black bg-indigo-500 text-white hover:bg-indigo-400 transition cursor-pointer"
                 >
-                  ➜ {t("courses.quiz.next_lesson")}
+                  ➜ {isLastLesson ? t("courses.quiz.go_to_exam") : t("courses.quiz.next_lesson")}
                 </button>
               )}
 

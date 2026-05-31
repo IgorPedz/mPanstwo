@@ -91,6 +91,7 @@ async function checkAchievements(userId) {
           type: "ACHIEVEMENT_UNLOCK",
           userId,
           icon: ach.icon || "trophy",
+          color: 'amber',
           data: {
             achievementId: ach.id,
             achievementSlug: ach.slug,
