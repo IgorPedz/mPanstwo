@@ -22,16 +22,22 @@ async function handleEvent(userId, eventType, meta = {}) {
 
   await checkAchievements(userId);
 
-  await sendNotification({
-    type: key,
-    userId,
-    icon: config.icon,
-    color: config.color,
-    data: {
-      xp: config.xp ?? 0,
-      totalXP,
-    },
-  });
+  if (
+    config.metricKey != "modules_completed" ||
+    config.metricKey != "lessons_completed" ||
+    config.metricKey != "courses_completed"
+  ) {
+    await sendNotification({
+      type: key,
+      userId,
+      icon: config.icon,
+      color: config.color,
+      data: {
+        xp: config.xp ?? 0,
+        totalXP,
+      },
+    });
+  }
 
   return totalXP;
 }

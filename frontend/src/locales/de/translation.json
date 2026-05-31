@@ -224,7 +224,7 @@
             "surveys": "Umfragen",
             "opinions": "Meinungen",
             "marks": "Noten",
-            "special": "Spezial"
+            "courses": "Kurse"
         },
         "achievementsData": {
             "survey_first": {
@@ -306,6 +306,46 @@
             "active_365": {
                 "title": "Voller Zyklus",
                 "desc": "Ein Jahr ununterbrochene Präsenz"
+            },
+            "module_1": {
+                "title": "Erster Schritt",
+                "desc": "Schließe dein erstes Modul ab und beginne deine Reise"
+            },
+            "module_10": {
+                "title": "Aufwärmen",
+                "desc": "Schließe 10 Module ab"
+            },
+            "module_50": {
+                "title": "Lernveteran",
+                "desc": "Schließe 50 Module ab"
+            },
+            "module_master": {
+                "title": "Wissensarchitekt",
+                "desc": "Schließe 100 Module ab"
+            },
+            "course_1": {
+                "title": "Neuer Pfad",
+                "desc": "Schließe deinen ersten Kurs ab"
+            },
+            "course_3": {
+                "title": "Auf dem richtigen Weg",
+                "desc": "Schließe 3 Kurse ab"
+            },
+            "course_10": {
+                "title": "Wissensjäger",
+                "desc": "Schließe 10 Kurse ab"
+            },
+            "lesson_1": {
+                "title": "Funke",
+                "desc": "Schließe deine erste Lektion ab"
+            },
+            "lesson_25": {
+                "title": "Konstanter Fortschritt",
+                "desc": "Schließe 25 Lektionen ab"
+            },
+            "lesson_100": {
+                "title": "Lernmaschine",
+                "desc": "Schließe 100 Lektionen ab"
             }
         }
     },
@@ -393,16 +433,30 @@
         "courseStarted": "Kurs erfolgreich gestartet",
         "courseCompleted": "Kurs erfolgreich abgeschlossen",
         "category": "Kategorie",
+        "module": "Modul",
+        "completedModules": "Abgeschlossene",
+        "startModule": "Starten",
+        "lockedModule": "Gesperrt",
+        "completedQuiz": "Diese Lektion zusammen mit dem Quiz wurde bereits vollständig abgeschlossen!",
+        "nextLesson": "Zur nächsten Lektion",
+        "startQuiz": "Starte den Abschlusstest",
+        "lockedQuiz": "Schließe alle Module ab, um den Test freizuschalten",
+        "quiz": {
+            "title": "Quiz",
+            "question_counter": "{{current}} von {{total}}",
+            "result": "Dein Ergebnis:",
+            "next_lesson": "Zur nächsten Lektion",
+            "back_to_lesson": "Lektion wiederholen"
+        },
         "parlamentary_course": {
             "title": "Grundlagen der Funktionsweise des Parlaments",
             "description": "Lerne die Struktur, Rollen und Gesetzgebungsprozesse des polnischen Parlaments kennen.",
             "level": "Grundlegend",
             "category": "Politik und Staat",
             "desc": "In diesem Kurs erfährst du, wie das polnische Parlament funktioniert und wie der Gesetzgebungsprozess abläuft. Du lernst außerdem wichtige Institutionen und Rollen im polnischen politischen System kennen!",
-            "lessons": [
-                {
-                    "slug": "l1",
-                    "title": "Lektion 1: Einführung in den Parlamentarismus",
+            "lessons": {
+                "l1": {
+                    "title": "Einführung in den Parlamentarismus",
                     "modules": [
                         {
                             "title": "Gewaltenteilung",
@@ -459,9 +513,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l2",
-                    "title": "Lektion 2: Struktur des Sejm der Republik Polen",
+                "l2": {
+                    "title": "Struktur des Sejm der Republik Polen",
                     "modules": [
                         {
                             "title": "Anzahl der Abgeordneten",
@@ -518,9 +571,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l3",
-                    "title": "Lektion 3: Struktur des Senats der Republik Polen",
+                "l3": {
+                    "title": "Struktur des Senats der Republik Polen",
                     "modules": [
                         {
                             "title": "Anzahl der Senatoren",
@@ -577,9 +629,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l4",
-                    "title": "Lektion 4: Parlamentarisches Mandat",
+                "l4": {
+                    "title": "Parlamentarisches Mandat",
                     "modules": [
                         {
                             "title": "Freies Mandat",
@@ -636,9 +687,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l5",
-                    "title": "Lektion 5: Parlamentarische Ausschüsse",
+                "l5": {
+                    "title": "Parlamentarische Ausschüsse",
                     "modules": [
                         {
                             "title": "Rolle der Ausschüsse",
@@ -695,9 +745,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l6",
-                    "title": "Lektion 6: Gesetzesinitiative",
+                "l6": {
+                    "title": "Gesetzesinitiative",
                     "modules": [
                         {
                             "title": "Definition",
@@ -754,9 +803,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l7",
-                    "title": "Lektion 7: Drei Lesungen im Sejm",
+                "l7": {
+                    "title": "Drei Lesungen im Sejm",
                     "modules": [
                         {
                             "title": "Erste Lesung",
@@ -813,9 +861,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l8",
-                    "title": "Lektion 8: Rolle von Senat und Präsident",
+                "l8": {
+                    "title": "Rolle von Senat und Präsident",
                     "modules": [
                         {
                             "title": "Weiterleitung",
@@ -872,9 +919,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l9",
-                    "title": "Lektion 9: Kontrollfunktion des Sejm",
+                "l9": {
+                    "title": "Kontrollfunktion des Sejm",
                     "modules": [
                         {
                             "title": "Kontrolle",
@@ -909,9 +955,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l10",
-                    "title": "Lektion 10: Nationalversammlung",
+                "l10": {
+                    "title": "Nationalversammlung",
                     "modules": [
                         {
                             "title": "Definition",
@@ -950,9 +995,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l11",
-                    "title": "Lektion 11: Haushaltsgesetz",
+                "l11": {
+                    "title": "Haushaltsgesetz",
                     "modules": [
                         {
                             "title": "Budget",
@@ -991,9 +1035,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l12",
-                    "title": "Lektion 12: Verfassungsrechtliche Verantwortung",
+                "l12": {
+                    "title": "Verfassungsrechtliche Verantwortung",
                     "modules": [
                         {
                             "title": "Verantwortung",
@@ -1050,7 +1093,7 @@
                         }
                     ]
                 }
-            ]
+            }
         },
         "executive_course": {
             "title": "Rolle und Funktionsweise der Regierung",
@@ -1058,10 +1101,9 @@
             "level": "Grundstufe",
             "category": "Politik und Staat",
             "desc": "In diesem Kurs lernen Sie, wie die polnische Regierung funktioniert, welche Strukturen und Entscheidungsprozesse sie hat. Sie lernen auch die wichtigsten Institutionen und Rollen im polnischen politischen System kennen!",
-            "lessons": [
-                {
-                    "slug": "l1",
-                    "title": "Lektion 1: Exekutive Gewalt in Polen",
+            "lessons": {
+                "l1": {
+                    "title": "Exekutive Gewalt in Polen",
                     "modules": [
                         {
                             "title": "Dualismus der Exekutive",
@@ -1118,9 +1160,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l2",
-                    "title": "Lektion 2: Zusammensetzung und Struktur der Regierung",
+                "l2": {
+                    "title": "Zusammensetzung und Struktur der Regierung",
                     "modules": [
                         {
                             "title": "Ministerpräsident",
@@ -1177,9 +1218,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l3",
-                    "title": "Lektion 3: Bildung der Regierung",
+                "l3": {
+                    "title": "Bildung der Regierung",
                     "modules": [
                         {
                             "title": "Erster Schritt",
@@ -1236,9 +1276,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l4",
-                    "title": "Lektion 4: Rolle und Aufgaben des Ministerpräsidenten",
+                "l4": {
+                    "title": "Rolle und Aufgaben des Ministerpräsidenten",
                     "modules": [
                         {
                             "title": "Leitung der Arbeiten",
@@ -1295,9 +1334,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l5",
-                    "title": "Lektion 5: Ministerien und zentrale Ämter",
+                "l5": {
+                    "title": "Ministerien und zentrale Ämter",
                     "modules": [
                         {
                             "title": "Rolle eines Ministeriums",
@@ -1354,9 +1392,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l6",
-                    "title": "Lektion 6: Entscheidungsprozess",
+                "l6": {
+                    "title": "Entscheidungsprozess",
                     "modules": [
                         {
                             "title": "Regierungsinitiative",
@@ -1413,9 +1450,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l7",
-                    "title": "Lektion 7: Woiwode und territoriale Verwaltung",
+                "l7": {
+                    "title": "Woiwode und territoriale Verwaltung",
                     "modules": [
                         {
                             "title": "Vertreter der Regierung",
@@ -1472,9 +1508,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l8",
-                    "title": "Lektion 8: Öffentlicher Dienst",
+                "l8": {
+                    "title": "Öffentlicher Dienst",
                     "modules": [
                         {
                             "title": "Aufgabe des öffentlichen Dienstes",
@@ -1531,9 +1566,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l9",
-                    "title": "Lektion 9: Sicherheit und Verteidigung",
+                "l9": {
+                    "title": "Sicherheit und Verteidigung",
                     "modules": [
                         {
                             "title": "Verantwortung der Regierung",
@@ -1590,9 +1624,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l10",
-                    "title": "Lektion 10: Außenpolitik",
+                "l10": {
+                    "title": "Außenpolitik",
                     "modules": [
                         {
                             "title": "Führung der Politik",
@@ -1649,9 +1682,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l11",
-                    "title": "Lektion 11: Kontrolle über die Regierung",
+                "l11": {
+                    "title": "Kontrolle über die Regierung",
                     "modules": [
                         {
                             "title": "Politische Verantwortung",
@@ -1708,9 +1740,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l12",
-                    "title": "Lektion 12: Beziehungen zum Präsidenten",
+                "l12": {
+                    "title": "Beziehungen zum Präsidenten",
                     "modules": [
                         {
                             "title": "Kontrasignatur",
@@ -1767,7 +1798,7 @@
                         }
                     ]
                 }
-            ]
+            }
         },
         "court_course": {
             "title": "Gerichtssystem in Polen",
@@ -1775,10 +1806,9 @@
             "level": "Grundstufe",
             "category": "Recht",
             "desc": "In diesem Kurs lernen Sie, wie das polnische Gerichtssystem funktioniert, welche Strukturen und Entscheidungsprozesse es hat. Sie lernen auch die wichtigsten Institutionen und Rollen im polnischen Rechtssystem kennen!",
-            "lessons": [
-                {
-                    "slug": "l1",
-                    "title": "Lektion 1: Judikative Gewalt",
+            "lessons": {
+                "l1": {
+                    "title": "Judikative Gewalt",
                     "modules": [
                         {
                             "title": "Dritte Gewalt",
@@ -1835,9 +1865,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l2",
-                    "title": "Lektion 2: Allgemeine Gerichte",
+                "l2": {
+                    "title": "Allgemeine Gerichte",
                     "modules": [
                         {
                             "title": "Amtsgerichte",
@@ -1894,9 +1923,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l3",
-                    "title": "Lektion 3: Oberstes Gericht",
+                "l3": {
+                    "title": "Oberstes Gericht",
                     "modules": [
                         {
                             "title": "Judikative Aufsicht",
@@ -1953,9 +1981,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l4",
-                    "title": "Lektion 4: Verwaltungsgerichte",
+                "l4": {
+                    "title": "Verwaltungsgerichte",
                     "modules": [
                         {
                             "title": "Kontrolle der Verwaltung",
@@ -2012,9 +2039,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l5",
-                    "title": "Lektion 5: Gültigkeit von Wahlen",
+                "l5": {
+                    "title": "Gültigkeit von Wahlen",
                     "modules": [
                         {
                             "title": "Rolle der Kammer des Obersten Gerichts",
@@ -2071,9 +2097,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l6",
-                    "title": "Lektion 6: Verfassungsgericht",
+                "l6": {
+                    "title": "Verfassungsgericht",
                     "modules": [
                         {
                             "title": "Gericht über das Recht",
@@ -2130,9 +2155,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l7",
-                    "title": "Lektion 7: Staatsgerichtshof",
+                "l7": {
+                    "title": "Staatsgerichtshof",
                     "modules": [
                         {
                             "title": "Strafrechtliche Verantwortung von Amtsträgern",
@@ -2189,9 +2213,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l8",
-                    "title": "Lektion 8: Nationaler Richterrat",
+                "l8": {
+                    "title": "Nationaler Richterrat",
                     "modules": [
                         {
                             "title": "Wächter der Unabhängigkeit",
@@ -2248,9 +2271,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l9",
-                    "title": "Lektion 9: Status des Richters",
+                "l9": {
+                    "title": "Status des Richters",
                     "modules": [
                         {
                             "title": "Ernennung",
@@ -2307,9 +2329,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l10",
-                    "title": "Lektion 10: Staatsanwaltschaft in Polen",
+                "l10": {
+                    "title": "Staatsanwaltschaft in Polen",
                     "modules": [
                         {
                             "title": "Rolle der Staatsanwaltschaft",
@@ -2366,9 +2387,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l11",
-                    "title": "Lektion 11: Rechte des Bürgers vor Gericht",
+                "l11": {
+                    "title": "Rechte des Bürgers vor Gericht",
                     "modules": [
                         {
                             "title": "Recht auf Gericht",
@@ -2425,9 +2445,8 @@
                         }
                     ]
                 },
-                {
-                    "slug": "l12",
-                    "title": "Lektion 12: Juristische Berufe",
+                "l12": {
+                    "title": "Juristische Berufe",
                     "modules": [
                         {
                             "title": "Richter",
@@ -2484,7 +2503,7 @@
                         }
                     ]
                 }
-            ]
+            }
         }
     },
     "notifications": {
@@ -2873,6 +2892,7 @@
         "configuration": "Konfiguration",
         "yes": "Ja",
         "no": "Nein",
+        "of": "von",
         "search": "Suchen",
         "filter": "Filter",
         "sort": "Sortieren",
@@ -2885,6 +2905,7 @@
         "authorizationRequired": "Autorisierung erforderlich",
         "forbidden": "Verboten",
         "continue": "Weiter",
+        "understand": "Verstanden und fortfahren",
         "messages": {
             "registrationSuccess": "Konto erfolgreich registriert!",
             "layoutSaved": "Layout erfolgreich gespeichert.",

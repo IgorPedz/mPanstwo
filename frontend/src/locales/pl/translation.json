@@ -225,7 +225,7 @@
             "surveys": "Ankiety",
             "opinions": "Opinie",
             "marks": "Oceny",
-            "special": "Specjalne"
+            "courses": "Kursy"
         },
         "achievementsData": {
             "survey_first": {
@@ -307,6 +307,46 @@
             "active_365": {
                 "title": "Pełny cykl",
                 "desc": "Rok nieprzerwanej obecności"
+            },
+            "module_1": {
+                "title": "Pierwszy krok",
+                "desc": "Ukończ pierwszy moduł i rozpocznij swoją podróż"
+            },
+            "module_10": {
+                "title": "Rozgrzewka za Tobą",
+                "desc": "Ukończ 10 modułów"
+            },
+            "module_50": {
+                "title": "Weteran nauki",
+                "desc": "Ukończ 50 modułów"
+            },
+            "module_master": {
+                "title": "Architekt wiedzy",
+                "desc": "Ukończ 100 modułów"
+            },
+            "course_1": {
+                "title": "Nowa ścieżka",
+                "desc": "Ukończ swój pierwszy kurs"
+            },
+            "course_3": {
+                "title": "Na dobrej drodze",
+                "desc": "Ukończ 3 kursy"
+            },
+            "course_10": {
+                "title": "Łowca wiedzy",
+                "desc": "Ukończ 10 kursów"
+            },
+            "lesson_1": {
+                "title": "Iskra",
+                "desc": "Ukończ pierwszą lekcję"
+            },
+            "lesson_25": {
+                "title": "Stały progres",
+                "desc": "Ukończ 25 lekcji"
+            },
+            "lesson_100": {
+                "title": "Maszyna nauki",
+                "desc": "Ukończ 100 lekcji"
             }
         }
     },
@@ -395,6 +435,21 @@
         "courseStarted": "Kurs rozpoczęty pomyślnie",
         "courseCompleted": "Kurs ukończony pomyślnie",
         "category": "Kategoria",
+        "module": "Moduł",
+        "completedModules": "Ukończone",
+        "startModule": "Rozpocznij",
+        "lockedModule": "Zablokowany",
+        "completedQuiz": "Ta lekcja wraz z quizem została już w pełni ukończona!",
+        "nextLesson": "Przejdź do następnej lekcji",
+        "startQuiz": "Rozpocznij końcowy quiz",
+        "lockedQuiz": "Ukończ wszystkie moduły, aby odblokować quiz",
+        "quiz": {
+            "title": "Szybki test wiedzy",
+            "question_counter": "{{current}} z {{total}}",
+            "result":"Twój wynik:",
+            "next_lesson":"Przejdź do kolejnej lekcji",
+            "back_to_lesson":"Powtórz lekcję" 
+        },
         "parlamentary_course": {
             "title": "Podstawy funkcjonowania parlamentu",
             "description": "Poznaj strukturę, role i procesy legislacyjne w polskim parlamencie.",
@@ -2895,6 +2950,7 @@
         "configuration": "Konfiguracja",
         "yes": "Tak",
         "no": "Nie",
+        "of": "z",
         "search": "Szukaj",
         "filter": "Filtruj",
         "sort": "Sortuj",
@@ -2907,6 +2963,7 @@
         "authorizationRequired": "Wymagana autoryzacja",
         "forbidden": "Dostęp zabroniony",
         "continue": "Kontynuuj",
+        "understand": "Zrozumiałem i ukończ",
         "messages": {
             "registrationSuccess": "Konto zostało zarejestrowane!",
             "layoutSaved": "Układ został zapisany.",

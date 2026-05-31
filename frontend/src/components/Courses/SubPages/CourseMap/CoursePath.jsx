@@ -3,77 +3,83 @@ import { motion } from "framer-motion";
 
 export default function CoursePath({
   pathD,
+  points = [],
   svgDimensions,
   lessons,
   completedLessons = [],
 }) {
-  const pathRef = useRef(null);
+  const measureRef = useRef(null);
 
   const [pathLength, setPathLength] = useState(0);
   const [targetOffset, setTargetOffset] = useState(0);
 
-  // mapowanie ID -> index
-  const completedIndexes = completedLessons
-    .map((id) => lessons.findIndex((l) => l.id === id))
-    .filter((i) => i !== -1);
-
-  const lastCompletedIndex =
-    completedIndexes.length > 0 ? Math.max(...completedIndexes) : -1;
+  // 1. Mapujemy wszystkie lekcje na format z informacją czy są ukończone
+  const completedSet = new Set(completedLessons);
+  
+  // 2. Szukamy pierwszej lekcji, która NIE JEST ukończona
+  const nextLessonIndex = lessons.findIndex((l) => !completedSet.has(l.id));
 
   useEffect(() => {
-    if (!pathRef.current || !pathD || !lessons.length) return;
+    if (!measureRef.current || !pathD || !lessons.length || !points.length) return;
 
-    const totalLength = pathRef.current.getTotalLength();
+    const svgPath = measureRef.current;
+    const totalLength = svgPath.getTotalLength();
     setPathLength(totalLength);
-    
-    let offset = totalLength;
 
-    // 1. nic nie ukończono
-    if (lastCompletedIndex === -1) {
-      offset = totalLength; // Ścieżka ukryta
+    // Przypadek A: Wszystkie lekcje są ukończone (brak nieukończonych) -> cała linia pełna
+    if (nextLessonIndex === -1) {
+      setTargetOffset(0);
+      return;
     }
-    // 2. wszystko ukończone
-    else if (lastCompletedIndex >= lessons.length - 1) {
-      offset = 0; // Ścieżka w pełni widoczna
-    }
-    // 3. normalny progress
-    else {
-      const targetLesson = lessons[lastCompletedIndex];
 
-      // Szukamy X i Y. Upewnij się, że są one przekazywane!
-      if (
-        targetLesson &&
-        typeof targetLesson.x === "number" &&
-        typeof targetLesson.y === "number"
-      ) {
-        let bestLength = 0;
-        let minDist = Infinity;
-
-        for (let i = 0; i <= 500; i++) {
-          const len = (totalLength * i) / 500;
-          const p = pathRef.current.getPointAtLength(len);
-
-          const dist = Math.hypot(
-            p.x - targetLesson.x,
-            p.y - targetLesson.y
-          );
-
-          if (dist < minDist) {
-            minDist = dist;
-            bestLength = len;
-          }
-        }
-        offset = totalLength - bestLength;
+    // Przypadek B: Nawet pierwsza lekcja nie jest zrobiona -> linia pusta (stoi na lekcji 1)
+    if (nextLessonIndex === 0) {
+      const firstPoint = points.find((p) => p.id === lessons[0].id);
+      if (firstPoint) {
+        const targetLength = findLengthAtPoint(svgPath, firstPoint.x, firstPoint.y, totalLength);
+        setTargetOffset(totalLength - targetLength);
       } else {
-        // Zmodyfikowany fallback: pokazuje postęp na podstawie ukończonych części
-        // (lastCompletedIndex + 1) sprawia, że przy index 0 mamy > 0%
-        const ratio = (lastCompletedIndex + 1) / lessons.length;
-        offset = totalLength * (1 - ratio);
+        setTargetOffset(totalLength);
+      }
+      return;
+    }
+
+    // Przypadek C: Rysujemy linię do pierwszej NIEUKOŃCZONEJ lekcji
+    const targetLesson = lessons[nextLessonIndex];
+    const targetPoint = points.find((p) => p.id === targetLesson.id);
+
+    if (targetPoint) {
+      // Szukamy fizycznej długości ścieżki w miejscu, gdzie stoi kropka nieukończonej lekcji
+      const targetLength = findLengthAtPoint(svgPath, targetPoint.x, targetPoint.y, totalLength);
+      setTargetOffset(totalLength - targetLength);
+    } else {
+      // Rezerwa procentowa w razie problemów z punktami
+      const ratio = nextLessonIndex / (lessons.length - 1);
+      setTargetOffset(totalLength * (1 - ratio));
+    }
+  }, [pathD, lessons, completedLessons, nextLessonIndex, points]);
+
+  // Skanowanie ścieżki (Pitagoras)
+  const findLengthAtPoint = (pathNode, targetX, targetY, totalLength) => {
+    let bestLength = 0;
+    let minDistance = Infinity;
+    const precision = 200;
+
+    for (let i = 0; i <= precision; i++) {
+      const length = (totalLength * i) / precision;
+      const point = pathNode.getPointAtLength(length);
+      
+      const distance = Math.sqrt(
+        Math.pow(point.x - targetX, 2) + Math.pow(point.y - targetY, 2)
+      );
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        bestLength = length;
       }
     }
-
-    setTargetOffset(offset);
-  }, [pathD, lessons, completedLessons, lastCompletedIndex]);
+    return bestLength;
+  };
 
   if (!pathD) return null;
 
@@ -85,13 +91,7 @@ export default function CoursePath({
       viewBox={`0 0 ${svgDimensions.width} ${svgDimensions.height}`}
     >
       <defs>
-        <linearGradient
-          id="coursePathGradient"
-          x1="0%"
-          y1="0%"
-          x2="100%"
-          y2="100%"
-        >
+        <linearGradient id="coursePathGradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#2563eb" />
           <stop offset="50%" stopColor="#3b82f6" />
           <stop offset="100%" stopColor="#60a5fa" />
@@ -110,7 +110,6 @@ export default function CoursePath({
       {/* PROGRESS */}
       {pathLength > 0 && (
         <motion.path
-          // USUNIĘTO: ref={pathRef} z tego miejsca
           d={pathD}
           fill="none"
           stroke="url(#coursePathGradient)"
@@ -128,12 +127,7 @@ export default function CoursePath({
         />
       )}
 
-      <path
-        ref={pathRef}
-        d={pathD}
-        fill="none"
-        stroke="transparent"
-      />
+      <path ref={measureRef} d={pathD} fill="none" stroke="transparent" />
     </svg>
   );
 }

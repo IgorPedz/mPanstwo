@@ -6,7 +6,6 @@ export function useModuleProgress(courseId, lessonId) {
 
   const [progress, setProgress] = useState({});
   const [loadingProgress, setLoadingProgress] = useState(true);
-  console.log(courseId, lessonId);
   useEffect(() => {
     if (!user?.id || !lessonId) return;
 
@@ -37,12 +36,11 @@ export function useModuleProgress(courseId, lessonId) {
       console.error("Użytkownik nie jest zalogowany.");
       return;
     }
-
+    console.log("id",user.id, courseId, lessonId, moduleIndex);
     setProgress((prev) => ({
       ...prev,
       [moduleIndex]: true,
     }));
-    console.log("id",user.id, courseId, lessonId, moduleIndex);
     try {
       const res = await fetch(
         "http://localhost:5000/courses/lesson/module-complete",

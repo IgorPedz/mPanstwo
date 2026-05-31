@@ -46,7 +46,7 @@ export default function GlobalUserAchievements() {
           }}
           progressPercent={progression.progressPercent}
         />
-
+        {console.log(categories)}
         <AchievementsFilters
           categories={categories}
           filter={filter}

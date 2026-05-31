@@ -2,21 +2,16 @@ import TextModule from "./TextModule";
 import CardModule from "./CardModule";
 import InfoModule from "./InfoModule";
 
-export default function ModuleRenderer({ module }) {
-  const content =
-    typeof module.content === "string"
-      ? JSON.parse(module.content)
-      : module.content;
-
+export default function ModuleRenderer({ module, text }) {
   switch (module.type) {
     case "text":
-      return <TextModule data={content} />;
+      return <TextModule text={text} />;
 
     case "card":
-      return <CardModule data={content} />;
+      return <CardModule text={text} />;
 
     case "info":
-      return <InfoModule data={content} />;
+      return <InfoModule text={text} />;
 
     default:
       return (

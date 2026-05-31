@@ -1,4 +1,5 @@
 const db = require("../db");
+const { handleEvent } = require("../services/event.service");
 
 exports.getAllCourses = async (req, res) => {
   const { userId } = req.query;
@@ -124,9 +125,10 @@ exports.getLesson = async (req, res) => {
     const lessonId = req.params.id;
     const userId = req.query.userId || req.user?.id;
     const courseId = req.query.courseId;
+    console.log(lessonId, userId, courseId);
     const [lessonRows] = await db.query(
       "SELECT lessons.*, courses.slug AS course_slug FROM lessons LEFT JOIN courses ON lessons.course_id = courses.id WHERE lessons.course_id = ? AND lessons.id = ?",
-      [lessonId, courseId],
+      [courseId, lessonId],
     );
 
     if (lessonRows.length === 0) {
@@ -183,6 +185,8 @@ exports.completeModule = async (req, res) => {
       `,
       [userId, lessonId, moduleIndex],
     );
+
+    await handleEvent(userId, "MODULES_COMPLETED");
 
     res.json({ success: true });
   } catch (err) {
@@ -263,6 +267,8 @@ exports.completeQuiz = async (req, res) => {
       `,
       [userId, lessonId],
     );
+
+    await handleEvent(userId, "LESSONS_COMPLETED");
 
     res.json({ success: true });
   } catch (err) {

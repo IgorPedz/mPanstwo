@@ -1,5 +1,4 @@
 import { useLayoutEffect, useRef, useState, useEffect } from "react";
-
 import CoursePath from "./CoursePath";
 import CourseRow from "./CourseRow";
 import { useCourseProgress } from "../../../../Hooks/useCourseProgress";
@@ -9,30 +8,28 @@ export default function CourseMapContainer({ course, currentLessonId }) {
   const buttonRefs = useRef({});
 
   const [pathD, setPathD] = useState("");
+  const [points, setPoints] = useState([]); // 🔥 NOWY STAN na współrzędne lekcji
   const [svgDimensions, setSvgDimensions] = useState({
     width: 0,
     height: 0,
   });
 
-  // 1. Zastępujemy stałą wartość stanem, by reagować na szerokość okna
   const [itemsPerRow, setItemsPerRow] = useState(4);
-
   const { completedLessons } = useCourseProgress(course.id);
   const lessons = course?.lessons || [];
 
-  // 2. Nasłuchujemy zmiany szerokości ekranu, aby dostosować liczbę lekcji w rzędzie
   useEffect(() => {
     const updateItemsPerRow = () => {
       if (window.innerWidth < 640) {
-        setItemsPerRow(2); // Telefony: 2 elementy w rzędzie (lub 1, jeśli wolisz)
+        setItemsPerRow(2);
       } else if (window.innerWidth < 1024) {
-        setItemsPerRow(3); // Tablety: 3 elementy
+        setItemsPerRow(3);
       } else {
-        setItemsPerRow(4); // Desktop: 4 elementy
+        setItemsPerRow(4);
       }
     };
 
-    updateItemsPerRow(); // Wywołanie początkowe
+    updateItemsPerRow();
     window.addEventListener("resize", updateItemsPerRow);
     return () => window.removeEventListener("resize", updateItemsPerRow);
   }, []);
@@ -46,7 +43,7 @@ export default function CourseMapContainer({ course, currentLessonId }) {
     if (!containerRef.current || !lessons.length) return;
 
     const containerRect = containerRef.current.getBoundingClientRect();
-    const points = [];
+    const calculatedPoints = []; // Lokalna tablica na punkty
 
     lessons.forEach((lesson) => {
       const btn = buttonRefs.current[lesson.id];
@@ -54,24 +51,23 @@ export default function CourseMapContainer({ course, currentLessonId }) {
 
       const rect = btn.getBoundingClientRect();
 
-      points.push({
+      calculatedPoints.push({
+        id: lesson.id, // 🔥 Ważne: przekazujemy ID lekcji, żeby sparować ją z postępem
         x: rect.left - containerRect.left + rect.width / 2,
         y: rect.top - containerRect.top + rect.height / 2,
       });
     });
 
-    if (!points.length) return;
+    if (!calculatedPoints.length) return;
 
-    const d = points.reduce((acc, point, index) => {
-      if (index === 0) {
-        return `M ${point.x} ${point.y}`;
-      }
+    // Aktualizujemy stan punktów
+    setPoints(calculatedPoints);
 
-      const prev = points[index - 1];
-      const cy = (prev.y + point.y) / 2;
-
-      return `${acc} C ${prev.x} ${cy}, ${point.x} ${cy}, ${point.x} ${point.y}`;
-    }, "");
+    let d = `M ${calculatedPoints[0].x} ${calculatedPoints[0].y}`;
+    for (let i = 1; i < calculatedPoints.length; i++) {
+      const curr = calculatedPoints[i];
+      d += ` L ${curr.x} ${curr.y}`;
+    }
 
     setPathD(d);
 
@@ -89,39 +85,20 @@ export default function CourseMapContainer({ course, currentLessonId }) {
     });
 
     observer.observe(containerRef.current);
-
     requestAnimationFrame(updatePath);
 
     return () => observer.disconnect();
   }, [course, currentLessonId, completedLessons, itemsPerRow]);
-  // ^ Dodano itemsPerRow do tablicy zależności, by ścieżka odświeżała się przy zmianie liczby elementów w rzędzie
 
   return (
-    // 3. Dodano padding x (px-2 md:px-0), żeby mapa nie dotykała krawędzi ekranu telefonu
     <div className="flex justify-center px-2 md:px-0">
       <div
         ref={containerRef}
-        className="
-          color-transition
-          relative
-          w-full
-          max-w-6xl
-          py-8          {/* Mniejszy padding pionowy na mobilce */}
-          md:py-10      {/* Standardowy padding na desktopie */}
-          px-4          {/* Wewnętrzny margines na mniejszych ekranach */}
-          md:px-8
-          rounded-2xl   {/* Nieco mniejsze zaokrąglenie na mobilce */}
-          md:rounded-3xl
-          bg-slate-50/50
-          dark:bg-slate-900/40
-          border
-          border-slate-200/60
-          dark:border-slate-800/50
-          backdrop-blur-sm
-        "
+        className="color-transition relative w-full max-w-6xl py-8 md:py-10 px-4 md:px-8 rounded-2xl md:rounded-3xl bg-slate-50/50 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/50 backdrop-blur-sm"
       >
         <CoursePath
           pathD={pathD}
+          points={points} 
           svgDimensions={svgDimensions}
           lessons={lessons}
           currentLessonId={currentLessonId}

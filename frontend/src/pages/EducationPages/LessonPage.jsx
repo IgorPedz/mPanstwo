@@ -21,7 +21,6 @@ export default function LessonPage() {
 
   const { lessonProgress } = useLessonProgress(lessonId, courseId);
   const isQuizAlreadyDone = !!lessonProgress?.quizCompleted;
-  console.log(lessonProgress);
 
   if (loading) {
     return (
@@ -90,7 +89,13 @@ export default function LessonPage() {
         )}
       </AnimatePresence>
 
-      {quizOpen && <QuizModal onClose={() => setQuizOpen(false)} />}
+      {quizOpen && (
+        <QuizModal
+          courseSlug={lesson.course_slug}
+          lessonSlug={lesson.slug}
+          onClose={() => setQuizOpen(false)}
+        />
+      )}
     </div>
   );
 }

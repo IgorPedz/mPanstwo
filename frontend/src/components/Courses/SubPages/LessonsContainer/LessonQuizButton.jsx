@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import {useTranslation} from "react-i18next";
 export default function LessonQuizButton({
   IsQuizAlreadyDone,
   allDone,
@@ -7,6 +7,7 @@ export default function LessonQuizButton({
   lessonId,
   setQuizOpen,
 }) {
+  const {t} = useTranslation();
   const navigate = useNavigate();
   return (
     <>
@@ -25,15 +26,15 @@ export default function LessonQuizButton({
                 `}
           >
             {allDone
-              ? "🧠 Rozpocznij końcowy quiz"
-              : "🔒 Ukończ wszystkie moduły, aby odblokować quiz"}
+              ? t("courses.startQuiz")
+              : t("courses.lockedQuiz")}
           </button>
         </div>
       ) : (
         <div className="pt-2 space-y-3">
           {" "}
           <div className="w-full p-5 rounded-2xl font-black text-center border border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-            🎉 Ta lekcja wraz z quizem została już w pełni ukończona!
+             {t("courses.completedQuiz")}
           </div>
           <button
             onClick={() =>
@@ -55,7 +56,7 @@ bg-slate-900 dark:bg-white text-white dark:text-slate-900
                   cursor-pointer
                 "
           >
-            ➜ Przejdź do następnej lekcji
+            ➜ {t("courses.nextLesson")}
           </button>
         </div>
       )}

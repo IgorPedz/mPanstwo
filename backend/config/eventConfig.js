@@ -1,27 +1,27 @@
 const EVENT_CONFIG = {
-  SURVEY_NEW: {
-    icon: "survey_new",
-    title: "Nowa ankieta",
-  },
-
   SURVEY_COMPLETED: {
     icon: "survey_completed",
-    color:  "emerald",
+    color: "emerald",
     title: "Ankieta zakończona",
     message: "Wypełniono ankiete",
     xp: 50,
     metricKey: "survey_completed",
-    metric_source: "users_metrics"
+    metric_source: "users_metrics",
   },
 
-  SURVEY_RESULT: {
-    icon: "survey_result",
-    title: "Nowe wyniki",
+  MODULES_COMPLETED: {
+    metricKey: "modules_completed",
+    metric_source: "users_metrics",
   },
 
-  LAW_UPDATE: {
-    icon: "law_update",
-    title: "Aktualizacja prawa",
+  LESSONS_COMPLETED: {
+    metricKey: "lessons_completed",
+    metric_source: "users_metrics",
+  },
+
+  COURSE_COMPLETED: {
+    metricKey: "courses_completed",
+    metric_source: "users_metrics",
   },
 
   LOGIN_STREAK_SMALL: {
@@ -43,11 +43,6 @@ const EVENT_CONFIG = {
   ACHIEVEMENT_UNLOCK: {
     icon: "achievement_unlock",
     title: "Osiągnięcie odblokowane",
-  },
-
-  XP_GAIN: {
-    icon: "xp_gain",
-    title: "Zdobyto XP",
   },
 
   PROFILE_UPDATE: {

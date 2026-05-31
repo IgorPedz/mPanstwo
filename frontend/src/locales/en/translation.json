@@ -225,7 +225,7 @@
             "surveys": "Surveys",
             "opinions": "Opinions",
             "marks": "Marks",
-            "special": "Special"
+            "courses": "Courses"
         },
         "achievementsData": {
             "survey_first": {
@@ -307,6 +307,46 @@
             "active_365": {
                 "title": "Full Cycle",
                 "desc": "One full year of uninterrupted presence"
+            },
+            "module_1": {
+                "title": "First Step",
+                "desc": "Complete your first module and begin your journey"
+            },
+            "module_10": {
+                "title": "Warming Up",
+                "desc": "Complete 10 modules"
+            },
+            "module_50": {
+                "title": "Learning Veteran",
+                "desc": "Complete 50 modules"
+            },
+            "module_master": {
+                "title": "Knowledge Architect",
+                "desc": "Complete 100 modules"
+            },
+            "course_1": {
+                "title": "New Path",
+                "desc": "Complete your first course"
+            },
+            "course_3": {
+                "title": "On the Right Track",
+                "desc": "Complete 3 courses"
+            },
+            "course_10": {
+                "title": "Knowledge Hunter",
+                "desc": "Complete 10 courses"
+            },
+            "lesson_1": {
+                "title": "Spark",
+                "desc": "Complete your first lesson"
+            },
+            "lesson_25": {
+                "title": "Steady Progress",
+                "desc": "Complete 25 lessons"
+            },
+            "lesson_100": {
+                "title": "Learning Machine",
+                "desc": "Complete 100 lessons"
             }
         }
     },
@@ -395,6 +435,21 @@
         "courseStarted": "Course started successfully",
         "courseCompleted": "Course completed successfully",
         "category": "Category",
+        "module": "Module",
+        "completedModules": "Completed",
+        "startModule": "Start",
+        "lockedModule": "Locked",
+        "completedQuiz": "This lesson along with the quiz has already been fully completed!",
+        "nextLesson": "Proceed to the next lesson",
+        "startQuiz": "Start the final quiz",
+        "lockedQuiz": "Complete all modules to unlock the quiz",
+        "quiz": {
+            "title": "Quiz",
+            "question_counter": "{{current}} of {{total}}",
+            "result": "Your results:",
+            "next_lesson": "Go to the next lesson",
+            "back_to_lesson": "Repeat lesson"
+        },
         "parlamentary_course": {
             "title": "Basics of Parliament Functioning",
             "description": "Learn about the structure, roles, and legislative processes of the Polish parliament.",
@@ -403,7 +458,7 @@
             "desc": "In this course you will learn how the Polish parliament works and how the legislative process takes place. You will also learn about key institutions and roles in the Polish political system!",
             "lessons": {
                 "l1": {
-                    "title": "Lesson 1: Introduction to Parliamentarism",
+                    "title": "Introduction to Parliamentarism",
                     "modules": [
                         {
                             "title": "Separation of Powers",
@@ -461,7 +516,7 @@
                     ]
                 },
                 "l2": {
-                    "title": "Lesson 2: Structure of the Sejm of the Republic of Poland",
+                    "title": "Structure of the Sejm of the Republic of Poland",
                     "modules": [
                         {
                             "title": "Number of Deputies",
@@ -519,7 +574,7 @@
                     ]
                 },
                 "l3": {
-                    "title": "Lesson 3: Structure of the Senate of the Republic of Poland",
+                    "title": "Structure of the Senate of the Republic of Poland",
                     "modules": [
                         {
                             "title": "Number of Senators",
@@ -577,7 +632,7 @@
                     ]
                 },
                 "l4": {
-                    "title": "Lesson 4: Parliamentary Mandate",
+                    "title": "Parliamentary Mandate",
                     "modules": [
                         {
                             "title": "Free Mandate",
@@ -635,7 +690,7 @@
                     ]
                 },
                 "l5": {
-                    "title": "Lesson 5: Parliamentary Committees",
+                    "title": "Parliamentary Committees",
                     "modules": [
                         {
                             "title": "Role of Committees",
@@ -693,7 +748,7 @@
                     ]
                 },
                 "l6": {
-                    "title": "Lesson 6: Legislative Initiative",
+                    "title": "Legislative Initiative",
                     "modules": [
                         {
                             "title": "Definition",
@@ -751,7 +806,7 @@
                     ]
                 },
                 "l7": {
-                    "title": "Lesson 7: Three Readings in the Sejm",
+                    "title": "Three Readings in the Sejm",
                     "modules": [
                         {
                             "title": "First Reading",
@@ -809,7 +864,7 @@
                     ]
                 },
                 "l8": {
-                    "title": "Lesson 8: Role of the Senate and the President",
+                    "title": "Role of the Senate and the President",
                     "modules": [
                         {
                             "title": "Submission to the Senate",
@@ -867,7 +922,7 @@
                     ]
                 },
                 "l9": {
-                    "title": "Lesson 9: Control Function of the Sejm",
+                    "title": "Control Function of the Sejm",
                     "modules": [
                         {
                             "title": "Nature of Control",
@@ -925,7 +980,7 @@
                     ]
                 },
                 "l10": {
-                    "title": "Lesson 10: National Assembly",
+                    "title": "National Assembly",
                     "modules": [
                         {
                             "title": "Definition",
@@ -1108,7 +1163,7 @@
             "desc": "In this course, you will learn how the Polish government works, its structures and decision-making processes. You will also get to know the key institutions and roles in the Polish political system!",
             "lessons": {
                 "l1": {
-                    "title": "Lesson 1: Executive Power in Poland",
+                    "title": "Executive Power in Poland",
                     "modules": [
                         {
                             "title": "Dualism of the Executive",
@@ -1166,7 +1221,7 @@
                     ]
                 },
                 "l2": {
-                    "title": "Lesson 2: Composition and Structure of the Government",
+                    "title": "Composition and Structure of the Government",
                     "modules": [
                         {
                             "title": "Prime Minister",
@@ -1224,7 +1279,7 @@
                     ]
                 },
                 "l3": {
-                    "title": "Lesson 3: Forming the Government",
+                    "title": "Forming the Government",
                     "modules": [
                         {
                             "title": "First Step",
@@ -1282,7 +1337,7 @@
                     ]
                 },
                 "l4": {
-                    "title": "Lesson 4: Role and Tasks of the Prime Minister",
+                    "title": "Role and Tasks of the Prime Minister",
                     "modules": [
                         {
                             "title": "Managing the Work",
@@ -1340,7 +1395,7 @@
                     ]
                 },
                 "l5": {
-                    "title": "Lesson 5: Ministries and Central Offices",
+                    "title": "Ministries and Central Offices",
                     "modules": [
                         {
                             "title": "Role of a Ministry",
@@ -1398,7 +1453,7 @@
                     ]
                 },
                 "l6": {
-                    "title": "Lesson 6: Decision-Making Process",
+                    "title": "Decision-Making Process",
                     "modules": [
                         {
                             "title": "Government Initiative",
@@ -1456,7 +1511,7 @@
                     ]
                 },
                 "l7": {
-                    "title": "Lesson 7: Voivode and Territorial Administration",
+                    "title": "Voivode and Territorial Administration",
                     "modules": [
                         {
                             "title": "Government Representative",
@@ -1514,7 +1569,7 @@
                     ]
                 },
                 "l8": {
-                    "title": "Lesson 8: Civil Service",
+                    "title": "Civil Service",
                     "modules": [
                         {
                             "title": "Task of the Civil Service",
@@ -1572,7 +1627,7 @@
                     ]
                 },
                 "l9": {
-                    "title": "Lesson 9: Security and Defence",
+                    "title": "Security and Defence",
                     "modules": [
                         {
                             "title": "Government Responsibility",
@@ -1630,7 +1685,7 @@
                     ]
                 },
                 "l10": {
-                    "title": "Lesson 10: Foreign Policy",
+                    "title": "Foreign Policy",
                     "modules": [
                         {
                             "title": "Conducting Policy",
@@ -1688,7 +1743,7 @@
                     ]
                 },
                 "l11": {
-                    "title": "Lesson 11: Control over the Government",
+                    "title": "Control over the Government",
                     "modules": [
                         {
                             "title": "Political Accountability",
@@ -1746,7 +1801,7 @@
                     ]
                 },
                 "l12": {
-                    "title": "Lesson 12: Relations with the President",
+                    "title": "Relations with the President",
                     "modules": [
                         {
                             "title": "Countersignature",
@@ -1804,724 +1859,712 @@
                     ]
                 }
             }
-        }
-    },
-    "court_course": {
-        "title": "The Judicial System in Poland",
-        "description": "Learn about the structure and functioning of the Polish judicial system.",
-        "level": "Beginner",
-        "category": "Law",
-        "desc": "In this course, you will learn how the Polish judicial system works, its structures and decision-making processes. You will also get to know the key institutions and roles in the Polish legal system!",
-        "lessons": [
-            {
-                "slug": "l1",
-                "title": "Lesson 1: Judicial Power",
-                "modules": [
-                    {
-                        "title": "The Third Power",
-                        "text": "Judicial power is independent from legislative and executive power."
-                    },
-                    {
-                        "title": "Courts and Tribunals",
-                        "text": "Judicial power in Poland is exercised by courts and independent tribunals."
-                    },
-                    {
-                        "title": "Judicial Independence",
-                        "text": "Judges are independent, meaning they are subject only to the Constitution and statutes."
-                    },
-                    {
-                        "title": "Appeal and Instances",
-                        "text": "Court proceedings in Poland are at least two-instance (it is possible to appeal)."
-                    },
-                    {
-                        "title": "Issuing Judgments",
-                        "text": "Courts issue judgments in the name of the Republic of Poland."
-                    },
-                    {
-                        "title": "Public Hearings",
-                        "text": "Court hearings are public unless the law allows exclusion of the public for reasons of morality or security."
-                    }
-                ],
-                "quiz": [
-                    {
-                        "question": "To whom are independent judges subject?",
-                        "answers": [
-                            "The Prime Minister",
-                            "Only the Constitution and statutes",
-                            "The President"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "How many instances are court proceedings in Poland?",
-                        "answers": [
-                            "Single-instance",
-                            "At least two-instance",
-                            "Four-instance"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "Are court hearings in Poland public?",
-                        "answers": [
-                            "Yes, always",
-                            "No, never",
-                            "Yes, unless the law provides otherwise"
-                        ],
-                        "correct": 2
-                    }
-                ]
-            },
-            {
-                "slug": "l2",
-                "title": "Lesson 2: Common Courts",
-                "modules": [
-                    {
-                        "title": "District Courts",
-                        "text": "District courts are the lowest level and handle most minor civil and criminal cases."
-                    },
-                    {
-                        "title": "Regional Courts",
-                        "text": "Regional courts hear more serious cases as the first instance and appeals from district courts."
-                    },
-                    {
-                        "title": "Courts of Appeal",
-                        "text": "Courts of Appeal deal exclusively with appeals against judgments of regional courts."
-                    },
-                    {
-                        "title": "Court Divisions",
-                        "text": "Courts are divided into divisions: civil, criminal, family, labour, and commercial."
-                    },
-                    {
-                        "title": "Lay Judges",
-                        "text": "In some cases, citizens – lay judges – sit alongside professional judges."
-                    },
-                    {
-                        "title": "Territorial Jurisdiction",
-                        "text": "Court jurisdiction depends on the defendant's place of residence or the place where the offence was committed."
-                    }
-                ],
-                "quiz": [
-                    {
-                        "question": "Which court is usually the first instance for simple cases?",
-                        "answers": [
-                            "Court of Appeal",
-                            "District Court",
-                            "Supreme Court"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "What is a lay judge in court?",
-                        "answers": [
-                            "A professional judge",
-                            "A citizen participating in adjudication",
-                            "A prosecutor"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "What determines court jurisdiction?",
-                        "answers": [
-                            "The type of case",
-                            "The defendant's place of residence or the place of the offence",
-                            "The prosecutor's decision"
-                        ],
-                        "correct": 1
-                    }
-                ]
-            },
-            {
-                "slug": "l3",
-                "title": "Lesson 3: Supreme Court",
-                "modules": [
-                    {
-                        "title": "Judicial Supervision",
-                        "text": "The Supreme Court exercises supervision over the activities of common and military courts in the field of adjudication."
-                    },
-                    {
-                        "title": "Cassation Appeal",
-                        "text": "A cassation appeal may be filed with the Supreme Court against a final judgment of the second instance."
-                    },
-                    {
-                        "title": "Chambers of the Supreme Court",
-                        "text": "The Supreme Court is divided into specialized chambers (e.g. Criminal Chamber, Civil Chamber)."
-                    },
-                    {
-                        "title": "Resolutions of the Supreme Court",
-                        "text": "The Supreme Court adopts resolutions aimed at clarifying legal provisions that raise doubts."
-                    },
-                    {
-                        "title": "First President of the Supreme Court",
-                        "text": "The work of the Supreme Court is directed by the First President, appointed by the President for a 6-year term."
-                    },
-                    {
-                        "title": "Seat",
-                        "text": "The seat of the Supreme Court is located in Warsaw."
-                    }
-                ],
-                "quiz": [
-                    {
-                        "question": "What is the name of the legal remedy directed to the Supreme Court?",
-                        "answers": [
-                            "Appeal",
-                            "Cassation (cassation appeal)",
-                            "Complaint"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "How long is the term of office of the First President of the Supreme Court?",
-                        "answers": [
-                            "2 years",
-                            "4 years",
-                            "6 years"
-                        ],
-                        "correct": 2
-                    },
-                    {
-                        "question": "Where is the seat of the Supreme Court?",
-                        "answers": [
-                            "In Kraków",
-                            "In Gdańsk",
-                            "In Warsaw"
-                        ],
-                        "correct": 2
-                    }
-                ]
-            },
-            {
-                "slug": "l4",
-                "title": "Lesson 4: Administrative Courts",
-                "modules": [
-                    {
-                        "title": "Control of Administration",
-                        "text": "Administrative courts control the legality of decisions issued by offices and public authorities."
-                    },
-                    {
-                        "title": "WSA",
-                        "text": "Voivodeship Administrative Courts (WSA) hear complaints against administrative decisions in the first instance."
-                    },
-                    {
-                        "title": "NSA",
-                        "text": "The Supreme Administrative Court (NSA) in Warsaw hears appeals against WSA judgments."
-                    },
-                    {
-                        "title": "Legality Criterion",
-                        "text": "An administrative court examines only whether the authority acted in accordance with the law, it does not assess expediency."
-                    },
-                    {
-                        "title": "Annulment of a Decision",
-                        "text": "In case of a breach of law, the administrative court annuls the challenged decision."
-                    },
-                    {
-                        "title": "Complaint for Inaction",
-                        "text": "It is also possible to complain to the administrative court about an authority’s failure to respond within the deadline (inaction)."
-                    }
-                ],
-                "quiz": [
-                    {
-                        "question": "What do administrative courts deal with?",
-                        "answers": [
-                            "Sentencing criminals",
-                            "Controlling the legality of administrative decisions",
-                            "Divorces"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "Where is the Supreme Administrative Court (NSA) located?",
-                        "answers": [
-                            "In Gdańsk",
-                            "In Kraków",
-                            "In Warsaw"
-                        ],
-                        "correct": 2
-                    },
-                    {
-                        "question": "Does an administrative court assess the expediency of an authority’s actions?",
-                        "answers": [
-                            "Yes",
-                            "No (it only examines legality)",
-                            "Only in financial matters"
-                        ],
-                        "correct": 1
-                    }
-                ]
-            },
-            {
-                "slug": "l5",
-                "title": "Lesson 5: Validity of Elections",
-                "modules": [
-                    {
-                        "title": "Role of the Supreme Court Chamber",
-                        "text": "The Supreme Court is the competent body for declaring the validity of elections and referendums."
-                    },
-                    {
-                        "title": "Election Protests",
-                        "text": "Citizens have the right to file protests with the Supreme Court regarding the validity of elections within a specified deadline."
-                    },
-                    {
-                        "title": "Analysis of Protests",
-                        "text": "The Supreme Court examines whether the reported procedural violations affected the final election result."
-                    },
-                    {
-                        "title": "Resolution on Validity",
-                        "text": "After examining the protests, the Supreme Court adopts a comprehensive resolution on the validity of parliamentary or presidential elections."
-                    },
-                    {
-                        "title": "EP Elections",
-                        "text": "The Supreme Court also decides on the validity of elections to the European Parliament in Poland."
-                    },
-                    {
-                        "title": "Referendum",
-                        "text": "The same procedure applies to nationwide referendums and confirming their legality."
-                    }
-                ],
-                "quiz": [
-                    {
-                        "question": "Which institution declares the validity of parliamentary elections in Poland?",
-                        "answers": [
-                            "State Election Commission",
-                            "Supreme Court",
-                            "Constitutional Tribunal"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "Who can file an election protest with the Supreme Court?",
-                        "answers": [
-                            "Only the Prime Minister",
-                            "Any voter entitled to participate in the elections",
-                            "Only the police"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "Can the Supreme Court invalidate elections?",
-                        "answers": [
-                            "Yes, if procedural violations affected the result",
-                            "No, the Supreme Court only declares validity",
-                            "Yes, at the request of the President"
-                        ],
-                        "correct": 0
-                    }
-                ]
-            },
-            {
-                "slug": "l6",
-                "title": "Lesson 6: Constitutional Tribunal",
-                "modules": [
-                    {
-                        "title": "Court over the Law",
-                        "text": "The Constitutional Tribunal (TK) examines the conformity of statutes with the Constitution of the Republic of Poland."
-                    },
-                    {
-                        "title": "Composition of the Tribunal",
-                        "text": "The Constitutional Tribunal consists of 15 judges elected by the Sejm for a 9-year term."
-                    },
-                    {
-                        "title": "Constitutional Complaint",
-                        "text": "Any citizen, after exhausting the judicial path, may file a constitutional complaint if they believe a provision has violated their rights."
-                    },
-                    {
-                        "title": "Legal Questions",
-                        "text": "Courts may refer legal questions to the Constitutional Tribunal if they have doubts about the constitutionality of a provision."
-                    },
-                    {
-                        "title": "Finality of Judgments",
-                        "text": "Rulings of the Constitutional Tribunal have universally binding force and are final."
-                    },
-                    {
-                        "title": "Derogation",
-                        "text": "A provision declared unconstitutional by the Tribunal loses its legal force."
-                    }
-                ],
-                "quiz": [
-                    {
-                        "question": "How many judges sit in the Constitutional Tribunal?",
-                        "answers": [
-                            "9",
-                            "12",
-                            "15"
-                        ],
-                        "correct": 2
-                    },
-                    {
-                        "question": "Can one appeal against a judgment of the Constitutional Tribunal?",
-                        "answers": [
-                            "Yes, to the Sejm",
-                            "No, the judgments are final",
-                            "Yes, to the Supreme Court"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "Who can file a constitutional complaint with the Tribunal?",
-                        "answers": [
-                            "Any citizen after exhausting the judicial path",
-                            "Only MPs",
-                            "Only judges"
-                        ],
-                        "correct": 0
-                    }
-                ]
-            },
-            {
-                "slug": "l7",
-                "title": "Lesson 7: Tribunal of State",
-                "modules": [
-                    {
-                        "title": "Criminal Liability of Officials",
-                        "text": "The Tribunal of State tries the highest state officials for violations of the Constitution or statutes."
-                    },
-                    {
-                        "title": "Who is Accountable",
-                        "text": "The Tribunal of State hears cases against, among others, the President, Prime Minister, government members, and the President of the Supreme Audit Office."
-                    },
-                    {
-                        "title": "Chairman",
-                        "text": "The Chairman of the Tribunal of State is, by virtue of office, the current First President of the Supreme Court."
-                    },
-                    {
-                        "title": "Election of Members",
-                        "text": "The remaining members of the Tribunal of State are elected by the Sejm for the term of its office from persons outside the group of MPs."
-                    },
-                    {
-                        "title": "Punishments",
-                        "text": "The Tribunal of State may impose penalties such as loss of voting rights, prohibition on holding public positions, or deprivation of orders."
-                    },
-                    {
-                        "title": "Separate Nature",
-                        "text": "The Tribunal of State is not a common court and convenes only to adjudicate specific indictments."
-                    }
-                ],
-                "quiz": [
-                    {
-                        "question": "Who serves as Chairman of the Tribunal of State by virtue of office?",
-                        "answers": [
-                            "President of the Republic of Poland",
-                            "First President of the Supreme Court",
-                            "Minister of Justice"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "What penalty can the Tribunal of State impose?",
-                        "answers": [
-                            "Fine for a party",
-                            "Prohibition on holding public positions",
-                            "Community service"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "Is the Tribunal of State a common court?",
-                        "answers": [
-                            "Yes",
-                            "No, it is a separate body",
-                            "Yes, but only in Warsaw"
-                        ],
-                        "correct": 1
-                    }
-                ]
-            },
-            {
-                "slug": "l8",
-                "title": "Lesson 8: National Council of the Judiciary",
-                "modules": [
-                    {
-                        "title": "Guardian of Independence",
-                        "text": "The National Council of the Judiciary (KRS) guards the independence of courts and the impartiality of judges."
-                    },
-                    {
-                        "title": "Judicial Appointments",
-                        "text": "The KRS reviews candidacies for judges and presents proposals to the President for their appointment."
-                    },
-                    {
-                        "title": "Composition of the KRS",
-                        "text": "The KRS consists of 25 members, including representatives of judges, MPs, senators, and the President."
-                    },
-                    {
-                        "title": "Minister in the KRS",
-                        "text": "The Minister of Justice is also a member of the KRS by virtue of office."
-                    },
-                    {
-                        "title": "Term of Office",
-                        "text": "The term of office of elected members of the National Council of the Judiciary is 4 years."
-                    },
-                    {
-                        "title": "Opinions",
-                        "text": "The KRS issues opinions on draft legal acts concerning the judiciary and court system."
-                    }
-                ],
-                "quiz": [
-                    {
-                        "question": "What is the main role of the National Council of the Judiciary (KRS)?",
-                        "answers": [
-                            "Issuing criminal judgments",
-                            "Guarding the independence of courts and nominating judges",
-                            "Managing the prison system"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "How many members does the National Council of the Judiciary have?",
-                        "answers": [
-                            "15",
-                            "25",
-                            "460"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "Who is a member of the KRS by virtue of office?",
-                        "answers": [
-                            "President of the Republic of Poland",
-                            "Prime Minister",
-                            "Minister of Justice"
-                        ],
-                        "correct": 2
-                    }
-                ]
-            },
-            {
-                "slug": "l9",
-                "title": "Lesson 9: Status of a Judge",
-                "modules": [
-                    {
-                        "title": "Appointment",
-                        "text": "Judges are appointed by the President of the Republic of Poland upon the motion of the National Council of the Judiciary."
-                    },
-                    {
-                        "title": "Irremovability",
-                        "text": "Judges are irremovable – they cannot be dismissed except by a final decision of a disciplinary court."
-                    },
-                    {
-                        "title": "Judicial Immunity",
-                        "text": "A judge cannot be held criminally liable or detained without the consent of a disciplinary court."
-                    },
-                    {
-                        "title": "Apolitical Nature of Judges",
-                        "text": "A judge may not belong to a political party or engage in public activity incompatible with the judicial office."
-                    },
-                    {
-                        "title": "Protection from Pressure",
-                        "text": "No one is allowed to influence a judge’s decisions or instruct them on how to adjudicate."
-                    },
-                    {
-                        "title": "Retirement",
-                        "text": "Upon reaching a certain age, judges retire (judicial pension)."
-                    }
-                ],
-                "quiz": [
-                    {
-                        "question": "Who officially appoints judges in Poland?",
-                        "answers": [
-                            "The Sejm",
-                            "The President of the Republic of Poland",
-                            "The Prime Minister"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "Can a judge in Poland belong to a political party?",
-                        "answers": [
-                            "Yes",
-                            "No, judges must remain apolitical",
-                            "Yes, with the Minister’s consent"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "What does judicial immunity mean?",
-                        "answers": [
-                            "A judge cannot be held criminally liable without the consent of a disciplinary court",
-                            "A judge is immune from punishment",
-                            "A judge does not have to pay taxes"
-                        ],
-                        "correct": 0
-                    }
-                ]
-            },
-            {
-                "slug": "l10",
-                "title": "Lesson 10: Public Prosecution in Poland",
-                "modules": [
-                    {
-                        "title": "Role of the Prosecution",
-                        "text": "The Public Prosecution Service is responsible for prosecuting crimes and safeguarding the rule of law."
-                    },
-                    {
-                        "title": "Prosecutor General",
-                        "text": "The head of the prosecution service is the Prosecutor General, who is currently the Minister of Justice by virtue of office."
-                    },
-                    {
-                        "title": "National Prosecutor",
-                        "text": "The National Prosecutor is the direct head of the operational structures of the prosecution service and reports to the Prosecutor General."
-                    },
-                    {
-                        "title": "Indictment",
-                        "text": "After collecting evidence by the Police, the prosecutor prepares and files an indictment with the court."
-                    },
-                    {
-                        "title": "Public Accuser",
-                        "text": "In criminal proceedings, the prosecutor acts as the public accuser before the court."
-                    },
-                    {
-                        "title": "Independence of Investigation",
-                        "text": "A prosecutor conducting an investigation has autonomy in making procedural decisions."
-                    }
-                ],
-                "quiz": [
-                    {
-                        "question": "Who serves as Prosecutor General in Poland by virtue of office?",
-                        "answers": [
-                            "The President",
-                            "The Minister of Justice",
-                            "The First President of the Supreme Court"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "What is the name of the document filed by the prosecutor to initiate criminal proceedings?",
-                        "answers": [
-                            "Civil lawsuit",
-                            "Indictment",
-                            "Cassation"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "Does a prosecutor have the right to conduct investigations independently?",
-                        "answers": [
-                            "Yes, they have autonomy in procedural decisions",
-                            "No, they must consult with the Minister",
-                            "Yes, but only in civil cases"
-                        ],
-                        "correct": 0
-                    }
-                ]
-            },
-            {
-                "slug": "l11",
-                "title": "Lesson 11: Citizen’s Rights in Court",
-                "modules": [
-                    {
-                        "title": "Right to a Court",
-                        "text": "Everyone has the right to a fair and public hearing of their case without undue delay."
-                    },
-                    {
-                        "title": "Presumption of Innocence",
-                        "text": "Everyone is presumed innocent until proven guilty by a final court judgment."
-                    },
-                    {
-                        "title": "Right to Defence",
-                        "text": "The accused in criminal proceedings has the right to defence and the assistance of a lawyer."
-                    },
-                    {
-                        "title": "Two-Instance Proceedings",
-                        "text": "A citizen who disagrees with a first-instance judgment has the right to file an appeal."
-                    },
-                    {
-                        "title": "Right to an Interpreter",
-                        "text": "A person who does not speak Polish has the right to free interpreter assistance in court."
-                    },
-                    {
-                        "title": "Complaint about Delay",
-                        "text": "If a case is taking too long, the citizen may file a complaint about the length of proceedings."
-                    }
-                ],
-                "quiz": [
-                    {
-                        "question": "What does the presumption of innocence mean?",
-                        "answers": [
-                            "The accused must prove they are innocent",
-                            "The accused is considered innocent until a final judgment",
-                            "The court always acquits"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "What can a citizen do if they disagree with a first-instance judgment?",
-                        "answers": [
-                            "File an appeal to a higher court",
-                            "Write a complaint to the Prime Minister",
-                            "Ignore the judgment"
-                        ],
-                        "correct": 0
-                    },
-                    {
-                        "question": "Does a person who does not speak Polish have the right to an interpreter in court?",
-                        "answers": [
-                            "Yes, they have the right to free interpreter assistance",
-                            "No, they must know Polish",
-                            "Yes, but they must pay for it"
-                        ],
-                        "correct": 0
-                    }
-                ]
-            },
-            {
-                "slug": "l12",
-                "title": "Lesson 12: Legal Professions",
-                "modules": [
-                    {
-                        "title": "Judge",
-                        "text": "A judge is an impartial arbiter who presides over hearings and issues judgments based on evidence."
-                    },
-                    {
-                        "title": "Advocate (Attorney)",
-                        "text": "An advocate (defence counsel) represents clients, advises them, and defends the accused in criminal trials."
-                    },
-                    {
-                        "title": "Legal Advisor",
-                        "text": "A legal advisor provides legal assistance, prepares legal opinions, and represents parties before civil and administrative courts."
-                    },
-                    {
-                        "title": "Legal Apprenticeship",
-                        "text": "To practice these professions, after law studies one must complete several years of practical training – legal apprenticeship."
-                    },
-                    {
-                        "title": "Notary",
-                        "text": "A notary is a public trust person authorized to draw up notarial deeds and certifications."
-                    },
-                    {
-                        "title": "Court Bailiff",
-                        "text": "A court bailiff is a public official who enforces court judgments by compulsory means (e.g. debt collection)."
-                    }
-                ],
-                "quiz": [
-                    {
-                        "question": "Who represents the interests of the accused as their defence counsel in a criminal trial?",
-                        "answers": [
-                            "Prosecutor",
-                            "Advocate",
-                            "Notary"
-                        ],
-                        "correct": 1
-                    },
-                    {
-                        "question": "What is the name of the practical training after law studies preparing for professions such as judge or legal advisor?",
-                        "answers": [
-                            "Legal apprenticeship",
-                            "Abolicja",
-                            "Term of office"
-                        ],
-                        "correct": 0
-                    },
-                    {
-                        "question": "What is the role of a notary in the legal system?",
-                        "answers": [
-                            "Drawing up notarial deeds and certifications",
-                            "Issuing court judgments",
-                            "Representing clients in court"
-                        ],
-                        "correct": 0
-                    }
-                ]
+        },
+        "court_course": {
+            "title": "The Judicial System in Poland",
+            "description": "Learn about the structure and functioning of the Polish judicial system.",
+            "level": "Beginner",
+            "category": "Law",
+            "desc": "In this course, you will learn how the Polish judicial system works, its structures and decision-making processes. You will also get to know the key institutions and roles in the Polish legal system!",
+            "lessons": {
+                "l1": {
+                    "title": "Judicial Power",
+                    "modules": [
+                        {
+                            "title": "The Third Power",
+                            "text": "Judicial power is independent from legislative and executive power."
+                        },
+                        {
+                            "title": "Courts and Tribunals",
+                            "text": "Judicial power in Poland is exercised by courts and independent tribunals."
+                        },
+                        {
+                            "title": "Judicial Independence",
+                            "text": "Judges are independent, meaning they are subject only to the Constitution and statutes."
+                        },
+                        {
+                            "title": "Appeal and Instances",
+                            "text": "Court proceedings in Poland are at least two-instance (it is possible to appeal)."
+                        },
+                        {
+                            "title": "Issuing Judgments",
+                            "text": "Courts issue judgments in the name of the Republic of Poland."
+                        },
+                        {
+                            "title": "Public Hearings",
+                            "text": "Court hearings are public unless the law allows exclusion of the public for reasons of morality or security."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "To whom are independent judges subject?",
+                            "answers": [
+                                "The Prime Minister",
+                                "Only the Constitution and statutes",
+                                "The President"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "How many instances are court proceedings in Poland?",
+                            "answers": [
+                                "Single-instance",
+                                "At least two-instance",
+                                "Four-instance"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Are court hearings in Poland public?",
+                            "answers": [
+                                "Yes, always",
+                                "No, never",
+                                "Yes, unless the law provides otherwise"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                "l2": {
+                    "title": "Common Courts",
+                    "modules": [
+                        {
+                            "title": "District Courts",
+                            "text": "District courts are the lowest level and handle most minor civil and criminal cases."
+                        },
+                        {
+                            "title": "Regional Courts",
+                            "text": "Regional courts hear more serious cases as the first instance and appeals from district courts."
+                        },
+                        {
+                            "title": "Courts of Appeal",
+                            "text": "Courts of Appeal deal exclusively with appeals against judgments of regional courts."
+                        },
+                        {
+                            "title": "Court Divisions",
+                            "text": "Courts are divided into divisions: civil, criminal, family, labour, and commercial."
+                        },
+                        {
+                            "title": "Lay Judges",
+                            "text": "In some cases, citizens – lay judges – sit alongside professional judges."
+                        },
+                        {
+                            "title": "Territorial Jurisdiction",
+                            "text": "Court jurisdiction depends on the defendant's place of residence or the place where the offence was committed."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Which court is usually the first instance for simple cases?",
+                            "answers": [
+                                "Court of Appeal",
+                                "District Court",
+                                "Supreme Court"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "What is a lay judge in court?",
+                            "answers": [
+                                "A professional judge",
+                                "A citizen participating in adjudication",
+                                "A prosecutor"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "What determines court jurisdiction?",
+                            "answers": [
+                                "The type of case",
+                                "The defendant's place of residence or the place of the offence",
+                                "The prosecutor's decision"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l3": {
+                    "title": "Supreme Court",
+                    "modules": [
+                        {
+                            "title": "Judicial Supervision",
+                            "text": "The Supreme Court exercises supervision over the activities of common and military courts in the field of adjudication."
+                        },
+                        {
+                            "title": "Cassation Appeal",
+                            "text": "A cassation appeal may be filed with the Supreme Court against a final judgment of the second instance."
+                        },
+                        {
+                            "title": "Chambers of the Supreme Court",
+                            "text": "The Supreme Court is divided into specialized chambers (e.g. Criminal Chamber, Civil Chamber)."
+                        },
+                        {
+                            "title": "Resolutions of the Supreme Court",
+                            "text": "The Supreme Court adopts resolutions aimed at clarifying legal provisions that raise doubts."
+                        },
+                        {
+                            "title": "First President of the Supreme Court",
+                            "text": "The work of the Supreme Court is directed by the First President, appointed by the President for a 6-year term."
+                        },
+                        {
+                            "title": "Seat",
+                            "text": "The seat of the Supreme Court is located in Warsaw."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "What is the name of the legal remedy directed to the Supreme Court?",
+                            "answers": [
+                                "Appeal",
+                                "Cassation (cassation appeal)",
+                                "Complaint"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "How long is the term of office of the First President of the Supreme Court?",
+                            "answers": [
+                                "2 years",
+                                "4 years",
+                                "6 years"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Where is the seat of the Supreme Court?",
+                            "answers": [
+                                "In Kraków",
+                                "In Gdańsk",
+                                "In Warsaw"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                "l4": {
+                    "title": "Administrative Courts",
+                    "modules": [
+                        {
+                            "title": "Control of Administration",
+                            "text": "Administrative courts control the legality of decisions issued by offices and public authorities."
+                        },
+                        {
+                            "title": "WSA",
+                            "text": "Voivodeship Administrative Courts (WSA) hear complaints against administrative decisions in the first instance."
+                        },
+                        {
+                            "title": "NSA",
+                            "text": "The Supreme Administrative Court (NSA) in Warsaw hears appeals against WSA judgments."
+                        },
+                        {
+                            "title": "Legality Criterion",
+                            "text": "An administrative court examines only whether the authority acted in accordance with the law, it does not assess expediency."
+                        },
+                        {
+                            "title": "Annulment of a Decision",
+                            "text": "In case of a breach of law, the administrative court annuls the challenged decision."
+                        },
+                        {
+                            "title": "Complaint for Inaction",
+                            "text": "It is also possible to complain to the administrative court about an authority’s failure to respond within the deadline (inaction)."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "What do administrative courts deal with?",
+                            "answers": [
+                                "Sentencing criminals",
+                                "Controlling the legality of administrative decisions",
+                                "Divorces"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Where is the Supreme Administrative Court (NSA) located?",
+                            "answers": [
+                                "In Gdańsk",
+                                "In Kraków",
+                                "In Warsaw"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Does an administrative court assess the expediency of an authority’s actions?",
+                            "answers": [
+                                "Yes",
+                                "No (it only examines legality)",
+                                "Only in financial matters"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l5": {
+                    "title": "Validality of Elections",
+                    "modules": [
+                        {
+                            "title": "Role of the Supreme Court Chamber",
+                            "text": "The Supreme Court is the competent body for declaring the validity of elections and referendums."
+                        },
+                        {
+                            "title": "Election Protests",
+                            "text": "Citizens have the right to file protests with the Supreme Court regarding the validity of elections within a specified deadline."
+                        },
+                        {
+                            "title": "Analysis of Protests",
+                            "text": "The Supreme Court examines whether the reported procedural violations affected the final election result."
+                        },
+                        {
+                            "title": "Resolution on Validity",
+                            "text": "After examining the protests, the Supreme Court adopts a comprehensive resolution on the validity of parliamentary or presidential elections."
+                        },
+                        {
+                            "title": "EP Elections",
+                            "text": "The Supreme Court also decides on the validity of elections to the European Parliament in Poland."
+                        },
+                        {
+                            "title": "Referendum",
+                            "text": "The same procedure applies to nationwide referendums and confirming their legality."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Which institution declares the validity of parliamentary elections in Poland?",
+                            "answers": [
+                                "State Election Commission",
+                                "Supreme Court",
+                                "Constitutional Tribunal"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who can file an election protest with the Supreme Court?",
+                            "answers": [
+                                "Only the Prime Minister",
+                                "Any voter entitled to participate in the elections",
+                                "Only the police"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Can the Supreme Court invalidate elections?",
+                            "answers": [
+                                "Yes, if procedural violations affected the result",
+                                "No, the Supreme Court only declares validity",
+                                "Yes, at the request of the President"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l6": {
+                    "title": "Constitutional Tribunal",
+                    "modules": [
+                        {
+                            "title": "Court over the Law",
+                            "text": "The Constitutional Tribunal (TK) examines the conformity of statutes with the Constitution of the Republic of Poland."
+                        },
+                        {
+                            "title": "Composition of the Tribunal",
+                            "text": "The Constitutional Tribunal consists of 15 judges elected by the Sejm for a 9-year term."
+                        },
+                        {
+                            "title": "Constitutional Complaint",
+                            "text": "Any citizen, after exhausting the judicial path, may file a constitutional complaint if they believe a provision has violated their rights."
+                        },
+                        {
+                            "title": "Legal Questions",
+                            "text": "Courts may refer legal questions to the Constitutional Tribunal if they have doubts about the constitutionality of a provision."
+                        },
+                        {
+                            "title": "Finality of Judgments",
+                            "text": "Rulings of the Constitutional Tribunal have universally binding force and are final."
+                        },
+                        {
+                            "title": "Derogation",
+                            "text": "A provision declared unconstitutional by the Tribunal loses its legal force."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "How many judges sit in the Constitutional Tribunal?",
+                            "answers": [
+                                "9",
+                                "12",
+                                "15"
+                            ],
+                            "correct": 2
+                        },
+                        {
+                            "question": "Can one appeal against a judgment of the Constitutional Tribunal?",
+                            "answers": [
+                                "Yes, to the Sejm",
+                                "No, the judgments are final",
+                                "Yes, to the Supreme Court"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who can file a constitutional complaint with the Tribunal?",
+                            "answers": [
+                                "Any citizen after exhausting the judicial path",
+                                "Only MPs",
+                                "Only judges"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l7": {
+                    "title": "Tribunal of State",
+                    "modules": [
+                        {
+                            "title": "Criminal Liability of Officials",
+                            "text": "The Tribunal of State tries the highest state officials for violations of the Constitution or statutes."
+                        },
+                        {
+                            "title": "Who is Accountable",
+                            "text": "The Tribunal of State hears cases against, among others, the President, Prime Minister, government members, and the President of the Supreme Audit Office."
+                        },
+                        {
+                            "title": "Chairman",
+                            "text": "The Chairman of the Tribunal of State is, by virtue of office, the current First President of the Supreme Court."
+                        },
+                        {
+                            "title": "Election of Members",
+                            "text": "The remaining members of the Tribunal of State are elected by the Sejm for the term of its office from persons outside the group of MPs."
+                        },
+                        {
+                            "title": "Punishments",
+                            "text": "The Tribunal of State may impose penalties such as loss of voting rights, prohibition on holding public positions, or deprivation of orders."
+                        },
+                        {
+                            "title": "Separate Nature",
+                            "text": "The Tribunal of State is not a common court and convenes only to adjudicate specific indictments."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Who serves as Chairman of the Tribunal of State by virtue of office?",
+                            "answers": [
+                                "President of the Republic of Poland",
+                                "First President of the Supreme Court",
+                                "Minister of Justice"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "What penalty can the Tribunal of State impose?",
+                            "answers": [
+                                "Fine for a party",
+                                "Prohibition on holding public positions",
+                                "Community service"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Is the Tribunal of State a common court?",
+                            "answers": [
+                                "Yes",
+                                "No, it is a separate body",
+                                "Yes, but only in Warsaw"
+                            ],
+                            "correct": 1
+                        }
+                    ]
+                },
+                "l8": {
+                    "title": "National Council of the Judiciary",
+                    "modules": [
+                        {
+                            "title": "Guardian of Independence",
+                            "text": "The National Council of the Judiciary (KRS) guards the independence of courts and the impartiality of judges."
+                        },
+                        {
+                            "title": "Judicial Appointments",
+                            "text": "The KRS reviews candidacies for judges and presents proposals to the President for their appointment."
+                        },
+                        {
+                            "title": "Composition of the KRS",
+                            "text": "The KRS consists of 25 members, including representatives of judges, MPs, senators, and the President."
+                        },
+                        {
+                            "title": "Minister in the KRS",
+                            "text": "The Minister of Justice is also a member of the KRS by virtue of office."
+                        },
+                        {
+                            "title": "Term of Office",
+                            "text": "The term of office of elected members of the National Council of the Judiciary is 4 years."
+                        },
+                        {
+                            "title": "Opinions",
+                            "text": "The KRS issues opinions on draft legal acts concerning the judiciary and court system."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "What is the main role of the National Council of the Judiciary (KRS)?",
+                            "answers": [
+                                "Issuing criminal judgments",
+                                "Guarding the independence of courts and nominating judges",
+                                "Managing the prison system"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "How many members does the National Council of the Judiciary have?",
+                            "answers": [
+                                "15",
+                                "25",
+                                "460"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Who is a member of the KRS by virtue of office?",
+                            "answers": [
+                                "President of the Republic of Poland",
+                                "Prime Minister",
+                                "Minister of Justice"
+                            ],
+                            "correct": 2
+                        }
+                    ]
+                },
+                "l9": {
+                    "title": "Status of a Judge",
+                    "modules": [
+                        {
+                            "title": "Appointment",
+                            "text": "Judges are appointed by the President of the Republic of Poland upon the motion of the National Council of the Judiciary."
+                        },
+                        {
+                            "title": "Irremovability",
+                            "text": "Judges are irremovable – they cannot be dismissed except by a final decision of a disciplinary court."
+                        },
+                        {
+                            "title": "Judicial Immunity",
+                            "text": "A judge cannot be held criminally liable or detained without the consent of a disciplinary court."
+                        },
+                        {
+                            "title": "Apolitical Nature of Judges",
+                            "text": "A judge may not belong to a political party or engage in public activity incompatible with the judicial office."
+                        },
+                        {
+                            "title": "Protection from Pressure",
+                            "text": "No one is allowed to influence a judge’s decisions or instruct them on how to adjudicate."
+                        },
+                        {
+                            "title": "Retirement",
+                            "text": "Upon reaching a certain age, judges retire (judicial pension)."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Who officially appoints judges in Poland?",
+                            "answers": [
+                                "The Sejm",
+                                "The President of the Republic of Poland",
+                                "The Prime Minister"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Can a judge in Poland belong to a political party?",
+                            "answers": [
+                                "Yes",
+                                "No, judges must remain apolitical",
+                                "Yes, with the Minister’s consent"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "What does judicial immunity mean?",
+                            "answers": [
+                                "A judge cannot be held criminally liable without the consent of a disciplinary court",
+                                "A judge is immune from punishment",
+                                "A judge does not have to pay taxes"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l10": {
+                    "title": "Public Prosecution in Poland",
+                    "modules": [
+                        {
+                            "title": "Role of the Prosecution",
+                            "text": "The Public Prosecution Service is responsible for prosecuting crimes and safeguarding the rule of law."
+                        },
+                        {
+                            "title": "Prosecutor General",
+                            "text": "The head of the prosecution service is the Prosecutor General, who is currently the Minister of Justice by virtue of office."
+                        },
+                        {
+                            "title": "National Prosecutor",
+                            "text": "The National Prosecutor is the direct head of the operational structures of the prosecution service and reports to the Prosecutor General."
+                        },
+                        {
+                            "title": "Indictment",
+                            "text": "After collecting evidence by the Police, the prosecutor prepares and files an indictment with the court."
+                        },
+                        {
+                            "title": "Public Accuser",
+                            "text": "In criminal proceedings, the prosecutor acts as the public accuser before the court."
+                        },
+                        {
+                            "title": "Independence of Investigation",
+                            "text": "A prosecutor conducting an investigation has autonomy in making procedural decisions."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Who serves as Prosecutor General in Poland by virtue of office?",
+                            "answers": [
+                                "The President",
+                                "The Minister of Justice",
+                                "The First President of the Supreme Court"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "What is the name of the document filed by the prosecutor to initiate criminal proceedings?",
+                            "answers": [
+                                "Civil lawsuit",
+                                "Indictment",
+                                "Cassation"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "Does a prosecutor have the right to conduct investigations independently?",
+                            "answers": [
+                                "Yes, they have autonomy in procedural decisions",
+                                "No, they must consult with the Minister",
+                                "Yes, but only in civil cases"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l11": {
+                    "title": "Citizen’s Rights in Court",
+                    "modules": [
+                        {
+                            "title": "Right to a Court",
+                            "text": "Everyone has the right to a fair and public hearing of their case without undue delay."
+                        },
+                        {
+                            "title": "Presumption of Innocence",
+                            "text": "Everyone is presumed innocent until proven guilty by a final court judgment."
+                        },
+                        {
+                            "title": "Right to Defence",
+                            "text": "The accused in criminal proceedings has the right to defence and the assistance of a lawyer."
+                        },
+                        {
+                            "title": "Two-Instance Proceedings",
+                            "text": "A citizen who disagrees with a first-instance judgment has the right to file an appeal."
+                        },
+                        {
+                            "title": "Right to an Interpreter",
+                            "text": "A person who does not speak Polish has the right to free interpreter assistance in court."
+                        },
+                        {
+                            "title": "Complaint about Delay",
+                            "text": "If a case is taking too long, the citizen may file a complaint about the length of proceedings."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "What does the presumption of innocence mean?",
+                            "answers": [
+                                "The accused must prove they are innocent",
+                                "The accused is considered innocent until a final judgment",
+                                "The court always acquits"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "What can a citizen do if they disagree with a first-instance judgment?",
+                            "answers": [
+                                "File an appeal to a higher court",
+                                "Write a complaint to the Prime Minister",
+                                "Ignore the judgment"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "Does a person who does not speak Polish have the right to an interpreter in court?",
+                            "answers": [
+                                "Yes, they have the right to free interpreter assistance",
+                                "No, they must know Polish",
+                                "Yes, but they must pay for it"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                },
+                "l12": {
+                    "title": "Legal Professions",
+                    "modules": [
+                        {
+                            "title": "Judge",
+                            "text": "A judge is an impartial arbiter who presides over hearings and issues judgments based on evidence."
+                        },
+                        {
+                            "title": "Advocate (Attorney)",
+                            "text": "An advocate (defence counsel) represents clients, advises them, and defends the accused in criminal trials."
+                        },
+                        {
+                            "title": "Legal Advisor",
+                            "text": "A legal advisor provides legal assistance, prepares legal opinions, and represents parties before civil and administrative courts."
+                        },
+                        {
+                            "title": "Legal Apprenticeship",
+                            "text": "To practice these professions, after law studies one must complete several years of practical training – legal apprenticeship."
+                        },
+                        {
+                            "title": "Notary",
+                            "text": "A notary is a public trust person authorized to draw up notarial deeds and certifications."
+                        },
+                        {
+                            "title": "Court Bailiff",
+                            "text": "A court bailiff is a public official who enforces court judgments by compulsory means (e.g. debt collection)."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "question": "Who represents the interests of the accused as their defence counsel in a criminal trial?",
+                            "answers": [
+                                "Prosecutor",
+                                "Advocate",
+                                "Notary"
+                            ],
+                            "correct": 1
+                        },
+                        {
+                            "question": "What is the name of the practical training after law studies preparing for professions such as judge or legal advisor?",
+                            "answers": [
+                                "Legal apprenticeship",
+                                "Abolicja",
+                                "Term of office"
+                            ],
+                            "correct": 0
+                        },
+                        {
+                            "question": "What is the role of a notary in the legal system?",
+                            "answers": [
+                                "Drawing up notarial deeds and certifications",
+                                "Issuing court judgments",
+                                "Representing clients in court"
+                            ],
+                            "correct": 0
+                        }
+                    ]
+                }
             }
-        ]
+        }
     },
     "notifications": {
         "notifications": "Notifications",
@@ -2909,6 +2952,7 @@
         "configuration": "Configuration",
         "yes": "Yes",
         "no": "No",
+        "of": "of",
         "search": "Search",
         "filter": "Filter",
         "sort": "Sort",
@@ -2921,6 +2965,7 @@
         "authorizationRequired": "Authorization required",
         "forbidden": "Forbidden",
         "continue": "Continue",
+        "understand": "Understand and complete",
         "messages": {
             "registrationSuccess": "Account successfully registered!",
             "layoutSaved": "Layout saved successfully.",

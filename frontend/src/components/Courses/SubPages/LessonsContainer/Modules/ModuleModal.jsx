@@ -15,11 +15,8 @@ export default function ModuleModal({
 
   if (!activeModule || !lesson) return null;
 
-  // 1. Pobieramy aktywny kod języka (np. 'pl', 'en')
   const currentLang = i18n.resolvedLanguage || i18n.language || "pl";
 
-  // 2. Pobieramy surowy obiekt JSON bezpośrednio z pamięci i18n.
-  // Sprawdzamy domyślny namespace 'translation' oraz potencjalny 'courses'
   const bundle =
     i18n.getResourceBundle(currentLang, "translation") ||
     i18n.getResourceBundle(currentLang, "courses") ||
@@ -29,19 +26,12 @@ export default function ModuleModal({
   const courseData = bundle.courses?.[courseSlug] || bundle[courseSlug];
   const modulesArray = courseData?.lessons?.[lessonSlug]?.modules;
 
-  // 🔍 LOG RATUNKOWY - jeśli to będzie puste, Twój JSON w ogóle nie jest załadowany do i18n
-  console.log("--- DETEKTYW JS ---");
-  console.log("Cała paczka języka:", bundle);
-  console.log("Znaleziony kurs:", courseData);
-  console.log("Wyciągnięta tablica modułów:", modulesArray);
 
-  // 4. Pobieramy konkretny moduł z tablicy (lub bazy danych, jeśli i18n puste)
   const isI18nValid = Array.isArray(modulesArray);
   const translatedModuleData = isI18nValid
     ? modulesArray[activeModule.index]
     : null;
 
-  // 5. Scalanie danych (tłumaczenie ma priorytet, baza jako fallback)
   const translatedTitle =
     translatedModuleData?.title || activeModule.title || "Analiza materiału";
   const translatedText = translatedModuleData?.text || activeModule.text || "";
@@ -57,7 +47,8 @@ export default function ModuleModal({
   };
 
   const handleComplete = async () => {
-    await completeModule(activeModule.id || activeModule.index);
+    console.log(activeModule);
+    await completeModule(activeModule.index);
     setActiveModule(null);
   };
 
@@ -91,7 +82,7 @@ export default function ModuleModal({
         <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100 dark:border-slate-800/60">
           <div>
             <span className="inline-block px-2.5 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-md bg-indigo-500/10 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400">
-              Moduł {activeModule.index + 1} z {modulesCount}
+              {t("courses.module")} {activeModule.index + 1} {t("common.of")} {modulesCount}
             </span>
             <h2 className="text-lg md:text-xl font-black mt-1.5">
               {translatedTitle}
@@ -100,18 +91,16 @@ export default function ModuleModal({
 
           <button
             onClick={() => setActiveModule(null)}
-            className="w-9 h-9 rounded-xl grid place-items-center bg-slate-50 dark:bg-slate-800/50 text-slate-400 hover:text-red-500 transition-colors"
+            className="cursor-pointer w-9 h-9 rounded-xl grid place-items-center bg-slate-50 dark:bg-slate-800/50 text-slate-400 hover:text-red-500 transition-colors"
           >
             ✕
           </button>
         </div>
 
-        {/* CONTENT */}
         <div className="px-6 py-6 md:px-8 overflow-y-auto text-slate-600 dark:text-slate-300">
-          <ModuleRenderer module={currentModule} />
+          <ModuleRenderer module={currentModule} text={translatedText} />
         </div>
 
-        {/* FOOTER */}
         <div className="px-6 py-4 border-t border-slate-100 dark:border-slate-800/60 bg-slate-50 dark:bg-slate-900/30 flex justify-end">
           <motion.button
             whileHover={{ y: -1 }}
@@ -122,16 +111,15 @@ export default function ModuleModal({
               px-6 py-3.5
               rounded-xl
               font-black text-sm
-              bg-gradient-to-r from-emerald-500 to-teal-600
+              bg-slate-900 dark:bg-white
               text-white
+              dark:text-slate-900
               hover:opacity-95
               shadow-md shadow-emerald-500/10
-              transition-all
+              transition-all cursor-pointer
             "
           >
-            {t("common.understand_and_complete", {
-              defaultValue: "Zrozumiałem, oznacz jako ukończone",
-            })}
+            {t("common.understand")}
           </motion.button>
         </div>
       </motion.div>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-
+import { useTranslation } from "react-i18next";
 export default function LessonModulesGrid({
   modules,
   courseSlug,
@@ -8,6 +8,7 @@ export default function LessonModulesGrid({
   modulesDone,
   setActiveModule,
 }) {
+  const {t} = useTranslation();
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">
       {modules.map((m, i) => {
@@ -48,17 +49,14 @@ export default function LessonModulesGrid({
 
               <div>
                 <p className="color-transition font-bold text-slate-900 dark:text-slate-100 text-base line-clamp-1">
-                  Moduł {i + 1}
-                </p>
-                <p className="color-transition text-xs font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wider mt-0.5">
-                  {m.type || "Teoria"}
+                  {t("courses.module")} {i + 1}
                 </p>
               </div>
             </div>
 
             <div className="color-transition hidden lg:flex items-center justify-between w-full mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60">
               <span className="color-transition text-xs font-bold text-slate-400 dark:text-slate-500">
-                {done ? "Ukończono" : unlocked ? "Rozpocznij" : "Zablokowane"}
+                {done ? `${t("courses.completed")}` : unlocked ? t("courses.startModule") : t("courses.lockedModule")}
               </span>
               <span className="text-slate-400">→</span>
             </div>
