@@ -22,6 +22,9 @@ const progressionRoutes = require("./routes/progressionRoutes");
 const rankRoutes = require("./routes/rankRoutes");
 const coursesRoutes = require("./routes/coursesRoutes");
 const blocksRoutes = require("./routes/blocksRoutes");
+const cron = require("node-cron");
+const { runLeadershipUpdate } = require("./update-leadership");
+
 const app = express();
 const server = http.createServer(app);
 
@@ -56,6 +59,14 @@ app.use(blocksRoutes);
 app.use(errorHandler);
 
 initSocket(server);
+
+// Co 1. dnia każdego miesiąca o 04:00
+cron.schedule("0 4 1 * *", () => {
+  console.log("[cron] Aktualizacja kierownictwa ministerstw…");
+  runLeadershipUpdate().catch(err =>
+    console.error("[cron] Błąd aktualizacji kierownictwa:", err.message)
+  );
+});
 
 const port = process.env.PORT || 4000;
 

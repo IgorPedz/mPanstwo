@@ -1,13 +1,30 @@
+import { useRef, useEffect } from "react";
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
 import { COLOR_MAP } from "../../../Utils/Maps/Colors";
 
+const NAVIGABLE_SLUGS = new Set([
+  "chancellery_of_the_prime_minister",
+  "council_of_ministers",
+]);
+
+const TILE_ROUTES = (slug, icon, accent) => {
+  if (slug?.startsWith("ministry_of_") || NAVIGABLE_SLUGS.has(slug))
+    return { path: `/ministry/${slug}`, state: { icon, accent } };
+  return null;
+};
+
+
 const Tile = ({ id, slug, icon, accent, onDelete, isLocked }) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const dragOccurredRef = useRef(false);
+
   const {
     attributes,
     listeners,
@@ -21,19 +38,35 @@ const Tile = ({ id, slug, icon, accent, onDelete, isLocked }) => {
     transition,
   };
 
+  useEffect(() => {
+    if (isDragging) dragOccurredRef.current = true;
+  }, [isDragging]);
+
+  const handleClick = () => {
+    if (dragOccurredRef.current) {
+      dragOccurredRef.current = false;
+      return;
+    }
+    const route = TILE_ROUTES(slug, icon, accent);
+    if (route) navigate(route.path, { state: route.state });
+  };
+
   const IconComponent = ICON_MAP[icon];
   const colorClass = COLOR_MAP[accent] || "text-slate-500";
   const accentGradient = ACCENT_MAP[accent] || "from-slate-500 to-slate-400";
+  const isNavigable = !!TILE_ROUTES(slug, icon, accent);
 
   return (
     <div
       ref={setNodeRef}
       style={style}
-      className={`color-transition cursor-pointer
+      onClick={handleClick}
+      className={`color-transition
         group relative p-6 bg-white dark:bg-slate-900 color-transition
         rounded-[2rem] transition-all duration-300 overflow-hidden
         min-h-[160px] flex flex-col justify-between border-2 border-slate-100 dark:border-slate-800
-        ${isDragging ? "z-50 scale-105 shadow-2xl border-indigo-500" : "hover:border-slate-300 dark:hover:border-slate-700"}
+        ${isNavigable ? "cursor-pointer" : "cursor-default"}
+        ${isDragging ? "z-50 scale-105 shadow-2xl border-indigo-500" : isNavigable ? "hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md" : "hover:border-slate-300 dark:hover:border-slate-700"}
       `}
     >
 

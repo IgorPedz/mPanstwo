@@ -22,7 +22,7 @@ export default function LessonCard({
       `}
     >
       <span
-        className={`
+        className={`color-transition
           block text-[9px] font-black uppercase tracking-[0.2em] mb-1.5
           ${completed ? "text-emerald-600 dark:text-emerald-400" : unlocked ? "text-blue-600 dark:text-blue-400" : "text-slate-400"}
         `}
@@ -31,7 +31,7 @@ export default function LessonCard({
       </span>
 
       <h3
-        className={`
+        className={`color-transition
           font-bold text-sm leading-tight
           ${completed || unlocked ? "text-slate-900 dark:text-white" : "text-slate-500 dark:text-slate-600"}
         `}
@@ -40,7 +40,7 @@ export default function LessonCard({
       </h3>
 
       {completed ? (
-        <p className="mt-1.5 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
+        <p className="color-transition mt-1.5 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
           ✓ {t("courses.completed")}
         </p>
       ) : null}

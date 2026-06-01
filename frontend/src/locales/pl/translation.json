@@ -468,6 +468,20 @@
             "back_to_courses_link": "Wróć do kursów",
             "question_counter": "Pytanie {{current}} z {{total}}"
         },
+        "practice_exam": {
+            "label": "Egzamin próbny",
+            "title": "Egzamin Próbny",
+            "description": "Sprawdź swoją wiedzę przed właściwym egzaminem",
+            "start_btn": "Spróbuj",
+            "hint": "To jest egzamin próbny – wyniki nie są zapisywane",
+            "question_counter": "Pytanie {{current}} z {{total}}",
+            "perfect": "Doskonale! Jesteś gotowy na egzamin!",
+            "good": "Dobry wynik! Warto jeszcze powtórzyć materiał.",
+            "keep_learning": "Powtórz materiał i spróbuj jeszcze raz!",
+            "no_save_info": "Wyniki egzaminu próbnego nie są zapisywane",
+            "retry": "Spróbuj ponownie",
+            "close": "Zamknij"
+        },
         "parlamentary_course": {
             "title": "Podstawy funkcjonowania parlamentu",
             "description": "Poznaj strukturę, role i procesy legislacyjne w polskim parlamencie.",

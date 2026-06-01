@@ -20,6 +20,7 @@ import NotificationsPage from "../pages/ProfilPages/NotificationsPage";
 import ResetPasswordPage from "../pages/AuthPages/ResetPasswordPage";
 import CourseMapPage from "../pages/EducationPages/CourseMapPage";
 import LessonPage from "../pages/EducationPages/LessonPage";
+import MinistryPage from "../pages/InstitutionPages/MinistryPage";
 import { useUser } from "../Contexts/UserContext";
 import useNotifications from "../Hooks/useUnreadNotification";
 import ProtectedRoute from "../Utils/Routes/ProtectedRoutes";
@@ -129,6 +130,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <NotificationsPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/ministry/:slug"
+            element={
+              <ProtectedRoute>
+                <MinistryPage />
               </ProtectedRoute>
             }
           />

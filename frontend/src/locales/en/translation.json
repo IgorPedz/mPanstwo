@@ -468,6 +468,20 @@
             "back_to_courses_link": "Back to courses",
             "question_counter": "Question {{current}} of {{total}}"
         },
+        "practice_exam": {
+            "label": "Practice Exam",
+            "title": "Practice Exam",
+            "description": "Test your knowledge before the real exam",
+            "start_btn": "Try",
+            "hint": "This is a practice exam – results are not saved",
+            "question_counter": "Question {{current}} of {{total}}",
+            "perfect": "Perfect! You are ready for the exam!",
+            "good": "Good result! It's worth reviewing the material.",
+            "keep_learning": "Review the material and try again!",
+            "no_save_info": "Practice exam results are not saved",
+            "retry": "Try again",
+            "close": "Close"
+        },
         "parlamentary_course": {
             "title": "Basics of Parliament Functioning",
             "description": "Learn about the structure, roles, and legislative processes of the Polish parliament.",

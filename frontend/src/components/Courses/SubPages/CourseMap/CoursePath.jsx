@@ -23,13 +23,11 @@ export default function CoursePath({
     const totalLength = svgPath.getTotalLength();
     setPathLength(totalLength);
 
-    // Wszystkie lekcje ukończone → linia dochodzi do egzaminu (odblokowany)
     if (nextLessonIndex === -1) {
       setTargetOffset(0);
       return;
     }
 
-    // Nawet pierwsza lekcja nie jest zrobiona
     if (nextLessonIndex === 0) {
       const firstPoint = points.find((p) => p.id === lessons[0].id);
       if (firstPoint) {
@@ -41,7 +39,6 @@ export default function CoursePath({
       return;
     }
 
-    // Rysuj do pierwszej nieukończonej lekcji
     const targetLesson = lessons[nextLessonIndex];
     const targetPoint = points.find((p) => p.id === targetLesson.id);
 
@@ -54,7 +51,6 @@ export default function CoursePath({
     }
   }, [pathD, lessons, completedLessons, nextLessonIndex, points]);
 
-  // Skanowanie ścieżki (Pitagoras)
   const findLengthAtPoint = (pathNode, targetX, targetY, totalLength) => {
     let bestLength = 0;
     let minDistance = Infinity;
@@ -93,16 +89,14 @@ export default function CoursePath({
         </linearGradient>
       </defs>
 
-      {/* BACKGROUND */}
       <path
         d={pathD}
         fill="none"
         strokeWidth="18"
         strokeLinecap="round"
-        className="stroke-slate-200 dark:stroke-slate-800"
+        className="color-transition stroke-slate-200 dark:stroke-slate-800"
       />
 
-      {/* PROGRESS */}
       {pathLength > 0 && (
         <motion.path
           d={pathD}

@@ -466,6 +466,20 @@
             "back_to_courses_link": "Zurück zu den Kursen",
             "question_counter": "Frage {{current}} von {{total}}"
         },
+        "practice_exam": {
+            "label": "Probeprüfung",
+            "title": "Probeprüfung",
+            "description": "Teste dein Wissen vor der echten Prüfung",
+            "start_btn": "Versuchen",
+            "hint": "Dies ist eine Probeprüfung – Ergebnisse werden nicht gespeichert",
+            "question_counter": "Frage {{current}} von {{total}}",
+            "perfect": "Perfekt! Du bist bereit für die Prüfung!",
+            "good": "Gutes Ergebnis! Es lohnt sich, den Stoff noch einmal zu wiederholen.",
+            "keep_learning": "Wiederhole den Stoff und versuche es erneut!",
+            "no_save_info": "Ergebnisse der Probeprüfung werden nicht gespeichert",
+            "retry": "Erneut versuchen",
+            "close": "Schließen"
+        },
         "parlamentary_course": {
             "title": "Grundlagen der Funktionsweise des Parlaments",
             "description": "Lerne die Struktur, Rollen und Gesetzgebungsprozesse des polnischen Parlaments kennen.",
@@ -1116,52 +1130,92 @@
                 "questions": [
                     {
                         "question": "Wie lange dauert die Amtszeit des Sejm und des Senats?",
-                        "answers": ["2 Jahre", "4 Jahre", "6 Jahre"],
+                        "answers": [
+                            "2 Jahre",
+                            "4 Jahre",
+                            "6 Jahre"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Wie viele Abgeordnete sitzen im polnischen Sejm?",
-                        "answers": ["360", "460", "560"],
+                        "answers": [
+                            "360",
+                            "460",
+                            "560"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Wie viele Senatoren hat der polnische Senat?",
-                        "answers": ["100", "120", "150"],
+                        "answers": [
+                            "100",
+                            "120",
+                            "150"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Wer kann einen Gesetzentwurf in den Sejm einbringen?",
-                        "answers": ["Nur Abgeordnete", "Nur der Ministerrat", "Abgeordnete, Senat, Präsident, Ministerrat und Bürger"],
+                        "answers": [
+                            "Nur Abgeordnete",
+                            "Nur der Ministerrat",
+                            "Abgeordnete, Senat, Präsident, Ministerrat und Bürger"
+                        ],
                         "correct": 2
                     },
                     {
                         "question": "Wie viele Lesungen durchläuft ein Gesetzentwurf im Sejm?",
-                        "answers": ["1", "2", "3"],
+                        "answers": [
+                            "1",
+                            "2",
+                            "3"
+                        ],
                         "correct": 2
                     },
                     {
                         "question": "Welches Organ urteilt über höchste Beamte wegen Verfassungsverstößen?",
-                        "answers": ["Oberstes Gericht", "Staatstribunal", "Verfassungsgericht"],
+                        "answers": [
+                            "Oberstes Gericht",
+                            "Staatstribunal",
+                            "Verfassungsgericht"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Was ist ein Präsidentenveto?",
-                        "answers": ["Die Weigerung des Präsidenten, ein Gesetz zu unterzeichnen", "Die Ablehnung eines Gesetzes durch den Senat", "Der Antrag des Premierministers auf Ablehnung eines Gesetzes"],
+                        "answers": [
+                            "Die Weigerung des Präsidenten, ein Gesetz zu unterzeichnen",
+                            "Die Ablehnung eines Gesetzes durch den Senat",
+                            "Der Antrag des Premierministers auf Ablehnung eines Gesetzes"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Was ist parlamentarische Immunität?",
-                        "answers": ["Ein Gehaltsbonus für Abgeordnete", "Schutz eines Abgeordneten vor strafrechtlicher Haftung für parlamentarische Tätigkeiten", "Verbot der Ausübung anderer Ämter"],
+                        "answers": [
+                            "Ein Gehaltsbonus für Abgeordnete",
+                            "Schutz eines Abgeordneten vor strafrechtlicher Haftung für parlamentarische Tätigkeiten",
+                            "Verbot der Ausübung anderer Ämter"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Kann ein Abgeordneter auf seine eigene Immunität verzichten?",
-                        "answers": ["Ja", "Nein", "Nur mit Zustimmung des Parlamentspräsidenten"],
+                        "answers": [
+                            "Ja",
+                            "Nein",
+                            "Nur mit Zustimmung des Parlamentspräsidenten"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Was ist der Konwent Seniorów (Rat der Senioren) im Sejm?",
-                        "answers": ["Ein Rat der ältesten Abgeordneten", "Ein Gremium, das die Zusammenarbeit zwischen parlamentarischen Klubs und Kreisen sicherstellt", "Ein historischer Ausschuss des Sejm"],
+                        "answers": [
+                            "Ein Rat der ältesten Abgeordneten",
+                            "Ein Gremium, das die Zusammenarbeit zwischen parlamentarischen Klubs und Kreisen sicherstellt",
+                            "Ein historischer Ausschuss des Sejm"
+                        ],
                         "correct": 1
                     }
                 ]
@@ -1875,52 +1929,92 @@
                 "questions": [
                     {
                         "question": "Wer bildet die duale Exekutivmacht in Polen?",
-                        "answers": ["Sejm und Senat", "Präsident und Ministerrat", "Premierminister und Parlamentspräsident"],
+                        "answers": [
+                            "Sejm und Senat",
+                            "Präsident und Ministerrat",
+                            "Premierminister und Parlamentspräsident"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Wer führt die laufende Innen- und Außenpolitik des Staates?",
-                        "answers": ["Der Präsident", "Der Ministerrat", "Der Parlamentspräsident"],
+                        "answers": [
+                            "Der Präsident",
+                            "Der Ministerrat",
+                            "Der Parlamentspräsident"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Was ist ein Vertrauensvotum?",
-                        "answers": ["Eine Sejm-Abstimmung zur Unterstützung der Regierungstätigkeit", "Die Abberufung eines Ministers durch den Sejm", "Ein Antrag auf Rücktritt des Premierministers"],
+                        "answers": [
+                            "Eine Sejm-Abstimmung zur Unterstützung der Regierungstätigkeit",
+                            "Die Abberufung eines Ministers durch den Sejm",
+                            "Ein Antrag auf Rücktritt des Premierministers"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Was beinhaltet ein konstruktives Misstrauensvotum?",
-                        "answers": ["Abberufung der Regierung ohne Benennung eines neuen Premierministers", "Abberufung der Regierung mit gleichzeitiger Wahl eines neuen Premierministers", "Der Antrag des Präsidenten auf Entlassung der Regierung"],
+                        "answers": [
+                            "Abberufung der Regierung ohne Benennung eines neuen Premierministers",
+                            "Abberufung der Regierung mit gleichzeitiger Wahl eines neuen Premierministers",
+                            "Der Antrag des Präsidenten auf Entlassung der Regierung"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Was ist eine Gegenzeichnung (Kontrasygnata)?",
-                        "answers": ["Die Unterschrift des Premierministers oder Ministers auf einem Präsidentenakt", "Die Unterschrift des Präsidenten auf Sejm-Gesetzen", "Das Veto des Senats gegenüber Gesetzen"],
+                        "answers": [
+                            "Die Unterschrift des Premierministers oder Ministers auf einem Präsidentenakt",
+                            "Die Unterschrift des Präsidenten auf Sejm-Gesetzen",
+                            "Das Veto des Senats gegenüber Gesetzen"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Wer ist im Frieden Oberbefehlshaber der Streitkräfte?",
-                        "answers": ["Premierminister", "Präsident durch das Verteidigungsministerium", "Verteidigungsminister"],
+                        "answers": [
+                            "Premierminister",
+                            "Präsident durch das Verteidigungsministerium",
+                            "Verteidigungsminister"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Was ist der Kabinettsrat (Rada Gabinetowa)?",
-                        "answers": ["Eine Regierungssitzung unter Vorsitz des Präsidenten ohne Entscheidungsbefugnisse der Regierung", "Ein ständiges Koordinierungsgremium für Ministerarbeit", "Eine parlamentarische Kommission für Regierungsangelegenheiten"],
+                        "answers": [
+                            "Eine Regierungssitzung unter Vorsitz des Präsidenten ohne Entscheidungsbefugnisse der Regierung",
+                            "Ein ständiges Koordinierungsgremium für Ministerarbeit",
+                            "Eine parlamentarische Kommission für Regierungsangelegenheiten"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Wer ernennt und entlässt Minister?",
-                        "answers": ["Der Sejm auf Antrag des Premierministers", "Der Präsident auf Antrag des Ministerpräsidenten", "Der Premierminister eigenständig"],
+                        "answers": [
+                            "Der Sejm auf Antrag des Premierministers",
+                            "Der Präsident auf Antrag des Ministerpräsidenten",
+                            "Der Premierminister eigenständig"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Welche Rolle spielt der Premierminister?",
-                        "answers": ["Leitet den Ministerrat und koordiniert die Regierungsarbeit", "Vertritt Polen im Ausland als Staatsoberhaupt", "Leitet die Sitzungen des Sejm"],
+                        "answers": [
+                            "Leitet den Ministerrat und koordiniert die Regierungsarbeit",
+                            "Vertritt Polen im Ausland als Staatsoberhaupt",
+                            "Leitet die Sitzungen des Sejm"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Was sind präsidiale Prärogative?",
-                        "answers": ["Präsidentielle Befugnisse, die die Gegenzeichnung des Premierministers erfordern", "Persönliche präsidentielle Befugnisse, die keine Gegenzeichnung erfordern", "Besondere Sejm-Befugnisse gegenüber dem Präsidenten"],
+                        "answers": [
+                            "Präsidentielle Befugnisse, die die Gegenzeichnung des Premierministers erfordern",
+                            "Persönliche präsidentielle Befugnisse, die keine Gegenzeichnung erfordern",
+                            "Besondere Sejm-Befugnisse gegenüber dem Präsidenten"
+                        ],
                         "correct": 1
                     }
                 ]
@@ -2634,52 +2728,92 @@
                 "questions": [
                     {
                         "question": "Wem sind unabhängige Richter in Polen unterstellt?",
-                        "answers": ["Dem Präsidenten", "Dem Premierminister", "Nur der Verfassung und den Gesetzen"],
+                        "answers": [
+                            "Dem Präsidenten",
+                            "Dem Premierminister",
+                            "Nur der Verfassung und den Gesetzen"
+                        ],
                         "correct": 2
                     },
                     {
                         "question": "Wie viele Instanzen hat das Gerichtsverfahren in Polen?",
-                        "answers": ["Eininstanzlich", "Mindestens zweiinstanzlich", "Vierinstanzlich"],
+                        "answers": [
+                            "Eininstanzlich",
+                            "Mindestens zweiinstanzlich",
+                            "Vierinstanzlich"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Welche Rolle spielt das Oberste Gericht?",
-                        "answers": ["Es behandelt alle erstinstanzlichen Fälle", "Es übt die Jurisdiktionsaufsicht über ordentliche und Militärgerichte aus", "Es urteilt über die Vereinbarkeit von Gesetzen mit der Verfassung"],
+                        "answers": [
+                            "Es behandelt alle erstinstanzlichen Fälle",
+                            "Es übt die Jurisdiktionsaufsicht über ordentliche und Militärgerichte aus",
+                            "Es urteilt über die Vereinbarkeit von Gesetzen mit der Verfassung"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Was ist das Verfassungsgericht?",
-                        "answers": ["Ein Gericht, das über die Vereinbarkeit von Recht mit der Verfassung urteilt", "Ein Organ zur Bestrafung hochrangiger Beamter", "Das höchste Berufungsgericht"],
+                        "answers": [
+                            "Ein Gericht, das über die Vereinbarkeit von Recht mit der Verfassung urteilt",
+                            "Ein Organ zur Bestrafung hochrangiger Beamter",
+                            "Das höchste Berufungsgericht"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Welche Rolle spielt der Generalstaatsanwalt?",
-                        "answers": ["Führt den Vorsitz beim Obersten Gericht", "Leitet die Staatsanwaltschaft und überwacht Ermittlungen", "Ernennt Richter ordentlicher Gerichte"],
+                        "answers": [
+                            "Führt den Vorsitz beim Obersten Gericht",
+                            "Leitet die Staatsanwaltschaft und überwacht Ermittlungen",
+                            "Ernennt Richter ordentlicher Gerichte"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Was ist Kassation im Gerichtsverfahren?",
-                        "answers": ["Ein außerordentliches Rechtsmittel, das vom Obersten Gericht geprüft wird", "Annullierung des Mandats eines Richters", "Eine Berufung an ein Berufungsgericht"],
+                        "answers": [
+                            "Ein außerordentliches Rechtsmittel, das vom Obersten Gericht geprüft wird",
+                            "Annullierung des Mandats eines Richters",
+                            "Eine Berufung an ein Berufungsgericht"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Wer vertritt den Angeklagten als Verteidiger in einem Strafprozess?",
-                        "answers": ["Staatsanwalt", "Rechtsanwalt (Verteidiger)", "Notar"],
+                        "answers": [
+                            "Staatsanwalt",
+                            "Rechtsanwalt (Verteidiger)",
+                            "Notar"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Wer erstellt notarielle Urkunden und Beglaubigungen?",
-                        "answers": ["Rechtsanwalt", "Rechtsberater", "Notar"],
+                        "answers": [
+                            "Rechtsanwalt",
+                            "Rechtsberater",
+                            "Notar"
+                        ],
                         "correct": 2
                     },
                     {
                         "question": "Was ist die Aufgabe des Bürgerbeauftragten (Ombudsmann)?",
-                        "answers": ["Wacht über die Freiheiten und Rechte von Personen und Bürgern", "Leitet die Justizpolitik der Regierung", "Führt den Vorsitz beim Verfassungsgericht"],
+                        "answers": [
+                            "Wacht über die Freiheiten und Rechte von Personen und Bürgern",
+                            "Leitet die Justizpolitik der Regierung",
+                            "Führt den Vorsitz beim Verfassungsgericht"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Wie heißt die praktische Ausbildung nach dem Jurastudium zur Vorbereitung auf den Rechtsberuf?",
-                        "answers": ["Amtszeit", "Rechtsreferendariat", "Abolition"],
+                        "answers": [
+                            "Amtszeit",
+                            "Rechtsreferendariat",
+                            "Abolition"
+                        ],
                         "correct": 1
                     }
                 ]
