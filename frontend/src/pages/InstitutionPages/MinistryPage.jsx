@@ -19,13 +19,12 @@ import { COLOR_MAP } from "../../Utils/Maps/Colors";
 import ministriesData from "../../data/ministriesData";
 
 /* ─── Photo ─────────────────────────────────────────────────────────────── */
-// `src` — direct URL (gov.pl photo from scraper); falls back to Wikipedia API
+// src  → oficjalne zdjęcie z gov.pl (ze scrapera); fallback: Wikipedia Action API
 function PersonPhoto({ name, src, className, initialsClass }) {
   const [photoUrl, setPhotoUrl] = useState(src || null);
   const [imgError, setImgError] = useState(false);
 
   useEffect(() => {
-    // If we already have an official photo, skip Wikipedia lookup
     if (src) { setPhotoUrl(src); return; }
     if (!name) return;
 
@@ -92,14 +91,11 @@ export default function MinistryPage() {
     );
   }
 
-  const institutionType  = data.type          ?? "Ministerstwo";
-  const leadershipLabel  = data.leadershipLabel ?? "Kierownictwo";
-  const leaderLabel      = data.leaderLabel     ?? "Minister";
+  const institutionType = data.type          ?? "Ministerstwo";
+  const leadershipLabel = data.leadershipLabel ?? "Kierownictwo";
+  const leaderLabel     = data.leaderLabel     ?? "Minister";
 
-  const ministers     = data.leadership?.filter(p => p.role === "minister")           ?? [];
-  const wiceministrzy = data.leadership?.filter(p => p.role === "wiceminister")       ?? [];
-  const dyrektorzy    = data.leadership?.filter(p => p.role === "dyrektor_generalny") ?? [];
-  const allPeople     = [...ministers, ...wiceministrzy, ...dyrektorzy];
+  const allPeople = data.leadership ?? [];
 
   return (
     <motion.div
@@ -182,7 +178,7 @@ export default function MinistryPage() {
           </div>
         </motion.div>
 
-        {/* ── 2. KIEROWNICTWO — jedna linia ── */}
+        {/* ── 2. KIEROWNICTWO ── */}
         <motion.div
           variants={sectionVariants}
           className="w-full rounded-3xl border border-slate-200/70 dark:border-slate-800/60
@@ -193,18 +189,17 @@ export default function MinistryPage() {
             {leadershipLabel}
           </p>
 
-          {/* Jedna linia: mobile ~3.5 kart, desktop 8 kart, reszta po scrollu */}
+          {/* mobile: 4 karty | desktop: 8 kart | reszta po scrollu */}
           <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scroll-smooth">
             {allPeople.map((person, i) => {
               const isMinister = person.role === "minister";
               const isDG       = person.role === "dyrektor_generalny";
 
-              const Wrapper = person.profileUrl ? "a" : "div";
+              const Wrapper    = person.profileUrl ? "a" : "div";
               const wrapperProps = person.profileUrl
                 ? { href: person.profileUrl, target: "_blank", rel: "noopener noreferrer" }
                 : {};
-
-              const tabProps = Wrapper === "div" ? { tabIndex: 0 } : {};
+              const tabProps   = Wrapper === "div" ? { tabIndex: 0 } : {};
 
               return (
                 <Wrapper
@@ -237,7 +232,7 @@ export default function MinistryPage() {
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
 
-                  {/* Link icon — desktop hover / mobile focus */}
+                  {/* Link icon */}
                   {person.profileUrl && (
                     <div className="absolute top-2 right-2
                       opacity-0 sm:group-hover:opacity-100 group-focus:opacity-100
@@ -253,16 +248,13 @@ export default function MinistryPage() {
                     <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${accentGradient}`} />
                   )}
 
-                  {/* Tekst — mobile: ukryty, pojawia się na focusie/tapie
-                              desktop: zawsze widoczny                      */}
-                  <div className={`
-                    absolute bottom-0 left-0 right-0 p-3
+                  {/* Tekst — mobile: ukryty, pojawia się na tap/focus; desktop: zawsze */}
+                  <div className="absolute bottom-0 left-0 right-0 p-3
                     transition-all duration-200
                     translate-y-2 opacity-0
                     sm:translate-y-0 sm:opacity-100
                     group-hover:translate-y-0 group-hover:opacity-100
-                    group-focus:translate-y-0 group-focus:opacity-100
-                  `}>
+                    group-focus:translate-y-0 group-focus:opacity-100">
                     {isMinister && (
                       <span className={`text-[8px] font-black uppercase tracking-widest block mb-0.5 ${colorClass}`}>
                         {leaderLabel}
@@ -283,7 +275,6 @@ export default function MinistryPage() {
                 </Wrapper>
               );
             })}
-
           </div>
         </motion.div>
 
@@ -328,14 +319,14 @@ export default function MinistryPage() {
             >
               <p className="text-[10px] font-black uppercase tracking-widest mb-4
                 text-slate-400 dark:text-slate-500 color-transition">
-                O ministerstwie
+                O {institutionType === "Ministerstwo" ? "ministerstwie" : "instytucji"}
               </p>
               <p className="leading-relaxed text-slate-700 dark:text-slate-300 color-transition">
                 {data.description}
               </p>
             </motion.div>
 
-            {/* Info */}
+            {/* Blok informacyjny */}
             <motion.div
               variants={sectionVariants}
               className="rounded-3xl border border-slate-200/70 dark:border-slate-800/60
