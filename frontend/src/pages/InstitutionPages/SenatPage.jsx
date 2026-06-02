@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -17,28 +17,28 @@ import {
 import ICON_MAP   from "../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../Utils/Maps/Accents";
 import { COLOR_MAP }  from "../../Utils/Maps/Colors";
-import sejmData   from "../../data/sejmData";
-import { useSejmLeadership, useSejmClubs, useSejmProceedings } from "../../Hooks/useSejm";
-import Hemicycle, { CLUB_HEX } from "../../components/Sejm/Hemicycle";
+import senatData  from "../../data/senatData";
+import { useSenatLeadership, useSenatClubs, useSenatProceedings } from "../../Hooks/useSenat";
+import SenatHemicycle, { SENAT_CLUB_HEX } from "../../components/Senat/SenatHemicycle";
 
-const BASE = "http://localhost:5000";
-
-/* ── Zdjęcie posła — API Sejmu → Wikipedia → inicjały ───────────────────── */
-function MPPhoto({ name, src, className, initialsClass }) {
-  const [photoUrl, setPhotoUrl] = useState(src ?? null);
+function SenatorPhoto({ name, photoUrl: directUrl, className, initialsClass }) {
+  const [photoUrl, setPhotoUrl] = useState(directUrl ?? null);
   const [imgError, setImgError] = useState(false);
   const initials = (name ?? "").split(" ").filter(Boolean).map(n => n[0]).join("").slice(0, 2).toUpperCase();
 
-  useEffect(() => { setPhotoUrl(src ?? null); setImgError(false); }, [src]);
+  useEffect(() => {
+    setPhotoUrl(directUrl ?? null);
+    setImgError(false);
+  }, [directUrl]);
 
-  function tryWikipedia() {
+  function fetchWikipedia() {
     if (!name) { setImgError(true); return; }
     const params = new URLSearchParams({
       action: "query", titles: name, prop: "pageimages",
-      format: "json", pithumbsize: "600", origin: "*",
+      format: "json", pithumbsize: "400", origin: "*",
     });
     fetch(`https://pl.wikipedia.org/w/api.php?${params}`)
-      .then(r => r.ok ? r.json() : null)
+      .then(r => (r.ok ? r.json() : null))
       .then(data => {
         const page = Object.values(data?.query?.pages ?? {})[0];
         if (page?.thumbnail?.source) setPhotoUrl(page.thumbnail.source);
@@ -51,7 +51,7 @@ function MPPhoto({ name, src, className, initialsClass }) {
     <div className={`${className} bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden color-transition`}>
       {photoUrl && !imgError ? (
         <img src={photoUrl} alt={name}
-          onError={() => { setPhotoUrl(null); setImgError(false); tryWikipedia(); }}
+          onError={() => { setPhotoUrl(null); setImgError(false); fetchWikipedia(); }}
           className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:brightness-105"
           style={{ objectPosition: "center 15%" }} />
       ) : (
@@ -61,21 +61,19 @@ function MPPhoto({ name, src, className, initialsClass }) {
   );
 }
 
-/* ── Page ────────────────────────────────────────────────────────────────── */
-export default function SejmPage() {
+export default function SenatPage() {
   const navigate = useNavigate();
 
-  const data          = sejmData;
-  const accent        = data.accent;
-  const IconComponent = ICON_MAP[data.icon] ?? ICON_MAP["parliament"];
-  const colorClass    = COLOR_MAP[accent]   ?? "text-indigo-800";
-  const accentGradient = ACCENT_MAP[accent] ?? "from-indigo-800 to-indigo-600";
+  const data           = senatData;
+  const accent         = data.accent;
+  const IconComponent  = ICON_MAP[data.icon] ?? ICON_MAP["parliament"];
+  const colorClass     = COLOR_MAP[accent]   ?? "text-red-700";
+  const accentGradient = ACCENT_MAP[accent]  ?? "from-red-700 to-red-500";
 
-  const { data: leadership, loading: leaderLoading } = useSejmLeadership();
-  const { data: clubs,      loading: clubsLoading  } = useSejmClubs();
-  const { data: proceedings,loading: procLoading   } = useSejmProceedings();
+  const { data: leadership, loading: leaderLoading } = useSenatLeadership();
+  const { data: clubs,      loading: clubsLoading  } = useSenatClubs();
+  const { data: proceedings,loading: procLoading   } = useSenatProceedings();
 
-  /* Karuzela kierownictwa */
   const [leaderOffset, setLeaderOffset] = useState(0);
   const [visible, setVisible] = useState(4);
 
@@ -90,7 +88,6 @@ export default function SejmPage() {
   const canPrev = leaderOffset > 0;
   const canNext = leaderOffset < leadership.length - visible;
 
-  /* Posiedzenia */
   const PROC_PER_PAGE = 2;
   const [procPage, setProcPage] = useState(0);
   const [procDir,  setProcDir]  = useState(1);
@@ -102,8 +99,7 @@ export default function SejmPage() {
     exit:   dir => ({ x: dir > 0 ? -60 :  60, opacity: 0, transition: { duration: 0.2, ease: "easeIn" } }),
   };
 
-  /* Łączna liczba posłów */
-  const totalMembers = clubs.reduce((s, c) => s + (c.membersCount ?? 0), 0) || 460;
+  const totalMembers = clubs.reduce((s, c) => s + (c.membersCount ?? 0), 0) || 100;
 
   return (
     <motion.div variants={pageVariants} initial="hidden" animate="show"
@@ -146,7 +142,7 @@ export default function SejmPage() {
                   </span>
                 </div>
                 <h1 className="text-2xl md:text-3xl font-black leading-tight text-slate-900 dark:text-white color-transition">
-                  Sejm Rzeczypospolitej Polskiej
+                  Senat Rzeczypospolitej Polskiej
                 </h1>
               </div>
             </div>
@@ -189,9 +185,9 @@ export default function SejmPage() {
                       <div key={i} className="flex-none px-1.5" style={{ width: `${cardPct}%` }}>
                         <div className={`relative rounded-2xl overflow-hidden aspect-[3/4] w-full group
                           ${isMarszalek ? "ring-2 ring-slate-300 dark:ring-slate-600" : ""}`}>
-                          <MPPhoto
+                          <SenatorPhoto
                             name={person.name}
-                            src={`${BASE}/sejm/mp/${person.id}/photo`}
+                            photoUrl={person.photoUrl ?? null}
                             className="absolute inset-0 w-full h-full transition-transform duration-300 sm:group-hover:scale-105"
                             initialsClass={`text-2xl ${colorClass}`}
                           />
@@ -199,10 +195,9 @@ export default function SejmPage() {
                           {isMarszalek && (
                             <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${accentGradient}`} />
                           )}
-                          {/* Etykieta klubu */}
                           <div className="absolute top-2 left-2">
                             <span className="text-[8px] font-black px-1.5 py-0.5 rounded-md text-white"
-                              style={{ background: CLUB_HEX[person.club] ?? "#94a3b8" }}>
+                              style={{ background: SENAT_CLUB_HEX[person.club] ?? "#94a3b8" }}>
                               {person.club}
                             </span>
                           </div>
@@ -252,24 +247,24 @@ export default function SejmPage() {
           )}
         </motion.div>
 
-        {/* ── 3. SKŁAD SEJMU — HEMICYKL ── */}
+        {/* ── 3. SKŁAD SENATU — HEMICYKL ── */}
         <motion.div variants={sectionVariants}
           className="w-full rounded-3xl border border-slate-200/70 dark:border-slate-800/60
             bg-white dark:bg-slate-900 p-6 md:p-8 color-transition">
           <div className="flex items-center justify-between mb-5">
             <p className="text-[10px] font-black uppercase tracking-widest
               text-slate-400 dark:text-slate-500 color-transition">
-              Skład Sejmu — podział mandatów
+              Skład Senatu — podział mandatów
             </p>
             <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 color-transition">
-              {totalMembers} posłów
+              {totalMembers} senatorów
             </span>
           </div>
 
           {clubsLoading ? (
             <div className="w-full aspect-[2/1] rounded-2xl bg-slate-100 dark:bg-slate-800 animate-pulse color-transition" />
           ) : (
-            <Hemicycle clubs={clubs} />
+            <SenatHemicycle clubs={clubs} />
           )}
         </motion.div>
 
@@ -281,7 +276,7 @@ export default function SejmPage() {
             <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 color-transition">
               Ostatnie posiedzenia
             </p>
-            <a href="https://www.sejm.gov.pl/Sejm10.nsf/agent.xsp?symbol=posiedzenia&NrKadencji=10" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.senat.gov.pl/prace/posiedzenia-senatu/" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-widest
                 text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors color-transition">
               Wszystkie
@@ -315,20 +310,19 @@ export default function SejmPage() {
                         .slice(procPage * PROC_PER_PAGE, (procPage + 1) * PROC_PER_PAGE)
                         .map((p, i) => (
                           <a key={i}
-                            href={`https://www.sejm.gov.pl/Sejm10.nsf/GlosowaniaPosiedzenie.xsp?posiedzenie=${p.number}`}
+                            href={p.href ?? `https://www.senat.gov.pl/prace/posiedzenia/`}
                             target="_blank" rel="noopener noreferrer"
                             className={`group flex flex-col rounded-2xl overflow-hidden cursor-pointer
                               transition-all color-transition
                               ${p.upcoming
-                                ? "border-2 border-indigo-300 dark:border-indigo-700 bg-indigo-50/50 dark:bg-indigo-950/20 hover:border-indigo-400 dark:hover:border-indigo-600 hover:shadow-md"
+                                ? "border-2 border-red-300 dark:border-red-700 bg-red-50/50 dark:bg-red-950/20 hover:border-red-400 dark:hover:border-red-600 hover:shadow-md"
                                 : "border border-slate-200/70 dark:border-slate-700/50 bg-slate-50 dark:bg-slate-800/40 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md"
                               }`}>
-                            {/* Placeholder graficzny */}
                             <div className={`relative w-full aspect-video flex flex-col items-center justify-center gap-3
                               bg-gradient-to-br ${accentGradient} ${p.upcoming ? "opacity-100" : "opacity-80"}`}>
                               <IconComponent className="h-10 w-10 text-white/60" />
                               <span className="text-[10px] font-black uppercase tracking-widest text-white/50">
-                                Sejm RP
+                                Senat RP
                               </span>
                               {p.upcoming && (
                                 <span className="absolute top-2 right-2 px-2 py-0.5 rounded-full
@@ -341,15 +335,15 @@ export default function SejmPage() {
                             <div className="flex flex-col flex-1 p-4 gap-2">
                               <p className={`text-xs font-black leading-snug transition-colors color-transition
                                 ${p.upcoming
-                                  ? "text-indigo-900 dark:text-indigo-100 group-hover:text-indigo-700 dark:group-hover:text-indigo-200"
+                                  ? "text-red-900 dark:text-red-100 group-hover:text-red-700 dark:group-hover:text-red-200"
                                   : "text-slate-900 dark:text-white group-hover:text-slate-700 dark:group-hover:text-slate-100"
                                 }`}>
                                 {p.title}
                               </p>
                               {p.dates?.length > 0 && (
                                 <div className="flex items-center gap-1.5 mt-auto pt-1">
-                                  <CalendarDaysIcon className={`h-3.5 w-3.5 shrink-0 ${p.upcoming ? "text-indigo-400 dark:text-indigo-500" : "text-slate-400 dark:text-slate-500"}`} />
-                                  <span className={`text-[10px] font-bold color-transition ${p.upcoming ? "text-indigo-500 dark:text-indigo-400" : "text-slate-400 dark:text-slate-500"}`}>
+                                  <CalendarDaysIcon className={`h-3.5 w-3.5 shrink-0 ${p.upcoming ? "text-red-400 dark:text-red-500" : "text-slate-400 dark:text-slate-500"}`} />
+                                  <span className={`text-[10px] font-bold color-transition ${p.upcoming ? "text-red-500 dark:text-red-400" : "text-slate-400 dark:text-slate-500"}`}>
                                     {p.dates.join(" · ")}
                                   </span>
                                 </div>
@@ -427,7 +421,7 @@ export default function SejmPage() {
                 bg-white dark:bg-slate-900 p-7 md:p-8 color-transition">
               <p className="text-[10px] font-black uppercase tracking-widest mb-4
                 text-slate-400 dark:text-slate-500 color-transition">
-                O Sejmie
+                O Senacie
               </p>
               <p className="leading-relaxed text-slate-700 dark:text-slate-300 color-transition">
                 {data.description}
@@ -458,7 +452,7 @@ export default function SejmPage() {
                   <span className="inline-flex items-center gap-1 text-xs font-black
                     text-slate-500 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-100
                     transition-colors color-transition">
-                    sejm.gov.pl
+                    senat.gov.pl
                     <ArrowTopRightOnSquareIcon className="h-3 w-3" />
                   </span>
                 </a>

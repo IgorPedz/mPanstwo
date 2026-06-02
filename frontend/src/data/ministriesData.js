@@ -442,7 +442,7 @@ const ministriesData = {
     icon: "lighting",
     website: "https://www.gov.pl/web/przemysl",
     description:
-      "Ministerstwo Przemysłu odpowiada za politykę przemysłową i energetyczną państwa. Zarządza sektorem energetycznym – energetyką konwencjonalną, gazownictwem i elektroenergetyką. Koordynuje transformację energetyczną i dywersyfikację źródeł energii.",
+      "Ministerstwo Energii odpowiada za politykę przemysłową i energetyczną państwa. Zarządza sektorem energetycznym – energetyką konwencjonalną, gazownictwem i elektroenergetyką. Koordynuje transformację energetyczną i dywersyfikację źródeł energii.",
     responsibilities: [
       "Kształtowanie polityki przemysłowej i energetycznej",
       "Zapewnienie bezpieczeństwa energetycznego",

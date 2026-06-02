@@ -3010,9 +3010,9 @@
                 "title": "Prezydent RP",
                 "type": "Urząd Prezydenta RP"
             },
-            "uokik": {
-                "title": "UOKiK",
-                "type": "urząd"
+            "sn": {
+                "title": "Sąd Najwyższy",
+                "type": "sądownictwo"
             },
             "constitutional_tribunal": {
                 "title": "Trybunał Konstytucyjny",

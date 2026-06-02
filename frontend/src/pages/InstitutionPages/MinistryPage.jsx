@@ -59,7 +59,7 @@ function PersonPhoto({ name, src, className, initialsClass }) {
           src={photoUrl}
           alt={name}
           onError={() => setImgError(true)}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:brightness-105"
           style={{ objectPosition: "center 15%" }}
         />
       ) : (

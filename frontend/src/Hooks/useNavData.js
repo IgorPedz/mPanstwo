@@ -8,7 +8,7 @@ export const useNavData = () => {
       key: "main", // <-- DODANE
       title: t("nav.sections.main"),
       items: [
-        { name: t("nav.items.dashboard"), icon: "dashboard", href: "/dashboard", activeFor: ["/ministry/", "/president", "/sejm", "/clubs"] },
+        { name: t("nav.items.dashboard"), icon: "dashboard", href: "/dashboard", activeFor: ["/ministry/", "/president", "/sejm", "/senat", "/clubs", "/instytucja/"] },
       ],
     },
     {

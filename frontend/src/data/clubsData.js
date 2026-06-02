@@ -70,7 +70,7 @@ const clubsData = {
       {
         name: "Polska 2050",
         website: "https://polska2050.pl",
-        color: "#0EA5E9",
+        color: "#d3e90e",
       },
     ],
   },
@@ -114,7 +114,7 @@ const clubsData = {
     description:
       "Koło Poselskie Demokracja Bezpośrednia postuluje reformę systemu politycznego w kierunku większego udziału obywateli w podejmowaniu decyzji — poprzez referenda, inicjatywy ustawodawcze i mechanizmy partycypacji bezpośredniej.",
     parties: [
-      { name: "Demokracja Bezpośrednia", website: "#", color: "#D97706" },
+      { name: "Kukiz'15 ", website: "https://kukiz15.org/", color: "#D97706" },
     ],
   },
 

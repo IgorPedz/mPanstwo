@@ -3012,9 +3012,9 @@
                 "title": "President",
                 "type": "Office of the President"
             },
-            "uokik": {
-                "title": "Office of Competition and Consumer Protection",
-                "type": "agency"
+            "sn": {
+                "title": "Supreme Court",
+                "type": "judiciary"
             },
             "constitutional_tribunal": {
                 "title": "Constitutional Tribunal",

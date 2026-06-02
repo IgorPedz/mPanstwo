@@ -23,6 +23,8 @@ import LessonPage from "../pages/EducationPages/LessonPage";
 import MinistryPage from "../pages/InstitutionPages/MinistryPage";
 import PresidentPage from "../pages/InstitutionPages/PresidentPage";
 import SejmPage      from "../pages/InstitutionPages/SejmPage";
+import SenatPage     from "../pages/InstitutionPages/SenatPage";
+import JudicialPage  from "../pages/InstitutionPages/JudicialPage";
 import ClubsPage     from "../pages/InstitutionPages/ClubsPage";
 import { useUser } from "../Contexts/UserContext";
 import useNotifications from "../Hooks/useUnreadNotification";
@@ -160,6 +162,24 @@ function App() {
             element={
               <ProtectedRoute>
                 <SejmPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/senat"
+            element={
+              <ProtectedRoute>
+                <SenatPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/instytucja/:slug"
+            element={
+              <ProtectedRoute>
+                <JudicialPage />
               </ProtectedRoute>
             }
           />

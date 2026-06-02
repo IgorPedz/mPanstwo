@@ -3072,9 +3072,9 @@
                 "title": "Präsident",
                 "type": "Amt des Präsidenten"
             },
-            "uokik": {
-                "title": "Amt für Wettbewerbs- und Verbraucherschutz",
-                "type": "behörde"
+            "sn": {
+                "title": "Oberstes Gericht",
+                "type": "justiz"
             },
             "constitutional_tribunal": {
                 "title": "Verfassungsgerichtshof",

@@ -24,6 +24,8 @@ const coursesRoutes = require("./routes/coursesRoutes");
 const blocksRoutes = require("./routes/blocksRoutes");
 const newsRoutes   = require("./routes/newsRoutes");
 const sejmRoutes   = require("./routes/sejmRoutes");
+const senatRoutes    = require("./routes/senatRoutes");
+const judicialRoutes = require("./routes/judicialRoutes");
 const cron = require("node-cron");
 const { runLeadershipUpdate } = require("./update-leadership");
 const { runPresidentUpdate }    = require("./update-president");
@@ -62,6 +64,8 @@ app.use(coursesRoutes)
 app.use(blocksRoutes);
 app.use(newsRoutes);
 app.use(sejmRoutes);
+app.use(senatRoutes);
+app.use(judicialRoutes);
 app.use(errorHandler);
 
 initSocket(server);
