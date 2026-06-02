@@ -63,7 +63,8 @@ export default function NavSections({
 
                         if (!Icon) return null;
 
-                        const active = location.pathname.startsWith(item.href);
+                        const active = location.pathname.startsWith(item.href) ||
+                          item.activeFor?.some(p => location.pathname.startsWith(p));
                         console.log(active, location.pathname, item.href);
                         return (
                           <button

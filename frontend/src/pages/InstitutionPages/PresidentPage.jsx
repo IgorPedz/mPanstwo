@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -18,11 +17,10 @@ import {
 import ICON_MAP from "../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../Utils/Maps/Accents";
 import { COLOR_MAP } from "../../Utils/Maps/Colors";
-import ministriesData from "../../data/ministriesData";
+import presidentData from "../../data/presidentData";
 import { useMinistryNews } from "../../Hooks/useMinistryNews";
 
 /* ─── Photo ─────────────────────────────────────────────────────────────── */
-// src  → oficjalne zdjęcie z gov.pl (ze scrapera); fallback: Wikipedia Action API
 function PersonPhoto({ name, src, className, initialsClass }) {
   const [photoUrl, setPhotoUrl] = useState(src || null);
   const [imgError, setImgError] = useState(false);
@@ -70,39 +68,21 @@ function PersonPhoto({ name, src, className, initialsClass }) {
 }
 
 /* ─── Page ───────────────────────────────────────────────────────────────── */
-export default function MinistryPage() {
-  const { slug } = useParams();
+export default function PresidentPage() {
   const navigate = useNavigate();
-  const { state } = useLocation();
-  const { t } = useTranslation();
 
-  const data          = ministriesData[slug];
-  const title         = t(`dashboard.dashboardContent.${slug}.title`, { defaultValue: slug });
-  const accent        = state?.accent     ?? data?.accent     ?? "blue";
-  const iconKey       = state?.icon       ?? data?.icon       ?? "ministry";
-  const IconComponent = ICON_MAP[iconKey] ?? ICON_MAP["ministry"];
-  const colorClass    = COLOR_MAP[accent] ?? "text-blue-800";
-  const accentGradient = ACCENT_MAP[accent] ?? "from-blue-800 to-blue-600";
+  const data           = presidentData;
+  const accent         = data.accent;
+  const iconKey        = data.icon;
+  const IconComponent  = ICON_MAP[iconKey] ?? ICON_MAP["flag"];
+  const colorClass     = COLOR_MAP[accent] ?? "text-red-700";
+  const accentGradient = ACCENT_MAP[accent] ?? "from-red-700 to-red-500";
 
-  if (!data) {
-    return (
-      <div className="min-h-screen flex items-center justify-center color-transition">
-        <p className="text-slate-400 dark:text-slate-500 color-transition">
-          Nie znaleziono informacji o tej instytucji.
-        </p>
-      </div>
-    );
-  }
+  const { news, loading: newsLoading } = useMinistryNews("president");
 
-  const institutionType = data.type          ?? "Ministerstwo";
-  const leadershipLabel = data.leadershipLabel ?? "Kierownictwo";
-  const leaderLabel     = data.leaderLabel     ?? "Minister";
-
-  const { news, loading: newsLoading } = useMinistryNews(slug);
-
-  const ITEMS_PER_PAGE   = 2;
+  const ITEMS_PER_PAGE = 2;
   const [newsPage, setNewsPage] = useState(0);
-  const [newsDir,  setNewsDir]  = useState(1);
+  const [newsDir, setNewsDir]   = useState(1);
   const totalNewsPages = Math.ceil(news.length / ITEMS_PER_PAGE);
 
   const goPrev = () => { setNewsDir(-1); setNewsPage(p => p - 1); };
@@ -110,8 +90,8 @@ export default function MinistryPage() {
 
   const slideVariants = {
     enter:  dir => ({ x: dir > 0 ?  60 : -60, opacity: 0 }),
-    center: ()  => ({ x: 0,                    opacity: 1, transition: { duration: 0.3, ease: "easeOut" } }),
-    exit:   dir => ({ x: dir > 0 ? -60 :  60, opacity: 0, transition: { duration: 0.2, ease: "easeIn"  } }),
+    center: ()  => ({ x: 0, opacity: 1, transition: { duration: 0.3, ease: "easeOut" } }),
+    exit:   dir => ({ x: dir > 0 ? -60 :  60, opacity: 0, transition: { duration: 0.2, ease: "easeIn" } }),
   };
 
   const allPeople = data.leadership ?? [];
@@ -126,9 +106,9 @@ export default function MinistryPage() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  const cardPct    = 100 / visible;
-  const canPrev    = leaderOffset > 0;
-  const canNext    = leaderOffset < allPeople.length - visible;
+  const cardPct = 100 / visible;
+  const canPrev = leaderOffset > 0;
+  const canNext = leaderOffset < allPeople.length - visible;
 
   return (
     <motion.div
@@ -162,7 +142,7 @@ export default function MinistryPage() {
           <div className={`h-1.5 w-full bg-gradient-to-r ${accentGradient}`} />
           <div className={`absolute -right-10 -bottom-10 pointer-events-none
             opacity-[0.04] dark:opacity-[0.07] color-transition ${colorClass}`}>
-            {IconComponent && <IconComponent className="h-72 w-72" />}
+            <IconComponent className="h-72 w-72" />
           </div>
           <div className="relative p-8 md:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="flex items-center gap-6 min-w-0">
@@ -170,14 +150,14 @@ export default function MinistryPage() {
                 bg-slate-50 dark:bg-slate-800/50
                 border-2 border-slate-100 dark:border-slate-700/50
                 color-transition ${colorClass}`}>
-                {IconComponent && <IconComponent className="h-10 w-10" />}
+                <IconComponent className="h-10 w-10" />
               </div>
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2 mb-2">
                   <span className="px-2.5 py-1 text-[10px] font-black uppercase tracking-widest
                     rounded-md bg-slate-100 dark:bg-slate-800
                     text-slate-500 dark:text-slate-400 color-transition">
-                    {institutionType}
+                    {data.type}
                   </span>
                   <span className="px-2.5 py-1 text-[10px] font-black uppercase tracking-widest
                     rounded-md bg-slate-100 dark:bg-slate-800
@@ -187,31 +167,29 @@ export default function MinistryPage() {
                 </div>
                 <h1 className="text-2xl md:text-3xl font-black leading-tight
                   text-slate-900 dark:text-white color-transition">
-                  {title}
+                  Prezydent Rzeczypospolitej Polskiej
                 </h1>
               </div>
             </div>
-            {data.website && (
-              <a
-                href={data.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl
-                  text-xs font-black uppercase tracking-wide
-                  bg-slate-100 dark:bg-slate-800
-                  text-slate-600 dark:text-slate-300
-                  hover:bg-slate-200 dark:hover:bg-slate-700
-                  border border-slate-200/70 dark:border-slate-700/50
-                  transition-colors cursor-pointer color-transition"
-              >
-                Strona oficjalna
-                <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />
-              </a>
-            )}
+            <a
+              href={data.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl
+                text-xs font-black uppercase tracking-wide
+                bg-slate-100 dark:bg-slate-800
+                text-slate-600 dark:text-slate-300
+                hover:bg-slate-200 dark:hover:bg-slate-700
+                border border-slate-200/70 dark:border-slate-700/50
+                transition-colors cursor-pointer color-transition"
+            >
+              Strona oficjalna
+              <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />
+            </a>
           </div>
         </motion.div>
 
-        {/* ── 2. KIEROWNICTWO ── */}
+        {/* ── 2. PREZYDENT ── */}
         <motion.div
           variants={sectionVariants}
           className="w-full rounded-3xl border border-slate-200/70 dark:border-slate-800/60
@@ -219,10 +197,9 @@ export default function MinistryPage() {
         >
           <p className="text-[10px] font-black uppercase tracking-widest mb-5
             text-slate-400 dark:text-slate-500 color-transition">
-            {leadershipLabel}
+            {data.leadershipLabel}
           </p>
 
-          {/* Sliding carousel — jedno kliknięcie = jedno zdjęcie */}
           <div className="overflow-hidden -mx-1.5">
             <motion.div
               className="flex"
@@ -230,26 +207,19 @@ export default function MinistryPage() {
               transition={{ duration: 0.35, ease: "easeInOut" }}
             >
               {allPeople.map((person, i) => {
-                const isMinister = person.role === "minister";
-                const isDG       = person.role === "dyrektor_generalny";
-                const Wrapper    = person.profileUrl ? "a" : "div";
+                const isPresident = person.role === "minister";
+                const Wrapper = person.profileUrl ? "a" : "div";
                 const wrapperProps = person.profileUrl
                   ? { href: person.profileUrl, target: "_blank", rel: "noopener noreferrer" }
                   : {};
-                const tabProps = Wrapper === "div" ? { tabIndex: 0 } : {};
 
                 return (
-                  <div
-                    key={i}
-                    className="flex-none px-1.5"
-                    style={{ width: `${cardPct}%` }}
-                  >
+                  <div key={i} className="flex-none px-1.5" style={{ width: `${cardPct}%` }}>
                     <Wrapper
                       {...wrapperProps}
-                      {...tabProps}
                       className={`
                         block relative rounded-2xl overflow-hidden aspect-[3/4] w-full
-                        ${isMinister ? "ring-2 ring-slate-300 dark:ring-slate-600" : isDG ? "opacity-80" : ""}
+                        ${isPresident ? "ring-2 ring-slate-300 dark:ring-slate-600" : ""}
                         ${person.profileUrl ? "cursor-pointer" : ""}
                         group focus:outline-none
                       `}
@@ -259,7 +229,7 @@ export default function MinistryPage() {
                         src={person.photo}
                         className="absolute inset-0 w-full h-full transition-transform duration-300
                           sm:group-hover:scale-105 group-focus:scale-105"
-                        initialsClass={`text-2xl ${isMinister ? colorClass : isDG ? "text-slate-400 dark:text-slate-500" : colorClass}`}
+                        initialsClass={`text-2xl ${colorClass}`}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
                       {person.profileUrl && (
@@ -269,7 +239,7 @@ export default function MinistryPage() {
                           </div>
                         </div>
                       )}
-                      {isMinister && (
+                      {isPresident && (
                         <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${accentGradient}`} />
                       )}
                       <div className="absolute bottom-0 left-0 right-0 p-3
@@ -277,14 +247,9 @@ export default function MinistryPage() {
                         sm:translate-y-0 sm:opacity-100
                         group-hover:translate-y-0 group-hover:opacity-100
                         group-focus:translate-y-0 group-focus:opacity-100">
-                        {isMinister && (
+                        {isPresident && (
                           <span className={`text-[8px] font-black uppercase tracking-widest block mb-0.5 ${colorClass}`}>
-                            {leaderLabel}
-                          </span>
-                        )}
-                        {isDG && (
-                          <span className="text-[8px] font-black uppercase tracking-widest block mb-0.5 text-slate-300">
-                            Dyr. Generalny
+                            {data.leaderLabel}
                           </span>
                         )}
                         <p className="font-black text-xs leading-tight text-white">{person.name}</p>
@@ -334,32 +299,26 @@ export default function MinistryPage() {
           className="w-full rounded-3xl border border-slate-200/70 dark:border-slate-800/60
             bg-white dark:bg-slate-900 color-transition overflow-hidden"
         >
-          {/* Nagłówek */}
           <div className="flex items-center justify-between px-7 md:px-8 pt-7 pb-5">
             <p className="text-[10px] font-black uppercase tracking-widest
               text-slate-400 dark:text-slate-500 color-transition">
               Aktualności
             </p>
-            {data.website && (
-              <a
-                href={`${data.website.replace(/\/$/, "")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-widest
-                  text-slate-400 dark:text-slate-500
-                  hover:text-slate-700 dark:hover:text-slate-200
-                  transition-colors color-transition"
-              >
-                Wszystkie
-                <ArrowTopRightOnSquareIcon className="h-3 w-3" />
-              </a>
-            )}
+            <a
+              href={data.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-widest
+                text-slate-400 dark:text-slate-500
+                hover:text-slate-700 dark:hover:text-slate-200
+                transition-colors color-transition"
+            >
+              Wszystkie
+              <ArrowTopRightOnSquareIcon className="h-3 w-3" />
+            </a>
           </div>
 
-          {/* Karuzela */}
           <div className="px-7 md:px-8 pb-7">
-
-            {/* Skeleton */}
             {newsLoading && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[...Array(2)].map((_, i) => (
@@ -384,7 +343,6 @@ export default function MinistryPage() {
 
             {!newsLoading && news.length > 0 && (
               <>
-                {/* Slajd */}
                 <div className="relative overflow-hidden">
                   <AnimatePresence mode="wait" custom={newsDir}>
                     <motion.div
@@ -422,12 +380,10 @@ export default function MinistryPage() {
                               ) : (
                                 <div className={`w-full h-full bg-gradient-to-br ${accentGradient}
                                   flex flex-col items-center justify-center gap-2 opacity-80`}>
-                                  {IconComponent && (
-                                    <IconComponent className="h-10 w-10 text-white/60" />
-                                  )}
+                                  <IconComponent className="h-10 w-10 text-white/60" />
                                   <span className="text-[10px] font-black uppercase tracking-widest
                                     text-white/50 px-4 text-center line-clamp-2">
-                                    {title}
+                                    Prezydent RP
                                   </span>
                                 </div>
                               )}
@@ -462,9 +418,7 @@ export default function MinistryPage() {
                   </AnimatePresence>
                 </div>
 
-                {/* Nawigacja */}
                 <div className="flex items-center justify-between mt-5">
-                  {/* Strzałki */}
                   <div className="flex items-center gap-2">
                     <button
                       onClick={goPrev}
@@ -492,7 +446,6 @@ export default function MinistryPage() {
                     </button>
                   </div>
 
-                  {/* Wskaźnik strony + kropki */}
                   <div className="flex items-center gap-3">
                     <div className="flex gap-1.5">
                       {Array.from({ length: totalNewsPages }).map((_, i) => (
@@ -551,7 +504,6 @@ export default function MinistryPage() {
           {/* Opis + Info */}
           <div className="flex flex-col gap-5">
 
-            {/* Opis */}
             <motion.div
               variants={sectionVariants}
               className="rounded-3xl border border-slate-200/70 dark:border-slate-800/60
@@ -559,14 +511,13 @@ export default function MinistryPage() {
             >
               <p className="text-[10px] font-black uppercase tracking-widest mb-4
                 text-slate-400 dark:text-slate-500 color-transition">
-                O {institutionType === "Ministerstwo" ? "ministerstwie" : "instytucji"}
+                O urzędzie
               </p>
               <p className="leading-relaxed text-slate-700 dark:text-slate-300 color-transition">
                 {data.description}
               </p>
             </motion.div>
 
-            {/* Blok informacyjny */}
             <motion.div
               variants={sectionVariants}
               className="rounded-3xl border border-slate-200/70 dark:border-slate-800/60
@@ -577,12 +528,7 @@ export default function MinistryPage() {
                 Informacje
               </p>
               <div className="space-y-3">
-                {[
-                  ["Nazwa instytucji", title],
-                  ["Typ", institutionType],
-                  ["Władza", "Wykonawcza"],
-                  ["Podlega", data.subordinateTo ?? "Radzie Ministrów"],
-                ].map(([label, value], i, arr) => (
+                {data.infoFields.map(([label, value], i, arr) => (
                   <div key={i}>
                     <div className="flex items-start justify-between gap-3">
                       <span className="text-xs font-bold shrink-0
@@ -599,29 +545,25 @@ export default function MinistryPage() {
                     )}
                   </div>
                 ))}
-                {data.website && (
-                  <>
-                    <div className="h-px bg-slate-100 dark:bg-slate-800 color-transition" />
-                    <a
-                      href={data.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between gap-2 group cursor-pointer"
-                    >
-                      <span className="text-xs font-bold
-                        text-slate-400 dark:text-slate-500 color-transition">
-                        Strona WWW
-                      </span>
-                      <span className="inline-flex items-center gap-1 text-xs font-black
-                        text-slate-500 dark:text-slate-400
-                        group-hover:text-slate-800 dark:group-hover:text-slate-100
-                        transition-colors color-transition">
-                        gov.pl
-                        <ArrowTopRightOnSquareIcon className="h-3 w-3" />
-                      </span>
-                    </a>
-                  </>
-                )}
+                <div className="h-px bg-slate-100 dark:bg-slate-800 color-transition" />
+                <a
+                  href={data.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between gap-2 group cursor-pointer"
+                >
+                  <span className="text-xs font-bold
+                    text-slate-400 dark:text-slate-500 color-transition">
+                    Strona WWW
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-xs font-black
+                    text-slate-500 dark:text-slate-400
+                    group-hover:text-slate-800 dark:group-hover:text-slate-100
+                    transition-colors color-transition">
+                    prezydent.pl
+                    <ArrowTopRightOnSquareIcon className="h-3 w-3" />
+                  </span>
+                </a>
               </div>
             </motion.div>
 

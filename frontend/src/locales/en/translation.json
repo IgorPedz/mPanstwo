@@ -2998,7 +2998,7 @@
             },
             "council_of_ministers": {
                 "title": "Council of Ministers",
-                "type": "government"
+                "type": "Council of Ministers"
             },
             "laws": {
                 "title": "Laws",
@@ -3006,11 +3006,11 @@
             },
             "presidential_chancellery": {
                 "title": "Presidential Chancellery",
-                "type": "presidency"
+                "type": "Presidential Chancellery"
             },
             "president": {
                 "title": "President",
-                "type": "presidency"
+                "type": "Office of the President"
             },
             "uokik": {
                 "title": "Office of Competition and Consumer Protection",
@@ -3102,7 +3102,7 @@
             },
             "chancellery_of_the_prime_minister": {
                 "title": "Chancellery of the Prime Minister",
-                "type": "government"
+                "type": "Chancellery"
             }
         }
     },

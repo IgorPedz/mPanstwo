@@ -3058,7 +3058,7 @@
             },
             "council_of_ministers": {
                 "title": "Ministerrat",
-                "type": "regierung"
+                "type": "Ministerrat"
             },
             "laws": {
                 "title": "Gesetze",
@@ -3066,11 +3066,11 @@
             },
             "presidential_chancellery": {
                 "title": "Präsidialkanzlei",
-                "type": "präsidentschaft"
+                "type": "Präsidialkanzlei"
             },
             "president": {
                 "title": "Präsident",
-                "type": "präsidentschaft"
+                "type": "Amt des Präsidenten"
             },
             "uokik": {
                 "title": "Amt für Wettbewerbs- und Verbraucherschutz",
@@ -3162,7 +3162,7 @@
             },
             "chancellery_of_the_prime_minister": {
                 "title": "Kanzlei des Premierministers",
-                "type": "regierung"
+                "type": "Kanzlei"
             }
         }
     },

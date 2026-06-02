@@ -2996,7 +2996,7 @@
             },
             "council_of_ministers": {
                 "title": "Rada Ministrów",
-                "type": "rząd"
+                "type": "Rada Ministrów"
             },
             "laws": {
                 "title": "Ustawy",
@@ -3004,11 +3004,11 @@
             },
             "presidential_chancellery": {
                 "title": "Kancelaria Prezydenta RP",
-                "type": "prezydentura"
+                "type": "Kancelaria Prezydenta RP"
             },
             "president": {
                 "title": "Prezydent RP",
-                "type": "prezydentura"
+                "type": "Urząd Prezydenta RP"
             },
             "uokik": {
                 "title": "UOKiK",
@@ -3100,7 +3100,7 @@
             },
             "chancellery_of_the_prime_minister": {
                 "title": "Kancelaria Prezesa Rady Ministrów",
-                "type": "rząd"
+                "type": "Kancelaria"
             }
         }
     },

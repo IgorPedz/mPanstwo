@@ -11,9 +11,13 @@ import { COLOR_MAP } from "../../../Utils/Maps/Colors";
 const NAVIGABLE_SLUGS = new Set([
   "chancellery_of_the_prime_minister",
   "council_of_ministers",
+  "presidential_chancellery",
 ]);
 
 const TILE_ROUTES = (slug, icon, accent) => {
+  if (slug === "president")          return { path: "/president", state: { icon, accent } };
+  if (slug === "sejm")               return { path: "/sejm",      state: { icon, accent } };
+  if (slug === "parliamentary_clubs") return { path: "/clubs",     state: { icon, accent } };
   if (slug?.startsWith("ministry_of_") || NAVIGABLE_SLUGS.has(slug))
     return { path: `/ministry/${slug}`, state: { icon, accent } };
   return null;
@@ -43,6 +47,7 @@ const Tile = ({ id, slug, icon, accent, onDelete, isLocked }) => {
   }, [isDragging]);
 
   const handleClick = () => {
+    if (!isLocked) return;
     if (dragOccurredRef.current) {
       dragOccurredRef.current = false;
       return;

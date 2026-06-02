@@ -24,7 +24,13 @@ export default function Dashboard() {
   const TILES_PER_PAGE = useTilesPerPage();
 
   const [showAddMenu, setShowAddMenu] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(
+    () => parseInt(sessionStorage.getItem("dashboard-page") ?? "0", 10) || 0
+  );
+
+  useEffect(() => {
+    sessionStorage.setItem("dashboard-page", String(currentPage));
+  }, [currentPage]);
 
   const [isLocked, setIsLocked] = useState(
     () => localStorage.getItem("layout-locked") === "true",
@@ -58,10 +64,11 @@ export default function Dashboard() {
   }, [tiles, currentPage, TILES_PER_PAGE]);
 
   useEffect(() => {
+    if (tiles.length === 0) return;
     if (currentPage > totalPages - 1) {
       setCurrentPage(totalPages - 1);
     }
-  }, [currentPage, totalPages]);
+  }, [currentPage, totalPages, tiles.length]);
 
   return (
     <div className="flex-1 p-4 sm:p-10 pb-10 min-h-dvh color-transition relative">

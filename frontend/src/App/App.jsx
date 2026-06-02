@@ -21,6 +21,9 @@ import ResetPasswordPage from "../pages/AuthPages/ResetPasswordPage";
 import CourseMapPage from "../pages/EducationPages/CourseMapPage";
 import LessonPage from "../pages/EducationPages/LessonPage";
 import MinistryPage from "../pages/InstitutionPages/MinistryPage";
+import PresidentPage from "../pages/InstitutionPages/PresidentPage";
+import SejmPage      from "../pages/InstitutionPages/SejmPage";
+import ClubsPage     from "../pages/InstitutionPages/ClubsPage";
 import { useUser } from "../Contexts/UserContext";
 import useNotifications from "../Hooks/useUnreadNotification";
 import ProtectedRoute from "../Utils/Routes/ProtectedRoutes";
@@ -139,6 +142,33 @@ function App() {
             element={
               <ProtectedRoute>
                 <MinistryPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/president"
+            element={
+              <ProtectedRoute>
+                <PresidentPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/sejm"
+            element={
+              <ProtectedRoute>
+                <SejmPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/clubs"
+            element={
+              <ProtectedRoute>
+                <ClubsPage />
               </ProtectedRoute>
             }
           />
