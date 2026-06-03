@@ -27,7 +27,7 @@ export default function Settings({ size = "md" }) {
       setCoords(
         openUpward
           ? { bottom: window.innerHeight - rect.top + 12, left: rect.left }
-          : { top: rect.bottom + 12, left: rect.left }
+          : { top: rect.bottom + 12, left: rect.left },
       );
     }
   }, [open]);
@@ -111,7 +111,7 @@ export default function Settings({ size = "md" }) {
               }}
               style={{
                 position: "fixed",
-                ...(coords.bottom != null ? { bottom: `${coords.bottom}px` } : { top: `${coords.top}px` }),
+                bottom: `${coords.bottom}px`,
                 left: `${coords.left}px`,
               }}
               className="
@@ -131,7 +131,6 @@ export default function Settings({ size = "md" }) {
               </div>
 
               <div className="p-5 space-y-5 color-transition">
-
                 <ThemeToggle />
 
                 <div className="color-transition h-px bg-slate-100 dark:bg-slate-800/50 color-transition" />
