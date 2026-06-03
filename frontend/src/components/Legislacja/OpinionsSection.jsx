@@ -8,6 +8,94 @@ import { useOpinions } from "../../Hooks/useLegislacja";
 import { useUser } from "../../Contexts/UserContext";
 import { formatDate } from "./legislacjaConstants";
 
+/* ── Konfiguracja ról ─────────────────────────────────────────────────────── */
+const ROLE_CFG = {
+  Ekspert:       { badge: "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400",  show: true },
+  Administrator: { badge: "bg-red-100   dark:bg-red-900/30   text-red-700   dark:text-red-400",    show: true },
+  Moderator:     { badge: "bg-blue-100  dark:bg-blue-900/30  text-blue-700  dark:text-blue-400",   show: true },
+  Użytkownik:    { badge: "",                                                                        show: false },
+};
+
+const isExpert = (role) => role === "Ekspert";
+
+/* ── Karta opinii ─────────────────────────────────────────────────────────── */
+function OpinionCard({ op }) {
+  const expert = isExpert(op.author_role);
+  const roleCfg = ROLE_CFG[op.author_role] ?? { badge: "bg-slate-100 dark:bg-slate-800 text-slate-600", show: true };
+
+  return (
+    <div
+      className={`relative rounded-[1.5rem] p-6 shadow-sm color-transition overflow-hidden
+        border transition-colors
+        ${expert
+          ? "border-amber-300 dark:border-amber-600 bg-amber-50/40 dark:bg-amber-950/10"
+          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+        }`}
+    >
+      {/* Pasek eksperta u góry */}
+      {expert && (
+        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400" />
+      )}
+
+      <div className="flex items-start justify-between gap-3 mb-3 flex-wrap">
+        {/* Autor + ranga + rola */}
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className={`text-sm font-black color-transition
+            ${expert ? "text-amber-800 dark:text-amber-200" : "text-slate-900 dark:text-white"}`}>
+            {op.author_name}
+          </span>
+
+          {/* Ranga */}
+          {op.rank_name && (
+            <span
+              className="text-[9px] font-black px-1.5 py-0.5 rounded-md text-white leading-none"
+              style={{ backgroundColor: op.rank_color || "#94a3b8" }}
+            >
+              {op.rank_name}
+            </span>
+          )}
+
+          {/* Rola (pomijamy "Użytkownik") */}
+          {roleCfg.show && (
+            <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-md leading-none ${roleCfg.badge}`}>
+              {op.author_role}
+            </span>
+          )}
+
+          {/* Gwiazdka eksperta */}
+          {expert && (
+            <span className="text-amber-500 text-xs leading-none" title="Opinia eksperta">✦</span>
+          )}
+        </div>
+
+        {/* Data */}
+        <div className="flex items-center gap-1.5 shrink-0">
+          <CalendarDaysIcon className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500" />
+          <span className="text-xs font-bold text-slate-400 dark:text-slate-500 color-transition">
+            {formatDate(op.created_at?.slice(0, 10))}
+          </span>
+        </div>
+      </div>
+
+      {/* Label "Opinia eksperta" */}
+      {expert && (
+        <div className="flex items-center gap-2 mb-3">
+          <div className="h-px flex-1 bg-gradient-to-r from-amber-300 to-transparent" />
+          <span className="text-[8px] font-black uppercase tracking-widest text-amber-500">
+            Opinia eksperta
+          </span>
+          <div className="h-px flex-1 bg-gradient-to-l from-amber-300 to-transparent" />
+        </div>
+      )}
+
+      <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300 color-transition">
+        {op.content}
+      </p>
+    </div>
+  );
+}
+
+/* ── Główny komponent ─────────────────────────────────────────────────────── */
 export default function OpinionsSection({ num }) {
   const { user } = useUser();
   const { opinions, loading, submitting, error, postOpinion } = useOpinions(num);
