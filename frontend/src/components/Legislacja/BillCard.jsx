@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
 import { CalendarDaysIcon, ChevronRightIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
-import { TYPE_BADGE, TYPE_LABELS, formatDate } from "./legislacjaConstants";
+import { TYPE_BADGE, TYPE_LABELS, TYPE_GRADIENT, formatDate } from "./legislacjaConstants";
 import { upwardItemVariants } from "../../Utils/Animations";
 
 export default function BillCard({ bill, onNavigate }) {
-  const badge = TYPE_BADGE[bill.type] ?? TYPE_BADGE.inny;
+  const badge    = TYPE_BADGE[bill.type]    ?? TYPE_BADGE.inny;
+  const gradient = TYPE_GRADIENT[bill.type] ?? TYPE_GRADIENT.inny;
 
   return (
     <motion.div
       variants={upwardItemVariants}
       whileHover={{ y: -4 }}
-      className="group relative bg-white dark:bg-slate-900 p-6 rounded-[1.5rem]
+      className="group relative bg-white dark:bg-slate-900 p-6 rounded-[1.5rem] overflow-hidden
         border border-slate-200 dark:border-slate-800 shadow-sm
         hover:border-indigo-200 dark:hover:border-indigo-800 hover:shadow-md
         transition-all duration-300 cursor-pointer color-transition h-full flex flex-col"
@@ -31,7 +32,7 @@ export default function BillCard({ bill, onNavigate }) {
         </div>
 
         <p className="text-sm font-bold leading-snug text-slate-900 dark:text-white color-transition
-          group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors line-clamp-3 flex-1">
+          transition-colors line-clamp-3 flex-1">
           {bill.title}
         </p>
 
@@ -58,8 +59,8 @@ export default function BillCard({ bill, onNavigate }) {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 h-1 w-0 group-hover:w-full
-        transition-all duration-700 bg-gradient-to-r from-indigo-700 to-indigo-500 rounded-b-[1.5rem]" />
+      <div className={`absolute bottom-0 left-0 h-1 w-0 group-hover:w-full
+        transition-all duration-700 bg-gradient-to-r ${gradient}`} />
     </motion.div>
   );
 }

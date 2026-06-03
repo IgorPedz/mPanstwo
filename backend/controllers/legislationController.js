@@ -175,9 +175,23 @@ async function getOpinions(req, res) {
   try {
     const { num } = req.params;
     const [rows] = await db.query(
-      `SELECT lo.id, lo.content, lo.created_at, u.name AS author_name
+      `SELECT
+         lo.id,
+         lo.content,
+         lo.created_at,
+         u.name  AS author_name,
+         u.role  AS author_role,
+         r.name  AS rank_name,
+         r.color AS rank_color,
+         r.level AS rank_level
        FROM legislation_opinions lo
        JOIN users u ON lo.user_id = u.id
+       LEFT JOIN ranks r ON r.id = (
+         SELECT id FROM ranks
+         WHERE required_xp <= u.xp
+         ORDER BY required_xp DESC
+         LIMIT 1
+       )
        WHERE lo.print_num = ?
        ORDER BY lo.created_at DESC`,
       [num]
@@ -207,9 +221,23 @@ async function postOpinion(req, res) {
     await handleEvent(userId, "OPINION_POSTED");
 
     const [rows] = await db.query(
-      `SELECT lo.id, lo.content, lo.created_at, u.name AS author_name
+      `SELECT
+         lo.id,
+         lo.content,
+         lo.created_at,
+         u.name  AS author_name,
+         u.role  AS author_role,
+         r.name  AS rank_name,
+         r.color AS rank_color,
+         r.level AS rank_level
        FROM legislation_opinions lo
        JOIN users u ON lo.user_id = u.id
+       LEFT JOIN ranks r ON r.id = (
+         SELECT id FROM ranks
+         WHERE required_xp <= u.xp
+         ORDER BY required_xp DESC
+         LIMIT 1
+       )
        WHERE lo.print_num = ?
        ORDER BY lo.created_at DESC`,
       [num]

@@ -7,13 +7,23 @@ import {
 import { useOpinions } from "../../Hooks/useLegislacja";
 import { useUser } from "../../Contexts/UserContext";
 import { formatDate } from "./legislacjaConstants";
-
-/* ── Konfiguracja ról ─────────────────────────────────────────────────────── */
+import { useTranslation } from "react-i18next";
 const ROLE_CFG = {
-  Ekspert:       { badge: "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400",  show: true },
-  Administrator: { badge: "bg-red-100   dark:bg-red-900/30   text-red-700   dark:text-red-400",    show: true },
-  Moderator:     { badge: "bg-blue-100  dark:bg-blue-900/30  text-blue-700  dark:text-blue-400",   show: true },
-  Użytkownik:    { badge: "",                                                                        show: false },
+  Ekspert: {
+    badge:
+      "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400",
+    show: true,
+  },
+  Administrator: {
+    badge: "bg-red-100   dark:bg-red-900/30   text-red-700   dark:text-red-400",
+    show: true,
+  },
+  Moderator: {
+    badge:
+      "bg-blue-100  dark:bg-blue-900/30  text-blue-700  dark:text-blue-400",
+    show: true,
+  },
+  Użytkownik: { badge: "", show: false },
 };
 
 const isExpert = (role) => role === "Ekspert";
@@ -21,15 +31,19 @@ const isExpert = (role) => role === "Ekspert";
 /* ── Karta opinii ─────────────────────────────────────────────────────────── */
 function OpinionCard({ op }) {
   const expert = isExpert(op.author_role);
-  const roleCfg = ROLE_CFG[op.author_role] ?? { badge: "bg-slate-100 dark:bg-slate-800 text-slate-600", show: true };
-
+  const roleCfg = ROLE_CFG[op.author_role] ?? {
+    badge: "bg-slate-100 dark:bg-slate-800 text-slate-600",
+    show: true,
+  };
+  const { t } = useTranslation();
   return (
     <div
       className={`relative rounded-[1.5rem] p-6 shadow-sm color-transition overflow-hidden
         border transition-colors
-        ${expert
-          ? "border-amber-300 dark:border-amber-600 bg-amber-50/40 dark:bg-amber-950/10"
-          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+        ${
+          expert
+            ? "border-amber-300 dark:border-amber-600 bg-amber-50/40 dark:bg-amber-950/10"
+            : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
         }`}
     >
       {/* Pasek eksperta u góry */}
@@ -40,8 +54,10 @@ function OpinionCard({ op }) {
       <div className="flex items-start justify-between gap-3 mb-3 flex-wrap">
         {/* Autor + ranga + rola */}
         <div className="flex items-center gap-2 flex-wrap">
-          <span className={`text-sm font-black color-transition
-            ${expert ? "text-amber-800 dark:text-amber-200" : "text-slate-900 dark:text-white"}`}>
+          <span
+            className={`text-sm font-black color-transition
+            ${expert ? "text-amber-800 dark:text-amber-200" : "text-slate-900 dark:text-white"}`}
+          >
             {op.author_name}
           </span>
 
@@ -51,20 +67,27 @@ function OpinionCard({ op }) {
               className="text-[9px] font-black px-1.5 py-0.5 rounded-md text-white leading-none"
               style={{ backgroundColor: op.rank_color || "#94a3b8" }}
             >
-              {op.rank_name}
+              {t(`achievements.ranks.${op.rank_name}.name`)}
             </span>
           )}
 
           {/* Rola (pomijamy "Użytkownik") */}
           {roleCfg.show && (
-            <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-md leading-none ${roleCfg.badge}`}>
+            <span
+              className={`text-[9px] font-black px-1.5 py-0.5 rounded-md leading-none ${roleCfg.badge}`}
+            >
               {op.author_role}
             </span>
           )}
 
           {/* Gwiazdka eksperta */}
           {expert && (
-            <span className="text-amber-500 text-xs leading-none" title="Opinia eksperta">✦</span>
+            <span
+              className="text-amber-500 text-xs leading-none"
+              title="Opinia eksperta"
+            >
+              ✦
+            </span>
           )}
         </div>
 
@@ -95,10 +118,10 @@ function OpinionCard({ op }) {
   );
 }
 
-/* ── Główny komponent ─────────────────────────────────────────────────────── */
 export default function OpinionsSection({ num }) {
   const { user } = useUser();
-  const { opinions, loading, submitting, error, postOpinion } = useOpinions(num);
+  const { opinions, loading, submitting, error, postOpinion } =
+    useOpinions(num);
   const [text, setText] = useState("");
 
   async function handleSubmit(e) {
@@ -110,6 +133,7 @@ export default function OpinionsSection({ num }) {
 
   return (
     <div className="space-y-6">
+      {/* Formularz */}
       {user?.id ? (
         <form
           onSubmit={handleSubmit}
@@ -158,18 +182,24 @@ export default function OpinionsSection({ num }) {
           </div>
         </form>
       ) : (
-        <div className="bg-slate-50 dark:bg-slate-800/40 rounded-[1.5rem]
-          border border-slate-200 dark:border-slate-800 p-6 color-transition">
+        <div
+          className="bg-slate-50 dark:bg-slate-800/40 rounded-[1.5rem]
+          border border-slate-200 dark:border-slate-800 p-6 color-transition"
+        >
           <p className="text-sm font-medium text-slate-400 dark:text-slate-500 color-transition">
             Zaloguj się, żeby dodać swoją opinię.
           </p>
         </div>
       )}
 
+      {/* Lista opinii */}
       {loading ? (
         <div className="space-y-3 animate-pulse">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="h-24 rounded-[1.5rem] bg-slate-100 dark:bg-slate-800 color-transition" />
+            <div
+              key={i}
+              className="h-24 rounded-[1.5rem] bg-slate-100 dark:bg-slate-800 color-transition"
+            />
           ))}
         </div>
       ) : opinions.length === 0 ? (
@@ -179,26 +209,7 @@ export default function OpinionsSection({ num }) {
       ) : (
         <div className="space-y-3">
           {opinions.map((op) => (
-            <div
-              key={op.id}
-              className="bg-white dark:bg-slate-900 p-6 rounded-[1.5rem]
-                border border-slate-200 dark:border-slate-800 shadow-sm color-transition"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-sm font-black text-slate-900 dark:text-white color-transition">
-                  {op.author_name}
-                </span>
-                <div className="flex items-center gap-1.5">
-                  <CalendarDaysIcon className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500" />
-                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500 color-transition">
-                    {formatDate(op.created_at?.slice(0, 10))}
-                  </span>
-                </div>
-              </div>
-              <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300 color-transition">
-                {op.content}
-              </p>
-            </div>
+            <OpinionCard key={op.id} op={op} />
           ))}
         </div>
       )}

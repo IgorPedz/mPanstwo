@@ -3042,7 +3042,7 @@
     },
     "documents": {
         "documents": "Dokumenty",
-        "page": "Strona /",
+        "page": "Strona",
         "description": "Najważniejsze dokumenty dotyczące funkcjonowania strony i jej prawnych aspektów.",
         "download": "Pobierz",
         "size": "Rozmiar",
@@ -3146,6 +3146,10 @@
                 "answer": "Wszystkie kary są przewidziane w regulaminie platformy."
             }
         }
+    },
+    "facts":{
+        "facts": "O danych",
+        "description": "Poniżej znajdziesz najważniejsze informacje o danych, które gromadzimy i jak je wykorzystujemy. Naszym celem jest zapewnienie transparentności i zaufania, dlatego dokładamy wszelkich starań, abyś miał pełną kontrolę nad swoimi danymi. Dowiedz się więcej o tym, jakie dane zbieramy, w jakim celu i jak je chronimy."
     },
     "dashboard": {
         "dashboard": "Pulpit",

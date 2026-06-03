@@ -17,7 +17,7 @@ export default function DocumentsPage() {
       variants={pageVariants}
       initial="hidden"
       animate="show"
-      className="min-h-screen w-full px-6 py-12 md:py-20 flex justify-center color-transition"
+      className="min-h-screen w-full px-7 py-8 flex justify-center color-transition"
     >
       <div className="w-full max-w-[1800px] space-y-16 color-transition">
         {!isLoggedIn && (

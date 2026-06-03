@@ -17,7 +17,6 @@ export const useNavData = () => {
       title: t("nav.sections.education"),
       items: [
         { name: t("nav.items.courses"), icon: "courses", href: "/courses" },
-        { name: t("nav.items.tutorial"), icon: "courses", href: "/tutorial" },
       ],
     },
     {

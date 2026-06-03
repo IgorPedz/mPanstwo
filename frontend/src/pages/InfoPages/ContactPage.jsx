@@ -24,7 +24,7 @@ export default function ContactPage() {
         variants={pageVariants}
         initial="hidden"
         animate="show"
-        className="px-6 py-16 md:py-24 flex justify-center w-full color-transition"
+        className="px-7 py-8 flex justify-center w-full color-transition"
       >
         <div className="w-full max-w-[1800px] space-y-16 relative color-transition">
           <motion.div

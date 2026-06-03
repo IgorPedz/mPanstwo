@@ -2984,7 +2984,7 @@
     },
     "documents": {
         "documents": "Dokumente",
-        "page": "Seite /",
+        "page": "Seite",
         "description": "Wichtige Dokumente bezüglich der Funktionsweise der Website und ihrer rechtlichen Aspekte.",
         "download": "Herunterladen",
         "size": "Größe",
@@ -3089,6 +3089,10 @@
             }
         }
     },
+    "facts": {
+        "facts": "Über die Daten",
+        "description": "Die Daten, die wir verwenden, werden von offiziellen Regierungsquellen gesammelt, wie z.B. der Sejm, der Senat, die Ministerien und andere öffentliche Institutionen. Wir stellen sicher, dass alle Informationen genau und aktuell sind, um Ihnen zuverlässige Einblicke in das Funktionieren der polnischen Regierung und öffentlichen Verwaltung zu geben."
+     },
     "dashboard": {
         "dashboard": "Dashboard",
         "welcome": "Willkommen, {{name}}!",

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
 import { upwardItemVariants } from "../../Utils/Animations";
+import { getPdfUrl } from "./legislacjaConstants";
 
 export default function BillTitleCard({ title, sejmUrl, pdfAttachments, num }) {
   return (
@@ -27,7 +28,7 @@ export default function BillTitleCard({ title, sejmUrl, pdfAttachments, num }) {
         </a>
         {pdfAttachments.slice(0, 3).map((a, i) => {
           const name = typeof a === "string" ? a : a?.name;
-          const url  = `https://orka.sejm.gov.pl/Druki10ka.nsf/0/${num}/$File/${name}`;
+          const url  = getPdfUrl(num, name);
           return (
             <a
               key={i}

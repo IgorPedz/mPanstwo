@@ -22,11 +22,13 @@ export default function Settings({ size = "md" }) {
   useEffect(() => {
     if (open && buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
+      const openUpward = rect.top > window.innerHeight / 2;
 
-      setCoords({
-        bottom: window.innerHeight - rect.top + 12,
-        left: rect.left,
-      });
+      setCoords(
+        openUpward
+          ? { bottom: window.innerHeight - rect.top + 12, left: rect.left }
+          : { top: rect.bottom + 12, left: rect.left }
+      );
     }
   }, [open]);
 
@@ -109,7 +111,7 @@ export default function Settings({ size = "md" }) {
               }}
               style={{
                 position: "fixed",
-                bottom: `${coords.bottom}px`,
+                ...(coords.bottom != null ? { bottom: `${coords.bottom}px` } : { top: `${coords.top}px` }),
                 left: `${coords.left}px`,
               }}
               className="

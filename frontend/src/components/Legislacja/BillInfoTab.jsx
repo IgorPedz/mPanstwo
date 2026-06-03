@@ -1,5 +1,5 @@
 import { DocumentTextIcon } from "@heroicons/react/24/outline";
-import { TYPE_LABELS, formatDate } from "./legislacjaConstants";
+import { TYPE_LABELS, formatDate, getPdfUrl } from "./legislacjaConstants";
 
 export default function BillInfoTab({ data, pdfAttachments, num }) {
   return (
@@ -59,7 +59,7 @@ export default function BillInfoTab({ data, pdfAttachments, num }) {
             <div className="flex flex-wrap gap-2">
               {pdfAttachments.map((a, i) => {
                 const name = typeof a === "string" ? a : a?.name;
-                const url  = `https://orka.sejm.gov.pl/Druki10ka.nsf/0/${num}/$File/${name}`;
+                const url  = getPdfUrl(num, name);
                 return (
                   <a
                     key={i}

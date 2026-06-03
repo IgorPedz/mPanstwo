@@ -19,6 +19,16 @@ export const TYPE_BADGE = {
   inny:        "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300",
 };
 
+export const TYPE_GRADIENT = {
+  rzadowy:     "from-blue-700   to-blue-500",
+  poselski:    "from-green-700  to-green-500",
+  senacki:     "from-purple-700 to-purple-500",
+  obywatelski: "from-amber-700  to-amber-500",
+  prezydencki: "from-red-700    to-red-500",
+  pilny:       "from-orange-700 to-orange-500",
+  inny:        "from-slate-600  to-slate-400",
+};
+
 export const TYPE_LABELS = {
   rzadowy:     "Rządowy",
   poselski:    "Poselski",
@@ -28,6 +38,11 @@ export const TYPE_LABELS = {
   pilny:       "Pilny",
   inny:        "Inny",
 };
+
+/** Bezpośredni link do PDF z API Sejmu: /prints/{num}/{filename} */
+export function getPdfUrl(printNum, filename) {
+  return `https://api.sejm.gov.pl/sejm/term10/prints/${printNum}/${filename}`;
+}
 
 export function formatDate(str) {
   if (!str) return null;

@@ -21,17 +21,14 @@ export default function FAQPage() {
   const { user } = useUser();
   const isLoggedIn = !!user?.id;
 
-  const { faqs: filteredFAQs, categories } = useFAQ(
-    searchTerm,
-    activeCategory
-  );
+  const { faqs: filteredFAQs, categories } = useFAQ(searchTerm, activeCategory);
 
   return (
     <motion.div
       variants={pageVariants}
       initial="hidden"
       animate="show"
-      className="w-full min-h-screen flex flex-col items-center px-6 py-12 md:py-20 relative color-transition"
+      className="w-full min-h-screen flex flex-col items-center px-7 py-8 relative color-transition"
     >
       <div className="w-full max-w-[1800px] space-y-12 color-transition">
         {!isLoggedIn && <ReturnBtn />}
@@ -59,9 +56,7 @@ export default function FAQPage() {
           <FAQList
             faqs={filteredFAQs}
             openIndex={openIndex}
-            onToggle={(i) =>
-              setOpenIndex(openIndex === i ? null : i)
-            }
+            onToggle={(i) => setOpenIndex(openIndex === i ? null : i)}
           />
         </div>
       </div>

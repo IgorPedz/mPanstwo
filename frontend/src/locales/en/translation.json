@@ -3044,7 +3044,7 @@
     },
     "documents": {
         "documents": "Documents",
-        "page": "Page /",
+        "page": "Page",
         "description": "Important documents regarding the functioning of the website and its legal aspects.",
         "download": "Download",
         "size": "Size",
@@ -3149,6 +3149,10 @@
             }
         }
     },
+    "facts": {
+        "facts": "About the data",
+        "description": "The data we are using is collected from official government sources, such as the Sejm, Senate, ministries, and other public institutions. We ensure that all information is accurate and up-to-date, providing you with reliable insights into the workings of the Polish government and public administration."
+     },
     "dashboard": {
         "dashboard": "Dashboard",
         "welcome": "Welcome, {{name}}!",

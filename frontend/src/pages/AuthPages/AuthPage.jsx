@@ -11,6 +11,7 @@ import useAuthSubmit from "../../Hooks/useAuthSubmit";
 
 import InfoMessage from "../../components/Global/InfoMessage";
 import LoginFooter from "../../components/Global/LoginFooter";
+import Settings from "../../components/Global/Settings";
 
 import ImageSlider from "../../components/Global/ImageSlider/ImagesSlider";
 import slides from "../../components/Global/ImageSlider/AuthSlides";
@@ -78,6 +79,9 @@ export default function AuthPage() {
           px-8 py-12 relative z-10
         "
       >
+        <div className="absolute top-4 right-4 w-fit">
+          <Settings size="sm" />
+        </div>
         <div className="w-full max-w-md">
           <div className="mb-10">
             <h1
