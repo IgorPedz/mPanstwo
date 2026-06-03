@@ -22,9 +22,9 @@ export default function ClubsPage() {
   const sortedClubs = useMemo(
     () =>
       [...clubs].sort((a, b) => {
-        if (a.id === INDEPENDENT_CLUB_ID) return 1;
-        if (b.id === INDEPENDENT_CLUB_ID) return -1;
-        return b.membersCount - a.membersCount;
+      if (a.id === INDEPENDENT_CLUB_ID) return 1;
+      if (b.id === INDEPENDENT_CLUB_ID) return -1;
+      return b.membersCount - a.membersCount;
       }),
     [clubs],
   );
