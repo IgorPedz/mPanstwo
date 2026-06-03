@@ -3,8 +3,8 @@ export const NavData = [
     key: "main",
     title: "nav.sections.main",
     items: [
-      { name: "nav.items.dashboard", icon: "dashboard", href: "/dashboard", activeFor: ["/ministry/", "/president"] },
-      { name: "nav.items.ministries", icon: "ministry", href: "/ministries" },
+      { name: "nav.items.dashboard",   icon: "dashboard", href: "/dashboard", activeFor: ["/ministry/", "/president"] },
+      { name: "nav.items.legislation", icon: "document",  href: "/legislation", activeFor: ["/legislation/"] },
     ],
   },
   {
@@ -30,8 +30,9 @@ export const NavData = [
     title: "nav.sections.page",
     items: [
       { name: "nav.items.documents", icon: "documents", href: "/documents" },
-      { name: "nav.items.contact", icon: "contact", href: "/contact" },
-      { name: "nav.items.help", icon: "about", href: "/faq" },
+      { name: "nav.items.contact",   icon: "contact",   href: "/contact" },
+      { name: "nav.items.help",      icon: "about",     href: "/faq" },
+      { name: "nav.items.dataInfo",  icon: "info",      href: "/facts" },
     ],
   },
 ];

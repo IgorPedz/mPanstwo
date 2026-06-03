@@ -52,8 +52,12 @@ const EVENT_CONFIG = {
   },
 
   OPINION_POSTED: {
-    icon: "opinion_posted",
+    icon: "messages",
+    color: "sky",
     title: "Dodano opinię",
+    xp: 10,
+    metricKey: "opinions_written",
+    metric_source: "users_metrics",
   },
 
   COURSES_COMPLETED: {
@@ -69,6 +73,13 @@ const EVENT_CONFIG = {
     color: "amber",
     title: "Awans rangi",
     message: "Awansowałeś na rangę {{rankName}}",
+  },
+
+  MP_RATED: {
+    xp: 5,
+    metricKey: "mps_rated",
+    metric_source: "users_metrics",
+    silent: true,
   },
 };
 

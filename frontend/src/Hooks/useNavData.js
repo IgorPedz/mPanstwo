@@ -5,14 +5,15 @@ export const useNavData = () => {
 
   return [
     {
-      key: "main", // <-- DODANE
+      key: "main", 
       title: t("nav.sections.main"),
       items: [
         { name: t("nav.items.dashboard"), icon: "dashboard", href: "/dashboard", activeFor: ["/ministry/", "/president", "/sejm", "/senat", "/clubs", "/instytucja/"] },
+        { name: t("nav.items.legislation"), icon: "document", href: "/legislation", activeFor: ["/legislation/"] },
       ],
     },
     {
-      key: "education", // <-- DODANE
+      key: "education",
       title: t("nav.sections.education"),
       items: [
         { name: t("nav.items.courses"), icon: "courses", href: "/courses" },
@@ -20,7 +21,7 @@ export const useNavData = () => {
       ],
     },
     {
-      key: "profile", // <-- DODANE
+      key: "profile",
       title: t("profile.myProfile"),
       items: [
         { name: t("nav.items.myProfile"), icon: "profile", href: "/profile" },
@@ -35,12 +36,13 @@ export const useNavData = () => {
       ],
     },
     {
-      key: "page", // <-- DODANE
+      key: "page",
       title: t("nav.sections.page"),
       items: [
         { name: t("nav.items.documents"), icon: "documents", href: "/documents" },
         { name: t("nav.items.contact"), icon: "contact", href: "/contact" },
         { name: t("nav.items.help"), icon: "about", href: "/faq" },
+        { name: t("nav.items.facts"), icon: "info", href: "/facts" },
       ],
     },
   ];

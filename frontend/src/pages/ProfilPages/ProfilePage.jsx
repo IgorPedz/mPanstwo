@@ -74,7 +74,7 @@ export default function ProfilePage() {
           </div>
         </header>
 
-        <ProfileSecurityGrid/>
+        <ProfileSecurityGrid />
       </div>
     </motion.div>
   );

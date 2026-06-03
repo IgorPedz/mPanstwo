@@ -15,9 +15,12 @@
             "achievements": "Achievements",
             "surveyBox": "Survey Box",
             "notifications": "Notifications",
+            "legislation": "Legislation",
+            "dataInfo": "Data Reliability",
             "documents": "Documents",
             "contact": "Contact",
-            "help": "Help"
+            "help": "Help",
+            "facts": "About Data"
         }
     },
     "auth": {
@@ -309,6 +312,74 @@
                 "title": "Full Cycle",
                 "desc": "One full year of uninterrupted presence"
             },
+            "mp_rated_1": {
+                "title": "First Opinion",
+                "desc": "Rate your first MP"
+            },
+            "mp_rated_10": {
+                "title": "Seasoned Observer",
+                "desc": "Rate 10 MPs"
+            },
+            "mp_rated_100": {
+                "title": "Parliament Analyst",
+                "desc": "Rate 100 MPs"
+            },
+            "mp_rated_all": {
+                "title": "Voice of the Nation",
+                "desc": "Rate all 460 MPs of the 10th term"
+            },
+            "club_rated_ko": {
+                "title": "Civic Gaze",
+                "desc": "Rate every MP in Koalicja Obywatelska"
+            },
+            "club_rated_lewica": {
+                "title": "Left Perspective",
+                "desc": "Rate every MP in Lewica"
+            },
+            "club_rated_razem": {
+                "title": "Together We Judge",
+                "desc": "Rate every MP in Razem"
+            },
+            "club_rated_psl_td": {
+                "title": "Third Way",
+                "desc": "Rate every MP in PSL-TD"
+            },
+            "club_rated_polska2050": {
+                "title": "New Poland",
+                "desc": "Rate every MP in Polska2050"
+            },
+            "club_rated_pis": {
+                "title": "Law and Duty",
+                "desc": "Rate every MP in PiS"
+            },
+            "club_rated_konfederacja": {
+                "title": "Confederation Test",
+                "desc": "Rate every MP in Konfederacja"
+            },
+            "club_rated_konfederacja_kp": {
+                "title": "Crown and Pact",
+                "desc": "Rate every MP in Konfederacja KP"
+            },
+            "club_rated_centrum": {
+                "title": "Center Stage",
+                "desc": "Rate every MP in the Centrum group"
+            },
+            "club_rated_demokracja": {
+                "title": "Democratic View",
+                "desc": "Rate every MP in the Demokracja group"
+            },
+            "clubs_all_rated": {
+                "title": "Impartial Observer",
+                "desc": "Rate at least one MP from each of the 10 clubs and groups"
+            },
+            "coalition_all_rated": {
+                "title": "Coalition Watchdog",
+                "desc": "Rate every MP in the ruling coalition"
+            },
+            "opposition_all_rated": {
+                "title": "Voice of Opposition",
+                "desc": "Rate every MP in the opposition"
+            },
             "module_1": {
                 "title": "First Step",
                 "desc": "Complete your first module and begin your journey"
@@ -348,6 +419,26 @@
             "lesson_100": {
                 "title": "Learning Machine",
                 "desc": "Complete 100 lessons"
+            },
+            "opinions_1": {
+                "title": "First Opinion",
+                "desc": "Write your first opinion"
+            },
+            "opinions_10": {
+                "title": "Voice of Reason",
+                "desc": "Write 10 opinions"
+            },
+            "opinions_25": {
+                "title": "Political Analyst",
+                "desc": "Write 25 opinions"
+            },
+            "opinions_50": {
+                "title": "Opinion Analyst",
+                "desc": "Write 50 opinions"
+            },
+            "opinions_100": {
+                "title": "Master of Argumentation",
+                "desc": "Write 100 opinions"
             }
         }
     },
@@ -1190,52 +1281,92 @@
                 "questions": [
                     {
                         "question": "How long is the term of the Sejm and Senate?",
-                        "answers": ["2 years", "4 years", "6 years"],
+                        "answers": [
+                            "2 years",
+                            "4 years",
+                            "6 years"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "How many MPs sit in the Polish Sejm?",
-                        "answers": ["360", "460", "560"],
+                        "answers": [
+                            "360",
+                            "460",
+                            "560"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "How many senators are in the Polish Senate?",
-                        "answers": ["100", "120", "150"],
+                        "answers": [
+                            "100",
+                            "120",
+                            "150"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Who can submit a bill to the Sejm?",
-                        "answers": ["Only MPs", "Only the Council of Ministers", "MPs, Senate, President, Council of Ministers, and citizens"],
+                        "answers": [
+                            "Only MPs",
+                            "Only the Council of Ministers",
+                            "MPs, Senate, President, Council of Ministers, and citizens"
+                        ],
                         "correct": 2
                     },
                     {
                         "question": "How many readings does a bill go through in the Sejm?",
-                        "answers": ["1", "2", "3"],
+                        "answers": [
+                            "1",
+                            "2",
+                            "3"
+                        ],
                         "correct": 2
                     },
                     {
                         "question": "Which body tries the highest officials for violating the Constitution?",
-                        "answers": ["Supreme Court", "State Tribunal", "Constitutional Tribunal"],
+                        "answers": [
+                            "Supreme Court",
+                            "State Tribunal",
+                            "Constitutional Tribunal"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "What is a presidential veto?",
-                        "answers": ["The President's refusal to sign a bill", "The Senate's rejection of a bill", "The Prime Minister's motion to reject a bill"],
+                        "answers": [
+                            "The President's refusal to sign a bill",
+                            "The Senate's rejection of a bill",
+                            "The Prime Minister's motion to reject a bill"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "What is parliamentary immunity?",
-                        "answers": ["A salary privilege for MPs", "Protection of an MP from criminal liability for parliamentary activities", "A ban on holding other positions"],
+                        "answers": [
+                            "A salary privilege for MPs",
+                            "Protection of an MP from criminal liability for parliamentary activities",
+                            "A ban on holding other positions"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Can an MP waive their own immunity?",
-                        "answers": ["Yes", "No", "Only with the Speaker's approval"],
+                        "answers": [
+                            "Yes",
+                            "No",
+                            "Only with the Speaker's approval"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "What is the Council of Elders (Konwent Seniorów) in the Sejm?",
-                        "answers": ["A council of the oldest MPs", "A body ensuring cooperation between parliamentary clubs and circles", "A historical committee of the Sejm"],
+                        "answers": [
+                            "A council of the oldest MPs",
+                            "A body ensuring cooperation between parliamentary clubs and circles",
+                            "A historical committee of the Sejm"
+                        ],
                         "correct": 1
                     }
                 ]
@@ -1949,52 +2080,92 @@
                 "questions": [
                     {
                         "question": "Who forms the dual executive power in Poland?",
-                        "answers": ["Sejm and Senate", "President and Council of Ministers", "Prime Minister and Speaker of the Sejm"],
+                        "answers": [
+                            "Sejm and Senate",
+                            "President and Council of Ministers",
+                            "Prime Minister and Speaker of the Sejm"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Who conducts the day-to-day internal and foreign policy of the state?",
-                        "answers": ["The President", "The Council of Ministers", "The Speaker of the Sejm"],
+                        "answers": [
+                            "The President",
+                            "The Council of Ministers",
+                            "The Speaker of the Sejm"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "What is a vote of confidence?",
-                        "answers": ["A Sejm vote supporting the government's activities", "The dismissal of a minister by the Sejm", "A motion for the Prime Minister's resignation"],
+                        "answers": [
+                            "A Sejm vote supporting the government's activities",
+                            "The dismissal of a minister by the Sejm",
+                            "A motion for the Prime Minister's resignation"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "What does a constructive vote of no confidence involve?",
-                        "answers": ["Dismissing the government without naming a new Prime Minister", "Dismissing the government while simultaneously electing a new Prime Minister", "The President's motion to dismiss the government"],
+                        "answers": [
+                            "Dismissing the government without naming a new Prime Minister",
+                            "Dismissing the government while simultaneously electing a new Prime Minister",
+                            "The President's motion to dismiss the government"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "What is a countersignature (kontrasygnata)?",
-                        "answers": ["The Prime Minister's or minister's signature on a presidential act", "The President's signature on Sejm bills", "The Senate's veto of bills"],
+                        "answers": [
+                            "The Prime Minister's or minister's signature on a presidential act",
+                            "The President's signature on Sejm bills",
+                            "The Senate's veto of bills"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Who is the supreme commander of the Armed Forces in peacetime?",
-                        "answers": ["Prime Minister", "President through the Ministry of National Defence", "Minister of National Defence"],
+                        "answers": [
+                            "Prime Minister",
+                            "President through the Ministry of National Defence",
+                            "Minister of National Defence"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "What is the Cabinet Council (Rada Gabinetowa)?",
-                        "answers": ["A government session chaired by the President without the government's decision-making powers", "A permanent body coordinating ministerial work", "A parliamentary commission on government affairs"],
+                        "answers": [
+                            "A government session chaired by the President without the government's decision-making powers",
+                            "A permanent body coordinating ministerial work",
+                            "A parliamentary commission on government affairs"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Who appoints and dismisses ministers?",
-                        "answers": ["The Sejm on the Prime Minister's motion", "The President on the motion of the Prime Minister", "The Prime Minister independently"],
+                        "answers": [
+                            "The Sejm on the Prime Minister's motion",
+                            "The President on the motion of the Prime Minister",
+                            "The Prime Minister independently"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "What role does the Prime Minister play?",
-                        "answers": ["Leads the Council of Ministers and coordinates the government's work", "Represents Poland abroad as head of state", "Chairs the sessions of the Sejm"],
+                        "answers": [
+                            "Leads the Council of Ministers and coordinates the government's work",
+                            "Represents Poland abroad as head of state",
+                            "Chairs the sessions of the Sejm"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "What are presidential prerogatives?",
-                        "answers": ["Presidential powers requiring the Prime Minister's countersignature", "Personal presidential powers not requiring a countersignature", "Special Sejm powers over the President"],
+                        "answers": [
+                            "Presidential powers requiring the Prime Minister's countersignature",
+                            "Personal presidential powers not requiring a countersignature",
+                            "Special Sejm powers over the President"
+                        ],
                         "correct": 1
                     }
                 ]
@@ -2708,52 +2879,92 @@
                 "questions": [
                     {
                         "question": "To whom are independent judges in Poland subordinate?",
-                        "answers": ["The President", "The Prime Minister", "Only the Constitution and laws"],
+                        "answers": [
+                            "The President",
+                            "The Prime Minister",
+                            "Only the Constitution and laws"
+                        ],
                         "correct": 2
                     },
                     {
                         "question": "How many instances does court proceedings in Poland have?",
-                        "answers": ["Single-instance", "At least two-instance", "Four-instance"],
+                        "answers": [
+                            "Single-instance",
+                            "At least two-instance",
+                            "Four-instance"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "What role does the Supreme Court play?",
-                        "answers": ["It handles all first-instance cases", "It exercises jurisdictional supervision over common and military courts", "It rules on the compliance of laws with the Constitution"],
+                        "answers": [
+                            "It handles all first-instance cases",
+                            "It exercises jurisdictional supervision over common and military courts",
+                            "It rules on the compliance of laws with the Constitution"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "What is the Constitutional Tribunal?",
-                        "answers": ["A court ruling on the compliance of law with the Constitution", "A body for punishing senior officials", "The highest appellate court"],
+                        "answers": [
+                            "A court ruling on the compliance of law with the Constitution",
+                            "A body for punishing senior officials",
+                            "The highest appellate court"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "What is the role of the Prosecutor General?",
-                        "answers": ["Chairs the Supreme Court", "Heads the prosecutor's office and supervises investigations", "Appoints judges of common courts"],
+                        "answers": [
+                            "Chairs the Supreme Court",
+                            "Heads the prosecutor's office and supervises investigations",
+                            "Appoints judges of common courts"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "What is cassation in court proceedings?",
-                        "answers": ["An extraordinary remedy reviewed by the Supreme Court", "Cancellation of a judge's mandate", "An appeal to an appellate court"],
+                        "answers": [
+                            "An extraordinary remedy reviewed by the Supreme Court",
+                            "Cancellation of a judge's mandate",
+                            "An appeal to an appellate court"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Who represents the accused as their defense counsel in a criminal trial?",
-                        "answers": ["Prosecutor", "Attorney (defense lawyer)", "Notary"],
+                        "answers": [
+                            "Prosecutor",
+                            "Attorney (defense lawyer)",
+                            "Notary"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Who prepares notarial deeds and certifications?",
-                        "answers": ["Attorney", "Legal adviser", "Notary"],
+                        "answers": [
+                            "Attorney",
+                            "Legal adviser",
+                            "Notary"
+                        ],
                         "correct": 2
                     },
                     {
                         "question": "What is the role of the Ombudsman (Commissioner for Human Rights)?",
-                        "answers": ["Guards the freedoms and rights of persons and citizens", "Directs the government's judicial policy", "Chairs the Constitutional Tribunal"],
+                        "answers": [
+                            "Guards the freedoms and rights of persons and citizens",
+                            "Directs the government's judicial policy",
+                            "Chairs the Constitutional Tribunal"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "What is the name of the practical training after law studies preparing for the legal profession?",
-                        "answers": ["Term of office", "Legal apprenticeship", "Abolition"],
+                        "answers": [
+                            "Term of office",
+                            "Legal apprenticeship",
+                            "Abolition"
+                        ],
                         "correct": 1
                     }
                 ]

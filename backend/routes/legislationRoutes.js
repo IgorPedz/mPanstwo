@@ -1,0 +1,18 @@
+const express = require("express");
+const {
+  getAllBills,
+  getBillDetails,
+  getLegislativeProcess,
+  getOpinions,
+  postOpinion,
+} = require("../controllers/legislationController");
+
+const router = express.Router();
+
+router.get("/legislation/bills",               getAllBills);
+router.get("/legislation/bills/:num",          getBillDetails);
+router.get("/legislation/bills/:num/process",  getLegislativeProcess);
+router.get("/legislation/bills/:num/opinions", getOpinions);
+router.post("/legislation/bills/:num/opinions", postOpinion);
+
+module.exports = router;

@@ -23,7 +23,8 @@ const rankRoutes = require("./routes/rankRoutes");
 const coursesRoutes = require("./routes/coursesRoutes");
 const blocksRoutes = require("./routes/blocksRoutes");
 const newsRoutes   = require("./routes/newsRoutes");
-const sejmRoutes   = require("./routes/sejmRoutes");
+const sejmRoutes        = require("./routes/sejmRoutes");
+const legislationRoutes = require("./routes/legislationRoutes");
 const senatRoutes    = require("./routes/senatRoutes");
 const judicialRoutes = require("./routes/judicialRoutes");
 const cron = require("node-cron");
@@ -64,6 +65,7 @@ app.use(coursesRoutes)
 app.use(blocksRoutes);
 app.use(newsRoutes);
 app.use(sejmRoutes);
+app.use(legislationRoutes);
 app.use(senatRoutes);
 app.use(judicialRoutes);
 app.use(errorHandler);

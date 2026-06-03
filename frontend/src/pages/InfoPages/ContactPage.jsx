@@ -26,7 +26,7 @@ export default function ContactPage() {
         animate="show"
         className="px-6 py-16 md:py-24 flex justify-center w-full color-transition"
       >
-        <div className="w-full max-w-6xl space-y-16 relative color-transition">
+        <div className="w-full max-w-[1800px] space-y-16 relative color-transition">
           <motion.div
             variants={sectionVariants}
             className="w-full color-transition"

@@ -15,9 +15,12 @@
             "achievements": "Erfolge",
             "surveyBox": "Umfragebox",
             "notifications": "Benachrichtigungen",
+            "legislation": "Gesetzgebung",
+            "dataInfo": "Datenzuverlässigkeit",
             "documents": "Dokumente",
             "contact": "Kontakt",
-            "help": "Hilfe"
+            "help": "Hilfe",
+            "facts": "Über Daten"
         }
     },
     "auth": {
@@ -308,6 +311,74 @@
                 "title": "Voller Zyklus",
                 "desc": "Ein Jahr ununterbrochene Präsenz"
             },
+            "mp_rated_1": {
+                "title": "Erste Meinung",
+                "desc": "Bewerte deinen ersten Abgeordneten"
+            },
+            "mp_rated_10": {
+                "title": "Erfahrener Beobachter",
+                "desc": "Bewerte 10 Abgeordnete"
+            },
+            "mp_rated_100": {
+                "title": "Parlamentsanalytiker",
+                "desc": "Bewerte 100 Abgeordnete"
+            },
+            "mp_rated_all": {
+                "title": "Stimme des Volkes",
+                "desc": "Bewerte alle 460 Abgeordneten der 10. Amtszeit"
+            },
+            "club_rated_ko": {
+                "title": "Bürgerlicher Blick",
+                "desc": "Bewerte alle Abgeordneten der Koalicja Obywatelska"
+            },
+            "club_rated_lewica": {
+                "title": "Linke Perspektive",
+                "desc": "Bewerte alle Abgeordneten der Lewica"
+            },
+            "club_rated_razem": {
+                "title": "Gemeinsam urteilen",
+                "desc": "Bewerte alle Abgeordneten der Razem"
+            },
+            "club_rated_psl_td": {
+                "title": "Dritter Weg",
+                "desc": "Bewerte alle Abgeordneten der PSL-TD"
+            },
+            "club_rated_polska2050": {
+                "title": "Neues Polen",
+                "desc": "Bewerte alle Abgeordneten der Polska2050"
+            },
+            "club_rated_pis": {
+                "title": "Recht und Pflicht",
+                "desc": "Bewerte alle Abgeordneten der PiS"
+            },
+            "club_rated_konfederacja": {
+                "title": "Konföderation-Test",
+                "desc": "Bewerte alle Abgeordneten der Konfederacja"
+            },
+            "club_rated_konfederacja_kp": {
+                "title": "Krone und Pakt",
+                "desc": "Bewerte alle Abgeordneten der Konfederacja KP"
+            },
+            "club_rated_centrum": {
+                "title": "Mittelfeld",
+                "desc": "Bewerte alle Abgeordneten der Centrum-Gruppe"
+            },
+            "club_rated_demokracja": {
+                "title": "Demokratischer Blick",
+                "desc": "Bewerte alle Abgeordneten der Demokracja-Gruppe"
+            },
+            "clubs_all_rated": {
+                "title": "Unparteiischer Beobachter",
+                "desc": "Bewerte mindestens einen Abgeordneten aus jedem der 10 Klubs und Gruppen"
+            },
+            "coalition_all_rated": {
+                "title": "Koalitionswächter",
+                "desc": "Bewerte alle Abgeordneten der Regierungskoalition"
+            },
+            "opposition_all_rated": {
+                "title": "Stimme der Opposition",
+                "desc": "Bewerte alle Abgeordneten der Opposition"
+            },
             "module_1": {
                 "title": "Erster Schritt",
                 "desc": "Schließe dein erstes Modul ab und beginne deine Reise"
@@ -347,6 +418,26 @@
             "lesson_100": {
                 "title": "Lernmaschine",
                 "desc": "Schließe 100 Lektionen ab"
+            },
+            "opinions_1": {
+                "title": "Erste Meinung",
+                "desc": "Schreiben Sie Ihre erste Meinung"
+            },
+            "opinions_10": {
+                "title": "Stimme des Verstands",
+                "desc": "Schreiben Sie 10 Meinungen"
+            },
+            "opinions_25": {
+                "title": "Politischer Analyst",
+                "desc": "Schreiben Sie 25 Meinungen"
+            },
+            "opinions_50": {
+                "title": "Meinungsanalyst",
+                "desc": "Schreiben Sie 50 Meinungen"
+            },
+            "opinions_100": {
+                "title": "Meinungsmeister",
+                "desc": "Schreiben Sie 100 Meinungen"
             }
         }
     },

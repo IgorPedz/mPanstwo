@@ -23,7 +23,7 @@ export const COLOR_MAP = {
   "amber-gradient": "text-amber-500",
   "pink-gradient": "text-pink-500",
   "cyan-gradient": "text-cyan-500",
-  "rose-gradient": "text-rose-500"
+  "rose-gradient": "text-rose-500",
 };
 
 export const GRADIENT_MAP = {
@@ -42,17 +42,17 @@ export const GRADIENT_MAP = {
   teal: "from-teal-500/30 to-teal-500/0",
 };
 
-export const NOTIFICATION_COLOR_MAP =  {
-  amber:
-    "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-300",
+export const NOTIFICATION_COLOR_MAP = {
+  amber: "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-300",
 
   emerald:
     "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-300",
 
-  red:
-    "bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-300",
+  red: "bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-300",
   orange:
     "bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-300",
-  blue:
-    "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300",
+  blue: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300",
+  sky: "bg-sky-100 text-sky-600 dark:bg-sky-900/30 dark:text-sky-300",
+  indigo:
+    "bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-300",
 };

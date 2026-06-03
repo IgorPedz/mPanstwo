@@ -29,7 +29,7 @@ export default function SurveyBoxPage() {
   const LABELS = {
     active: t("surveys.activeSurveys"),
     expired: t("surveys.expiredSurveys"),
-    archive: t("surveys.completedSurveys")
+    archive: t("surveys.completedSurveys"),
   };
   const { activeSurveys, expiredSurveys, archiveSurveys, totalRewards } =
     useSurveyBoxLogic(surveys, completedSurveys);
@@ -48,7 +48,7 @@ export default function SurveyBoxPage() {
       t("common.messages.surveyCompleted", {
         title: surveyTitle,
       }),
-      "success"
+      "success",
     );
   };
 
@@ -97,7 +97,9 @@ export default function SurveyBoxPage() {
         survey={activeSurvey}
         onClose={() => setActiveSurvey(null)}
         onInfo={handleNotify}
-        onFinished={(surveyId) => handleSurveyFinished(surveyId, activeSurvey?.title)}
+        onFinished={(surveyId) =>
+          handleSurveyFinished(surveyId, activeSurvey?.title)
+        }
       />
     </>
   );

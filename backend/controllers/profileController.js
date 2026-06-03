@@ -51,7 +51,7 @@ const getProfile = async (req, res, next) => {
       .filter((key) => metrics[key] !== undefined)
       .map((key) => {
         const registry = cardRegistry[key];
-
+        console.log(registry, metrics[key]);
         return {
           key,
           value: metrics[key] ?? 0,
@@ -60,12 +60,12 @@ const getProfile = async (req, res, next) => {
           color: registry.color,
         };
       });
-
+    console.log("METRICS:", metrics);
     const mapRoleTranslationKey = (role) => {
       const map = {
-        "Użytkownik": "user",
-        "Administrator": "admin",
-        "Moderator": "moderator",
+        Użytkownik: "user",
+        Administrator: "admin",
+        Moderator: "moderator",
       };
       return map[role] || String(role).toLowerCase().replace(/\s+/g, "_");
     };
@@ -107,7 +107,7 @@ const getProfile = async (req, res, next) => {
         icon: cardRegistry.role?.icon,
         color: cardRegistry.role?.color,
         translationKey: mapRoleTranslationKey(user.role),
-      }
+      },
     ];
 
     return res.json({
@@ -122,7 +122,6 @@ const getProfile = async (req, res, next) => {
     next(error);
   }
 };
-
 
 const updateProfile = async (req, res, next) => {
   try {
@@ -202,7 +201,6 @@ const changePassword = async (req, res, next) => {
     const userId = req.params.userId;
 
     const { oldPassword, newPassword, confirmPassword } = req.body || {};
-
 
     if (!userId) {
       return res.status(400).json({

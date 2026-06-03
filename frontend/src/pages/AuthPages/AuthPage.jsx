@@ -98,9 +98,7 @@ export default function AuthPage() {
                 text-slate-400 dark:text-slate-500
               "
             >
-              {isLogin
-                ? t("auth.hasAccount")
-                : t("auth.noAccount")}
+              {isLogin ? t("auth.hasAccount") : t("auth.noAccount")}
             </p>
           </div>
 

@@ -17,9 +17,10 @@ const NAVIGABLE_SLUGS = new Set([
 const TILE_ROUTES = (slug, icon, accent) => {
   if (slug === "president")          return { path: "/president", state: { icon, accent } };
   if (slug === "sejm")               return { path: "/sejm",      state: { icon, accent } };
+  if (slug === "members_of_parliament") return { path: "/sejm/mp" };
   if (slug === "senate")             return { path: "/senat",     state: { icon, accent } };
   if (["sn", "constitutional_tribunal", "supreme_administrative_court", "national_council_of_the_judiciary"].includes(slug))
-    return { path: `/instytucja/${slug}`, state: { icon, accent } };
+    return { path: `/courts/${slug}`, state: { icon, accent } };
   if (slug === "parliamentary_clubs") return { path: "/clubs",     state: { icon, accent } };
   if (slug?.startsWith("ministry_of_") || NAVIGABLE_SLUGS.has(slug))
     return { path: `/ministry/${slug}`, state: { icon, accent } };

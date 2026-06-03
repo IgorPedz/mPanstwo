@@ -1,7 +1,7 @@
 const cardRegistry = {
   loginStreak: {
     title: "loginStreak",
-    icon: "fire", 
+    icon: "fire",
     color: "orange",
   },
 
@@ -23,7 +23,7 @@ const cardRegistry = {
     color: "indigo",
   },
 
-  opinions: {
+  opinions_written: {
     title: "opinions",
     icon: "messages",
     color: "blue",
@@ -54,4 +54,4 @@ const cardRegistry = {
   },
 };
 
-module.exports = cardRegistry;  
+module.exports = cardRegistry;

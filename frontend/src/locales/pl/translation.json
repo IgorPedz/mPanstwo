@@ -15,9 +15,12 @@
             "achievements": "Osiągnięcia",
             "surveyBox": "Skrytka ankiet",
             "notifications": "Powiadomienia",
+            "legislation": "Legislacja",
+            "dataInfo": "Wiarygodność danych",
             "documents": "Dokumenty",
             "contact": "Kontakt",
-            "help": "Pomoc"
+            "help": "Pomoc",
+            "facts": "O danych"
         }
     },
     "auth": {
@@ -309,6 +312,74 @@
                 "title": "Pełny cykl",
                 "desc": "Rok nieprzerwanej obecności"
             },
+            "mp_rated_1": {
+                "title": "Pierwsze zdanie",
+                "desc": "Oceń pierwszego posła"
+            },
+            "mp_rated_10": {
+                "title": "Wyrobiony obserwator",
+                "desc": "Oceń 10 posłów"
+            },
+            "mp_rated_100": {
+                "title": "Analityk Sejmu",
+                "desc": "Oceń 100 posłów"
+            },
+            "mp_rated_all": {
+                "title": "Głos narodu",
+                "desc": "Oceń wszystkich 460 posłów X kadencji"
+            },
+            "club_rated_ko": {
+                "title": "Obywatelski wzrok",
+                "desc": "Oceń wszystkich posłów Koalicji Obywatelskiej"
+            },
+            "club_rated_lewica": {
+                "title": "Lewicowe spojrzenie",
+                "desc": "Oceń wszystkich posłów Lewicy"
+            },
+            "club_rated_razem": {
+                "title": "Razem oceniamy",
+                "desc": "Oceń wszystkich posłów partii Razem"
+            },
+            "club_rated_psl_td": {
+                "title": "Trzecia droga",
+                "desc": "Oceń wszystkich posłów PSL-TD"
+            },
+            "club_rated_polska2050": {
+                "title": "Nowa Polska",
+                "desc": "Oceń wszystkich posłów Polska2050"
+            },
+            "club_rated_pis": {
+                "title": "Prawo i obowiązek",
+                "desc": "Oceń wszystkich posłów PiS"
+            },
+            "club_rated_konfederacja": {
+                "title": "Konfederacki test",
+                "desc": "Oceń wszystkich posłów Konfederacji"
+            },
+            "club_rated_konfederacja_kp": {
+                "title": "Korona i Pakt",
+                "desc": "Oceń wszystkich posłów Konfederacji KP"
+            },
+            "club_rated_centrum": {
+                "title": "Centrum sceny",
+                "desc": "Oceń wszystkich posłów koła Centrum"
+            },
+            "club_rated_demokracja": {
+                "title": "Demokratyczne spojrzenie",
+                "desc": "Oceń wszystkich posłów koła Demokracja"
+            },
+            "clubs_all_rated": {
+                "title": "Bezstronny obserwator",
+                "desc": "Oceń co najmniej jednego posła z każdego z 10 klubów i kół"
+            },
+            "coalition_all_rated": {
+                "title": "Strażnik koalicji",
+                "desc": "Oceń wszystkich posłów koalicji rządzącej"
+            },
+            "opposition_all_rated": {
+                "title": "Głos opozycji",
+                "desc": "Oceń wszystkich posłów opozycji"
+            },
             "module_1": {
                 "title": "Pierwszy krok",
                 "desc": "Ukończ pierwszy moduł i rozpocznij swoją podróż"
@@ -348,6 +419,26 @@
             "lesson_100": {
                 "title": "Maszyna nauki",
                 "desc": "Ukończ 100 lekcji"
+            },
+            "opinions_1": {
+                "title": "Pierwsza opinia",
+                "desc": "Napisz swoją pierwszą opinię"
+            },
+            "opinions_10": {
+                "title": "Głos rozsądku",
+                "desc": "Napisz 10 opinii"
+            },
+            "opinions_25": {
+                "title": "Analityk polityczny",
+                "desc": "Napisz 25 opinii"
+            },
+            "opinions_50": {
+                "title": "Analityk opinii",
+                "desc": "Napisz 50 opinii"
+            },
+            "opinions_100": {
+                "title": "Mistrz argumentacji",
+                "desc": "Napisz 100 opinii"
             }
         }
     },
@@ -448,11 +539,11 @@
         "quiz": {
             "title": "Szybki test wiedzy",
             "question_counter": "{{current}} z {{total}}",
-            "result":"Twój wynik:",
-            "exam_result":"Wynik egzaminu: ",
-            "next_lesson":"Przejdź do kolejnej lekcji",
-            "go_to_exam":"Przejdź do egzaminu końcowego",
-            "back_to_lesson":"Powtórz lekcję"
+            "result": "Twój wynik:",
+            "exam_result": "Wynik egzaminu: ",
+            "next_lesson": "Przejdź do kolejnej lekcji",
+            "go_to_exam": "Przejdź do egzaminu końcowego",
+            "back_to_lesson": "Powtórz lekcję"
         },
         "final_exam": {
             "label": "Egzamin końcowy",
@@ -1190,52 +1281,92 @@
                 "questions": [
                     {
                         "question": "Ile trwa kadencja Sejmu i Senatu?",
-                        "answers": ["2 lata", "4 lata", "6 lat"],
+                        "answers": [
+                            "2 lata",
+                            "4 lata",
+                            "6 lat"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Ilu posłów zasiada w Sejmie RP?",
-                        "answers": ["360", "460", "560"],
+                        "answers": [
+                            "360",
+                            "460",
+                            "560"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Ilu senatorów liczy Senat RP?",
-                        "answers": ["100", "120", "150"],
+                        "answers": [
+                            "100",
+                            "120",
+                            "150"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Kto może złożyć projekt ustawy w Sejmie?",
-                        "answers": ["Tylko posłowie", "Tylko Rada Ministrów", "Posłowie, Senat, Prezydent, Rada Ministrów i obywatele"],
+                        "answers": [
+                            "Tylko posłowie",
+                            "Tylko Rada Ministrów",
+                            "Posłowie, Senat, Prezydent, Rada Ministrów i obywatele"
+                        ],
                         "correct": 2
                     },
                     {
                         "question": "Ile czytań ma projekt ustawy w Sejmie?",
-                        "answers": ["1", "2", "3"],
+                        "answers": [
+                            "1",
+                            "2",
+                            "3"
+                        ],
                         "correct": 2
                     },
                     {
                         "question": "Jaki organ sądzi najwyższych urzędników za naruszenie Konstytucji?",
-                        "answers": ["Sąd Najwyższy", "Trybunał Stanu", "Trybunał Konstytucyjny"],
+                        "answers": [
+                            "Sąd Najwyższy",
+                            "Trybunał Stanu",
+                            "Trybunał Konstytucyjny"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Co to jest weto prezydenckie?",
-                        "answers": ["Odmowa podpisania ustawy przez Prezydenta", "Uchylenie ustawy przez Senat", "Wniosek Premiera o odrzucenie ustawy"],
+                        "answers": [
+                            "Odmowa podpisania ustawy przez Prezydenta",
+                            "Uchylenie ustawy przez Senat",
+                            "Wniosek Premiera o odrzucenie ustawy"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Czym jest immunitet parlamentarny?",
-                        "answers": ["Przywilej płacowy posłów", "Ochrona posła przed odpowiedzialnością karną za działalność parlamentarną", "Zakaz pełnienia innych funkcji"],
+                        "answers": [
+                            "Przywilej płacowy posłów",
+                            "Ochrona posła przed odpowiedzialnością karną za działalność parlamentarną",
+                            "Zakaz pełnienia innych funkcji"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Czy parlamentarzysta może sam zrzec się immunitetu?",
-                        "answers": ["Tak", "Nie", "Tylko za zgodą Marszałka Sejmu"],
+                        "answers": [
+                            "Tak",
+                            "Nie",
+                            "Tylko za zgodą Marszałka Sejmu"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Co to jest Konwent Seniorów w Sejmie?",
-                        "answers": ["Rada najstarszych wiekowo posłów", "Organ zapewniający współdziałanie klubów i kół parlamentarnych", "Komisja historyczna Sejmu"],
+                        "answers": [
+                            "Rada najstarszych wiekowo posłów",
+                            "Organ zapewniający współdziałanie klubów i kół parlamentarnych",
+                            "Komisja historyczna Sejmu"
+                        ],
                         "correct": 1
                     }
                 ]
@@ -1949,52 +2080,92 @@
                 "questions": [
                     {
                         "question": "Kto tworzy dualizm władzy wykonawczej w Polsce?",
-                        "answers": ["Sejm i Senat", "Prezydent i Rada Ministrów", "Premier i Marszałek Sejmu"],
+                        "answers": [
+                            "Sejm i Senat",
+                            "Prezydent i Rada Ministrów",
+                            "Premier i Marszałek Sejmu"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Kto prowadzi bieżącą politykę wewnętrzną i zagraniczną państwa?",
-                        "answers": ["Prezydent", "Rada Ministrów", "Marszałek Sejmu"],
+                        "answers": [
+                            "Prezydent",
+                            "Rada Ministrów",
+                            "Marszałek Sejmu"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Co to jest wotum zaufania?",
-                        "answers": ["Głosowanie Sejmu popierające działalność rządu", "Odwołanie ministra przez Sejm", "Wniosek o dymisję Premiera"],
+                        "answers": [
+                            "Głosowanie Sejmu popierające działalność rządu",
+                            "Odwołanie ministra przez Sejm",
+                            "Wniosek o dymisję Premiera"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Na czym polega konstruktywne wotum nieufności?",
-                        "answers": ["Odwołanie rządu bez wskazania nowego Premiera", "Odwołanie rządu z jednoczesnym wyborem nowego Premiera", "Wniosek Prezydenta o dymisję rządu"],
+                        "answers": [
+                            "Odwołanie rządu bez wskazania nowego Premiera",
+                            "Odwołanie rządu z jednoczesnym wyborem nowego Premiera",
+                            "Wniosek Prezydenta o dymisję rządu"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Co to jest kontrasygnata?",
-                        "answers": ["Podpis Premiera lub ministra na akcie Prezydenta", "Podpis Prezydenta na ustawach Sejmu", "Weto Senatu wobec ustaw"],
+                        "answers": [
+                            "Podpis Premiera lub ministra na akcie Prezydenta",
+                            "Podpis Prezydenta na ustawach Sejmu",
+                            "Weto Senatu wobec ustaw"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Kto jest zwierzchnikiem Sił Zbrojnych w czasie pokoju?",
-                        "answers": ["Premier", "Prezydent za pośrednictwem MON", "Minister Obrony Narodowej"],
+                        "answers": [
+                            "Premier",
+                            "Prezydent za pośrednictwem MON",
+                            "Minister Obrony Narodowej"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Czym jest Rada Gabinetowa?",
-                        "answers": ["Posiedzenie rządu pod przewodnictwem Prezydenta bez uprawnień decyzyjnych rządu", "Stały organ koordynujący pracę ministerstw", "Komisja parlamentarna ds. rządu"],
+                        "answers": [
+                            "Posiedzenie rządu pod przewodnictwem Prezydenta bez uprawnień decyzyjnych rządu",
+                            "Stały organ koordynujący pracę ministerstw",
+                            "Komisja parlamentarna ds. rządu"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Kto mianuje i odwołuje ministrów?",
-                        "answers": ["Sejm na wniosek Premiera", "Prezydent na wniosek Prezesa Rady Ministrów", "Premier samodzielnie"],
+                        "answers": [
+                            "Sejm na wniosek Premiera",
+                            "Prezydent na wniosek Prezesa Rady Ministrów",
+                            "Premier samodzielnie"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Jaką rolę pełni Prezes Rady Ministrów?",
-                        "answers": ["Kieruje Radą Ministrów i koordynuje pracę rządu", "Reprezentuje Polskę za granicą jako głowa państwa", "Przewodniczy obradom Sejmu"],
+                        "answers": [
+                            "Kieruje Radą Ministrów i koordynuje pracę rządu",
+                            "Reprezentuje Polskę za granicą jako głowa państwa",
+                            "Przewodniczy obradom Sejmu"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Co to są prerogatywy Prezydenta?",
-                        "answers": ["Uprawnienia Prezydenta wymagające kontrasygnaty Premiera", "Osobiste uprawnienia Prezydenta niewymagające kontrasygnaty", "Specjalne uprawnienia Sejmu wobec Prezydenta"],
+                        "answers": [
+                            "Uprawnienia Prezydenta wymagające kontrasygnaty Premiera",
+                            "Osobiste uprawnienia Prezydenta niewymagające kontrasygnaty",
+                            "Specjalne uprawnienia Sejmu wobec Prezydenta"
+                        ],
                         "correct": 1
                     }
                 ]
@@ -2708,52 +2879,92 @@
                 "questions": [
                     {
                         "question": "Komu podlegają niezawiśli sędziowie w Polsce?",
-                        "answers": ["Prezydentowi", "Premierowi", "Tylko Konstytucji i ustawom"],
+                        "answers": [
+                            "Prezydentowi",
+                            "Premierowi",
+                            "Tylko Konstytucji i ustawom"
+                        ],
                         "correct": 2
                     },
                     {
                         "question": "Iluinstancyjne jest postępowanie sądowe w Polsce?",
-                        "answers": ["Jednoinstancyjne", "Co najmniej dwuinstancyjne", "Czteroinstancyjne"],
+                        "answers": [
+                            "Jednoinstancyjne",
+                            "Co najmniej dwuinstancyjne",
+                            "Czteroinstancyjne"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Jaką rolę pełni Sąd Najwyższy?",
-                        "answers": ["Rozpatruje wszystkie sprawy pierwszej instancji", "Sprawuje nadzór jurysdykcyjny nad sądami powszechnymi i wojskowymi", "Orzeka o zgodności ustaw z Konstytucją"],
+                        "answers": [
+                            "Rozpatruje wszystkie sprawy pierwszej instancji",
+                            "Sprawuje nadzór jurysdykcyjny nad sądami powszechnymi i wojskowymi",
+                            "Orzeka o zgodności ustaw z Konstytucją"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Co to jest Trybunał Konstytucyjny?",
-                        "answers": ["Sąd orzekający o zgodności prawa z Konstytucją", "Organ karania najwyższych urzędników", "Sąd apelacyjny najwyższej instancji"],
+                        "answers": [
+                            "Sąd orzekający o zgodności prawa z Konstytucją",
+                            "Organ karania najwyższych urzędników",
+                            "Sąd apelacyjny najwyższej instancji"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Jaka jest rola Prokuratora Generalnego?",
-                        "answers": ["Przewodniczy Sądowi Najwyższemu", "Kieruje prokuraturą i sprawuje nadzór nad śledztwami", "Mianuje sędziów sądów powszechnych"],
+                        "answers": [
+                            "Przewodniczy Sądowi Najwyższemu",
+                            "Kieruje prokuraturą i sprawuje nadzór nad śledztwami",
+                            "Mianuje sędziów sądów powszechnych"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Co to jest kasacja w postępowaniu sądowym?",
-                        "answers": ["Nadzwyczajny środek zaskarżenia rozpoznawany przez Sąd Najwyższy", "Anulowanie mandatu sędziego", "Odwołanie do sądu apelacyjnego"],
+                        "answers": [
+                            "Nadzwyczajny środek zaskarżenia rozpoznawany przez Sąd Najwyższy",
+                            "Anulowanie mandatu sędziego",
+                            "Odwołanie do sądu apelacyjnego"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Kto w procesie karnym reprezentuje oskarżonego jako jego obrońca?",
-                        "answers": ["Prokurator", "Adwokat", "Notariusz"],
+                        "answers": [
+                            "Prokurator",
+                            "Adwokat",
+                            "Notariusz"
+                        ],
                         "correct": 1
                     },
                     {
                         "question": "Kto sporządza akty notarialne i poświadczenia?",
-                        "answers": ["Adwokat", "Radca prawny", "Notariusz"],
+                        "answers": [
+                            "Adwokat",
+                            "Radca prawny",
+                            "Notariusz"
+                        ],
                         "correct": 2
                     },
                     {
                         "question": "Jaka jest rola Rzecznika Praw Obywatelskich?",
-                        "answers": ["Stoi na straży wolności i praw człowieka i obywatela", "Kieruje polityką sądową rządu", "Przewodniczy Trybunałowi Konstytucyjnemu"],
+                        "answers": [
+                            "Stoi na straży wolności i praw człowieka i obywatela",
+                            "Kieruje polityką sądową rządu",
+                            "Przewodniczy Trybunałowi Konstytucyjnemu"
+                        ],
                         "correct": 0
                     },
                     {
                         "question": "Jak nazywa się praktyczne szkolenie po studiach prawniczych przygotowujące do zawodu prawnika?",
-                        "answers": ["Kadencja", "Aplikacja", "Abolicja"],
+                        "answers": [
+                            "Kadencja",
+                            "Aplikacja",
+                            "Abolicja"
+                        ],
                         "correct": 1
                     }
                 ]

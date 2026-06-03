@@ -23,8 +23,9 @@ async function handleEvent(userId, eventType, meta = {}) {
   await checkAchievements(userId);
 
   if (
+    !config.silent &&
     config.metricKey !== "modules_completed" &&
-    config.metricKey !== "lessons_completed" 
+    config.metricKey !== "lessons_completed"
   ) {
     await sendNotification({
       type: key,

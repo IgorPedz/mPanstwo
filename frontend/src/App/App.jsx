@@ -22,10 +22,15 @@ import CourseMapPage from "../pages/EducationPages/CourseMapPage";
 import LessonPage from "../pages/EducationPages/LessonPage";
 import MinistryPage from "../pages/InstitutionPages/MinistryPage";
 import PresidentPage from "../pages/InstitutionPages/PresidentPage";
-import SejmPage      from "../pages/InstitutionPages/SejmPage";
-import SenatPage     from "../pages/InstitutionPages/SenatPage";
-import JudicialPage  from "../pages/InstitutionPages/JudicialPage";
-import ClubsPage     from "../pages/InstitutionPages/ClubsPage";
+import SejmPage from "../pages/InstitutionPages/SejmPage";
+import MpListPage from "../pages/InstitutionPages/MpListPage";
+import MpProfilePage from "../pages/InstitutionPages/MpProfilePage";
+import SenatPage from "../pages/InstitutionPages/SenatPage";
+import JudicialPage from "../pages/InstitutionPages/JudicialPage";
+import ClubsPage from "../pages/InstitutionPages/ClubsPage";
+import LegislacjaPage from "../pages/InstitutionPages/LegislacjaPage";
+import LegislacjaDetailPage from "../pages/InstitutionPages/LegislacjaDetailPage";
+import FactsPage from "../pages/InfoPages/FactsPage";
 import { useUser } from "../Contexts/UserContext";
 import useNotifications from "../Hooks/useUnreadNotification";
 import ProtectedRoute from "../Utils/Routes/ProtectedRoutes";
@@ -165,6 +170,22 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/sejm/mp"
+            element={
+              <ProtectedRoute>
+                <MpListPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/sejm/mp/:id"
+            element={
+              <ProtectedRoute>
+                <MpProfilePage />
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path="/senat"
@@ -176,7 +197,7 @@ function App() {
           />
 
           <Route
-            path="/instytucja/:slug"
+            path="/courts/:slug"
             element={
               <ProtectedRoute>
                 <JudicialPage />
@@ -193,9 +214,27 @@ function App() {
             }
           />
 
+          <Route
+            path="/legislation"
+            element={
+              <ProtectedRoute>
+                <LegislacjaPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/legislation/:num"
+            element={
+              <ProtectedRoute>
+                <LegislacjaDetailPage />
+              </ProtectedRoute>
+            }
+          />
+
           <Route path="/documents" element={<DocumentsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/faq" element={<FAQPage />} />
+          <Route path="/facts" element={<FactsPage />} />
 
           <Route
             path="/reset-password/:token"
