@@ -3152,7 +3152,7 @@
     "facts": {
         "facts": "About the data",
         "description": "The data we are using is collected from official government sources, such as the Sejm, Senate, ministries, and other public institutions. We ensure that all information is accurate and up-to-date, providing you with reliable insights into the workings of the Polish government and public administration."
-     },
+    },
     "dashboard": {
         "dashboard": "Dashboard",
         "welcome": "Welcome, {{name}}!",
@@ -3463,5 +3463,650 @@
         "verificationCodeLabel": "Verification code",
         "verificationCodePlaceholder": "000000",
         "verify": "Verify"
+    },
+    "institution": {
+        "back": "Back",
+        "notFound": "No information found for this institution.",
+        "officialSite": "Official website",
+        "website": "Website",
+        "information": "Information",
+        "about": "About",
+        "responsibilities": "Main tasks and competencies",
+        "news": "News",
+        "all": "All",
+        "noData": "No data available.",
+        "noNews": "No news available.",
+        "legislative": "Legislative authority",
+        "executive": "Executive authority",
+        "sejm": {
+            "title": "Sejm of the Republic of Poland",
+            "about": "About the Sejm",
+            "members": "MPs",
+            "composition": "Sejm composition — seat distribution",
+            "proceedings": "Recent sittings",
+            "planned": "Scheduled",
+            "speaker": "Marshal"
+        },
+        "senat": {
+            "title": "Senate of the Republic of Poland",
+            "about": "About the Senate",
+            "members": "senators",
+            "composition": "Senate composition — seat distribution",
+            "proceedings": "Recent sittings",
+            "planned": "Scheduled",
+            "speaker": "Marshal"
+        },
+        "president": {
+            "title": "President of the Republic of Poland",
+            "shortTitle": "President of Poland",
+            "role": "President",
+            "about": "About the office"
+        },
+        "ministry": {
+            "about": "About the ministry",
+            "leadership": "Leadership",
+            "minister": "Minister",
+            "generalDirector": "Dir. General",
+            "institutionName": "Institution name",
+            "type": "Type",
+            "authority": "Authority",
+            "executiveAuthority": "Executive",
+            "reportsTo": "Reports to",
+            "councilOfMinisters": "Council of Ministers"
+        },
+        "mpList": {
+            "noResults": "No MPs match the selected criteria"
+        },
+        "legislation": {
+            "page": "Home /",
+            "title": "Legislation",
+            "description": "Bills currently being processed in the Polish Sejm — stages, documents and citizens' opinions.",
+            "bills": "bills",
+            "searchPlaceholder": "Search for a bill…",
+            "loadError": "Failed to load data. Please refresh the page.",
+            "noBills": "No bills found.",
+            "printNumber": "Print no.",
+            "tabs": {
+                "info": "Information",
+                "stages": "Legislative stages",
+                "opinions": "Opinions"
+            },
+            "info": {
+                "title": "Basic information",
+                "printNum": "Print number",
+                "dateReceived": "Date received",
+                "lastChange": "Last change",
+                "type": "Bill type",
+                "term": "Term",
+                "eu": "EU-related",
+                "yes": "Yes",
+                "no": "No",
+                "author": "Sponsor",
+                "pdfs": "PDF documents"
+            },
+            "voting": {
+                "noVotings": "No votes linked to this bill.",
+                "session": "sitting",
+                "sejmSession": "Sejm sitting",
+                "votingNumber": "Vote no.",
+                "yes": "Yes",
+                "no": "No",
+                "abstain": "Abstained",
+                "notVoting": "Did not vote",
+                "passed": "Passed",
+                "rejected": "Rejected",
+                "majorityThreeFifths": "Three-fifths majority",
+                "majorityTwoThirds": "Two-thirds majority",
+                "majorityAbsolute": "Absolute majority",
+                "majoritySimple": "Simple majority",
+                "minVotes": "min. {{count}} yes votes",
+                "hour": "time",
+                "individualPdf": "Individual results PDF",
+                "results": "Voting results",
+                "totalVoted": "Total voted:",
+                "mps": "MPs",
+                "byClub": "Results by club",
+                "club": "Club / Group",
+                "members": "Mbr.",
+                "voted": "Voted",
+                "abstained": "Abst.",
+                "absent": "Absent"
+            },
+            "opinions": {
+                "yourOpinion": "Your opinion",
+                "placeholder": "Write your opinion on this bill…",
+                "sending": "Sending…",
+                "add": "Add opinion",
+                "loginRequired": "Log in to add your opinion.",
+                "noOpinions": "No opinions yet. Be the first to add one!",
+                "expertOpinion": "Expert opinion"
+            },
+            "timeline": {
+                "noStages": "No data on legislative stages.",
+                "stage": "Stage"
+            }
+        }
+    },
+    "staticData": {
+        "sejm": {
+            "type": "Sejm of the Republic of Poland",
+            "leadershipLabel": "Presidium of the Sejm",
+            "leaderLabel": "Marshal",
+            "subordinateTo": "Constitution of the Republic of Poland",
+            "description": "The Sejm of the Republic of Poland is the lower house of the Polish parliament and the main legislative body. It consists of 460 deputies elected in universal, direct, equal and proportional elections for a four-year term. It supervises the Council of Ministers and is the primary law-making body in Poland.",
+            "responsibilities": [
+                "Enacting laws, including the state budget act",
+                "Oversight of the Council of Ministers",
+                "Electing and dismissing the Prime Minister",
+                "Passing votes of no confidence in the government and ministers",
+                "Ratification of international treaties",
+                "Enacting amendments to the Constitution",
+                "Appointing members of constitutional bodies",
+                "Adopting the budget and overseeing its implementation",
+                "Approving states of emergency and martial law",
+                "Legislating on local government matters"
+            ],
+            "infoFields": [
+                [
+                    "Number of MPs",
+                    "460"
+                ],
+                [
+                    "Term",
+                    "2023â€“2027"
+                ],
+                [
+                    "Authority",
+                    "Legislative"
+                ],
+                [
+                    "Seat",
+                    "Warsaw, ul. Wiejska 4/6/8"
+                ]
+            ]
+        },
+        "senat": {
+            "type": "Senate of the Republic of Poland",
+            "leadershipLabel": "Presidium of the Senate",
+            "leaderLabel": "Marshal",
+            "description": "The Senate of the Republic of Poland is the upper house of the Polish parliament. It consists of 100 senators elected in universal, direct and majority elections for a four-year term. The Senate participates in the legislative process, may amend bills passed by the Sejm or reject them, and its veto can be overridden by an absolute majority in the Sejm.",
+            "responsibilities": [
+                "Reviewing bills passed by the Sejm",
+                "Amending or rejecting bills",
+                "Legislative initiative",
+                "Consenting to ratification of international treaties",
+                "Participating in constitutional amendments",
+                "Appointing the Commissioner for Human Rights",
+                "Appointing the President of the Supreme Audit Office",
+                "Consenting to the appointment of the NBP Governor",
+                "Ordering a nationwide referendum (jointly with the Sejm)",
+                "Appointing members of the National Council of the Judiciary"
+            ],
+            "infoFields": [
+                [
+                    "Number of senators",
+                    "100"
+                ],
+                [
+                    "Term",
+                    "2023â€“2027"
+                ],
+                [
+                    "Authority",
+                    "Legislative"
+                ],
+                [
+                    "Seat",
+                    "Warsaw, ul. Wiejska 6"
+                ]
+            ]
+        },
+        "president": {
+            "type": "Office of the President of Poland",
+            "leadershipLabel": "President of Poland",
+            "leaderLabel": "President",
+            "description": "Karol Tadeusz Nawrocki (born 3 March 1983 in GdaĹ„sk) â€“ Polish historian, politician, social and local government activist, Doctor of Humanities. President of the Republic of Poland since 6 August 2025. Director of the Museum of the Second World War in GdaĹ„sk (2017â€“2021), President of the Institute of National Remembrance (2021â€“2025).",
+            "responsibilities": [
+                "Representing the Republic of Poland in international affairs",
+                "Ratifying and denouncing international treaties",
+                "Appointing and recalling Poland's diplomatic representatives",
+                "Supreme commander of the Polish Armed Forces",
+                "Presidential veto and legislative initiative",
+                "Ordering elections to the Sejm and Senate",
+                "Appointing the Prime Minister and approving the cabinet",
+                "Exercising the right of pardon",
+                "Granting Polish citizenship and approving its renunciation",
+                "Awarding orders and decorations"
+            ],
+            "infoFields": [
+                [
+                    "Office",
+                    "President of Poland"
+                ],
+                [
+                    "Term",
+                    "2025â€“2030"
+                ],
+                [
+                    "Authority",
+                    "Executive"
+                ],
+                [
+                    "Seat",
+                    "Presidential Palace, Warsaw"
+                ]
+            ]
+        },
+        "judicial": {
+            "sn": {
+                "type": "Supreme Court",
+                "powerType": "Judicial",
+                "leadershipLabel": "Leadership of the Supreme Court",
+                "leaderLabel": "First President",
+                "subordinateTo": "Constitution of Poland",
+                "description": "The Supreme Court is a judicial authority established to administer justice by ensuring compliance with the law and uniformity of judgments of common and military courts. It exercises judicial supervision over all common and military courts.",
+                "responsibilities": [
+                    "Judicial supervision over common and military courts",
+                    "Reviewing cassations and extraordinary complaints",
+                    "Adopting resolutions to clarify legal provisions",
+                    "Confirming the validity of parliamentary, presidential elections and referenda",
+                    "Examining electoral protests",
+                    "Disciplinary proceedings against judges",
+                    "Reviewing appeals from military district court rulings"
+                ],
+                "infoFields": [
+                    [
+                        "Seat",
+                        "Warsaw, pl. KrasiĹ„skich 2/4/6"
+                    ],
+                    [
+                        "Structure",
+                        "4 Chambers + Chamber of Professional Liability"
+                    ],
+                    [
+                        "First President's term",
+                        "6 years"
+                    ],
+                    [
+                        "Reports to",
+                        "Constitution of Poland"
+                    ]
+                ]
+            },
+            "constitutional_tribunal": {
+                "type": "Constitutional Tribunal",
+                "powerType": "Judicial",
+                "leadershipLabel": "Leadership of the Constitutional Tribunal",
+                "leaderLabel": "President",
+                "subordinateTo": "Constitution of Poland",
+                "description": "The Constitutional Tribunal is a judicial authority established to review the constitutionality of normative acts. Its rulings have universal binding force and are final. The Tribunal safeguards the principle of the supremacy of the Constitution in the legal order.",
+                "responsibilities": [
+                    "Ruling on the constitutionality of statutes and international treaties",
+                    "Ruling on the compliance of statutes with ratified international treaties",
+                    "Ruling on constitutional complaints from citizens",
+                    "Settling disputes of competence between central state bodies",
+                    "Ruling on the constitutionality of the aims and activities of political parties",
+                    "Confirming the incapacity of the President to hold office"
+                ],
+                "infoFields": [
+                    [
+                        "Seat",
+                        "Warsaw, al. Jana Christiana Szucha 12a"
+                    ],
+                    [
+                        "Composition",
+                        "15 judges"
+                    ],
+                    [
+                        "Judge's term",
+                        "9 years"
+                    ],
+                    [
+                        "Reports to",
+                        "Constitution of Poland"
+                    ]
+                ]
+            },
+            "supreme_administrative_court": {
+                "type": "Supreme Administrative Court",
+                "powerType": "Judicial",
+                "leadershipLabel": "Leadership of the NSA",
+                "leaderLabel": "President",
+                "subordinateTo": "Constitution of Poland",
+                "description": "The Supreme Administrative Court supervises the adjudication activities of voivodeship administrative courts. It reviews the legality of public administration actions and protects citizens' rights against unlawful decisions. It resolves jurisdictional disputes between administrative bodies and courts.",
+                "responsibilities": [
+                    "Judicial supervision over voivodeship administrative courts",
+                    "Reviewing appeals from VAC rulings",
+                    "Adopting resolutions clarifying administrative law provisions",
+                    "Resolving jurisdictional disputes in administration",
+                    "Reviewing the legality of public administration actions",
+                    "Disciplinary proceedings against administrative court judges",
+                    "Reviewing complaints of administrative inaction"
+                ],
+                "infoFields": [
+                    [
+                        "Seat",
+                        "Warsaw, ul. Gabriela Piotra Boduena 3/5"
+                    ],
+                    [
+                        "Structure",
+                        "Financial Chamber, Economic Chamber, General Administrative Chamber"
+                    ],
+                    [
+                        "Term",
+                        "indefinite (until retirement age)"
+                    ],
+                    [
+                        "Reports to",
+                        "Constitution of Poland"
+                    ]
+                ]
+            },
+            "national_council_of_the_judiciary": {
+                "type": "National Council of the Judiciary",
+                "powerType": "Judicial",
+                "leadershipLabel": "Composition of the National Council of the Judiciary",
+                "leaderLabel": "Chairman",
+                "subordinateTo": "Constitution of Poland (Art. 186â€“187)",
+                "description": "The National Council of the Judiciary safeguards the independence of courts and the independence of judges. It nominates candidates to the President of Poland for appointment as judges at all levels. It reviews normative acts on the judiciary and ensures compliance with judicial ethics.",
+                "responsibilities": [
+                    "Nominating candidates for judicial appointments to the President",
+                    "Safeguarding the independence of courts and judges",
+                    "Reviewing draft normative acts concerning the judiciary",
+                    "Adopting resolutions on distinctions and decorations for judges",
+                    "Enacting the code of judicial ethics",
+                    "Issuing positions on matters concerning the judiciary",
+                    "Reviewing and assessing candidates for judicial office"
+                ],
+                "infoFields": [
+                    [
+                        "Seat",
+                        "Warsaw, ul. Rakowiecka 30"
+                    ],
+                    [
+                        "Composition",
+                        "25 members"
+                    ],
+                    [
+                        "Term",
+                        "4 years"
+                    ],
+                    [
+                        "Reports to",
+                        "Constitution of Poland (Art. 186â€“187)"
+                    ]
+                ]
+            }
+        },
+        "clubs": {
+            "KO": {
+                "description": "The Civic Coalition Parliamentary Club brings together MPs from centre-left and liberal parties forming the ruling coalition. It is the largest left-of-centre club, advocating European integration, the rule of law and civil liberties. The club is part of the ruling coalition."
+            },
+            "PiS": {
+                "description": "The Law and Justice Parliamentary Club is the largest opposition group, representing conservative and national-Catholic values. The party governed Poland from 2015 to 2023, implementing programmes such as 500+, judicial reforms and migration policy."
+            },
+            "PSL-TD": {
+                "description": "The PSLâ€“Third Way Parliamentary Club brings together Peasants' Party MPs and their allies. It represents the interests of farmers, small entrepreneurs and local communities. PSL, Poland's oldest active party, upholds Christian values and the idea of self-governance. The club is part of the ruling coalition."
+            },
+            "Lewica": {
+                "description": "The Left Coalition Parliamentary Club unites left-wing parties advocating workers' rights, an expanded welfare state, women's and minority rights, and the separation of church and state. The club is part of the ruling coalition."
+            },
+            "Polska2050": {
+                "description": "The Poland 2050 Parliamentary Club brings together MPs from the movement founded by Szymon HoĹ‚ownia. The centre-democratic group emphasises state modernisation, social dialogue and responsible public finances. The club is part of the ruling coalition."
+            },
+            "Konfederacja": {
+                "description": "The Confederation MPs' Club represents right-libertarian and national-conservative circles. It opposes state interventionism, high taxes and EU migration policy, while advocating for stronger national sovereignty."
+            },
+            "Konfederacja_KP": {
+                "description": "The Confederation of the Polish Crown MPs' Group brings together MPs from the national-Catholic faction, with a particular emphasis on Christian identity and Polish sovereignty."
+            },
+            "Centrum": {
+                "description": "The Centre Parliamentary Club brings together centre-right MPs who left Poland 2050. The group seeks a third way between the governing coalition and traditional right, emphasising stability and pragmatic state management. The club is part of the ruling coalition."
+            },
+            "Demokracja": {
+                "description": "The Direct Democracy MPs' Group advocates reforming the political system towards greater citizen participation in decision-making â€” through referenda, legislative initiatives and direct participation mechanisms."
+            },
+            "Razem": {
+                "description": "The Together MPs' Group represents the social left, advocating radical economic changes: higher taxes for the wealthy, expanded public services, workers' rights and the fight against social inequality."
+            },
+            "niez_independent": {
+                "description": "Non-attached MPs â€” parliamentarians who do not belong to any parliamentary club or group. Some of them are former party members who left their parties or were removed from their lists."
+            }
+        },
+        "ministries": {
+            "ministry_of_finance": {
+                "description": "The Ministry of Finance is responsible for the financial and economic policy of the state. It manages the state budget, the tax system and fiscal policy. It oversees financial institutions and coordinates the government's economic policy.",
+                "responsibilities": [
+                    "Preparing the draft budget act",
+                    "Managing public debt",
+                    "Oversight of the tax system",
+                    "Coordinating fiscal and monetary policy",
+                    "Regulation and supervision of financial markets",
+                    "Managing the state treasury and budget revenues"
+                ]
+            },
+            "ministry_of_health": {
+                "description": "The Ministry of Health is responsible for citizens' health protection and the organisation of the healthcare system in Poland. It shapes health policy, supervises healthcare providers and ensures access to medical services. It is also responsible for the country's sanitary and epidemiological safety.",
+                "responsibilities": [
+                    "Shaping state health policy",
+                    "Oversight of the National Health Fund",
+                    "Regulating healthcare providers",
+                    "Preventing and combating infectious diseases",
+                    "Pharmaceutical safety and drug approval",
+                    "Managing health crises and epidemics"
+                ]
+            },
+            "ministry_of_national_defence": {
+                "description": "The Ministry of National Defence directs the defence affairs of the state and the Polish Armed Forces. It is responsible for military combat readiness, weapons modernisation and fulfilment of NATO alliance obligations. It plans and implements the country's defence policy.",
+                "responsibilities": [
+                    "Command and oversight of the Polish Armed Forces",
+                    "Planning and implementing defence policy",
+                    "Technical modernisation and rearmament",
+                    "Fulfilling NATO alliance obligations",
+                    "Border protection and military security",
+                    "Managing military infrastructure and logistics"
+                ]
+            },
+            "ministry_of_justice": {
+                "description": "The Ministry of Justice is responsible for the organisation of the justice system and the implementation of penitentiary policy. It supervises the activities of common courts, prosecutors' offices and prisons. It prepares draft legislation and upholds the rule of law.",
+                "responsibilities": [
+                    "Administrative supervision of common courts",
+                    "Oversight of the Prison Service and correctional facilities",
+                    "Preparing draft legislation and legal acts",
+                    "Oversight of bailiffs and notaries",
+                    "Coordinating free legal aid",
+                    "Implementing penitentiary and rehabilitation policy"
+                ]
+            },
+            "ministry_of_foreign_affairs": {
+                "description": "The Ministry of Foreign Affairs is responsible for implementing Poland's foreign policy. It coordinates diplomatic relations with other states and international organisations, including the EU and NATO. It provides consular care for Polish citizens abroad.",
+                "responsibilities": [
+                    "Implementing and coordinating foreign policy",
+                    "Maintaining diplomatic relations",
+                    "Consular services for Polish citizens abroad",
+                    "Representing Poland in international organisations",
+                    "Coordinating Polish European policy",
+                    "Protecting the interests of Polish citizens and companies abroad"
+                ]
+            },
+            "ministry_of_infrastructure": {
+                "description": "The Ministry of Infrastructure is responsible for the country's transport and infrastructure policy. It manages the development of road, rail, airport and seaport networks. It also deals with construction, spatial planning and housing policy.",
+                "responsibilities": [
+                    "Planning and implementing infrastructure investments",
+                    "Oversight of national roads and motorways",
+                    "Rail, aviation and maritime policy",
+                    "Maritime economy and inland navigation",
+                    "Housing and construction policy",
+                    "Spatial planning and urbanism"
+                ]
+            },
+            "ministry_of_agriculture": {
+                "description": "The Ministry of Agriculture and Rural Development is responsible for agricultural policy, rural area support and fisheries. It supports farmers, manages EU agricultural funds and oversees food safety. It promotes animal welfare and the development of the Polish countryside.",
+                "responsibilities": [
+                    "Implementing agricultural policy and supporting farmers",
+                    "Managing EU agricultural funds (RDP)",
+                    "Food safety and veterinary control",
+                    "Rural and village development",
+                    "Protection and regulation of agricultural markets",
+                    "Fisheries and aquaculture policy"
+                ]
+            },
+            "ministry_of_climate_and_environment": {
+                "description": "The Ministry of Climate and Environment is responsible for climate policy and environmental protection. It coordinates the energy transition, manages renewable energy policy and COâ‚‚ emission reductions. It protects natural resources, forests and biodiversity.",
+                "responsibilities": [
+                    "Shaping state climate policy",
+                    "Environmental and nature protection",
+                    "Managing renewable energy sources (RES)",
+                    "Waste management and recycling",
+                    "Biodiversity and forest protection",
+                    "Water policy and water resource management"
+                ]
+            },
+            "ministry_of_state_assets": {
+                "description": "The Ministry of State Assets exercises ownership supervision over companies with State Treasury involvement. It manages state assets and coordinates policy towards strategic enterprises. It ensures effective management of public assets and State Treasury interests.",
+                "responsibilities": [
+                    "Ownership supervision over State Treasury companies",
+                    "Managing and protecting state assets",
+                    "Privatisation and restructuring of enterprises",
+                    "Coordinating policy towards strategic companies",
+                    "Protecting the financial interests of the State Treasury",
+                    "Analysing the efficiency and results of state companies"
+                ]
+            },
+            "ministry_of_culture_and_national_heritage": {
+                "description": "The Ministry of Culture and National Heritage is responsible for protecting cultural heritage and supporting cultural life. It manages funding for cultural institutions â€” theatres, museums and libraries. It protects monuments and promotes Polish culture abroad.",
+                "responsibilities": [
+                    "Protecting cultural heritage and monuments",
+                    "Funding and oversight of cultural institutions",
+                    "Media and audiovisual policy",
+                    "Promoting Polish culture abroad",
+                    "Protecting intellectual property and copyright",
+                    "Supporting artistic creation and cultural education"
+                ]
+            },
+            "ministry_of_sport_and_tourism": {
+                "description": "The Ministry of Sport and Tourism is responsible for the country's sports and tourism policy. It supports the development of competitive and recreational sport and funds sports infrastructure construction. It coordinates tourism policy and promotes Poland as a tourist destination.",
+                "responsibilities": [
+                    "Supporting competitive and mass sport",
+                    "Funding sports infrastructure construction",
+                    "Implementing state tourism policy",
+                    "Promoting Polish tourism and sport",
+                    "Cooperating with Polish sports associations",
+                    "Preparations for major sporting events"
+                ]
+            },
+            "ministry_of_family_labour_and_social_policy": {
+                "description": "The Ministry of Family, Labour and Social Policy is responsible for social policy, the labour market and family protection. It manages the social benefits system and support programmes such as 800+. It oversees labour market institutions and the social welfare system.",
+                "responsibilities": [
+                    "Implementing family and social policy",
+                    "Managing the labour market and combating unemployment",
+                    "Oversight of social welfare institutions",
+                    "Family support programmes (800+)",
+                    "Pension and social insurance policy",
+                    "Protecting workers' rights and social dialogue"
+                ]
+            },
+            "ministry_of_energy": {
+                "description": "The Ministry of Energy is responsible for the country's industrial and energy policy. It manages the energy sector â€” conventional power, gas and electricity. It coordinates the energy transition and diversification of energy sources.",
+                "responsibilities": [
+                    "Shaping industrial and energy policy",
+                    "Ensuring energy security",
+                    "Oversight of the fuel, gas and electricity sector",
+                    "Energy transition and supply diversification",
+                    "Regulation and oversight of energy prices",
+                    "Development of nuclear energy in Poland"
+                ]
+            },
+            "ministry_of_education": {
+                "description": "The Ministry of Education is responsible for the public education system in Poland. It shapes educational policy, sets core curricula and manages the examination system. It supervises primary, secondary and educational institutions throughout the country.",
+                "responsibilities": [
+                    "Shaping educational policy and the school system",
+                    "Setting core curricula and standards",
+                    "Supervision of schools and educational institutions",
+                    "Managing external examinations and the matura",
+                    "Professional development and teacher training",
+                    "Funding and subsidising education"
+                ]
+            },
+            "ministry_of_funds_and_regional_policy": {
+                "description": "The Ministry of Funds and Regional Policy is responsible for managing EU funds and regional policy. It coordinates the use of EU funds for regional development, infrastructure and cohesion. It reduces development disparities between Polish regions.",
+                "responsibilities": [
+                    "Managing and coordinating EU funds",
+                    "Implementing EU cohesion policy",
+                    "Coordinating Regional Operational Programmes",
+                    "Supporting regional and local development",
+                    "Monitoring, control and evaluation of EU programmes",
+                    "Urban policy, revitalisation and city development"
+                ]
+            },
+            "ministry_of_science_and_higher_education": {
+                "description": "The Ministry of Science and Higher Education is responsible for scientific policy and higher education. It manages funding for scientific research and universities. It oversees the quality of academic education and implements innovation policy.",
+                "responsibilities": [
+                    "Funding science and scientific research",
+                    "Supervision and accreditation of universities",
+                    "Implementing innovation and R&D policy",
+                    "International scientific cooperation and academic exchange",
+                    "Accreditation of programmes and quality of education",
+                    "Support for doctoral students, researchers and young scientists"
+                ]
+            },
+            "ministry_of_internal_affairs_and_administration": {
+                "description": "The Ministry of Internal Affairs and Administration is responsible for internal security and public order. It supervises the Police, Border Guard, State Fire Service and other uniformed services. It manages the population register, citizenship and identity document system.",
+                "responsibilities": [
+                    "Oversight of the Police and Border Guard",
+                    "Managing identity documents and the population register",
+                    "Maintaining public order and security",
+                    "Oversight of the State Fire Service and rescue services",
+                    "Migration, asylum and residence policy",
+                    "Government administration in the field and local government"
+                ]
+            },
+            "ministry_of_digital_affairs": {
+                "description": "The Ministry of Digital Affairs is responsible for the digitalisation of the state and the development of the information society. It manages the digital transformation of public services, e-government and digital infrastructure. It coordinates artificial intelligence and cybersecurity policy.",
+                "responsibilities": [
+                    "Digital transformation of public administration",
+                    "Development of e-services for citizens (gov.pl, mObywatel)",
+                    "Managing the state digital platform",
+                    "Cybersecurity and data protection policy",
+                    "Regulation of the digital market and AI",
+                    "Building broadband networks and digital infrastructure"
+                ]
+            },
+            "chancellery_of_the_prime_minister": {
+                "description": "The Chancellery of the Prime Minister provides organisational and technical support for the work of the Prime Minister and the Council of Ministers. It coordinates government administration activities and implements civil service personnel policy.",
+                "responsibilities": [
+                    "Organisational support for the Prime Minister and the Council of Ministers",
+                    "Coordinating the government's legislative work",
+                    "Oversight of the civil service",
+                    "Implementing government policy on digitalisation and innovation",
+                    "Supporting the Refugee Council and other auxiliary bodies of the Council of Ministers",
+                    "Coordinating cooperation with the Sejm and Senate"
+                ]
+            },
+            "council_of_ministers": {
+                "description": "The Council of Ministers is the supreme body of executive power in Poland, directing government administration and implementing state policy. It conducts domestic and foreign policy, ensures the implementation of laws and adopts the draft budget.",
+                "responsibilities": [
+                    "Directing government administration",
+                    "Implementing domestic and foreign policy",
+                    "Adopting the draft state budget",
+                    "Issuing regulations and resolutions",
+                    "Coordinating and overseeing the work of ministers",
+                    "Ensuring internal and external state security"
+                ]
+            },
+            "presidential_chancellery": {
+                "description": "The Chancellery of the President of the Republic of Poland supports the President in the exercise of his constitutional and statutory duties. It coordinates the activities of ministers in the Chancellery, manages the President's diplomatic contacts and organises ceremonies and meetings with the head of state. The Chancellery also acts as a liaison between the President and other state authorities.",
+                "responsibilities": [
+                    "Organisational and administrative support for the President",
+                    "Coordinating the President's domestic and foreign visits",
+                    "Supporting the President's legislative initiatives and veto right",
+                    "Organising ceremonies and meetings with the head of state",
+                    "Contacts with diplomats and foreign representatives",
+                    "Oversight of the granting of orders and decorations",
+                    "Supporting the National Security Bureau",
+                    "Managing the Presidential Palace and residences"
+                ]
+            }
+        }
     }
 }

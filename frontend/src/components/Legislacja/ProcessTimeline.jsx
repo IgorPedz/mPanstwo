@@ -3,6 +3,7 @@ import { CalendarDaysIcon } from "@heroicons/react/24/outline";
 import { useLegislativeProcess, useBillVotings } from "../../Hooks/useLegislacja";
 import { formatDate } from "./legislacjaConstants";
 import VotingDetailModal from "./VotingDetailModal";
+import { useTranslation } from "react-i18next";
 
 const VOTE_RESULT_RE = /uchwalon|odrzucon|przyjet|nieprzyjęt/i;
 
@@ -20,15 +21,26 @@ export default function ProcessTimeline({ num }) {
   const { data, loading } = useLegislativeProcess(num);
   const { votings }       = useBillVotings(num);
   const [selectedVoting, setSelectedVoting] = useState(null);
+  const { t } = useTranslation();
 
-  // Indeks (sitting, votingNum) z etapów — dane głosowania w s.voting (stageType="Voting")
+  // Indeks pełnych danych głosowania z etapów (stageType="Voting") po dacie
   const refByDate = useMemo(() => {
     const m = {};
     for (const s of collectStages(data?.stages ?? [])) {
       if (s.stageType === "Voting" && s.voting) {
-        const { sitting, votingNumber, date } = s.voting;
-        if (sitting != null && votingNumber != null && date) {
-          m[date.slice(0, 10)] = { sitting, votingNum: votingNumber };
+        const v = s.voting;
+        if (v.sitting != null && v.votingNumber != null && v.date) {
+          m[v.date.slice(0, 10)] = {
+            sitting:       v.sitting,
+            votingNum:     v.votingNumber,
+            majorityType:  v.majorityType  ?? null,
+            majorityVotes: v.majorityVotes ?? null,
+            yes:           v.yes     ?? 0,
+            no:            v.no      ?? 0,
+            abstain:       v.abstain ?? 0,
+            notVoting:     v.notParticipating ?? 0,
+            date:          v.date,
+          };
         }
       }
     }
@@ -63,7 +75,7 @@ export default function ProcessTimeline({ num }) {
   if (!data?.stages?.length) {
     return (
       <p className="text-sm font-medium text-slate-400 dark:text-slate-500 color-transition">
-        Brak danych o etapach procesu legislacyjnego.
+        {t("institution.legislation.timeline.noStages")}
       </p>
     );
   }
@@ -92,8 +104,9 @@ export default function ProcessTimeline({ num }) {
               date:  stage.date ?? matched?.date ?? null,
             });
 
-            // Klikalny jest tylko tekst decision (np. "uchwalono"), nigdy nazwa etapu
-            const decisionIsVote = !!(stage.decision && VOTE_RESULT_RE.test(stage.decision));
+            // Klikalny tylko gdy mamy dane głosowania ORAZ decision sugeruje wynik głosowania
+            const hasVotingData  = !!(sitting && votingNum);
+            const decisionIsVote = !!(hasVotingData && stage.decision && VOTE_RESULT_RE.test(stage.decision));
 
             return (
               <div key={i} className="relative flex gap-4">
@@ -107,7 +120,7 @@ export default function ProcessTimeline({ num }) {
                 <div className="min-w-0">
                   <p className={`text-sm font-bold leading-snug color-transition
                     ${isLast ? "text-indigo-700 dark:text-indigo-300" : "text-slate-700 dark:text-slate-300"}`}>
-                    {stage.stageName ?? stage.name ?? `Etap ${i + 1}`}
+                    {stage.stageName ?? stage.name ?? `${t("institution.legislation.timeline.stage")} ${i + 1}`}
                   </p>
 
                   {stage.date && (

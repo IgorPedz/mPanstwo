@@ -79,7 +79,7 @@ export default function AuthPage() {
           px-8 py-12 relative z-10
         "
       >
-        <div className="absolute top-4 right-4 w-fit">
+        <div className="absolute top-4 left-4 w-fit">
           <Settings size="sm" />
         </div>
         <div className="w-full max-w-md">

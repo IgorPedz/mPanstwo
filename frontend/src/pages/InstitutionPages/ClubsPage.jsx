@@ -2,11 +2,12 @@ import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 
 import { pageVariants, sectionVariants } from "../../Utils/Animations";
 import { useSejmClubs } from "../../Hooks/useSejm";
 
-import clubsData from "../../data/clubsData";
+import { getClubsData } from "../../data/clubsData";
 
 import ClubCard from "../../components/Sejm/ClubCard";
 import ClubsHero from "../../components/Sejm/ClubHero";
@@ -17,7 +18,9 @@ const INDEPENDENT_CLUB_ID = "niez.";
 
 export default function ClubsPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { data: clubs, loading } = useSejmClubs();
+  const clubsData = getClubsData(t);
 
   const sortedClubs = useMemo(
     () =>
@@ -48,7 +51,7 @@ export default function ClubsPage() {
             className="inline-flex items-center gap-2 text-sm font-bold group text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200"
           >
             <ArrowLeftIcon className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
-            Wróć
+            {t("institution.back")}
           </button>
         </motion.div>
 

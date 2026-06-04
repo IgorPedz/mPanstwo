@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { sectionVariants } from "../../Utils/Animations";
+import { useTranslation } from "react-i18next";
 
 export default function MinistryAbout({ description, institutionType, label: labelProp }) {
-  const label = labelProp ?? (institutionType === "Ministerstwo" ? "O ministerstwie" : "O instytucji");
+  const { t } = useTranslation();
+  const label = labelProp ?? (institutionType === "Ministerstwo" ? t("institution.ministry.about") : t("institution.about"));
 
   return (
     <motion.div

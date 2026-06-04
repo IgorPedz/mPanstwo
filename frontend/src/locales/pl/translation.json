@@ -3461,5 +3461,532 @@
         "verificationCodePlaceholder": "000000",
         "verify": "Zweryfikuj",
         "newEmailPlaceholder": "Nowy email"
+    },
+    "institution": {
+        "back": "Wróć",
+        "notFound": "Nie znaleziono informacji o tej instytucji.",
+        "officialSite": "Strona oficjalna",
+        "website": "Strona WWW",
+        "information": "Informacje",
+        "about": "O instytucji",
+        "responsibilities": "Główne zadania i kompetencje",
+        "news": "Aktualności",
+        "all": "Wszystkie",
+        "noData": "Brak danych.",
+        "noNews": "Brak aktualności.",
+        "legislative": "Władza ustawodawcza",
+        "executive": "Władza wykonawcza",
+        "sejm": {
+            "title": "Sejm Rzeczypospolitej Polskiej",
+            "about": "O Sejmie",
+            "members": "posłów",
+            "composition": "Skład Sejmu — podział mandatów",
+            "proceedings": "Ostatnie posiedzenia",
+            "planned": "Planowane",
+            "speaker": "Marszałek"
+        },
+        "senat": {
+            "title": "Senat Rzeczypospolitej Polskiej",
+            "about": "O Senacie",
+            "members": "senatorów",
+            "composition": "Skład Senatu — podział mandatów",
+            "proceedings": "Ostatnie posiedzenia",
+            "planned": "Planowane",
+            "speaker": "Marszałek"
+        },
+        "president": {
+            "title": "Prezydent Rzeczypospolitej Polskiej",
+            "shortTitle": "Prezydent RP",
+            "role": "Prezydent",
+            "about": "O urzędzie"
+        },
+        "ministry": {
+            "about": "O ministerstwie",
+            "leadership": "Kierownictwo",
+            "minister": "Minister",
+            "generalDirector": "Dyr. Generalny",
+            "institutionName": "Nazwa instytucji",
+            "type": "Typ",
+            "authority": "Władza",
+            "executiveAuthority": "Wykonawcza",
+            "reportsTo": "Podlega",
+            "councilOfMinisters": "Radzie Ministrów"
+        },
+        "mpList": {
+            "noResults": "Brak posłów spełniających kryteria"
+        },
+        "legislation": {
+            "page": "Główna /",
+            "title": "Legislacja",
+            "description": "Projekty ustaw aktualnie procedowane w Sejmie RP — etapy, dokumenty i opinie obywateli.",
+            "bills": "projektów",
+            "searchPlaceholder": "Szukaj projektu ustawy…",
+            "loadError": "Błąd ładowania danych. Spróbuj odświeżyć stronę.",
+            "noBills": "Nie znaleziono projektów ustaw.",
+            "printNumber": "Druk nr",
+            "tabs": {
+                "info": "Informacje",
+                "stages": "Etapy legislacji",
+                "opinions": "Opinie"
+            },
+            "info": {
+                "title": "Podstawowe informacje",
+                "printNum": "Numer druku",
+                "dateReceived": "Data wpłynięcia",
+                "lastChange": "Ostatnia zmiana",
+                "type": "Typ projektu",
+                "term": "Kadencja",
+                "eu": "Dotyczy UE",
+                "yes": "Tak",
+                "no": "Nie",
+                "author": "Wnioskodawca",
+                "pdfs": "Dokumenty PDF"
+            },
+            "voting": {
+                "noVotings": "Brak głosowań powiązanych z tą ustawą.",
+                "session": "posiedzenie",
+                "sejmSession": "posiedzenie Sejmu",
+                "votingNumber": "Głosowanie nr",
+                "yes": "Za",
+                "no": "Przeciw",
+                "abstain": "Wstrzymało się",
+                "notVoting": "Nie głosowało",
+                "passed": "Przyjęto",
+                "rejected": "Odrzucono",
+                "majorityThreeFifths": "Większość 3/5",
+                "majorityTwoThirds": "Większość 2/3",
+                "majorityAbsolute": "Bezwzględna większość",
+                "majoritySimple": "Zwykła większość",
+                "minVotes": "min. {{count}} głosów za",
+                "hour": "godz.",
+                "individualPdf": "Wyniki indywidualne PDF",
+                "results": "Wyniki głosowania",
+                "totalVoted": "Głosowało łącznie:",
+                "mps": "posłów",
+                "byClub": "Wyniki wg klubów i kół",
+                "club": "Klub / Koło",
+                "members": "Czł.",
+                "voted": "Głosowało",
+                "abstained": "Wstrz.",
+                "absent": "Nie gł."
+            },
+            "opinions": {
+                "yourOpinion": "Twoja opinia",
+                "placeholder": "Napisz swoją opinię na temat tego projektu ustawy…",
+                "sending": "Wysyłanie…",
+                "add": "Dodaj opinię",
+                "loginRequired": "Zaloguj się, żeby dodać swoją opinię.",
+                "noOpinions": "Nie ma jeszcze opinii. Bądź pierwszą osobą, która ją doda!",
+                "expertOpinion": "Opinia eksperta"
+            },
+            "timeline": {
+                "noStages": "Brak danych o etapach procesu legislacyjnego.",
+                "stage": "Etap"
+            }
+        }
+    },
+    "staticData": {
+        "sejm": {
+            "type": "Sejm Rzeczypospolitej Polskiej",
+            "leadershipLabel": "Prezydium Sejmu",
+            "leaderLabel": "Marszałek",
+            "subordinateTo": "Konstytucji RP",
+            "description": "Sejm Rzeczypospolitej Polskiej jest izbą niższą polskiego parlamentu i głównym organem władzy ustawodawczej. Składa się z 460 posłów wybieranych w wyborach powszechnych, bezpośrednich, równych i proporcjonalnych na czteroletnią kadencję. Sprawuje kontrolę nad działalnością Rady Ministrów i jest głównym twórcą prawa w Polsce.",
+            "responsibilities": [
+                "Uchwalanie ustaw, w tym ustawy budżetowej",
+                "Kontrola działalności Rady Ministrów",
+                "Wybór i odwoływanie Prezesa Rady Ministrów",
+                "Wyrażanie wotum nieufności rządowi i ministrom",
+                "Ratyfikacja umów międzynarodowych",
+                "Uchwalanie zmian w Konstytucji RP",
+                "Powoływanie składów organów konstytucyjnych",
+                "Uchwalanie budżetu i kontrola jego wykonania",
+                "Zatwierdzanie stanu wyjątkowego i wojennego",
+                "Stanowienie prawa w zakresie samorządu terytorialnego"
+            ],
+            "infoFields": []
+        },
+        "senat": {
+            "type": "Senat Rzeczypospolitej Polskiej",
+            "leadershipLabel": "Prezydium Senatu",
+            "leaderLabel": "Marszałek",
+            "description": "Senat Rzeczypospolitej Polskiej jest izbą wyższą polskiego parlamentu. Składa się ze 100 senatorów wybieranych w wyborach powszechnych, bezpośrednich i większościowych na czteroletnią kadencję. Senat uczestniczy w procesie ustawodawczym, może wnosić poprawki do ustaw uchwalonych przez Sejm lub je odrzucać, a jego veto może zostać odrzucone bezwzględną większością głosów w Sejmie.",
+            "responsibilities": [
+                "Rozpatrywanie ustaw uchwalonych przez Sejm",
+                "Wnoszenie poprawek do ustaw lub ich odrzucanie",
+                "Prawo inicjatywy ustawodawczej",
+                "Wyrażanie zgody na ratyfikację umów międzynarodowych",
+                "Udział w uchwalaniu zmian Konstytucji RP",
+                "Powoływanie Rzecznika Praw Obywatelskich",
+                "Powoływanie Prezesa Najwyższej Izby Kontroli",
+                "Wyrażanie zgody na powołanie Prezesa NBP",
+                "Zarządzanie referendum ogólnopolskiego (wspólnie z Sejmem)",
+                "Powoływanie członków Krajowej Rady Sądownictwa"
+            ],
+            "infoFields": []
+        },
+        "president": {
+            "type": "Urząd Prezydenta RP",
+            "leadershipLabel": "Prezydent RP",
+            "leaderLabel": "Prezydent",
+            "description": "Karol Tadeusz Nawrocki (ur. 3 marca 1983 w Gdańsku) – polski historyk, polityk, działacz społeczny i samorządowy, doktor nauk humanistycznych. Prezydent Rzeczypospolitej Polskiej od 6 sierpnia 2025. W latach 2017–2021 dyrektor Muzeum II Wojny Światowej w Gdańsku, w latach 2021–2025 prezes Instytutu Pamięci Narodowej.",
+            "responsibilities": [
+                "Reprezentowanie Rzeczypospolitej Polskiej na arenie międzynarodowej",
+                "Ratyfikowanie i wypowiadanie umów międzynarodowych",
+                "Mianowanie i odwoływanie pełnomocnych przedstawicieli dyplomatycznych RP",
+                "Zwierzchnictwo nad Siłami Zbrojnymi Rzeczypospolitej Polskiej",
+                "Prawo weta ustawodawczego i inicjatywy ustawodawczej",
+                "Zarządzanie wyborów do Sejmu i Senatu RP",
+                "Powoływanie Prezesa Rady Ministrów i akceptacja składu rządu",
+                "Stosowanie prawa łaski",
+                "Nadawanie obywatelstwa polskiego i wyrażanie zgody na jego zrzeczenie",
+                "Nadawanie orderów i odznaczeń"
+            ],
+            "infoFields": []
+        },
+        "judicial": {
+            "sn": {
+                "type": "Sąd Najwyższy",
+                "powerType": "Sądownicza",
+                "leadershipLabel": "Kierownictwo Sądu Najwyższego",
+                "leaderLabel": "Pierwszy Prezes",
+                "leaderRole": "prezes",
+                "subordinateTo": "Konstytucji RP",
+                "description": "Sąd Najwyższy jest organem władzy sądowniczej powołanym do sprawowania wymiaru sprawiedliwości przez zapewnienie zgodności z prawem oraz jednolitości orzecznictwa sądów powszechnych i wojskowych. Sprawuje nadzór judykacyjny nad działalnością wszystkich sądów powszechnych i wojskowych.",
+                "responsibilities": [
+                    "Sprawowanie nadzoru judykacyjnego nad sądami powszechnymi i wojskowymi",
+                    "Rozpoznawanie kasacji i skarg nadzwyczajnych",
+                    "Podejmowanie uchwał mających na celu wyjaśnienie przepisów prawnych",
+                    "Stwierdzanie ważności wyborów parlamentarnych, prezydenckich i referendów",
+                    "Rozpoznawanie protestów wyborczych",
+                    "Orzekanie w sprawach dyscyplinarnych sędziów",
+                    "Rozpoznawanie środków odwoławczych od orzeczeń wojskowych sądów okręgowych"
+                ],
+                "infoFields": []
+            },
+            "constitutional_tribunal": {
+                "type": "Trybunał Konstytucyjny",
+                "powerType": "Sądownicza",
+                "leadershipLabel": "Kierownictwo Trybunału Konstytucyjnego",
+                "leaderLabel": "Prezes",
+                "leaderRole": "prezes",
+                "subordinateTo": "Konstytucji RP",
+                "description": "Trybunał Konstytucyjny jest organem władzy sądowniczej powołanym do badania zgodności aktów normatywnych z Konstytucją RP. Jego orzeczenia mają moc powszechnie obowiązującą i są ostateczne. Trybunał stoi na straży zasady nadrzędności Konstytucji w porządku prawnym.",
+                "responsibilities": [
+                    "Orzekanie o zgodności ustaw i umów międzynarodowych z Konstytucją",
+                    "Orzekanie o zgodności ustaw z ratyfikowanymi umowami międzynarodowymi",
+                    "Orzekanie w sprawach skarg konstytucyjnych obywateli",
+                    "Rozstrzyganie sporów kompetencyjnych między centralnymi organami państwa",
+                    "Orzekanie o zgodności z Konstytucją celów i działalności partii politycznych",
+                    "Stwierdzanie przeszkody w sprawowaniu urzędu przez Prezydenta RP"
+                ],
+                "infoFields": []
+            },
+            "supreme_administrative_court": {
+                "type": "Naczelny Sąd Administracyjny",
+                "powerType": "Sądownicza",
+                "leadershipLabel": "Kierownictwo NSA",
+                "leaderLabel": "Prezes",
+                "leaderRole": "prezes",
+                "subordinateTo": "Konstytucji RP",
+                "description": "Naczelny Sąd Administracyjny sprawuje nadzór nad działalnością wojewódzkich sądów administracyjnych w zakresie orzekania. Kontroluje legalność działania organów administracji publicznej i chroni prawa obywateli przed bezprawnymi decyzjami władzy. Rozstrzyga spory kompetencyjne między organami administracji a sądami.",
+                "responsibilities": [
+                    "Sprawowanie nadzoru orzeczniczego nad WSA",
+                    "Rozpoznawanie środków odwoławczych od orzeczeń WSA",
+                    "Podejmowanie uchwał wyjaśniających przepisy prawa administracyjnego",
+                    "Rozstrzyganie sporów kompetencyjnych w administracji",
+                    "Kontrola legalności działań organów administracji publicznej",
+                    "Orzekanie w sprawach dyscyplinarnych sędziów sądów administracyjnych",
+                    "Rozpoznawanie skarg na bezczynność organów administracji"
+                ],
+                "infoFields": []
+            },
+            "national_council_of_the_judiciary": {
+                "type": "Krajowa Rada Sądownictwa",
+                "powerType": "Sądownicza",
+                "leadershipLabel": "Skład Krajowej Rady Sądownictwa",
+                "leaderLabel": "Przewodniczący",
+                "leaderRole": "prezes",
+                "subordinateTo": "Konstytucji RP",
+                "description": "Krajowa Rada Sądownictwa stoi na straży niezależności sądów i niezawisłości sędziów. Wnioskuje do Prezydenta RP o powołanie sędziów wszystkich szczebli. Opiniuje akty normatywne dotyczące sądownictwa oraz czuwa nad przestrzeganiem etyki zawodowej sędziów.",
+                "responsibilities": [
+                    "Wnioskowanie do Prezydenta RP o powołanie sędziów",
+                    "Stanie na straży niezależności sądów i niezawisłości sędziów",
+                    "Opiniowanie projektów aktów normatywnych dotyczących sądownictwa",
+                    "Podejmowanie uchwał w sprawach wyróżnień i odznaczeń sędziów",
+                    "Uchwalanie zbioru zasad etyki zawodowej sędziów",
+                    "Wyrażanie stanowisk w sprawach dotyczących sądownictwa",
+                    "Rozpatrywanie i ocenianie kandydatów do pełnienia urzędu sędziego"
+                ],
+                "infoFields": []
+            }
+        },
+        "clubs": {
+            "KO": {
+                "description": "Klub Parlamentarny Koalicja Obywatelska skupia posłów partii centrolewicowych i liberalnych tworzących koalicję rządzącą. Jest największym klubem lewej strony sceny politycznej, opowiadającym się za integracją europejską, praworządnością i wolnościami obywatelskimi. Klub jest częścią koalicji rządzącej."
+            },
+            "PiS": {
+                "description": "Klub Parlamentarny Prawo i Sprawiedliwość to największe ugrupowanie opozycyjne, reprezentujące konserwatywne i narodowo-katolickie wartości. Partia rządziła Polską w latach 2015–2023, realizując m.in. program 500+, reformy sądownictwa i politykę migracyjną."
+            },
+            "Lewica": {
+                "description": "Koalicyjny Klub Parlamentarny Lewicy łączy partie lewicowe postulujące prawa pracownicze, rozbudowę państwa opiekuńczego, prawa kobiet i mniejszości oraz neutralność wyznaniową państwa. Klub jest częścią koalicji rządzącej."
+            },
+            "Polska2050": {
+                "description": "Klub Parlamentarny Polska 2050 skupia posłów ruchu założonego przez Szymona Hołownię. Ugrupowanie centrodemokratyczne kładzie nacisk na modernizację państwa, dialog społeczny i odpowiedzialne finanse publiczne. Klub jest częścią koalicji rządzącej."
+            },
+            "Konfederacja": {
+                "description": "Klub Poselski Konfederacja reprezentuje prawicowo-liberalne i narodowo-konserwatywne środowiska. Sprzeciwia się interwencjonizmowi państwowemu, wysokim podatkom i polityce migracyjnej UE, postulując jednocześnie wzmocnienie suwerenności narodowej."
+            },
+            "Konfederacja_KP": {
+                "description": "Koło Poselskie Konfederacja Korony Polskiej skupia posłów frakcji narodowo-katolickiej, kładąc szczególny nacisk na tożsamość chrześcijańską i suwerenność Polski."
+            },
+            "Centrum": {
+                "description": "Klub Parlamentarny Centrum skupia posłów centroprawicowych, którzy odeszli z Polski 2050. Ugrupowanie poszukuje trzeciej drogi pomiędzy rządową koalicją a tradycyjną prawicą, kładąc nacisk na stabilność i pragmatyczne zarządzanie państwem. Klub jest cześcią koalicji rządzącej."
+            },
+            "Demokracja": {
+                "description": "Koło Poselskie Demokracja Bezpośrednia postuluje reformę systemu politycznego w kierunku większego udziału obywateli w podejmowaniu decyzji — poprzez referenda, inicjatywy ustawodawcze i mechanizmy partycypacji bezpośredniej."
+            },
+            "Razem": {
+                "description": "Koło Poselskie Razem reprezentuje lewicę społeczną, postulując radykalne zmiany gospodarcze: wyższe podatki dla bogatych, rozbudowę usług publicznych, prawa pracownicze i walkę z nierównościami społecznymi."
+            },
+            "niez_independent": {
+                "description": "Posłowie niezrzeszeni — parlamentarzyści, którzy nie należą do żadnego klubu ani koła poselskiego. Część z nich to byli członkowie partii, którzy opuścili macierzyste ugrupowania lub zostali wykreśleni z ich list."
+            }
+        },
+        "ministries": {
+            "ministry_of_finance": {
+                "description": "Ministerstwo Finansów odpowiada za politykę finansową i gospodarczą państwa. Zarządza budżetem państwa, systemem podatkowym oraz polityką fiskalną. Nadzoruje instytucje finansowe i koordynuje politykę gospodarczą rządu.",
+                "responsibilities": [
+                    "Przygotowanie projektu ustawy budżetowej",
+                    "Zarządzanie długiem publicznym",
+                    "Nadzór nad systemem podatkowym",
+                    "Koordynacja polityki fiskalnej i monetarnej",
+                    "Regulacja i nadzór nad rynkami finansowymi",
+                    "Zarządzanie kasą państwową i wpływami budżetowymi"
+                ]
+            },
+            "ministry_of_health": {
+                "description": "Ministerstwo Zdrowia odpowiada za ochronę zdrowia obywateli i organizację systemu opieki zdrowotnej w Polsce. Kształtuje politykę zdrowotną, nadzoruje działalność podmiotów leczniczych i zapewnia dostęp do świadczeń medycznych. Odpowiada też za bezpieczeństwo sanitarno-epidemiologiczne kraju.",
+                "responsibilities": [
+                    "Kształtowanie polityki zdrowotnej państwa",
+                    "Nadzór nad Narodowym Funduszem Zdrowia",
+                    "Regulacja działalności podmiotów leczniczych",
+                    "Zapobieganie i zwalczanie chorób zakaźnych",
+                    "Bezpieczeństwo farmaceutyczne i dopuszczanie leków",
+                    "Zarządzanie kryzysami i epidemiami zdrowotnymi"
+                ]
+            },
+            "ministry_of_national_defence": {
+                "description": "Ministerstwo Obrony Narodowej kieruje sprawami obronności państwa i Sił Zbrojnych Rzeczypospolitej Polskiej. Odpowiada za gotowość bojową wojska, modernizację uzbrojenia i realizację zobowiązań sojuszniczych w ramach NATO. Planuje i wdraża politykę obronną kraju.",
+                "responsibilities": [
+                    "Kierowanie i nadzór nad Siłami Zbrojnymi RP",
+                    "Planowanie i realizacja polityki obronnej",
+                    "Modernizacja techniczna i dozbrajanie wojska",
+                    "Realizacja zobowiązań sojuszniczych w NATO",
+                    "Ochrona granic i bezpieczeństwo militarne",
+                    "Zarządzanie infrastrukturą i logistyką wojskową"
+                ]
+            },
+            "ministry_of_justice": {
+                "description": "Ministerstwo Sprawiedliwości odpowiada za organizację wymiaru sprawiedliwości i realizację polityki penitencjarnej. Sprawuje nadzór nad działalnością sądów powszechnych, prokuratur i więziennictwa. Przygotowuje projekty aktów prawnych i dba o praworządność w państwie.",
+                "responsibilities": [
+                    "Nadzór administracyjny nad sądami powszechnymi",
+                    "Nadzór nad Służbą Więzienną i zakładami karnymi",
+                    "Przygotowywanie projektów ustaw i aktów prawnych",
+                    "Nadzór nad komornikami i notariuszami",
+                    "Koordynacja systemu nieodpłatnej pomocy prawnej",
+                    "Realizacja polityki penitencjarnej i resocjalizacyjnej"
+                ]
+            },
+            "ministry_of_foreign_affairs": {
+                "description": "Ministerstwo Spraw Zagranicznych odpowiada za realizację polityki zagranicznej Rzeczypospolitej Polskiej. Koordynuje stosunki dyplomatyczne z innymi państwami i organizacjami międzynarodowymi, w tym z UE i NATO. Sprawuje opiekę konsularną nad polskimi obywatelami za granicą.",
+                "responsibilities": [
+                    "Realizacja i koordynacja polityki zagranicznej",
+                    "Utrzymywanie stosunków dyplomatycznych",
+                    "Obsługa konsularna obywateli polskich za granicą",
+                    "Reprezentacja Polski w organizacjach międzynarodowych",
+                    "Koordynacja polskiej polityki europejskiej",
+                    "Ochrona interesów polskich obywateli i firm za granicą"
+                ]
+            },
+            "ministry_of_infrastructure": {
+                "description": "Ministerstwo Infrastruktury odpowiada za politykę transportową i infrastrukturalną kraju. Zarządza rozwojem sieci dróg, kolei, lotnisk i portów morskich. Zajmuje się też budownictwem, gospodarką przestrzenną i polityką mieszkaniową.",
+                "responsibilities": [
+                    "Planowanie i realizacja inwestycji infrastrukturalnych",
+                    "Nadzór nad siecią dróg krajowych i autostrad",
+                    "Polityka kolejowa, lotnicza i morska",
+                    "Gospodarka morska i żegluga śródlądowa",
+                    "Polityka mieszkaniowa i budownictwa",
+                    "Gospodarka przestrzenna i urbanistyka"
+                ]
+            },
+            "ministry_of_agriculture": {
+                "description": "Ministerstwo Rolnictwa i Rozwoju Wsi odpowiada za politykę rolną, wsparcie obszarów wiejskich i rybołówstwo. Wspiera rolników, zarządza funduszami unijnymi dla rolnictwa i kontroluje bezpieczeństwo żywności. Dba o dobrostan zwierząt i rozwój polskiej wsi.",
+                "responsibilities": [
+                    "Realizacja polityki rolnej i wsparcie rolników",
+                    "Zarządzanie unijnymi funduszami dla rolnictwa (PROW)",
+                    "Bezpieczeństwo żywności i kontrola weterynaryjna",
+                    "Rozwój obszarów wiejskich i wsi",
+                    "Ochrona i regulacja rynków rolnych",
+                    "Polityka rybołówstwa i akwakultury"
+                ]
+            },
+            "ministry_of_climate_and_environment": {
+                "description": "Ministerstwo Klimatu i Środowiska odpowiada za politykę klimatyczną i ochronę środowiska naturalnego. Koordynuje transformację energetyczną, zarządza polityką OZE i redukcją emisji CO₂. Chroni zasoby naturalne, lasy i bioróżnorodność.",
+                "responsibilities": [
+                    "Kształtowanie polityki klimatycznej państwa",
+                    "Ochrona środowiska naturalnego i przyrody",
+                    "Zarządzanie odnawialnymi źródłami energii (OZE)",
+                    "Gospodarka odpadami i recykling",
+                    "Ochrona bioróżnorodności i lasów",
+                    "Polityka wodna i gospodarka zasobami wodnymi"
+                ]
+            },
+            "ministry_of_state_assets": {
+                "description": "Ministerstwo Aktywów Państwowych sprawuje nadzór właścicielski nad spółkami z udziałem Skarbu Państwa. Zarządza aktywami państwowymi i koordynuje politykę wobec strategicznych przedsiębiorstw. Dba o efektywne zarządzanie majątkiem publicznym i interesy Skarbu Państwa.",
+                "responsibilities": [
+                    "Nadzór właścicielski nad spółkami Skarbu Państwa",
+                    "Zarządzanie i ochrona aktywów państwowych",
+                    "Prywatyzacja i restrukturyzacja przedsiębiorstw",
+                    "Koordynacja polityki wobec spółek strategicznych",
+                    "Ochrona interesów finansowych Skarbu Państwa",
+                    "Analiza efektywności i wyników spółek państwowych"
+                ]
+            },
+            "ministry_of_culture_and_national_heritage": {
+                "description": "Ministerstwo Kultury i Dziedzictwa Narodowego odpowiada za ochronę dziedzictwa kulturowego i wspieranie życia kulturalnego. Zarządza finansowaniem instytucji kultury – teatrów, muzeów i bibliotek. Dba o ochronę zabytków i promocję polskiej kultury za granicą.",
+                "responsibilities": [
+                    "Ochrona dziedzictwa kulturowego i zabytków",
+                    "Finansowanie i nadzór nad instytucjami kultury",
+                    "Polityka medialna i audiowizualna",
+                    "Promocja polskiej kultury za granicą",
+                    "Ochrona własności intelektualnej i praw autorskich",
+                    "Wspieranie twórczości artystycznej i edukacji kulturalnej"
+                ]
+            },
+            "ministry_of_sport_and_tourism": {
+                "description": "Ministerstwo Sportu i Turystyki odpowiada za politykę sportową i turystyczną kraju. Wspiera rozwój sportu wyczynowego i powszechnego, finansuje budowę infrastruktury sportowej. Koordynuje politykę turystyczną i promocję Polski jako destynacji turystycznej.",
+                "responsibilities": [
+                    "Wspieranie sportu wyczynowego i masowego",
+                    "Finansowanie budowy infrastruktury sportowej",
+                    "Realizacja polityki turystycznej państwa",
+                    "Promocja turystyki i sportu polskiego",
+                    "Współpraca z polskimi związkami sportowymi",
+                    "Przygotowania do wielkich imprez sportowych"
+                ]
+            },
+            "ministry_of_family_labour_and_social_policy": {
+                "description": "Ministerstwo Rodziny, Pracy i Polityki Społecznej odpowiada za politykę społeczną, rynek pracy i ochronę rodziny. Zarządza systemem świadczeń społecznych i programami wsparcia, takimi jak 800+. Nadzoruje instytucje rynku pracy i system pomocy społecznej.",
+                "responsibilities": [
+                    "Realizacja polityki rodzinnej i społecznej",
+                    "Zarządzanie rynkiem pracy i zwalczanie bezrobocia",
+                    "Nadzór nad instytucjami pomocy społecznej",
+                    "Programy wsparcia dla rodzin (800+)",
+                    "Polityka emerytalna i ubezpieczeń społecznych",
+                    "Ochrona praw pracowniczych i dialog społeczny"
+                ]
+            },
+            "ministry_of_energy": {
+                "description": "Ministerstwo Energii odpowiada za politykę przemysłową i energetyczną państwa. Zarządza sektorem energetycznym – energetyką konwencjonalną, gazownictwem i elektroenergetyką. Koordynuje transformację energetyczną i dywersyfikację źródeł energii.",
+                "responsibilities": [
+                    "Kształtowanie polityki przemysłowej i energetycznej",
+                    "Zapewnienie bezpieczeństwa energetycznego",
+                    "Nadzór nad sektorem paliw, gazu i energii elektrycznej",
+                    "Transformacja energetyczna i dywersyfikacja dostaw",
+                    "Regulacja i nadzór nad cenami energii",
+                    "Rozwój energetyki jądrowej w Polsce"
+                ]
+            },
+            "ministry_of_education": {
+                "description": "Ministerstwo Edukacji odpowiada za system edukacji publicznej w Polsce. Kształtuje politykę oświatową, ustala podstawy programowe i zarządza systemem egzaminów. Nadzoruje szkoły podstawowe, ponadpodstawowe oraz placówki oświatowe w całym kraju.",
+                "responsibilities": [
+                    "Kształtowanie polityki i systemu oświatowego",
+                    "Ustalanie podstaw programowych i standardów",
+                    "Nadzór nad szkołami i placówkami oświatowymi",
+                    "Zarządzanie egzaminami zewnętrznymi i maturą",
+                    "Doskonalenie zawodowe i kształcenie nauczycieli",
+                    "Finansowanie i subwencjonowanie oświaty"
+                ]
+            },
+            "ministry_of_funds_and_regional_policy": {
+                "description": "Ministerstwo Funduszy i Polityki Regionalnej odpowiada za zarządzanie funduszami europejskimi i politykę regionalną. Koordynuje wykorzystanie środków unijnych na rozwój regionów, infrastruktury i spójności. Wyrównuje różnice w rozwoju między regionami Polski.",
+                "responsibilities": [
+                    "Zarządzanie i koordynacja funduszy europejskich",
+                    "Realizacja polityki spójności Unii Europejskiej",
+                    "Koordynacja Regionalnych Programów Operacyjnych",
+                    "Wspieranie rozwoju regionalnego i lokalnego",
+                    "Monitoring, kontrola i ewaluacja programów unijnych",
+                    "Polityka miejska, rewitalizacja i rozwój miast"
+                ]
+            },
+            "ministry_of_science_and_higher_education": {
+                "description": "Ministerstwo Nauki i Szkolnictwa Wyższego odpowiada za politykę naukową i szkolnictwo wyższe. Zarządza finansowaniem badań naukowych i uczelni wyższych. Nadzoruje jakość kształcenia akademickiego i wdraża politykę innowacyjności.",
+                "responsibilities": [
+                    "Finansowanie nauki i badań naukowych",
+                    "Nadzór i akredytacja uczelni wyższych",
+                    "Realizacja polityki innowacyjnej i B+R",
+                    "Współpraca naukowa z zagranicą i wymiana akademicka",
+                    "Akredytacja kierunków i jakość kształcenia",
+                    "Wsparcie dla doktorantów, naukowców i młodych badaczy"
+                ]
+            },
+            "ministry_of_internal_affairs_and_administration": {
+                "description": "Ministerstwo Spraw Wewnętrznych i Administracji odpowiada za bezpieczeństwo wewnętrzne i porządek publiczny. Nadzoruje Policję, Straż Graniczną, Państwową Straż Pożarną i inne służby mundurowe. Zarządza systemem ewidencji ludności, obywatelstwa i dokumentów tożsamości.",
+                "responsibilities": [
+                    "Nadzór nad Policją i Strażą Graniczną",
+                    "Zarządzanie dokumentami tożsamości i ewidencją ludności",
+                    "Ochrona porządku publicznego i bezpieczeństwa",
+                    "Nadzór nad Państwową Strażą Pożarną i ratownictwem",
+                    "Polityka migracyjna, azylowa i pobytowa",
+                    "Administracja rządowa w terenie i samorząd terytorialny"
+                ]
+            },
+            "ministry_of_digital_affairs": {
+                "description": "Ministerstwo Cyfryzacji odpowiada za cyfryzację państwa i rozwój społeczeństwa informacyjnego. Zarządza transformacją cyfrową usług publicznych, e-administracją i rozwojem infrastruktury cyfrowej. Koordynuje politykę sztucznej inteligencji i cyberbezpieczeństwa.",
+                "responsibilities": [
+                    "Transformacja cyfrowa administracji publicznej",
+                    "Rozwój e-usług dla obywateli (gov.pl, mObywatel)",
+                    "Zarządzanie platformą cyfrową państwa",
+                    "Polityka cyberbezpieczeństwa i ochrony danych",
+                    "Regulacja rynku cyfrowego i AI",
+                    "Budowa sieci szerokopasmowej i infrastruktury cyfrowej"
+                ]
+            },
+            "chancellery_of_the_prime_minister": {
+                "description": "Kancelaria Prezesa Rady Ministrów zapewnia obsługę organizacyjno-techniczną pracy Prezesa Rady Ministrów i Rady Ministrów. Koordynuje działania administracji rządowej i realizuje politykę personalną służby cywilnej.",
+                "responsibilities": [
+                    "Obsługa organizacyjna Prezesa Rady Ministrów i RM",
+                    "Koordynacja prac legislacyjnych rządu",
+                    "Nadzór nad służbą cywilną",
+                    "Realizacja polityki rządowej w zakresie cyfryzacji i innowacji",
+                    "Obsługa Rady do Spraw Uchodźców i innych organów pomocniczych RM",
+                    "Koordynacja współpracy z Sejmem i Senatem"
+                ]
+            },
+            "council_of_ministers": {
+                "description": "Rada Ministrów jest naczelnym organem władzy wykonawczej w Polsce, kieruje administracją rządową i realizuje politykę państwa. Prowadzi politykę wewnętrzną i zagraniczną, zapewnia wykonanie ustaw oraz uchwala projekt budżetu.",
+                "responsibilities": [
+                    "Kierowanie administracją rządową",
+                    "Realizacja polityki wewnętrznej i zagranicznej",
+                    "Uchwalanie projektu budżetu państwa",
+                    "Wydawanie rozporządzeń i uchwał",
+                    "Koordynacja i kontrola pracy ministrów",
+                    "Zapewnienie bezpieczeństwa wewnętrznego i zewnętrznego państwa"
+                ]
+            },
+            "presidential_chancellery": {
+                "description": "Kancelaria Prezydenta Rzeczypospolitej Polskiej zapewnia obsługę Prezydenta RP w wykonywaniu jego konstytucyjnych i ustawowych zadań. Koordynuje działalność ministrów w Kancelarii, zarządza kontaktami dyplomatycznymi Prezydenta oraz organizuje uroczystości i spotkania z głową państwa. Kancelaria pełni również funkcję łącznika między Prezydentem a innymi organami władzy.",
+                "responsibilities": [
+                    "Obsługa organizacyjna i administracyjna Prezydenta RP",
+                    "Koordynacja wizyt krajowych i zagranicznych Prezydenta",
+                    "Obsługa inicjatyw ustawodawczych i prawa weta Prezydenta",
+                    "Organizacja ceremonii i spotkań z głową państwa",
+                    "Kontakty z dyplomatami i przedstawicielami zagranicy",
+                    "Nadzór nad nadawaniem orderów i odznaczeń",
+                    "Obsługa Biura Bezpieczeństwa Narodowego",
+                    "Zarządzanie Pałacem Prezydenckim i rezydencjami"
+                ]
+            }
+        }
     }
 }

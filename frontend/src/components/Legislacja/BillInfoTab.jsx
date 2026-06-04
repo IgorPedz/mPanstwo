@@ -1,12 +1,14 @@
 import { DocumentTextIcon } from "@heroicons/react/24/outline";
 import { TYPE_LABELS, formatDate, getPdfUrl } from "./legislacjaConstants";
+import { useTranslation } from "react-i18next";
 
 export default function BillInfoTab({ data, pdfAttachments, num }) {
+  const { t } = useTranslation();
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
       <div>
         <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-5 color-transition">
-          Podstawowe informacje
+          {t("institution.legislation.info.title")}
         </p>
         {data.description && (
           <p className="text-sm font-medium text-slate-500 dark:text-slate-400 leading-relaxed mb-5 color-transition">
@@ -15,12 +17,12 @@ export default function BillInfoTab({ data, pdfAttachments, num }) {
         )}
         <div className="space-y-4">
           {[
-            ["Numer druku",     data.number],
-            ["Data wpłynięcia", formatDate(data.deliveryDate)],
-            ["Ostatnia zmiana", formatDate(data.changeDate)],
-            ["Typ projektu",    TYPE_LABELS[data.type] ?? "—"],
-            ["Kadencja",        data.term ?? "X"],
-            ["Dotyczy UE",      data.euRelated ? "Tak" : "Nie"],
+            [t("institution.legislation.info.printNum"),     data.number],
+            [t("institution.legislation.info.dateReceived"), formatDate(data.deliveryDate)],
+            [t("institution.legislation.info.lastChange"),   formatDate(data.changeDate)],
+            [t("institution.legislation.info.type"),         TYPE_LABELS[data.type] ?? "—"],
+            [t("institution.legislation.info.term"),         data.term ?? "X"],
+            [t("institution.legislation.info.eu"),           data.euRelated ? t("institution.legislation.info.yes") : t("institution.legislation.info.no")],
           ].map(([label, value], i, arr) => (
             <div key={i}>
               <div className="flex items-start justify-between gap-4">
@@ -43,7 +45,7 @@ export default function BillInfoTab({ data, pdfAttachments, num }) {
         {data.principalClub && (
           <div>
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-3 color-transition">
-              Wnioskodawca
+              {t("institution.legislation.info.author")}
             </p>
             <span className="inline-block px-4 py-2 rounded-2xl text-sm font-black
               bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 color-transition">
@@ -54,7 +56,7 @@ export default function BillInfoTab({ data, pdfAttachments, num }) {
         {pdfAttachments.length > 0 && (
           <div>
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-3 color-transition">
-              Dokumenty PDF ({pdfAttachments.length})
+              {t("institution.legislation.info.pdfs")} ({pdfAttachments.length})
             </p>
             <div className="flex flex-wrap gap-2">
               {pdfAttachments.map((a, i) => {

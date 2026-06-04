@@ -111,7 +111,9 @@ export default function Settings({ size = "md" }) {
               }}
               style={{
                 position: "fixed",
-                bottom: `${coords.bottom}px`,
+                ...(coords.bottom !== undefined
+                  ? { bottom: `${coords.bottom}px` }
+                  : { top: `${coords.top}px` }),
                 left: `${coords.left}px`,
               }}
               className="

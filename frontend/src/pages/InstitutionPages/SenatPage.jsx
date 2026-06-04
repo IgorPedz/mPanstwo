@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 import { pageVariants, sectionVariants } from "../../Utils/Animations";
 import ICON_MAP from "../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../Utils/Maps/Accents";
 import { COLOR_MAP } from "../../Utils/Maps/Colors";
-import senatData from "../../data/senatData";
+import { getSenatData } from "../../data/senatData";
 import { useSenatLeadership, useSenatClubs, useSenatProceedings } from "../../Hooks/useSenat";
 
 import SenatHero              from "../../components/Senat/SenatHero";
@@ -18,8 +19,9 @@ import SenatInfo              from "../../components/Senat/SenatInfo";
 
 export default function SenatPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
-  const data           = senatData;
+  const data           = getSenatData(t);
   const IconComponent  = ICON_MAP[data.icon] ?? ICON_MAP["parliament"];
   const colorClass     = COLOR_MAP[data.accent] ?? "text-red-700";
   const accentGradient = ACCENT_MAP[data.accent] ?? "from-red-700 to-red-500";
@@ -45,7 +47,7 @@ export default function SenatPage() {
               text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
           >
             <ArrowLeftIcon className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
-            Wróć
+            {t("institution.back")}
           </button>
         </motion.div>
 
@@ -72,7 +74,7 @@ export default function SenatPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <MinistryResponsibilities responsibilities={data.responsibilities} colorClass={colorClass} />
           <div className="flex flex-col gap-5">
-            <MinistryAbout description={data.description} label="O Senacie" />
+            <MinistryAbout description={data.description} label={t("institution.senat.about")} />
             <SenatInfo infoFields={data.infoFields} website={data.website} />
           </div>
         </div>

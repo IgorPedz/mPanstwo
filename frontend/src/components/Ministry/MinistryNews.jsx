@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeftIcon, ArrowRightIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { sectionVariants } from "../../Utils/Animations";
+import { useTranslation } from "react-i18next";
 
 const ITEMS_PER_PAGE = 2;
 
@@ -14,6 +15,7 @@ const slideVariants = {
 export default function MinistryNews({ news, loading, website, title, IconComponent, colorClass, accentGradient }) {
   const [page, setPage] = useState(0);
   const [dir, setDir]   = useState(1);
+  const { t } = useTranslation();
   const totalPages = Math.ceil(news.length / ITEMS_PER_PAGE);
 
   const goPrev = () => { setDir(-1); setPage((p) => p - 1); };
@@ -27,7 +29,7 @@ export default function MinistryNews({ news, loading, website, title, IconCompon
     >
       <div className="flex items-center justify-between px-7 md:px-8 pt-7 pb-5">
         <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 color-transition">
-          Aktualności
+          {t("institution.news")}
         </p>
         {website && (
           <a
@@ -37,7 +39,7 @@ export default function MinistryNews({ news, loading, website, title, IconCompon
             className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-widest
               text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors color-transition"
           >
-            Wszystkie
+            {t("institution.all")}
             <ArrowTopRightOnSquareIcon className="h-3 w-3" />
           </a>
         )}
@@ -60,7 +62,7 @@ export default function MinistryNews({ news, loading, website, title, IconCompon
         )}
 
         {!loading && news.length === 0 && (
-          <p className="text-sm text-slate-400 dark:text-slate-500 color-transition">Brak aktualności.</p>
+          <p className="text-sm text-slate-400 dark:text-slate-500 color-transition">{t("institution.noNews")}</p>
         )}
 
         {!loading && news.length > 0 && (

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { sectionVariants } from "../../Utils/Animations";
+import { useTranslation } from "react-i18next";
 
 export default function JudicialHero({
   data,
@@ -8,6 +9,7 @@ export default function JudicialHero({
   colorClass,
   accentGradient,
 }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       variants={sectionVariants}
@@ -32,7 +34,7 @@ export default function JudicialHero({
           <div>
             <div className="flex gap-2 mb-2 flex-wrap">
               <span className="badge">{data.type}</span>
-              <span className="badge">Władza {data.powerType}</span>
+              <span className="badge">{t("institution.ministry.authority")} {data.powerType}</span>
             </div>
 
             <h1 className="text-2xl md:text-3xl font-black">{data.type}</h1>
@@ -46,7 +48,7 @@ export default function JudicialHero({
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl"
           >
-            Strona oficjalna
+            {t("institution.officialSite")}
             <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />
           </a>
         )}

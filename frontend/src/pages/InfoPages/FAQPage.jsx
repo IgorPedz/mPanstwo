@@ -10,6 +10,7 @@ import FAQHeader from "../../components/FAQ/FAQHeader";
 import Loginfooter from "../../components/Global/LoginFooter";
 
 import { useFAQ } from "../../Hooks/useFAQ";
+import Settings from "../../components/Global/Settings";
 
 import { sectionVariants, pageVariants } from "../../Utils/Animations";
 
@@ -30,8 +31,15 @@ export default function FAQPage() {
       animate="show"
       className="w-full min-h-screen flex flex-col items-center px-7 py-8 relative color-transition"
     >
-      <div className={`w-full ${isLoggedIn ? "max-w-[1800px]" : "max-w-6xl"} space-y-12 color-transition`}>
+      <div
+        className={`w-full ${isLoggedIn ? "max-w-[1800px]" : "max-w-6xl"} space-y-12 color-transition`}
+      >
         {!isLoggedIn && <ReturnBtn />}
+        {!isLoggedIn && (
+          <div className="fixed bottom-4 left-4 z-50 w-fit">
+            <Settings size="sm" />
+          </div>
+        )}
 
         <FAQHeader />
 

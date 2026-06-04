@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { sectionVariants } from "../../Utils/Animations";
 import { SENAT_CLUB_HEX } from "./SenatHemicycle";
+import { useTranslation } from "react-i18next";
 
 function SenatorPhoto({ name, photoUrl: directUrl, className, initialsClass }) {
   const [photoUrl, setPhotoUrl] = useState(directUrl ?? null);
@@ -41,6 +42,7 @@ function SenatorPhoto({ name, photoUrl: directUrl, className, initialsClass }) {
 export default function SenatLeadership({ leadership, loading, leadershipLabel, colorClass, accentGradient }) {
   const [offset, setOffset] = useState(0);
   const [visible, setVisible] = useState(4);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const update = () => setVisible(window.innerWidth >= 640 ? 4 : 2);
@@ -103,7 +105,7 @@ export default function SenatLeadership({ leadership, loading, leadershipLabel, 
                         group-hover:translate-y-0 group-hover:opacity-100">
                         {isMarszalek && (
                           <span className={`text-[8px] font-black uppercase tracking-widest block mb-0.5 ${colorClass}`}>
-                            Marszałek
+                            {t("institution.senat.speaker")}
                           </span>
                         )}
                         <p className="font-black text-xs leading-tight text-white">{person.name}</p>

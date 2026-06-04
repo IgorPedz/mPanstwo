@@ -3092,7 +3092,7 @@
     "facts": {
         "facts": "Über die Daten",
         "description": "Die Daten, die wir verwenden, werden von offiziellen Regierungsquellen gesammelt, wie z.B. der Sejm, der Senat, die Ministerien und andere öffentliche Institutionen. Wir stellen sicher, dass alle Informationen genau und aktuell sind, um Ihnen zuverlässige Einblicke in das Funktionieren der polnischen Regierung und öffentlichen Verwaltung zu geben."
-     },
+    },
     "dashboard": {
         "dashboard": "Dashboard",
         "welcome": "Willkommen, {{name}}!",
@@ -3397,5 +3397,650 @@
         "verificationCodeLabel": "Verifizierungscode",
         "verificationCodePlaceholder": "000000",
         "verify": "Verifizieren"
+    },
+    "institution": {
+        "back": "Zurück",
+        "notFound": "Keine Informationen zu dieser Institution gefunden.",
+        "officialSite": "Offizielle Website",
+        "website": "Website",
+        "information": "Informationen",
+        "about": "Über",
+        "responsibilities": "Hauptaufgaben und Kompetenzen",
+        "news": "Neuigkeiten",
+        "all": "Alle",
+        "noData": "Keine Daten verfügbar.",
+        "noNews": "Keine Neuigkeiten verfügbar.",
+        "legislative": "Gesetzgebende Gewalt",
+        "executive": "Ausführende Gewalt",
+        "sejm": {
+            "title": "Sejm der Republik Polen",
+            "about": "Über den Sejm",
+            "members": "Abgeordnete",
+            "composition": "Zusammensetzung des Sejm — Sitzverteilung",
+            "proceedings": "Letzte Sitzungen",
+            "planned": "Geplant",
+            "speaker": "Marschall"
+        },
+        "senat": {
+            "title": "Senat der Republik Polen",
+            "about": "Über den Senat",
+            "members": "Senatoren",
+            "composition": "Zusammensetzung des Senats — Sitzverteilung",
+            "proceedings": "Letzte Sitzungen",
+            "planned": "Geplant",
+            "speaker": "Marschall"
+        },
+        "president": {
+            "title": "Präsident der Republik Polen",
+            "shortTitle": "Präsident Polens",
+            "role": "Präsident",
+            "about": "Über das Amt"
+        },
+        "ministry": {
+            "about": "Über das Ministerium",
+            "leadership": "Führung",
+            "minister": "Minister",
+            "generalDirector": "Gen.-Dir.",
+            "institutionName": "Institutionsname",
+            "type": "Typ",
+            "authority": "Behörde",
+            "executiveAuthority": "Exekutive",
+            "reportsTo": "Untersteht",
+            "councilOfMinisters": "Ministerrat"
+        },
+        "mpList": {
+            "noResults": "Keine Abgeordneten entsprechen den ausgewählten Kriterien"
+        },
+        "legislation": {
+            "page": "Startseite /",
+            "title": "Gesetzgebung",
+            "description": "Derzeit im polnischen Sejm behandelte Gesetzentwürfe — Phasen, Dokumente und Bürgermeinungen.",
+            "bills": "Gesetzentwürfe",
+            "searchPlaceholder": "Gesetzentwurf suchen…",
+            "loadError": "Daten konnten nicht geladen werden. Bitte aktualisieren Sie die Seite.",
+            "noBills": "Keine Gesetzentwürfe gefunden.",
+            "printNumber": "Drucknr.",
+            "tabs": {
+                "info": "Informationen",
+                "stages": "Gesetzgebungsphasen",
+                "opinions": "Meinungen"
+            },
+            "info": {
+                "title": "Grundlegende Informationen",
+                "printNum": "Drucknummer",
+                "dateReceived": "Eingangsdatum",
+                "lastChange": "Letzte Änderung",
+                "type": "Entwurfstyp",
+                "term": "Legislaturperiode",
+                "eu": "EU-bezogen",
+                "yes": "Ja",
+                "no": "Nein",
+                "author": "Initiator",
+                "pdfs": "PDF-Dokumente"
+            },
+            "voting": {
+                "noVotings": "Keine Abstimmungen zu diesem Gesetzentwurf.",
+                "session": "Sitzung",
+                "sejmSession": "Sejm-Sitzung",
+                "votingNumber": "Abstimmung Nr.",
+                "yes": "Ja",
+                "no": "Nein",
+                "abstain": "Enthalten",
+                "notVoting": "Nicht abgestimmt",
+                "passed": "Angenommen",
+                "rejected": "Abgelehnt",
+                "majorityThreeFifths": "Drei-Fünftel-Mehrheit",
+                "majorityTwoThirds": "Zwei-Drittel-Mehrheit",
+                "majorityAbsolute": "Absolute Mehrheit",
+                "majoritySimple": "Einfache Mehrheit",
+                "minVotes": "mind. {{count}} Ja-Stimmen",
+                "hour": "Uhr",
+                "individualPdf": "Einzelergebnisse PDF",
+                "results": "Abstimmungsergebnisse",
+                "totalVoted": "Insgesamt abgestimmt:",
+                "mps": "Abgeordnete",
+                "byClub": "Ergebnisse nach Fraktion",
+                "club": "Fraktion / Gruppe",
+                "members": "Mitgl.",
+                "voted": "Abgest.",
+                "abstained": "Enthal.",
+                "absent": "Abwes."
+            },
+            "opinions": {
+                "yourOpinion": "Ihre Meinung",
+                "placeholder": "Schreiben Sie Ihre Meinung zu diesem Gesetzentwurf…",
+                "sending": "Wird gesendet…",
+                "add": "Meinung hinzufügen",
+                "loginRequired": "Melden Sie sich an, um Ihre Meinung hinzuzufügen.",
+                "noOpinions": "Noch keine Meinungen. Seien Sie die erste Person, die eine hinzufügt!",
+                "expertOpinion": "Expertenmeinung"
+            },
+            "timeline": {
+                "noStages": "Keine Daten zu den Gesetzgebungsphasen.",
+                "stage": "Phase"
+            }
+        }
+    },
+    "staticData": {
+        "sejm": {
+            "type": "Sejm der Republik Polen",
+            "leadershipLabel": "PrĂ¤sidium des Sejm",
+            "leaderLabel": "Marschall",
+            "subordinateTo": "Verfassung der Republik Polen",
+            "description": "Der Sejm der Republik Polen ist die untere Kammer des polnischen Parlaments und das wichtigste gesetzgebende Organ. Er besteht aus 460 Abgeordneten, die in allgemeinen, direkten, gleichen und proportionalen Wahlen fĂĽr eine vierjĂ¤hrige Amtszeit gewĂ¤hlt werden. Er ĂĽberwacht den Ministerrat und ist das wichtigste rechtsetzende Organ Polens.",
+            "responsibilities": [
+                "Verabschiedung von Gesetzen, einschlieĂźlich des Haushaltsgesetzes",
+                "Kontrolle des Ministerrats",
+                "Wahl und Abberufung des Premierministers",
+                "Misstrauensvoten gegenĂĽber der Regierung und Ministern",
+                "Ratifizierung internationaler VertrĂ¤ge",
+                "Verabschiedung von VerfassungsĂ¤nderungen",
+                "Ernennung von Mitgliedern der Verfassungsorgane",
+                "Verabschiedung des Haushalts und Kontrolle seiner AusfĂĽhrung",
+                "Genehmigung von Notstand und Kriegsrecht",
+                "Gesetzgebung im Bereich der kommunalen Selbstverwaltung"
+            ],
+            "infoFields": [
+                [
+                    "Anzahl der Abgeordneten",
+                    "460"
+                ],
+                [
+                    "Amtszeit",
+                    "2023â€“2027"
+                ],
+                [
+                    "Gewalt",
+                    "Gesetzgebend"
+                ],
+                [
+                    "Sitz",
+                    "Warschau, ul. Wiejska 4/6/8"
+                ]
+            ]
+        },
+        "senat": {
+            "type": "Senat der Republik Polen",
+            "leadershipLabel": "PrĂ¤sidium des Senats",
+            "leaderLabel": "Marschall",
+            "description": "Der Senat der Republik Polen ist die obere Kammer des polnischen Parlaments. Er besteht aus 100 Senatoren, die in allgemeinen, direkten Mehrheitswahlen fĂĽr eine vierjĂ¤hrige Amtszeit gewĂ¤hlt werden. Der Senat beteiligt sich am Gesetzgebungsverfahren, kann vom Sejm verabschiedete Gesetze Ă¤ndern oder ablehnen, und sein Veto kann mit absoluter Mehrheit im Sejm ĂĽberstimmt werden.",
+            "responsibilities": [
+                "PrĂĽfung der vom Sejm verabschiedeten Gesetze",
+                "Ă„nderung oder Ablehnung von Gesetzen",
+                "Gesetzgebungsinitiative",
+                "Zustimmung zur Ratifizierung internationaler VertrĂ¤ge",
+                "Beteiligung an VerfassungsĂ¤nderungen",
+                "Ernennung des BĂĽrgerbeauftragten",
+                "Ernennung des PrĂ¤sidenten des Obersten Rechnungshofs",
+                "Zustimmung zur Ernennung des NBP-PrĂ¤sidenten",
+                "Anordnung eines landesweiten Referendums (gemeinsam mit dem Sejm)",
+                "Ernennung von Mitgliedern des Nationalen Justizrats"
+            ],
+            "infoFields": [
+                [
+                    "Anzahl der Senatoren",
+                    "100"
+                ],
+                [
+                    "Amtszeit",
+                    "2023â€“2027"
+                ],
+                [
+                    "Gewalt",
+                    "Gesetzgebend"
+                ],
+                [
+                    "Sitz",
+                    "Warschau, ul. Wiejska 6"
+                ]
+            ]
+        },
+        "president": {
+            "type": "Amt des PrĂ¤sidenten der Republik Polen",
+            "leadershipLabel": "PrĂ¤sident Polens",
+            "leaderLabel": "PrĂ¤sident",
+            "description": "Karol Tadeusz Nawrocki (geb. 3. MĂ¤rz 1983 in Danzig) â€“ polnischer Historiker, Politiker, Sozial- und Kommunalaktivist, Doktor der Geisteswissenschaften. PrĂ¤sident der Republik Polen seit dem 6. August 2025. Direktor des Museums des Zweiten Weltkriegs in Danzig (2017â€“2021), PrĂ¤sident des Instituts fĂĽr Nationales Gedenken (2021â€“2025).",
+            "responsibilities": [
+                "Vertretung der Republik Polen in internationalen Angelegenheiten",
+                "Ratifizierung und KĂĽndigung internationaler VertrĂ¤ge",
+                "Ernennung und Abberufung diplomatischer Vertreter Polens",
+                "Oberbefehlshaber der polnischen StreitkrĂ¤fte",
+                "PrĂ¤sidiales Veto und Gesetzgebungsinitiative",
+                "Anordnung von Wahlen zum Sejm und Senat",
+                "Ernennung des Premierministers und Genehmigung des Kabinetts",
+                "AusĂĽbung des Begnadigungsrechts",
+                "Verleihung der polnischen StaatsbĂĽrgerschaft",
+                "Verleihung von Orden und Auszeichnungen"
+            ],
+            "infoFields": [
+                [
+                    "Amt",
+                    "PrĂ¤sident Polens"
+                ],
+                [
+                    "Amtszeit",
+                    "2025â€“2030"
+                ],
+                [
+                    "Gewalt",
+                    "Exekutive"
+                ],
+                [
+                    "Sitz",
+                    "PrĂ¤sidentenpalast, Warschau"
+                ]
+            ]
+        },
+        "judicial": {
+            "sn": {
+                "type": "Oberstes Gericht",
+                "powerType": "Rechtsprechend",
+                "leadershipLabel": "FĂĽhrung des Obersten Gerichts",
+                "leaderLabel": "Erster PrĂ¤sident",
+                "subordinateTo": "Verfassung Polens",
+                "description": "Das Oberste Gericht ist ein Justizorgan, das zur Rechtspflege durch Sicherstellung der GesetzmĂ¤Ăźigkeit und Einheitlichkeit der Rechtsprechung der ordentlichen und MilitĂ¤rgerichte berufen ist. Es ĂĽbt gerichtliche Aufsicht ĂĽber alle ordentlichen und MilitĂ¤rgerichte aus.",
+                "responsibilities": [
+                    "Gerichtliche Aufsicht ĂĽber ordentliche und MilitĂ¤rgerichte",
+                    "PrĂĽfung von Kassationen und auĂźerordentlichen Beschwerden",
+                    "BeschlĂĽsse zur Auslegung von Rechtsvorschriften",
+                    "BestĂ¤tigung der GĂĽltigkeit von Parlaments-, PrĂ¤sidentschaftswahlen und Referenden",
+                    "PrĂĽfung von Wahlbeschwerden",
+                    "Disziplinarverfahren gegen Richter",
+                    "PrĂĽfung von Rechtsmitteln gegen Urteile der MilitĂ¤rbezirksgerichte"
+                ],
+                "infoFields": [
+                    [
+                        "Sitz",
+                        "Warschau, pl. KrasiĹ„skich 2/4/6"
+                    ],
+                    [
+                        "Struktur",
+                        "4 Kammern + Kammer fĂĽr berufliche Haftung"
+                    ],
+                    [
+                        "Amtszeit EP",
+                        "6 Jahre"
+                    ],
+                    [
+                        "Untersteht",
+                        "Verfassung Polens"
+                    ]
+                ]
+            },
+            "constitutional_tribunal": {
+                "type": "Verfassungsgericht",
+                "powerType": "Rechtsprechend",
+                "leadershipLabel": "FĂĽhrung des Verfassungsgerichts",
+                "leaderLabel": "PrĂ¤sident",
+                "subordinateTo": "Verfassung Polens",
+                "description": "Das Verfassungsgericht ist ein Justizorgan zur ĂśberprĂĽfung der VerfassungsmĂ¤Ăźigkeit normativer Akte. Seine Entscheidungen haben allgemeine Bindungswirkung und sind endgĂĽltig. Das Gericht wahrt den Grundsatz der Vorrangigkeit der Verfassung in der Rechtsordnung.",
+                "responsibilities": [
+                    "Entscheidung ĂĽber die VerfassungsmĂ¤Ăźigkeit von Gesetzen und internationalen VertrĂ¤gen",
+                    "Entscheidung ĂĽber die Vereinbarkeit von Gesetzen mit ratifizierten internationalen VertrĂ¤gen",
+                    "Entscheidung ĂĽber Verfassungsbeschwerden von BĂĽrgern",
+                    "Beilegung von Kompetenzstreitigkeiten zwischen zentralen Staatsorganen",
+                    "Entscheidung ĂĽber die VerfassungsmĂ¤Ăźigkeit von Zielen und AktivitĂ¤ten politischer Parteien",
+                    "Feststellung der AmtsunfĂ¤higkeit des PrĂ¤sidenten"
+                ],
+                "infoFields": [
+                    [
+                        "Sitz",
+                        "Warschau, al. Jana Christiana Szucha 12a"
+                    ],
+                    [
+                        "Zusammensetzung",
+                        "15 Richter"
+                    ],
+                    [
+                        "Richteramtszeit",
+                        "9 Jahre"
+                    ],
+                    [
+                        "Untersteht",
+                        "Verfassung Polens"
+                    ]
+                ]
+            },
+            "supreme_administrative_court": {
+                "type": "Oberstes Verwaltungsgericht",
+                "powerType": "Rechtsprechend",
+                "leadershipLabel": "FĂĽhrung des NSA",
+                "leaderLabel": "PrĂ¤sident",
+                "subordinateTo": "Verfassung Polens",
+                "description": "Das Oberste Verwaltungsgericht ĂĽberwacht die UrteilstĂ¤tigkeit der Woiwodschaftsverwaltungsgerichte. Es ĂĽberprĂĽft die RechtmĂ¤Ăźigkeit des Handelns der Ă¶ffentlichen Verwaltung und schĂĽtzt die BĂĽrgerrechte. Es lĂ¶st ZustĂ¤ndigkeitsstreitigkeiten zwischen VerwaltungsbehĂ¶rden und Gerichten.",
+                "responsibilities": [
+                    "Gerichtliche Aufsicht ĂĽber Woiwodschaftsverwaltungsgerichte",
+                    "PrĂĽfung von Rechtsmitteln gegen WAG-Urteile",
+                    "BeschlĂĽsse zur Auslegung des Verwaltungsrechts",
+                    "Beilegung von ZustĂ¤ndigkeitsstreitigkeiten in der Verwaltung",
+                    "ĂśberprĂĽfung der RechtmĂ¤Ăźigkeit von Verwaltungshandlungen",
+                    "Disziplinarverfahren gegen Verwaltungsrichter",
+                    "PrĂĽfung von Klagen wegen behĂ¶rdlicher UntĂ¤tigkeit"
+                ],
+                "infoFields": [
+                    [
+                        "Sitz",
+                        "Warschau, ul. Gabriela Piotra Boduena 3/5"
+                    ],
+                    [
+                        "Struktur",
+                        "Finanzkammer, Wirtschaftskammer, Allgemeine Verwaltungskammer"
+                    ],
+                    [
+                        "Amtszeit",
+                        "unbefristet (bis zum Rentenalter)"
+                    ],
+                    [
+                        "Untersteht",
+                        "Verfassung Polens"
+                    ]
+                ]
+            },
+            "national_council_of_the_judiciary": {
+                "type": "Nationaler Justizrat",
+                "powerType": "Rechtsprechend",
+                "leadershipLabel": "Zusammensetzung des Nationalen Justizrats",
+                "leaderLabel": "Vorsitzender",
+                "subordinateTo": "Verfassung Polens (Art. 186â€“187)",
+                "description": "Der Nationale Justizrat wahrt die UnabhĂ¤ngigkeit der Gerichte und der Richter. Er schlĂ¤gt dem PrĂ¤sidenten Polens Kandidaten fĂĽr Richterernennungen auf allen Ebenen vor. Er prĂĽft normative Akte zum Justizwesen und ĂĽberwacht die Einhaltung der Richterethik.",
+                "responsibilities": [
+                    "Nominierung von Kandidaten fĂĽr Richterernennungen an den PrĂ¤sidenten",
+                    "Wahrung der UnabhĂ¤ngigkeit der Gerichte und Richter",
+                    "PrĂĽfung von EntwĂĽrfen normativer Akte zum Justizwesen",
+                    "BeschlĂĽsse ĂĽber Auszeichnungen fĂĽr Richter",
+                    "Verabschiedung des Ehrenkodex fĂĽr Richter",
+                    "Stellungnahmen zu Justizfragen",
+                    "PrĂĽfung und Bewertung von Kandidaten fĂĽr RichterĂ¤mter"
+                ],
+                "infoFields": [
+                    [
+                        "Sitz",
+                        "Warschau, ul. Rakowiecka 30"
+                    ],
+                    [
+                        "Zusammensetzung",
+                        "25 Mitglieder"
+                    ],
+                    [
+                        "Amtszeit",
+                        "4 Jahre"
+                    ],
+                    [
+                        "Untersteht",
+                        "Verfassung Polens (Art. 186â€“187)"
+                    ]
+                ]
+            }
+        },
+        "clubs": {
+            "KO": {
+                "description": "Der Parlamentarische Klub Koalicja Obywatelska vereint Abgeordnete zentrumslinksliberaler Parteien der Regierungskoalition. Er ist der grĂ¶Ăźte Klub der linken Seite, der sich fĂĽr europĂ¤ische Integration, Rechtsstaatlichkeit und bĂĽrgerliche Freiheiten einsetzt. Der Klub ist Teil der Regierungskoalition."
+            },
+            "PiS": {
+                "description": "Der Parlamentarische Klub Prawo i SprawiedliwoĹ›Ä‡ ist die grĂ¶Ăźte Oppositionsgruppe, die konservative und national-katholische Werte vertritt. Die Partei regierte Polen von 2015 bis 2023 mit Programmen wie 500+, Justizreformen und Migrationspolitik."
+            },
+            "PSL-TD": {
+                "description": "Der Parlamentarische Klub PSLâ€“Dritter Weg vereint Bauernpartei-Abgeordnete und ihre VerbĂĽndeten. Er vertritt die Interessen von Landwirten, Kleinunternehmern und lokalen Gemeinschaften. Die PSL als Ă¤lteste aktive Partei Polens steht fĂĽr christliche Werte und Selbstverwaltung. Der Klub ist Teil der Regierungskoalition."
+            },
+            "Lewica": {
+                "description": "Der Koalitionsparlamentarische Klub der Linken vereint linke Parteien, die Arbeitnehmerrechte, einen ausgebauten Sozialstaat, Frauen- und Minderheitenrechte sowie die religiĂ¶se NeutralitĂ¤t des Staates fordern. Der Klub ist Teil der Regierungskoalition."
+            },
+            "Polska2050": {
+                "description": "Der Parlamentarische Klub Polen 2050 vereint Abgeordnete der von Szymon HoĹ‚ownia gegrĂĽndeten Bewegung. Die zentrumdemokratische Gruppe betont Staatsmodernisierung, sozialen Dialog und verantwortungsvolle Ă¶ffentliche Finanzen. Der Klub ist Teil der Regierungskoalition."
+            },
+            "Konfederacja": {
+                "description": "Der Abgeordnetenklub Konfederacja vertritt rechtslibertĂ¤re und nationalkonservative Kreise. Er lehnt staatlichen Interventionismus, hohe Steuern und die EU-Migrationspolitik ab und tritt fĂĽr nationale SouverĂ¤nitĂ¤t ein."
+            },
+            "Konfederacja_KP": {
+                "description": "Die Abgeordnetengruppe Konfederacja Korony Polskiej vereint Abgeordnete der nationalkatholischen Fraktion mit besonderem Schwerpunkt auf christlicher IdentitĂ¤t und polnischer SouverĂ¤nitĂ¤t."
+            },
+            "Centrum": {
+                "description": "Der Parlamentarische Klub Centrum vereint rechtszentriste Abgeordnete, die Polen 2050 verlassen haben. Die Gruppe sucht einen dritten Weg zwischen Regierungskoalition und traditioneller Rechte und betont StabilitĂ¤t und pragmatisches Staatsmanagement. Der Klub ist Teil der Regierungskoalition."
+            },
+            "Demokracja": {
+                "description": "Die Abgeordnetengruppe Direkte Demokratie tritt fĂĽr eine Reform des politischen Systems hin zu mehr BĂĽrgerbeteiligung ein â€” durch Referenden, Gesetzesinitiativen und Mechanismen direkter Partizipation."
+            },
+            "Razem": {
+                "description": "Die Abgeordnetengruppe Razem vertritt die soziale Linke und fordert radikale wirtschaftliche VerĂ¤nderungen: hĂ¶here Steuern fĂĽr Reiche, ausgebaute Ă¶ffentliche Dienste, Arbeitnehmerrechte und den Kampf gegen soziale Ungleichheit."
+            },
+            "niez_independent": {
+                "description": "Fraktionslose Abgeordnete â€” Parlamentarier, die keinem Klub oder keiner Gruppe angehĂ¶ren. Einige von ihnen sind ehemalige Parteimitglieder, die ihre Parteien verlassen haben oder von deren Listen gestrichen wurden."
+            }
+        },
+        "ministries": {
+            "ministry_of_finance": {
+                "description": "Das Finanzministerium ist fĂĽr die Finanz- und Wirtschaftspolitik des Staates zustĂ¤ndig. Es verwaltet den Staatshaushalt, das Steuersystem und die Fiskalpolitik. Es beaufsichtigt Finanzinstitutionen und koordiniert die Wirtschaftspolitik der Regierung.",
+                "responsibilities": [
+                    "Vorbereitung des Haushaltsgesetzentwurfs",
+                    "Verwaltung der Staatsschulden",
+                    "Aufsicht ĂĽber das Steuersystem",
+                    "Koordinierung der Fiskal- und Geldpolitik",
+                    "Regulierung und Aufsicht ĂĽber FinanzmĂ¤rkte",
+                    "Verwaltung der Staatskasse und Haushaltseinnahmen"
+                ]
+            },
+            "ministry_of_health": {
+                "description": "Das Gesundheitsministerium ist fĂĽr den Gesundheitsschutz der BĂĽrger und die Organisation des Gesundheitssystems in Polen zustĂ¤ndig. Es gestaltet die Gesundheitspolitik, beaufsichtigt Gesundheitseinrichtungen und gewĂ¤hrleistet den Zugang zu medizinischen Leistungen. Es ist auch fĂĽr die sanitĂ¤r-epidemiologische Sicherheit des Landes verantwortlich.",
+                "responsibilities": [
+                    "Gestaltung der staatlichen Gesundheitspolitik",
+                    "Aufsicht ĂĽber den Nationalen Gesundheitsfonds",
+                    "Regulierung der TĂ¤tigkeit von Gesundheitseinrichtungen",
+                    "Vorbeugung und BekĂ¤mpfung von Infektionskrankheiten",
+                    "Arzneimittelsicherheit und Zulassung von Medikamenten",
+                    "Verwaltung von Gesundheitskrisen und Epidemien"
+                ]
+            },
+            "ministry_of_national_defence": {
+                "description": "Das Verteidigungsministerium leitet die Verteidigungsangelegenheiten des Staates und der polnischen StreitkrĂ¤fte. Es ist fĂĽr die Kampfbereitschaft des MilitĂ¤rs, die Modernisierung der RĂĽstung und die ErfĂĽllung der NATO-BĂĽndnisverpflichtungen verantwortlich. Es plant und setzt die Verteidigungspolitik des Landes um.",
+                "responsibilities": [
+                    "FĂĽhrung und Aufsicht ĂĽber die polnischen StreitkrĂ¤fte",
+                    "Planung und Umsetzung der Verteidigungspolitik",
+                    "Technische Modernisierung und AufrĂĽstung des MilitĂ¤rs",
+                    "ErfĂĽllung der NATO-BĂĽndnisverpflichtungen",
+                    "Grenzschutz und militĂ¤rische Sicherheit",
+                    "Verwaltung der militĂ¤rischen Infrastruktur und Logistik"
+                ]
+            },
+            "ministry_of_justice": {
+                "description": "Das Justizministerium ist fĂĽr die Organisation des Justizsystems und die Umsetzung der Strafvollzugspolitik zustĂ¤ndig. Es beaufsichtigt die TĂ¤tigkeit der ordentlichen Gerichte, Staatsanwaltschaften und GefĂ¤ngnisse. Es bereitet GesetzentwĂĽrfe vor und wahrt die Rechtsstaatlichkeit.",
+                "responsibilities": [
+                    "Verwaltungsaufsicht ĂĽber ordentliche Gerichte",
+                    "Aufsicht ĂĽber den Strafvollzugsdienst und Strafanstalten",
+                    "Vorbereitung von GesetzentwĂĽrfen und Rechtsakten",
+                    "Aufsicht ĂĽber Gerichtsvollzieher und Notare",
+                    "Koordinierung der kostenlosen Rechtshilfe",
+                    "Umsetzung der Strafvollzugs- und Resozialisierungspolitik"
+                ]
+            },
+            "ministry_of_foreign_affairs": {
+                "description": "Das AuĂźenministerium ist fĂĽr die Umsetzung der AuĂźenpolitik der Republik Polen zustĂ¤ndig. Es koordiniert die diplomatischen Beziehungen mit anderen Staaten und internationalen Organisationen, einschlieĂźlich der EU und NATO. Es gewĂ¤hrt konsularischen Schutz fĂĽr polnische BĂĽrger im Ausland.",
+                "responsibilities": [
+                    "Umsetzung und Koordinierung der AuĂźenpolitik",
+                    "Aufrechterhaltung diplomatischer Beziehungen",
+                    "Konsularische Dienste fĂĽr polnische BĂĽrger im Ausland",
+                    "Vertretung Polens in internationalen Organisationen",
+                    "Koordinierung der polnischen Europapolitik",
+                    "Schutz der Interessen polnischer BĂĽrger und Unternehmen im Ausland"
+                ]
+            },
+            "ministry_of_infrastructure": {
+                "description": "Das Infrastrukturministerium ist fĂĽr die Transport- und Infrastrukturpolitik des Landes zustĂ¤ndig. Es verwaltet den Ausbau von StraĂźen-, Schienen-, Flughafen- und Seehafen-Netzen. Es befasst sich auch mit dem Bauwesen, der Raumordnung und der Wohnungspolitik.",
+                "responsibilities": [
+                    "Planung und Umsetzung von Infrastrukturinvestitionen",
+                    "Aufsicht ĂĽber das Netz der NationalstraĂźen und Autobahnen",
+                    "Schienen-, Luftfahrt- und Seeschifffahrtspolitik",
+                    "MeeresĂ¶konomie und Binnenschifffahrt",
+                    "Wohnungsbau- und Baupolitik",
+                    "Raumordnung und StĂ¤dtebau"
+                ]
+            },
+            "ministry_of_agriculture": {
+                "description": "Das Ministerium fĂĽr Landwirtschaft und lĂ¤ndliche Entwicklung ist fĂĽr die Agrarpolitik, die UnterstĂĽtzung lĂ¤ndlicher Gebiete und die Fischerei zustĂ¤ndig. Es unterstĂĽtzt Landwirte, verwaltet EU-Agrarfonds und ĂĽberwacht die Lebensmittelsicherheit. Es fĂ¶rdert das Tierwohl und die Entwicklung des polnischen Landes.",
+                "responsibilities": [
+                    "Umsetzung der Agrarpolitik und UnterstĂĽtzung der Landwirte",
+                    "Verwaltung der EU-Agrarfonds (ELER)",
+                    "Lebensmittelsicherheit und veterinĂ¤re Kontrolle",
+                    "Entwicklung lĂ¤ndlicher RĂ¤ume und DĂ¶rfer",
+                    "Schutz und Regulierung der AgrarmĂ¤rkte",
+                    "Fischerei- und Aquakulturpolitik"
+                ]
+            },
+            "ministry_of_climate_and_environment": {
+                "description": "Das Ministerium fĂĽr Klima und Umwelt ist fĂĽr die Klimapolitik und den Umweltschutz zustĂ¤ndig. Es koordiniert die Energiewende, verwaltet die Politik der erneuerbaren Energien und die COâ‚‚-Emissionsreduzierung. Es schĂĽtzt natĂĽrliche Ressourcen, WĂ¤lder und BiodiversitĂ¤t.",
+                "responsibilities": [
+                    "Gestaltung der staatlichen Klimapolitik",
+                    "Umwelt- und Naturschutz",
+                    "Verwaltung erneuerbarer Energiequellen (EE)",
+                    "Abfallwirtschaft und Recycling",
+                    "BiodiversitĂ¤ts- und Waldschutz",
+                    "Wasserpolitik und Wasserressourcenmanagement"
+                ]
+            },
+            "ministry_of_state_assets": {
+                "description": "Das Ministerium fĂĽr StaatsvermĂ¶gen ĂĽbt die EigentĂĽmeraufsicht ĂĽber Unternehmen mit Staatsanteil aus. Es verwaltet staatliche VermĂ¶genswerte und koordiniert die Politik gegenĂĽber strategischen Unternehmen. Es sorgt fĂĽr ein effektives Management des Ă¶ffentlichen VermĂ¶gens und der Staatsschatzinteressen.",
+                "responsibilities": [
+                    "EigentĂĽmeraufsicht ĂĽber Staatsschatzunternehmen",
+                    "Verwaltung und Schutz staatlicher VermĂ¶genswerte",
+                    "Privatisierung und Restrukturierung von Unternehmen",
+                    "Koordinierung der Politik gegenĂĽber strategischen Unternehmen",
+                    "Schutz der finanziellen Interessen des Staatsschatzes",
+                    "Analyse der Effizienz und Ergebnisse staatlicher Unternehmen"
+                ]
+            },
+            "ministry_of_culture_and_national_heritage": {
+                "description": "Das Ministerium fĂĽr Kultur und nationales Erbe ist fĂĽr den Schutz des Kulturerbes und die UnterstĂĽtzung des Kulturlebens zustĂ¤ndig. Es verwaltet die Finanzierung von Kultureinrichtungen â€“ Theatern, Museen und Bibliotheken. Es schĂĽtzt DenkmĂ¤ler und fĂ¶rdert die polnische Kultur im Ausland.",
+                "responsibilities": [
+                    "Schutz des Kulturerbes und der DenkmĂ¤ler",
+                    "Finanzierung und Aufsicht ĂĽber Kultureinrichtungen",
+                    "Medien- und audiovisuelle Politik",
+                    "FĂ¶rderung der polnischen Kultur im Ausland",
+                    "Schutz des geistigen Eigentums und Urheberrechts",
+                    "UnterstĂĽtzung der kĂĽnstlerischen SchĂ¶pfung und Kulturbildung"
+                ]
+            },
+            "ministry_of_sport_and_tourism": {
+                "description": "Das Ministerium fĂĽr Sport und Tourismus ist fĂĽr die Sport- und Tourismuspolitik des Landes zustĂ¤ndig. Es unterstĂĽtzt die Entwicklung des Leistungs- und Breitensports und finanziert den Bau von Sportinfrastruktur. Es koordiniert die Tourismuspolitik und fĂ¶rdert Polen als Reiseziel.",
+                "responsibilities": [
+                    "FĂ¶rderung des Leistungs- und Breitensports",
+                    "Finanzierung des Baus von Sportinfrastruktur",
+                    "Umsetzung der staatlichen Tourismuspolitik",
+                    "FĂ¶rderung des polnischen Tourismus und Sports",
+                    "Zusammenarbeit mit polnischen SportverbĂ¤nden",
+                    "Vorbereitung groĂźer Sportveranstaltungen"
+                ]
+            },
+            "ministry_of_family_labour_and_social_policy": {
+                "description": "Das Ministerium fĂĽr Familie, Arbeit und Sozialpolitik ist fĂĽr die Sozialpolitik, den Arbeitsmarkt und den Familienschutz zustĂ¤ndig. Es verwaltet das System der Sozialleistungen und UnterstĂĽtzungsprogramme wie 800+. Es beaufsichtigt Arbeitsmarktinstitutionen und das Sozialhilfesystem.",
+                "responsibilities": [
+                    "Umsetzung der Familien- und Sozialpolitik",
+                    "Verwaltung des Arbeitsmarkts und BekĂ¤mpfung der Arbeitslosigkeit",
+                    "Aufsicht ĂĽber Sozialhilfeeinrichtungen",
+                    "FamilienfĂ¶rderprogramme (800+)",
+                    "Renten- und Sozialversicherungspolitik",
+                    "Schutz der Arbeitnehmerrechte und sozialer Dialog"
+                ]
+            },
+            "ministry_of_energy": {
+                "description": "Das Energieministerium ist fĂĽr die Industrie- und Energiepolitik des Staates zustĂ¤ndig. Es verwaltet den Energiesektor â€“ konventionelle Energie, Gas und ElektrizitĂ¤t. Es koordiniert die Energiewende und Diversifizierung der Energiequellen.",
+                "responsibilities": [
+                    "Gestaltung der Industrie- und Energiepolitik",
+                    "GewĂ¤hrleistung der Energieversorgungssicherheit",
+                    "Aufsicht ĂĽber den Kraftstoff-, Gas- und ElektrizitĂ¤tssektor",
+                    "Energiewende und Versorgungsdiversifizierung",
+                    "Regulierung und Aufsicht ĂĽber Energiepreise",
+                    "Entwicklung der Kernenergie in Polen"
+                ]
+            },
+            "ministry_of_education": {
+                "description": "Das Bildungsministerium ist fĂĽr das Ă¶ffentliche Bildungssystem in Polen zustĂ¤ndig. Es gestaltet die Bildungspolitik, legt Kerncurricula fest und verwaltet das PrĂĽfungssystem. Es beaufsichtigt Grund-, Sekundar- und Bildungseinrichtungen im ganzen Land.",
+                "responsibilities": [
+                    "Gestaltung der Bildungspolitik und des Schulsystems",
+                    "Festlegung von Kerncurricula und Standards",
+                    "Aufsicht ĂĽber Schulen und Bildungseinrichtungen",
+                    "Verwaltung externer PrĂĽfungen und des Abiturs",
+                    "Berufliche Weiterbildung und Lehrerausbildung",
+                    "Finanzierung und Subventionierung der Bildung"
+                ]
+            },
+            "ministry_of_funds_and_regional_policy": {
+                "description": "Das Ministerium fĂĽr Fonds und Regionalpolitik ist fĂĽr die Verwaltung von EU-Fonds und die Regionalpolitik zustĂ¤ndig. Es koordiniert die Verwendung von EU-Mitteln fĂĽr die Entwicklung von Regionen, Infrastruktur und KohĂ¤sion. Es verringert Entwicklungsunterschiede zwischen polnischen Regionen.",
+                "responsibilities": [
+                    "Verwaltung und Koordinierung der EU-Fonds",
+                    "Umsetzung der EU-KohĂ¤sionspolitik",
+                    "Koordinierung der Regionalen Operationellen Programme",
+                    "UnterstĂĽtzung der regionalen und lokalen Entwicklung",
+                    "Monitoring, Kontrolle und Evaluierung von EU-Programmen",
+                    "Stadtpolitik, Revitalisierung und Stadtentwicklung"
+                ]
+            },
+            "ministry_of_science_and_higher_education": {
+                "description": "Das Ministerium fĂĽr Wissenschaft und Hochschulbildung ist fĂĽr die Wissenschaftspolitik und das Hochschulwesen zustĂ¤ndig. Es verwaltet die Finanzierung der wissenschaftlichen Forschung und der Hochschulen. Es beaufsichtigt die QualitĂ¤t der akademischen Ausbildung und setzt die Innovationspolitik um.",
+                "responsibilities": [
+                    "Finanzierung der Wissenschaft und wissenschaftlichen Forschung",
+                    "Aufsicht und Akkreditierung von Hochschulen",
+                    "Umsetzung der Innovations- und F&E-Politik",
+                    "Internationale wissenschaftliche Zusammenarbeit und akademischer Austausch",
+                    "Akkreditierung von StudiengĂ¤ngen und QualitĂ¤t der Ausbildung",
+                    "UnterstĂĽtzung fĂĽr Doktoranden, Wissenschaftler und Nachwuchsforscher"
+                ]
+            },
+            "ministry_of_internal_affairs_and_administration": {
+                "description": "Das Ministerium fĂĽr Inneres und Verwaltung ist fĂĽr die innere Sicherheit und die Ă¶ffentliche Ordnung zustĂ¤ndig. Es beaufsichtigt die Polizei, den Grenzschutz, die Staatliche Feuerwehr und andere Uniformierte Dienste. Es verwaltet das Einwohnermeldesystem, die StaatsbĂĽrgerschaft und Ausweisdokumente.",
+                "responsibilities": [
+                    "Aufsicht ĂĽber Polizei und Grenzschutz",
+                    "Verwaltung von Ausweisdokumenten und Einwohnermelderegister",
+                    "Aufrechterhaltung der Ă¶ffentlichen Ordnung und Sicherheit",
+                    "Aufsicht ĂĽber die Staatliche Feuerwehr und Rettungsdienste",
+                    "Migrations-, Asyl- und Aufenthaltspolitik",
+                    "Staatliche Verwaltung vor Ort und kommunale Selbstverwaltung"
+                ]
+            },
+            "ministry_of_digital_affairs": {
+                "description": "Das Ministerium fĂĽr Digitalisierung ist fĂĽr die Digitalisierung des Staates und die Entwicklung der Informationsgesellschaft zustĂ¤ndig. Es verwaltet die digitale Transformation Ă¶ffentlicher Dienste, E-Government und digitale Infrastruktur. Es koordiniert die Politik der kĂĽnstlichen Intelligenz und Cybersicherheit.",
+                "responsibilities": [
+                    "Digitale Transformation der Ă¶ffentlichen Verwaltung",
+                    "Entwicklung von E-Diensten fĂĽr BĂĽrger (gov.pl, mObywatel)",
+                    "Verwaltung der staatlichen digitalen Plattform",
+                    "Cybersicherheits- und Datenschutzpolitik",
+                    "Regulierung des digitalen Markts und der KI",
+                    "Aufbau von Breitbandnetzen und digitaler Infrastruktur"
+                ]
+            },
+            "chancellery_of_the_prime_minister": {
+                "description": "Die Kanzlei des MinisterprĂ¤sidenten bietet organisatorische und technische UnterstĂĽtzung fĂĽr die Arbeit des MinisterprĂ¤sidenten und des Ministerrats. Sie koordiniert die TĂ¤tigkeiten der Regierungsverwaltung und setzt die Personalpolitik des Ă¶ffentlichen Dienstes um.",
+                "responsibilities": [
+                    "Organisatorische UnterstĂĽtzung des MinisterprĂ¤sidenten und des Ministerrats",
+                    "Koordinierung der Gesetzgebungsarbeit der Regierung",
+                    "Aufsicht ĂĽber den Ă¶ffentlichen Dienst",
+                    "Umsetzung der Regierungspolitik im Bereich Digitalisierung und Innovation",
+                    "UnterstĂĽtzung des FlĂĽchtlingsrats und anderer Hilfsorgane des Ministerrats",
+                    "Koordinierung der Zusammenarbeit mit Sejm und Senat"
+                ]
+            },
+            "council_of_ministers": {
+                "description": "Der Ministerrat ist das oberste Organ der Exekutive in Polen, leitet die Regierungsverwaltung und setzt die Staatspolitik um. Er betreibt Innen- und AuĂźenpolitik, gewĂ¤hrleistet die Umsetzung von Gesetzen und verabschiedet den Haushaltsentwurf.",
+                "responsibilities": [
+                    "Leitung der Regierungsverwaltung",
+                    "Umsetzung der Innen- und AuĂźenpolitik",
+                    "Verabschiedung des Staatshaushaltsentwurfs",
+                    "Erlass von Verordnungen und BeschlĂĽssen",
+                    "Koordinierung und Kontrolle der Arbeit der Minister",
+                    "GewĂ¤hrleistung der inneren und Ă¤uĂźeren Sicherheit des Staates"
+                ]
+            },
+            "presidential_chancellery": {
+                "description": "Die Kanzlei des PrĂ¤sidenten der Republik Polen unterstĂĽtzt den PrĂ¤sidenten bei der AusĂĽbung seiner verfassungsmĂ¤Ăźigen und gesetzlichen Aufgaben. Sie koordiniert die TĂ¤tigkeiten der Minister in der Kanzlei, verwaltet die diplomatischen Kontakte des PrĂ¤sidenten und organisiert Zeremonien und Treffen mit dem Staatsoberhaupt. Die Kanzlei dient auch als Verbindungsstelle zwischen dem PrĂ¤sidenten und anderen Staatsorganen.",
+                "responsibilities": [
+                    "Organisatorische und administrative UnterstĂĽtzung des PrĂ¤sidenten",
+                    "Koordinierung der In- und Auslandsbesuche des PrĂ¤sidenten",
+                    "UnterstĂĽtzung der Gesetzgebungsinitiativen und des Vetorechts des PrĂ¤sidenten",
+                    "Organisation von Zeremonien und Treffen mit dem Staatsoberhaupt",
+                    "Kontakte mit Diplomaten und auslĂ¤ndischen Vertretern",
+                    "Aufsicht ĂĽber die Verleihung von Orden und Auszeichnungen",
+                    "UnterstĂĽtzung des BĂĽros fĂĽr Nationale Sicherheit",
+                    "Verwaltung des PrĂ¤sidentenpalastes und der Residenzen"
+                ]
+            }
+        }
     }
 }

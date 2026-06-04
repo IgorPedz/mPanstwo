@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 import { pageVariants, sectionVariants } from "../../Utils/Animations";
 import ICON_MAP from "../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../Utils/Maps/Accents";
 import { COLOR_MAP } from "../../Utils/Maps/Colors";
-import presidentData from "../../data/presidentData";
+import { getPresidentData } from "../../data/presidentData";
 import { useMinistryNews } from "../../Hooks/useMinistryNews";
 
 import MinistryHero             from "../../components/Ministry/MinistryHero";
@@ -17,8 +18,9 @@ import PresidentInfo            from "../../components/President/PresidentInfo";
 
 export default function PresidentPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
-  const data           = presidentData;
+  const data           = getPresidentData(t);
   const IconComponent  = ICON_MAP[data.icon] ?? ICON_MAP["flag"];
   const colorClass     = COLOR_MAP[data.accent] ?? "text-red-700";
   const accentGradient = ACCENT_MAP[data.accent] ?? "from-red-700 to-red-500";
@@ -40,12 +42,12 @@ export default function PresidentPage() {
               text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
           >
             <ArrowLeftIcon className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
-            Wróć
+            {t("institution.back")}
           </button>
         </motion.div>
 
         <MinistryHero
-          title="Prezydent Rzeczypospolitej Polskiej"
+          title={t("institution.president.title")}
           institutionType={data.type}
           IconComponent={IconComponent}
           colorClass={colorClass}
@@ -55,8 +57,8 @@ export default function PresidentPage() {
 
         <MinistryLeadership
           people={data.leadership ?? []}
-          leadershipLabel={data.leadershipLabel ?? "Prezydent"}
-          leaderLabel={data.leaderLabel ?? "Prezydent"}
+          leadershipLabel={data.leadershipLabel ?? t("institution.president.role")}
+          leaderLabel={data.leaderLabel ?? t("institution.president.role")}
           colorClass={colorClass}
           accentGradient={accentGradient}
         />
@@ -65,7 +67,7 @@ export default function PresidentPage() {
           news={news}
           loading={newsLoading}
           website={data.website}
-          title="Prezydent RP"
+          title={t("institution.president.shortTitle")}
           IconComponent={IconComponent}
           colorClass={colorClass}
           accentGradient={accentGradient}
@@ -79,7 +81,7 @@ export default function PresidentPage() {
           <div className="flex flex-col gap-5">
             <MinistryAbout
               description={data.description}
-              label="O urzędzie"
+              label={t("institution.president.about")}
             />
             <PresidentInfo
               infoFields={data.infoFields}

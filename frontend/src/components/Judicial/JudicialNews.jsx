@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { sectionVariants } from "../../Utils/Animations";
+import { useTranslation } from "react-i18next";
 
 import JudicialNewsCard from "./JudicialNewsCard";
 import JudicialNewsSkeleton from "./JudicialNewsSkeleton";
@@ -49,6 +50,7 @@ export default function JudicialNews({
 }) {
   const [page, setPage] = useState(0);
   const [direction, setDirection] = useState(1);
+  const { t } = useTranslation();
 
   const totalPages = Math.ceil(news.length / ITEMS_PER_PAGE);
 
@@ -77,7 +79,7 @@ export default function JudicialNews({
             text-slate-400 dark:text-slate-500
           "
         >
-          Aktualności
+          {t("institution.news")}
         </p>
 
         {website && (
@@ -93,7 +95,7 @@ export default function JudicialNews({
               dark:hover:text-slate-200
             "
           >
-            Wszystkie
+            {t("institution.all")}
             <ArrowTopRightOnSquareIcon className="h-3 w-3" />
           </a>
         )}

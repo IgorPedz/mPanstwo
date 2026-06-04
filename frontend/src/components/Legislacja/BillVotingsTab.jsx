@@ -3,6 +3,7 @@ import { CalendarDaysIcon, ChevronRightIcon } from "@heroicons/react/24/outline"
 import { useBillVotings } from "../../Hooks/useLegislacja";
 import { formatDate } from "./legislacjaConstants";
 import VotingDetailModal from "./VotingDetailModal";
+import { useTranslation } from "react-i18next";
 
 function VotingBar({ yes, no, abstain, notVoting }) {
   const total = (yes + no + abstain + notVoting) || 1;
@@ -18,6 +19,7 @@ function VotingBar({ yes, no, abstain, notVoting }) {
 export default function BillVotingsTab({ num }) {
   const { votings, loading } = useBillVotings(num);
   const [selected, setSelected] = useState(null);
+  const { t } = useTranslation();
 
   if (loading) {
     return (
@@ -32,7 +34,7 @@ export default function BillVotingsTab({ num }) {
   if (!votings?.length) {
     return (
       <p className="text-sm font-medium text-slate-400 dark:text-slate-500 color-transition">
-        Brak głosowań powiązanych z tą ustawą.
+        {t("institution.legislation.voting.noVotings")}
       </p>
     );
   }
@@ -54,7 +56,7 @@ export default function BillVotingsTab({ num }) {
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2 mb-1.5">
                   <span className="text-[10px] font-black uppercase tracking-widest text-indigo-500">
-                    Głosowanie nr {v.votingNum} · {v.sitting}. posiedzenie
+                    {t("institution.legislation.voting.votingNumber")} {v.votingNum} · {v.sitting}. {t("institution.legislation.voting.session")}
                   </span>
                   {v.date && (
                     <span className="flex items-center gap-1 text-[10px] font-bold text-slate-400">
@@ -79,10 +81,10 @@ export default function BillVotingsTab({ num }) {
 
             <div className="flex gap-5 mt-2.5">
               {[
-                { label: "Za",            value: v.yes,       color: "text-emerald-600 dark:text-emerald-400" },
-                { label: "Przeciw",       value: v.no,        color: "text-red-500" },
-                { label: "Wstrzymało się",value: v.abstain,   color: "text-amber-500" },
-                { label: "Nie głosowało", value: v.notVoting, color: "text-slate-400 dark:text-slate-500" },
+                { label: t("institution.legislation.voting.yes"),       value: v.yes,       color: "text-emerald-600 dark:text-emerald-400" },
+                { label: t("institution.legislation.voting.no"),        value: v.no,        color: "text-red-500" },
+                { label: t("institution.legislation.voting.abstain"),   value: v.abstain,   color: "text-amber-500" },
+                { label: t("institution.legislation.voting.notVoting"), value: v.notVoting, color: "text-slate-400 dark:text-slate-500" },
               ].map(({ label, value, color }) => (
                 <div key={label}>
                   <p className={`text-sm font-black ${color}`}>{value ?? 0}</p>

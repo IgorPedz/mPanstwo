@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeftIcon, ArrowRightIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { sectionVariants } from "../../Utils/Animations";
 import PersonPhoto from "./PersonPhoto";
+import { useTranslation } from "react-i18next";
 
 const PARTY_HEX = {
   Razem: "#e11d48",
@@ -21,6 +22,7 @@ const PARTY_HEX = {
 export default function MinistryLeadership({ people, leadershipLabel, leaderLabel, colorClass, accentGradient }) {
   const [offset, setOffset] = useState(0);
   const [visible, setVisible] = useState(4);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const update = () => setVisible(window.innerWidth >= 640 ? 4 : 2);
@@ -107,7 +109,7 @@ export default function MinistryLeadership({ people, leadershipLabel, leaderLabe
                     )}
                     {isDG && (
                       <span className="text-[8px] font-black uppercase tracking-widest block mb-0.5 text-slate-300">
-                        Dyr. Generalny
+                        {t("institution.ministry.generalDirector")}
                       </span>
                     )}
                     <p className="font-black text-xs leading-tight text-white">{person.name}</p>

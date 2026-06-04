@@ -1,7 +1,9 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import TypeTabs from "./TypeTabs";
+import { useTranslation } from "react-i18next";
 
 export default function BillFilters({ type, onTypeChange, search, onSearchChange }) {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-2">
       <TypeTabs active={type} onChange={onTypeChange} />
@@ -13,7 +15,7 @@ export default function BillFilters({ type, onTypeChange, search, onSearchChange
           type="text"
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
-          placeholder="Szukaj projektu ustawy…"
+          placeholder={t("institution.legislation.searchPlaceholder")}
           className="pl-10 pr-4 py-2.5 w-64 rounded-[1.1rem] text-sm
             bg-slate-50 dark:bg-slate-900/50
             border-2 border-slate-100 dark:border-slate-800

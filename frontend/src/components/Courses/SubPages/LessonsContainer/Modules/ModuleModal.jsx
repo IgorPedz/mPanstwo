@@ -59,6 +59,7 @@ export default function ModuleModal({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
         className="fixed inset-0 bg-black/60 backdrop-blur-md"
         onClick={() => setActiveModule(null)}
       />
@@ -67,7 +68,8 @@ export default function ModuleModal({
       <motion.div
         initial={{ opacity: 0, scale: 0.96, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
+        exit={{ opacity: 0, scale: 0.95, y: 8 }}
+        transition={{ type: "spring", duration: 0.35, bounce: 0.1 }}
         className="
           relative w-full max-w-2xl xl:max-w-3xl
           rounded-3xl border

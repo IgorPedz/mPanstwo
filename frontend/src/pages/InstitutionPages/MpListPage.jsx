@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 import { pageVariants, sectionVariants } from "../../Utils/Animations";
 import { useAllMPs, prefetchMPDetails } from "../../Hooks/useSejm";
 
@@ -20,6 +21,7 @@ const CLUB_ORDER = [
 
 export default function MpListPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { data: allMPs, loading } = useAllMPs();
 
   const [search,   setSearch]   = useState("");
@@ -83,7 +85,7 @@ export default function MpListPage() {
               text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
           >
             <ArrowLeftIcon className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
-            Wróć
+            {t("institution.back")}
           </button>
         </motion.div>
 
@@ -114,7 +116,7 @@ export default function MpListPage() {
           ) : filtered.length === 0 ? (
             <div className="flex items-center justify-center py-24">
               <p className="text-slate-400 dark:text-slate-500 text-sm font-medium color-transition">
-                Brak posłów spełniających kryteria
+                {t("institution.mpList.noResults")}
               </p>
             </div>
           ) : (

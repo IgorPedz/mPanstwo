@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { sectionVariants } from "../../Utils/Animations";
 import SenatHemicycle from "./SenatHemicycle";
+import { useTranslation } from "react-i18next";
 
 export default function SenatHemicycleSection({ clubs, loading, totalMembers }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       variants={sectionVariants}
@@ -11,10 +13,10 @@ export default function SenatHemicycleSection({ clubs, loading, totalMembers }) 
     >
       <div className="flex items-center justify-between mb-5">
         <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 color-transition">
-          Skład Senatu — podział mandatów
+          {t("institution.senat.composition")}
         </p>
         <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 color-transition">
-          {totalMembers} senatorów
+          {totalMembers} {t("institution.senat.members")}
         </span>
       </div>
       {loading ? (

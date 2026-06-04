@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeftIcon, ArrowRightIcon, ArrowTopRightOnSquareIcon, CalendarDaysIcon } from "@heroicons/react/24/outline";
 import { sectionVariants } from "../../Utils/Animations";
+import { useTranslation } from "react-i18next";
 
 const PROC_PER_PAGE = 2;
 
@@ -14,6 +15,7 @@ const slideVariants = {
 export default function SenatProceedings({ proceedings, loading, IconComponent, colorClass, accentGradient }) {
   const [page, setPage] = useState(0);
   const [dir,  setDir]  = useState(1);
+  const { t } = useTranslation();
   const totalPages = Math.ceil(proceedings.length / PROC_PER_PAGE);
 
   return (
@@ -24,7 +26,7 @@ export default function SenatProceedings({ proceedings, loading, IconComponent, 
     >
       <div className="flex items-center justify-between px-7 md:px-8 pt-7 pb-5">
         <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 color-transition">
-          Ostatnie posiedzenia
+          {t("institution.senat.proceedings")}
         </p>
         <a
           href="https://www.senat.gov.pl/prace/posiedzenia-senatu/"
@@ -33,7 +35,7 @@ export default function SenatProceedings({ proceedings, loading, IconComponent, 
           className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-widest
             text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors color-transition"
         >
-          Wszystkie
+          {t("institution.all")}
           <ArrowTopRightOnSquareIcon className="h-3 w-3" />
         </a>
       </div>
@@ -52,7 +54,7 @@ export default function SenatProceedings({ proceedings, loading, IconComponent, 
             ))}
           </div>
         ) : proceedings.length === 0 ? (
-          <p className="text-sm text-slate-400 dark:text-slate-500 color-transition">Brak danych.</p>
+          <p className="text-sm text-slate-400 dark:text-slate-500 color-transition">{t("institution.noData")}</p>
         ) : (
           <>
             <div className="relative overflow-hidden">
@@ -84,7 +86,7 @@ export default function SenatProceedings({ proceedings, loading, IconComponent, 
                         <span className="text-[10px] font-black uppercase tracking-widest text-white/50">Senat RP</span>
                         {p.upcoming && (
                           <span className="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-widest bg-white/20 backdrop-blur-sm text-white">
-                            Planowane
+                            {t("institution.senat.planned")}
                           </span>
                         )}
                       </div>

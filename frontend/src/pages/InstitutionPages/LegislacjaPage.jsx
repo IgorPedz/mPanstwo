@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { DocumentTextIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 import { containerVariants } from "../../Utils/Animations";
 import { useBills } from "../../Hooks/useLegislacja";
 
@@ -15,6 +16,7 @@ const LIMIT = 15;
 
 export default function LegislacjaPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [search,  setSearch]  = useState("");
   const [type,    setType]    = useState("all");
@@ -57,7 +59,7 @@ export default function LegislacjaPage() {
           <div className="flex flex-col items-center justify-center py-24 gap-3">
             <ExclamationCircleIcon className="h-10 w-10 text-red-400" />
             <p className="text-sm font-bold text-slate-500 dark:text-slate-400 color-transition">
-              Błąd ładowania danych. Spróbuj odświeżyć stronę.
+              {t("institution.legislation.loadError")}
             </p>
           </div>
         ) : loading ? (
@@ -68,7 +70,7 @@ export default function LegislacjaPage() {
           <div className="flex flex-col items-center justify-center py-24 gap-3">
             <DocumentTextIcon className="h-12 w-12 text-slate-300 dark:text-slate-600" />
             <p className="text-sm font-bold text-slate-400 dark:text-slate-500 color-transition">
-              Nie znaleziono projektów ustaw.
+              {t("institution.legislation.noBills")}
             </p>
           </div>
         ) : (

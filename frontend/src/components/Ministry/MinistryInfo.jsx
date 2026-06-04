@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { sectionVariants } from "../../Utils/Animations";
+import { useTranslation } from "react-i18next";
 
 export default function MinistryInfo({ title, institutionType, website, subordinateTo }) {
+  const { t } = useTranslation();
   const rows = [
-    ["Nazwa instytucji", title],
-    ["Typ", institutionType],
-    ["Władza", "Wykonawcza"],
-    ["Podlega", subordinateTo ?? "Radzie Ministrów"],
+    [t("institution.ministry.institutionName"), title],
+    [t("institution.ministry.type"), institutionType],
+    [t("institution.ministry.authority"), t("institution.ministry.executiveAuthority")],
+    [t("institution.ministry.reportsTo"), subordinateTo ?? t("institution.ministry.councilOfMinisters")],
   ];
 
   return (
@@ -18,7 +20,7 @@ export default function MinistryInfo({ title, institutionType, website, subordin
     >
       <p className="text-[10px] font-black uppercase tracking-widest mb-4
         text-slate-400 dark:text-slate-500 color-transition">
-        Informacje
+        {t("institution.information")}
       </p>
       <div className="space-y-3">
         {rows.map(([label, value], i, arr) => (
@@ -39,7 +41,7 @@ export default function MinistryInfo({ title, institutionType, website, subordin
               rel="noopener noreferrer"
               className="flex items-center justify-between gap-2 group cursor-pointer"
             >
-              <span className="text-xs font-bold text-slate-400 dark:text-slate-500 color-transition">Strona WWW</span>
+              <span className="text-xs font-bold text-slate-400 dark:text-slate-500 color-transition">{t("institution.website")}</span>
               <span className="inline-flex items-center gap-1 text-xs font-black
                 text-slate-500 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-100
                 transition-colors color-transition">

@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { sectionVariants, itemVariants, containerVariants } from "../../Utils/Animations";
+import { useTranslation } from "react-i18next";
 
 export default function MinistryResponsibilities({ responsibilities, colorClass }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       variants={sectionVariants}
@@ -11,7 +13,7 @@ export default function MinistryResponsibilities({ responsibilities, colorClass 
     >
       <p className="text-[10px] font-black uppercase tracking-widest mb-5
         text-slate-400 dark:text-slate-500 color-transition">
-        Główne zadania i kompetencje
+        {t("institution.responsibilities")}
       </p>
       <motion.ul variants={containerVariants} initial="hidden" animate="show" className="space-y-3">
         {responsibilities.map((item, i) => (

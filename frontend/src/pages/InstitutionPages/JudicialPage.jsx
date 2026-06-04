@@ -1,13 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 
 import { useJudicialNews } from "../../Hooks/useJudicialNews";
 import { pageVariants, sectionVariants } from "../../Utils/Animations";
 import ICON_MAP from "../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../Utils/Maps/Accents";
 import { COLOR_MAP } from "../../Utils/Maps/Colors";
-import judicialData from "../../data/judicialData";
+import { getJudicialData } from "../../data/judicialData";
 
 import JudicialHero from "../../components/Judicial/JudicialHero";
 import JudicialLeadership from "../../components/Judicial/JudicialLeadership";
@@ -19,15 +20,17 @@ import JudicialInfo from "../../components/Judicial/JudicialInfo";
 export default function JudicialPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
-  const data = judicialData[slug];
+  const allData = getJudicialData(t);
+  const data = allData[slug];
   const { data: news, loading: newsLoading } = useJudicialNews(slug);
 
   if (!data) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <p className="text-slate-400 dark:text-slate-500">
-          Nie znaleziono informacji o tej instytucji.
+          {t("institution.notFound")}
         </p>
       </div>
     );
@@ -53,7 +56,7 @@ export default function JudicialPage() {
               text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
           >
             <ArrowLeftIcon className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
-            Wróć
+            {t("institution.back")}
           </button>
         </motion.div>
 

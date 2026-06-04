@@ -7,6 +7,7 @@ import { pageVariants, sectionVariants } from "../../Utils/Animations";
 import { useUser } from "../../Contexts/UserContext";
 import ReturnBtn from "../../components/Global/ReturnBtn";
 import Loginfooter from "../../components/Global/LoginFooter";
+import Settings from "../../components/Global/Settings";
 
 export default function ContactPage() {
   const { user } = useUser();
@@ -15,8 +16,13 @@ export default function ContactPage() {
   return (
     <div className="relative min-h-screen w-full color-transition">
       {!isLoggedIn && (
-        <div className="fixed top-6 left-6 z-50 color-transition">
+        <div className="fixed top-1 left-1 z-50 color-transition">
           <ReturnBtn />
+        </div>
+      )}
+      {!isLoggedIn && (
+        <div className="fixed bottom-4 left-4 z-50 w-fit">
+          <Settings size="sm" />
         </div>
       )}
 

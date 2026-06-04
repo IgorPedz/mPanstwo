@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 import { pageVariants, sectionVariants } from "../../Utils/Animations";
 import ICON_MAP from "../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../Utils/Maps/Accents";
 import { COLOR_MAP } from "../../Utils/Maps/Colors";
-import sejmData from "../../data/sejmData";
+import { getSejmData } from "../../data/sejmData";
 import { useSejmLeadership, useSejmClubs, useSejmProceedings } from "../../Hooks/useSejm";
 
 import SejmHero          from "../../components/Sejm/SejmHero";
@@ -18,8 +19,9 @@ import SejmInfo          from "../../components/Sejm/SejmInfo";
 
 export default function SejmPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
-  const data           = sejmData;
+  const data           = getSejmData(t);
   const IconComponent  = ICON_MAP[data.icon] ?? ICON_MAP["parliament"];
   const colorClass     = COLOR_MAP[data.accent] ?? "text-indigo-800";
   const accentGradient = ACCENT_MAP[data.accent] ?? "from-indigo-800 to-indigo-600";
@@ -45,7 +47,7 @@ export default function SejmPage() {
               text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
           >
             <ArrowLeftIcon className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
-            Wróć
+            {t("institution.back")}
           </button>
         </motion.div>
 
@@ -72,7 +74,7 @@ export default function SejmPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <MinistryResponsibilities responsibilities={data.responsibilities} colorClass={colorClass} />
           <div className="flex flex-col gap-5">
-            <MinistryAbout description={data.description} label="O Sejmie" />
+            <MinistryAbout description={data.description} label={t("institution.sejm.about")} />
             <SejmInfo infoFields={data.infoFields} website={data.website} />
           </div>
         </div>

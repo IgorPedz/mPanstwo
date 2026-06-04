@@ -1,83 +1,92 @@
 export const Icons = {
-  rank1: (props) => (  // Jajo / Zarodek
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
-      <ellipse cx="12" cy="12" rx="7" ry="9" />
+
+  // 1 — Obywatel: sylwetka człowieka
+  rank1: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <circle cx="12" cy="8" r="3.5" />
+      <path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" />
     </svg>
   ),
 
-  rank2: (props) => (  // Pęknięte jajo / Larwa
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
-      <ellipse cx="12" cy="13" rx="6.5" ry="8" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M8 9 L10 6 M16 9 L14 6" />
+  // 2 — Czytelnik: otwarta książka
+  rank2: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M12 6C10 4.3 7 4 4 5v13c3-1 6-.5 8 1.5V6z" />
+      <path d="M12 6c2-1.7 5-2 8-1v13c-3-1-6-.5-8 1.5V6z" />
     </svg>
   ),
 
-  rank3: (props) => (  // Kiełek / Młoda roślina
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4 L12 12" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M8 8 C8 6 10 4 12 6 C14 4 16 6 16 8" />
-      <circle cx="12" cy="16" r="3" />
+  // 3 — Głos: dłoń w górze
+  rank3: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M12 4v10" />
+      <path d="M9 7V6a3 3 0 0 1 6 0v1" />
+      <path d="M15 7V5" />
+      <path d="M9 10v-.5a2 2 0 0 0-4 0V14a6 6 0 0 0 12 0v-4.5a2 2 0 0 0-4 0V10" />
     </svg>
   ),
 
-  rank4: (props) => (  // Młoda roślina / Zwierzak
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M7 10 Q12 4 17 10" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 10 L12 18" />
-      <circle cx="9" cy="13" r="1.5" />
-      <circle cx="15" cy="13" r="1.5" />
+  // 4 — Obrońca: tarcza
+  rank4: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M12 3L4 6.5v5.6c0 4.4 3.4 8.4 8 9.4 4.6-1 8-5 8-9.4V6.5L12 3z" />
     </svg>
   ),
 
-  rank5: (props) => (  // Rozwinięta forma
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4 L12 20" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6 10 Q12 6 18 10" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M7 16 Q12 13 17 16" />
+  // 5 — Prawodawca: młotek sędziowski
+  rank5: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M15 4l5 5-3 3-5-5 3-3z" />
+      <path d="M3 21l8.5-8.5" />
+      <path d="M3 17.5l3.5 3.5" />
+      <path d="M10 9l2 2" />
     </svg>
   ),
 
-  rank6: (props) => (  // Drzewo / Wojownik
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4 L12 18" />
-      <circle cx="12" cy="9" r="5" />
-      <circle cx="12" cy="15" r="3.5" />
+  // 6 — Medal: krążek na wstążce
+  rank6: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <circle cx="12" cy="15" r="5" />
+      <path d="M8.5 4h7l-1.5 6h-4L8.5 4z" />
+      <path d="M10 10c.7 1.2 1.3 2 2 2.5.7-.5 1.3-1.3 2-2.5" />
     </svg>
   ),
 
-  rank7: (props) => (  // Potężne drzewo / Rycerz
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3 L12 19" />
-      <circle cx="12" cy="8" r="6" />
-      <circle cx="12" cy="15" r="4" />
+  // 7 — Sprawiedliwość: waga
+  rank7: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M12 4v16" />
+      <path d="M4 9h16" />
+      <path d="M5 9L3 15a3.5 3.5 0 0 0 7 0L8 9" />
+      <path d="M16 9l-2 6a3.5 3.5 0 0 0 7 0l-2-6" />
     </svg>
   ),
 
-  rank8: (props) => (  // Kryształ / Legenda
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
-      <polygon points="12,3 19,10 19,17 12,21 5,17 5,10" />
-      <polygon points="12,7 16,11 12,15 8,11" />
+  // 8 — Pochodnia: płomień na słupku
+  rank8: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M12 14v8M9.5 14h5" />
+      <path d="M9 10c0-3 1.2-6 3-8 1.8 2 3 5 3 8H9z" />
+      <path d="M10.5 6.5c.4-1 1-2 1.5-2.5" />
     </svg>
   ),
 
-  rank9: (props) => (  // Smok / Mityczna forma
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4 10 Q12 4 20 10" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M8 14 L12 18 L16 14" />
-      <circle cx="8" cy="11" r="1" />
-      <circle cx="16" cy="11" r="1" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 12 L12 20" />
+  // 9 — Korona
+  rank9: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M3 17h18" />
+      <path d="M3 17l2.5-9 4.5 5.5L12 5l2 8.5L18.5 8 21 17" />
+      <circle cx="3"  cy="8"  r="1.2" />
+      <circle cx="12" cy="5"  r="1.2" />
+      <circle cx="21" cy="8"  r="1.2" />
     </svg>
   ),
 
-  rank10: (props) => (  // Boska / Apex / Kosmiczna
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
-      <circle cx="12" cy="12" r="9" />
-      <circle cx="12" cy="12" r="5" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3 L12 8" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 16 L12 21" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3 12 L8 12" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M16 12 L21 12" />
+  // 10 — Prezydent: gwiazda pięcioramienna
+  rank10: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
     </svg>
   ),
+
 };

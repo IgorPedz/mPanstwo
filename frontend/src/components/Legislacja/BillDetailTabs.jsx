@@ -4,14 +4,15 @@ import {
   ClockIcon,
   ChatBubbleLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
-
-const TABS = [
-  { key: "info",     label: "Informacje",       icon: DocumentTextIcon },
-  { key: "process",  label: "Etapy legislacji",  icon: ClockIcon },
-  { key: "opinions", label: "Opinie",            icon: ChatBubbleLeftEllipsisIcon },
-];
+import { useTranslation } from "react-i18next";
 
 export default function BillDetailTabs({ active, onChange }) {
+  const { t } = useTranslation();
+  const TABS = [
+    { key: "info",     label: t("institution.legislation.tabs.info"),    icon: DocumentTextIcon },
+    { key: "process",  label: t("institution.legislation.tabs.stages"),  icon: ClockIcon },
+    { key: "opinions", label: t("institution.legislation.tabs.opinions"), icon: ChatBubbleLeftEllipsisIcon },
+  ];
   return (
     <div className="p-2 border-b border-slate-100 dark:border-slate-800 color-transition">
       <div className="flex gap-1 p-1 bg-slate-50 dark:bg-slate-800/60 rounded-[1.3rem] w-fit color-transition">

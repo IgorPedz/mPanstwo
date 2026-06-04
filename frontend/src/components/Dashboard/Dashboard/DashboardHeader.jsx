@@ -25,7 +25,7 @@ export default function WelcomeDashboard({
   const toggleLock = () => {
     setIsLocked((prev) => {
       const next = !prev;
-      if (!next && hasUnsavedChanges) {
+      if (next && hasUnsavedChanges) {
         saveLayout();
       }
       return next;

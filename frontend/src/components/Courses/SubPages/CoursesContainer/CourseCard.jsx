@@ -25,7 +25,10 @@ const CourseCard = ({ course }) => {
   const examScore = course.examScore ?? null;
   const completedAt = course.completedAt ? new Date(course.completedAt) : null;
 
-  const locale = LOCALE_MAP[i18n.language] ?? LOCALE_MAP[i18n.language?.split("-")[0]] ?? "pl-PL";
+  const locale =
+    LOCALE_MAP[i18n.language] ??
+    LOCALE_MAP[i18n.language?.split("-")[0]] ??
+    "pl-PL";
 
   const formattedDate = completedAt
     ? completedAt.toLocaleDateString(locale, {
@@ -67,7 +70,11 @@ const CourseCard = ({ course }) => {
           <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-emerald-500 text-white text-[10px] font-black uppercase flex items-center gap-1.5">
             ✓ {t("courses.completed")}
           </div>
-        ) : null}
+        ) : (
+          <div className="absolute top-4 right-4 px-3 py-1 rounded-full  bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-[10px] font-black uppercase flex items-center gap-1.5">
+              +200 {t("surveys.reputation")}
+          </div>
+        )}
 
         {/* HEADER */}
         <div className="absolute bottom-4 left-4 right-4">
@@ -131,14 +138,18 @@ const CourseCard = ({ course }) => {
         )}
 
         {/* META */}
-        <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400 mb-5">
-          <div className="flex items-center gap-1.5">
-            <span>⏱</span>
-            <span>{course.estimated_hours}h</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span>📚</span>
-            <span>{total} {t("courses.lesson")}</span>
+        <div className="flex justify-between items-center text-xs text-slate-500 dark:text-slate-400 mb-5">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5">
+              <span>⏱</span>
+              <span>{course.estimated_hours}h</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span>📚</span>
+              <span>
+                {total} {t("courses.lesson")}
+              </span>
+            </div>
           </div>
         </div>
 

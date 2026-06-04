@@ -7,6 +7,7 @@ import { pageVariants, sectionVariants } from "../../Utils/Animations";
 import { useUser } from "../../Contexts/UserContext";
 import ReturnBtn from "../../components/Global/ReturnBtn";
 import Loginfooter from "../../components/Global/LoginFooter";
+import Settings from "../../components/Global/Settings";
 
 export default function DocumentsPage() {
   const { user } = useUser();
@@ -19,7 +20,14 @@ export default function DocumentsPage() {
       animate="show"
       className="min-h-screen w-full px-7 py-8 flex justify-center color-transition"
     >
-      <div className={`w-full ${isLoggedIn ? "max-w-[1800px]" : "max-w-6xl"} space-y-16 color-transition`}>
+      {!isLoggedIn && (
+        <div className="fixed bottom-4 left-4 z-50 w-fit">
+          <Settings size="sm" />
+        </div>
+      )}
+      <div
+        className={`w-full ${isLoggedIn ? "max-w-[1800px]" : "max-w-6xl"} space-y-16 color-transition`}
+      >
         {!isLoggedIn && (
           <motion.div
             variants={sectionVariants}

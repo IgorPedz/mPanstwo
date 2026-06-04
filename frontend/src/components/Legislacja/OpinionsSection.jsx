@@ -105,7 +105,7 @@ function OpinionCard({ op }) {
         <div className="flex items-center gap-2 mb-3">
           <div className="h-px flex-1 bg-gradient-to-r from-amber-300 to-transparent" />
           <span className="text-[8px] font-black uppercase tracking-widest text-amber-500">
-            Opinia eksperta
+            {t("institution.legislation.opinions.expertOpinion")}
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-amber-300 to-transparent" />
         </div>
@@ -123,6 +123,7 @@ export default function OpinionsSection({ num }) {
   const { opinions, loading, submitting, error, postOpinion } =
     useOpinions(num);
   const [text, setText] = useState("");
+  const { t } = useTranslation();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -141,12 +142,12 @@ export default function OpinionsSection({ num }) {
             border border-slate-200 dark:border-slate-800 p-6 space-y-4 color-transition"
         >
           <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 color-transition">
-            Twoja opinia
+            {t("institution.legislation.opinions.yourOpinion")}
           </p>
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Napisz swoją opinię na temat tego projektu ustawy…"
+            placeholder={t("institution.legislation.opinions.placeholder")}
             maxLength={2000}
             rows={4}
             className="w-full resize-none rounded-2xl px-4 py-3 text-sm
@@ -176,7 +177,7 @@ export default function OpinionsSection({ num }) {
                 hover:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed
                 transition-opacity cursor-pointer shadow-sm"
             >
-              {submitting ? "Wysyłanie…" : "Dodaj opinię"}
+              {submitting ? t("institution.legislation.opinions.sending") : t("institution.legislation.opinions.add")}
               <PaperAirplaneIcon className="h-3.5 w-3.5" />
             </button>
           </div>
@@ -187,7 +188,7 @@ export default function OpinionsSection({ num }) {
           border border-slate-200 dark:border-slate-800 p-6 color-transition"
         >
           <p className="text-sm font-medium text-slate-400 dark:text-slate-500 color-transition">
-            Zaloguj się, żeby dodać swoją opinię.
+            {t("institution.legislation.opinions.loginRequired")}
           </p>
         </div>
       )}
@@ -204,7 +205,7 @@ export default function OpinionsSection({ num }) {
         </div>
       ) : opinions.length === 0 ? (
         <p className="text-sm font-medium text-slate-400 dark:text-slate-500 color-transition">
-          Nie ma jeszcze opinii. Bądź pierwszą osobą, która ją doda!
+          {t("institution.legislation.opinions.noOpinions")}
         </p>
       ) : (
         <div className="space-y-3">

@@ -6,7 +6,7 @@ import { pageVariants, sectionVariants } from "../../Utils/Animations";
 import ICON_MAP from "../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../Utils/Maps/Accents";
 import { COLOR_MAP } from "../../Utils/Maps/Colors";
-import ministriesData from "../../data/ministriesData";
+import { getMinistriesData } from "../../data/ministriesData";
 import { useMinistryNews } from "../../Hooks/useMinistryNews";
 
 import MinistryHero            from "../../components/Ministry/MinistryHero";
@@ -22,7 +22,9 @@ export default function MinistryPage() {
   const { state } = useLocation();
   const { t } = useTranslation();
 
+  const ministriesData = getMinistriesData(t);
   const data   = ministriesData[slug];
+  console.log(data)
   const title  = t(`dashboard.dashboardContent.${slug}.title`, { defaultValue: slug });
   const accent = state?.accent ?? data?.accent ?? "blue";
   const IconComponent  = ICON_MAP[state?.icon ?? data?.icon ?? "ministry"] ?? ICON_MAP["ministry"];

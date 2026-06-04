@@ -87,7 +87,7 @@ export default function LessonPage() {
         />
       </div>
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {activeModule && (
           <ModuleModal
             activeModule={activeModule}
