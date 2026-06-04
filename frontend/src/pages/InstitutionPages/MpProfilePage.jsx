@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -17,7 +17,7 @@ import {
   useMPInterpellations,
   useMPWrittenQuestions,
 } from "../../Hooks/useSejm";
-
+import { VOTE_CFG, STAT_KEYS, normalizeVote } from "./../../components/Sejm/mpProfileConstants";
 import MPHero from "../../components/Sejm/MPHero";
 import MPSection from "../../components/Sejm/MPSection";
 import MPActivityCard from "../../components/Sejm/MPActivityCard";
@@ -53,7 +53,24 @@ export default function MpProfilePage() {
   const scrollTo = (ref) =>
     ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
-  const votesTotal = votings?.length ?? 0;
+  const stats = useMemo(() => {
+    const c = { YES: 0, NO: 0, ABSTAIN: 0, ABSENT: 0 };
+    votings.forEach((v) => {
+      const k = normalizeVote(v.vote);
+      if (c[k] !== undefined) c[k]++;
+    });
+    const total = STAT_KEYS.reduce((s, k) => s + c[k], 0) || 1;
+    return STAT_KEYS.map((k) => ({
+      key: k,
+      count: c[k],
+      pct: Math.round((c[k] / total) * 100),
+    }));
+  }, [votings]);
+
+  const votesTotal = STAT_KEYS.reduce(
+    (s, k) => s + (stats.find((x) => x.key === k)?.count ?? 0),
+    0,
+  );
 
   return (
     <motion.div
@@ -150,6 +167,7 @@ export default function MpProfilePage() {
         <MPVotingHistory
           refProp={votingRef}
           votings={votings}
+          total={votesTotal}
           loading={votingsLoading}
         />
       </div>

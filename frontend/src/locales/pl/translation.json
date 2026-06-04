@@ -233,211 +233,211 @@
         },
         "achievementsData": {
             "survey_first": {
-                "title": "Pierwsza ankieta",
+                "title": "Zabieram głos",
                 "desc": "Wypełnij pierwszą ankietę"
             },
             "survey_5": {
-                "title": "Aktywny uczestnik",
+                "title": "Pięć razy TAK",
                 "desc": "Wypełnij 5 ankiet"
             },
             "survey_10": {
-                "title": "Głos społeczności",
+                "title": "Obywatel w akcji",
                 "desc": "Wypełnij 10 ankiet"
             },
             "survey_25": {
-                "title": "Ekspert opinii",
+                "title": "Barometr narodu",
                 "desc": "Wypełnij 25 ankiet"
             },
             "survey_50": {
-                "title": "Legenda ankiet",
+                "title": "Wyrocznia ankiet",
                 "desc": "Wypełnij 50 ankiet"
             },
             "xp_100": {
-                "title": "Pierwsze kroki",
+                "title": "Pierwsze sto",
                 "desc": "Zdobądź 100 XP"
             },
             "xp_1000": {
-                "title": "Rosnąca siła",
+                "title": "Tysiąc powodów",
                 "desc": "Zdobądź 1000 XP"
             },
             "xp_5000": {
-                "title": "Elita systemu",
+                "title": "Niedościgniony",
                 "desc": "Zdobądź 5000 XP"
             },
             "login_3": {
-                "title": "Regularność",
+                "title": "Trzy z rzędu",
                 "desc": "3 dni z rzędu logowania"
             },
             "login_7": {
-                "title": "Wytrwałość",
+                "title": "Tygodnik",
                 "desc": "7 dni z rzędu logowania"
             },
             "login_14": {
-                "title": "Konsekwentność",
+                "title": "Dwie niedziele z rzędu",
                 "desc": "14 dni z rzędu logowania"
             },
             "login_30": {
-                "title": "Niezłomność",
+                "title": "Miesięczna seria",
                 "desc": "30 dni z rzędu logowania"
             },
             "active_1": {
-                "title": "Pierwszy ślad",
+                "title": "Witaj w systemie",
                 "desc": "Pierwszy dzień aktywności"
             },
             "active_7": {
-                "title": "Tygodniowy rytm",
+                "title": "Siedem słońc",
                 "desc": "Tydzień aktywności"
             },
             "active_14": {
-                "title": "Stały rytm",
+                "title": "Dwa tygodnie w służbie",
                 "desc": "Dwa tygodnie aktywności"
             },
             "active_30": {
-                "title": "Ugruntowana obecność",
+                "title": "Miesięcznik",
                 "desc": "Miesiąc aktywności"
             },
             "active_60": {
-                "title": "Nawyk systemu",
+                "title": "Dwa miesiące przy sterach",
                 "desc": "Dwa miesiące aktywności"
             },
             "active_100": {
-                "title": "Zautomatyzowana rutyna",
+                "title": "Setka dni aktywności",
                 "desc": "100 dni aktywności"
             },
             "active_180": {
-                "title": "Półroczna ciągłość",
+                "title": "Półrocze w służbie",
                 "desc": "180 dni aktywności"
             },
             "active_365": {
-                "title": "Pełny cykl",
+                "title": "Rok wiernej obecności",
                 "desc": "Rok nieprzerwanej obecności"
             },
             "mp_rated_1": {
-                "title": "Pierwsze zdanie",
+                "title": "Mam zdanie na twój temat",
                 "desc": "Oceń pierwszego posła"
             },
             "mp_rated_10": {
-                "title": "Wyrobiony obserwator",
+                "title": "Baczny obserwator",
                 "desc": "Oceń 10 posłów"
             },
             "mp_rated_100": {
-                "title": "Analityk Sejmu",
+                "title": "Sejm na celowniku",
                 "desc": "Oceń 100 posłów"
             },
             "mp_rated_all": {
-                "title": "Głos narodu",
+                "title": "Znam ich wszystkich",
                 "desc": "Oceń wszystkich 460 posłów X kadencji"
             },
             "club_rated_ko": {
-                "title": "Obywatelski wzrok",
+                "title": "Rewizja KO",
                 "desc": "Oceń wszystkich posłów Koalicji Obywatelskiej"
             },
             "club_rated_lewica": {
-                "title": "Lewicowe spojrzenie",
+                "title": "Pod czerwoną lupą",
                 "desc": "Oceń wszystkich posłów Lewicy"
             },
             "club_rated_razem": {
-                "title": "Razem oceniamy",
+                "title": "Wspólne zdanie",
                 "desc": "Oceń wszystkich posłów partii Razem"
             },
             "club_rated_psl_td": {
-                "title": "Trzecia droga",
+                "title": "Przez wieś i salon",
                 "desc": "Oceń wszystkich posłów PSL-TD"
             },
             "club_rated_polska2050": {
-                "title": "Nowa Polska",
+                "title": "Jutro zaczyna się dziś",
                 "desc": "Oceń wszystkich posłów Polska2050"
             },
             "club_rated_pis": {
-                "title": "Prawo i obowiązek",
+                "title": "Prawy audyt",
                 "desc": "Oceń wszystkich posłów PiS"
             },
             "club_rated_konfederacja": {
-                "title": "Konfederacki test",
+                "title": "Wolność oceniania",
                 "desc": "Oceń wszystkich posłów Konfederacji"
             },
             "club_rated_konfederacja_kp": {
-                "title": "Korona i Pakt",
+                "title": "Królewska inspekcja",
                 "desc": "Oceń wszystkich posłów Konfederacji KP"
             },
             "club_rated_centrum": {
-                "title": "Centrum sceny",
+                "title": "Między skrzydłami",
                 "desc": "Oceń wszystkich posłów koła Centrum"
             },
             "club_rated_demokracja": {
-                "title": "Demokratyczne spojrzenie",
+                "title": "W imieniu ludu",
                 "desc": "Oceń wszystkich posłów koła Demokracja"
             },
             "clubs_all_rated": {
-                "title": "Bezstronny obserwator",
+                "title": "Pełna panorama",
                 "desc": "Oceń co najmniej jednego posła z każdego z 10 klubów i kół"
             },
             "coalition_all_rated": {
-                "title": "Strażnik koalicji",
+                "title": "Inspektor rządu",
                 "desc": "Oceń wszystkich posłów koalicji rządzącej"
             },
             "opposition_all_rated": {
-                "title": "Głos opozycji",
+                "title": "Oczy opozycji",
                 "desc": "Oceń wszystkich posłów opozycji"
             },
             "module_1": {
-                "title": "Pierwszy krok",
+                "title": "Zapłon",
                 "desc": "Ukończ pierwszy moduł i rozpocznij swoją podróż"
             },
             "module_10": {
-                "title": "Rozgrzewka za Tobą",
+                "title": "Rozgrzany silnik",
                 "desc": "Ukończ 10 modułów"
             },
             "module_50": {
-                "title": "Weteran nauki",
+                "title": "Pół setki modułów",
                 "desc": "Ukończ 50 modułów"
             },
             "module_master": {
-                "title": "Architekt wiedzy",
+                "title": "Sto modułów głębiej",
                 "desc": "Ukończ 100 modułów"
             },
             "course_1": {
-                "title": "Nowa ścieżka",
+                "title": "Pierwszy rozdział",
                 "desc": "Ukończ swój pierwszy kurs"
             },
             "course_3": {
-                "title": "Na dobrej drodze",
+                "title": "Trylogia wiedzy",
                 "desc": "Ukończ 3 kursy"
             },
             "course_10": {
-                "title": "Łowca wiedzy",
+                "title": "Dziesięć kursów za sobą",
                 "desc": "Ukończ 10 kursów"
             },
             "lesson_1": {
-                "title": "Iskra",
+                "title": "Pierwsze ziarno wiedzy",
                 "desc": "Ukończ pierwszą lekcję"
             },
             "lesson_25": {
-                "title": "Stały progres",
+                "title": "Ćwierćsetka lekcji",
                 "desc": "Ukończ 25 lekcji"
             },
             "lesson_100": {
-                "title": "Maszyna nauki",
+                "title": "Setka zaliczona",
                 "desc": "Ukończ 100 lekcji"
             },
             "opinions_1": {
-                "title": "Pierwsza opinia",
+                "title": "Mam coś do powiedzenia",
                 "desc": "Napisz swoją pierwszą opinię"
             },
             "opinions_10": {
-                "title": "Głos rozsądku",
+                "title": "Dziesięć głosów",
                 "desc": "Napisz 10 opinii"
             },
             "opinions_25": {
-                "title": "Analityk polityczny",
+                "title": "Trybun opinii",
                 "desc": "Napisz 25 opinii"
             },
             "opinions_50": {
-                "title": "Analityk opinii",
+                "title": "Pół setki poglądów",
                 "desc": "Napisz 50 opinii"
             },
             "opinions_100": {
-                "title": "Mistrz argumentacji",
+                "title": "Sto głosów ludu",
                 "desc": "Napisz 100 opinii"
             }
         }
@@ -3147,7 +3147,7 @@
             }
         }
     },
-    "facts":{
+    "facts": {
         "facts": "O danych",
         "description": "Poniżej znajdziesz najważniejsze informacje o danych, które gromadzimy i jak je wykorzystujemy. Naszym celem jest zapewnienie transparentności i zaufania, dlatego dokładamy wszelkich starań, abyś miał pełną kontrolę nad swoimi danymi. Dowiedz się więcej o tym, jakie dane zbieramy, w jakim celu i jak je chronimy."
     },

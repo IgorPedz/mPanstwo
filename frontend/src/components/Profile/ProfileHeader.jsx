@@ -7,7 +7,7 @@ const ProfileHeader = () => {
     <header className="flex justify-between items-end border-slate-200 dark:border-slate-800 pb-6 color-transition">
       <div>
         <p className="text-[11px] font-black uppercase tracking-[0.4em] text-indigo-500 color-transition">
-          {t("profile.profileUser")} /
+          {t("surveys.page")}
         </p>
         <h1 className="text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter color-transition">
           {t("profile.profileUser")}

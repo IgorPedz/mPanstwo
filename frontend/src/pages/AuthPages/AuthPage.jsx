@@ -169,7 +169,7 @@ export default function AuthPage() {
         <div
           className="
             transition-colors pt-10
-            w-full max-w-md
+            w-full justify-center flex
             border-t border-slate-100 dark:border-slate-900
           "
         >

@@ -86,6 +86,167 @@ async function fetchAllBills() {
   return bills;
 }
 
+/* ── Głosowania powiązane z drukiem ─────────────────────────────────────── */
+function collectStages(stages = []) {
+  const out = [];
+  for (const s of stages) {
+    out.push(s);
+    if (s.childStages?.length) out.push(...collectStages(s.childStages));
+  }
+  return out;
+}
+
+function extractPrintNumbers(stages = []) {
+  const nums = new Set();
+  for (const s of stages) {
+    if (s.printNumber) nums.add(String(s.printNumber));
+    const nested = s.children ?? s.childStages ?? [];
+    for (const n of extractPrintNumbers(nested)) nums.add(n);
+  }
+  return nums;
+}
+
+async function getBillVotings(req, res) {
+  const { num } = req.params;
+  const KEY = `bill_votings:${num}`;
+  const cached = fromCache(KEY);
+  if (cached) return res.json(cached);
+
+  try {
+    const found    = [];
+    const foundKeys = new Set();
+
+    function pushVoting(sitting, v) {
+      const key = `${sitting}:${v.votingNumber}`;
+      if (foundKeys.has(key)) return;
+      foundKeys.add(key);
+      found.push({
+        sitting,
+        votingNum:    v.votingNumber,
+        date:         v.date ?? null,
+        title:        v.title ?? null,
+        topic:        v.topic ?? null,
+        kind:         v.kind ?? null,
+        majorityType: v.majorityType ?? null,
+        yes:          v.yes ?? 0,
+        no:           v.no ?? 0,
+        abstain:      v.abstain ?? 0,
+        notVoting:    v.notParticipating ?? 0,
+        totalVoted:   v.totalVoted ?? 0,
+      });
+    }
+
+    // ── Ścieżka główna: dane głosowań zagnieżdżone w etapach procesu ──
+    try {
+      const { data: proc } = await axios.get(
+        `${SEJM_API}/sejm/${TERM}/processes/${num}`,
+        { headers: HEADERS, timeout: 10_000 }
+      );
+
+      for (const s of collectStages(proc?.stages ?? [])) {
+        if (s.stageType === "Voting" && s.voting) {
+          const v = s.voting;
+          pushVoting(v.sitting, v);
+        }
+      }
+    } catch {}
+
+    found.sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+    toCache(KEY, found, 30 * 60 * 1000);
+    res.json(found);
+  } catch (e) {
+    console.error("getBillVotings:", e.message);
+    res.status(500).json({ error: "Błąd serwera" });
+  }
+}
+
+async function fetchMPsForVoting() {
+  const cached = fromCache("v_mps");
+  if (cached) return cached;
+  const { data } = await axios.get(`${SEJM_API}/sejm/${TERM}/MP`, { headers: HEADERS, timeout: 20_000 });
+  const mps = data.map(m => ({ id: m.id, club: m.club }));
+  toCache("v_mps", mps, 30 * 60 * 1000);
+  return mps;
+}
+
+async function fetchClubsForVoting() {
+  const cached = fromCache("v_clubs");
+  if (cached) return cached;
+  const [{ data: list }, { data: allMPs }] = await Promise.all([
+    axios.get(`${SEJM_API}/sejm/${TERM}/clubs`, { headers: HEADERS, timeout: 10_000 }),
+    axios.get(`${SEJM_API}/sejm/${TERM}/MP`,    { headers: HEADERS, timeout: 10_000 }),
+  ]);
+  const counts = {};
+  allMPs.filter(m => m.active !== false).forEach(m => { counts[m.club] = (counts[m.club] ?? 0) + 1; });
+  const clubs = list.map(c => ({ id: c.id, membersCount: counts[c.id] ?? 0 }));
+  toCache("v_clubs", clubs, 30 * 60 * 1000);
+  return clubs;
+}
+
+async function getBillVotingDetail(req, res) {
+  const { sitting, votNum } = req.params;
+  const KEY = `voting_detail:${sitting}:${votNum}`;
+  const cached = fromCache(KEY);
+  if (cached) return res.json(cached);
+
+  try {
+    const [{ data: detail }, mps, clubs] = await Promise.all([
+      axios.get(`${SEJM_API}/sejm/${TERM}/votings/${sitting}/${votNum}`, { headers: HEADERS, timeout: 15_000 }),
+      fetchMPsForVoting(),
+      fetchClubsForVoting(),
+    ]);
+
+    const mpById   = Object.fromEntries(mps.map(m => [m.id, m]));
+    const clubSize = Object.fromEntries(clubs.map(c => [c.id, c.membersCount ?? 0]));
+
+    function normalizeVote(v) {
+      if (v === "YES" || v === "VOTE_VALID_1") return "yes";
+      if (v === "NO"  || v === "VOTE_VALID_0") return "no";
+      if (v === "ABSTAIN")                     return "abstain";
+      return "notVoting";
+    }
+
+    const clubVotes = {};
+    for (const vote of detail.votes ?? []) {
+      const mp   = mpById[vote.MP];
+      const club = mp?.club ?? "niez.";
+      if (!clubVotes[club]) {
+        clubVotes[club] = { club, totalMembers: clubSize[club] ?? 0, voted: 0, yes: 0, no: 0, abstain: 0, notVoting: 0 };
+      }
+      const c   = clubVotes[club];
+      const key = normalizeVote(vote.vote);
+      c[key]++;
+      if (key !== "notVoting") c.voted++;
+    }
+
+    const clubRows = Object.values(clubVotes)
+      .map(c => ({ ...c, notVoting: c.totalMembers > 0 ? c.totalMembers - c.voted : c.notVoting }))
+      .sort((a, b) => b.totalMembers - a.totalMembers);
+
+    const result = {
+      sitting:      detail.sitting,
+      votingNum:    detail.votingNumber,
+      date:         detail.date,
+      title:        detail.title,
+      topic:        detail.topic,
+      kind:         detail.kind,
+      majorityType: detail.majorityType ?? null,
+      yes:        clubRows.reduce((s, c) => s + c.yes, 0),
+      no:         clubRows.reduce((s, c) => s + c.no, 0),
+      abstain:    clubRows.reduce((s, c) => s + c.abstain, 0),
+      notVoting:  clubRows.reduce((s, c) => s + c.notVoting, 0),
+      totalVoted: clubRows.reduce((s, c) => s + c.voted, 0),
+      clubs:      clubRows,
+    };
+
+    toCache(KEY, result, 60 * 60 * 1000);
+    res.json(result);
+  } catch (e) {
+    console.error("getBillVotingDetail:", e.message);
+    res.status(500).json({ error: "Błąd serwera" });
+  }
+}
+
 /* ── Kontrolery ──────────────────────────────────────────────────────────── */
 async function getAllBills(req, res) {
   try {
@@ -250,4 +411,4 @@ async function postOpinion(req, res) {
   }
 }
 
-module.exports = { getAllBills, getBillDetails, getLegislativeProcess, getOpinions, postOpinion };
+module.exports = { getAllBills, getBillDetails, getLegislativeProcess, getOpinions, postOpinion, getBillVotings, getBillVotingDetail, warmupBillsCache: fetchAllBills };

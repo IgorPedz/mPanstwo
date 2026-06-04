@@ -31,6 +31,8 @@ const cron = require("node-cron");
 const { runLeadershipUpdate } = require("./update-leadership");
 const { runPresidentUpdate }    = require("./update-president");
 const { runChancelleryUpdate }  = require("./update-chancellery");
+const { warmupBillsCache }                                          = require("./controllers/legislationController");
+const { warmupCommitteesCache, warmupInterpellationsCache, warmupWrittenQuestionsCache } = require("./controllers/sejmController");
 
 const app = express();
 const server = http.createServer(app);
@@ -100,4 +102,16 @@ const port = process.env.PORT || 4000;
 
 server.listen(port, () => {
   console.log(`Serwer działa na porcie ${port}`);
+  warmupBillsCache()
+    .then(() => console.log("[warmup] Cache druków ustaw gotowy"))
+    .catch(err => console.error("[warmup] Błąd pobierania druków:", err.message));
+  warmupCommitteesCache()
+    .then(() => console.log("[warmup] Cache komisji gotowy"))
+    .catch(err => console.error("[warmup] Błąd pobierania komisji:", err.message));
+  warmupInterpellationsCache()
+    .then(() => console.log("[warmup] Cache interpelacji gotowy"))
+    .catch(err => console.error("[warmup] Błąd pobierania interpelacji:", err.message));
+  warmupWrittenQuestionsCache()
+    .then(() => console.log("[warmup] Cache zapytań pisemnych gotowy"))
+    .catch(err => console.error("[warmup] Błąd pobierania zapytań:", err.message));
 });

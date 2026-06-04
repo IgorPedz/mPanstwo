@@ -19,7 +19,7 @@ export default function DocumentsPage() {
       animate="show"
       className="min-h-screen w-full px-7 py-8 flex justify-center color-transition"
     >
-      <div className="w-full max-w-[1800px] space-y-16 color-transition">
+      <div className={`w-full ${isLoggedIn ? "max-w-[1800px]" : "max-w-6xl"} space-y-16 color-transition`}>
         {!isLoggedIn && (
           <motion.div
             variants={sectionVariants}

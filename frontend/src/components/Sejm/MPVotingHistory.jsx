@@ -5,7 +5,7 @@ import { sectionVariants } from "../../Utils/Animations";
 import { VOTE_CFG, STAT_KEYS, normalizeVote, fmtNum } from "./mpProfileConstants";
 import SittingSection from "./SittingSection";
 
-export default function MPVotingHistory({ refProp, votings, loading }) {
+export default function MPVotingHistory({ refProp, votings, loading, total }) {
   const [voteFilter,    setVoteFilter]    = useState("all");
   const [voteSearch,    setVoteSearch]    = useState("");
   const [shownSittings, setShownSittings] = useState(10);
@@ -52,7 +52,6 @@ export default function MPVotingHistory({ refProp, votings, loading }) {
 
   return (
     <>
-      {/* Statystyki */}
       {!loading && votesTotal > 0 && (
         <motion.div
           variants={sectionVariants}
@@ -60,7 +59,7 @@ export default function MPVotingHistory({ refProp, votings, loading }) {
             bg-white dark:bg-slate-900 p-6 md:p-8 color-transition"
         >
           <p className="text-[10px] font-black uppercase tracking-widest mb-4 text-slate-400 dark:text-slate-500 color-transition">
-            Statystyki głosowań — {fmtNum(votesTotal)} głosowań
+            Statystyki głosowań — {fmtNum(total)} głosowań
           </p>
           <div className="flex rounded-xl overflow-hidden h-3 mb-4">
             {stats.map((s) => s.pct > 0 && (

@@ -922,4 +922,7 @@ module.exports = {
   getMPWrittenQuestions,
   getMPRating,
   rateMp,
+  warmupCommitteesCache:        fetchCommitteeData,
+  warmupInterpellationsCache:   fetchAllInterpellations,
+  warmupWrittenQuestionsCache:  fetchAllWrittenQuestions,
 };
