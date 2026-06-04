@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { XMarkIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import {
+  XMarkIcon,
+  ArrowTopRightOnSquareIcon,
+} from "@heroicons/react/24/outline";
 import { useBillVotingDetail } from "../../Hooks/useLegislacja";
 import { formatDate } from "./legislacjaConstants";
 
@@ -16,13 +19,13 @@ function pdfUrl(sitting, votNum) {
 function getMajority(majorityType, voted) {
   const k = (majorityType ?? "").toUpperCase();
   if (k.includes("THREE_FIFTH") || k.includes("3_5") || k.includes("TRZY_PIAT"))
-    return { label: "Większość 3/5", threshold: Math.ceil(voted * 3 / 5), type: "qualified" };
+    return { label: "Większość 3/5",        threshold: Math.ceil(voted * 3 / 5),   type: "qualified" };
   if (k.includes("TWO_THIRD") || k.includes("QUALIFIED") || k.includes("KWALIF") || k.includes("2_3"))
-    return { label: "Większość 2/3", threshold: Math.ceil(voted * 2 / 3), type: "qualified" };
+    return { label: "Większość 2/3",        threshold: Math.ceil(voted * 2 / 3),   type: "qualified" };
   if (k.includes("ABSOLUTE") || k.includes("BEZWZGL"))
     return { label: "Bezwzględna większość", threshold: Math.floor(voted / 2) + 1, type: "absolute" };
-  // Zwykła większość — więcej za niż przeciw, bez stałego progu
-  return { label: "Zwykła większość", threshold: null, type: "simple" };
+  // Zwykła większość — ponad połowa głosujących
+  return   { label: "Zwykła większość",     threshold: Math.floor(voted / 2) + 1, type: "simple" };
 }
 
 function isPassed(yes, no, majority) {
@@ -34,28 +37,55 @@ function isPassed(yes, no, majority) {
 }
 
 const RESULT_COLS = [
-  { key: "yes",       label: "Za",             dot: "bg-emerald-500", num: "text-emerald-600 dark:text-emerald-400" },
-  { key: "no",        label: "Przeciw",        dot: "bg-red-500",     num: "text-red-600 dark:text-red-400" },
-  { key: "abstain",   label: "Wstrzymało się", dot: "bg-amber-400",   num: "text-amber-600 dark:text-amber-400" },
-  { key: "notVoting", label: "Nie głosowało",  dot: "bg-slate-300 dark:bg-slate-600", num: "text-slate-500 dark:text-slate-400" },
+  {
+    key: "yes",
+    label: "Za",
+    dot: "bg-emerald-500",
+    num: "text-emerald-600 dark:text-emerald-400",
+  },
+  {
+    key: "no",
+    label: "Przeciw",
+    dot: "bg-red-500",
+    num: "text-red-600 dark:text-red-400",
+  },
+  {
+    key: "abstain",
+    label: "Wstrzymało się",
+    dot: "bg-amber-400",
+    num: "text-amber-600 dark:text-amber-400",
+  },
+  {
+    key: "notVoting",
+    label: "Nie głosowało",
+    dot: "bg-slate-300 dark:bg-slate-600",
+    num: "text-slate-500 dark:text-slate-400",
+  },
 ];
 
-export default function VotingDetailModal({ sitting, votNum, summary, onClose }) {
+export default function VotingDetailModal({
+  sitting,
+  votNum,
+  summary,
+  onClose,
+}) {
   const { detail, loading } = useBillVotingDetail(sitting, votNum);
 
   useEffect(() => {
-    const handler = (e) => { if (e.key === "Escape") onClose(); };
+    const handler = (e) => {
+      if (e.key === "Escape") onClose();
+    };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
   }, [onClose]);
 
-  const d        = detail ?? summary;
-  const clubs    = detail?.clubs ?? [];
-  const dateStr  = d?.date ? d.date.slice(0, 10) : null;
-  const voted    = (d?.yes ?? 0) + (d?.no ?? 0) + (d?.abstain ?? 0);
+  const d = detail ?? summary;
+  const clubs = detail?.clubs ?? [];
+  const dateStr = d?.date ? d.date.slice(0, 10) : null;
+  const voted   = (d?.yes ?? 0) + (d?.no ?? 0) + (d?.abstain ?? 0);
   const majority = getMajority(d?.majorityType ?? d?.kind, voted);
-  const minToWin = majority.threshold ?? ((d?.no ?? 0) + 1);
-  const passed   = d?.yes != null ? isPassed(d.yes, d.no, majority) : null;
+  const minToWin = majority.threshold;
+  const passed = d?.yes != null ? isPassed(d.yes, d.no, majority) : null;
 
   return createPortal(
     <AnimatePresence>
@@ -77,28 +107,37 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
             border border-slate-200 dark:border-slate-800 shadow-2xl color-transition overflow-hidden"
         >
           {/* ── Header ── */}
-          <div className="shrink-0 bg-white dark:bg-slate-900 rounded-t-[2rem]
-            border-b border-slate-100 dark:border-slate-800 px-8 pt-7 pb-5 color-transition">
+          <div
+            className="shrink-0 bg-white dark:bg-slate-900 rounded-t-[2rem]
+            border-b border-slate-100 dark:border-slate-800 px-8 pt-7 pb-5 color-transition"
+          >
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0 flex-1">
                 <p className="text-[10px] font-black uppercase tracking-[0.4em] text-indigo-500">
                   {d?.sitting ?? sitting}. posiedzenie Sejmu
                 </p>
-                <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tighter
-                  text-slate-900 dark:text-white color-transition mt-1 leading-tight">
+                <h2
+                  className="text-2xl md:text-3xl font-black uppercase tracking-tighter
+                  text-slate-900 dark:text-white color-transition mt-1 leading-tight"
+                >
                   Głosowanie nr {d?.votingNum ?? votNum}
                 </h2>
                 <div className="h-1 w-14 bg-indigo-500 rounded-full mt-2 mb-3" />
 
                 {/* Passed badge */}
                 {passed !== null && (
-                  <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-xl mb-2
+                  <div
+                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-xl mb-2
                     text-[10px] font-black uppercase tracking-widest
-                    ${passed
-                      ? "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300"
-                      : "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
-                    } color-transition`}>
-                    <span className={`w-1.5 h-1.5 rounded-full ${passed ? "bg-emerald-500" : "bg-red-500"}`} />
+                    ${
+                      passed
+                        ? "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300"
+                        : "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
+                    } color-transition`}
+                  >
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${passed ? "bg-emerald-500" : "bg-red-500"}`}
+                    />
                     {passed ? "Przyjęto" : "Odrzucono"}
                   </div>
                 )}
@@ -109,17 +148,23 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
                     {majority.label}
                   </span>
                   {d?.yes != null && (
-                    <span className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-lg
-                      bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 color-transition">
+                    <span
+                      className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-lg
+                      bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 color-transition"
+                    >
                       min. {minToWin} głosów za
                     </span>
                   )}
                   {dateStr && (
-                    <span className="text-[10px] text-slate-300 dark:text-slate-600">·</span>
+                    <span className="text-[10px] text-slate-300 dark:text-slate-600">
+                      ·
+                    </span>
                   )}
                   {dateStr && (
                     <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 color-transition">
-                      {formatDate(dateStr)}{d?.date?.length > 10 && ` · godz. ${d.date.slice(11, 19)}`}
+                      {formatDate(dateStr)}
+                      {d?.date?.length > 10 &&
+                        ` · godz. ${d.date.slice(11, 19)}`}
                     </span>
                   )}
                 </div>
@@ -165,11 +210,12 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
 
           {/* ── Content ── */}
           <div className="overflow-y-auto px-8 py-7 space-y-7">
-
             {/* Topic */}
             {(d?.topic || d?.title) && (
-              <div className="px-5 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50
-                border border-slate-200 dark:border-slate-700/60 color-transition">
+              <div
+                className="px-5 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50
+                border border-slate-200 dark:border-slate-700/60 color-transition"
+              >
                 <p className="text-sm font-bold text-slate-700 dark:text-slate-200 leading-relaxed color-transition">
                   {d.topic ?? d.title}
                 </p>
@@ -183,24 +229,30 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {RESULT_COLS.map(({ key, label, dot, num }) => (
-                  <div key={key}
+                  <div
+                    key={key}
                     className="rounded-2xl border border-slate-200 dark:border-slate-800
-                      bg-white dark:bg-slate-900 p-5 color-transition">
+                      bg-white dark:bg-slate-900 p-5 color-transition"
+                  >
                     <div className="flex items-center gap-1.5 mb-2">
                       <span className={`w-2 h-2 rounded-full ${dot}`} />
                       <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">
                         {label}
                       </span>
                     </div>
-                    <p className={`text-3xl font-black ${num}`}>{d?.[key] ?? "—"}</p>
+                    <p className={`text-3xl font-black ${num}`}>
+                      {d?.[key] ?? "—"}
+                    </p>
                   </div>
                 ))}
               </div>
               {d?.yes != null && (
                 <p className="text-xs font-bold text-slate-400 dark:text-slate-500 mt-3 color-transition">
                   Głosowało łącznie:{" "}
-                  <span className="text-slate-700 dark:text-slate-200 font-black">{voted}</span>
-                  {" "}posłów
+                  <span className="text-slate-700 dark:text-slate-200 font-black">
+                    {voted}
+                  </span>{" "}
+                  posłów
                 </p>
               )}
             </div>
@@ -209,7 +261,10 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
             {loading && (
               <div className="animate-pulse space-y-2">
                 {[...Array(6)].map((_, i) => (
-                  <div key={i} className="h-11 rounded-2xl bg-slate-100 dark:bg-slate-800 color-transition" />
+                  <div
+                    key={i}
+                    className="h-11 rounded-2xl bg-slate-100 dark:bg-slate-800 color-transition"
+                  />
                 ))}
               </div>
             )}
@@ -224,15 +279,21 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
                     <thead>
                       <tr className="bg-slate-50 dark:bg-slate-800/70 color-transition">
                         {[
-                          { h: "Klub / Koło",   cls: "text-left" },
-                          { h: "Czł.",          cls: "text-right" },
-                          { h: "Głosowało",     cls: "text-right" },
-                          { h: "Za",            cls: "text-right text-emerald-600 dark:text-emerald-400" },
-                          { h: "Przeciw",       cls: "text-right text-red-500" },
-                          { h: "Wstrz.",        cls: "text-right text-amber-500" },
-                          { h: "Nie gł.",       cls: "text-right text-slate-400" },
+                          { h: "Klub / Koło", cls: "text-left" },
+                          { h: "Czł.", cls: "text-right" },
+                          { h: "Głosowało", cls: "text-right" },
+                          {
+                            h: "Za",
+                            cls: "text-right text-emerald-600 dark:text-emerald-400",
+                          },
+                          { h: "Przeciw", cls: "text-right text-red-500" },
+                          { h: "Wstrz.", cls: "text-right text-amber-500" },
+                          { h: "Nie gł.", cls: "text-right text-slate-400" },
                         ].map(({ h, cls }) => (
-                          <th key={h} className={`px-4 py-3 font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 ${cls} color-transition`}>
+                          <th
+                            key={h}
+                            className={`px-4 py-3 font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 ${cls} color-transition`}
+                          >
                             {h}
                           </th>
                         ))}
@@ -240,25 +301,47 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
                     </thead>
                     <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                       {clubs.map((c) => (
-                        <tr key={c.club}
+                        <tr
+                          key={c.club}
                           className="bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/40
-                            transition-colors color-transition">
+                            transition-colors color-transition"
+                        >
                           <td className="px-4 py-3 font-black text-slate-800 dark:text-slate-100 color-transition">
                             {c.club}
                           </td>
-                          <td className="px-4 py-3 text-right text-slate-400 dark:text-slate-500">{c.totalMembers || "—"}</td>
-                          <td className="px-4 py-3 text-right font-bold text-slate-600 dark:text-slate-300">{c.voted}</td>
+                          <td className="px-4 py-3 text-right text-slate-400 dark:text-slate-500">
+                            {c.totalMembers || "—"}
+                          </td>
+                          <td className="px-4 py-3 text-right font-bold text-slate-600 dark:text-slate-300">
+                            {c.voted}
+                          </td>
                           <td className="px-4 py-3 text-right font-black text-emerald-600 dark:text-emerald-400">
-                            {c.yes || <span className="text-slate-200 dark:text-slate-700 font-normal">—</span>}
+                            {c.yes || (
+                              <span className="text-slate-200 dark:text-slate-700 font-normal">
+                                —
+                              </span>
+                            )}
                           </td>
                           <td className="px-4 py-3 text-right font-black text-red-500">
-                            {c.no || <span className="text-slate-200 dark:text-slate-700 font-normal">—</span>}
+                            {c.no || (
+                              <span className="text-slate-200 dark:text-slate-700 font-normal">
+                                —
+                              </span>
+                            )}
                           </td>
                           <td className="px-4 py-3 text-right font-bold text-amber-500">
-                            {c.abstain || <span className="text-slate-200 dark:text-slate-700 font-normal">—</span>}
+                            {c.abstain || (
+                              <span className="text-slate-200 dark:text-slate-700 font-normal">
+                                —
+                              </span>
+                            )}
                           </td>
                           <td className="px-4 py-3 text-right text-slate-400 dark:text-slate-500">
-                            {c.notVoting || <span className="text-slate-200 dark:text-slate-700">—</span>}
+                            {c.notVoting || (
+                              <span className="text-slate-200 dark:text-slate-700">
+                                —
+                              </span>
+                            )}
                           </td>
                         </tr>
                       ))}
@@ -271,6 +354,6 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
         </motion.div>
       </motion.div>
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 }
