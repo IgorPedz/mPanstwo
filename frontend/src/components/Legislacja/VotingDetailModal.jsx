@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { XMarkIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { useBillVotingDetail } from "../../Hooks/useLegislacja";
 import { formatDate } from "./legislacjaConstants";
-import { useTranslation } from "react-i18next";
 
 function sejmPortalUrl(sitting, votNum) {
   return `https://www.sejm.gov.pl/Sejm10.nsf/agent.xsp?symbol=glosowania&NrKadencji=10&NrPosiedzenia=${sitting}&NrGlosowania=${votNum}`;
@@ -14,16 +13,16 @@ function pdfUrl(sitting, votNum) {
   return `https://api.sejm.gov.pl/sejm/term10/votings/${sitting}/${votNum}/pdf`;
 }
 
-function getMajority(majorityType, voted, t) {
+function getMajority(majorityType, voted) {
   const k = (majorityType ?? "").toUpperCase();
   if (k.includes("THREE_FIFTH") || k.includes("3_5") || k.includes("TRZY_PIAT"))
-    return { label: t("institution.legislation.voting.majorityThreeFifths"), threshold: Math.ceil(voted * 3 / 5), type: "qualified" };
+    return { label: "Większość 3/5", threshold: Math.ceil(voted * 3 / 5), type: "qualified" };
   if (k.includes("TWO_THIRD") || k.includes("QUALIFIED") || k.includes("KWALIF") || k.includes("2_3"))
-    return { label: t("institution.legislation.voting.majorityTwoThirds"), threshold: Math.ceil(voted * 2 / 3), type: "qualified" };
+    return { label: "Większość 2/3", threshold: Math.ceil(voted * 2 / 3), type: "qualified" };
   if (k.includes("ABSOLUTE") || k.includes("BEZWZGL"))
-    return { label: t("institution.legislation.voting.majorityAbsolute"), threshold: Math.floor(voted / 2) + 1, type: "absolute" };
-  // Simple majority
-  return { label: t("institution.legislation.voting.majoritySimple"), threshold: Math.floor(voted / 2) + 1, type: "simple" };
+    return { label: "Bezwzględna większość", threshold: Math.floor(voted / 2) + 1, type: "absolute" };
+  // Zwykła większość — więcej za niż przeciw, bez stałego progu
+  return { label: "Zwykła większość", threshold: null, type: "simple" };
 }
 
 function isPassed(yes, no, majority) {
@@ -34,16 +33,15 @@ function isPassed(yes, no, majority) {
   return (yes ?? 0) >= (majority.threshold ?? 0);
 }
 
-const RESULT_COL_DEFS = [
-  { key: "yes",       tKey: "institution.legislation.voting.yes",       dot: "bg-emerald-500", num: "text-emerald-600 dark:text-emerald-400" },
-  { key: "no",        tKey: "institution.legislation.voting.no",        dot: "bg-red-500",     num: "text-red-600 dark:text-red-400" },
-  { key: "abstain",   tKey: "institution.legislation.voting.abstain",   dot: "bg-amber-400",   num: "text-amber-600 dark:text-amber-400" },
-  { key: "notVoting", tKey: "institution.legislation.voting.notVoting", dot: "bg-slate-300 dark:bg-slate-600", num: "text-slate-500 dark:text-slate-400" },
+const RESULT_COLS = [
+  { key: "yes",       label: "Za",             dot: "bg-emerald-500", num: "text-emerald-600 dark:text-emerald-400" },
+  { key: "no",        label: "Przeciw",        dot: "bg-red-500",     num: "text-red-600 dark:text-red-400" },
+  { key: "abstain",   label: "Wstrzymało się", dot: "bg-amber-400",   num: "text-amber-600 dark:text-amber-400" },
+  { key: "notVoting", label: "Nie głosowało",  dot: "bg-slate-300 dark:bg-slate-600", num: "text-slate-500 dark:text-slate-400" },
 ];
 
 export default function VotingDetailModal({ sitting, votNum, summary, onClose }) {
   const { detail, loading } = useBillVotingDetail(sitting, votNum);
-  const { t } = useTranslation();
 
   useEffect(() => {
     const handler = (e) => { if (e.key === "Escape") onClose(); };
@@ -55,8 +53,8 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
   const clubs    = detail?.clubs ?? [];
   const dateStr  = d?.date ? d.date.slice(0, 10) : null;
   const voted    = (d?.yes ?? 0) + (d?.no ?? 0) + (d?.abstain ?? 0);
-  const majority = getMajority(d?.majorityType ?? d?.kind, voted, t);
-  const minToWin = majority.threshold;
+  const majority = getMajority(d?.majorityType ?? d?.kind, voted);
+  const minToWin = majority.threshold ?? ((d?.no ?? 0) + 1);
   const passed   = d?.yes != null ? isPassed(d.yes, d.no, majority) : null;
 
   return createPortal(
@@ -84,11 +82,11 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0 flex-1">
                 <p className="text-[10px] font-black uppercase tracking-[0.4em] text-indigo-500">
-                  {d?.sitting ?? sitting}. {t("institution.legislation.voting.sejmSession")}
+                  {d?.sitting ?? sitting}. posiedzenie Sejmu
                 </p>
                 <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tighter
                   text-slate-900 dark:text-white color-transition mt-1 leading-tight">
-                  {t("institution.legislation.voting.votingNumber")} {d?.votingNum ?? votNum}
+                  Głosowanie nr {d?.votingNum ?? votNum}
                 </h2>
                 <div className="h-1 w-14 bg-indigo-500 rounded-full mt-2 mb-3" />
 
@@ -101,7 +99,7 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
                       : "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
                     } color-transition`}>
                     <span className={`w-1.5 h-1.5 rounded-full ${passed ? "bg-emerald-500" : "bg-red-500"}`} />
-                    {passed ? t("institution.legislation.voting.passed") : t("institution.legislation.voting.rejected")}
+                    {passed ? "Przyjęto" : "Odrzucono"}
                   </div>
                 )}
 
@@ -113,7 +111,7 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
                   {d?.yes != null && (
                     <span className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-lg
                       bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 color-transition">
-                      {t("institution.legislation.voting.minVotes", { count: minToWin })}
+                      min. {minToWin} głosów za
                     </span>
                   )}
                   {dateStr && (
@@ -121,7 +119,7 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
                   )}
                   {dateStr && (
                     <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 color-transition">
-                      {formatDate(dateStr)}{d?.date?.length > 10 && ` · ${t("institution.legislation.voting.hour")} ${d.date.slice(11, 19)}`}
+                      {formatDate(dateStr)}{d?.date?.length > 10 && ` · godz. ${d.date.slice(11, 19)}`}
                     </span>
                   )}
                 </div>
@@ -150,7 +148,7 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
                       border border-slate-200 dark:border-slate-700
                       hover:opacity-75 transition-opacity cursor-pointer color-transition"
                   >
-                    {t("institution.legislation.voting.individualPdf")}
+                    Wyniki indywidualne PDF
                     <ArrowTopRightOnSquareIcon className="h-3 w-3" />
                   </a>
                 </div>
@@ -181,17 +179,17 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
             {/* Result cards */}
             <div>
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-3 color-transition">
-                {t("institution.legislation.voting.results")}
+                Wyniki głosowania
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {RESULT_COL_DEFS.map(({ key, tKey, dot, num }) => (
+                {RESULT_COLS.map(({ key, label, dot, num }) => (
                   <div key={key}
                     className="rounded-2xl border border-slate-200 dark:border-slate-800
                       bg-white dark:bg-slate-900 p-5 color-transition">
                     <div className="flex items-center gap-1.5 mb-2">
                       <span className={`w-2 h-2 rounded-full ${dot}`} />
                       <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">
-                        {t(tKey)}
+                        {label}
                       </span>
                     </div>
                     <p className={`text-3xl font-black ${num}`}>{d?.[key] ?? "—"}</p>
@@ -200,9 +198,9 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
               </div>
               {d?.yes != null && (
                 <p className="text-xs font-bold text-slate-400 dark:text-slate-500 mt-3 color-transition">
-                  {t("institution.legislation.voting.totalVoted")}{" "}
+                  Głosowało łącznie:{" "}
                   <span className="text-slate-700 dark:text-slate-200 font-black">{voted}</span>
-                  {" "}{t("institution.legislation.voting.mps")}
+                  {" "}posłów
                 </p>
               )}
             </div>
@@ -219,20 +217,20 @@ export default function VotingDetailModal({ sitting, votNum, summary, onClose })
             {clubs.length > 0 && (
               <div>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-3 color-transition">
-                  {t("institution.legislation.voting.byClub")}
+                  Wyniki wg klubów i kół
                 </p>
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden color-transition">
                   <table className="w-full text-xs">
                     <thead>
                       <tr className="bg-slate-50 dark:bg-slate-800/70 color-transition">
                         {[
-                          { h: t("institution.legislation.voting.club"),      cls: "text-left" },
-                          { h: t("institution.legislation.voting.members"),   cls: "text-right" },
-                          { h: t("institution.legislation.voting.voted"),     cls: "text-right" },
-                          { h: t("institution.legislation.voting.yes"),       cls: "text-right text-emerald-600 dark:text-emerald-400" },
-                          { h: t("institution.legislation.voting.no"),        cls: "text-right text-red-500" },
-                          { h: t("institution.legislation.voting.abstained"), cls: "text-right text-amber-500" },
-                          { h: t("institution.legislation.voting.absent"),    cls: "text-right text-slate-400" },
+                          { h: "Klub / Koło",   cls: "text-left" },
+                          { h: "Czł.",          cls: "text-right" },
+                          { h: "Głosowało",     cls: "text-right" },
+                          { h: "Za",            cls: "text-right text-emerald-600 dark:text-emerald-400" },
+                          { h: "Przeciw",       cls: "text-right text-red-500" },
+                          { h: "Wstrz.",        cls: "text-right text-amber-500" },
+                          { h: "Nie gł.",       cls: "text-right text-slate-400" },
                         ].map(({ h, cls }) => (
                           <th key={h} className={`px-4 py-3 font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 ${cls} color-transition`}>
                             {h}
