@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { CalendarDaysIcon, ChevronRightIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
-import { TYPE_BADGE, TYPE_LABELS, TYPE_GRADIENT, formatDate } from "./legislacjaConstants";
+import { TYPE_BADGE, TYPE_GRADIENT, getTypeLabel, formatDate } from "./legislacjaConstants";
 import { upwardItemVariants } from "../../Utils/Animations";
+import { useTranslation } from "react-i18next";
 
 export default function BillCard({ bill, onNavigate }) {
+  const { t } = useTranslation();
   const badge    = TYPE_BADGE[bill.type]    ?? TYPE_BADGE.inny;
   const gradient = TYPE_GRADIENT[bill.type] ?? TYPE_GRADIENT.inny;
 
@@ -24,7 +26,7 @@ export default function BillCard({ bill, onNavigate }) {
       <div className="relative z-10 flex flex-col h-full gap-3">
         <div className="flex items-start justify-between gap-2">
           <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-widest color-transition ${badge}`}>
-            {TYPE_LABELS[bill.type] ?? "Inny"}
+            {getTypeLabel(t, bill.type)}
           </span>
           <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 color-transition shrink-0">
             #{bill.number}

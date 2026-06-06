@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeftIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import { containerVariants, upwardItemVariants } from "../../Utils/Animations";
 import { useBillDetails } from "../../Hooks/useLegislacja";
+import { useTranslation } from "react-i18next";
 
 import BillDetailHeader from "../../components/Legislacja/BillDetailHeader";
 import BillTitleCard    from "../../components/Legislacja/BillTitleCard";
@@ -15,6 +16,7 @@ import OpinionsSection  from "../../components/Legislacja/OpinionsSection";
 export default function LegislacjaDetailPage() {
   const { num } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const [tab, setTab] = useState(() => {
     const t = searchParams.get("tab");
@@ -47,7 +49,7 @@ export default function LegislacjaDetailPage() {
           <div className="flex flex-col items-center justify-center py-24 gap-3">
             <ExclamationCircleIcon className="h-10 w-10 text-red-400" />
             <p className="text-sm font-bold text-slate-500 dark:text-slate-400 color-transition">
-              Nie udało się załadować danych ustawy.
+              {t("institution.legislation.billLoadError")}
             </p>
           </div>
         ) : loading ? (
@@ -122,7 +124,7 @@ export default function LegislacjaDetailPage() {
                   transition-colors color-transition"
               >
                 <ArrowLeftIcon className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
-                Wróć do listy projektów
+                {t("institution.legislation.backToList")}
               </button>
             </div>
           </>

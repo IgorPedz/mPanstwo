@@ -6,9 +6,13 @@ export default function JudicialLeadership({ data, people, colorClass }) {
   return (
     <motion.div
       variants={sectionVariants}
-      className="rounded-3xl border border-slate-200/70 dark:border-slate-800/60 bg-white dark:bg-slate-900 p-6 md:p-8"
+      className="w-full rounded-3xl border border-slate-200/70 dark:border-slate-800/60
+        bg-white dark:bg-slate-900 p-6 md:p-8 color-transition"
     >
-      <p className="section-label">{data.leadershipLabel}</p>
+      <p className="text-[10px] font-black uppercase tracking-widest mb-5
+        text-slate-400 dark:text-slate-500 color-transition">
+        {data.leadershipLabel}
+      </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {people.map((person) => {

@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Nav from "../Nav/Nav";
 import { useUser } from "../../Contexts/UserContext";
 import PageWrapper from "../../Utils/PageWrapper";
+import FollowedPanel from "../Institution/FollowedPanel";
 
 export default function Layout() {
   const { user } = useUser();
@@ -18,6 +19,8 @@ export default function Layout() {
           </div>
         </PageWrapper>
       </main>
+
+      {user?.id && <FollowedPanel />}
     </div>
   );
 }

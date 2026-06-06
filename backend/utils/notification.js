@@ -10,8 +10,6 @@ async function sendNotification({
   color,
 }) {
   try {
-    const io = getIO();
-
     const eventKey =
       typeof type === "string" ? type.trim().toUpperCase() : type;
 
@@ -22,22 +20,12 @@ async function sendNotification({
       };
 
     const finalIcon = icon ?? config.icon ?? "🔔";
-
     const finalColor = color ?? config.color ?? "gray";
-      console.log(finalIcon, finalColor);
+
     const [result] = await db.query(
-      `
-  INSERT INTO notifications
-  (user_id, icon, color, type, data, created_at)
-  VALUES (?, ?, ?, ?, ?, UTC_TIMESTAMP())
-  `,
-      [
-        userId || null,
-        finalIcon,
-        finalColor,
-        eventKey,
-        data ? JSON.stringify(data) : null,
-      ],
+      `INSERT INTO notifications (user_id, icon, color, type, data, created_at)
+       VALUES (?, ?, ?, ?, ?, UTC_TIMESTAMP())`,
+      [userId || null, finalIcon, finalColor, eventKey, data ? JSON.stringify(data) : null],
     );
 
     const notification = {
@@ -51,16 +39,19 @@ async function sendNotification({
       created_at: new Date().toISOString(),
     };
 
-    if (!io) {
-      return notification;
+    // Socket emit — opcjonalny (może nie działać w trybie standalone)
+    try {
+      const io = getIO();
+      if (io) {
+        if (!userId) {
+          io.emit("notification", notification);
+        } else {
+          io.to(`user:${userId}`).emit("notification", notification);
+        }
+      }
+    } catch {
+      // Socket niedostępny — powiadomienie zapisane w DB, użytkownik zobaczy przy odświeżeniu
     }
-
-    if (!userId) {
-      io.emit("notification", notification);
-      return notification;
-    }
-
-    io.to(`user:${userId}`).emit("notification", notification);
 
     return notification;
   } catch (err) {

@@ -122,4 +122,69 @@ async function getPrezydentPlNews(req, res) {
   res.json({ slug, source: url, items });
 }
 
-module.exports = { getMinistryNews, getPrezydentPlNews };
+async function fetchMinistryNewsItems(slug) {
+  const entry = NEWS_MAP[slug];
+  if (!entry) return [];
+  const url = `${BASE_URL}/web/${entry.s}/${entry.p}`;
+  try {
+    const { data: html } = await axios.get(url, {
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; mPanstwo/1.0)" },
+      timeout: 10_000,
+    });
+    const $ = cheerio.load(html);
+    const items = [];
+    $(".art-prev li").each((_, el) => {
+      const title  = $(el).find(".title a").text().trim();
+      const href   = $(el).find(".title a").attr("href") || "";
+      const date   = $(el).find(".date").text().trim();
+      const lead   = $(el).find(".intro").text().trim();
+      const imgSrc = $(el).find("picture img").attr("src") || "";
+      if (!title) return;
+      items.push({
+        title,
+        url:   href ? (href.startsWith("http") ? href : `${BASE_URL}${href}`) : null,
+        date,
+        lead,
+        image: imgSrc ? (imgSrc.startsWith("http") ? imgSrc : `${BASE_URL}${imgSrc}`) : null,
+      });
+    });
+    return items;
+  } catch {
+    return [];
+  }
+}
+
+async function fetchPresidentNewsItems(slug) {
+  const path = PREZYDENT_NEWS_MAP[slug];
+  if (!path) return [];
+  const BASE = "https://www.prezydent.pl";
+  try {
+    const { data: html } = await axios.get(`${BASE}${path}`, {
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; mPanstwo/1.0)" },
+      timeout: 10_000,
+    });
+    const $ = cheerio.load(html);
+    const items = [];
+    $(".articles-item").each((_, el) => {
+      const $el    = $(el);
+      const $title = $el.find(".articles-item__title a");
+      const title  = $title.text().trim();
+      const href   = $title.attr("href") || "";
+      const date   = $el.find(".articles-item__date").text().trim();
+      const lead   = $el.find(".articles-item__description").text().trim();
+      const imgSrc = $el.find("img").first().attr("src") || "";
+      if (!title) return;
+      items.push({
+        title,
+        url:   href ? (href.startsWith("http") ? href : `${BASE}${href}`) : null,
+        date, lead,
+        image: imgSrc ? (imgSrc.startsWith("http") ? imgSrc : `${BASE}${imgSrc}`) : null,
+      });
+    });
+    return items;
+  } catch {
+    return [];
+  }
+}
+
+module.exports = { getMinistryNews, getPrezydentPlNews, fetchMinistryNewsItems, fetchPresidentNewsItems };

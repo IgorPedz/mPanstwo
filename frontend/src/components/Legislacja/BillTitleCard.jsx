@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
 import { upwardItemVariants } from "../../Utils/Animations";
 import { getPdfUrl } from "./legislacjaConstants";
+import { useTranslation } from "react-i18next";
 
 export default function BillTitleCard({ title, sejmUrl, pdfAttachments, num }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       variants={upwardItemVariants}
@@ -23,7 +25,7 @@ export default function BillTitleCard({ title, sejmUrl, pdfAttachments, num }) {
             bg-slate-900 dark:bg-white text-white dark:text-slate-900
             hover:opacity-80 transition-opacity cursor-pointer shadow-sm"
         >
-          Pełna treść na sejm.gov.pl
+          {t("institution.legislation.fullTextLink")}
           <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />
         </a>
         {pdfAttachments.slice(0, 3).map((a, i) => {

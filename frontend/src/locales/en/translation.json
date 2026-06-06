@@ -2987,8 +2987,9 @@
                 "message": "New survey results are available."
             },
             "LAW_UPDATE": {
-                "title": "Law update",
-                "message": "A new legal update is available."
+                "title": "New update",
+                "message": "{{institutionName}}: {{newsTitle}}",
+                "messageMany": "{{institutionName}}: {{newCount}} new updates — {{newsTitle}}"
             },
             "LOGIN_STREAK_SMALL": {
                 "title": "Login streak",
@@ -3151,11 +3152,92 @@
     },
     "facts": {
         "facts": "About the data",
-        "description": "The data we are using is collected from official government sources, such as the Sejm, Senate, ministries, and other public institutions. We ensure that all information is accurate and up-to-date, providing you with reliable insights into the workings of the Polish government and public administration."
+        "description": "The data we are using is collected from official government sources, such as the Sejm, Senate, ministries, and other public institutions. We ensure that all information is accurate and up-to-date, providing you with reliable insights into the workings of the Polish government and public administration.",
+        "sources": {
+            "heading": "Data Sources",
+            "subheading": "All parliamentary data comes from official, public sources.",
+            "official": "Official",
+            "items": [
+                {
+                    "name": "Sejm of the Republic of Poland API",
+                    "url": "https://api.sejm.gov.pl",
+                    "desc": "Official public API of the Chancellery of the Sejm. Provides real-time data on parliamentary bills, legislative processes, MPs, votes and interpellations."
+                },
+                {
+                    "name": "Parliamentary Bills (ORKA)",
+                    "url": "https://orka.sejm.gov.pl",
+                    "desc": "PDF documents of draft bills downloaded directly from the ORKA system of the Sejm. Contain full texts of bills, justifications and annexes."
+                },
+                {
+                    "name": "Ministries — gov.pl",
+                    "url": "https://www.gov.pl",
+                    "desc": "Portal of the Polish Government. Data on ministries, government structure, leadership and scope of competence of individual departments."
+                },
+                {
+                    "name": "President of the Republic of Poland — prezydent.pl",
+                    "url": "https://www.prezydent.pl",
+                    "desc": "Official website of the President of Poland. Data on the President's activities and his constitutional bodies."
+                },
+                {
+                    "name": "Supreme Administrative Court",
+                    "url": "https://www.nsa.gov.pl",
+                    "desc": "NSA — court reviewing public administration activity. Data on structure, case law and composition from the official institution website."
+                },
+                {
+                    "name": "Supreme Court",
+                    "url": "https://www.sn.pl",
+                    "desc": "SN — the highest court in criminal and civil matters. Data on composition, chambers and case law from the official Supreme Court website."
+                },
+                {
+                    "name": "Constitutional Tribunal",
+                    "url": "https://www.trybunal.gov.pl",
+                    "desc": "CT — constitutional review body. Data on justices, composition and rulings from the official Constitutional Tribunal website."
+                },
+                {
+                    "name": "National Council of the Judiciary",
+                    "url": "https://www.krs.pl",
+                    "desc": "NCJ — body safeguarding the independence of courts and judges. Data on composition and activities from the official Council website."
+                }
+            ]
+        },
+        "reliability": {
+            "heading": "Reliability and Limitations",
+            "subheading": "What we do to keep data current — and what you should know.",
+            "items": [
+                {
+                    "title": "Government site limitations",
+                    "desc": "We display only official information, but government sites may experience brief technical outages or data update delays. Always check official sources in case of doubt."
+                },
+                {
+                    "title": "30-minute cache",
+                    "desc": "Data is refreshed every 30 minutes from the official API. Brief discrepancies may exist between the actual state and the information displayed."
+                },
+                {
+                    "title": "API limitations",
+                    "desc": "The Sejm API is public but may not contain 100% real-time data. If in doubt, always check the official site sejm.gov.pl."
+                },
+                {
+                    "title": "User opinions",
+                    "desc": "Comments and opinions on the mPaństwo platform are user-generated and do not represent the position of the Sejm or any state institution."
+                },
+                {
+                    "title": "No historical data",
+                    "desc": "We currently display only current data. We do not hold historical or archival data on government composition, MPs or case law."
+                },
+                {
+                    "title": "Data translations",
+                    "desc": "Due to the absence of government site translations into languages other than Polish, data is available in the original language only."
+                }
+            ]
+        },
+        "footer": "mPaństwo is an educational project and is not an official platform of any public institution. All data presented in the application is for informational purposes only. For official matters, always use the institution websites —"
     },
     "dashboard": {
         "dashboard": "Dashboard",
         "welcome": "Welcome, {{name}}!",
+        "followed": {
+            "title": "Followed institutions"
+        },
         "editMode": "Edit Mode",
         "saveLayout": "Save Layout",
         "saveChanges": "Save Changes",
@@ -3466,6 +3548,9 @@
     },
     "institution": {
         "back": "Back",
+        "follow": "Follow",
+        "following": "Following",
+        "unfollow": "Unfollow",
         "notFound": "No information found for this institution.",
         "officialSite": "Official website",
         "website": "Website",
@@ -3579,12 +3664,45 @@
                 "add": "Add opinion",
                 "loginRequired": "Log in to add your opinion.",
                 "noOpinions": "No opinions yet. Be the first to add one!",
-                "expertOpinion": "Expert opinion"
+                "expertOpinion": "Expert opinion",
+                "addError": "Failed to add opinion"
             },
             "timeline": {
                 "noStages": "No data on legislative stages.",
                 "stage": "Stage"
+            },
+            "billLoadError": "Failed to load bill data.",
+            "backToList": "Back to bill list",
+            "fullTextLink": "Full text at sejm.gov.pl",
+            "types": {
+                "all": "All",
+                "rzadowy": "Government",
+                "poselski": "Deputies'",
+                "senacki": "Senate",
+                "obywatelski": "Citizens'",
+                "prezydencki": "Presidential",
+                "pilny": "Urgent",
+                "inny": "Other"
+            },
+            "typeLabels": {
+                "rzadowy": "Government",
+                "poselski": "Deputies'",
+                "senacki": "Senate",
+                "obywatelski": "Citizens'",
+                "prezydencki": "Presidential",
+                "pilny": "Urgent",
+                "inny": "Other"
             }
+        },
+        "parties": {
+            "Bezpartyjny": "Non-partisan"
+        },
+        "clubs": {
+            "heading": "Parliamentary clubs and groups",
+            "groupsLabel": "clubs and groups",
+            "mpsLabel": "MPs",
+            "memberParties": "Member parties",
+            "footer": "Total {{total}} active MPs · 10th term of the Sejm · data: api.sejm.gov.pl"
         }
     },
     "staticData": {
@@ -3613,7 +3731,7 @@
                 ],
                 [
                     "Term",
-                    "2023â€“2027"
+                    "2023–2027"
                 ],
                 [
                     "Authority",
@@ -3649,7 +3767,7 @@
                 ],
                 [
                     "Term",
-                    "2023â€“2027"
+                    "2023–2027"
                 ],
                 [
                     "Authority",
@@ -3665,7 +3783,7 @@
             "type": "Office of the President of Poland",
             "leadershipLabel": "President of Poland",
             "leaderLabel": "President",
-            "description": "Karol Tadeusz Nawrocki (born 3 March 1983 in GdaĹ„sk) â€“ Polish historian, politician, social and local government activist, Doctor of Humanities. President of the Republic of Poland since 6 August 2025. Director of the Museum of the Second World War in GdaĹ„sk (2017â€“2021), President of the Institute of National Remembrance (2021â€“2025).",
+            "description": "The President of the Republic of Poland is the supreme representative of the Polish State and guarantor of the continuity of state authority. The President serves a five-year term and is elected by popular vote. In accordance with the Constitution of Poland, the President safeguards the Constitution, stands guard over the sovereignty and security of the state, and the inviolability and indivisibility of its territory. The Office of the President exercises executive power jointly with the Council of Ministers.",
             "responsibilities": [
                 "Representing the Republic of Poland in international affairs",
                 "Ratifying and denouncing international treaties",
@@ -3685,7 +3803,7 @@
                 ],
                 [
                     "Term",
-                    "2025â€“2030"
+                    "2025–2030"
                 ],
                 [
                     "Authority",
@@ -3695,6 +3813,11 @@
                     "Seat",
                     "Presidential Palace, Warsaw"
                 ]
+            ],
+            "biography": "Karol Tadeusz Nawrocki (born 3 March 1983 in Gdańsk) – Polish historian, politician, social and local government activist, Doctor of Humanities. President of the Republic of Poland since 6 August 2025. Director of the Museum of the Second World War in Gdańsk (2017–2021), President of the Institute of National Remembrance (2021–2025).",
+            "biographyLabel": "President",
+            "leadership": [
+                "President of the Republic of Poland"
             ]
         },
         "judicial": {
@@ -3717,7 +3840,7 @@
                 "infoFields": [
                     [
                         "Seat",
-                        "Warsaw, pl. KrasiĹ„skich 2/4/6"
+                        "Warsaw, pl. Krasińskich 2/4/6"
                     ],
                     [
                         "Structure",
@@ -3731,6 +3854,14 @@
                         "Reports to",
                         "Constitution of Poland"
                     ]
+                ],
+                "leadership": [
+                    "First President of the Supreme Court",
+                    "President of the Extraordinary Control and Public Affairs Chamber",
+                    "Acting President of the Labour and Social Insurance Chamber",
+                    "Acting President of the Criminal Chamber",
+                    "President of the Civil Chamber",
+                    "President of the Chamber of Professional Liability"
                 ]
             },
             "constitutional_tribunal": {
@@ -3765,6 +3896,10 @@
                         "Reports to",
                         "Constitution of Poland"
                     ]
+                ],
+                "leadership": [
+                    "President of the Constitutional Tribunal",
+                    "Vice-President of the Constitutional Tribunal"
                 ]
             },
             "supreme_administrative_court": {
@@ -3800,6 +3935,12 @@
                         "Reports to",
                         "Constitution of Poland"
                     ]
+                ],
+                "leadership": [
+                    "President of the Supreme Administrative Court",
+                    "Vice-President of the NSA for the General Administrative Chamber",
+                    "Vice-President of the NSA for the Financial Chamber",
+                    "Vice-President of the NSA for the Economic Chamber"
                 ]
             },
             "national_council_of_the_judiciary": {
@@ -3807,7 +3948,7 @@
                 "powerType": "Judicial",
                 "leadershipLabel": "Composition of the National Council of the Judiciary",
                 "leaderLabel": "Chairman",
-                "subordinateTo": "Constitution of Poland (Art. 186â€“187)",
+                "subordinateTo": "Constitution of Poland (Art. 186–187)",
                 "description": "The National Council of the Judiciary safeguards the independence of courts and the independence of judges. It nominates candidates to the President of Poland for appointment as judges at all levels. It reviews normative acts on the judiciary and ensures compliance with judicial ethics.",
                 "responsibilities": [
                     "Nominating candidates for judicial appointments to the President",
@@ -3833,8 +3974,12 @@
                     ],
                     [
                         "Reports to",
-                        "Constitution of Poland (Art. 186â€“187)"
+                        "Constitution of Poland (Art. 186–187)"
                     ]
+                ],
+                "leadership": [
+                    "Chair of the NCJ",
+                    "Deputy Chair of the NCJ"
                 ]
             }
         },
@@ -3846,13 +3991,13 @@
                 "description": "The Law and Justice Parliamentary Club is the largest opposition group, representing conservative and national-Catholic values. The party governed Poland from 2015 to 2023, implementing programmes such as 500+, judicial reforms and migration policy."
             },
             "PSL-TD": {
-                "description": "The PSLâ€“Third Way Parliamentary Club brings together Peasants' Party MPs and their allies. It represents the interests of farmers, small entrepreneurs and local communities. PSL, Poland's oldest active party, upholds Christian values and the idea of self-governance. The club is part of the ruling coalition."
+                "description": "The PSL–Third Way Parliamentary Club brings together Peasants' Party MPs and their allies. It represents the interests of farmers, small entrepreneurs and local communities. PSL, Poland's oldest active party, upholds Christian values and the idea of self-governance. The club is part of the ruling coalition."
             },
             "Lewica": {
                 "description": "The Left Coalition Parliamentary Club unites left-wing parties advocating workers' rights, an expanded welfare state, women's and minority rights, and the separation of church and state. The club is part of the ruling coalition."
             },
             "Polska2050": {
-                "description": "The Poland 2050 Parliamentary Club brings together MPs from the movement founded by Szymon HoĹ‚ownia. The centre-democratic group emphasises state modernisation, social dialogue and responsible public finances. The club is part of the ruling coalition."
+                "description": "The Poland 2050 Parliamentary Club brings together MPs from the movement founded by Szymon Hołownia. The centre-democratic group emphasises state modernisation, social dialogue and responsible public finances. The club is part of the ruling coalition."
             },
             "Konfederacja": {
                 "description": "The Confederation MPs' Club represents right-libertarian and national-conservative circles. It opposes state interventionism, high taxes and EU migration policy, while advocating for stronger national sovereignty."
@@ -3874,6 +4019,7 @@
             }
         },
         "ministries": {
+            "ministry": "Ministry",
             "ministry_of_finance": {
                 "description": "The Ministry of Finance is responsible for the financial and economic policy of the state. It manages the state budget, the tax system and fiscal policy. It oversees financial institutions and coordinates the government's economic policy.",
                 "responsibilities": [
@@ -3883,6 +4029,15 @@
                     "Coordinating fiscal and monetary policy",
                     "Regulation and supervision of financial markets",
                     "Managing the state treasury and budget revenues"
+                ],
+                "leadership": [
+                    "Minister of Finance and Economy",
+                    "Secretary of State, Head of the National Revenue Administration",
+                    "Undersecretary of State, Deputy Head of the National Revenue Administration",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_health": {
@@ -3894,6 +4049,13 @@
                     "Preventing and combating infectious diseases",
                     "Pharmaceutical safety and drug approval",
                     "Managing health crises and epidemics"
+                ],
+                "leadership": [
+                    "Minister of Health",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_national_defence": {
@@ -3905,6 +4067,14 @@
                     "Fulfilling NATO alliance obligations",
                     "Border protection and military security",
                     "Managing military infrastructure and logistics"
+                ],
+                "leadership": [
+                    "Deputy Prime Minister, Minister of National Defence",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Chief of the General Staff of the Polish Armed Forces"
                 ]
             },
             "ministry_of_justice": {
@@ -3916,6 +4086,14 @@
                     "Oversight of bailiffs and notaries",
                     "Coordinating free legal aid",
                     "Implementing penitentiary and rehabilitation policy"
+                ],
+                "leadership": [
+                    "Minister of Justice",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Director General of the Ministry of Justice",
+                    "Undersecretary of State"
                 ]
             },
             "ministry_of_foreign_affairs": {
@@ -3927,6 +4105,16 @@
                     "Representing Poland in international organisations",
                     "Coordinating Polish European policy",
                     "Protecting the interests of Polish citizens and companies abroad"
+                ],
+                "leadership": [
+                    "Deputy Prime Minister, Minister of Foreign Affairs",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Head of the Foreign Service and Director General"
                 ]
             },
             "ministry_of_infrastructure": {
@@ -3938,6 +4126,15 @@
                     "Maritime economy and inland navigation",
                     "Housing and construction policy",
                     "Spatial planning and urbanism"
+                ],
+                "leadership": [
+                    "Minister of Infrastructure",
+                    "Secretary of State",
+                    "Secretary of State, Government Plenipotentiary for the Central Communication Port",
+                    "Secretary of State, Government Plenipotentiary for Combating Transport Exclusion",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_agriculture": {
@@ -3949,6 +4146,13 @@
                     "Rural and village development",
                     "Protection and regulation of agricultural markets",
                     "Fisheries and aquaculture policy"
+                ],
+                "leadership": [
+                    "Minister of Agriculture and Rural Development",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_climate_and_environment": {
@@ -3960,6 +4164,15 @@
                     "Waste management and recycling",
                     "Biodiversity and forest protection",
                     "Water policy and water resource management"
+                ],
+                "leadership": [
+                    "Minister of Climate and Environment",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Undersecretary of State, Chief Nature Conservator",
+                    "Undersecretary of State",
+                    "Undersecretary of State, Chief Geologist of Poland",
+                    "Director General"
                 ]
             },
             "ministry_of_state_assets": {
@@ -3971,6 +4184,13 @@
                     "Coordinating policy towards strategic companies",
                     "Protecting the financial interests of the State Treasury",
                     "Analysing the efficiency and results of state companies"
+                ],
+                "leadership": [
+                    "Minister of State Assets",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_culture_and_national_heritage": {
@@ -3982,6 +4202,14 @@
                     "Promoting Polish culture abroad",
                     "Protecting intellectual property and copyright",
                     "Supporting artistic creation and cultural education"
+                ],
+                "leadership": [
+                    "Minister of Culture and National Heritage",
+                    "Secretary of State, Chief Monument Conservator",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_sport_and_tourism": {
@@ -3993,6 +4221,13 @@
                     "Promoting Polish tourism and sport",
                     "Cooperating with Polish sports associations",
                     "Preparations for major sporting events"
+                ],
+                "leadership": [
+                    "Minister of Sport and Tourism",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_family_labour_and_social_policy": {
@@ -4004,6 +4239,15 @@
                     "Family support programmes (800+)",
                     "Pension and social insurance policy",
                     "Protecting workers' rights and social dialogue"
+                ],
+                "leadership": [
+                    "Minister of Family, Labour and Social Policy",
+                    "Secretary of State",
+                    "Secretary of State, Government Plenipotentiary for People with Disabilities",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_energy": {
@@ -4015,6 +4259,13 @@
                     "Energy transition and supply diversification",
                     "Regulation and oversight of energy prices",
                     "Development of nuclear energy in Poland"
+                ],
+                "leadership": [
+                    "Minister of Energy",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_education": {
@@ -4026,6 +4277,14 @@
                     "Managing external examinations and the matura",
                     "Professional development and teacher training",
                     "Funding and subsidising education"
+                ],
+                "leadership": [
+                    "Minister of Education",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_funds_and_regional_policy": {
@@ -4037,6 +4296,13 @@
                     "Supporting regional and local development",
                     "Monitoring, control and evaluation of EU programmes",
                     "Urban policy, revitalisation and city development"
+                ],
+                "leadership": [
+                    "Minister",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_science_and_higher_education": {
@@ -4048,6 +4314,14 @@
                     "International scientific cooperation and academic exchange",
                     "Accreditation of programmes and quality of education",
                     "Support for doctoral students, researchers and young scientists"
+                ],
+                "leadership": [
+                    "Minister of Science and Higher Education",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_internal_affairs_and_administration": {
@@ -4059,6 +4333,16 @@
                     "Oversight of the State Fire Service and rescue services",
                     "Migration, asylum and residence policy",
                     "Government administration in the field and local government"
+                ],
+                "leadership": [
+                    "Minister of Internal Affairs and Administration",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "ministry_of_digital_affairs": {
@@ -4070,6 +4354,14 @@
                     "Cybersecurity and data protection policy",
                     "Regulation of the digital market and AI",
                     "Building broadband networks and digital infrastructure"
+                ],
+                "leadership": [
+                    "Deputy Prime Minister, Minister of Digital Affairs, Government Plenipotentiary for Cybersecurity",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Secretary of State",
+                    "Undersecretary of State",
+                    "Director General"
                 ]
             },
             "chancellery_of_the_prime_minister": {
@@ -4081,7 +4373,28 @@
                     "Implementing government policy on digitalisation and innovation",
                     "Supporting the Refugee Council and other auxiliary bodies of the Council of Ministers",
                     "Coordinating cooperation with the Sejm and Senate"
-                ]
+                ],
+                "leadership": [
+                    "Prime Minister",
+                    "Deputy Prime Minister, Minister of National Defence",
+                    "Deputy Prime Minister, Minister of Foreign Affairs",
+                    "Deputy Prime Minister, Minister of Digital Affairs",
+                    "Minister for Oversight of Government Policy Implementation",
+                    "Minister – Member of the Council of Ministers, Head of the Chancellery of the Prime Minister, Chair of the Public Benefit Committee",
+                    "Minister, Member of the Council of Ministers, Coordinator of Special Services",
+                    "Secretary of State, Government Spokesperson",
+                    "Secretary of State, Deputy Head of the Chancellery of the Prime Minister",
+                    "Secretary of State, Government Plenipotentiary for Equality",
+                    "Secretary of State",
+                    "Secretary of State, Government Plenipotentiary for Senior Policy",
+                    "Vice-Chair of the Public Benefit Committee, Secretary of State",
+                    "Secretary of State, Deputy Head of the Chancellery of the Prime Minister",
+                    "Head of the Political Cabinet of the Prime Minister",
+                    "Undersecretary of State"
+                ],
+                "type": "Chancellery",
+                "leaderLabel": "Head of the KPRM",
+                "leadershipLabel": "KPRM Leadership"
             },
             "council_of_ministers": {
                 "description": "The Council of Ministers is the supreme body of executive power in Poland, directing government administration and implementing state policy. It conducts domestic and foreign policy, ensures the implementation of laws and adopts the draft budget.",
@@ -4092,7 +4405,34 @@
                     "Issuing regulations and resolutions",
                     "Coordinating and overseeing the work of ministers",
                     "Ensuring internal and external state security"
-                ]
+                ],
+                "leadership": [
+                    "Prime Minister",
+                    "Deputy Prime Minister, Minister of National Defence",
+                    "Deputy Prime Minister, Minister of Foreign Affairs",
+                    "Deputy Prime Minister, Minister of Digital Affairs",
+                    "Minister of State Assets",
+                    "Minister for Oversight of Government Policy Implementation",
+                    "Minister of Culture and National Heritage",
+                    "Minister of Finance and Economy",
+                    "Minister of Family, Labour and Social Policy",
+                    "Minister – Member of the Council of Ministers, Head of the Chancellery of the Prime Minister, Chair of the Public Benefit Committee",
+                    "Minister of Climate and Environment",
+                    "Minister of Internal Affairs and Administration",
+                    "Minister of Infrastructure",
+                    "Minister of Science and Higher Education",
+                    "Minister of Agriculture and Rural Development",
+                    "Minister of Energy",
+                    "Minister of Education",
+                    "Minister of Funds and Regional Policy",
+                    "Minister of Sport and Tourism",
+                    "Minister, Member of the Council of Ministers, Coordinator of Special Services",
+                    "Minister of Health",
+                    "Minister of Justice"
+                ],
+                "type": "Council of Ministers",
+                "leaderLabel": "Prime Minister",
+                "leadershipLabel": "Composition of the Council of Ministers"
             },
             "presidential_chancellery": {
                 "description": "The Chancellery of the President of the Republic of Poland supports the President in the exercise of his constitutional and statutory duties. It coordinates the activities of ministers in the Chancellery, manages the President's diplomatic contacts and organises ceremonies and meetings with the head of state. The Chancellery also acts as a liaison between the President and other state authorities.",
@@ -4105,7 +4445,24 @@
                     "Oversight of the granting of orders and decorations",
                     "Supporting the National Security Bureau",
                     "Managing the Presidential Palace and residences"
-                ]
+                ],
+                "leadership": [
+                    "Head of the Chancellery of the President of Poland",
+                    "Secretary of State – Head of the Presidential Cabinet",
+                    "Secretary of State at the National Security Bureau – Head of the National Security Bureau",
+                    "Secretary of State – Head of the International Policy Bureau",
+                    "Secretary of State",
+                    "Undersecretary of State – Deputy Head of the Presidential Cabinet",
+                    "Undersecretary of State",
+                    "Undersecretary of State",
+                    "Undersecretary of State – Presidential Press Spokesperson",
+                    "Undersecretary of State",
+                    "Director General of the Presidential Chancellery"
+                ],
+                "type": "Chancellery of the President of Poland",
+                "leaderLabel": "Head of the KPRP",
+                "leadershipLabel": "Chancellery Leadership",
+                "subordinateTo": "President of Poland"
             }
         }
     }

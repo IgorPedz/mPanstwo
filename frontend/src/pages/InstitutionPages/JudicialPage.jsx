@@ -16,6 +16,8 @@ import JudicialNews from "../../components/Judicial/JudicialNews";
 import JudicialResponsibilities from "../../components/Judicial/JudicialResponsibilities";
 import JudicialAbout from "../../components/Judicial/JudicialAbout";
 import JudicialInfo from "../../components/Judicial/JudicialInfo";
+import FollowButton from "../../components/Institution/FollowButton";
+import { useMarkInstitutionSeen } from "../../Hooks/useMarkInstitutionSeen";
 
 export default function JudicialPage() {
   const { slug } = useParams();
@@ -25,6 +27,7 @@ export default function JudicialPage() {
   const allData = getJudicialData(t);
   const data = allData[slug];
   const { data: news, loading: newsLoading } = useJudicialNews(slug);
+  useMarkInstitutionSeen(slug, news);
 
   if (!data) {
     return (
@@ -49,7 +52,7 @@ export default function JudicialPage() {
       className="min-h-screen w-full px-4 md:px-8 py-10 md:py-14 color-transition"
     >
       <div className="w-full space-y-5">
-        <motion.div variants={sectionVariants}>
+        <motion.div variants={sectionVariants} className="flex items-center justify-between">
           <button
             onClick={() => navigate(-1)}
             className="inline-flex items-center gap-2 text-sm font-bold group cursor-pointer
@@ -58,6 +61,10 @@ export default function JudicialPage() {
             <ArrowLeftIcon className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
             {t("institution.back")}
           </button>
+          <FollowButton
+            institution={{ id: slug, title: data.type, titleKey: `staticData.judicial.${slug}.type`, icon: data.icon, accent: data.accent, path: `/courts/${slug}` }}
+            colorClass={colorClass}
+          />
         </motion.div>
 
         <JudicialHero

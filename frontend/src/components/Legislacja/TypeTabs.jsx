@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
-import { TYPES } from "./legislacjaConstants";
+import { getTypes } from "./legislacjaConstants";
+import { useTranslation } from "react-i18next";
 
 export default function TypeTabs({ active, onChange }) {
+  const { t } = useTranslation();
+  const TYPES = getTypes(t);
   return (
     <div className="mb-6 p-1.5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] color-transition w-fit max-w-full overflow-x-auto no-scrollbar">
       <div className="sm:hidden px-1">

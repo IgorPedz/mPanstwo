@@ -1,10 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  InformationCircleIcon,
-  ArrowTopRightOnSquareIcon,
-} from "@heroicons/react/24/outline";
 import { pageVariants, sectionVariants } from "../../Utils/Animations";
-import { SOURCES, RELIABILITY } from "../../Utils/Maps/Content.jsx";
 import FactsHeader from "../../components/Facts/FactsHeader";
 import FactsSources from "../../components/Facts/FactsSources";
 import FactsReliability from "../../components/Facts/FactsReliability";

@@ -84,7 +84,7 @@ function OpinionCard({ op }) {
           {expert && (
             <span
               className="text-amber-500 text-xs leading-none"
-              title="Opinia eksperta"
+              title={t("institution.legislation.opinions.expertOpinion")}
             >
               ✦
             </span>

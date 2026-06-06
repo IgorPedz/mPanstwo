@@ -10,11 +10,13 @@ import { getPresidentData } from "../../data/presidentData";
 import { useMinistryNews } from "../../Hooks/useMinistryNews";
 
 import MinistryHero             from "../../components/Ministry/MinistryHero";
-import MinistryLeadership       from "../../components/Ministry/MinistryLeadership";
+import PresidentBio             from "../../components/President/PresidentBio";
 import MinistryNews             from "../../components/Ministry/MinistryNews";
 import MinistryResponsibilities from "../../components/Ministry/MinistryResponsibilities";
 import MinistryAbout            from "../../components/Ministry/MinistryAbout";
 import PresidentInfo            from "../../components/President/PresidentInfo";
+import FollowButton             from "../../components/Institution/FollowButton";
+import { useMarkInstitutionSeen } from "../../Hooks/useMarkInstitutionSeen";
 
 export default function PresidentPage() {
   const navigate = useNavigate();
@@ -26,6 +28,7 @@ export default function PresidentPage() {
   const accentGradient = ACCENT_MAP[data.accent] ?? "from-red-700 to-red-500";
 
   const { news, loading: newsLoading } = useMinistryNews("president");
+  useMarkInstitutionSeen("president", news);
 
   return (
     <motion.div
@@ -35,7 +38,7 @@ export default function PresidentPage() {
       className="min-h-screen w-full px-4 md:px-8 py-10 md:py-14 color-transition"
     >
       <div className="w-full space-y-5">
-        <motion.div variants={sectionVariants}>
+        <motion.div variants={sectionVariants} className="flex items-center justify-between">
           <button
             onClick={() => navigate(-1)}
             className="inline-flex items-center gap-2 text-sm font-bold cursor-pointer group
@@ -44,6 +47,10 @@ export default function PresidentPage() {
             <ArrowLeftIcon className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
             {t("institution.back")}
           </button>
+          <FollowButton
+            institution={{ id: "president", title: t("institution.president.title"), titleKey: "institution.president.title", icon: data.icon, accent: data.accent, path: "/president" }}
+            colorClass={colorClass}
+          />
         </motion.div>
 
         <MinistryHero
@@ -55,10 +62,10 @@ export default function PresidentPage() {
           website={data.website}
         />
 
-        <MinistryLeadership
-          people={data.leadership ?? []}
-          leadershipLabel={data.leadershipLabel ?? t("institution.president.role")}
-          leaderLabel={data.leaderLabel ?? t("institution.president.role")}
+        <PresidentBio
+          person={data.leadership[0]}
+          biography={data.biography}
+          biographyLabel={data.biographyLabel}
           colorClass={colorClass}
           accentGradient={accentGradient}
         />

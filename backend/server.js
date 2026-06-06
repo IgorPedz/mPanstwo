@@ -27,10 +27,13 @@ const sejmRoutes        = require("./routes/sejmRoutes");
 const legislationRoutes = require("./routes/legislationRoutes");
 const senatRoutes    = require("./routes/senatRoutes");
 const judicialRoutes = require("./routes/judicialRoutes");
+const followRoutes   = require("./routes/followRoutes");
 const cron = require("node-cron");
 const { runLeadershipUpdate } = require("./update-leadership");
 const { runPresidentUpdate }    = require("./update-president");
 const { runChancelleryUpdate }  = require("./update-chancellery");
+const { runFollowNewsCheck }    = require("./follow-news-check");
+const { ensureFollowTables }    = require("./controllers/followController");
 const { warmupBillsCache }                                          = require("./controllers/legislationController");
 const { warmupCommitteesCache, warmupInterpellationsCache, warmupWrittenQuestionsCache } = require("./controllers/sejmController");
 
@@ -70,6 +73,7 @@ app.use(sejmRoutes);
 app.use(legislationRoutes);
 app.use(senatRoutes);
 app.use(judicialRoutes);
+app.use(followRoutes);
 app.use(errorHandler);
 
 initSocket(server);
@@ -98,10 +102,21 @@ cron.schedule("0 5 1 * *", () => {
   );
 });
 
+// Co 30 minut — sprawdź nowe aktualności dla obserwowanych instytucji
+cron.schedule("*/30 * * * *", () => {
+  console.log("[cron] Sprawdzanie aktualności obserwowanych instytucji…");
+  runFollowNewsCheck().catch(err =>
+    console.error("[cron] Błąd sprawdzania aktualności:", err.message)
+  );
+});
+
 const port = process.env.PORT || 4000;
 
 server.listen(port, () => {
   console.log(`Serwer działa na porcie ${port}`);
+  ensureFollowTables().catch(err =>
+    console.error("[init] Błąd tworzenia tabel follows:", err.message)
+  );
   warmupBillsCache()
     .then(() => console.log("[warmup] Cache druków ustaw gotowy"))
     .catch(err => console.error("[warmup] Błąd pobierania druków:", err.message));

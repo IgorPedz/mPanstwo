@@ -18,7 +18,7 @@ export default function LeadershipCard({
   return (
     <div
       className={`
-        flex items-center gap-4 p-4 rounded-2xl border
+        flex items-center gap-4 p-4 rounded-2xl border color-transition
         ${
           isLeader
             ? "border-l-4 bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700"
@@ -32,6 +32,7 @@ export default function LeadershipCard({
           shrink-0 w-10 h-10 rounded-xl
           flex items-center justify-center
           text-xs font-black
+          color-transition
           ${
             isVacancy
               ? "bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500"

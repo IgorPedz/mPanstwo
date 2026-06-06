@@ -1,8 +1,20 @@
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import { sectionVariants } from "../../Utils/Animations";
+import { useTranslation } from "react-i18next";
+
+const LINKS = [
+  ["https://www.sejm.gov.pl", "sejm.gov.pl"],
+  ["https://www.senat.gov.pl", "senat.gov.pl"],
+  ["https://www.gov.pl", "gov.pl"],
+  ["https://www.nsa.gov.pl", "nsa.gov.pl"],
+  ["https://www.sn.pl", "sn.pl"],
+  ["https://www.trybunal.gov.pl", "trybunal.gov.pl"],
+  ["https://www.krs.pl", "krs.pl"],
+];
 
 export default function FactsFooter() {
+  const { t } = useTranslation();
   return (
     <motion.div
       variants={sectionVariants}
@@ -11,19 +23,8 @@ export default function FactsFooter() {
     >
       <InformationCircleIcon className="h-5 w-5 text-indigo-500 shrink-0 mt-0.5" />
       <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed color-transition">
-        mPaństwo jest projektem edukacyjnym i nie jest oficjalną platformą
-        żadnej instytucji publicznej. Wszelkie dane prezentowane w aplikacji
-        mają charakter informacyjny. W sprawach oficjalnych zawsze korzystaj ze
-        stron instytucji —{" "}
-        {[
-          ["https://www.sejm.gov.pl", "sejm.gov.pl"],
-          ["https://www.senat.gov.pl", "senat.gov.pl"],
-          ["https://www.gov.pl", "gov.pl"],
-          ["https://www.nsa.gov.pl", "nsa.gov.pl"],
-          ["https://www.sn.pl", "sn.pl"],
-          ["https://www.trybunal.gov.pl", "trybunal.gov.pl"],
-          ["https://www.krs.pl", "krs.pl"],
-        ].map(([href, label], i, arr) => (
+        {t("facts.footer")}{" "}
+        {LINKS.map(([href, label], i, arr) => (
           <span key={href}>
             <a
               href={href}

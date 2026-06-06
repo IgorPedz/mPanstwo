@@ -1,13 +1,20 @@
-export const TYPES = [
-  { value: "all",         label: "Wszystkie" },
-  { value: "rzadowy",     label: "Rządowe" },
-  { value: "poselski",    label: "Poselskie" },
-  { value: "senacki",     label: "Senackie" },
-  { value: "obywatelski", label: "Obywatelskie" },
-  { value: "prezydencki", label: "Prezydenckie" },
-  { value: "pilny",       label: "Pilne" },
-  { value: "inny",        label: "Inne" },
+export const TYPE_VALUES = [
+  "all", "rzadowy", "poselski", "senacki",
+  "obywatelski", "prezydencki", "pilny", "inny",
 ];
+
+export function getTypes(t) {
+  return TYPE_VALUES.map((value) => ({
+    value,
+    label: t(`institution.legislation.types.${value}`),
+  }));
+}
+
+export function getTypeLabel(t, type) {
+  return t(`institution.legislation.typeLabels.${type}`, {
+    defaultValue: t("institution.legislation.typeLabels.inny"),
+  });
+}
 
 export const TYPE_BADGE = {
   rzadowy:     "bg-blue-100  dark:bg-blue-900/40  text-blue-700  dark:text-blue-300",

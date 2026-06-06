@@ -2987,8 +2987,9 @@
                 "message": "Dostępne są nowe wyniki ankiety."
             },
             "LAW_UPDATE": {
-                "title": "Aktualizacja prawa",
-                "message": "Pojawiła się nowa aktualizacja w prawie."
+                "title": "Nowe aktualności",
+                "message": "{{institutionName}}: {{newsTitle}}",
+                "messageMany": "{{institutionName}}: {{newCount}} nowych aktualności — {{newsTitle}}"
             },
             "LOGIN_STREAK_SMALL": {
                 "title": "Seria logowań",
@@ -3149,11 +3150,92 @@
     },
     "facts": {
         "facts": "O danych",
-        "description": "Poniżej znajdziesz najważniejsze informacje o danych, które gromadzimy i jak je wykorzystujemy. Naszym celem jest zapewnienie transparentności i zaufania, dlatego dokładamy wszelkich starań, abyś miał pełną kontrolę nad swoimi danymi. Dowiedz się więcej o tym, jakie dane zbieramy, w jakim celu i jak je chronimy."
+        "description": "Poniżej znajdziesz najważniejsze informacje o danych, które gromadzimy i jak je wykorzystujemy. Naszym celem jest zapewnienie transparentności i zaufania, dlatego dokładamy wszelkich starań, abyś miał pełną kontrolę nad swoimi danymi. Dowiedz się więcej o tym, jakie dane zbieramy, w jakim celu i jak je chronimy.",
+        "sources": {
+            "heading": "Źródła danych",
+            "subheading": "Wszystkie dane parlamentarne pochodzą z oficjalnych, publicznych źródeł.",
+            "official": "Oficjalne",
+            "items": [
+                {
+                    "name": "API Sejmu RP",
+                    "url": "https://api.sejm.gov.pl",
+                    "desc": "Oficjalne, publiczne API Kancelarii Sejmu. Udostępnia dane o drukach sejmowych, procesach legislacyjnych, posłach, głosowaniach i interpelacjach w czasie rzeczywistym."
+                },
+                {
+                    "name": "Druki sejmowe (ORKA)",
+                    "url": "https://orka.sejm.gov.pl",
+                    "desc": "Dokumenty PDF projektów ustaw pobierane bezpośrednio z systemu ORKA Sejmu RP. Zawierają pełne treści projektów, uzasadnienia i załączniki."
+                },
+                {
+                    "name": "Ministerstwa — gov.pl",
+                    "url": "https://www.gov.pl",
+                    "desc": "Portal Rządu RP. Dane o ministerstwach, strukturze rządu, kierownictwach i zakresie kompetencji poszczególnych resortów pobierane ze stron ministerstw."
+                },
+                {
+                    "name": "Prezydent Rzeczypospolitej Polskiej — prezydent.pl",
+                    "url": "https://www.prezydent.pl",
+                    "desc": "Oficjalna strona Prezydenta Rzeczypospolitej Polskiej. Dane o działalności prezydenta i jego organach."
+                },
+                {
+                    "name": "Naczelny Sąd Administracyjny",
+                    "url": "https://www.nsa.gov.pl",
+                    "desc": "NSA — sąd kontrolujący działalność administracji publicznej. Dane o strukturze, orzecznictwie i składzie sądu pobierane z oficjalnej strony instytucji."
+                },
+                {
+                    "name": "Sąd Najwyższy",
+                    "url": "https://www.sn.pl",
+                    "desc": "SN — najwyższy organ sądowy w sprawach karnych i cywilnych. Dane o składzie, izbach i orzecznictwie pobierane z oficjalnej strony Sądu Najwyższego."
+                },
+                {
+                    "name": "Trybunał Konstytucyjny",
+                    "url": "https://www.trybunal.gov.pl",
+                    "desc": "TK — organ kontroli konstytucyjności prawa. Dane o sędziach, składzie i orzeczeniach pobierane z oficjalnej strony Trybunału Konstytucyjnego."
+                },
+                {
+                    "name": "Krajowa Rada Sądownictwa",
+                    "url": "https://www.krs.pl",
+                    "desc": "KRS — organ stojący na straży niezależności sądów i niezawisłości sędziów. Dane o składzie i działalności pobierane z oficjalnej strony Rady."
+                }
+            ]
+        },
+        "reliability": {
+            "heading": "Rzetelność i ograniczenia",
+            "subheading": "Co robimy, żeby dane były aktualne — i co warto wiedzieć.",
+            "items": [
+                {
+                    "title": "Ograniczenia stron rządowych",
+                    "desc": "Wyświetlamy wyłącznie informacje oficjalne, ale strony rządowe mogą mieć krótkie przerwy techniczne lub opóźnienia w aktualizacji danych. Zawsze sprawdzaj oficjalne źródła w przypadku wątpliwości."
+                },
+                {
+                    "title": "Cache 30 minut",
+                    "desc": "Dane są odświeżane co 30 minut z oficjalnego API. Mogą istnieć krótkie rozbieżności między stanem faktycznym a wyświetlanymi informacjami."
+                },
+                {
+                    "title": "Ograniczenia API",
+                    "desc": "API Sejmu jest publiczne, ale może nie zawierać 100% danych w czasie rzeczywistym. W przypadku wątpliwości zawsze sprawdź oficjalną stronę sejm.gov.pl."
+                },
+                {
+                    "title": "Opinie użytkowników",
+                    "desc": "Komentarze i opinie na platformie mPaństwo są tworzone przez użytkowników. Nie reprezentują stanowiska Sejmu ani żadnej instytucji państwowej."
+                },
+                {
+                    "title": "Brak danych historycznych",
+                    "desc": "Obecnie wyświetlamy tylko dane aktualne. Nie posiadamy danych historycznych ani archiwalnych o składzie rządu, posłach czy orzecznictwie."
+                },
+                {
+                    "title": "Tłumaczenia danych",
+                    "desc": "Z powodu braku tłumaczeń stron rządowych na inne języki niż polski, dane są dostępne tylko w języku oryginalnym."
+                }
+            ]
+        },
+        "footer": "mPaństwo jest projektem edukacyjnym i nie jest oficjalną platformą żadnej instytucji publicznej. Wszelkie dane prezentowane w aplikacji mają charakter informacyjny. W sprawach oficjalnych zawsze korzystaj ze stron instytucji —"
     },
     "dashboard": {
         "dashboard": "Pulpit",
         "welcome": "Witaj, {{name}}!",
+        "followed": {
+            "title": "Obserwowane instytucje"
+        },
         "editMode": "Tryb Edycji",
         "saveLayout": "Zapisz układ",
         "saveChanges": "Zapisz zmiany",
@@ -3464,6 +3546,9 @@
     },
     "institution": {
         "back": "Wróć",
+        "follow": "Obserwuj",
+        "following": "Obserwujesz",
+        "unfollow": "Przestań obserwować",
         "notFound": "Nie znaleziono informacji o tej instytucji.",
         "officialSite": "Strona oficjalna",
         "website": "Strona WWW",
@@ -3570,6 +3655,28 @@
                 "abstained": "Wstrz.",
                 "absent": "Nie gł."
             },
+            "billLoadError": "Nie udało się załadować danych ustawy.",
+            "backToList": "Wróć do listy projektów",
+            "fullTextLink": "Pełna treść na sejm.gov.pl",
+            "types": {
+                "all": "Wszystkie",
+                "rzadowy": "Rządowe",
+                "poselski": "Poselskie",
+                "senacki": "Senackie",
+                "obywatelski": "Obywatelskie",
+                "prezydencki": "Prezydenckie",
+                "pilny": "Pilne",
+                "inny": "Inne"
+            },
+            "typeLabels": {
+                "rzadowy": "Rządowy",
+                "poselski": "Poselski",
+                "senacki": "Senacki",
+                "obywatelski": "Obywatelski",
+                "prezydencki": "Prezydencki",
+                "pilny": "Pilny",
+                "inny": "Inny"
+            },
             "opinions": {
                 "yourOpinion": "Twoja opinia",
                 "placeholder": "Napisz swoją opinię na temat tego projektu ustawy…",
@@ -3577,12 +3684,23 @@
                 "add": "Dodaj opinię",
                 "loginRequired": "Zaloguj się, żeby dodać swoją opinię.",
                 "noOpinions": "Nie ma jeszcze opinii. Bądź pierwszą osobą, która ją doda!",
-                "expertOpinion": "Opinia eksperta"
+                "expertOpinion": "Opinia eksperta",
+                "addError": "Nie udało się dodać opinii"
             },
             "timeline": {
                 "noStages": "Brak danych o etapach procesu legislacyjnego.",
                 "stage": "Etap"
             }
+        },
+        "parties": {
+            "Bezpartyjny": "Bezpartyjny"
+        },
+        "clubs": {
+            "heading": "Kluby i koła parlamentarne",
+            "groupsLabel": "klubów i kół",
+            "mpsLabel": "posłów",
+            "memberParties": "Partie składowe",
+            "footer": "Łącznie {{total}} aktywnych posłów · X kadencja Sejmu RP · dane: api.sejm.gov.pl"
         }
     },
     "staticData": {
@@ -3604,7 +3722,24 @@
                 "Zatwierdzanie stanu wyjątkowego i wojennego",
                 "Stanowienie prawa w zakresie samorządu terytorialnego"
             ],
-            "infoFields": []
+            "infoFields": [
+                [
+                    "Liczba posłów",
+                    "460"
+                ],
+                [
+                    "Kadencja",
+                    "2023–2027"
+                ],
+                [
+                    "Władza",
+                    "Ustawodawcza"
+                ],
+                [
+                    "Siedziba",
+                    "Warszawa, ul. Wiejska 4/6/8"
+                ]
+            ]
         },
         "senat": {
             "type": "Senat Rzeczypospolitej Polskiej",
@@ -3623,13 +3758,30 @@
                 "Zarządzanie referendum ogólnopolskiego (wspólnie z Sejmem)",
                 "Powoływanie członków Krajowej Rady Sądownictwa"
             ],
-            "infoFields": []
+            "infoFields": [
+                [
+                    "Liczba senatorów",
+                    "100"
+                ],
+                [
+                    "Kadencja",
+                    "2023–2027"
+                ],
+                [
+                    "Władza",
+                    "Ustawodawcza"
+                ],
+                [
+                    "Siedziba",
+                    "Warszawa, ul. Wiejska 6"
+                ]
+            ]
         },
         "president": {
             "type": "Urząd Prezydenta RP",
             "leadershipLabel": "Prezydent RP",
             "leaderLabel": "Prezydent",
-            "description": "Karol Tadeusz Nawrocki (ur. 3 marca 1983 w Gdańsku) – polski historyk, polityk, działacz społeczny i samorządowy, doktor nauk humanistycznych. Prezydent Rzeczypospolitej Polskiej od 6 sierpnia 2025. W latach 2017–2021 dyrektor Muzeum II Wojny Światowej w Gdańsku, w latach 2021–2025 prezes Instytutu Pamięci Narodowej.",
+            "description": "Prezydent Rzeczypospolitej Polskiej jest najwyższym przedstawicielem państwa polskiego i gwarantem ciągłości władzy państwowej. Sprawuje urząd przez pięcioletnią kadencję i wybierany jest w wyborach powszechnych. Zgodnie z Konstytucją RP czuwa nad jej przestrzeganiem, stoi na straży suwerenności i bezpieczeństwa państwa oraz nienaruszalności i niepodzielności jego terytorium. Urząd Prezydenta RP sprawuje władzę wykonawczą wraz z Radą Ministrów.",
             "responsibilities": [
                 "Reprezentowanie Rzeczypospolitej Polskiej na arenie międzynarodowej",
                 "Ratyfikowanie i wypowiadanie umów międzynarodowych",
@@ -3642,7 +3794,29 @@
                 "Nadawanie obywatelstwa polskiego i wyrażanie zgody na jego zrzeczenie",
                 "Nadawanie orderów i odznaczeń"
             ],
-            "infoFields": []
+            "infoFields": [
+                [
+                    "Urząd",
+                    "Prezydent Rzeczypospolitej Polskiej"
+                ],
+                [
+                    "Kadencja",
+                    "2025–2030"
+                ],
+                [
+                    "Władza",
+                    "Wykonawcza"
+                ],
+                [
+                    "Siedziba",
+                    "Pałac Prezydencki, Warszawa"
+                ]
+            ],
+            "biography": "Karol Tadeusz Nawrocki (ur. 3 marca 1983 w Gdańsku) – polski historyk, polityk, działacz społeczny i samorządowy, doktor nauk humanistycznych. Prezydent Rzeczypospolitej Polskiej od 6 sierpnia 2025. W latach 2017–2021 dyrektor Muzeum II Wojny Światowej w Gdańsku, w latach 2021–2025 prezes Instytutu Pamięci Narodowej.",
+            "biographyLabel": "Prezydent",
+            "leadership": [
+                "Prezydent Rzeczypospolitej Polskiej"
+            ]
         },
         "judicial": {
             "sn": {
@@ -3662,7 +3836,32 @@
                     "Orzekanie w sprawach dyscyplinarnych sędziów",
                     "Rozpoznawanie środków odwoławczych od orzeczeń wojskowych sądów okręgowych"
                 ],
-                "infoFields": []
+                "infoFields": [
+                    [
+                        "Siedziba",
+                        "Warszawa, pl. Krasińskich 2/4/6"
+                    ],
+                    [
+                        "Struktura",
+                        "4 Izby + Izba Odpowiedzialności Zawodowej"
+                    ],
+                    [
+                        "Kadencja Pierwszego Prezesa",
+                        "6 lat"
+                    ],
+                    [
+                        "Podlega",
+                        "Konstytucji RP"
+                    ]
+                ],
+                "leadership": [
+                    "Pierwszy Prezes Sądu Najwyższego",
+                    "Prezes Izby Kontroli Nadzwyczajnej i Spraw Publicznych",
+                    "p.o. Prezesa Izby Pracy i Ubezpieczeń Społecznych",
+                    "p.o. Prezesa Izby Karnej",
+                    "Prezes Izby Cywilnej",
+                    "Prezes Izby Odpowiedzialności Zawodowej"
+                ]
             },
             "constitutional_tribunal": {
                 "type": "Trybunał Konstytucyjny",
@@ -3680,7 +3879,28 @@
                     "Orzekanie o zgodności z Konstytucją celów i działalności partii politycznych",
                     "Stwierdzanie przeszkody w sprawowaniu urzędu przez Prezydenta RP"
                 ],
-                "infoFields": []
+                "infoFields": [
+                    [
+                        "Siedziba",
+                        "Warszawa, al. Jana Christiana Szucha 12a"
+                    ],
+                    [
+                        "Skład",
+                        "15 sędziów"
+                    ],
+                    [
+                        "Kadencja sędziego",
+                        "9 lat"
+                    ],
+                    [
+                        "Podlega",
+                        "Konstytucji RP"
+                    ]
+                ],
+                "leadership": [
+                    "Prezes Trybunału Konstytucyjnego",
+                    "Wiceprezes Trybunału Konstytucyjnego"
+                ]
             },
             "supreme_administrative_court": {
                 "type": "Naczelny Sąd Administracyjny",
@@ -3699,7 +3919,30 @@
                     "Orzekanie w sprawach dyscyplinarnych sędziów sądów administracyjnych",
                     "Rozpoznawanie skarg na bezczynność organów administracji"
                 ],
-                "infoFields": []
+                "infoFields": [
+                    [
+                        "Siedziba",
+                        "Warszawa, ul. Gabriela Piotra Boduena 3/5"
+                    ],
+                    [
+                        "Struktura",
+                        "Izba Finansowa, Izba Gospodarcza, Izba Ogólnoadministracyjna"
+                    ],
+                    [
+                        "Kadencja",
+                        "bezterminowa (do osiągnięcia wieku emerytalnego)"
+                    ],
+                    [
+                        "Podlega",
+                        "Konstytucji RP"
+                    ]
+                ],
+                "leadership": [
+                    "Prezes Naczelnego Sądu Administracyjnego",
+                    "Wiceprezes NSA ds. Izby Ogólnoadministracyjnej",
+                    "Wiceprezes NSA ds. Izby Finansowej",
+                    "Wiceprezes NSA ds. Izby Gospodarczej"
+                ]
             },
             "national_council_of_the_judiciary": {
                 "type": "Krajowa Rada Sądownictwa",
@@ -3718,7 +3961,28 @@
                     "Wyrażanie stanowisk w sprawach dotyczących sądownictwa",
                     "Rozpatrywanie i ocenianie kandydatów do pełnienia urzędu sędziego"
                 ],
-                "infoFields": []
+                "infoFields": [
+                    [
+                        "Siedziba",
+                        "Warszawa, ul. Rakowiecka 30"
+                    ],
+                    [
+                        "Skład",
+                        "25 członków"
+                    ],
+                    [
+                        "Kadencja",
+                        "4 lata"
+                    ],
+                    [
+                        "Podlega",
+                        "Konstytucji RP (art. 186–187)"
+                    ]
+                ],
+                "leadership": [
+                    "Przewodnicząca KRS",
+                    "Zastępca Przewodniczącego KRS"
+                ]
             }
         },
         "clubs": {
@@ -3727,6 +3991,9 @@
             },
             "PiS": {
                 "description": "Klub Parlamentarny Prawo i Sprawiedliwość to największe ugrupowanie opozycyjne, reprezentujące konserwatywne i narodowo-katolickie wartości. Partia rządziła Polską w latach 2015–2023, realizując m.in. program 500+, reformy sądownictwa i politykę migracyjną."
+            },
+            "PSL-TD": {
+                "description": "Klub Parlamentarny Polskie Stronnictwo Ludowe to koalicyjny klub skupiający posłów ludowych i centroprawicowych. Ugrupowanie kładzie nacisk na rozwój obszarów wiejskich, rolnictwo, ochronę środowiska oraz dialog społeczny. Klub jest częścią koalicji rządzącej."
             },
             "Lewica": {
                 "description": "Koalicyjny Klub Parlamentarny Lewicy łączy partie lewicowe postulujące prawa pracownicze, rozbudowę państwa opiekuńczego, prawa kobiet i mniejszości oraz neutralność wyznaniową państwa. Klub jest częścią koalicji rządzącej."
@@ -3754,6 +4021,7 @@
             }
         },
         "ministries": {
+            "ministry": "ministerstwo",
             "ministry_of_finance": {
                 "description": "Ministerstwo Finansów odpowiada za politykę finansową i gospodarczą państwa. Zarządza budżetem państwa, systemem podatkowym oraz polityką fiskalną. Nadzoruje instytucje finansowe i koordynuje politykę gospodarczą rządu.",
                 "responsibilities": [
@@ -3763,6 +4031,15 @@
                     "Koordynacja polityki fiskalnej i monetarnej",
                     "Regulacja i nadzór nad rynkami finansowymi",
                     "Zarządzanie kasą państwową i wpływami budżetowymi"
+                ],
+                "leadership": [
+                    "Minister Finansów i Gospodarki",
+                    "Sekretarz Stanu, Szef Krajowej Administracji Skarbowej",
+                    "Podsekretarz Stanu, Zastępca Szefa Krajowej Administracji Skarbowej",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Dyrektor Generalny"
                 ]
             },
             "ministry_of_health": {
@@ -3774,6 +4051,13 @@
                     "Zapobieganie i zwalczanie chorób zakaźnych",
                     "Bezpieczeństwo farmaceutyczne i dopuszczanie leków",
                     "Zarządzanie kryzysami i epidemiami zdrowotnymi"
+                ],
+                "leadership": [
+                    "Minister Zdrowia",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Dyrektor Generalny"
                 ]
             },
             "ministry_of_national_defence": {
@@ -3785,6 +4069,14 @@
                     "Realizacja zobowiązań sojuszniczych w NATO",
                     "Ochrona granic i bezpieczeństwo militarne",
                     "Zarządzanie infrastrukturą i logistyką wojskową"
+                ],
+                "leadership": [
+                    "Wiceprezes Rady Ministrów, Minister Obrony Narodowej",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Szef Sztabu Generalnego WP"
                 ]
             },
             "ministry_of_justice": {
@@ -3796,6 +4088,14 @@
                     "Nadzór nad komornikami i notariuszami",
                     "Koordynacja systemu nieodpłatnej pomocy prawnej",
                     "Realizacja polityki penitencjarnej i resocjalizacyjnej"
+                ],
+                "leadership": [
+                    "Minister Sprawiedliwości",
+                    "Sekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Dyrektor Generalny Ministerstwa Sprawiedliwości",
+                    "Podsekretarz Stanu"
                 ]
             },
             "ministry_of_foreign_affairs": {
@@ -3807,6 +4107,16 @@
                     "Reprezentacja Polski w organizacjach międzynarodowych",
                     "Koordynacja polskiej polityki europejskiej",
                     "Ochrona interesów polskich obywateli i firm za granicą"
+                ],
+                "leadership": [
+                    "Wiceprezes Rady Ministrów, Minister Spraw Zagranicznych",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Szefowa Służby Zagranicznej i Dyrektor Generalna"
                 ]
             },
             "ministry_of_infrastructure": {
@@ -3818,6 +4128,15 @@
                     "Gospodarka morska i żegluga śródlądowa",
                     "Polityka mieszkaniowa i budownictwa",
                     "Gospodarka przestrzenna i urbanistyka"
+                ],
+                "leadership": [
+                    "Minister infrastruktury",
+                    "Sekretarz stanu",
+                    "Sekretarz stanu, Pełnomocnik Rządu do spraw Centralnego Portu Komunikacyjnego",
+                    "Sekretarz stanu, Pełnomocnik Rządu ds. przeciwdziałania wykluczeniu komunikacyjnemu",
+                    "Podsekretarz stanu",
+                    "Podsekretarz stanu",
+                    "Dyrektor generalny"
                 ]
             },
             "ministry_of_agriculture": {
@@ -3829,6 +4148,13 @@
                     "Rozwój obszarów wiejskich i wsi",
                     "Ochrona i regulacja rynków rolnych",
                     "Polityka rybołówstwa i akwakultury"
+                ],
+                "leadership": [
+                    "Minister Rolnictwa i Rozwoju Wsi",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Dyrektor Generalny"
                 ]
             },
             "ministry_of_climate_and_environment": {
@@ -3840,6 +4166,15 @@
                     "Gospodarka odpadami i recykling",
                     "Ochrona bioróżnorodności i lasów",
                     "Polityka wodna i gospodarka zasobami wodnymi"
+                ],
+                "leadership": [
+                    "Minister Klimatu i Środowiska",
+                    "Sekretarz stanu",
+                    "Sekretarz Stanu",
+                    "Podsekretarz stanu, Główny Konserwator Przyrody",
+                    "Podsekretarz stanu",
+                    "Podsekretarz Stanu, Główny Geolog Kraju",
+                    "Dyrektor Generalna"
                 ]
             },
             "ministry_of_state_assets": {
@@ -3851,6 +4186,13 @@
                     "Koordynacja polityki wobec spółek strategicznych",
                     "Ochrona interesów finansowych Skarbu Państwa",
                     "Analiza efektywności i wyników spółek państwowych"
+                ],
+                "leadership": [
+                    "Minister Aktywów Państwowych",
+                    "Sekretarz stanu",
+                    "Podsekretarz stanu",
+                    "Podsekretarz stanu",
+                    "Dyrektor Generalny"
                 ]
             },
             "ministry_of_culture_and_national_heritage": {
@@ -3862,6 +4204,14 @@
                     "Promocja polskiej kultury za granicą",
                     "Ochrona własności intelektualnej i praw autorskich",
                     "Wspieranie twórczości artystycznej i edukacji kulturalnej"
+                ],
+                "leadership": [
+                    "Minister Kultury i Dziedzictwa Narodowego",
+                    "Sekretarz stanu, Generalny Konserwator Zabytków",
+                    "Sekretarz stanu",
+                    "Podsekretarz stanu",
+                    "Podsekretarz stanu",
+                    "Dyrektor generalna"
                 ]
             },
             "ministry_of_sport_and_tourism": {
@@ -3873,6 +4223,13 @@
                     "Promocja turystyki i sportu polskiego",
                     "Współpraca z polskimi związkami sportowymi",
                     "Przygotowania do wielkich imprez sportowych"
+                ],
+                "leadership": [
+                    "Minister Sportu i Turystyki",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Dyrektor Generalny"
                 ]
             },
             "ministry_of_family_labour_and_social_policy": {
@@ -3884,6 +4241,15 @@
                     "Programy wsparcia dla rodzin (800+)",
                     "Polityka emerytalna i ubezpieczeń społecznych",
                     "Ochrona praw pracowniczych i dialog społeczny"
+                ],
+                "leadership": [
+                    "Ministra Rodziny, Pracy i Polityki Społecznej",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu, Pełnomocnik Rządu ds. Osób Niepełnosprawnych",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Dyrektor Generalny"
                 ]
             },
             "ministry_of_energy": {
@@ -3895,6 +4261,13 @@
                     "Transformacja energetyczna i dywersyfikacja dostaw",
                     "Regulacja i nadzór nad cenami energii",
                     "Rozwój energetyki jądrowej w Polsce"
+                ],
+                "leadership": [
+                    "Minister Energii",
+                    "Sekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Dyrektor Generalny"
                 ]
             },
             "ministry_of_education": {
@@ -3906,6 +4279,14 @@
                     "Zarządzanie egzaminami zewnętrznymi i maturą",
                     "Doskonalenie zawodowe i kształcenie nauczycieli",
                     "Finansowanie i subwencjonowanie oświaty"
+                ],
+                "leadership": [
+                    "Minister Edukacji",
+                    "Sekretarz stanu",
+                    "Sekretarz stanu",
+                    "Podsekretarz stanu",
+                    "Podsekretarz stanu",
+                    "Dyrektor Generalny"
                 ]
             },
             "ministry_of_funds_and_regional_policy": {
@@ -3917,6 +4298,13 @@
                     "Wspieranie rozwoju regionalnego i lokalnego",
                     "Monitoring, kontrola i ewaluacja programów unijnych",
                     "Polityka miejska, rewitalizacja i rozwój miast"
+                ],
+                "leadership": [
+                    "Minister",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Dyrektor Generalny"
                 ]
             },
             "ministry_of_science_and_higher_education": {
@@ -3928,6 +4316,14 @@
                     "Współpraca naukowa z zagranicą i wymiana akademicka",
                     "Akredytacja kierunków i jakość kształcenia",
                     "Wsparcie dla doktorantów, naukowców i młodych badaczy"
+                ],
+                "leadership": [
+                    "Minister nauki i szkolnictwa wyższego",
+                    "Sekretarz stanu",
+                    "Sekretarz stanu",
+                    "Podsekretarz stanu",
+                    "Podsekretarz stanu",
+                    "Dyrektor generalny"
                 ]
             },
             "ministry_of_internal_affairs_and_administration": {
@@ -3939,6 +4335,16 @@
                     "Nadzór nad Państwową Strażą Pożarną i ratownictwem",
                     "Polityka migracyjna, azylowa i pobytowa",
                     "Administracja rządowa w terenie i samorząd terytorialny"
+                ],
+                "leadership": [
+                    "Minister Spraw Wewnętrznych i Administracji",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Dyrektor Generalna"
                 ]
             },
             "ministry_of_digital_affairs": {
@@ -3950,6 +4356,14 @@
                     "Polityka cyberbezpieczeństwa i ochrony danych",
                     "Regulacja rynku cyfrowego i AI",
                     "Budowa sieci szerokopasmowej i infrastruktury cyfrowej"
+                ],
+                "leadership": [
+                    "Wicepremier, Minister cyfryzacji, Pełnomocnik Rządu ds. Cyberbezpieczeństwa",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Dyrektor Generalny"
                 ]
             },
             "chancellery_of_the_prime_minister": {
@@ -3961,7 +4375,28 @@
                     "Realizacja polityki rządowej w zakresie cyfryzacji i innowacji",
                     "Obsługa Rady do Spraw Uchodźców i innych organów pomocniczych RM",
                     "Koordynacja współpracy z Sejmem i Senatem"
-                ]
+                ],
+                "leadership": [
+                    "Prezes Rady Ministrów",
+                    "Wiceprezes Rady Ministrów, Minister Obrony Narodowej",
+                    "Wiceprezes Rady Ministrów, Minister Spraw Zagranicznych",
+                    "Wiceprezes Rady Ministrów, Minister Cyfryzacji",
+                    "Minister do spraw Nadzoru nad Wdrażaniem Polityki Rządu",
+                    "Minister - Członek Rady Ministrów, Szef Kancelarii Prezesa Rady Ministrów, Przewodniczący Komitetu do spraw Pożytku Publicznego",
+                    "Minister, członek Rady Ministrów, Koordynator Służb Specjalnych",
+                    "Sekretarz Stanu, Rzecznik rządu",
+                    "Sekretarz Stanu, Zastępca Szefa Kancelarii Prezesa Rady Ministrów",
+                    "Sekretarz Stanu, Pełnomocnik Rządu do Spraw Równości",
+                    "Sekretarz Stanu",
+                    "Sekretarz Stanu, Pełnomocnik Rządu do spraw Polityki Senioralnej",
+                    "Wiceprzewodnicząca Komitetu do spraw Pożytku Publicznego, Sekretarz Stanu",
+                    "Sekretarz Stanu, Zastępca Szefa Kancelarii Prezesa Rady Ministrów",
+                    "Szef Gabinetu Politycznego Prezesa Rady Ministrów",
+                    "Podsekretarz Stanu"
+                ],
+                "type": "Kancelaria",
+                "leaderLabel": "Szef KPRM",
+                "leadershipLabel": "Kierownictwo KPRM"
             },
             "council_of_ministers": {
                 "description": "Rada Ministrów jest naczelnym organem władzy wykonawczej w Polsce, kieruje administracją rządową i realizuje politykę państwa. Prowadzi politykę wewnętrzną i zagraniczną, zapewnia wykonanie ustaw oraz uchwala projekt budżetu.",
@@ -3972,7 +4407,34 @@
                     "Wydawanie rozporządzeń i uchwał",
                     "Koordynacja i kontrola pracy ministrów",
                     "Zapewnienie bezpieczeństwa wewnętrznego i zewnętrznego państwa"
-                ]
+                ],
+                "leadership": [
+                    "Prezes Rady Ministrów",
+                    "Wiceprezes Rady Ministrów, Minister Obrony Narodowej",
+                    "Wiceprezes Rady Ministrów, Minister Spraw Zagranicznych",
+                    "Wiceprezes Rady Ministrów, Minister Cyfryzacji",
+                    "Minister Aktywów Państwowych",
+                    "Minister do spraw Nadzoru nad Wdrażaniem Polityki Rządu",
+                    "Minister Kultury i Dziedzictwa Narodowego",
+                    "Minister Finansów i Gospodarki",
+                    "Ministra Rodziny, Pracy i Polityki Społecznej",
+                    "Minister - Członek Rady Ministrów, Szef Kancelarii Prezesa Rady Ministrów, Przewodniczący Komitetu do spraw Pożytku Publicznego",
+                    "Minister Klimatu i Środowiska",
+                    "Minister Spraw Wewnętrznych i Administracji",
+                    "Minister Infrastruktury",
+                    "Minister Nauki i Szkolnictwa Wyższego",
+                    "Minister Rolnictwa i Rozwoju Wsi",
+                    "Minister Energii",
+                    "Minister Edukacji",
+                    "Minister Funduszy i Polityki Regionalnej",
+                    "Minister Sportu i Turystyki",
+                    "Minister, członek Rady Ministrów, Koordynator Służb Specjalnych",
+                    "Minister Zdrowia",
+                    "Minister Sprawiedliwości"
+                ],
+                "type": "Rada Ministrów",
+                "leaderLabel": "Prezes Rady Ministrów",
+                "leadershipLabel": "Skład Rady Ministrów"
             },
             "presidential_chancellery": {
                 "description": "Kancelaria Prezydenta Rzeczypospolitej Polskiej zapewnia obsługę Prezydenta RP w wykonywaniu jego konstytucyjnych i ustawowych zadań. Koordynuje działalność ministrów w Kancelarii, zarządza kontaktami dyplomatycznymi Prezydenta oraz organizuje uroczystości i spotkania z głową państwa. Kancelaria pełni również funkcję łącznika między Prezydentem a innymi organami władzy.",
@@ -3985,7 +4447,24 @@
                     "Nadzór nad nadawaniem orderów i odznaczeń",
                     "Obsługa Biura Bezpieczeństwa Narodowego",
                     "Zarządzanie Pałacem Prezydenckim i rezydencjami"
-                ]
+                ],
+                "leadership": [
+                    "Szef Kancelarii Prezydenta Rzeczypospolitej Polskiej",
+                    "Sekretarz Stanu – Szef Gabinetu Prezydenta Rzeczypospolitej Polskiej",
+                    "Sekretarz Stanu w Biurze Bezpieczeństwa Narodowego – Szef Biura Bezpieczeństwa Narodowego",
+                    "Sekretarz Stanu – Szef Biura Polityki Międzynarodowej",
+                    "Sekretarz Stanu",
+                    "Podsekretarz Stanu – Zastępca Szefa Gabinetu Prezydenta RP",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu",
+                    "Podsekretarz Stanu – Rzecznik Prasowy Prezydenta RP",
+                    "Podsekretarz Stanu",
+                    "Dyrektor Generalny Kancelarii Prezydenta RP"
+                ],
+                "type": "Kancelaria Prezydenta RP",
+                "leaderLabel": "Szef KPRP",
+                "leadershipLabel": "Kierownictwo Kancelarii",
+                "subordinateTo": "Prezydentowi RP"
             }
         }
     }

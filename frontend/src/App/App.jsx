@@ -40,15 +40,22 @@ import Layout from "../components/Layout/Layout";
 
 import { initSocket } from "../lib/socket/socketClient";
 import { initSocketListeners } from "../lib/socket/socketListeners";
+import { useFollowStore } from "../store/useFollowStore";
 
 function App() {
   const { user } = useUser();
+  const syncFollows = useFollowStore((s) => s.syncFromServer);
 
   useNotifications(user?.id);
 
   useEffect(() => {
     document.documentElement.classList.remove("no-transition");
   }, []);
+
+  useEffect(() => {
+    if (!user?.id) return;
+    syncFollows(user.id);
+  }, [user?.id, syncFollows]);
 
   useEffect(() => {
     if (!user?.id) return;

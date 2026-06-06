@@ -81,6 +81,12 @@ const EVENT_CONFIG = {
     metric_source: "users_metrics",
     silent: true,
   },
+
+  LAW_UPDATE: {
+    icon: "document",
+    color: "indigo",
+    title: "Aktualizacja prawa",
+  },
 };
 
 module.exports = EVENT_CONFIG;

@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 
 import ClubLogo from "./ClubLogo";
 import { CLUB_HEX } from "./Hemicycle";
 import { sectionVariants } from "../../Utils/Animations";
 
 export default function ClubCard({ club, staticData }) {
+  const { t } = useTranslation();
   const hex = CLUB_HEX[club.id] ?? "#94a3b8";
 
   const { description = "", parties = [] } = staticData ?? {};
@@ -42,7 +44,7 @@ export default function ClubCard({ club, staticData }) {
             </p>
 
             <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">
-              posłów
+              {t("institution.clubs.mpsLabel")}
             </p>
           </div>
         </div>
@@ -56,7 +58,7 @@ export default function ClubCard({ club, staticData }) {
         {parties.length > 0 && (
           <div>
             <p className="mb-2 text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">
-              Partie składowe
+              {t("institution.clubs.memberParties")}
             </p>
 
             <div className="flex flex-col gap-1.5">

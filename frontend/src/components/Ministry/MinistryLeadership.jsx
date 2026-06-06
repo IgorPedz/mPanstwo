@@ -83,7 +83,7 @@ export default function MinistryLeadership({ people, leadershipLabel, leaderLabe
                         className="text-[8px] font-black px-1.5 py-0.5 rounded-md text-white"
                         style={{ background: PARTY_HEX[person.party] ?? "#94a3b8" }}
                       >
-                        {person.party}
+                        {t(`institution.parties.${person.party}`, { defaultValue: person.party })}
                       </span>
                     </div>
                   )}

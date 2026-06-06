@@ -8,7 +8,7 @@ export const useNavData = () => {
       key: "main", 
       title: t("nav.sections.main"),
       items: [
-        { name: t("nav.items.dashboard"), icon: "dashboard", href: "/dashboard", activeFor: ["/ministry/", "/president", "/sejm", "/senat", "/clubs", "/instytucja/"] },
+        { name: t("nav.items.dashboard"), icon: "dashboard", href: "/dashboard", activeFor: ["/ministry/", "/president", "/sejm", "/senat", "/clubs", "/instytucja/", "/courts/"] },
         { name: t("nav.items.legislation"), icon: "document", href: "/legislation", activeFor: ["/legislation/"] },
       ],
     },

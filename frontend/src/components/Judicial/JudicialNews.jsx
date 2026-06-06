@@ -66,19 +66,11 @@ export default function JudicialNews({
   return (
     <motion.div
       variants={sectionVariants}
-      className="
-        rounded-3xl overflow-hidden
-        border border-slate-200/70 dark:border-slate-800/60
-        bg-white dark:bg-slate-900
-      "
+      className="w-full rounded-3xl border border-slate-200/70 dark:border-slate-800/60
+        bg-white dark:bg-slate-900 color-transition overflow-hidden"
     >
       <div className="flex items-center justify-between px-7 md:px-8 pt-7 pb-5">
-        <p
-          className="
-            text-[10px] font-black uppercase tracking-widest
-            text-slate-400 dark:text-slate-500
-          "
-        >
+        <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 color-transition">
           {t("institution.news")}
         </p>
 
@@ -87,13 +79,8 @@ export default function JudicialNews({
             href={website}
             target="_blank"
             rel="noopener noreferrer"
-            className="
-              inline-flex items-center gap-1
-              text-[10px] font-black uppercase tracking-widest
-              text-slate-400 dark:text-slate-500
-              hover:text-slate-700
-              dark:hover:text-slate-200
-            "
+            className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-widest
+              text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors color-transition"
           >
             {t("institution.all")}
             <ArrowTopRightOnSquareIcon className="h-3 w-3" />
@@ -139,11 +126,10 @@ export default function JudicialNews({
                       setDirection(-1);
                       setPage((p) => p - 1);
                     }}
-                    className="
-                      w-9 h-9 rounded-xl flex items-center justify-center
-                      bg-slate-100 dark:bg-slate-800
-                      disabled:opacity-30
-                    "
+                    className="w-9 h-9 rounded-xl flex items-center justify-center cursor-pointer
+                      bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400
+                      hover:bg-slate-200 dark:hover:bg-slate-700
+                      disabled:opacity-30 disabled:cursor-not-allowed transition-all color-transition"
                   >
                     <ArrowLeftIcon className="h-4 w-4" />
                   </button>
@@ -154,11 +140,10 @@ export default function JudicialNews({
                       setDirection(1);
                       setPage((p) => p + 1);
                     }}
-                    className="
-                      w-9 h-9 rounded-xl flex items-center justify-center
-                      bg-slate-100 dark:bg-slate-800
-                      disabled:opacity-30
-                    "
+                    className="w-9 h-9 rounded-xl flex items-center justify-center cursor-pointer
+                      bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400
+                      hover:bg-slate-200 dark:hover:bg-slate-700
+                      disabled:opacity-30 disabled:cursor-not-allowed transition-all color-transition"
                   >
                     <ArrowRightIcon className="h-4 w-4" />
                   </button>
@@ -190,7 +175,7 @@ export default function JudicialNews({
                     ))}
                   </div>
 
-                  <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500">
+                  <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 color-transition">
                     {page + 1} / {totalPages}
                   </span>
                 </div>

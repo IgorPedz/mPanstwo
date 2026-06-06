@@ -15,6 +15,8 @@ import MinistryNews            from "../../components/Ministry/MinistryNews";
 import MinistryResponsibilities from "../../components/Ministry/MinistryResponsibilities";
 import MinistryAbout           from "../../components/Ministry/MinistryAbout";
 import MinistryInfo            from "../../components/Ministry/MinistryInfo";
+import FollowButton            from "../../components/Institution/FollowButton";
+import { useMarkInstitutionSeen } from "../../Hooks/useMarkInstitutionSeen";
 
 export default function MinistryPage() {
   const { slug } = useParams();
@@ -24,15 +26,14 @@ export default function MinistryPage() {
 
   const ministriesData = getMinistriesData(t);
   const data   = ministriesData[slug];
-  console.log(data)
   const title  = t(`dashboard.dashboardContent.${slug}.title`, { defaultValue: slug });
   const accent = state?.accent ?? data?.accent ?? "blue";
   const IconComponent  = ICON_MAP[state?.icon ?? data?.icon ?? "ministry"] ?? ICON_MAP["ministry"];
   const colorClass     = COLOR_MAP[accent] ?? "text-blue-800";
   const accentGradient = ACCENT_MAP[accent] ?? "from-blue-800 to-blue-600";
 
-  // Hooks muszą być przed conditional return
   const { news, loading: newsLoading } = useMinistryNews(slug);
+  useMarkInstitutionSeen(slug, news);
 
   if (!data) {
     return (
@@ -42,7 +43,7 @@ export default function MinistryPage() {
     );
   }
 
-  const institutionType = data.type ?? "Ministerstwo";
+  const institutionType = data.type ?? t("staticData.ministries.ministry");
 
   return (
     <motion.div
@@ -52,15 +53,19 @@ export default function MinistryPage() {
       className="min-h-screen w-full px-4 md:px-8 py-10 md:py-14 color-transition"
     >
       <div className="w-full space-y-5">
-        <motion.div variants={sectionVariants}>
+        <motion.div variants={sectionVariants} className="flex items-center justify-between">
           <button
             onClick={() => navigate(-1)}
             className="inline-flex items-center gap-2 text-sm font-bold cursor-pointer group
               text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
           >
             <ArrowLeftIcon className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
-            Wróć
+            {t("institution.back")}
           </button>
+          <FollowButton
+            institution={{ id: slug, title, titleKey: `dashboard.dashboardContent.${slug}.title`, icon: state?.icon ?? data?.icon ?? "ministry", accent, path: `/ministry/${slug}` }}
+            colorClass={colorClass}
+          />
         </motion.div>
 
         <MinistryHero

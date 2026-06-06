@@ -31,11 +31,19 @@ export const getNotificationContent = (notif, t) => {
         defaultValue: notif?.title || "Notification",
     });
 
-    const body = t(`notifications.events.${eventKey}.message`, {
+    const newCount = data?.newCount ?? 1;
+    const messageKey = (eventKey === "LAW_UPDATE" && newCount > 1)
+        ? `notifications.events.LAW_UPDATE.messageMany`
+        : `notifications.events.${eventKey}.message`;
+
+    const body = t(messageKey, {
         defaultValue: notif?.body || notif?.message || "",
         achievementName,
         rankName,
         xp: data?.xp,
+        institutionName: data?.institutionName ?? "",
+        newsTitle: data?.newsTitle ?? "",
+        newCount,
     });
 
     return {

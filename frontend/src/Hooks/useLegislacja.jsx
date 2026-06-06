@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { sejmCache } from "../lib/sejmCache";
+import { useTranslation } from "react-i18next";
 
 const BASE = "http://localhost:5000";
 const BILLS_TTL = 30 * 60 * 1000;
@@ -123,6 +124,7 @@ export function useBillVotingDetail(sitting, votNum) {
 }
 
 export function useOpinions(num) {
+  const { t } = useTranslation();
   const [opinions,   setOpinions]   = useState([]);
   const [loading,    setLoading]    = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -151,7 +153,7 @@ export function useOpinions(num) {
       if (res.data.opinions) setOpinions(res.data.opinions);
       return { success: true };
     } catch (e) {
-      const msg = e.response?.data?.error ?? "Nie udało się dodać opinii";
+      const msg = e.response?.data?.error ?? t("institution.legislation.opinions.addError");
       setError(msg);
       return { success: false, error: msg };
     } finally {

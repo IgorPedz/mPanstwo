@@ -13,38 +13,17 @@ export function getJudicialData(t) {
       description: t("staticData.judicial.sn.description"),
       responsibilities: t("staticData.judicial.sn.responsibilities", { returnObjects: true }),
       infoFields: t("staticData.judicial.sn.infoFields", { returnObjects: true }),
-      leadership: [
-        {
-          name: "Zbigniew Kapiński",
-          title: "Pierwszy Prezes Sądu Najwyższego",
-          role: "prezes",
-        },
-        {
-          name: "Krzysztof Wiak ",
-          title: "Prezes Izby Kontroli Nadzwyczajnej i Spraw Publicznych",
-          role: "wiceprezes",
-        },
-        {
-          name: "Ewa Stryczyńską",
-          title: "p.o. Prezesa Izby Pracy i Ubezpieczeń Społecznych",
-          role: "wiceprezes",
-        },
-        {
-          name: "Piotr Mirk",
-          title: "p.o. Prezesa  Izby Karnej",
-          role: "wiceprezes",
-        },
-        {
-          name: "Joanna Misztal-Konecka",
-          title: "Prezes Izby Cywilnej",
-          role: "wiceprezes",
-        },
-        {
-          name: "WAKAT",
-          title: "Prezes Izby Odpowiedzialności Zawodowej",
-          role: "wiceprezes",
-        },
-      ],
+      leadership: (() => {
+        const lt = t("staticData.judicial.sn.leadership", { returnObjects: true });
+        return [
+          { name: "Zbigniew Kapiński",     title: lt[0], role: "prezes"     },
+          { name: "Krzysztof Wiak",         title: lt[1], role: "wiceprezes" },
+          { name: "Ewa Stryczyńska",        title: lt[2], role: "wiceprezes" },
+          { name: "Piotr Mirk",             title: lt[3], role: "wiceprezes" },
+          { name: "Joanna Misztal-Konecka", title: lt[4], role: "wiceprezes" },
+          { name: "WAKAT",                  title: lt[5], role: "wiceprezes" },
+        ];
+      })(),
     },
 
     constitutional_tribunal: {
@@ -60,18 +39,13 @@ export function getJudicialData(t) {
       description: t("staticData.judicial.constitutional_tribunal.description"),
       responsibilities: t("staticData.judicial.constitutional_tribunal.responsibilities", { returnObjects: true }),
       infoFields: t("staticData.judicial.constitutional_tribunal.infoFields", { returnObjects: true }),
-      leadership: [
-        {
-          name: "Bogdan Święczkowski",
-          title: "Prezes Trybunału Konstytucyjnego",
-          role: "prezes",
-        },
-        {
-          name: "Bartłomiej Sochański",
-          title: "Wiceprezes Trybunału Konstytucyjnego",
-          role: "wiceprezes",
-        },
-      ],
+      leadership: (() => {
+        const lt = t("staticData.judicial.constitutional_tribunal.leadership", { returnObjects: true });
+        return [
+          { name: "Bogdan Święczkowski",  title: lt[0], role: "prezes"     },
+          { name: "Bartłomiej Sochański", title: lt[1], role: "wiceprezes" },
+        ];
+      })(),
     },
 
     supreme_administrative_court: {
@@ -87,28 +61,15 @@ export function getJudicialData(t) {
       description: t("staticData.judicial.supreme_administrative_court.description"),
       responsibilities: t("staticData.judicial.supreme_administrative_court.responsibilities", { returnObjects: true }),
       infoFields: t("staticData.judicial.supreme_administrative_court.infoFields", { returnObjects: true }),
-      leadership: [
-        {
-          name: "Jacek Chlebny",
-          title: "Prezes Naczelnego Sądu Administracyjnego",
-          role: "prezes",
-        },
-        {
-          name: "Jerzy Siegień",
-          title: "Wiceprezes NSA ds. Izby Ogólnoadministracyjnej",
-          role: "wiceprezes",
-        },
-        {
-          name: "Jan Rudowski",
-          title: "Wiceprezes NSA ds. Izby Finansowej",
-          role: "wiceprezes",
-        },
-        {
-          name: "Małgorzata Korycińska",
-          title: "Wiceprezes NSA ds. Izby Gospodarczej",
-          role: "wiceprezes",
-        },
-      ],
+      leadership: (() => {
+        const lt = t("staticData.judicial.supreme_administrative_court.leadership", { returnObjects: true });
+        return [
+          { name: "Jacek Chlebny",           title: lt[0], role: "prezes"     },
+          { name: "Jerzy Siegień",            title: lt[1], role: "wiceprezes" },
+          { name: "Jan Rudowski",             title: lt[2], role: "wiceprezes" },
+          { name: "Małgorzata Korycińska",    title: lt[3], role: "wiceprezes" },
+        ];
+      })(),
     },
 
     national_council_of_the_judiciary: {
@@ -124,14 +85,13 @@ export function getJudicialData(t) {
       description: t("staticData.judicial.national_council_of_the_judiciary.description"),
       responsibilities: t("staticData.judicial.national_council_of_the_judiciary.responsibilities", { returnObjects: true }),
       infoFields: t("staticData.judicial.national_council_of_the_judiciary.infoFields", { returnObjects: true }),
-      leadership: [
-        { name: "WAKAT", title: "Przewodnicząca KRS", role: "prezes" },
-        {
-          name: "WAKAT",
-          title: "Zastępca Przewodniczącego KRS",
-          role: "wiceprezes",
-        },
-      ],
+      leadership: (() => {
+        const lt = t("staticData.judicial.national_council_of_the_judiciary.leadership", { returnObjects: true });
+        return [
+          { name: "WAKAT", title: lt[0], role: "prezes"     },
+          { name: "WAKAT", title: lt[1], role: "wiceprezes" },
+        ];
+      })(),
     },
   };
 }
