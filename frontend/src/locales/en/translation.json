@@ -1,4 +1,4 @@
-{
+﻿{
     "nav": {
         "sections": {
             "main": "Main",
@@ -21,7 +21,85 @@
             "contact": "Contact",
             "help": "Help",
             "facts": "About Data"
+        },
+        "panels": {
+            "admin": "Admin Panel",
+            "moderator": "Moderator Panel",
+            "expert": "Expert Panel"
         }
+    },
+    "banned": {
+        "accountBlocked": "Account blocked",
+        "noAccess": "No access to the platform",
+        "description": "Your account has been blocked by an administrator. You can submit an appeal, which will be reviewed by the moderation team.",
+        "yourAppeal": "Your appeal",
+        "submitted": "Submitted",
+        "appealContent": "Appeal content",
+        "adminResponse": "Administrator's response",
+        "newAppeal": "Submit a new appeal",
+        "appealLabel": "Appeal content",
+        "placeholder": "Explain why you believe the ban was unjust…",
+        "sendAppeal": "Send appeal",
+        "appealSent": "Appeal sent — await the administrator's response.",
+        "waiting": "Your appeal is being reviewed. You will be notified of the decision.",
+        "logout": "Log out",
+        "statusPending": "Pending review",
+        "statusRejected": "Rejected",
+        "statusApproved": "Approved",
+        "sendError": "Error sending appeal"
+    },
+    "moderator": {
+        "panelLabel": "Panel",
+        "title": "Moderation",
+        "description": "Manage reports and ban appeals",
+        "reports": "Reports",
+        "appeals": "Appeals"
+    },
+    "reports": {
+        "pending": "Pending",
+        "all": "All",
+        "reviewed": "Reviewed",
+        "dismissed": "Dismissed",
+        "reportId": "Report #{{id}}",
+        "reportedBy": "Reported by",
+        "dismiss": "Dismiss",
+        "deleteOpinion": "Delete opinion",
+        "reason": "Report reason",
+        "opinionLabel": "Opinion · Print {{num}}",
+        "author": "Author",
+        "banned": "BANNED",
+        "reviewedBy": "Reviewed by",
+        "noReports": "No reports",
+        "confirmDismissTitle": "Dismiss report",
+        "confirmDismissMsg": "Report #{{id}} will be marked as dismissed. The opinion remains visible.",
+        "confirmDeleteTitle": "Delete opinion",
+        "confirmDeleteMsg": "Opinion by \"{{author}}\" will be permanently deleted and the report closed.",
+        "noun": "reports",
+        "confirmDismissConfirm": "Dismiss",
+        "confirmDeleteConfirm": "Delete opinion"
+    },
+    "appeals": {
+        "pending": "Pending",
+        "all": "All",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "noAppeals": "No appeals",
+        "submitted": "Submitted",
+        "reviewed": "Reviewed",
+        "reviewedBy": "by",
+        "unban": "Unban",
+        "reject": "Reject",
+        "rejectResponse": "Enter reason for rejection (optional)…",
+        "confirmUnbanTitle": "Unban user",
+        "confirmUnbanMsg": "Are you sure you want to unban this user?",
+        "appealContent": "Appeal content",
+        "adminResponse": "Moderator's response",
+        "noun": "appeals",
+        "rejectConfirm": "Confirm rejection",
+        "rejectPlaceholder": "Explain the reason for rejecting the appeal...",
+        "rejectResponseLabel": "Response to the user (optional)",
+        "cancel": "Cancel",
+        "confirmUnbanDesc": "Account of user \"{{name}}\" will be unblocked. The user will regain full access to the platform."
     },
     "auth": {
         "login": "Log In",
@@ -449,6 +527,22 @@
             "opinions_100": {
                 "title": "Master of Argumentation",
                 "desc": "Write 100 opinions"
+            },
+            "opinion_endorsed_1": {
+                "title": "Expert's Voice",
+                "desc": "Your opinion was recognized as important by an expert"
+            },
+            "opinion_endorsed_3": {
+                "title": "Triple Recognition",
+                "desc": "3 of your opinions were recognized as important"
+            },
+            "opinion_endorsed_5": {
+                "title": "Voice of the People",
+                "desc": "5 of your opinions were recognized as important"
+            },
+            "opinion_endorsed_10": {
+                "title": "Pillar of Debate",
+                "desc": "10 of your opinions were recognized as important by experts"
             }
         }
     },
@@ -3036,6 +3130,26 @@
             "LEVEL_UP": {
                 "title": "Rank promoted",
                 "message": "You advanced to rank {{rankName}}."
+            },
+            "REPORT_RESOLVED": {
+                "title": "Report resolved",
+                "message": "{{message}}"
+            },
+            "REPORT_DISMISSED": {
+                "title": "Report dismissed",
+                "message": "{{message}}"
+            },
+            "APPEAL_APPROVED": {
+                "title": "Appeal approved",
+                "message": "{{message}}"
+            },
+            "APPEAL_REJECTED": {
+                "title": "Appeal rejected",
+                "message": "{{message}}"
+            },
+            "OPINION_ENDORSED": {
+                "title": "Opinion marked as important",
+                "message": "{{message}}"
             }
         },
         "noNotifications": "No notifications",
@@ -3684,7 +3798,11 @@
                 "loginRequired": "Log in to add your opinion.",
                 "noOpinions": "No opinions yet. Be the first to add one!",
                 "expertOpinion": "Expert opinion",
-                "addError": "Failed to add opinion"
+                "addError": "Failed to add opinion",
+                "importantOpinion": "Important opinion",
+                "endorse": "Mark as important",
+                "removeEndorse": "Remove endorsement",
+                "reportOpinion": "Report opinion"
             },
             "timeline": {
                 "noStages": "No data on legislative stages.",
@@ -4539,5 +4657,97 @@
                 "subordinateTo": "President of Poland"
             }
         }
+    },
+    "admin": {
+        "panelLabel": "Panel",
+        "title": "Administration",
+        "description": "Manage users and content",
+        "tabs": {
+            "stats": "Statistics",
+            "users": "Users",
+            "opinions": "Opinions",
+            "ratings": "MP Ratings",
+            "reports": "Reports",
+            "appeals": "Appeals"
+        }
+    },
+    "expert": {
+        "panelLabel": "Panel",
+        "title": "Expert",
+        "description": "Data export for analysis and reporting",
+        "footer": "Data exported in real-time from the database. CSV files encoded in UTF-8 with BOM (Excel compatibility).",
+        "exportBadge": "Export",
+        "adminOnlyBadge": "Admin only",
+        "exports": {
+            "opinions": { "label": "Law opinions", "description": "Opinion content with author data and print number" },
+            "mpRatings": { "label": "MP ratings — details", "description": "Each rating with MP ID, club, value, date" },
+            "mpRatingsSummary": { "label": "MP ratings — summary", "description": "Average, min, max ratings grouped per MP and club" },
+            "surveys": { "label": "Survey answers", "description": "All completed surveys with answers and dates" },
+            "users": { "label": "User list", "description": "ID, name, email, role, XP, dates — Admin only" }
+        }
+    },
+    "stats": {
+        "usersSection": "Users",
+        "chartTitle": "Registrations — last 30 days",
+        "registrationsTotal": "{{total}} registrations in the last {{days}} days",
+        "maxPerDay": "max. {{max}} registrations / day",
+        "cards": {
+            "total": "All users",
+            "users": "User accounts",
+            "admins": "Administrators",
+            "moderators": "Moderators",
+            "experts": "Experts",
+            "verified": "Verified",
+            "opinions": "Law opinions",
+            "mpRatings": "MP ratings"
+        }
+    },
+    "adminUsers": {
+        "searchPlaceholder": "Search by name or email...",
+        "allRoles": "All roles",
+        "userCount": "{{total}} users",
+        "noResults": "No results",
+        "ban": "Ban",
+        "unban": "Unban",
+        "prev": "← Previous",
+        "next": "Next →",
+        "banTitle": "Ban {{name}}",
+        "banDesc": "User {{email}} will not be able to log in. You can reverse the ban at any time.",
+        "unbanTitle": "Unban {{name}}",
+        "unbanDesc": "User {{email}} will regain account access (role: User).",
+        "banConfirm": "Ban",
+        "unbanConfirm": "Unban"
+    },
+    "adminOpinions": {
+        "count": "{{total}} opinions",
+        "noOpinions": "No opinions",
+        "deleteTitle": "Delete opinion",
+        "deleteDesc": "Opinion by \"{{user}}\" on print {{num}} will be permanently deleted.",
+        "deleteConfirm": "Delete"
+    },
+    "adminRatings": {
+        "count": "{{total}} ratings",
+        "noRatings": "No ratings",
+        "mpId": "MP ID",
+        "club": "Club",
+        "deleteTitle": "Delete rating",
+        "deleteDesc": "Rating {{rating}}/5 by \"{{user}}\" for MP ID {{mpId}} will be permanently deleted.",
+        "deleteConfirm": "Delete"
+    },
+    "confirmModal": {
+        "confirm": "Confirm",
+        "cancel": "Cancel"
+    },
+    "reportModal": {
+        "title": "Report opinion",
+        "authorLabel": "Author",
+        "reasonLabel": "Report reason",
+        "placeholder": "Describe why this opinion is inappropriate...",
+        "cancel": "Cancel",
+        "submit": "Report",
+        "successTitle": "Report sent",
+        "successDesc": "Moderators will review this opinion.",
+        "close": "Close",
+        "sendError": "Error sending report"
     }
 }

@@ -35,6 +35,13 @@ import { useUser } from "../Contexts/UserContext";
 import useNotifications from "../Hooks/useUnreadNotification";
 import ProtectedRoute from "../Utils/Routes/ProtectedRoutes";
 import PublicRoute from "../Utils/Routes/PublicRoutes";
+import AdminRoute from "../Utils/Routes/AdminRoute";
+import ModeratorRoute from "../Utils/Routes/ModeratorRoute";
+import ExpertRoute from "../Utils/Routes/ExpertRoute";
+import AdminPage from "../pages/AdminPages/AdminPage";
+import ModeratorPage from "../pages/ModeratorPages/ModeratorPage";
+import ExpertPage from "../pages/ExpertPages/ExpertPage";
+import BannedPage from "../pages/AuthPages/BannedPage";
 
 import Layout from "../components/Layout/Layout";
 
@@ -68,6 +75,10 @@ function App() {
       socket?.disconnect();
     };
   }, [user?.id]);
+  if (user?.role === "Zbanowany") {
+    return <BannedPage />;
+  }
+
   return (
     <Router>
       <Routes>
@@ -235,6 +246,31 @@ function App() {
               <ProtectedRoute>
                 <LegislacjaDetailPage />
               </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminPage />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/moderator"
+            element={
+              <ModeratorRoute>
+                <ModeratorPage />
+              </ModeratorRoute>
+            }
+          />
+          <Route
+            path="/expert"
+            element={
+              <ExpertRoute>
+                <ExpertPage />
+              </ExpertRoute>
             }
           />
 

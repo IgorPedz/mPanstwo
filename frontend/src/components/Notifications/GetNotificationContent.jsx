@@ -34,13 +34,14 @@ export const getNotificationContent = (notif, t) => {
         : `notifications.events.${eventKey}.message`;
 
     const body = t(messageKey, {
-        defaultValue: notif?.body || notif?.message || "",
+        defaultValue: data?.message || notif?.body || notif?.message || "",
         achievementName,
         rankName,
         xp: data?.xp,
         institutionName: data?.institutionName ?? "",
         newsTitle: data?.newsTitle ?? "",
         newCount,
+        message: data?.message ?? "",
     });
 
     return {

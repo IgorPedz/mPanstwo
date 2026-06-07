@@ -3,9 +3,9 @@ import { useTranslation } from "react-i18next";
 export const useNavData = () => {
   const { t } = useTranslation();
 
-  return [
+  const sections = [
     {
-      key: "main", 
+      key: "main",
       title: t("nav.sections.main"),
       items: [
         { name: t("nav.items.dashboard"), icon: "dashboard", href: "/dashboard", activeFor: ["/ministry/", "/president", "/sejm", "/senat", "/clubs", "/instytucja/", "/courts/"] },
@@ -45,4 +45,6 @@ export const useNavData = () => {
       ],
     },
   ];
+
+  return sections;
 };

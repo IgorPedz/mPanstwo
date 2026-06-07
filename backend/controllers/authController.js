@@ -74,22 +74,28 @@ const login = async (req, res, next) => {
       return res.status(400).json({ message: "Hasło lub email jest błędny" });
     }
 
-    const streakResult = await updateUserActivity(user.id);
+    const isBanned = user.role === "Zbanowany";
 
-    if (streakResult.notify) {
-      if (streakResult.streak >= 7) {
-        await handleEvent(user.id, "LOGIN_STREAK_BIG", {
-          streak: streakResult.streak,
-        });
-      } else if (streakResult.streak >= 3) {
-        await handleEvent(user.id, "LOGIN_STREAK_SMALL", {
-          streak: streakResult.streak,
-        });
+    // Zbanowani mogą się zalogować, ale bez aktualizacji aktywności
+    let streakResult = { streak: 0, notify: false };
+    if (!isBanned) {
+      streakResult = await updateUserActivity(user.id);
+
+      if (streakResult.notify) {
+        if (streakResult.streak >= 7) {
+          await handleEvent(user.id, "LOGIN_STREAK_BIG", {
+            streak: streakResult.streak,
+          });
+        } else if (streakResult.streak >= 3) {
+          await handleEvent(user.id, "LOGIN_STREAK_SMALL", {
+            streak: streakResult.streak,
+          });
+        }
       }
     }
 
     const token = jwt.sign(
-      { id: user.id, email: user.email, name: user.name },
+      { id: user.id, email: user.email, name: user.name, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: rememberMe ? "30d" : "1h" },
     );
@@ -107,6 +113,7 @@ const login = async (req, res, next) => {
         id: user.id,
         email: user.email,
         name: user.name,
+        role: user.role,
         login_streak: streakResult.streak,
       },
       message: "Zalogowano pomyślnie",

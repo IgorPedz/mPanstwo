@@ -1,4 +1,4 @@
-{
+﻿{
     "nav": {
         "sections": {
             "main": "Główna",
@@ -21,7 +21,85 @@
             "contact": "Kontakt",
             "help": "Pomoc",
             "facts": "O danych"
+        },
+        "panels": {
+            "admin": "Panel Admina",
+            "moderator": "Panel Moderatora",
+            "expert": "Panel Eksperta"
         }
+    },
+    "banned": {
+        "accountBlocked": "Konto zablokowane",
+        "noAccess": "Brak dostępu do platformy",
+        "description": "Twoje konto zostało zablokowane przez administratora. Możesz złożyć odwołanie, które zostanie rozpatrzone przez moderację.",
+        "yourAppeal": "Twoje odwołanie",
+        "submitted": "Złożone",
+        "appealContent": "Treść odwołania",
+        "adminResponse": "Odpowiedź administratora",
+        "newAppeal": "Złóż nowe odwołanie",
+        "appealLabel": "Treść odwołania",
+        "placeholder": "Wyjaśnij dlaczego uważasz, że ban był niesłuszny…",
+        "sendAppeal": "Wyślij odwołanie",
+        "appealSent": "Odwołanie zostało wysłane — oczekuj odpowiedzi administratora.",
+        "waiting": "Twoje odwołanie jest w trakcie rozpatrywania. Zostaniesz powiadomiony o decyzji.",
+        "logout": "Wyloguj się",
+        "statusPending": "Oczekuje na rozpatrzenie",
+        "statusRejected": "Odrzucone",
+        "statusApproved": "Zatwierdzone",
+        "sendError": "Błąd wysyłania odwołania"
+    },
+    "moderator": {
+        "panelLabel": "Panel",
+        "title": "Moderacja",
+        "description": "Zarządzanie zgłoszeniami i odwołaniami od bana",
+        "reports": "Zgłoszenia",
+        "appeals": "Odwołania"
+    },
+    "reports": {
+        "pending": "Oczekujące",
+        "all": "Wszystkie",
+        "reviewed": "Rozpatrzone",
+        "dismissed": "Odrzucone",
+        "reportId": "Zgłoszenie #{{id}}",
+        "reportedBy": "Zgłoszono przez",
+        "dismiss": "Odrzuć",
+        "deleteOpinion": "Usuń opinię",
+        "reason": "Powód zgłoszenia",
+        "opinionLabel": "Opinia · Druk {{num}}",
+        "author": "Autor",
+        "banned": "ZBANOWANY",
+        "reviewedBy": "Rozpatrzył",
+        "noReports": "Brak zgłoszeń",
+        "confirmDismissTitle": "Odrzuć zgłoszenie",
+        "confirmDismissMsg": "Zgłoszenie #{{id}} zostanie oznaczone jako odrzucone. Opinia pozostanie widoczna.",
+        "confirmDeleteTitle": "Usuń opinię",
+        "confirmDeleteMsg": "Opinia użytkownika \"{{author}}\" zostanie trwale usunięta, a zgłoszenie zamknięte.",
+        "noun": "zgłoszeń",
+        "confirmDismissConfirm": "Odrzuć",
+        "confirmDeleteConfirm": "Usuń opinię"
+    },
+    "appeals": {
+        "pending": "Oczekujące",
+        "all": "Wszystkie",
+        "approved": "Zatwierdzone",
+        "rejected": "Odrzucone",
+        "noAppeals": "Brak odwołań",
+        "submitted": "Złożone",
+        "reviewed": "Rozpatrzone",
+        "reviewedBy": "przez",
+        "unban": "Odbanuj",
+        "reject": "Odrzuć",
+        "rejectResponse": "Wpisz powód odrzucenia (opcjonalnie)…",
+        "confirmUnbanTitle": "Odbanuj użytkownika",
+        "confirmUnbanMsg": "Czy na pewno chcesz odbanować tego użytkownika?",
+        "appealContent": "Treść odwołania",
+        "adminResponse": "Odpowiedź moderatora",
+        "noun": "odwołań",
+        "rejectConfirm": "Potwierdź odrzucenie",
+        "rejectPlaceholder": "Wyjaśnij powód odrzucenia odwołania...",
+        "rejectResponseLabel": "Odpowiedź dla użytkownika (opcjonalnie)",
+        "cancel": "Anuluj",
+        "confirmUnbanDesc": "Konto użytkownika \"{{name}}\" zostanie odblokowane. Użytkownik odzyska pełny dostęp do platformy."
     },
     "auth": {
         "login": "Zaloguj się",
@@ -449,6 +527,22 @@
             "opinions_100": {
                 "title": "Sto głosów ludu",
                 "desc": "Napisz 100 opinii"
+            },
+            "opinion_endorsed_1": {
+                "title": "Głos eksperta",
+                "desc": "Twoja opinia została uznana za ważną przez eksperta"
+            },
+            "opinion_endorsed_3": {
+                "title": "Trzykrotne uznanie",
+                "desc": "3 Twoich opinii zostało uznanych za ważne"
+            },
+            "opinion_endorsed_5": {
+                "title": "Głos ludu",
+                "desc": "5 Twoich opinii zostało uznanych za ważne"
+            },
+            "opinion_endorsed_10": {
+                "title": "Filar debaty",
+                "desc": "10 Twoich opinii zostało uznanych za ważne przez ekspertów"
             }
         }
     },
@@ -3036,6 +3130,26 @@
             "LEVEL_UP": {
                 "title": "Awans rangi",
                 "message": "Awansowałeś na rangę {{rankName}}."
+            },
+            "REPORT_RESOLVED": {
+                "title": "Zgłoszenie rozpatrzone",
+                "message": "{{message}}"
+            },
+            "REPORT_DISMISSED": {
+                "title": "Zgłoszenie odrzucone",
+                "message": "{{message}}"
+            },
+            "APPEAL_APPROVED": {
+                "title": "Odwołanie zatwierdzone",
+                "message": "{{message}}"
+            },
+            "APPEAL_REJECTED": {
+                "title": "Odwołanie odrzucone",
+                "message": "{{message}}"
+            },
+            "OPINION_ENDORSED": {
+                "title": "Opinia uznana za ważną",
+                "message": "{{message}}"
             }
         },
         "noNewNotifications": "Brak nowych powiadomień",
@@ -3704,7 +3818,11 @@
                 "loginRequired": "Zaloguj się, żeby dodać swoją opinię.",
                 "noOpinions": "Nie ma jeszcze opinii. Bądź pierwszą osobą, która ją doda!",
                 "expertOpinion": "Opinia eksperta",
-                "addError": "Nie udało się dodać opinii"
+                "addError": "Nie udało się dodać opinii",
+                "importantOpinion": "Ważna opinia",
+                "endorse": "Uznaj za ważną",
+                "removeEndorse": "Cofnij weryfikację",
+                "reportOpinion": "Zgłoś opinię"
             },
             "timeline": {
                 "noStages": "Brak danych o etapach procesu legislacyjnego.",
@@ -4543,5 +4661,97 @@
                 "subordinateTo": "Prezydentowi RP"
             }
         }
+    },
+    "admin": {
+        "panelLabel": "Panel",
+        "title": "Administracja",
+        "description": "Zarządzanie użytkownikami i treściami",
+        "tabs": {
+            "stats": "Statystyki",
+            "users": "Użytkownicy",
+            "opinions": "Opinie",
+            "ratings": "Oceny posłów",
+            "reports": "Zgłoszenia",
+            "appeals": "Odwołania"
+        }
+    },
+    "expert": {
+        "panelLabel": "Panel",
+        "title": "Ekspert",
+        "description": "Eksport danych do analizy i raportowania",
+        "footer": "Dane eksportowane w czasie rzeczywistym z bazy danych. Pliki CSV kodowane w UTF-8 z BOM (zgodność z Excel).",
+        "exportBadge": "Eksport",
+        "adminOnlyBadge": "Admin only",
+        "exports": {
+            "opinions": { "label": "Opinie do ustaw", "description": "Treści opinii z danymi autora i numerem druku" },
+            "mpRatings": { "label": "Oceny posłów — szczegóły", "description": "Każda ocena z id posła, klub, wartość, data" },
+            "mpRatingsSummary": { "label": "Oceny posłów — podsumowanie", "description": "Średnia, min, max ocen pogrupowana per poseł i klub" },
+            "surveys": { "label": "Odpowiedzi na ankiety", "description": "Wszystkie wypełnione ankiety z odpowiedziami i datami" },
+            "users": { "label": "Lista użytkowników", "description": "Id, nazwa, email, rola, XP, daty — tylko dla Administratora" }
+        }
+    },
+    "stats": {
+        "usersSection": "Użytkownicy",
+        "chartTitle": "Rejestracje — ostatnie 30 dni",
+        "registrationsTotal": "{{total}} rejestracji w ostatnich {{days}} dniach",
+        "maxPerDay": "maks. {{max}} rejestracji / dzień",
+        "cards": {
+            "total": "Wszyscy użytkownicy",
+            "users": "Konta użytkowników",
+            "admins": "Administratorzy",
+            "moderators": "Moderatorzy",
+            "experts": "Eksperci",
+            "verified": "Zweryfikowani",
+            "opinions": "Opinie do ustaw",
+            "mpRatings": "Oceny posłów"
+        }
+    },
+    "adminUsers": {
+        "searchPlaceholder": "Szukaj po nazwie lub emailu...",
+        "allRoles": "Wszystkie role",
+        "userCount": "{{total}} użytkowników",
+        "noResults": "Brak wyników",
+        "ban": "Banuj",
+        "unban": "Odblokuj",
+        "prev": "← Poprzednia",
+        "next": "Następna →",
+        "banTitle": "Zablokuj {{name}}",
+        "banDesc": "Użytkownik {{email}} nie będzie mógł się zalogować. Możesz cofnąć ban w dowolnej chwili.",
+        "unbanTitle": "Odblokuj {{name}}",
+        "unbanDesc": "Użytkownik {{email}} odzyska dostęp do konta (rola: Użytkownik).",
+        "banConfirm": "Zbanuj",
+        "unbanConfirm": "Odblokuj"
+    },
+    "adminOpinions": {
+        "count": "{{total}} opinii",
+        "noOpinions": "Brak opinii",
+        "deleteTitle": "Usuń opinię",
+        "deleteDesc": "Opinia użytkownika \"{{user}}\" do druku {{num}} zostanie trwale usunięta.",
+        "deleteConfirm": "Usuń"
+    },
+    "adminRatings": {
+        "count": "{{total}} ocen",
+        "noRatings": "Brak ocen",
+        "mpId": "Poseł ID",
+        "club": "Klub",
+        "deleteTitle": "Usuń ocenę",
+        "deleteDesc": "Ocena {{rating}}/5 wystawiona przez \"{{user}}\" posłowi ID {{mpId}} zostanie trwale usunięta.",
+        "deleteConfirm": "Usuń"
+    },
+    "confirmModal": {
+        "confirm": "Potwierdź",
+        "cancel": "Anuluj"
+    },
+    "reportModal": {
+        "title": "Zgłoś opinię",
+        "authorLabel": "Autor",
+        "reasonLabel": "Powód zgłoszenia",
+        "placeholder": "Opisz dlaczego ta opinia jest nieodpowiednia...",
+        "cancel": "Anuluj",
+        "submit": "Zgłoś",
+        "successTitle": "Zgłoszenie wysłane",
+        "successDesc": "Moderatorzy przejrzą tę opinię.",
+        "close": "Zamknij",
+        "sendError": "Błąd wysyłania zgłoszenia"
     }
 }

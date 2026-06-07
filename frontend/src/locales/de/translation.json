@@ -1,4 +1,4 @@
-{
+﻿{
     "nav": {
         "sections": {
             "main": "Hauptseite",
@@ -21,7 +21,85 @@
             "contact": "Kontakt",
             "help": "Hilfe",
             "facts": "Über Daten"
+        },
+        "panels": {
+            "admin": "Admin-Panel",
+            "moderator": "Moderator-Panel",
+            "expert": "Experten-Panel"
         }
+    },
+    "banned": {
+        "accountBlocked": "Konto gesperrt",
+        "noAccess": "Kein Zugriff auf die Plattform",
+        "description": "Ihr Konto wurde von einem Administrator gesperrt. Sie können Einspruch einlegen, der von der Moderation geprüft wird.",
+        "yourAppeal": "Ihr Einspruch",
+        "submitted": "Eingereicht",
+        "appealContent": "Einspruchsinhalt",
+        "adminResponse": "Antwort des Administrators",
+        "newAppeal": "Neuen Einspruch einlegen",
+        "appealLabel": "Einspruchsinhalt",
+        "placeholder": "Erklären Sie, warum Sie die Sperre für ungerechtfertigt halten…",
+        "sendAppeal": "Einspruch senden",
+        "appealSent": "Einspruch gesendet — warten Sie auf die Antwort des Administrators.",
+        "waiting": "Ihr Einspruch wird geprüft. Sie werden über die Entscheidung benachrichtigt.",
+        "logout": "Abmelden",
+        "statusPending": "Wird geprüft",
+        "statusRejected": "Abgelehnt",
+        "statusApproved": "Genehmigt",
+        "sendError": "Fehler beim Senden des Einspruchs"
+    },
+    "moderator": {
+        "panelLabel": "Panel",
+        "title": "Moderation",
+        "description": "Verwaltung von Meldungen und Sperr-Einsprüchen",
+        "reports": "Meldungen",
+        "appeals": "Einsprüche"
+    },
+    "reports": {
+        "pending": "Ausstehend",
+        "all": "Alle",
+        "reviewed": "Geprüft",
+        "dismissed": "Abgelehnt",
+        "reportId": "Meldung #{{id}}",
+        "reportedBy": "Gemeldet von",
+        "dismiss": "Ablehnen",
+        "deleteOpinion": "Meinung löschen",
+        "reason": "Meldegrund",
+        "opinionLabel": "Meinung · Drucksache {{num}}",
+        "author": "Autor",
+        "banned": "GESPERRT",
+        "reviewedBy": "Geprüft von",
+        "noReports": "Keine Meldungen",
+        "confirmDismissTitle": "Meldung ablehnen",
+        "confirmDismissMsg": "Meldung #{{id}} wird als abgewiesen markiert. Die Meinung bleibt sichtbar.",
+        "confirmDeleteTitle": "Meinung löschen",
+        "confirmDeleteMsg": "Die Meinung von \"{{author}}\" wird dauerhaft gelöscht und die Meldung geschlossen.",
+        "noun": "Meldungen",
+        "confirmDismissConfirm": "Ablehnen",
+        "confirmDeleteConfirm": "Meinung löschen"
+    },
+    "appeals": {
+        "pending": "Ausstehend",
+        "all": "Alle",
+        "approved": "Genehmigt",
+        "rejected": "Abgelehnt",
+        "noAppeals": "Keine Einsprüche",
+        "submitted": "Eingereicht",
+        "reviewed": "Geprüft",
+        "reviewedBy": "von",
+        "unban": "Entsperren",
+        "reject": "Ablehnen",
+        "rejectResponse": "Ablehnungsgrund eingeben (optional)…",
+        "confirmUnbanTitle": "Benutzer entsperren",
+        "confirmUnbanMsg": "Sind Sie sicher, dass Sie diesen Benutzer entsperren möchten?",
+        "appealContent": "Einspruchsinhalt",
+        "adminResponse": "Antwort des Moderators",
+        "noun": "Einsprüche",
+        "rejectConfirm": "Ablehnung bestätigen",
+        "rejectPlaceholder": "Erklären Sie den Grund für die Ablehnung des Einspruchs...",
+        "rejectResponseLabel": "Antwort an den Benutzer (optional)",
+        "cancel": "Abbrechen",
+        "confirmUnbanDesc": "Das Konto von Benutzer \"{{name}}\" wird entsperrt. Der Benutzer erhält vollen Zugang zur Plattform zurück."
     },
     "auth": {
         "login": "Anmelden",
@@ -448,6 +526,22 @@
             "opinions_100": {
                 "title": "Meinungsmeister",
                 "desc": "Schreiben Sie 100 Meinungen"
+            },
+            "opinion_endorsed_1": {
+                "title": "Expertenstimme",
+                "desc": "Ihre Meinung wurde von einem Experten als wichtig eingestuft"
+            },
+            "opinion_endorsed_3": {
+                "title": "Dreifache Anerkennung",
+                "desc": "3 Ihrer Meinungen wurden als wichtig anerkannt"
+            },
+            "opinion_endorsed_5": {
+                "title": "Stimme des Volkes",
+                "desc": "5 Ihrer Meinungen wurden als wichtig anerkannt"
+            },
+            "opinion_endorsed_10": {
+                "title": "Säule der Debatte",
+                "desc": "10 Ihrer Meinungen wurden von Experten als wichtig anerkannt"
             }
         }
     },
@@ -2976,6 +3070,26 @@
             "LEVEL_UP": {
                 "title": "Rang aufgestiegen",
                 "message": "Sie sind auf Rang {{rankName}} aufgestiegen."
+            },
+            "REPORT_RESOLVED": {
+                "title": "Meldung bearbeitet",
+                "message": "{{message}}"
+            },
+            "REPORT_DISMISSED": {
+                "title": "Meldung abgelehnt",
+                "message": "{{message}}"
+            },
+            "APPEAL_APPROVED": {
+                "title": "Einspruch genehmigt",
+                "message": "{{message}}"
+            },
+            "APPEAL_REJECTED": {
+                "title": "Einspruch abgelehnt",
+                "message": "{{message}}"
+            },
+            "OPINION_ENDORSED": {
+                "title": "Meinung als wichtig markiert",
+                "message": "{{message}}"
             }
         },
         "noNotifications": "Keine Benachrichtigungen",
@@ -3618,7 +3732,11 @@
                 "loginRequired": "Melden Sie sich an, um Ihre Meinung hinzuzufügen.",
                 "noOpinions": "Noch keine Meinungen. Seien Sie die erste Person, die eine hinzufügt!",
                 "expertOpinion": "Expertenmeinung",
-                "addError": "Meinung konnte nicht hinzugefügt werden"
+                "addError": "Meinung konnte nicht hinzugefügt werden",
+                "importantOpinion": "Wichtige Meinung",
+                "endorse": "Als wichtig markieren",
+                "removeEndorse": "Markierung entfernen",
+                "reportOpinion": "Meinung melden"
             },
             "timeline": {
                 "noStages": "Keine Daten zu den Gesetzgebungsphasen.",
@@ -4473,5 +4591,97 @@
                 "subordinateTo": "Präsident Polens"
             }
         }
+    },
+    "admin": {
+        "panelLabel": "Panel",
+        "title": "Verwaltung",
+        "description": "Benutzer und Inhalte verwalten",
+        "tabs": {
+            "stats": "Statistiken",
+            "users": "Benutzer",
+            "opinions": "Meinungen",
+            "ratings": "Abgeordneten-Bewertungen",
+            "reports": "Meldungen",
+            "appeals": "Einsprüche"
+        }
+    },
+    "expert": {
+        "panelLabel": "Panel",
+        "title": "Experte",
+        "description": "Datenexport für Analyse und Berichterstattung",
+        "footer": "Daten werden in Echtzeit aus der Datenbank exportiert. CSV-Dateien in UTF-8 mit BOM kodiert (Excel-Kompatibilität).",
+        "exportBadge": "Export",
+        "adminOnlyBadge": "Nur Admin",
+        "exports": {
+            "opinions": { "label": "Gesetzesbeiträge", "description": "Meinungsinhalt mit Autorendaten und Drucksachennummer" },
+            "mpRatings": { "label": "Abgeordneten-Bewertungen — Details", "description": "Jede Bewertung mit Abgeordneten-ID, Klub, Wert, Datum" },
+            "mpRatingsSummary": { "label": "Abgeordneten-Bewertungen — Übersicht", "description": "Durchschnitt, Min, Max der Bewertungen gruppiert nach Abgeordnetem und Klub" },
+            "surveys": { "label": "Umfrageantworten", "description": "Alle ausgefüllten Umfragen mit Antworten und Daten" },
+            "users": { "label": "Benutzerliste", "description": "ID, Name, E-Mail, Rolle, XP, Daten — nur für Administratoren" }
+        }
+    },
+    "stats": {
+        "usersSection": "Benutzer",
+        "chartTitle": "Registrierungen — letzte 30 Tage",
+        "registrationsTotal": "{{total}} Registrierungen in den letzten {{days}} Tagen",
+        "maxPerDay": "max. {{max}} Registrierungen / Tag",
+        "cards": {
+            "total": "Alle Benutzer",
+            "users": "Benutzerkonten",
+            "admins": "Administratoren",
+            "moderators": "Moderatoren",
+            "experts": "Experten",
+            "verified": "Verifiziert",
+            "opinions": "Gesetzesbeiträge",
+            "mpRatings": "Abgeordneten-Bewertungen"
+        }
+    },
+    "adminUsers": {
+        "searchPlaceholder": "Nach Name oder E-Mail suchen...",
+        "allRoles": "Alle Rollen",
+        "userCount": "{{total}} Benutzer",
+        "noResults": "Keine Ergebnisse",
+        "ban": "Sperren",
+        "unban": "Entsperren",
+        "prev": "← Vorherige",
+        "next": "Nächste →",
+        "banTitle": "{{name}} sperren",
+        "banDesc": "Benutzer {{email}} kann sich nicht einloggen. Sie können die Sperre jederzeit aufheben.",
+        "unbanTitle": "{{name}} entsperren",
+        "unbanDesc": "Benutzer {{email}} erhält erneut Zugang zum Konto (Rolle: Benutzer).",
+        "banConfirm": "Sperren",
+        "unbanConfirm": "Entsperren"
+    },
+    "adminOpinions": {
+        "count": "{{total}} Meinungen",
+        "noOpinions": "Keine Meinungen",
+        "deleteTitle": "Meinung löschen",
+        "deleteDesc": "Die Meinung von \"{{user}}\" zu Drucksache {{num}} wird dauerhaft gelöscht.",
+        "deleteConfirm": "Löschen"
+    },
+    "adminRatings": {
+        "count": "{{total}} Bewertungen",
+        "noRatings": "Keine Bewertungen",
+        "mpId": "Abgeordneter ID",
+        "club": "Klub",
+        "deleteTitle": "Bewertung löschen",
+        "deleteDesc": "Bewertung {{rating}}/5 von \"{{user}}\" für Abgeordneten ID {{mpId}} wird dauerhaft gelöscht.",
+        "deleteConfirm": "Löschen"
+    },
+    "confirmModal": {
+        "confirm": "Bestätigen",
+        "cancel": "Abbrechen"
+    },
+    "reportModal": {
+        "title": "Meinung melden",
+        "authorLabel": "Autor",
+        "reasonLabel": "Meldegrund",
+        "placeholder": "Beschreiben Sie, warum diese Meinung unangemessen ist...",
+        "cancel": "Abbrechen",
+        "submit": "Melden",
+        "successTitle": "Meldung gesendet",
+        "successDesc": "Moderatoren werden diese Meinung prüfen.",
+        "close": "Schließen",
+        "sendError": "Fehler beim Senden der Meldung"
     }
 }

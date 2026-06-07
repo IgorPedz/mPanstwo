@@ -43,16 +43,19 @@ export const GRADIENT_MAP = {
 };
 
 export const NOTIFICATION_COLOR_MAP = {
-  amber: "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-300",
-
-  emerald:
-    "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-300",
-
-  red: "bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-300",
-  orange:
-    "bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-300",
-  blue: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300",
-  sky: "bg-sky-100 text-sky-600 dark:bg-sky-900/30 dark:text-sky-300",
-  indigo:
-    "bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-300",
+  amber:   "bg-amber-100   text-amber-600   dark:bg-amber-900/30   dark:text-amber-300",
+  emerald: "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-300",
+  red:     "bg-red-100     text-red-600     dark:bg-red-900/30     dark:text-red-300",
+  orange:  "bg-orange-100  text-orange-600  dark:bg-orange-900/30  dark:text-orange-300",
+  blue:    "bg-blue-100    text-blue-600    dark:bg-blue-900/30    dark:text-blue-300",
+  sky:     "bg-sky-100     text-sky-600     dark:bg-sky-900/30     dark:text-sky-300",
+  indigo:  "bg-indigo-100  text-indigo-600  dark:bg-indigo-900/30  dark:text-indigo-300",
+  violet:  "bg-violet-100  text-violet-600  dark:bg-violet-900/30  dark:text-violet-300",
+  rose:    "bg-rose-100    text-rose-600    dark:bg-rose-900/30    dark:text-rose-300",
+  yellow:  "bg-yellow-100  text-yellow-600  dark:bg-yellow-900/30  dark:text-yellow-300",
+  teal:    "bg-teal-100    text-teal-600    dark:bg-teal-900/30    dark:text-teal-300",
+  cyan:    "bg-cyan-100    text-cyan-600    dark:bg-cyan-900/30    dark:text-cyan-300",
+  pink:    "bg-pink-100    text-pink-600    dark:bg-pink-900/30    dark:text-pink-300",
+  slate:   "bg-slate-200   text-slate-600   dark:bg-slate-800      dark:text-slate-300",
+  green:   "bg-green-100   text-green-600   dark:bg-green-900/30   dark:text-green-300",
 };

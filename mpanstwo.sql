@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Cze 07, 2026 at 02:26 PM
+-- Generation Time: Cze 07, 2026 at 07:12 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -97,7 +97,11 @@ INSERT INTO `achievements` (`id`, `slug`, `category_id`, `xp_reward`, `metric_ke
 (124, 'opinions_10', 5, 150, 'opinions_written', 'user_metrics', 10, 'common', '2026-06-03 20:23:58', 1, 0),
 (125, 'opinions_25', 5, 200, 'opinions_written', 'user_metrics', 25, 'rare', '2026-06-03 20:24:15', 1, 0),
 (126, 'opinions_50', 5, 300, 'opinions_written', 'user_metrics', 50, 'epic', '2026-06-03 20:24:38', 1, 0),
-(127, 'opinions_100', 5, 450, 'opinions_written', 'user_metrics', 100, 'epic', '2026-06-03 20:24:58', 1, 0);
+(127, 'opinions_100', 5, 450, 'opinions_written', 'user_metrics', 100, 'epic', '2026-06-03 20:24:58', 1, 0),
+(130, 'opinion_endorsed_1', 5, 75, 'opinions_endorsed', 'user_metrics', 1, 'rare', '2026-06-07 18:03:03', 1, 0),
+(131, 'opinion_endorsed_3', 5, 150, 'opinions_endorsed', 'user_metrics', 3, 'rare', '2026-06-07 18:03:03', 1, 0),
+(132, 'opinion_endorsed_5', 5, 300, 'opinions_endorsed', 'user_metrics', 5, 'epic', '2026-06-07 18:03:03', 1, 0),
+(133, 'opinion_endorsed_10', 5, 600, 'opinions_endorsed', 'user_metrics', 10, 'legendary', '2026-06-07 18:03:03', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -120,6 +124,31 @@ INSERT INTO `achievement_categories` (`id`, `slug`) VALUES
 (4, 'marks'),
 (5, 'opinions'),
 (2, 'surveys');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `ban_appeals`
+--
+
+CREATE TABLE `ban_appeals` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `reason` varchar(1000) NOT NULL,
+  `admin_response` varchar(1000) DEFAULT NULL,
+  `status` enum('pending','approved','rejected') NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `reviewed_at` timestamp NULL DEFAULT NULL,
+  `reviewed_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ban_appeals`
+--
+
+INSERT INTO `ban_appeals` (`id`, `user_id`, `reason`, `admin_response`, `status`, `created_at`, `reviewed_at`, `reviewed_by`) VALUES
+(1, 2, 'rwqeqweqweqweqweqweqweqwe', NULL, 'approved', '2026-06-07 15:46:26', '2026-06-07 15:46:49', 4),
+(2, 2, 'q3rew', NULL, 'approved', '2026-06-07 16:29:20', '2026-06-07 16:29:42', 4);
 
 -- --------------------------------------------------------
 
@@ -221,7 +250,11 @@ CREATE TABLE `institution_follows` (
 --
 
 INSERT INTO `institution_follows` (`id`, `user_id`, `institution_id`, `institution_title`, `institution_type`, `icon`, `accent`, `path`, `created_at`, `last_notified_url`, `institution_title_key`) VALUES
-(23, 4, 'ministry_of_national_defence', 'Ministerstwo Obrony Narodowej', 'ministry', 'shield', 'cyan', '/ministry/ministry_of_national_defence', '2026-06-07 09:56:38', 'https://www.gov.pl/web/obrona-narodowa/wyznaczenia-na-nowe-stanowiska-sluzbowe3', NULL);
+(31, 4, 'council_of_ministers', 'Rada Ministrów', 'ministry', 'ministry', 'rose', '/ministry/council_of_ministers', '2026-06-07 12:49:47', 'https://www.gov.pl/web/premier/projekt-ustawy-o-zmianie-ustawy-o-nabywaniu-nieruchomosci-przez-cudzoziemcow-oraz-ustawy--prawo-o-notariacie2', 'dashboard.dashboardContent.council_of_ministers.title'),
+(32, 4, 'constitutional_tribunal', 'Trybunał Konstytucyjny', 'ministry', 'scale', 'purple', '/courts/constitutional_tribunal', '2026-06-07 12:50:30', 'https://trybunal.gov.pl/postepowanie-i-orzeczenia/wyroki/art/tryb-uchwalenia-ustawy-27', 'staticData.judicial.constitutional_tribunal.type'),
+(33, 4, 'ministry_of_national_defence', 'Ministerstwo Obrony Narodowej', 'ministry', 'shield', 'cyan', '/ministry/ministry_of_national_defence', '2026-06-07 12:50:45', 'https://www.gov.pl/web/obrona-narodowa/wyznaczenia-na-nowe-stanowiska-sluzbowe3', 'dashboard.dashboardContent.ministry_of_national_defence.title'),
+(34, 4, 'ministry_of_energy', 'Ministerstwo Energii', 'ministry', 'lighting', 'yellow', '/ministry/ministry_of_energy', '2026-06-07 12:50:53', 'https://www.gov.pl/web/energia/maksymalna-cena-detaliczna-paliw-obowiazujaca-w-dniach-6-8-czerwca-2026-r', 'dashboard.dashboardContent.ministry_of_energy.title'),
+(35, 4, 'ministry_of_finance', 'Ministerstwo Finansów i Gospodarki', 'ministry', 'banknotes', 'emerald-gradient', '/ministry/ministry_of_finance', '2026-06-07 12:55:18', 'https://www.gov.pl/web/finanse/zapraszamy-na-konsultacje-dotyczace-zmian-w-ksef', 'dashboard.dashboardContent.ministry_of_finance.title');
 
 -- --------------------------------------------------------
 
@@ -242,7 +275,10 @@ CREATE TABLE `institution_news_cache` (
 --
 
 INSERT INTO `institution_news_cache` (`institution_id`, `institution_type`, `last_news_title`, `last_news_url`, `checked_at`) VALUES
-('ministry_of_national_defence', 'ministry', 'Wyznaczenia na nowe stanowiska służbowe', 'https://www.gov.pl/web/obrona-narodowa/wyznaczenia-na-nowe-stanowiska-sluzbowe3', '2026-06-07 10:00:00');
+('council_of_ministers', 'ministry', 'Projekt ustawy o zmianie ustawy o nabywaniu nieruchomości przez cudzoziemców oraz ustawy - Prawo o notariacie', 'https://www.gov.pl/web/premier/projekt-ustawy-o-zmianie-ustawy-o-nabywaniu-nieruchomosci-przez-cudzoziemcow-oraz-ustawy--prawo-o-notariacie2', '2026-06-07 15:00:00'),
+('ministry_of_energy', 'ministry', 'Maksymalna cena detaliczna paliw obowiązująca w dniach 6-8 czerwca 2026 r.', 'https://www.gov.pl/web/energia/maksymalna-cena-detaliczna-paliw-obowiazujaca-w-dniach-6-8-czerwca-2026-r', '2026-06-07 15:00:00'),
+('ministry_of_finance', 'ministry', 'Zapraszamy na konsultacje dotyczące zmian w KSeF', 'https://www.gov.pl/web/finanse/zapraszamy-na-konsultacje-dotyczace-zmian-w-ksef', '2026-06-07 15:00:00'),
+('ministry_of_national_defence', 'ministry', 'Wyznaczenia na nowe stanowiska służbowe', 'https://www.gov.pl/web/obrona-narodowa/wyznaczenia-na-nowe-stanowiska-sluzbowe3', '2026-06-07 15:00:00');
 
 -- --------------------------------------------------------
 
@@ -255,18 +291,17 @@ CREATE TABLE `legislation_opinions` (
   `user_id` int(11) NOT NULL,
   `print_num` varchar(20) NOT NULL,
   `content` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `endorsed_by` int(11) DEFAULT NULL,
+  `endorsed_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `legislation_opinions`
 --
 
-INSERT INTO `legislation_opinions` (`id`, `user_id`, `print_num`, `content`, `created_at`) VALUES
-(1, 4, '2600', 'test', '2026-06-03 17:10:31'),
-(2, 4, '2597', 'Tragedia, a nie ustawa xd', '2026-06-03 18:20:35'),
-(3, 4, '2599', 'test', '2026-06-03 18:23:00'),
-(4, 4, '2599', 'qrtheqrwevr', '2026-06-03 22:20:34');
+INSERT INTO `legislation_opinions` (`id`, `user_id`, `print_num`, `content`, `created_at`, `endorsed_by`, `endorsed_at`) VALUES
+(7, 4, '2529', 'rtge', '2026-06-07 15:35:13', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -719,8 +754,7 @@ INSERT INTO `mp_ratings` (`id`, `user_id`, `mp_id`, `rating`, `created_at`, `upd
 (10, 4, 234, 1, '2026-06-03 19:35:56', '2026-06-03 19:35:56', 'PiS'),
 (11, 4, 146, 4, '2026-06-03 19:39:24', '2026-06-03 19:39:24', 'PiS'),
 (12, 4, 50, 5, '2026-06-03 22:45:02', '2026-06-03 22:45:02', 'PiS'),
-(13, 4, 7, 4, '2026-06-04 09:54:09', '2026-06-04 09:54:09', 'PiS'),
-(14, 4, 36, 5, '2026-06-04 10:08:09', '2026-06-04 10:08:09', 'Polska2050');
+(13, 4, 7, 4, '2026-06-04 09:54:09', '2026-06-04 09:54:09', 'PiS');
 
 -- --------------------------------------------------------
 
@@ -758,7 +792,62 @@ INSERT INTO `notifications` (`id`, `user_id`, `type`, `data`, `icon`, `color`, `
 (196, 8, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":240}', 'survey_completed', '', 1, '2026-05-19 19:16:28'),
 (197, 9, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":44,\"xp\":10}', 'trophy', '', 1, '2026-05-19 19:18:44'),
 (198, 9, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":60,\"xp\":10}', 'trophy', '', 1, '2026-05-19 19:18:44'),
-(199, 9, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', '', 1, '2026-05-19 19:18:44');
+(199, 9, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', '', 1, '2026-05-19 19:18:44'),
+(325, 4, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":2725}', 'survey_completed', 'emerald', 1, '2026-06-07 11:43:49'),
+(326, 4, 'OPINION_POSTED', '{\"xp\":10,\"totalXP\":2735}', 'messages', 'sky', 1, '2026-06-07 13:26:56'),
+(327, 11, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":60,\"achievementSlug\":\"active_1\",\"xp\":10}', 'trophy', 'amber', 0, '2026-06-07 13:28:44'),
+(328, 11, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":123,\"achievementSlug\":\"opinions_1\",\"xp\":50}', 'trophy', 'amber', 0, '2026-06-07 13:28:45'),
+(329, 11, 'OPINION_POSTED', '{\"xp\":10,\"totalXP\":10}', 'messages', 'sky', 0, '2026-06-07 13:28:45'),
+(330, 4, 'REPORT_RESOLVED', '{\"message\":\"Twoje zgłoszenie dotyczące opinii do druku 2529 zostało rozpatrzone — opinia została usunięta.\"}', 'flag', 'emerald', 1, '2026-06-07 13:32:34'),
+(331, 4, 'OPINION_POSTED', '{\"xp\":10,\"totalXP\":2745}', 'messages', 'sky', 1, '2026-06-07 13:35:13'),
+(332, 2, 'APPEAL_APPROVED', '{\"message\":\"Twoje odwołanie zostało rozpatrzone pozytywnie — konto zostało odblokowane. Możesz się teraz zalogować.\"}', 'unlock', 'emerald', 1, '2026-06-07 13:46:49'),
+(333, 2, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":60,\"achievementSlug\":\"active_1\",\"xp\":10}', 'trophy', 'amber', 1, '2026-06-07 13:59:16'),
+(334, 2, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":123,\"achievementSlug\":\"opinions_1\",\"xp\":50}', 'trophy', 'amber', 1, '2026-06-07 13:59:16'),
+(335, 2, 'OPINION_POSTED', '{\"xp\":10,\"totalXP\":10}', 'messages', 'sky', 1, '2026-06-07 13:59:16'),
+(336, 2, 'OPINION_ENDORSED', '{\"message\":\"Ekspert igor uznał Twoją opinię za ważną!\"}', 'star', 'amber', 1, '2026-06-07 14:01:11'),
+(337, 2, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":128,\"achievementSlug\":\"opinion_endorsed\",\"xp\":75}', 'trophy', 'amber', 1, '2026-06-07 14:01:11'),
+(338, 2, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":49,\"achievementSlug\":\"xp_100\",\"xp\":10}', 'trophy', 'amber', 1, '2026-06-07 14:05:37'),
+(339, 2, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":130,\"achievementSlug\":\"opinion_endorsed_1\",\"xp\":75}', 'trophy', 'amber', 1, '2026-06-07 14:05:37'),
+(340, 2, 'OPINION_POSTED', '{\"xp\":10,\"totalXP\":155}', 'messages', 'sky', 1, '2026-06-07 14:05:37'),
+(341, 2, 'OPINION_ENDORSED', '{\"message\":\"Ekspert igor uznał Twoją opinię za ważną!\"}', 'star', 'yellow', 1, '2026-06-07 14:06:02'),
+(342, 2, 'OPINION_ENDORSED', '{\"message\":\"Ekspert igor uznał Twoją opinię za ważną!\"}', 'star', 'yellow', 1, '2026-06-07 14:06:05'),
+(343, 2, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":131,\"achievementSlug\":\"opinion_endorsed_3\",\"xp\":150}', 'trophy', 'amber', 1, '2026-06-07 14:06:05'),
+(344, 2, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":44,\"achievementSlug\":\"survey_first\",\"xp\":25}', 'trophy', 'amber', 1, '2026-06-07 14:10:21'),
+(345, 2, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":440}', 'survey_completed', 'emerald', 1, '2026-06-07 14:10:21'),
+(346, 2, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":101,\"achievementSlug\":\"module_1\",\"xp\":10}', 'trophy', 'amber', 1, '2026-06-07 14:10:42'),
+(347, 2, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":120,\"achievementSlug\":\"lesson_1\",\"xp\":5}', 'trophy', 'amber', 1, '2026-06-07 14:10:56'),
+(348, 2, 'LEVEL_UP', '{\"oldRank\":{\"id\":6,\"level\":1,\"name\":\"rank1\",\"required_xp\":0,\"color\":\"#9CA3AF\",\"created_at\":\"2026-05-17T13:17:07.000Z\"},\"newRank\":{\"id\":7,\"level\":2,\"name\":\"rank2\",\"required_xp\":500,\"color\":\"#22C55E\",\"created_at\":\"2026-05-17T13:17:07.000Z\"},\"xp\":530}', 'trophy', 'yellow', 1, '2026-06-07 14:11:13'),
+(349, 2, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":102,\"achievementSlug\":\"module_10\",\"xp\":50}', 'trophy', 'amber', 1, '2026-06-07 14:11:13'),
+(350, 4, 'REPORT_RESOLVED', '{\"message\":\"Twoje zgłoszenie dotyczące opinii do druku 2529 zostało rozpatrzone — opinia została usunięta.\"}', 'flag', 'green', 1, '2026-06-07 14:14:17'),
+(351, 4, 'REPORT_DISMISSED', '{\"message\":\"Twoje zgłoszenie dotyczące opinii do druku 2529 zostało odrzucone — opinia nie naruszała zasad.\"}', 'flag', 'slate', 1, '2026-06-07 14:14:19'),
+(352, 2, 'APPEAL_APPROVED', '{\"message\":\"Twoje odwołanie zostało rozpatrzone pozytywnie — konto zostało odblokowane. Możesz się teraz zalogować.\"}', 'unlock', 'cyan', 0, '2026-06-07 14:29:42'),
+(353, 4, 'REPORT_RESOLVED', '{\"message\":\"Twoje zgłoszenie dotyczące opinii do druku 2529 zostało rozpatrzone — opinia została usunięta.\"}', 'flag', 'green', 1, '2026-06-07 15:07:33');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `opinion_reports`
+--
+
+CREATE TABLE `opinion_reports` (
+  `id` int(11) NOT NULL,
+  `opinion_id` int(11) NOT NULL,
+  `reporter_id` int(11) NOT NULL,
+  `reason` varchar(500) NOT NULL,
+  `status` enum('pending','reviewed','dismissed') NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `reviewed_at` timestamp NULL DEFAULT NULL,
+  `reviewed_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `opinion_reports`
+--
+
+INSERT INTO `opinion_reports` (`id`, `opinion_id`, `reporter_id`, `reason`, `status`, `created_at`, `reviewed_at`, `reviewed_by`) VALUES
+(1, 6, 4, 'ewqeqwewqeqw', 'reviewed', '2026-06-07 15:32:22', NULL, NULL),
+(3, 8, 4, 'rtge', 'reviewed', '2026-06-07 17:07:26', '2026-06-07 17:07:33', 4),
+(4, 9, 4, 'wer', 'reviewed', '2026-06-07 16:13:02', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -909,7 +998,8 @@ CREATE TABLE `survey_answers` (
 --
 
 INSERT INTO `survey_answers` (`id`, `survey_id`, `user_id`, `answers`, `created_at`) VALUES
-(255, 1, 4, '{\"1\":\"yes\",\"2\":\"yes\",\"3\":\"yes\"}', '2026-06-06 20:42:34');
+(256, 1, 4, '{\"1\":\"yes\",\"2\":\"yes\",\"3\":\"yes\"}', '2026-06-07 13:43:49'),
+(257, 1, 2, '{\"1\":\"yes\",\"2\":\"yes\",\"3\":\"yes\"}', '2026-06-07 16:10:21');
 
 -- --------------------------------------------------------
 
@@ -943,15 +1033,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `is_strong`, `created_at`, `reset_token`, `reset_token_exp`, `login_streak`, `last_login_date`, `active_days`, `is_verified`, `verification_code`, `verification_expires`, `last_streak_notified_date`, `xp`, `level`, `role`) VALUES
-(1, '', 'igorrpedziwilk@gmail.com', '$2b$10$KoKNM42i0rsw3C0F31thPuOMx4kiUi/zPY8NkS/HHKgl/aMiZ5uDa', 0, '2026-02-24 20:36:07', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
-(2, 'qwe', 'igor@wp.pl', '$2b$10$nGHb96MKg/ozPM/yBSl3iONFyrhrgyxpfePYt9oVyxON/AuTkqGI.', 0, '2026-02-24 20:45:14', '56fb4d26-e893-4a29-a772-7529ac6ec39c', 20260514, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
-(3, 'IgorPedz', 'pedz@wp.pl', '$2b$10$L10qTJ1I9g3wQEnhIOwvfuJAmtu8Aj6wjZwj2clDfs41aZiYPUySK', 0, '2026-05-10 12:18:39', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
-(4, 'igor', 'qigorq@wp.pl', '$2b$10$P4AlEULBNpKLfexNz/DqD.A4GsKn74S27bYX5jh9tLxTiJH2OaPQy', 1, '2026-05-14 18:56:00', 'c5be64bf-e8cb-4c0e-9dc8-64b27b0f323b', 1779820035820, 2, '2026-06-07', 40, 1, NULL, NULL, '2026-06-07', 2675, 3, 'Użytkownik'),
-(5, 'test', 'test@wp.pl', '$2b$10$QGBop034Lo4eRK5mtynH0O.aauocBwppzn6YnuR/8CHnZ12SR4olO', 0, '2026-05-14 20:34:46', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
-(6, 'testowekonto', 'testtest@wp.pl', '$2b$10$OCUhJzWMZVnWlR3vTIaM8uv4joGWMUJkZG44IVTHlfkD/Zv72Jh66', 0, '2026-05-15 12:12:30', NULL, NULL, 1, '2026-05-15', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
-(7, 'igorpedzi', 'pedziwilk@gmail.com', '$2b$10$5jqt3ellaNs2D5bmibQ9X.62s9kfLf1br780mOJVBtMqDLhI.E2..', 1, '2026-05-17 14:49:27', NULL, NULL, 1, '2026-05-17', 1, 0, NULL, NULL, '2026-05-17', 60, 1, 'Użytkownik'),
-(8, 'IgorTest', 'testtesttest@wp.pl', '$2b$10$t9JNYXg5xvtESp3BawVX4uQeJH8pRKseRaMN7oHHcCaX9kmzq8VbG', 0, '2026-05-19 19:15:07', NULL, NULL, 1, '2026-05-19', 1, 0, NULL, NULL, '2026-05-19', 240, 1, 'Użytkownik'),
-(9, 'testowekonto', 'test@gmail.com', '$2b$10$SjSHuuE0rgyB2iaYVkil/OQMswW/oAJHWh36btr5x.ZSKZqSaIcJq', 1, '2026-05-19 19:18:34', NULL, NULL, 1, '2026-05-19', 1, 0, NULL, NULL, '2026-05-19', 70, 1, 'Użytkownik');
+(1, '', 'igorrpedziwilk@gmail.com', '$2b$10$KoKNM42i0rsw3C0F31thPuOMx4kiUi/zPY8NkS/HHKgl/aMiZ5uDa', 0, '2026-02-24 20:36:07', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Zbanowany'),
+(2, 'qwe', 'igor@wp.pl', '$2b$10$nGHb96MKg/ozPM/yBSl3iONFyrhrgyxpfePYt9oVyxON/AuTkqGI.', 0, '2026-02-24 20:45:14', '56fb4d26-e893-4a29-a772-7529ac6ec39c', 20260514, 1, '2026-06-07', 2, 0, NULL, NULL, '2026-06-07', 530, 1, 'Zbanowany'),
+(3, 'IgorPedz', 'pedz@wp.pl', '$2b$10$L10qTJ1I9g3wQEnhIOwvfuJAmtu8Aj6wjZwj2clDfs41aZiYPUySK', 0, '2026-05-10 12:18:39', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Zbanowany'),
+(4, 'igor', 'qigorq@wp.pl', '$2b$10$P4AlEULBNpKLfexNz/DqD.A4GsKn74S27bYX5jh9tLxTiJH2OaPQy', 1, '2026-05-14 18:56:00', 'c5be64bf-e8cb-4c0e-9dc8-64b27b0f323b', 1779820035820, 2, '2026-06-07', 40, 1, NULL, NULL, '2026-06-07', 2745, 3, 'Administrator'),
+(5, 'test', 'test@wp.pl', '$2b$10$QGBop034Lo4eRK5mtynH0O.aauocBwppzn6YnuR/8CHnZ12SR4olO', 0, '2026-05-14 20:34:46', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Moderator'),
+(6, 'testowekonto', 'testtest@wp.pl', '$2b$10$OCUhJzWMZVnWlR3vTIaM8uv4joGWMUJkZG44IVTHlfkD/Zv72Jh66', 0, '2026-05-15 12:12:30', NULL, NULL, 1, '2026-05-15', 1, 0, NULL, NULL, NULL, 0, 1, 'Zbanowany'),
+(7, 'igorpedzi', 'pedziwilk@gmail.com', '$2b$10$5jqt3ellaNs2D5bmibQ9X.62s9kfLf1br780mOJVBtMqDLhI.E2..', 1, '2026-05-17 14:49:27', NULL, NULL, 1, '2026-05-17', 1, 0, NULL, NULL, '2026-05-17', 60, 1, 'Zbanowany'),
+(8, 'IgorTest', 'testtesttest@wp.pl', '$2b$10$t9JNYXg5xvtESp3BawVX4uQeJH8pRKseRaMN7oHHcCaX9kmzq8VbG', 0, '2026-05-19 19:15:07', NULL, NULL, 1, '2026-05-19', 1, 0, NULL, NULL, '2026-05-19', 240, 1, 'Zbanowany'),
+(9, 'testowekonto', 'test@gmail.com', '$2b$10$SjSHuuE0rgyB2iaYVkil/OQMswW/oAJHWh36btr5x.ZSKZqSaIcJq', 1, '2026-05-19 19:18:34', NULL, NULL, 1, '2026-05-19', 1, 0, NULL, NULL, '2026-05-19', 70, 1, 'Zbanowany'),
+(10, 'TestoweKontonumer10', 'test10@wp.pl', '$2b$10$GWQG9JFgVX80NO2JKg6mOu3tMj2pOOm5OEYQTEee8D2jAFh5NqUoi', 1, '2026-06-07 15:21:30', NULL, NULL, 1, '2026-06-07', 1, 0, NULL, NULL, '2026-06-07', 0, 1, 'Zbanowany'),
+(11, 'nowe', 'nowe@wp.pl', '$2b$10$P.DdyKSJmdOeP5JfVUJhM.K6F3M9CBEwhSQpFmOksGN.DOby9EVZe', 1, '2026-06-07 15:28:36', NULL, NULL, 1, '2026-06-07', 1, 0, NULL, NULL, '2026-06-07', 70, 1, 'Użytkownik');
 
 -- --------------------------------------------------------
 
@@ -985,15 +1077,15 @@ INSERT INTO `user_achievements` (`id`, `user_id`, `achievement_id`, `progress`, 
 (356, 4, 52, 3, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
 (357, 4, 53, 7, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
 (358, 4, 54, 14, 1, '2026-05-19 22:01:59', '2026-05-19 19:36:41'),
-(359, 4, 55, 1, 0, NULL, '2026-05-19 19:36:41'),
+(359, 4, 55, 2, 0, NULL, '2026-05-19 19:36:41'),
 (360, 4, 60, 1, 1, '2026-05-19 19:49:31', '2026-05-19 19:36:41'),
 (361, 4, 61, 7, 1, '2026-05-19 19:49:31', '2026-05-19 19:36:41'),
 (362, 4, 62, 14, 1, '2026-05-19 19:49:31', '2026-05-19 19:36:41'),
 (363, 4, 63, 30, 1, '2026-05-28 17:48:35', '2026-05-19 19:36:41'),
-(364, 4, 64, 39, 0, NULL, '2026-05-19 19:36:41'),
-(365, 4, 65, 39, 0, NULL, '2026-05-19 19:36:41'),
-(366, 4, 66, 39, 0, NULL, '2026-05-19 19:36:41'),
-(367, 4, 67, 39, 0, NULL, '2026-05-19 19:36:41'),
+(364, 4, 64, 40, 0, NULL, '2026-05-19 19:36:41'),
+(365, 4, 65, 40, 0, NULL, '2026-05-19 19:36:41'),
+(366, 4, 66, 40, 0, NULL, '2026-05-19 19:36:41'),
+(367, 4, 67, 40, 0, NULL, '2026-05-19 19:36:41'),
 (490, 8, 44, 1, 1, '2026-05-19 21:15:37', '2026-05-19 21:15:37'),
 (491, 8, 45, 4, 0, NULL, '2026-05-19 21:15:37'),
 (492, 8, 46, 4, 0, NULL, '2026-05-19 21:15:37'),
@@ -1062,10 +1154,118 @@ INSERT INTO `user_achievements` (`id`, `user_id`, `achievement_id`, `progress`, 
 (2008, 4, 86, 9, 0, NULL, '2026-06-03 18:30:24'),
 (2102, 4, 84, 3, 0, NULL, '2026-06-03 18:33:54'),
 (2205, 4, 123, 1, 1, '2026-06-03 20:20:35', '2026-06-03 20:20:35'),
-(2254, 4, 124, 4, 0, NULL, '2026-06-03 21:35:56'),
-(2255, 4, 125, 4, 0, NULL, '2026-06-03 21:35:56'),
-(2256, 4, 126, 4, 0, NULL, '2026-06-03 21:35:56'),
-(2257, 4, 127, 4, 0, NULL, '2026-06-03 21:35:56');
+(2254, 4, 124, 6, 0, NULL, '2026-06-03 21:35:56'),
+(2255, 4, 125, 6, 0, NULL, '2026-06-03 21:35:56'),
+(2256, 4, 126, 6, 0, NULL, '2026-06-03 21:35:56'),
+(2257, 4, 127, 6, 0, NULL, '2026-06-03 21:35:56'),
+(2583, 11, 44, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2584, 11, 45, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2585, 11, 46, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2586, 11, 47, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2587, 11, 48, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2588, 11, 49, 10, 0, NULL, '2026-06-07 17:28:44'),
+(2589, 11, 50, 10, 0, NULL, '2026-06-07 17:28:44'),
+(2590, 11, 51, 10, 0, NULL, '2026-06-07 17:28:44'),
+(2591, 11, 52, 1, 0, NULL, '2026-06-07 17:28:44'),
+(2592, 11, 53, 1, 0, NULL, '2026-06-07 17:28:44'),
+(2593, 11, 54, 1, 0, NULL, '2026-06-07 17:28:44'),
+(2594, 11, 55, 1, 0, NULL, '2026-06-07 17:28:44'),
+(2595, 11, 60, 1, 1, '2026-06-07 17:28:44', '2026-06-07 17:28:44'),
+(2596, 11, 61, 1, 0, NULL, '2026-06-07 17:28:44'),
+(2597, 11, 62, 1, 0, NULL, '2026-06-07 17:28:44'),
+(2598, 11, 63, 1, 0, NULL, '2026-06-07 17:28:44'),
+(2599, 11, 64, 1, 0, NULL, '2026-06-07 17:28:44'),
+(2600, 11, 65, 1, 0, NULL, '2026-06-07 17:28:44'),
+(2601, 11, 66, 1, 0, NULL, '2026-06-07 17:28:44'),
+(2602, 11, 67, 1, 0, NULL, '2026-06-07 17:28:44'),
+(2603, 11, 70, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2604, 11, 71, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2605, 11, 72, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2606, 11, 73, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2607, 11, 74, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2608, 11, 75, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2609, 11, 76, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2610, 11, 77, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2611, 11, 78, 0, 0, NULL, '2026-06-07 17:28:44'),
+(2612, 11, 79, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2613, 11, 80, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2614, 11, 81, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2615, 11, 82, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2616, 11, 83, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2617, 11, 84, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2618, 11, 85, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2619, 11, 86, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2620, 11, 101, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2621, 11, 102, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2622, 11, 103, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2623, 11, 104, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2624, 11, 110, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2625, 11, 111, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2626, 11, 112, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2627, 11, 120, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2628, 11, 121, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2629, 11, 122, 0, 0, NULL, '2026-06-07 17:28:45'),
+(2630, 11, 123, 1, 1, '2026-06-07 17:28:45', '2026-06-07 17:28:45'),
+(2631, 11, 124, 1, 0, NULL, '2026-06-07 17:28:45'),
+(2632, 11, 125, 1, 0, NULL, '2026-06-07 17:28:45'),
+(2633, 11, 126, 1, 0, NULL, '2026-06-07 17:28:45'),
+(2634, 11, 127, 1, 0, NULL, '2026-06-07 17:28:45'),
+(2662, 2, 44, 1, 1, '2026-06-07 18:10:21', '2026-06-07 17:59:16'),
+(2663, 2, 45, 1, 0, NULL, '2026-06-07 17:59:16'),
+(2664, 2, 46, 1, 0, NULL, '2026-06-07 17:59:16'),
+(2665, 2, 47, 1, 0, NULL, '2026-06-07 17:59:16'),
+(2666, 2, 48, 1, 0, NULL, '2026-06-07 17:59:16'),
+(2667, 2, 49, 100, 1, '2026-06-07 18:05:37', '2026-06-07 17:59:16'),
+(2668, 2, 50, 530, 0, NULL, '2026-06-07 17:59:16'),
+(2669, 2, 51, 530, 0, NULL, '2026-06-07 17:59:16'),
+(2670, 2, 52, 1, 0, NULL, '2026-06-07 17:59:16'),
+(2671, 2, 53, 1, 0, NULL, '2026-06-07 17:59:16'),
+(2672, 2, 54, 1, 0, NULL, '2026-06-07 17:59:16'),
+(2673, 2, 55, 1, 0, NULL, '2026-06-07 17:59:16'),
+(2674, 2, 60, 1, 1, '2026-06-07 17:59:16', '2026-06-07 17:59:16'),
+(2675, 2, 61, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2676, 2, 62, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2677, 2, 63, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2678, 2, 64, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2679, 2, 65, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2680, 2, 66, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2681, 2, 67, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2682, 2, 70, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2683, 2, 71, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2684, 2, 72, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2685, 2, 73, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2686, 2, 74, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2687, 2, 75, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2688, 2, 76, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2689, 2, 77, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2690, 2, 78, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2691, 2, 79, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2692, 2, 80, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2693, 2, 81, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2694, 2, 82, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2695, 2, 83, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2696, 2, 84, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2697, 2, 85, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2698, 2, 86, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2699, 2, 101, 1, 1, '2026-06-07 18:10:42', '2026-06-07 17:59:16'),
+(2700, 2, 102, 10, 1, '2026-06-07 18:11:13', '2026-06-07 17:59:16'),
+(2701, 2, 103, 12, 0, NULL, '2026-06-07 17:59:16'),
+(2702, 2, 104, 12, 0, NULL, '2026-06-07 17:59:16'),
+(2703, 2, 110, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2704, 2, 111, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2705, 2, 112, 0, 0, NULL, '2026-06-07 17:59:16'),
+(2706, 2, 120, 1, 1, '2026-06-07 18:10:56', '2026-06-07 17:59:16'),
+(2707, 2, 121, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2708, 2, 122, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2709, 2, 123, 1, 1, '2026-06-07 17:59:16', '2026-06-07 17:59:16'),
+(2710, 2, 124, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2711, 2, 125, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2712, 2, 126, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2713, 2, 127, 2, 0, NULL, '2026-06-07 17:59:16'),
+(2815, 2, 130, 1, 1, '2026-06-07 18:05:37', '2026-06-07 18:05:37'),
+(2816, 2, 131, 3, 1, '2026-06-07 18:06:05', '2026-06-07 18:05:37'),
+(2817, 2, 132, 3, 0, NULL, '2026-06-07 18:05:37'),
+(2818, 2, 133, 3, 0, NULL, '2026-06-07 18:05:37');
 
 -- --------------------------------------------------------
 
@@ -1146,7 +1346,9 @@ INSERT INTO `user_lesson_progress` (`id`, `user_id`, `lesson_id`, `completed`, `
 (37, 4, 33, 1, 1, '2026-05-31 14:22:31'),
 (38, 4, 34, 1, 1, '2026-05-31 14:22:49'),
 (39, 4, 35, 1, 1, '2026-05-31 14:23:08'),
-(40, 4, 36, 1, 1, '2026-05-31 14:23:30');
+(40, 4, 36, 1, 1, '2026-05-31 14:23:30'),
+(41, 2, 1, 1, 1, '2026-06-07 16:10:56'),
+(42, 2, 2, 1, 1, '2026-06-07 16:11:24');
 
 -- --------------------------------------------------------
 
@@ -1179,18 +1381,22 @@ CREATE TABLE `user_metrics` (
   `club_rated_centrum` smallint(6) DEFAULT 0,
   `club_rated_demokracja` smallint(6) DEFAULT 0,
   `coalition_rated` smallint(6) DEFAULT 0,
-  `opposition_rated` smallint(6) DEFAULT 0
+  `opposition_rated` smallint(6) DEFAULT 0,
+  `opinions_endorsed` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_metrics`
 --
 
-INSERT INTO `user_metrics` (`user_id`, `votes_count`, `survey_completed`, `opinions_written`, `courses_completed`, `modules_completed`, `comments_count`, `lessons_completed`, `achievements_unlocked`, `created_surveys`, `updated_at`, `mps_rated`, `clubs_rated_count`, `club_rated_ko`, `club_rated_lewica`, `club_rated_razem`, `club_rated_psl_td`, `club_rated_polska2050`, `club_rated_pis`, `club_rated_konfederacja`, `club_rated_konfederacja_kp`, `club_rated_centrum`, `club_rated_demokracja`, `coalition_rated`, `opposition_rated`) VALUES
-(4, 0, 76, 4, 7, 81, 0, 13, 0, 0, '2026-06-06 22:42:34', 13, 3, 1, 0, 0, 0, 1, 5, 0, 3, 0, 1, 2, 9),
-(7, 0, 1, 0, 0, 0, 0, 0, 0, 0, '2026-05-17 16:49:42', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(8, 0, 4, 0, 0, 0, 0, 0, 0, 0, '2026-05-19 21:16:28', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(9, 0, 1, 0, 0, 0, 0, 0, 0, 0, '2026-05-19 21:18:44', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `user_metrics` (`user_id`, `votes_count`, `survey_completed`, `opinions_written`, `courses_completed`, `modules_completed`, `comments_count`, `lessons_completed`, `achievements_unlocked`, `created_surveys`, `updated_at`, `mps_rated`, `clubs_rated_count`, `club_rated_ko`, `club_rated_lewica`, `club_rated_razem`, `club_rated_psl_td`, `club_rated_polska2050`, `club_rated_pis`, `club_rated_konfederacja`, `club_rated_konfederacja_kp`, `club_rated_centrum`, `club_rated_demokracja`, `coalition_rated`, `opposition_rated`, `opinions_endorsed`) VALUES
+(2, 0, 1, 2, 0, 12, 0, 2, 0, 0, '2026-06-07 18:11:25', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3),
+(4, 0, 77, 6, 7, 81, 0, 13, 0, 0, '2026-06-07 17:35:13', 13, 3, 1, 0, 0, 0, 1, 5, 0, 3, 0, 1, 2, 9, 0),
+(7, 0, 1, 0, 0, 0, 0, 0, 0, 0, '2026-05-17 16:49:42', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(8, 0, 4, 0, 0, 0, 0, 0, 0, 0, '2026-05-19 21:16:28', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(9, 0, 1, 0, 0, 0, 0, 0, 0, 0, '2026-05-19 21:18:44', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(10, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2026-06-07 17:21:30', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(11, 0, 0, 1, 0, 0, 0, 0, 0, 0, '2026-06-07 17:28:44', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1376,7 +1582,19 @@ INSERT INTO `user_module_progress` (`id`, `user_id`, `lesson_id`, `module_index`
 (232, 4, 36, 5, 1, '2026-05-31 14:23:14'),
 (235, 4, 7, 3, 1, '2026-06-04 14:58:19'),
 (236, 4, 7, 4, 1, '2026-06-04 14:58:22'),
-(237, 4, 7, 5, 1, '2026-06-04 14:58:27');
+(237, 4, 7, 5, 1, '2026-06-04 14:58:27'),
+(238, 2, 1, 0, 1, '2026-06-07 16:10:42'),
+(239, 2, 1, 1, 1, '2026-06-07 16:10:43'),
+(240, 2, 1, 2, 1, '2026-06-07 16:10:44'),
+(241, 2, 1, 3, 1, '2026-06-07 16:10:45'),
+(242, 2, 1, 4, 1, '2026-06-07 16:10:46'),
+(243, 2, 1, 5, 1, '2026-06-07 16:10:47'),
+(244, 2, 2, 0, 1, '2026-06-07 16:11:09'),
+(245, 2, 2, 1, 1, '2026-06-07 16:11:10'),
+(246, 2, 2, 2, 1, '2026-06-07 16:11:12'),
+(247, 2, 2, 3, 1, '2026-06-07 16:11:13'),
+(248, 2, 2, 4, 1, '2026-06-07 16:11:14'),
+(249, 2, 2, 5, 1, '2026-06-07 16:11:15');
 
 -- --------------------------------------------------------
 
@@ -1641,7 +1859,26 @@ INSERT INTO `xp_logs` (`id`, `user_id`, `amount`, `reason`, `created_at`) VALUES
 (220, 4, 5, 'MP_RATED', '2026-06-04 00:45:02'),
 (221, 4, 5, 'MP_RATED', '2026-06-04 11:54:09'),
 (222, 4, 5, 'MP_RATED', '2026-06-04 12:08:09'),
-(223, 4, 50, 'SURVEY_COMPLETED', '2026-06-06 22:42:34');
+(223, 4, 50, 'SURVEY_COMPLETED', '2026-06-06 22:42:34'),
+(224, 4, 50, 'SURVEY_COMPLETED', '2026-06-07 15:43:49'),
+(225, 4, 10, 'OPINION_POSTED', '2026-06-07 17:26:56'),
+(226, 11, 10, 'OPINION_POSTED', '2026-06-07 17:28:44'),
+(227, 11, 10, 'ACHIEVEMENT', '2026-06-07 17:28:44'),
+(228, 11, 50, 'ACHIEVEMENT', '2026-06-07 17:28:45'),
+(229, 4, 10, 'OPINION_POSTED', '2026-06-07 17:35:13'),
+(230, 2, 10, 'OPINION_POSTED', '2026-06-07 17:59:16'),
+(231, 2, 10, 'ACHIEVEMENT', '2026-06-07 17:59:16'),
+(232, 2, 50, 'ACHIEVEMENT', '2026-06-07 17:59:16'),
+(233, 2, 75, 'ACHIEVEMENT', '2026-06-07 18:01:11'),
+(234, 2, 10, 'OPINION_POSTED', '2026-06-07 18:05:37'),
+(235, 2, 10, 'ACHIEVEMENT', '2026-06-07 18:05:37'),
+(236, 2, 75, 'ACHIEVEMENT', '2026-06-07 18:05:37'),
+(237, 2, 150, 'ACHIEVEMENT', '2026-06-07 18:06:05'),
+(238, 2, 50, 'SURVEY_COMPLETED', '2026-06-07 18:10:21'),
+(239, 2, 25, 'ACHIEVEMENT', '2026-06-07 18:10:21'),
+(240, 2, 10, 'ACHIEVEMENT', '2026-06-07 18:10:42'),
+(241, 2, 5, 'ACHIEVEMENT', '2026-06-07 18:10:56'),
+(242, 2, 50, 'ACHIEVEMENT', '2026-06-07 18:11:13');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -1661,6 +1898,14 @@ ALTER TABLE `achievements`
 ALTER TABLE `achievement_categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `slug` (`slug`);
+
+--
+-- Indeksy dla tabeli `ban_appeals`
+--
+ALTER TABLE `ban_appeals`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_appeal_user` (`user_id`),
+  ADD KEY `fk_appeal_reviewer` (`reviewed_by`);
 
 --
 -- Indeksy dla tabeli `courses`
@@ -1728,6 +1973,15 @@ ALTER TABLE `mp_ratings`
 --
 ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `opinion_reports`
+--
+ALTER TABLE `opinion_reports`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uq_report` (`opinion_id`,`reporter_id`),
+  ADD KEY `fk_opinion` (`opinion_id`),
+  ADD KEY `fk_reporter` (`reporter_id`);
 
 --
 -- Indeksy dla tabeli `options`
@@ -1828,13 +2082,19 @@ ALTER TABLE `xp_logs`
 -- AUTO_INCREMENT for table `achievements`
 --
 ALTER TABLE `achievements`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 
 --
 -- AUTO_INCREMENT for table `achievement_categories`
 --
 ALTER TABLE `achievement_categories`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `ban_appeals`
+--
+ALTER TABLE `ban_appeals`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `courses`
@@ -1852,13 +2112,13 @@ ALTER TABLE `dashboard_content`
 -- AUTO_INCREMENT for table `institution_follows`
 --
 ALTER TABLE `institution_follows`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `legislation_opinions`
 --
 ALTER TABLE `legislation_opinions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `lessons`
@@ -1888,7 +2148,13 @@ ALTER TABLE `mp_ratings`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=325;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=354;
+
+--
+-- AUTO_INCREMENT for table `opinion_reports`
+--
+ALTER TABLE `opinion_reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `options`
@@ -1918,19 +2184,19 @@ ALTER TABLE `surveys`
 -- AUTO_INCREMENT for table `survey_answers`
 --
 ALTER TABLE `survey_answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user_achievements`
 --
 ALTER TABLE `user_achievements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2529;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3651;
 
 --
 -- AUTO_INCREMENT for table `user_courses`
@@ -1942,19 +2208,19 @@ ALTER TABLE `user_courses`
 -- AUTO_INCREMENT for table `user_lesson_progress`
 --
 ALTER TABLE `user_lesson_progress`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `user_module_progress`
 --
 ALTER TABLE `user_module_progress`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250;
 
 --
 -- AUTO_INCREMENT for table `xp_logs`
 --
 ALTER TABLE `xp_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
 
 --
 -- Constraints for dumped tables

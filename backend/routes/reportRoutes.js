@@ -1,0 +1,20 @@
+const express = require("express");
+const moderatorMiddleware = require("../middleware/moderatorMiddleware");
+const {
+  reportOpinion,
+  getReports,
+  dismissReport,
+  deleteReportedOpinion,
+} = require("../controllers/reportController");
+
+const router = express.Router();
+
+// User endpoint (wymaga tylko zalogowania — sprawdza authMiddleware globalny)
+router.post("/report/opinion/:id", reportOpinion);
+
+// Admin/Moderator endpoints
+router.get("/admin/reports",                       moderatorMiddleware, getReports);
+router.put("/admin/reports/:id/dismiss",           moderatorMiddleware, dismissReport);
+router.delete("/admin/reports/:id/delete-opinion", moderatorMiddleware, deleteReportedOpinion);
+
+module.exports = router;

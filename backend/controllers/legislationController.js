@@ -1,6 +1,9 @@
 const axios = require("axios");
 const db = require("../db");
-const { handleEvent } = require("../services/event.service");
+const { handleEvent }       = require("../services/event.service");
+const sendNotification      = require("../utils/notification");
+const { checkAchievements } = require("../services/achievement.service");
+const { incrementMetric }   = require("../services/metrics.service");
 
 const SEJM_API = "https://api.sejm.gov.pl";
 const TERM = "term10";
@@ -328,29 +331,35 @@ async function getLegislativeProcess(req, res) {
   }
 }
 
+const OPINIONS_SELECT = `
+  SELECT
+    lo.id,
+    lo.user_id        AS author_id,
+    lo.content,
+    lo.created_at,
+    lo.endorsed_by,
+    lo.endorsed_at,
+    u.name            AS author_name,
+    u.role            AS author_role,
+    r.name            AS rank_name,
+    r.color           AS rank_color,
+    r.level           AS rank_level,
+    exp.name          AS endorser_name
+  FROM legislation_opinions lo
+  JOIN users u ON lo.user_id = u.id
+  LEFT JOIN users exp ON exp.id = lo.endorsed_by
+  LEFT JOIN ranks r ON r.id = (
+    SELECT id FROM ranks
+    WHERE required_xp <= u.xp
+    ORDER BY required_xp DESC
+    LIMIT 1
+  )`;
+
 async function getOpinions(req, res) {
   try {
     const { num } = req.params;
     const [rows] = await db.query(
-      `SELECT
-         lo.id,
-         lo.content,
-         lo.created_at,
-         u.name  AS author_name,
-         u.role  AS author_role,
-         r.name  AS rank_name,
-         r.color AS rank_color,
-         r.level AS rank_level
-       FROM legislation_opinions lo
-       JOIN users u ON lo.user_id = u.id
-       LEFT JOIN ranks r ON r.id = (
-         SELECT id FROM ranks
-         WHERE required_xp <= u.xp
-         ORDER BY required_xp DESC
-         LIMIT 1
-       )
-       WHERE lo.print_num = ?
-       ORDER BY lo.created_at DESC`,
+      `${OPINIONS_SELECT} WHERE lo.print_num = ? ORDER BY lo.created_at DESC`,
       [num]
     );
     res.json(rows);
@@ -378,25 +387,7 @@ async function postOpinion(req, res) {
     await handleEvent(userId, "OPINION_POSTED");
 
     const [rows] = await db.query(
-      `SELECT
-         lo.id,
-         lo.content,
-         lo.created_at,
-         u.name  AS author_name,
-         u.role  AS author_role,
-         r.name  AS rank_name,
-         r.color AS rank_color,
-         r.level AS rank_level
-       FROM legislation_opinions lo
-       JOIN users u ON lo.user_id = u.id
-       LEFT JOIN ranks r ON r.id = (
-         SELECT id FROM ranks
-         WHERE required_xp <= u.xp
-         ORDER BY required_xp DESC
-         LIMIT 1
-       )
-       WHERE lo.print_num = ?
-       ORDER BY lo.created_at DESC`,
+      `${OPINIONS_SELECT} WHERE lo.print_num = ? ORDER BY lo.created_at DESC`,
       [num]
     );
 
@@ -407,4 +398,113 @@ async function postOpinion(req, res) {
   }
 }
 
-module.exports = { getAllBills, getBillDetails, getLegislativeProcess, getOpinions, postOpinion, getBillVotings, getBillVotingDetail, warmupBillsCache: fetchAllBills };
+/* ─── Bezpieczne dodanie kolumny jeśli nie istnieje ─────────────────────── */
+async function addColumnIfMissing(table, column, definition) {
+  const [[row]] = await db.query(
+    `SELECT COUNT(*) AS cnt
+     FROM INFORMATION_SCHEMA.COLUMNS
+     WHERE TABLE_SCHEMA = DATABASE()
+       AND TABLE_NAME   = ?
+       AND COLUMN_NAME  = ?`,
+    [table, column]
+  );
+  if (!row.cnt) {
+    await db.query(`ALTER TABLE \`${table}\` ADD COLUMN \`${column}\` ${definition}`);
+  }
+}
+
+/* ─── Migracja: kolumny endorsementu + achievements ─────────────────────── */
+async function ensureEndorsementSetup() {
+  // Kolumny w legislation_opinions
+  await addColumnIfMissing("legislation_opinions", "endorsed_by", "INT NULL DEFAULT NULL");
+  await addColumnIfMissing("legislation_opinions", "endorsed_at", "TIMESTAMP NULL DEFAULT NULL");
+
+  // Kolumna metryki w user_metrics
+  await addColumnIfMissing("user_metrics", "opinions_endorsed", "INT NOT NULL DEFAULT 0");
+
+  // Usuń stary achievement bez numeru (jeśli istnieje z poprzedniej migracji)
+  // Najpierw usuń powiązane user_achievements, żeby nie złamać FK
+  await db.query(`
+    DELETE ua FROM user_achievements ua
+    JOIN achievements a ON a.id = ua.achievement_id
+    WHERE a.slug = 'opinion_endorsed'
+  `);
+  await db.query(`DELETE FROM achievements WHERE slug = 'opinion_endorsed'`);
+
+  // Znajdź kategorię "opinions"
+  const [[cat]] = await db.query(
+    `SELECT id FROM achievement_categories WHERE slug = 'opinions' LIMIT 1`
+  );
+  const catId = cat?.id ?? 1;
+
+  // Wstaw 4 achievements (poziomy 1 / 3 / 5 / 10)
+  await db.query(`
+    INSERT IGNORE INTO achievements
+      (slug, category_id, xp_reward, metric_key, metric_source, requirement_value, rarity, active, hidden)
+    VALUES
+      ('opinion_endorsed_1',  ?, 75,  'opinions_endorsed', 'user_metrics',  1, 'rare',      1, 0),
+      ('opinion_endorsed_3',  ?, 150, 'opinions_endorsed', 'user_metrics',  3, 'rare',      1, 0),
+      ('opinion_endorsed_5',  ?, 300, 'opinions_endorsed', 'user_metrics',  5, 'epic',      1, 0),
+      ('opinion_endorsed_10', ?, 600, 'opinions_endorsed', 'user_metrics', 10, 'legendary', 1, 0)
+  `, [catId, catId, catId, catId]);
+}
+
+/* ─── PUT /legislation/opinions/:id/endorse — ekspert weryfikuje opinię ──── */
+async function endorseOpinion(req, res, next) {
+  try {
+    const expertId   = req.user?.id;
+    const expertRole = req.user?.role;
+    if (!expertId) return res.status(401).json({ error: "Wymagane logowanie" });
+    if (expertRole !== "Ekspert") return res.status(403).json({ error: "Tylko eksperci mogą weryfikować opinie" });
+
+    const opinionId = parseInt(req.params.id);
+
+    const [[opinion]] = await db.query(
+      "SELECT id, user_id, endorsed_by FROM legislation_opinions WHERE id = ?",
+      [opinionId]
+    );
+    if (!opinion) return res.status(404).json({ error: "Opinia nie istnieje" });
+    if (opinion.user_id === expertId) {
+      return res.status(400).json({ error: "Nie możesz weryfikować własnej opinii" });
+    }
+
+    // Toggle: jeśli ten sam ekspert już zweryfikował → cofnij
+    if (opinion.endorsed_by === expertId) {
+      await db.query(
+        "UPDATE legislation_opinions SET endorsed_by = NULL, endorsed_at = NULL WHERE id = ?",
+        [opinionId]
+      );
+      return res.json({ endorsed: false });
+    }
+
+    // Zweryfikuj
+    await db.query(
+      "UPDATE legislation_opinions SET endorsed_by = ?, endorsed_at = NOW() WHERE id = ?",
+      [expertId, opinionId]
+    );
+
+    // Powiadom autora opinii
+    const [[expert]] = await db.query("SELECT name FROM users WHERE id = ?", [expertId]);
+    sendNotification({
+      type: "OPINION_ENDORSED",
+      userId: opinion.user_id,
+      data: { message: `Ekspert ${expert?.name ?? "ekspert"} uznał Twoją opinię za ważną!` },
+    }).catch(() => {});
+
+    // Metrika + achievement dla autora
+    await incrementMetric(opinion.user_id, "opinions_endorsed", 1);
+    await checkAchievements(opinion.user_id);
+
+    res.json({ endorsed: true });
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = {
+  getAllBills, getBillDetails, getLegislativeProcess,
+  getOpinions, postOpinion,
+  endorseOpinion, ensureEndorsementSetup,
+  getBillVotings, getBillVotingDetail,
+  warmupBillsCache: fetchAllBills,
+};

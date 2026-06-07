@@ -5,6 +5,7 @@ const {
   getLegislativeProcess,
   getOpinions,
   postOpinion,
+  endorseOpinion,
   getBillVotings,
   getBillVotingDetail,
 } = require("../controllers/legislationController");
@@ -16,7 +17,8 @@ router.get("/legislation/bills/:num",          getBillDetails);
 router.get("/legislation/bills/:num/process",  getLegislativeProcess);
 router.get("/legislation/bills/:num/votings",              getBillVotings);
 router.get("/legislation/votings/:sitting/:votNum",        getBillVotingDetail);
-router.get("/legislation/bills/:num/opinions", getOpinions);
-router.post("/legislation/bills/:num/opinions", postOpinion);
+router.get("/legislation/bills/:num/opinions",      getOpinions);
+router.post("/legislation/bills/:num/opinions",     postOpinion);
+router.put("/legislation/opinions/:id/endorse",     endorseOpinion);
 
 module.exports = router;
