@@ -80,7 +80,7 @@ export default function MpListPage() {
       <div className="w-full space-y-5">
         <motion.div variants={sectionVariants}>
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/dashboard")}
             className="inline-flex items-center gap-2 text-sm font-bold cursor-pointer group
               text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
           >
