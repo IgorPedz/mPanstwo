@@ -1,4 +1,4 @@
-﻿{
+{
     "nav": {
         "sections": {
             "main": "Hauptseite",
@@ -3544,7 +3544,16 @@
             "councilOfMinisters": "Ministerrat"
         },
         "mpList": {
-            "noResults": "Keine Abgeordneten entsprechen den ausgewählten Kriterien"
+            "noResults": "Keine Abgeordneten, die den Kriterien entsprechen",
+            "title": "Abgeordnete",
+            "term": "X. Wahlperiode",
+            "counter": "{{filtered}} / {{total}} Abgeordnete",
+            "searchPlaceholder": "Suche nach Nachnamen...",
+            "allClubs": "Alle",
+            "district": "Wahlkreis",
+            "districtShort": "Wkr. {{num}}",
+            "allDistricts": "Alle Wahlkreise",
+            "reset": "Zurücksetzen"
         },
         "legislation": {
             "page": "Startseite /",
@@ -3647,6 +3656,61 @@
             "mpsLabel": "Abgeordnete",
             "memberParties": "Mitgliedsparteien",
             "footer": "Insgesamt {{total}} aktive Abgeordnete · 10. Legislaturperiode des Sejm · Daten: api.sejm.gov.pl"
+        },
+        "mp": {
+            "inactive": "Inaktiv",
+            "activity": "Parlamentarische Tätigkeit",
+            "speeches": "Reden in Sitzungen",
+            "interpellations": "Interpellationen",
+            "writtenQuestions": "Schriftliche Anfragen",
+            "votings": "Abstimmungen",
+            "committees": "Ausschüsse und Unterausschüsse",
+            "noInterpellations": "Keine Interpellationen eingereicht.",
+            "noWrittenQuestions": "Keine schriftlichen Anfragen eingereicht.",
+            "noCommittees": "Keine Ausschussdaten vorhanden.",
+            "member": "Mitglied",
+            "answered": "Beantwortet",
+            "pending": "Ausstehend",
+            "collapse": "Einklappen",
+            "showAll": "Alle {{count}} anzeigen",
+            "votingsLabel": "Abstimmungen",
+            "votingStats": "Abstimmungsstatistik — {{total}} Abstimmungen",
+            "allVotings": "Alle {{count}}",
+            "votingSearchPlaceholder": "In Abstimmungstiteln suchen...",
+            "noVotingsFiltered": "Keine Abstimmungen entsprechen den Kriterien.",
+            "noVotings": "Keine Abstimmungsdaten vorhanden.",
+            "sittingsCounter": "{{shown}} / {{total}} Sitzungen",
+            "showMore": "10 weitere anzeigen",
+            "sitting": "Sitzung {{num}}",
+            "votesShort": "{{count}} Stimmen",
+            "votingNr": "Nr. {{num}}",
+            "ratingLabel": "Nutzerbewertung",
+            "ratingCount_one": "{{count}} Bewertung",
+            "ratingCount_other": "{{count}} Bewertungen",
+            "noRatingsLogin": "Keine Bewertungen — anmelden zum Bewerten",
+            "noRatingsFirst": "Sei der Erste, der diesen Abgeordneten bewertet",
+            "yourRating": "Deine Bewertung: {{rating}}/5 — klicke einen Stern zum Ändern",
+            "loginToRate": "Anmelden, um den Abgeordneten zu bewerten und XP zu verdienen",
+            "clubLabel": "Klub / Gruppe",
+            "districtLabel": "Wahlkreis",
+            "voivodeshipLabel": "Woiwodschaft",
+            "votesLabel": "Anzahl der Stimmen",
+            "birthDate": "Geburtsdatum",
+            "birthPlace": "Geburtsort",
+            "education": "Bildung",
+            "profession": "Beruf",
+            "committeeType": {
+                "STANDING": "Ständig",
+                "EXTRAORDINARY": "Außerordentlich",
+                "INVESTIGATIVE": "Untersuchung"
+            },
+            "vote": {
+                "YES": "Ja",
+                "NO": "Nein",
+                "ABSTAIN": "Enthalten",
+                "ABSENT": "Abwesend",
+                "ON_LIST": "Auf Liste"
+            }
         }
     },
     "staticData": {

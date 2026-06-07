@@ -27,6 +27,7 @@ const AchievementCard = ({ item }) => {
       animate="show"
       exit={{ opacity: 0, scale: 0.9 }}
       whileHover={{ y: -5 }}
+      whileTap={{ scale: 0.98 }}
       className={`group relative p-6 rounded-[1.5rem] border transition-all duration-300 color-transition
         ${RARITY_STYLES[item.rarity]}
         ${RARITY_GLOW[item.rarity]}
@@ -105,7 +106,7 @@ const AchievementCard = ({ item }) => {
       </div>
 
       {!isUnlocked && (
-        <div className="color-transition absolute inset-0 bg-white/5 dark:bg-black/5 backdrop-blur-[1px] rounded-[1.5rem] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="color-transition absolute inset-0 bg-white/5 dark:bg-black/5 backdrop-blur-[1px] rounded-[1.5rem] items-center justify-center hidden sm:flex opacity-0 sm:group-hover:opacity-100 transition-opacity">
           <div className="bg-slate-900 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow-xl">
             {t("achievements.inProgress")}
           </div>

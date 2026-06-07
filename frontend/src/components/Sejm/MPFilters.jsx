@@ -7,8 +7,10 @@ import {
 import { motion } from "framer-motion";
 import { sectionVariants } from "../../Utils/Animations";
 import { CLUB_HEX } from "./Hemicycle";
+import { useTranslation } from "react-i18next";
 
 export default function MPFilters({ clubs, districts, club, district, search, onClub, onDistrict, onSearch, onReset, hasActiveFilters }) {
+  const { t } = useTranslation();
   const [distOpen, setDistOpen] = useState(false);
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export default function MPFilters({ clubs, districts, club, district, search, on
           type="text"
           value={search}
           onChange={(e) => onSearch(e.target.value)}
-          placeholder="Szukaj posła po nazwisku..."
+          placeholder={t("institution.mpList.searchPlaceholder")}
           className="w-full pl-9 pr-9 py-2.5 rounded-xl text-sm font-medium
             bg-slate-50 dark:bg-slate-800/60
             border border-slate-200 dark:border-slate-700/60
@@ -59,7 +61,7 @@ export default function MPFilters({ clubs, districts, club, district, search, on
               : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
             } color-transition`}
         >
-          Wszystkie
+          {t("institution.mpList.allClubs")}
         </button>
 
         {clubs.map((c) => (
@@ -81,7 +83,7 @@ export default function MPFilters({ clubs, districts, club, district, search, on
               bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400
               hover:bg-slate-200 dark:hover:bg-slate-700 transition-all color-transition"
           >
-            {district === "all" ? "Okręg" : `Okr. ${district}`}
+            {district === "all" ? t("institution.mpList.district") : t("institution.mpList.districtShort", { num: district })}
             <ChevronDownIcon className={`h-3 w-3 transition-transform ${distOpen ? "rotate-180" : ""}`} />
           </button>
 
@@ -98,7 +100,7 @@ export default function MPFilters({ clubs, districts, club, district, search, on
                     : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800"
                   } color-transition`}
               >
-                Wszystkie okręgi
+                {t("institution.mpList.allDistricts")}
               </button>
               {districts.map((d) => (
                 <button
@@ -125,7 +127,7 @@ export default function MPFilters({ clubs, districts, club, district, search, on
               text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
           >
             <XMarkIcon className="h-3 w-3" />
-            Resetuj
+            {t("institution.mpList.reset")}
           </button>
         )}
       </div>

@@ -49,7 +49,6 @@ export default function PresidentPage() {
           </button>
           <FollowButton
             institution={{ id: "president", title: t("institution.president.title"), titleKey: "institution.president.title", icon: data.icon, accent: data.accent, path: "/president" }}
-            colorClass={colorClass}
           />
         </motion.div>
 

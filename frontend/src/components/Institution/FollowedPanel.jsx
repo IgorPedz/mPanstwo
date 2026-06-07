@@ -6,8 +6,10 @@ import { BellAlertIcon, XMarkIcon, ArrowTopRightOnSquareIcon } from "@heroicons/
 import { useFollowStore } from "../../store/useFollowStore";
 import { useUser } from "../../Contexts/UserContext";
 import ICON_MAP from "../../Utils/Maps/Icons";
-import { COLOR_MAP } from "../../Utils/Maps/Colors";
 import { ACCENT_MAP } from "../../Utils/Maps/Accents";
+import { getMinistriesData } from "../../data/ministriesData";
+import { getJudicialData } from "../../data/judicialData";
+import { getPresidentData } from "../../data/presidentData";
 
 const listVariants = {
   hidden: {},
@@ -18,6 +20,16 @@ const itemVariants = {
   hidden: { opacity: 0, x: 10 },
   show:   { opacity: 1, x: 0, transition: { duration: 0.18 } },
 };
+
+function resolveAccent(inst, t) {
+  if (inst.type === "president") {
+    return getPresidentData(t)?.accent ?? inst.accent;
+  }
+  if (inst.type === "judicial") {
+    return getJudicialData(t)?.[inst.id]?.accent ?? inst.accent;
+  }
+  return getMinistriesData(t)?.[inst.id]?.accent ?? inst.accent;
+}
 
 export default function FollowedPanel() {
   const { t } = useTranslation();
@@ -84,9 +96,9 @@ export default function FollowedPanel() {
               className="py-2 max-h-80 overflow-y-auto"
             >
               {followed.map((inst) => {
-                const Icon = ICON_MAP[inst.icon] ?? ICON_MAP["ministry"];
-                const colorClass   = COLOR_MAP[inst.accent]   ?? "text-blue-700";
-                const gradientClass = ACCENT_MAP[inst.accent] ?? "from-blue-700 to-blue-500";
+                const accent        = resolveAccent(inst, t);
+                const Icon          = ICON_MAP[inst.icon] ?? ICON_MAP["ministry"];
+                const gradientClass = ACCENT_MAP[accent]  ?? "from-blue-700 to-blue-500";
 
                 return (
                   <motion.li
@@ -100,14 +112,12 @@ export default function FollowedPanel() {
                         hover:bg-slate-50 dark:hover:bg-slate-800/70
                         transition-all duration-150 cursor-pointer text-left"
                     >
-                      {/* Icon bubble */}
                       <div className={`flex-shrink-0 w-8 h-8 rounded-xl
-                        bg-gradient-to-br ${gradientClass} bg-opacity-10
+                        bg-gradient-to-br ${gradientClass}
                         flex items-center justify-center shadow-sm`}>
                         <Icon className="h-4 w-4 text-white" />
                       </div>
 
-                      {/* Text */}
                       <span className="flex-1 min-w-0">
                         <span className="block text-sm font-semibold text-slate-700 dark:text-slate-200
                           truncate group-hover:text-indigo-500 dark:group-hover:text-indigo-400
@@ -116,12 +126,10 @@ export default function FollowedPanel() {
                         </span>
                       </span>
 
-                      {/* Arrow on hover */}
                       <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5 text-slate-300 dark:text-slate-600
                         opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                     </button>
 
-                    {/* Unfollow button */}
                     <button
                       onClick={(e) => { e.stopPropagation(); unfollow(inst.id, user?.id); }}
                       className="absolute right-8 top-1/2 -translate-y-1/2

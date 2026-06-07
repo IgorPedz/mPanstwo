@@ -63,7 +63,6 @@ export default function JudicialPage() {
           </button>
           <FollowButton
             institution={{ id: slug, title: data.type, titleKey: `staticData.judicial.${slug}.type`, icon: data.icon, accent: data.accent, path: `/courts/${slug}` }}
-            colorClass={colorClass}
           />
         </motion.div>
 

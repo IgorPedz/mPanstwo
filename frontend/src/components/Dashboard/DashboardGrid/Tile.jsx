@@ -7,6 +7,43 @@ import { useSortable } from "@dnd-kit/sortable";
 import ICON_MAP from "../../../Utils/Maps/Icons";
 import { ACCENT_MAP } from "../../../Utils/Maps/Accents";
 import { COLOR_MAP } from "../../../Utils/Maps/Colors";
+import { getMinistriesData } from "../../../data/ministriesData";
+import { getJudicialData } from "../../../data/judicialData";
+import { getPresidentData } from "../../../data/presidentData";
+import { getSejmData } from "../../../data/sejmData";
+import { getSenatData } from "../../../data/senatData";
+
+const JUDICIAL_SLUGS = new Set([
+  "sn",
+  "constitutional_tribunal",
+  "supreme_administrative_court",
+  "national_council_of_the_judiciary",
+]);
+
+function resolveInstitutionStyle(slug, fallbackAccent, fallbackIcon, t) {
+  if (slug === "president") {
+    const d = getPresidentData(t);
+    return { accent: d.accent, icon: d.icon };
+  }
+  if (slug === "sejm" || slug === "members_of_parliament") {
+    const d = getSejmData(t);
+    return { accent: d.accent, icon: d.icon };
+  }
+  if (slug === "senate") {
+    const d = getSenatData(t);
+    return { accent: d.accent, icon: d.icon };
+  }
+  if (slug === "parliamentary_clubs") {
+    return { accent: "indigo", icon: "userGroup" };
+  }
+  if (JUDICIAL_SLUGS.has(slug)) {
+    const d = getJudicialData(t)[slug];
+    if (d) return { accent: d.accent, icon: d.icon };
+  }
+  const d = getMinistriesData(t)[slug];
+  if (d) return { accent: d.accent, icon: d.icon };
+  return { accent: fallbackAccent, icon: fallbackIcon };
+}
 
 const NAVIGABLE_SLUGS = new Set([
   "chancellery_of_the_prime_minister",
@@ -28,10 +65,12 @@ const TILE_ROUTES = (slug, icon, accent) => {
 };
 
 
-const Tile = ({ id, slug, icon, accent, onDelete, isLocked }) => {
+const Tile = ({ id, slug, icon: iconProp, accent: accentProp, onDelete, isLocked }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dragOccurredRef = useRef(false);
+
+  const { accent, icon } = resolveInstitutionStyle(slug, accentProp, iconProp, t);
 
   const {
     attributes,

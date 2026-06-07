@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { fmtDate } from "./mpProfileConstants";
+import { useTranslation } from "react-i18next";
 
 const SHOW = 5;
 
 export default function MPDocList({ items, loading, emptyText }) {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
   const visible = expanded ? items : items.slice(0, SHOW);
 
@@ -58,7 +60,7 @@ export default function MPDocList({ items, loading, emptyText }) {
               ? "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400"
               : "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400"
             }`}>
-            {item.answered ? "Odpowiedziano" : "Oczekuje"}
+            {item.answered ? t("institution.mp.answered") : t("institution.mp.pending")}
           </span>
         </div>
       ))}
@@ -70,7 +72,7 @@ export default function MPDocList({ items, loading, emptyText }) {
             bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800
             transition-colors color-transition"
         >
-          {expanded ? "Zwiń" : `Pokaż wszystkie ${items.length}`}
+          {expanded ? t("institution.mp.collapse") : t("institution.mp.showAll", { count: items.length })}
         </button>
       )}
     </div>

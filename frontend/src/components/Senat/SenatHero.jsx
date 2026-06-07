@@ -15,11 +15,11 @@ export default function SenatHero({ data, IconComponent, colorClass, accentGradi
       <div className={`absolute -right-10 -bottom-10 pointer-events-none opacity-[0.04] dark:opacity-[0.07] color-transition ${colorClass}`}>
         <IconComponent className="h-72 w-72" />
       </div>
-      <div className="relative p-8 md:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-        <div className="flex items-center gap-6 min-w-0">
-          <div className={`shrink-0 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50
+      <div className="relative p-5 sm:p-8 md:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6">
+        <div className="flex items-center gap-4 sm:gap-6 min-w-0">
+          <div className={`shrink-0 p-3.5 sm:p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50
             border-2 border-slate-100 dark:border-slate-700/50 color-transition ${colorClass}`}>
-            <IconComponent className="h-10 w-10" />
+            <IconComponent className="h-8 w-8 sm:h-10 sm:w-10" />
           </div>
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -41,11 +41,11 @@ export default function SenatHero({ data, IconComponent, colorClass, accentGradi
           href={data.website}
           target="_blank"
           rel="noopener noreferrer"
-          className="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wide
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wide
             bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300
             hover:bg-slate-200 dark:hover:bg-slate-700
             border border-slate-200/70 dark:border-slate-700/50
-            transition-colors cursor-pointer color-transition"
+            transition-colors cursor-pointer color-transition w-full sm:w-auto"
         >
           {t("institution.officialSite")}
           <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />

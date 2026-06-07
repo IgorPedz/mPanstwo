@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMPRating } from "../../Hooks/useSejm";
 import { useUser } from "../../Contexts/UserContext";
+import { useTranslation } from "react-i18next";
 
 function StarIcon({ filled }) {
   return (
@@ -16,6 +17,7 @@ function StarIcon({ filled }) {
 }
 
 export default function MPRatingWidget({ mpId, club }) {
+  const { t } = useTranslation();
   const { user } = useUser();
   const { avgRating, count, userRating, loading, submitting, rate } = useMPRating(mpId);
   const [hovered, setHovered] = useState(null);
@@ -45,7 +47,7 @@ export default function MPRatingWidget({ mpId, club }) {
   return (
     <div className="mt-5 pt-5 border-t border-slate-100 dark:border-slate-800 color-transition">
       <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-3 color-transition">
-        Ocena użytkowników
+        {t("institution.mp.ratingLabel")}
       </p>
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-0.5">{renderStars(0, true)}</div>
@@ -58,29 +60,29 @@ export default function MPRatingWidget({ mpId, club }) {
               {renderStars(Math.round(avgRating))}
             </div>
             <span className="text-xs text-slate-400 dark:text-slate-500 color-transition">
-              ({count} {count === 1 ? "ocena" : count < 5 ? "oceny" : "ocen"})
+              ({t("institution.mp.ratingCount", { count })})
             </span>
           </div>
         )}
         {count === 0 && !user && (
           <span className="text-xs text-slate-400 dark:text-slate-500 color-transition">
-            Brak ocen — zaloguj się, aby ocenić
+            {t("institution.mp.noRatingsLogin")}
           </span>
         )}
         {count === 0 && user && !userRating && (
           <span className="text-xs text-slate-400 dark:text-slate-500 color-transition">
-            Bądź pierwszy i oceń tego posła
+            {t("institution.mp.noRatingsFirst")}
           </span>
         )}
       </div>
       {user && userRating && (
         <p className="mt-1.5 text-[10px] text-indigo-500 dark:text-indigo-400 font-bold color-transition">
-          Twoja ocena: {userRating}/5 — kliknij gwiazdkę aby zmienić
+          {t("institution.mp.yourRating", { rating: userRating })}
         </p>
       )}
       {!user && (
         <p className="mt-1.5 text-[10px] text-slate-400 dark:text-slate-500 color-transition">
-          Zaloguj się, aby ocenić posła i zdobyć XP
+          {t("institution.mp.loginToRate")}
         </p>
       )}
     </div>

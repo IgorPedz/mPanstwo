@@ -17,10 +17,10 @@ export default function ClubsHero({ count }) {
         <UserGroupIcon className="h-72 w-72" />
       </div>
 
-      <div className="relative p-8 md:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-        <div className="flex items-center gap-6 min-w-0">
-          <div className="shrink-0 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-100 dark:border-slate-700/50 text-indigo-800 color-transition">
-            <UserGroupIcon className="h-10 w-10" />
+      <div className="relative p-5 sm:p-8 md:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6">
+        <div className="flex items-center gap-4 sm:gap-6 min-w-0">
+          <div className="shrink-0 p-3.5 sm:p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-100 dark:border-slate-700/50 text-indigo-800 color-transition">
+            <UserGroupIcon className="h-8 w-8 sm:h-10 sm:w-10" />
           </div>
 
           <div>

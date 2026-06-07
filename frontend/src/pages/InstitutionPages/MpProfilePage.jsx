@@ -17,6 +17,7 @@ import {
   useMPInterpellations,
   useMPWrittenQuestions,
 } from "../../Hooks/useSejm";
+import { useTranslation } from "react-i18next";
 import { VOTE_CFG, STAT_KEYS, normalizeVote } from "./../../components/Sejm/mpProfileConstants";
 import MPHero from "../../components/Sejm/MPHero";
 import MPSection from "../../components/Sejm/MPSection";
@@ -28,6 +29,7 @@ import MPVotingHistory from "../../components/Sejm/MPVotingHistory";
 export default function MpProfilePage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const votingRef = useRef(null);
   const committeeRef = useRef(null);
@@ -87,7 +89,7 @@ export default function MpProfilePage() {
               text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
           >
             <ArrowLeftIcon className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
-            Posłowie
+            {t("institution.mpList.title")}
           </button>
         </motion.div>
 
@@ -99,38 +101,38 @@ export default function MpProfilePage() {
           speechUrl={speechUrl}
         />
 
-        <MPSection label="Aktywność poselska">
+        <MPSection label={t("institution.mp.activity")}>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             <MPActivityCard
               icon={ChatBubbleLeftRightIcon}
-              label="Wystąpienia na posiedzeniach"
+              label={t("institution.mp.speeches")}
               href={speechUrl}
               accent="indigo"
             />
             <MPActivityCard
               icon={DocumentTextIcon}
-              label="Interpelacje"
+              label={t("institution.mp.interpellations")}
               onClick={() => scrollTo(interpRef)}
               accent="sky"
               count={interpsLoading ? null : interps.length || null}
             />
             <MPActivityCard
               icon={ScaleIcon}
-              label="Zapytania pisemne"
+              label={t("institution.mp.writtenQuestions")}
               onClick={() => scrollTo(questionsRef)}
               accent="purple"
               count={questionsLoading ? null : questions.length || null}
             />
             <MPActivityCard
               icon={HandRaisedIcon}
-              label="Głosowania"
+              label={t("institution.mp.votings")}
               onClick={() => scrollTo(votingRef)}
               accent="emerald"
               count={votingsLoading ? null : votesTotal || null}
             />
             <MPActivityCard
               icon={BuildingLibraryIcon}
-              label="Komisje i podkomisje"
+              label={t("institution.mp.committees")}
               onClick={() => scrollTo(committeeRef)}
               accent="amber"
               count={committeesLoading ? null : committees.length || null}
@@ -138,29 +140,29 @@ export default function MpProfilePage() {
           </div>
         </MPSection>
 
-        <MPSection refProp={committeeRef} label="Komisje i podkomisje">
+        <MPSection refProp={committeeRef} label={t("institution.mp.committees")}>
           <MPCommittees committees={committees} loading={committeesLoading} />
         </MPSection>
 
         <MPSection
           refProp={interpRef}
-          label={`Interpelacje${interps.length ? ` — ${interps.length}` : ""}`}
+          label={`${t("institution.mp.interpellations")}${interps.length ? ` — ${interps.length}` : ""}`}
         >
           <MPDocList
             items={interps}
             loading={interpsLoading}
-            emptyText="Brak złożonych interpelacji."
+            emptyText={t("institution.mp.noInterpellations")}
           />
         </MPSection>
 
         <MPSection
           refProp={questionsRef}
-          label={`Zapytania pisemne${questions.length ? ` — ${questions.length}` : ""}`}
+          label={`${t("institution.mp.writtenQuestions")}${questions.length ? ` — ${questions.length}` : ""}`}
         >
           <MPDocList
             items={questions}
             loading={questionsLoading}
-            emptyText="Brak złożonych zapytań pisemnych."
+            emptyText={t("institution.mp.noWrittenQuestions")}
           />
         </MPSection>
 

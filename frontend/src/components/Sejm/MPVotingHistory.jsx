@@ -2,10 +2,12 @@ import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { sectionVariants } from "../../Utils/Animations";
-import { VOTE_CFG, STAT_KEYS, normalizeVote, fmtNum } from "./mpProfileConstants";
+import { VOTE_CFG, STAT_KEYS, normalizeVote, fmtNum, resolveVoteLabel } from "./mpProfileConstants";
 import SittingSection from "./SittingSection";
+import { useTranslation } from "react-i18next";
 
 export default function MPVotingHistory({ refProp, votings, loading, total }) {
+  const { t } = useTranslation();
   const [voteFilter,    setVoteFilter]    = useState("all");
   const [voteSearch,    setVoteSearch]    = useState("");
   const [shownSittings, setShownSittings] = useState(10);
@@ -48,7 +50,7 @@ export default function MPVotingHistory({ refProp, votings, loading, total }) {
       .filter((g) => g.votes.length > 0);
   }, [grouped, voteFilter, voteSearch]);
 
-  const label = `Głosowania${votesTotal ? ` — ${fmtNum(votesTotal)}` : ""}`;
+  const label = votesTotal ? `${t("institution.mp.votingsLabel")} — ${fmtNum(votesTotal)}` : t("institution.mp.votingsLabel");
 
   return (
     <>
@@ -59,19 +61,19 @@ export default function MPVotingHistory({ refProp, votings, loading, total }) {
             bg-white dark:bg-slate-900 p-6 md:p-8 color-transition"
         >
           <p className="text-[10px] font-black uppercase tracking-widest mb-4 text-slate-400 dark:text-slate-500 color-transition">
-            Statystyki głosowań — {fmtNum(total)} głosowań
+            {t("institution.mp.votingStats", { total: fmtNum(total) })}
           </p>
           <div className="flex rounded-xl overflow-hidden h-3 mb-4">
             {stats.map((s) => s.pct > 0 && (
               <div key={s.key} className={`${VOTE_CFG[s.key].bar} transition-all`}
-                style={{ width: `${s.pct}%` }} title={`${VOTE_CFG[s.key].label}: ${s.pct}%`} />
+                style={{ width: `${s.pct}%` }} title={`${t(VOTE_CFG[s.key].labelKey)}: ${s.pct}%`} />
             ))}
           </div>
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             {stats.map((s) => (
               <div key={s.key} className="flex items-center gap-1.5">
                 <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${VOTE_CFG[s.key].bar}`} />
-                <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 color-transition">{VOTE_CFG[s.key].label}</span>
+                <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 color-transition">{t(VOTE_CFG[s.key].labelKey)}</span>
                 <span className="text-[11px] font-black text-slate-700 dark:text-slate-200 color-transition">{s.count}</span>
                 <span className="text-[10px] text-slate-400 dark:text-slate-500 color-transition">({s.pct}%)</span>
               </div>
@@ -98,7 +100,7 @@ export default function MPVotingHistory({ refProp, votings, loading, total }) {
             ))}
           </div>
         ) : grouped.length === 0 ? (
-          <p className="text-sm text-slate-400 dark:text-slate-500 color-transition">Brak danych o głosowaniach.</p>
+          <p className="text-sm text-slate-400 dark:text-slate-500 color-transition">{t("institution.mp.noVotings")}</p>
         ) : (
           <>
             <div className="flex flex-wrap gap-2 mb-4">
@@ -110,7 +112,7 @@ export default function MPVotingHistory({ refProp, votings, loading, total }) {
                     : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
                   } color-transition`}
               >
-                Wszystkie {votesTotal}
+                {t("institution.mp.allVotings", { count: votesTotal })}
               </button>
               {STAT_KEYS.map((k) => {
                 const s = stats.find((x) => x.key === k);
@@ -125,7 +127,7 @@ export default function MPVotingHistory({ refProp, votings, loading, total }) {
                       }`}
                   >
                     <span className={`w-1.5 h-1.5 rounded-full ${VOTE_CFG[k].dot}`} />
-                    {VOTE_CFG[k].label} {s?.count ?? 0}
+                    {t(VOTE_CFG[k].labelKey)} {s?.count ?? 0}
                   </button>
                 );
               })}
@@ -138,7 +140,7 @@ export default function MPVotingHistory({ refProp, votings, loading, total }) {
                 type="text"
                 value={voteSearch}
                 onChange={(e) => setVoteSearch(e.target.value)}
-                placeholder="Szukaj w tytułach głosowań..."
+                placeholder={t("institution.mp.votingSearchPlaceholder")}
                 className="w-full pl-9 pr-9 py-2.5 rounded-xl text-sm font-medium
                   bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60
                   text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500
@@ -155,7 +157,7 @@ export default function MPVotingHistory({ refProp, votings, loading, total }) {
 
             {filteredGrouped.length === 0 ? (
               <p className="text-sm text-slate-400 dark:text-slate-500 color-transition text-center py-6">
-                Brak głosowań spełniających kryteria.
+                {t("institution.mp.noVotingsFiltered")}
               </p>
             ) : (
               <>
@@ -171,7 +173,7 @@ export default function MPVotingHistory({ refProp, votings, loading, total }) {
                 </div>
                 <div className="flex items-center justify-between mt-4">
                   <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 color-transition">
-                    {Math.min(shownSittings, filteredGrouped.length)} / {filteredGrouped.length} posiedzeń
+                    {t("institution.mp.sittingsCounter", { shown: Math.min(shownSittings, filteredGrouped.length), total: filteredGrouped.length })}
                   </span>
                   {filteredGrouped.length > shownSittings && (
                     <button
@@ -180,7 +182,7 @@ export default function MPVotingHistory({ refProp, votings, loading, total }) {
                         bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300
                         hover:bg-slate-200 dark:hover:bg-slate-700 transition-all color-transition"
                     >
-                      Pokaż 10 więcej
+                      {t("institution.mp.showMore")}
                     </button>
                   )}
                 </div>

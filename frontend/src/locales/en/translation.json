@@ -1,4 +1,4 @@
-﻿{
+{
     "nav": {
         "sections": {
             "main": "Main",
@@ -3610,7 +3610,16 @@
             "councilOfMinisters": "Council of Ministers"
         },
         "mpList": {
-            "noResults": "No MPs match the selected criteria"
+            "noResults": "No MPs matching the criteria",
+            "title": "Members of Parliament",
+            "term": "10th term",
+            "counter": "{{filtered}} / {{total}} MPs",
+            "searchPlaceholder": "Search MP by surname...",
+            "allClubs": "All",
+            "district": "District",
+            "districtShort": "Dist. {{num}}",
+            "allDistricts": "All districts",
+            "reset": "Reset"
         },
         "legislation": {
             "page": "Home /",
@@ -3713,6 +3722,61 @@
             "mpsLabel": "MPs",
             "memberParties": "Member parties",
             "footer": "Total {{total}} active MPs · 10th term of the Sejm · data: api.sejm.gov.pl"
+        },
+        "mp": {
+            "inactive": "Inactive",
+            "activity": "Parliamentary activity",
+            "speeches": "Speeches at sessions",
+            "interpellations": "Interpellations",
+            "writtenQuestions": "Written questions",
+            "votings": "Votings",
+            "committees": "Committees and subcommittees",
+            "noInterpellations": "No interpellations filed.",
+            "noWrittenQuestions": "No written questions filed.",
+            "noCommittees": "No committee membership data.",
+            "member": "Member",
+            "answered": "Answered",
+            "pending": "Pending",
+            "collapse": "Collapse",
+            "showAll": "Show all {{count}}",
+            "votingsLabel": "Votings",
+            "votingStats": "Voting statistics — {{total}} votings",
+            "allVotings": "All {{count}}",
+            "votingSearchPlaceholder": "Search in voting titles...",
+            "noVotingsFiltered": "No votings matching the criteria.",
+            "noVotings": "No voting data available.",
+            "sittingsCounter": "{{shown}} / {{total}} sittings",
+            "showMore": "Show 10 more",
+            "sitting": "Sitting {{num}}",
+            "votesShort": "{{count}} votes",
+            "votingNr": "no. {{num}}",
+            "ratingLabel": "User rating",
+            "ratingCount_one": "{{count}} rating",
+            "ratingCount_other": "{{count}} ratings",
+            "noRatingsLogin": "No ratings — log in to rate",
+            "noRatingsFirst": "Be the first to rate this MP",
+            "yourRating": "Your rating: {{rating}}/5 — click a star to change",
+            "loginToRate": "Log in to rate this MP and earn XP",
+            "clubLabel": "Club / group",
+            "districtLabel": "Electoral district",
+            "voivodeshipLabel": "Voivodeship",
+            "votesLabel": "Number of votes",
+            "birthDate": "Date of birth",
+            "birthPlace": "Place of birth",
+            "education": "Education",
+            "profession": "Profession",
+            "committeeType": {
+                "STANDING": "Standing",
+                "EXTRAORDINARY": "Extraordinary",
+                "INVESTIGATIVE": "Investigative"
+            },
+            "vote": {
+                "YES": "Yes",
+                "NO": "No",
+                "ABSTAIN": "Abstained",
+                "ABSENT": "Absent",
+                "ON_LIST": "On list"
+            }
         }
     },
     "staticData": {

@@ -53,7 +53,10 @@ export function getPdfUrl(printNum, filename) {
 
 export function formatDate(str) {
   if (!str) return null;
-  const [y, m, d] = str.split("-");
-  if (!y) return str;
+  const date = new Date(str);
+  if (isNaN(date.getTime())) return str;
+  const d = String(date.getUTCDate()).padStart(2, "0");
+  const m = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const y = date.getUTCFullYear();
   return `${d}.${m}.${y}`;
 }

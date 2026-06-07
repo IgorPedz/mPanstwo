@@ -1,4 +1,4 @@
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
@@ -21,14 +21,13 @@ import { useMarkInstitutionSeen } from "../../Hooks/useMarkInstitutionSeen";
 export default function MinistryPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const { state } = useLocation();
   const { t } = useTranslation();
 
   const ministriesData = getMinistriesData(t);
   const data   = ministriesData[slug];
   const title  = t(`dashboard.dashboardContent.${slug}.title`, { defaultValue: slug });
-  const accent = state?.accent ?? data?.accent ?? "blue";
-  const IconComponent  = ICON_MAP[state?.icon ?? data?.icon ?? "ministry"] ?? ICON_MAP["ministry"];
+  const accent = data?.accent ?? "blue";
+  const IconComponent  = ICON_MAP[data?.icon ?? "ministry"] ?? ICON_MAP["ministry"];
   const colorClass     = COLOR_MAP[accent] ?? "text-blue-800";
   const accentGradient = ACCENT_MAP[accent] ?? "from-blue-800 to-blue-600";
 
@@ -63,8 +62,7 @@ export default function MinistryPage() {
             {t("institution.back")}
           </button>
           <FollowButton
-            institution={{ id: slug, title, titleKey: `dashboard.dashboardContent.${slug}.title`, icon: state?.icon ?? data?.icon ?? "ministry", accent, path: `/ministry/${slug}` }}
-            colorClass={colorClass}
+            institution={{ id: slug, title, titleKey: `dashboard.dashboardContent.${slug}.title`, icon: data?.icon ?? "ministry", accent, path: `/ministry/${slug}` }}
           />
         </motion.div>
 

@@ -7,6 +7,7 @@ import { CLUB_HEX } from "./Hemicycle";
 import MPInfoRow from "./MPInfoRow";
 import MPRatingWidget from "./MPRatingWidget";
 import { fmtDate, fmtNum } from "./mpProfileConstants";
+import { useTranslation } from "react-i18next";
 
 function MPPhoto({ id, name }) {
   const [ok, setOk] = useState(true);
@@ -30,6 +31,7 @@ function MPPhoto({ id, name }) {
 }
 
 export default function MPHero({ id, mp, mpLoading, sejmUrl, speechUrl }) {
+  const { t } = useTranslation();
   const name      = mp ? (`${mp.firstName ?? ""} ${mp.lastName ?? ""}`.trim() || mp.firstLastName || "") : "";
   const clubColor = CLUB_HEX[mp?.club] ?? "#94a3b8";
 
@@ -63,12 +65,12 @@ export default function MPHero({ id, mp, mpLoading, sejmUrl, speechUrl }) {
               </span>
               <span className="px-2.5 py-1 text-[10px] font-black uppercase tracking-widest
                 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 color-transition">
-                X kadencja
+                {t("institution.mpList.term")}
               </span>
               {mp.active === false && (
                 <span className="px-2.5 py-1 text-[10px] font-black uppercase tracking-widest rounded-md
                   bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
-                  Nieaktywny
+                  {t("institution.mp.inactive")}
                 </span>
               )}
             </div>
@@ -76,16 +78,16 @@ export default function MPHero({ id, mp, mpLoading, sejmUrl, speechUrl }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-0">
               <div className="space-y-3">
-                <MPInfoRow label="Klub / koło"    value={mp.club} />
-                <MPInfoRow label="Okręg wyborczy" value={mp.districtName ? `${mp.districtNum}. ${mp.districtName}` : null} />
-                <MPInfoRow label="Województwo"    value={mp.voivodeship} />
-                <MPInfoRow label="Liczba głosów"  value={fmtNum(mp.numberOfVotes)} />
+                <MPInfoRow label={t("institution.mp.clubLabel")}       value={mp.club} />
+                <MPInfoRow label={t("institution.mp.districtLabel")}   value={mp.districtName ? `${mp.districtNum}. ${mp.districtName}` : null} />
+                <MPInfoRow label={t("institution.mp.voivodeshipLabel")} value={mp.voivodeship} />
+                <MPInfoRow label={t("institution.mp.votesLabel")}      value={fmtNum(mp.numberOfVotes)} />
               </div>
               <div className="space-y-3 mt-3 md:mt-0">
-                <MPInfoRow label="Data urodzenia"    value={fmtDate(mp.birthDate)} />
-                <MPInfoRow label="Miejsce urodzenia" value={mp.birthLocation} />
-                <MPInfoRow label="Wykształcenie"     value={mp.educationLevel} />
-                <MPInfoRow label="Zawód"             value={mp.profession} last />
+                <MPInfoRow label={t("institution.mp.birthDate")}  value={fmtDate(mp.birthDate)} />
+                <MPInfoRow label={t("institution.mp.birthPlace")} value={mp.birthLocation} />
+                <MPInfoRow label={t("institution.mp.education")}  value={mp.educationLevel} />
+                <MPInfoRow label={t("institution.mp.profession")} value={mp.profession} last />
               </div>
             </div>
 

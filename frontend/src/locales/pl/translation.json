@@ -1,4 +1,4 @@
-﻿{
+{
     "nav": {
         "sections": {
             "main": "Główna",
@@ -3608,7 +3608,16 @@
             "councilOfMinisters": "Radzie Ministrów"
         },
         "mpList": {
-            "noResults": "Brak posłów spełniających kryteria"
+            "noResults": "Brak posłów spełniających kryteria",
+            "title": "Posłowie",
+            "term": "X kadencja",
+            "counter": "{{filtered}} / {{total}} posłów",
+            "searchPlaceholder": "Szukaj posła po nazwisku...",
+            "allClubs": "Wszystkie",
+            "district": "Okręg",
+            "districtShort": "Okr. {{num}}",
+            "allDistricts": "Wszystkie okręgi",
+            "reset": "Resetuj"
         },
         "legislation": {
             "page": "Główna /",
@@ -3711,6 +3720,63 @@
             "mpsLabel": "posłów",
             "memberParties": "Partie składowe",
             "footer": "Łącznie {{total}} aktywnych posłów · X kadencja Sejmu RP · dane: api.sejm.gov.pl"
+        },
+        "mp": {
+            "inactive": "Nieaktywny",
+            "activity": "Aktywność poselska",
+            "speeches": "Wystąpienia na posiedzeniach",
+            "interpellations": "Interpelacje",
+            "writtenQuestions": "Zapytania pisemne",
+            "votings": "Głosowania",
+            "committees": "Komisje i podkomisje",
+            "noInterpellations": "Brak złożonych interpelacji.",
+            "noWrittenQuestions": "Brak złożonych zapytań pisemnych.",
+            "noCommittees": "Brak danych o przynależności do komisji.",
+            "member": "Członek",
+            "answered": "Odpowiedziano",
+            "pending": "Oczekuje",
+            "collapse": "Zwiń",
+            "showAll": "Pokaż wszystkie {{count}}",
+            "votingsLabel": "Głosowania",
+            "votingStats": "Statystyki głosowań — {{total}} głosowań",
+            "allVotings": "Wszystkie {{count}}",
+            "votingSearchPlaceholder": "Szukaj w tytułach głosowań...",
+            "noVotingsFiltered": "Brak głosowań spełniających kryteria.",
+            "noVotings": "Brak danych o głosowaniach.",
+            "sittingsCounter": "{{shown}} / {{total}} posiedzeń",
+            "showMore": "Pokaż 10 więcej",
+            "sitting": "Posiedzenie {{num}}",
+            "votesShort": "{{count}} głos.",
+            "votingNr": "nr {{num}}",
+            "ratingLabel": "Ocena użytkowników",
+            "ratingCount_one": "{{count}} ocena",
+            "ratingCount_few": "{{count}} oceny",
+            "ratingCount_many": "{{count}} ocen",
+            "ratingCount_other": "{{count}} ocen",
+            "noRatingsLogin": "Brak ocen — zaloguj się, aby ocenić",
+            "noRatingsFirst": "Bądź pierwszy i oceń tego posła",
+            "yourRating": "Twoja ocena: {{rating}}/5 — kliknij gwiazdkę aby zmienić",
+            "loginToRate": "Zaloguj się, aby ocenić posła i zdobyć XP",
+            "clubLabel": "Klub / koło",
+            "districtLabel": "Okręg wyborczy",
+            "voivodeshipLabel": "Województwo",
+            "votesLabel": "Liczba głosów",
+            "birthDate": "Data urodzenia",
+            "birthPlace": "Miejsce urodzenia",
+            "education": "Wykształcenie",
+            "profession": "Zawód",
+            "committeeType": {
+                "STANDING": "Stała",
+                "EXTRAORDINARY": "Nadzwyczajna",
+                "INVESTIGATIVE": "Śledcza"
+            },
+            "vote": {
+                "YES": "Za",
+                "NO": "Przeciw",
+                "ABSTAIN": "Wstrzymał się",
+                "ABSENT": "Nieobecny",
+                "ON_LIST": "Na liście"
+            }
         }
     },
     "staticData": {

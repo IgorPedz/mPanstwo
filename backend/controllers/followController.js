@@ -74,6 +74,12 @@ async function unfollowInstitution(req, res) {
   }
 }
 
+function deriveTitleKey(institutionId, institutionType) {
+  if (institutionType === "president") return "institution.president.title";
+  if (institutionType === "judicial")  return `staticData.judicial.${institutionId}.type`;
+  return `dashboard.dashboardContent.${institutionId}.title`;
+}
+
 async function getFollows(req, res) {
   const { userId } = req.query;
   if (!userId) return res.status(400).json({ error: "Missing userId" });
@@ -85,7 +91,11 @@ async function getFollows(req, res) {
        FROM institution_follows WHERE user_id = ?`,
       [userId]
     );
-    res.json(rows);
+    const result = rows.map((r) => ({
+      ...r,
+      titleKey: r.titleKey || deriveTitleKey(r.id, r.type),
+    }));
+    res.json(result);
   } catch (err) {
     console.error("Get follows error:", err);
     res.status(500).json({ error: "DB error" });
