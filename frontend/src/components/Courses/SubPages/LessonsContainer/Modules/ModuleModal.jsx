@@ -6,8 +6,8 @@ import ModuleRenderer from "./ModuleRenderer";
 export default function ModuleModal({
   activeModule,
   lesson,
-  courseSlug, // np. "parlamentary_course"
-  lessonSlug, // np. "l1"
+  courseSlug, 
+  lessonSlug, 
   setActiveModule,
   completeModule,
 }) {
@@ -47,7 +47,6 @@ export default function ModuleModal({
   };
 
   const handleComplete = async () => {
-    console.log(activeModule);
     await completeModule(activeModule.index);
     setActiveModule(null);
   };

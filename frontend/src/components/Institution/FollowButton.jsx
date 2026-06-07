@@ -16,8 +16,10 @@ export default function FollowButton({ institution }) {
       whileTap={{ scale: 0.92 }}
       onClick={() => toggleFollow(institution, user?.id)}
       className={`
-        inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider
+        inline-flex items-center gap-1.5 rounded-full
         border transition-all duration-200 cursor-pointer color-transition
+        px-2 py-2 sm:px-3 sm:py-1.5
+        text-xs font-bold uppercase tracking-wider
         ${isFollowed
           ? "bg-indigo-500 border-indigo-500 text-white shadow-md shadow-indigo-500/30"
           : "border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 hover:border-indigo-400 hover:text-indigo-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400"
@@ -35,12 +37,12 @@ export default function FollowButton({ institution }) {
           className="flex items-center"
         >
           {isFollowed
-            ? <BellAlertIcon className="h-3.5 w-3.5" />
-            : <BellIcon className="h-3.5 w-3.5" />
+            ? <BellAlertIcon className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
+            : <BellIcon className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
           }
         </motion.span>
       </AnimatePresence>
-      <span>
+      <span className="hidden sm:inline">
         {isFollowed ? t("institution.following") : t("institution.follow")}
       </span>
     </motion.button>

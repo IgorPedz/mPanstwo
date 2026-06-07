@@ -5,13 +5,10 @@ exports.getAllCourses = async (req, res) => {
   const { userId } = req.query;
 
   try {
-    // 1. kursy
     const [courses] = await db.query("SELECT * FROM courses");
 
-    // 2. lekcje
     const [lessons] = await db.query("SELECT id, course_id FROM lessons");
 
-    // 3. progress lekcji usera
     const [progress] = await db.query(
       `SELECT lesson_id, completed
        FROM user_lesson_progress
@@ -19,7 +16,6 @@ exports.getAllCourses = async (req, res) => {
       [userId],
     );
 
-    // 4. ukończone kursy (egzamin końcowy)
     const [courseCompletions] = await db.query(
       `SELECT course_id, exam_score, completed_at
        FROM user_courses WHERE user_id = ? AND completed = 1`,
@@ -28,10 +24,12 @@ exports.getAllCourses = async (req, res) => {
 
     const completedSet = new Set(progress.map((p) => p.lesson_id));
     const completionMap = new Map(
-      courseCompletions.map((c) => [c.course_id, { examScore: c.exam_score, completedAt: c.completed_at }])
+      courseCompletions.map((c) => [
+        c.course_id,
+        { examScore: c.exam_score, completedAt: c.completed_at },
+      ]),
     );
 
-    // 5. mapowanie kursów
     const result = courses.map((course) => {
       const courseLessons = lessons.filter((l) => l.course_id === course.id);
       const totalLessons = courseLessons.length;
@@ -359,7 +357,7 @@ exports.completeCourse = async (req, res) => {
       `INSERT INTO user_courses (user_id, course_id, completed, exam_score, completed_at)
        VALUES (?, ?, 1, ?, NOW())
        ON DUPLICATE KEY UPDATE completed = 1, exam_score = ?, completed_at = NOW()`,
-      [userId, courseId, score ?? null, score ?? null]
+      [userId, courseId, score ?? null, score ?? null],
     );
 
     await handleEvent(userId, "COURSES_COMPLETED");
@@ -383,7 +381,7 @@ exports.getCourseCompletion = async (req, res) => {
       `SELECT completed, exam_score, completed_at
        FROM user_courses
        WHERE user_id = ? AND course_id = ?`,
-      [userId, courseId]
+      [userId, courseId],
     );
 
     if (!rows.length) {

@@ -22,6 +22,7 @@ export const useFollowStore = create(
                 userId,
                 institutionId: institution.id,
                 title: institution.title,
+                titleKey: institution.titleKey,
                 type: institution.type || "ministry",
                 icon: institution.icon,
                 accent: institution.accent,

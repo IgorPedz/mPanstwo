@@ -39,7 +39,6 @@ async function sendNotification({
       created_at: new Date().toISOString(),
     };
 
-    // Socket emit — opcjonalny (może nie działać w trybie standalone)
     try {
       const io = getIO();
       if (io) {
@@ -50,7 +49,7 @@ async function sendNotification({
         }
       }
     } catch {
-      // Socket niedostępny — powiadomienie zapisane w DB, użytkownik zobaczy przy odświeżeniu
+      // socket unavailable
     }
 
     return notification;

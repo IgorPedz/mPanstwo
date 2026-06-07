@@ -12,8 +12,6 @@ const TTL = {
   mpDetails:   60 * 60 * 1000, // 60 min
 };
 
-/* ── Hooki Sejm ──────────────────────────────────────────────────────────── */
-
 export function useSejmLeadership() {
   const [data,    setData]    = useState(() => sejmCache.get("leadership") ?? []);
   const [loading, setLoading] = useState(() => !sejmCache.get("leadership"));
@@ -92,7 +90,6 @@ export function useAllMPs() {
       .then(r => {
         const mps = r.data ?? [];
         sejmCache.set("all_mps", mps, TTL.allMps);
-        // Pre-populuj cache per-poseł danymi z listy (partial)
         mps.forEach(mp => {
           if (!sejmCache.get(`mp:${mp.id}`)) {
             sejmCache.set(`mp:${mp.id}`, { ...mp, _partial: true }, TTL.allMps);
@@ -112,7 +109,7 @@ export function useAllMPs() {
 export function prefetchMPDetails(id) {
   if (!id) return;
   const cached = sejmCache.get(`mp:${id}`);
-  if (cached && !cached._partial) return; // już mamy pełne dane
+  if (cached && !cached._partial) return; 
   axios.get(`${BASE}/sejm/mp/${id}/details`)
     .then(r => sejmCache.set(`mp:${id}`, r.data, TTL.mpDetails))
     .catch(() => {});
@@ -124,7 +121,7 @@ export function useMPDetails(id) {
   const [loading, setLoading] = useState(() => {
     if (!id) return false;
     const c = sejmCache.get(`mp:${id}`);
-    return !c; // mamy cokolwiek w cache → nie pokazuj szkieletu
+    return !c; 
   });
   const [error,   setError]   = useState(null);
 
@@ -133,14 +130,12 @@ export function useMPDetails(id) {
     let cancelled = false;
     const cached = sejmCache.get(`mp:${id}`);
 
-    // Mamy pełne dane → nic nie rób
     if (cached && !cached._partial) {
       setData(cached);
       setLoading(false);
       return;
     }
 
-    // Partial lub brak — jeśli brak, pokaż szkielet; jeśli partial, odśwież w tle
     if (!cached) {
       setLoading(true);
       setData(null);

@@ -5,7 +5,6 @@ import { faqData } from "../components/FAQ/FAQData";
 export function useFAQ(searchTerm = "", activeCategory = "all") {
   const { t } = useTranslation();
 
-  // Generowanie unikalnych kategorii z dodaniem "all" na początku
   const categories = useMemo(() => {
     return ["all", ...new Set(faqData.map((f) => f.category))];
   }, []);

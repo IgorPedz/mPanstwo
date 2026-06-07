@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Maj 28, 2026 at 08:11 PM
+-- Generation Time: Cze 07, 2026 at 02:26 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -46,14 +46,14 @@ CREATE TABLE `achievements` (
 --
 
 INSERT INTO `achievements` (`id`, `slug`, `category_id`, `xp_reward`, `metric_key`, `metric_source`, `requirement_value`, `rarity`, `created_at`, `active`, `hidden`) VALUES
-(44, 'survey_first', 2, 10, 'survey_completed', 'users_metrics', 1, 'common', '2026-05-17 14:28:21', 1, 0),
-(45, 'survey_5', 2, 25, 'survey_completed', 'users_metrics', 5, 'common', '2026-05-17 14:28:21', 1, 0),
-(46, 'survey_10', 2, 50, 'survey_completed', 'users_metrics', 10, 'rare', '2026-05-17 14:28:21', 1, 0),
-(47, 'survey_25', 2, 100, 'survey_completed', 'users_metrics', 25, 'epic', '2026-05-17 14:28:21', 1, 0),
-(48, 'survey_50', 2, 200, 'survey_completed', 'users_metrics', 50, 'legendary', '2026-05-17 14:28:21', 1, 0),
-(49, 'xp_100', 1, 20, 'xp', 'users', 100, 'common', '2026-05-18 18:21:36', 1, 0),
-(50, 'xp_1000', 1, 100, 'xp', 'users', 1000, 'rare', '2026-05-18 18:21:36', 1, 0),
-(51, 'xp_5000', 1, 300, 'xp', 'users', 5000, 'epic', '2026-05-18 18:21:36', 1, 0),
+(44, 'survey_first', 2, 25, 'survey_completed', 'users_metrics', 1, 'common', '2026-05-17 14:28:21', 1, 0),
+(45, 'survey_5', 2, 50, 'survey_completed', 'users_metrics', 5, 'common', '2026-05-17 14:28:21', 1, 0),
+(46, 'survey_10', 2, 100, 'survey_completed', 'users_metrics', 10, 'rare', '2026-05-17 14:28:21', 1, 0),
+(47, 'survey_25', 2, 150, 'survey_completed', 'users_metrics', 25, 'epic', '2026-05-17 14:28:21', 1, 0),
+(48, 'survey_50', 2, 500, 'survey_completed', 'users_metrics', 50, 'legendary', '2026-05-17 14:28:21', 1, 0),
+(49, 'xp_100', 1, 10, 'xp', 'users', 100, 'common', '2026-05-18 18:21:36', 1, 0),
+(50, 'xp_1000', 1, 50, 'xp', 'users', 1000, 'rare', '2026-05-18 18:21:36', 1, 0),
+(51, 'xp_5000', 1, 100, 'xp', 'users', 5000, 'epic', '2026-05-18 18:21:36', 1, 0),
 (52, 'login_3', 1, 25, 'login_streak', 'users', 3, 'common', '2026-05-18 18:20:40', 1, 0),
 (53, 'login_7', 1, 50, 'login_streak', 'users', 7, 'rare', '2026-05-18 18:20:40', 1, 0),
 (54, 'login_14', 1, 120, 'login_streak', 'users', 14, 'epic', '2026-05-18 18:20:40', 1, 0),
@@ -65,7 +65,39 @@ INSERT INTO `achievements` (`id`, `slug`, `category_id`, `xp_reward`, `metric_ke
 (64, 'active_60', 1, 700, 'active_days', 'users', 60, 'rare', '2026-05-18 18:30:47', 1, 0),
 (65, 'active_100', 1, 1000, 'active_days', 'users', 100, 'epic', '2026-05-18 18:30:47', 1, 0),
 (66, 'active_180', 1, 2500, 'active_days', 'users', 180, 'epic', '2026-05-18 18:30:47', 1, 0),
-(67, 'active_365', 1, 5000, 'active_days', 'users', 365, 'legendary', '2026-05-18 18:30:47', 1, 0);
+(67, 'active_365', 1, 5000, 'active_days', 'users', 365, 'legendary', '2026-05-18 18:30:47', 1, 0),
+(70, 'mp_rated_1', 4, 15, 'mps_rated', 'users_metrics', 1, 'common', '2026-06-03 18:10:26', 1, 0),
+(71, 'mp_rated_10', 4, 75, 'mps_rated', 'users_metrics', 10, 'rare', '2026-06-03 18:10:26', 1, 0),
+(72, 'mp_rated_100', 4, 300, 'mps_rated', 'users_metrics', 100, 'epic', '2026-06-03 18:10:26', 1, 0),
+(73, 'mp_rated_all', 4, 1000, 'mps_rated', 'users_metrics', 460, 'legendary', '2026-06-03 18:10:26', 1, 0),
+(74, 'club_rated_ko', 4, 2000, 'club_rated_ko', 'users_metrics', 156, 'legendary', '2026-06-03 18:16:07', 1, 0),
+(75, 'club_rated_lewica', 4, 300, 'club_rated_lewica', 'users_metrics', 21, 'rare', '2026-06-03 18:16:07', 1, 0),
+(76, 'club_rated_razem', 4, 100, 'club_rated_razem', 'users_metrics', 4, 'common', '2026-06-03 18:16:07', 1, 0),
+(77, 'club_rated_psl_td', 4, 300, 'club_rated_psl_td', 'users_metrics', 32, 'rare', '2026-06-03 18:16:07', 1, 0),
+(78, 'club_rated_polska2050', 4, 100, 'club_rated_polska2050', 'users_metrics', 15, 'common', '2026-06-03 18:16:07', 1, 0),
+(79, 'club_rated_pis', 4, 2000, 'club_rated_pis', 'users_metrics', 186, 'legendary', '2026-06-03 18:16:07', 1, 0),
+(80, 'club_rated_konfederacja', 4, 100, 'club_rated_konfederacja', 'users_metrics', 16, 'common', '2026-06-03 18:16:07', 1, 0),
+(81, 'club_rated_konfederacja_kp', 4, 100, 'club_rated_konfederacja_kp', 'users_metrics', 3, 'common', '2026-06-03 18:16:07', 1, 0),
+(82, 'club_rated_centrum', 4, 100, 'club_rated_centrum', 'users_metrics', 15, 'common', '2026-06-03 18:16:07', 1, 0),
+(83, 'club_rated_demokracja', 4, 100, 'club_rated_demokracja', 'users_metrics', 4, 'common', '2026-06-03 18:16:07', 1, 0),
+(84, 'clubs_all_rated', 4, 500, 'clubs_rated_count', 'users_metrics', 10, 'epic', '2026-06-03 18:16:07', 1, 0),
+(85, 'coalition_all_rated', 4, 3000, 'coalition_rated', 'users_metrics', 239, 'legendary', '2026-06-03 18:21:55', 1, 0),
+(86, 'opposition_all_rated', 4, 3000, 'opposition_rated', 'users_metrics', 221, 'legendary', '2026-06-03 18:21:55', 1, 0),
+(101, 'module_1', 3, 10, 'modules_completed', 'users_metrics', 1, 'common', '2026-05-31 14:33:21', 1, 0),
+(102, 'module_10', 3, 50, 'modules_completed', 'users_metrics', 10, 'common', '2026-05-31 14:33:21', 1, 0),
+(103, 'module_50', 3, 150, 'modules_completed', 'users_metrics', 50, 'rare', '2026-05-31 14:33:21', 1, 0),
+(104, 'module_master', 3, 300, 'modules_completed', 'users_metrics', 100, 'epic', '2026-05-31 14:33:21', 1, 0),
+(110, 'course_1', 3, 50, 'courses_completed', 'users_metrics', 1, 'common', '2026-05-31 14:33:21', 1, 0),
+(111, 'course_3', 3, 150, 'courses_completed', 'users_metrics', 3, 'rare', '2026-05-31 14:33:21', 1, 0),
+(112, 'course_10', 3, 500, 'courses_completed', 'users_metrics', 10, 'epic', '2026-05-31 14:33:21', 1, 0),
+(120, 'lesson_1', 3, 5, 'lessons_completed', 'users_metrics', 1, 'common', '2026-05-31 14:33:21', 1, 0),
+(121, 'lesson_25', 3, 30, 'lessons_completed', 'users_metrics', 25, 'common', '2026-05-31 14:33:21', 1, 0),
+(122, 'lesson_100', 3, 120, 'lessons_completed', 'users_metrics', 100, 'rare', '2026-05-31 14:33:21', 1, 0),
+(123, 'opinions_1', 5, 50, 'opinions_written', 'user_metrics', 1, 'common', '2026-06-03 20:18:59', 1, 0),
+(124, 'opinions_10', 5, 150, 'opinions_written', 'user_metrics', 10, 'common', '2026-06-03 20:23:58', 1, 0),
+(125, 'opinions_25', 5, 200, 'opinions_written', 'user_metrics', 25, 'rare', '2026-06-03 20:24:15', 1, 0),
+(126, 'opinions_50', 5, 300, 'opinions_written', 'user_metrics', 50, 'epic', '2026-06-03 20:24:38', 1, 0),
+(127, 'opinions_100', 5, 450, 'opinions_written', 'user_metrics', 100, 'epic', '2026-06-03 20:24:58', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -84,10 +116,34 @@ CREATE TABLE `achievement_categories` (
 
 INSERT INTO `achievement_categories` (`id`, `slug`) VALUES
 (1, 'activity'),
+(3, 'courses'),
 (4, 'marks'),
-(3, 'opinions'),
-(5, 'special'),
+(5, 'opinions'),
 (2, 'surveys');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `courses`
+--
+
+CREATE TABLE `courses` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  `img` varchar(25) NOT NULL,
+  `estimated_hours` int(11) DEFAULT 0,
+  `is_published` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`id`, `slug`, `img`, `estimated_hours`, `is_published`, `created_at`) VALUES
+(1, 'parlamentary_course', 'sejmRP.jpg', 4, 1, '2026-05-29 15:33:49'),
+(2, 'executive_course', 'KPRM.jpg', 3, 1, '2026-05-30 16:05:44'),
+(3, 'court_course', 'sadRP.jpeg', 2, 1, '2026-05-30 16:05:44');
 
 -- --------------------------------------------------------
 
@@ -114,10 +170,9 @@ INSERT INTO `dashboard_content` (`id`, `slug`, `accent`, `icon`, `iconColor`) VA
 (4, 'sejm', 'emerald', 'parliament', 'emerald'),
 (5, 'senate', 'orange', 'parliament', 'orange'),
 (6, 'council_of_ministers', 'rose', 'ministry', 'rose'),
-(7, 'laws', 'green', 'document', 'green'),
 (8, 'presidential_chancellery', 'teal', 'briefcase', 'teal'),
 (9, 'president', 'red', 'flag', 'red'),
-(10, 'uokik', 'pink', 'banknotes', 'pink'),
+(10, 'sn', 'pink', 'documents', 'pink'),
 (11, 'constitutional_tribunal', 'yellow', 'courses', 'yellow'),
 (12, 'supreme_administrative_court', 'cyan', 'ministry', 'cyan'),
 (13, 'national_council_of_the_judiciary', 'teal', 'ministry', 'teal'),
@@ -140,6 +195,532 @@ INSERT INTO `dashboard_content` (`id`, `slug`, `accent`, `icon`, `iconColor`) VA
 (30, 'ministry_of_internal_affairs_and_administration', 'cyan-gradient', 'tablet', 'cyan-gradient'),
 (31, 'ministry_of_digital_affairs', 'amber-gradient', 'computer', 'amber-gradient'),
 (32, 'chancellery_of_the_prime_minister', 'rose-gradient', 'briefcase', 'rose-gradient');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `institution_follows`
+--
+
+CREATE TABLE `institution_follows` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `institution_id` varchar(100) NOT NULL,
+  `institution_title` varchar(255) NOT NULL,
+  `institution_type` varchar(50) NOT NULL DEFAULT 'ministry',
+  `icon` varchar(100) DEFAULT NULL,
+  `accent` varchar(50) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `last_notified_url` varchar(1000) DEFAULT NULL,
+  `institution_title_key` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `institution_follows`
+--
+
+INSERT INTO `institution_follows` (`id`, `user_id`, `institution_id`, `institution_title`, `institution_type`, `icon`, `accent`, `path`, `created_at`, `last_notified_url`, `institution_title_key`) VALUES
+(23, 4, 'ministry_of_national_defence', 'Ministerstwo Obrony Narodowej', 'ministry', 'shield', 'cyan', '/ministry/ministry_of_national_defence', '2026-06-07 09:56:38', 'https://www.gov.pl/web/obrona-narodowa/wyznaczenia-na-nowe-stanowiska-sluzbowe3', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `institution_news_cache`
+--
+
+CREATE TABLE `institution_news_cache` (
+  `institution_id` varchar(100) NOT NULL,
+  `institution_type` varchar(50) NOT NULL DEFAULT 'ministry',
+  `last_news_title` varchar(500) DEFAULT NULL,
+  `last_news_url` varchar(1000) DEFAULT NULL,
+  `checked_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `institution_news_cache`
+--
+
+INSERT INTO `institution_news_cache` (`institution_id`, `institution_type`, `last_news_title`, `last_news_url`, `checked_at`) VALUES
+('ministry_of_national_defence', 'ministry', 'Wyznaczenia na nowe stanowiska służbowe', 'https://www.gov.pl/web/obrona-narodowa/wyznaczenia-na-nowe-stanowiska-sluzbowe3', '2026-06-07 10:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `legislation_opinions`
+--
+
+CREATE TABLE `legislation_opinions` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `print_num` varchar(20) NOT NULL,
+  `content` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `legislation_opinions`
+--
+
+INSERT INTO `legislation_opinions` (`id`, `user_id`, `print_num`, `content`, `created_at`) VALUES
+(1, 4, '2600', 'test', '2026-06-03 17:10:31'),
+(2, 4, '2597', 'Tragedia, a nie ustawa xd', '2026-06-03 18:20:35'),
+(3, 4, '2599', 'test', '2026-06-03 18:23:00'),
+(4, 4, '2599', 'qrtheqrwevr', '2026-06-03 22:20:34');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `lessons`
+--
+
+CREATE TABLE `lessons` (
+  `id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `slug` varchar(10) NOT NULL,
+  `order_index` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `lessons`
+--
+
+INSERT INTO `lessons` (`id`, `course_id`, `slug`, `order_index`) VALUES
+(1, 1, 'l1', 1),
+(2, 1, 'l2', 2),
+(3, 1, 'l3', 3),
+(4, 1, 'l4', 4),
+(5, 1, 'l5', 5),
+(6, 1, 'l6', 6),
+(7, 1, 'l7', 7),
+(8, 1, 'l8', 8),
+(9, 1, 'l9', 9),
+(10, 1, 'l10', 10),
+(11, 1, 'l11', 11),
+(12, 1, 'l12', 12),
+(13, 2, 'l1', 1),
+(14, 2, 'l2', 2),
+(15, 2, 'l3', 3),
+(16, 2, 'l4', 4),
+(17, 2, 'l5', 5),
+(18, 2, 'l6', 6),
+(19, 2, 'l7', 7),
+(20, 2, 'l8', 8),
+(21, 2, 'l9', 9),
+(22, 2, 'l10', 10),
+(23, 2, 'l11', 11),
+(24, 2, 'l12', 12),
+(25, 3, 'l1', 1),
+(26, 3, 'l2', 2),
+(27, 3, 'l3', 3),
+(28, 3, 'l4', 4),
+(29, 3, 'l5', 5),
+(30, 3, 'l6', 6),
+(31, 3, 'l7', 7),
+(32, 3, 'l8', 8),
+(33, 3, 'l9', 9),
+(34, 3, 'l10', 10),
+(35, 3, 'l11', 11),
+(36, 3, 'l12', 12);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `lesson_quizzes`
+--
+
+CREATE TABLE `lesson_quizzes` (
+  `id` int(11) NOT NULL,
+  `lesson_id` int(11) NOT NULL,
+  `question` text NOT NULL,
+  `answers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`answers`)),
+  `correct_index` int(11) NOT NULL,
+  `order_index` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `lesson_quizzes`
+--
+
+INSERT INTO `lesson_quizzes` (`id`, `lesson_id`, `question`, `answers`, `correct_index`, `order_index`) VALUES
+(44, 1, 'Czym jest władza ustawodawcza?', '[\"Tworzenie prawa\",\"Wykonywanie prawa\",\"Sądzenie\",\"Dowodzenie armią\"]', 0, 1),
+(45, 1, 'Kto sprawuje władzę ustawodawczą w Polsce?', '[\"Sejm i Senat\",\"Rząd\",\"Prezydent\",\"Sądy\"]', 0, 2),
+(46, 1, 'Główna funkcja parlamentu to:', '[\"Tworzenie prawa\",\"Wykonywanie prawa\",\"Sądzenie\",\"Administracja\"]', 0, 3),
+(47, 2, 'Czym jest Sejm?', '[\"Izba niższa parlamentu\",\"Sąd\",\"Rząd\",\"Prezydent\"]', 0, 1),
+(48, 2, 'Ilu posłów liczy Sejm?', '[\"100\",\"230\",\"460\",\"560\"]', 2, 2),
+(49, 2, 'Sejm uchwala:', '[\"ustawy\",\"wyroki\",\"dekrety\",\"rozkazy\"]', 0, 3),
+(50, 3, 'Czym jest Senat?', '[\"Izba wyższa parlamentu\",\"Rząd\",\"Sąd\",\"Policja\"]', 0, 1),
+(51, 3, 'Ilu senatorów jest w Polsce?', '[\"100\",\"230\",\"460\",\"560\"]', 0, 2),
+(52, 3, 'Senat:', '[\"rozpatruje ustawy\",\"wykonuje prawo\",\"sądzi\",\"tworzy rząd\"]', 0, 3),
+(53, 4, 'Posłowie i senatorowie tworzą:', '[\"Parlament\",\"Rząd\",\"Sąd\",\"Policję\"]', 0, 1),
+(54, 4, 'Mandat posła oznacza:', '[\"prawo do głosowania\",\"prawo do sądzenia\",\"prawo do egzekucji\",\"prawo do policji\"]', 0, 2),
+(55, 4, 'Parlament składa się z:', '[\"Sejmu i Senatu\",\"Prezydenta i rządu\",\"Sądu i prokuratury\",\"Policji\"]', 0, 3),
+(56, 5, 'Proces legislacyjny to:', '[\"tworzenie ustawy\",\"wykonywanie prawa\",\"sądzenie\",\"kontrola policji\"]', 0, 1),
+(57, 5, 'Pierwszy etap ustawy to:', '[\"projekt ustawy\",\"wyrok\",\"egzekucja\",\"podpis\"]', 0, 2),
+(58, 5, 'Ustawa jest uchwalana przez:', '[\"Sejm\",\"Sąd\",\"Policję\",\"Rząd\"]', 0, 3),
+(59, 6, 'Drugi etap procesu legislacyjnego to:', '[\"praca w komisjach\",\"egzekucja prawa\",\"wyrok\",\"wojsko\"]', 0, 1),
+(60, 6, 'Ustawę zatwierdza:', '[\"Sejm i Senat\",\"Policja\",\"Sąd\",\"Wojsko\"]', 0, 2),
+(61, 6, 'Ostatecznie ustawę podpisuje:', '[\"Prezydent\",\"Premier\",\"Senat\",\"Sąd\"]', 0, 3),
+(62, 7, 'Inicjatywa ustawodawcza to:', '[\"prawo tworzenia projektu ustawy\",\"prawo sądzenia\",\"prawo egzekucji\",\"prawo głosowania\"]', 0, 1),
+(63, 7, 'Kto ma inicjatywę ustawodawczą?', '[\"Sejm, Senat, Prezydent, Rząd\",\"Policja\",\"Sądy\",\"Wojsko\"]', 0, 2),
+(64, 7, 'Projekt ustawy zaczyna się od:', '[\"inicjatywy\",\"wyroku\",\"egzekucji\",\"aresztowania\"]', 0, 3),
+(65, 8, 'Prezydent może:', '[\"podpisać lub zawetować ustawę\",\"sądzić\",\"tworzyć policję\",\"wykonywać wyroki\"]', 0, 1),
+(66, 8, 'Weto oznacza:', '[\"odrzucenie ustawy\",\"podpisanie ustawy\",\"tworzenie ustawy\",\"wykonanie ustawy\"]', 0, 2),
+(67, 8, 'Sejm może odrzucić weto większością:', '[\"3/5\",\"1/2\",\"1/3\",\"2/3\"]', 3, 3),
+(68, 9, 'Konstytucja to:', '[\"najwyższy akt prawny\",\"ustawa zwykła\",\"wyrok\",\"regulamin\"]', 0, 1),
+(69, 9, 'Każda ustawa musi być zgodna z:', '[\"Konstytucją\",\"policją\",\"rządem\",\"premierem\"]', 0, 2),
+(70, 9, 'Trybunał Konstytucyjny:', '[\"kontroluje zgodność prawa\",\"tworzy policję\",\"wykonuje prawo\",\"sądzi ludzi\"]', 0, 3),
+(71, 10, 'Komisje sejmowe:', '[\"analizują projekty ustaw\",\"wydają wyroki\",\"egzekwują prawo\",\"tworzą rząd\"]', 0, 1),
+(72, 10, 'Komisje działają w:', '[\"Sejmie\",\"Sądzie\",\"Policji\",\"Rządzie\"]', 0, 2),
+(73, 10, 'Ich zadaniem jest:', '[\"praca nad ustawami\",\"sądzenie\",\"aresztowanie\",\"egzekucja\"]', 0, 3),
+(74, 11, 'Kontrola parlamentarna to:', '[\"kontrola rządu\",\"tworzenie sądów\",\"egzekucja prawa\",\"policja\"]', 0, 1),
+(75, 11, 'Rząd odpowiada przed:', '[\"Sejmem\",\"Policją\",\"Sądem\",\"Wojskiem\"]', 0, 2),
+(76, 11, 'Interpelacja to:', '[\"pytanie posła do rządu\",\"wyrok\",\"ustawa\",\"areszt\"]', 0, 3),
+(77, 12, 'Egzamin końcowy sprawdza:', '[\"całość materiału\",\"tylko Sejm\",\"tylko Senat\",\"tylko rząd\"]', 0, 1),
+(78, 12, 'Kto tworzy prawo w Polsce?', '[\"Parlament\",\"Policja\",\"Sąd\",\"Wojsko\"]', 0, 2),
+(79, 12, 'Główna rola Sejmu to:', '[\"tworzenie ustaw\",\"sądzenie\",\"egzekucja\",\"policja\"]', 0, 3),
+(80, 13, 'Czym jest władza wykonawcza?', '[\"Wykonywanie prawa\",\"Tworzenie prawa\",\"Sądzenie\",\"Kontrola\"]', 0, 1),
+(81, 13, 'Władza wykonawcza to:', '[\"rząd i prezydent\",\"sądy\",\"parlament\",\"policja\"]', 0, 2),
+(82, 13, 'Jej zadaniem jest:', '[\"realizacja ustaw\",\"tworzenie ustaw\",\"sądzenie\",\"pisanie konstytucji\"]', 0, 3),
+(83, 14, 'Prezydent RP jest:', '[\"głową państwa\",\"premierem\",\"sędzią\",\"posłem\"]', 0, 1),
+(84, 14, 'Prezydent:', '[\"reprezentuje państwo\",\"sądzi\",\"pisze ustawy\",\"egzekwuje wyroki\"]', 0, 1),
+(85, 14, 'Prezydent podpisuje:', '[\"ustawy\",\"wyroki\",\"dekrety sądowe\",\"mandaty\"]', 0, 0),
+(86, 15, 'Rada Ministrów to:', '[\"rząd\",\"parlament\",\"sąd\",\"policja\"]', 0, 1),
+(87, 15, 'Na czele rządu stoi:', '[\"premier\",\"prezydent\",\"marszałek\",\"sędzia\"]', 0, 1),
+(88, 15, 'Rząd wykonuje:', '[\"politykę państwa\",\"wyroki\",\"ustawy\",\"konstytucję\"]', 0, 0),
+(89, 16, 'Premier kieruje:', '[\"rządem\",\"sądem\",\"sejmem\",\"policją\"]', 0, 1),
+(90, 16, 'Premier jest:', '[\"szefem rządu\",\"prezydentem\",\"sędzią\",\"posłem\"]', 0, 0),
+(91, 16, 'Premier odpowiada przed:', '[\"Sejmem\",\"Sądem\",\"Policją\",\"Wojskiem\"]', 0, 0),
+(92, 17, 'Ministerstwa odpowiadają za:', '[\"różne dziedziny państwa\",\"sądy\",\"sejm\",\"konstytucję\"]', 0, 1),
+(93, 17, 'Minister kieruje:', '[\"resortem\",\"sądem\",\"parlamentem\",\"policją\"]', 0, 1),
+(94, 17, 'Przykład ministerstwa:', '[\"edukacji\",\"sądu\",\"sejmu\",\"konstytucji\"]', 0, 0),
+(95, 18, 'Administracja rządowa to:', '[\"urzędy wykonawcze\",\"parlament\",\"sądy\",\"policja\"]', 0, 1),
+(96, 18, 'Jej zadaniem jest:', '[\"wdrażanie prawa\",\"tworzenie prawa\",\"sądzenie\",\"pisanie ustaw\"]', 0, 0),
+(97, 18, 'Urząd wojewódzki to przykład:', '[\"administracji\",\"sądu\",\"parlamentu\",\"wojska\"]', 0, 0),
+(98, 19, 'Polityka wewnętrzna dotyczy:', '[\"spraw kraju\",\"relacji międzynarodowych\",\"wojny\",\"sądu\"]', 0, 1),
+(99, 19, 'Obejmuje:', '[\"edukację i zdrowie\",\"wojnę\",\"dyplomację\",\"sądy\"]', 0, 0),
+(100, 19, 'Kto ją realizuje?', '[\"rząd\",\"sąd\",\"parlament\",\"policja\"]', 0, 0),
+(101, 20, 'Polityka zagraniczna to:', '[\"relacje z innymi krajami\",\"sprawy sądowe\",\"policja\",\"edukacja\"]', 0, 1),
+(102, 20, 'Reprezentuje ją:', '[\"prezydent i rząd\",\"sąd\",\"sejm\",\"policja\"]', 0, 0),
+(103, 20, 'Dotyczy:', '[\"dyplomacji\",\"wyroków\",\"ustaw\",\"lokalnych spraw\"]', 0, 0),
+(104, 21, 'Siły zbrojne to:', '[\"wojsko\",\"policja\",\"sąd\",\"parlament\"]', 0, 1),
+(105, 21, 'Naczelny dowódca to:', '[\"prezydent\",\"premier\",\"marszałek\",\"sędzia\"]', 0, 0),
+(106, 21, 'Ich zadaniem jest:', '[\"obrona kraju\",\"tworzenie prawa\",\"sądzenie\",\"administracja\"]', 0, 0),
+(107, 22, 'Służby państwowe to m.in.:', '[\"policja i ABW\",\"sejm\",\"sąd\",\"rząd\"]', 0, 1),
+(108, 22, 'Ich rola to:', '[\"bezpieczeństwo\",\"tworzenie prawa\",\"sądzenie\",\"pisanie ustaw\"]', 0, 0),
+(109, 22, 'Podlegają:', '[\"rządowi\",\"sejmowi\",\"sądom\",\"obywatelom\"]', 0, 0),
+(110, 23, 'Rząd współpracuje z:', '[\"parlamentem\",\"tylko sądami\",\"tylko policją\",\"nikim\"]', 0, 1),
+(111, 23, 'Kontrolę nad rządem sprawuje:', '[\"Sejm\",\"Sąd\",\"Policja\",\"Prezydent tylko\"]', 0, 0),
+(112, 23, 'Rząd musi uzyskać:', '[\"wotum zaufania\",\"wyrok\",\"mandat\",\"konstytucję\"]', 0, 0),
+(113, 24, 'Podsumowanie dotyczy:', '[\"całej władzy wykonawczej\",\"tylko premiera\",\"tylko prezydenta\",\"tylko policji\"]', 0, 1),
+(114, 24, 'Władza wykonawcza:', '[\"realizuje prawo\",\"tworzy prawo\",\"sądzi\",\"pisze konstytucję\"]', 0, 0),
+(115, 24, 'Składa się z:', '[\"rządu i prezydenta\",\"sądu\",\"sejmu\",\"policji\"]', 0, 0),
+(116, 25, 'Czym jest władza sądownicza?', '[\"Sądzenie i interpretacja prawa\",\"Tworzenie prawa\",\"Wykonywanie prawa\",\"Policja\"]', 0, 1),
+(117, 25, 'Władza sądownicza to:', '[\"sądy i trybunały\",\"parlament\",\"rząd\",\"prezydent\"]', 0, 0),
+(118, 25, 'Jej zadaniem jest:', '[\"wydawanie wyroków\",\"tworzenie ustaw\",\"egzekucja prawa\",\"administracja\"]', 0, 0),
+(119, 26, 'Sądy w Polsce dzielą się na:', '[\"powszechne i specjalne\",\"tylko jeden typ\",\"parlamentarne\",\"rządowe\"]', 0, 1),
+(120, 26, 'Sądy:', '[\"rozstrzygają spory\",\"tworzą prawo\",\"egzekwują prawo\",\"piszą ustawy\"]', 0, 0),
+(121, 26, 'Najważniejszą funkcją jest:', '[\"wymiar sprawiedliwości\",\"tworzenie prawa\",\"policja\",\"administracja\"]', 0, 0),
+(122, 27, 'Sąd Najwyższy:', '[\"najwyższy organ sądowy\",\"parlament\",\"rząd\",\"policja\"]', 0, 1),
+(123, 27, 'Jego rola to:', '[\"kontrola orzeczeń\",\"tworzenie ustaw\",\"egzekucja prawa\",\"policja\"]', 0, 0),
+(124, 27, 'Działa w zakresie:', '[\"kasacji\",\"ustaw\",\"polityki\",\"administracji\"]', 0, 0),
+(125, 28, 'Sądy powszechne zajmują się:', '[\"sprawami cywilnymi i karnymi\",\"ustawami\",\"rządem\",\"wojskiem\"]', 0, 1),
+(126, 28, 'To są:', '[\"sądy rejonowe i okręgowe\",\"sejm\",\"senat\",\"policja\"]', 0, 0),
+(127, 28, 'Ich zadanie to:', '[\"rozstrzyganie spraw obywateli\",\"tworzenie prawa\",\"egzekucja\",\"polityka\"]', 0, 0),
+(128, 29, 'Trybunał Konstytucyjny:', '[\"kontroluje zgodność prawa\",\"tworzy prawo\",\"egzekwuje prawo\",\"policja\"]', 0, 1),
+(129, 29, 'Sprawdza zgodność z:', '[\"Konstytucją\",\"rządem\",\"policją\",\"sejmem\"]', 0, 0),
+(130, 29, 'Może unieważnić:', '[\"niezgodną ustawę\",\"wyrok policji\",\"decyzję premiera\",\"mandat\"]', 0, 0),
+(131, 30, 'Prokuratura:', '[\"oskarża w sprawach karnych\",\"sądzi\",\"tworzy prawo\",\"egzekwuje ustawy\"]', 0, 1),
+(132, 30, 'Prokurator:', '[\"reprezentuje państwo\",\"jest sędzią\",\"jest posłem\",\"jest policją\"]', 0, 0),
+(133, 30, 'Zajmuje się:', '[\"przestępstwami\",\"ustawami\",\"polityką\",\"konstytucją\"]', 0, 0),
+(134, 31, 'Sędziowie są:', '[\"niezawiśli\",\"podporządkowani rządowi\",\"polityczni\",\"wybierani przez policję\"]', 0, 1),
+(135, 31, 'Sędzia wydaje:', '[\"wyroki\",\"ustawy\",\"dekrety\",\"rozkazy\"]', 0, 0),
+(136, 31, 'Ich niezależność oznacza:', '[\"brak wpływu polityków\",\"kontrolę rządu\",\"podległość policji\",\"kontrolę sejmu\"]', 0, 0),
+(137, 32, 'Niezależność sądów oznacza:', '[\"brak wpływu władzy politycznej\",\"kontrolę rządu\",\"tworzenie prawa\",\"egzekucję\"]', 0, 1),
+(138, 32, 'Sądy są:', '[\"oddzielne od rządu\",\"częścią rządu\",\"częścią sejmu\",\"policją\"]', 0, 0),
+(139, 32, 'To gwarantuje:', '[\"sprawiedliwość\",\"politykę\",\"ustawy\",\"administrację\"]', 0, 0),
+(140, 33, 'Proces sądowy to:', '[\"rozpatrywanie sprawy\",\"tworzenie prawa\",\"egzekucja\",\"policja\"]', 0, 1),
+(141, 33, 'Składa się z:', '[\"rozprawy i wyroku\",\"ustaw\",\"rządu\",\"policji\"]', 0, 0),
+(142, 33, 'Kończy się:', '[\"wyrokiem\",\"ustawą\",\"dekretem\",\"mandatem\"]', 0, 0),
+(143, 34, 'Prawo karne dotyczy:', '[\"przestępstw\",\"umów\",\"konstytucji\",\"administracji\"]', 0, 1),
+(144, 34, 'Jego celem jest:', '[\"kara i ochrona społeczeństwa\",\"tworzenie prawa\",\"polityka\",\"rząd\"]', 0, 0),
+(145, 34, 'Odpowiada za nie:', '[\"sąd karny\",\"sejm\",\"rząd\",\"policja\"]', 0, 0),
+(146, 35, 'Prawo cywilne dotyczy:', '[\"sporów między obywatelami\",\"przestępstw\",\"polityki\",\"wojska\"]', 0, 1),
+(147, 35, 'Obejmuje:', '[\"umowy i własność\",\"wojnę\",\"policję\",\"rząd\"]', 0, 0),
+(148, 35, 'Rozstrzyga je:', '[\"sąd cywilny\",\"sejm\",\"rząd\",\"wojsko\"]', 0, 0),
+(149, 36, 'Podsumowanie lekcji dotyczy:', '[\"całej władzy sądowniczej\",\"rządu\",\"sejmu\",\"policji\"]', 0, 1),
+(150, 36, 'Władza sądownicza:', '[\"wydaje wyroki\",\"tworzy prawo\",\"wykonuje prawo\",\"rządzi państwem\"]', 0, 0),
+(151, 36, 'Jej celem jest:', '[\"sprawiedliwość\",\"polityka\",\"ustawy\",\"administracja\"]', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `modules`
+--
+
+CREATE TABLE `modules` (
+  `id` int(11) NOT NULL,
+  `lesson_id` int(11) NOT NULL,
+  `type` enum('text','card','image','interactive') NOT NULL,
+  `order_index` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `modules`
+--
+
+INSERT INTO `modules` (`id`, `lesson_id`, `type`, `order_index`) VALUES
+(10, 1, 'text', 1),
+(11, 1, 'text', 2),
+(12, 1, 'text', 3),
+(13, 2, 'text', 1),
+(14, 2, 'text', 2),
+(15, 2, 'text', 3),
+(16, 3, 'text', 1),
+(17, 3, 'text', 2),
+(18, 3, 'text', 3),
+(19, 4, 'text', 1),
+(20, 4, 'text', 2),
+(21, 4, 'text', 3),
+(22, 5, 'text', 1),
+(23, 5, 'text', 2),
+(24, 5, 'text', 3),
+(25, 6, 'text', 1),
+(26, 6, 'text', 2),
+(27, 6, 'text', 3),
+(28, 7, 'text', 1),
+(29, 7, 'text', 2),
+(30, 7, 'text', 3),
+(31, 8, 'text', 1),
+(32, 8, 'text', 2),
+(33, 8, 'text', 3),
+(34, 9, 'text', 1),
+(35, 9, 'text', 2),
+(36, 9, 'text', 3),
+(37, 10, 'text', 1),
+(38, 10, 'text', 2),
+(39, 10, 'text', 3),
+(40, 11, 'text', 1),
+(41, 11, 'text', 2),
+(42, 11, 'text', 3),
+(43, 12, 'text', 1),
+(44, 12, 'text', 2),
+(45, 12, 'text', 3),
+(46, 13, 'text', 1),
+(47, 13, 'text', 2),
+(48, 13, 'text', 3),
+(49, 14, 'text', 1),
+(50, 14, 'text', 2),
+(51, 14, 'text', 3),
+(52, 15, 'text', 1),
+(53, 15, 'text', 2),
+(54, 15, 'text', 3),
+(55, 16, 'text', 1),
+(56, 16, 'text', 2),
+(57, 16, 'text', 3),
+(58, 17, 'text', 1),
+(59, 17, 'text', 2),
+(60, 17, 'text', 3),
+(61, 18, 'text', 1),
+(62, 18, 'text', 2),
+(63, 18, 'text', 3),
+(64, 19, 'text', 1),
+(65, 19, 'text', 2),
+(66, 19, 'text', 3),
+(67, 20, 'text', 1),
+(68, 20, 'text', 2),
+(69, 20, 'text', 3),
+(70, 21, 'text', 1),
+(71, 21, 'text', 2),
+(72, 21, 'text', 3),
+(73, 22, 'text', 1),
+(74, 22, 'text', 2),
+(75, 22, 'text', 3),
+(76, 23, 'text', 1),
+(77, 23, 'text', 2),
+(78, 23, 'text', 3),
+(79, 24, 'text', 1),
+(80, 24, 'text', 2),
+(81, 24, 'text', 3),
+(82, 25, 'text', 1),
+(83, 25, 'text', 2),
+(84, 25, 'text', 3),
+(85, 26, 'text', 1),
+(86, 26, 'text', 2),
+(87, 26, 'text', 3),
+(88, 27, 'text', 1),
+(89, 27, 'text', 2),
+(90, 27, 'text', 3),
+(91, 28, 'text', 1),
+(92, 28, 'text', 2),
+(93, 28, 'text', 3),
+(94, 29, 'text', 1),
+(95, 29, 'text', 2),
+(96, 29, 'text', 3),
+(97, 30, 'text', 1),
+(98, 30, 'text', 2),
+(99, 30, 'text', 3),
+(100, 31, 'text', 1),
+(101, 31, 'text', 2),
+(102, 31, 'text', 3),
+(103, 32, 'text', 1),
+(104, 32, 'text', 2),
+(105, 32, 'text', 3),
+(106, 33, 'text', 1),
+(107, 33, 'text', 2),
+(108, 33, 'text', 3),
+(109, 34, 'text', 1),
+(110, 34, 'text', 2),
+(111, 34, 'text', 3),
+(112, 35, 'text', 1),
+(113, 35, 'text', 2),
+(114, 35, 'text', 3),
+(115, 36, 'text', 1),
+(116, 36, 'text', 2),
+(117, 36, 'text', 3),
+(118, 1, 'text', 4),
+(120, 2, 'text', 4),
+(121, 3, 'text', 4),
+(122, 4, 'text', 4),
+(123, 5, 'text', 4),
+(124, 6, 'text', 4),
+(125, 7, 'text', 4),
+(126, 8, 'text', 4),
+(127, 9, 'text', 4),
+(128, 10, 'text', 4),
+(129, 11, 'text', 4),
+(130, 12, 'text', 4),
+(131, 13, 'text', 4),
+(132, 14, 'text', 4),
+(133, 15, 'text', 4),
+(134, 16, 'text', 4),
+(135, 17, 'text', 4),
+(136, 18, 'text', 4),
+(137, 19, 'text', 4),
+(138, 20, 'text', 4),
+(139, 21, 'text', 4),
+(140, 22, 'text', 4),
+(141, 23, 'text', 4),
+(142, 24, 'text', 4),
+(143, 25, 'text', 4),
+(144, 26, 'text', 4),
+(145, 27, 'text', 4),
+(146, 28, 'text', 4),
+(147, 29, 'text', 4),
+(148, 30, 'text', 4),
+(149, 31, 'text', 4),
+(150, 32, 'text', 4),
+(151, 33, 'text', 4),
+(152, 34, 'text', 4),
+(153, 35, 'text', 4),
+(154, 36, 'text', 4),
+(155, 1, 'text', 5),
+(156, 2, 'text', 5),
+(157, 3, 'text', 5),
+(158, 4, 'text', 5),
+(159, 5, 'text', 5),
+(160, 6, 'text', 5),
+(161, 7, 'text', 5),
+(162, 8, 'text', 5),
+(163, 9, 'text', 5),
+(164, 10, 'text', 5),
+(165, 11, 'text', 5),
+(166, 12, 'text', 5),
+(167, 13, 'text', 5),
+(168, 14, 'text', 5),
+(169, 15, 'text', 5),
+(170, 16, 'text', 5),
+(171, 17, 'text', 5),
+(172, 18, 'text', 5),
+(173, 19, 'text', 5),
+(174, 20, 'text', 5),
+(175, 21, 'text', 5),
+(176, 22, 'text', 5),
+(177, 23, 'text', 5),
+(178, 24, 'text', 5),
+(179, 25, 'text', 5),
+(180, 26, 'text', 5),
+(181, 27, 'text', 5),
+(182, 28, 'text', 5),
+(183, 29, 'text', 5),
+(184, 30, 'text', 5),
+(185, 31, 'text', 5),
+(186, 32, 'text', 5),
+(187, 33, 'text', 5),
+(188, 34, 'text', 5),
+(189, 35, 'text', 5),
+(190, 36, 'text', 5),
+(191, 1, 'text', 6),
+(192, 2, 'text', 6),
+(193, 3, 'text', 6),
+(194, 4, 'text', 6),
+(195, 5, 'text', 6),
+(196, 6, 'text', 6),
+(197, 7, 'text', 6),
+(198, 8, 'text', 6),
+(199, 9, 'text', 6),
+(200, 10, 'text', 6),
+(201, 11, 'text', 6),
+(202, 12, 'text', 6),
+(203, 13, 'text', 6),
+(204, 14, 'text', 6),
+(205, 15, 'text', 6),
+(206, 16, 'text', 6),
+(207, 17, 'text', 6),
+(208, 18, 'text', 6),
+(209, 19, 'text', 6),
+(210, 20, 'text', 6),
+(211, 21, 'text', 6),
+(212, 22, 'text', 6),
+(213, 23, 'text', 6),
+(214, 24, 'text', 6),
+(215, 25, 'text', 6),
+(216, 26, 'text', 6),
+(217, 27, 'text', 6),
+(218, 28, 'text', 6),
+(219, 29, 'text', 6),
+(220, 30, 'text', 6),
+(221, 31, 'text', 6),
+(222, 32, 'text', 6),
+(223, 33, 'text', 6),
+(224, 34, 'text', 6),
+(225, 35, 'text', 6),
+(226, 36, 'text', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `mp_ratings`
+--
+
+CREATE TABLE `mp_ratings` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `mp_id` int(11) NOT NULL,
+  `rating` tinyint(4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `club` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `mp_ratings`
+--
+
+INSERT INTO `mp_ratings` (`id`, `user_id`, `mp_id`, `rating`, `created_at`, `updated_at`, `club`) VALUES
+(1, 4, 2, 5, '2026-06-03 16:08:09', '2026-06-03 16:08:09', NULL),
+(2, 4, 4, 5, '2026-06-03 16:12:03', '2026-06-03 16:12:03', NULL),
+(3, 4, 1, 5, '2026-06-03 16:30:24', '2026-06-03 16:30:24', 'PiS'),
+(4, 4, 81, 5, '2026-06-03 16:31:05', '2026-06-03 16:31:05', 'Konfederacja_KP'),
+(5, 4, 340, 5, '2026-06-03 16:31:11', '2026-06-03 16:31:11', 'Konfederacja_KP'),
+(6, 4, 446, 5, '2026-06-03 16:31:14', '2026-06-03 16:31:14', 'Konfederacja_KP'),
+(7, 4, 6, 5, '2026-06-03 16:33:54', '2026-06-03 16:33:54', 'Demokracja'),
+(8, 4, 10, 4, '2026-06-03 16:46:40', '2026-06-03 16:46:43', 'KO'),
+(10, 4, 234, 1, '2026-06-03 19:35:56', '2026-06-03 19:35:56', 'PiS'),
+(11, 4, 146, 4, '2026-06-03 19:39:24', '2026-06-03 19:39:24', 'PiS'),
+(12, 4, 50, 5, '2026-06-03 22:45:02', '2026-06-03 22:45:02', 'PiS'),
+(13, 4, 7, 4, '2026-06-04 09:54:09', '2026-06-04 09:54:09', 'PiS'),
+(14, 4, 36, 5, '2026-06-04 10:08:09', '2026-06-04 10:08:09', 'Polska2050');
 
 -- --------------------------------------------------------
 
@@ -177,9 +758,7 @@ INSERT INTO `notifications` (`id`, `user_id`, `type`, `data`, `icon`, `color`, `
 (196, 8, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":240}', 'survey_completed', '', 1, '2026-05-19 19:16:28'),
 (197, 9, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":44,\"xp\":10}', 'trophy', '', 1, '2026-05-19 19:18:44'),
 (198, 9, 'ACHIEVEMENT_UNLOCK', '{\"achievementId\":60,\"xp\":10}', 'trophy', '', 1, '2026-05-19 19:18:44'),
-(199, 9, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', '', 1, '2026-05-19 19:18:44'),
-(246, 4, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":840}', 'survey_completed', 'emerald', 1, '2026-05-28 17:59:45'),
-(247, 4, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":890}', 'survey_completed', 'emerald', 1, '2026-05-28 17:59:48');
+(199, 9, 'SURVEY_COMPLETED', '{\"xp\":50,\"totalXP\":50}', 'survey_completed', '', 1, '2026-05-19 19:18:44');
 
 -- --------------------------------------------------------
 
@@ -306,7 +885,7 @@ CREATE TABLE `surveys` (
 --
 
 INSERT INTO `surveys` (`id`, `title`, `category`, `reward`, `time`, `description`, `status`, `deadline`) VALUES
-(1, 'Reformy Podatkowe 2026', 'Ekonomia', 50, '5 min', 'Pytamy Polaków o możliwe zmiany podatkowe', 'active', '2026-05-31'),
+(1, 'Reformy Podatkowe 2026', 'Ekonomia', 50, '5 min', 'Pytamy Polaków o możliwe zmiany podatkowe', 'active', '2026-06-16'),
 (2, 'Oczekiwania wobec Ministra Cyfryzacji', 'Technologia', 50, '3 min', 'Oczekiwania wobec ministra Cyfryzacji.', 'active', '2026-05-31'),
 (3, 'Transport publiczny w Polsce', 'Infrastruktura', 50, '4 min', 'Transport publiczny.', 'active', '2026-05-21'),
 (4, 'Edukacja cyfrowa w szkołach', 'Edukacja', 50, '6 min', 'Reforma edukacji', 'active', '2026-05-20');
@@ -330,8 +909,7 @@ CREATE TABLE `survey_answers` (
 --
 
 INSERT INTO `survey_answers` (`id`, `survey_id`, `user_id`, `answers`, `created_at`) VALUES
-(247, 1, 4, '{\"1\":\"yes\",\"2\":\"yes\",\"3\":\"yes\"}', '2026-05-28 17:59:45'),
-(248, 2, 4, '{\"4\":\"yes\",\"5\":\"yes\",\"6\":\"yes\"}', '2026-05-28 17:59:48');
+(255, 1, 4, '{\"1\":\"yes\",\"2\":\"yes\",\"3\":\"yes\"}', '2026-06-06 20:42:34');
 
 -- --------------------------------------------------------
 
@@ -368,7 +946,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `is_strong`, `created_at
 (1, '', 'igorrpedziwilk@gmail.com', '$2b$10$KoKNM42i0rsw3C0F31thPuOMx4kiUi/zPY8NkS/HHKgl/aMiZ5uDa', 0, '2026-02-24 20:36:07', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
 (2, 'qwe', 'igor@wp.pl', '$2b$10$nGHb96MKg/ozPM/yBSl3iONFyrhrgyxpfePYt9oVyxON/AuTkqGI.', 0, '2026-02-24 20:45:14', '56fb4d26-e893-4a29-a772-7529ac6ec39c', 20260514, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
 (3, 'IgorPedz', 'pedz@wp.pl', '$2b$10$L10qTJ1I9g3wQEnhIOwvfuJAmtu8Aj6wjZwj2clDfs41aZiYPUySK', 0, '2026-05-10 12:18:39', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
-(4, 'igor', 'qigorq@wp.pl', '$2b$10$P4AlEULBNpKLfexNz/DqD.A4GsKn74S27bYX5jh9tLxTiJH2OaPQy', 1, '2026-05-14 18:56:00', 'c5be64bf-e8cb-4c0e-9dc8-64b27b0f323b', 1779820035820, 7, '2026-05-28', 30, 1, NULL, NULL, '2026-05-28', 890, 3, 'Użytkownik'),
+(4, 'igor', 'qigorq@wp.pl', '$2b$10$P4AlEULBNpKLfexNz/DqD.A4GsKn74S27bYX5jh9tLxTiJH2OaPQy', 1, '2026-05-14 18:56:00', 'c5be64bf-e8cb-4c0e-9dc8-64b27b0f323b', 1779820035820, 2, '2026-06-07', 40, 1, NULL, NULL, '2026-06-07', 2675, 3, 'Użytkownik'),
 (5, 'test', 'test@wp.pl', '$2b$10$QGBop034Lo4eRK5mtynH0O.aauocBwppzn6YnuR/8CHnZ12SR4olO', 0, '2026-05-14 20:34:46', NULL, NULL, 1, '2026-05-14', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
 (6, 'testowekonto', 'testtest@wp.pl', '$2b$10$OCUhJzWMZVnWlR3vTIaM8uv4joGWMUJkZG44IVTHlfkD/Zv72Jh66', 0, '2026-05-15 12:12:30', NULL, NULL, 1, '2026-05-15', 1, 0, NULL, NULL, NULL, 0, 1, 'Użytkownik'),
 (7, 'igorpedzi', 'pedziwilk@gmail.com', '$2b$10$5jqt3ellaNs2D5bmibQ9X.62s9kfLf1br780mOJVBtMqDLhI.E2..', 1, '2026-05-17 14:49:27', NULL, NULL, 1, '2026-05-17', 1, 0, NULL, NULL, '2026-05-17', 60, 1, 'Użytkownik'),
@@ -407,15 +985,15 @@ INSERT INTO `user_achievements` (`id`, `user_id`, `achievement_id`, `progress`, 
 (356, 4, 52, 3, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
 (357, 4, 53, 7, 1, '2026-05-19 19:44:44', '2026-05-19 19:36:41'),
 (358, 4, 54, 14, 1, '2026-05-19 22:01:59', '2026-05-19 19:36:41'),
-(359, 4, 55, 7, 0, NULL, '2026-05-19 19:36:41'),
+(359, 4, 55, 1, 0, NULL, '2026-05-19 19:36:41'),
 (360, 4, 60, 1, 1, '2026-05-19 19:49:31', '2026-05-19 19:36:41'),
 (361, 4, 61, 7, 1, '2026-05-19 19:49:31', '2026-05-19 19:36:41'),
 (362, 4, 62, 14, 1, '2026-05-19 19:49:31', '2026-05-19 19:36:41'),
 (363, 4, 63, 30, 1, '2026-05-28 17:48:35', '2026-05-19 19:36:41'),
-(364, 4, 64, 30, 0, NULL, '2026-05-19 19:36:41'),
-(365, 4, 65, 30, 0, NULL, '2026-05-19 19:36:41'),
-(366, 4, 66, 30, 0, NULL, '2026-05-19 19:36:41'),
-(367, 4, 67, 30, 0, NULL, '2026-05-19 19:36:41'),
+(364, 4, 64, 39, 0, NULL, '2026-05-19 19:36:41'),
+(365, 4, 65, 39, 0, NULL, '2026-05-19 19:36:41'),
+(366, 4, 66, 39, 0, NULL, '2026-05-19 19:36:41'),
+(367, 4, 67, 39, 0, NULL, '2026-05-19 19:36:41'),
 (490, 8, 44, 1, 1, '2026-05-19 21:15:37', '2026-05-19 21:15:37'),
 (491, 8, 45, 4, 0, NULL, '2026-05-19 21:15:37'),
 (492, 8, 46, 4, 0, NULL, '2026-05-19 21:15:37'),
@@ -455,7 +1033,120 @@ INSERT INTO `user_achievements` (`id`, `user_id`, `achievement_id`, `progress`, 
 (578, 9, 64, 1, 0, NULL, '2026-05-19 21:18:44'),
 (579, 9, 65, 1, 0, NULL, '2026-05-19 21:18:44'),
 (580, 9, 66, 1, 0, NULL, '2026-05-19 21:18:44'),
-(581, 9, 67, 1, 0, NULL, '2026-05-19 21:18:44');
+(581, 9, 67, 1, 0, NULL, '2026-05-19 21:18:44'),
+(853, 4, 101, 1, 1, '2026-05-31 14:36:32', '2026-05-31 14:36:32'),
+(854, 4, 102, 10, 1, '2026-05-31 14:43:24', '2026-05-31 14:36:32'),
+(855, 4, 103, 50, 1, '2026-05-31 16:22:01', '2026-05-31 14:36:32'),
+(856, 4, 104, 81, 0, NULL, '2026-05-31 14:36:32'),
+(857, 4, 110, 1, 1, '2026-05-31 16:25:36', '2026-05-31 14:36:32'),
+(858, 4, 111, 3, 1, '2026-05-31 16:35:16', '2026-05-31 14:36:32'),
+(859, 4, 112, 7, 0, NULL, '2026-05-31 14:36:32'),
+(860, 4, 120, 1, 1, '2026-05-31 14:36:32', '2026-05-31 14:36:32'),
+(861, 4, 121, 13, 0, NULL, '2026-05-31 14:36:32'),
+(862, 4, 122, 13, 0, NULL, '2026-05-31 14:36:32'),
+(1981, 4, 70, 1, 1, '2026-06-03 18:12:03', '2026-06-03 18:12:03'),
+(1982, 4, 71, 10, 1, '2026-06-03 21:39:24', '2026-06-03 18:12:03'),
+(1983, 4, 72, 13, 0, NULL, '2026-06-03 18:12:03'),
+(1984, 4, 73, 13, 0, NULL, '2026-06-03 18:12:03'),
+(1997, 4, 74, 1, 0, NULL, '2026-06-03 18:30:24'),
+(1998, 4, 75, 0, 0, NULL, '2026-06-03 18:30:24'),
+(1999, 4, 76, 0, 0, NULL, '2026-06-03 18:30:24'),
+(2000, 4, 77, 0, 0, NULL, '2026-06-03 18:30:24'),
+(2001, 4, 78, 1, 0, NULL, '2026-06-03 18:30:24'),
+(2002, 4, 79, 5, 0, NULL, '2026-06-03 18:30:24'),
+(2003, 4, 80, 0, 0, NULL, '2026-06-03 18:30:24'),
+(2004, 4, 81, 3, 1, '2026-06-03 18:31:14', '2026-06-03 18:30:24'),
+(2005, 4, 82, 0, 0, NULL, '2026-06-03 18:30:24'),
+(2006, 4, 83, 1, 0, NULL, '2026-06-03 18:30:24'),
+(2007, 4, 85, 2, 0, NULL, '2026-06-03 18:30:24'),
+(2008, 4, 86, 9, 0, NULL, '2026-06-03 18:30:24'),
+(2102, 4, 84, 3, 0, NULL, '2026-06-03 18:33:54'),
+(2205, 4, 123, 1, 1, '2026-06-03 20:20:35', '2026-06-03 20:20:35'),
+(2254, 4, 124, 4, 0, NULL, '2026-06-03 21:35:56'),
+(2255, 4, 125, 4, 0, NULL, '2026-06-03 21:35:56'),
+(2256, 4, 126, 4, 0, NULL, '2026-06-03 21:35:56'),
+(2257, 4, 127, 4, 0, NULL, '2026-06-03 21:35:56');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `user_courses`
+--
+
+CREATE TABLE `user_courses` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `exam_score` int(11) DEFAULT 0,
+  `completed` tinyint(1) DEFAULT 0,
+  `started_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `completed_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_courses`
+--
+
+INSERT INTO `user_courses` (`id`, `user_id`, `course_id`, `exam_score`, `completed`, `started_at`, `completed_at`) VALUES
+(7, 4, 1, 9, 1, '2026-05-31 14:38:11', '2026-05-31 14:38:11'),
+(8, 4, 2, 10, 1, '2026-05-31 14:42:14', '2026-05-31 14:42:14');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `user_lesson_progress`
+--
+
+CREATE TABLE `user_lesson_progress` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `lesson_id` int(11) NOT NULL,
+  `completed` tinyint(1) DEFAULT 0,
+  `quiz_completed` tinyint(1) DEFAULT 0,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_lesson_progress`
+--
+
+INSERT INTO `user_lesson_progress` (`id`, `user_id`, `lesson_id`, `completed`, `quiz_completed`, `updated_at`) VALUES
+(1, 4, 1, 1, 1, '2026-05-30 12:46:18'),
+(2, 4, 2, 1, 1, '2026-05-30 16:38:28'),
+(6, 4, 13, 1, 1, '2026-05-30 16:48:22'),
+(8, 4, 3, 1, 1, '2026-05-30 16:53:55'),
+(9, 4, 14, 1, 1, '2026-05-30 17:04:26'),
+(10, 4, 15, 1, 1, '2026-05-30 17:04:57'),
+(11, 4, 25, 1, 1, '2026-05-30 17:15:48'),
+(12, 4, 26, 1, 1, '2026-05-30 17:16:06'),
+(13, 4, 4, 1, 1, '2026-05-30 17:39:07'),
+(14, 4, 16, 1, 1, '2026-05-30 17:39:43'),
+(15, 4, 17, 1, 1, '2026-05-30 17:40:03'),
+(16, 4, 5, 1, 1, '2026-05-30 19:27:27'),
+(17, 4, 6, 1, 1, '2026-05-30 19:27:40'),
+(18, 4, 7, 1, 1, '2026-05-30 19:27:55'),
+(19, 4, 8, 1, 1, '2026-05-30 19:28:07'),
+(20, 4, 9, 1, 1, '2026-05-30 19:28:19'),
+(21, 4, 10, 1, 1, '2026-05-30 19:28:30'),
+(22, 4, 11, 1, 1, '2026-05-30 19:28:42'),
+(23, 4, 12, 1, 1, '2026-05-30 19:29:02'),
+(24, 4, 27, 1, 1, '2026-05-31 10:15:40'),
+(25, 4, 28, 1, 1, '2026-05-31 12:04:45'),
+(26, 4, 18, 1, 1, '2026-05-31 12:25:49'),
+(27, 4, 19, 1, 1, '2026-05-31 12:29:30'),
+(28, 4, 20, 1, 1, '2026-05-31 12:29:52'),
+(29, 4, 21, 1, 1, '2026-05-31 12:45:21'),
+(30, 4, 29, 1, 1, '2026-05-31 12:47:07'),
+(31, 4, 22, 1, 1, '2026-05-31 13:18:32'),
+(32, 4, 23, 1, 1, '2026-05-31 14:16:01'),
+(33, 4, 24, 1, 1, '2026-05-31 14:16:22'),
+(34, 4, 30, 1, 1, '2026-05-31 14:19:55'),
+(35, 4, 31, 1, 1, '2026-05-31 14:21:55'),
+(36, 4, 32, 1, 1, '2026-05-31 14:22:15'),
+(37, 4, 33, 1, 1, '2026-05-31 14:22:31'),
+(38, 4, 34, 1, 1, '2026-05-31 14:22:49'),
+(39, 4, 35, 1, 1, '2026-05-31 14:23:08'),
+(40, 4, 36, 1, 1, '2026-05-31 14:23:30');
 
 -- --------------------------------------------------------
 
@@ -469,23 +1160,223 @@ CREATE TABLE `user_metrics` (
   `survey_completed` int(11) DEFAULT 0,
   `opinions_written` int(11) DEFAULT 0,
   `courses_completed` int(11) DEFAULT 0,
-  `tracked_laws_count` int(11) DEFAULT 0,
+  `modules_completed` int(11) DEFAULT 0,
   `comments_count` int(11) DEFAULT 0,
-  `likes_received` int(11) DEFAULT 0,
+  `lessons_completed` int(11) DEFAULT 0,
   `achievements_unlocked` int(11) DEFAULT 0,
   `created_surveys` int(11) DEFAULT 0,
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `mps_rated` int(11) DEFAULT 0,
+  `clubs_rated_count` int(11) DEFAULT 0,
+  `club_rated_ko` smallint(6) DEFAULT 0,
+  `club_rated_lewica` smallint(6) DEFAULT 0,
+  `club_rated_razem` smallint(6) DEFAULT 0,
+  `club_rated_psl_td` smallint(6) DEFAULT 0,
+  `club_rated_polska2050` smallint(6) DEFAULT 0,
+  `club_rated_pis` smallint(6) DEFAULT 0,
+  `club_rated_konfederacja` smallint(6) DEFAULT 0,
+  `club_rated_konfederacja_kp` smallint(6) DEFAULT 0,
+  `club_rated_centrum` smallint(6) DEFAULT 0,
+  `club_rated_demokracja` smallint(6) DEFAULT 0,
+  `coalition_rated` smallint(6) DEFAULT 0,
+  `opposition_rated` smallint(6) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_metrics`
 --
 
-INSERT INTO `user_metrics` (`user_id`, `votes_count`, `survey_completed`, `opinions_written`, `courses_completed`, `tracked_laws_count`, `comments_count`, `likes_received`, `achievements_unlocked`, `created_surveys`, `updated_at`) VALUES
-(4, 0, 69, 0, 0, 0, 0, 0, 0, 0, '2026-05-28 19:59:48'),
-(7, 0, 1, 0, 0, 0, 0, 0, 0, 0, '2026-05-17 16:49:42'),
-(8, 0, 4, 0, 0, 0, 0, 0, 0, 0, '2026-05-19 21:16:28'),
-(9, 0, 1, 0, 0, 0, 0, 0, 0, 0, '2026-05-19 21:18:44');
+INSERT INTO `user_metrics` (`user_id`, `votes_count`, `survey_completed`, `opinions_written`, `courses_completed`, `modules_completed`, `comments_count`, `lessons_completed`, `achievements_unlocked`, `created_surveys`, `updated_at`, `mps_rated`, `clubs_rated_count`, `club_rated_ko`, `club_rated_lewica`, `club_rated_razem`, `club_rated_psl_td`, `club_rated_polska2050`, `club_rated_pis`, `club_rated_konfederacja`, `club_rated_konfederacja_kp`, `club_rated_centrum`, `club_rated_demokracja`, `coalition_rated`, `opposition_rated`) VALUES
+(4, 0, 76, 4, 7, 81, 0, 13, 0, 0, '2026-06-06 22:42:34', 13, 3, 1, 0, 0, 0, 1, 5, 0, 3, 0, 1, 2, 9),
+(7, 0, 1, 0, 0, 0, 0, 0, 0, 0, '2026-05-17 16:49:42', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(8, 0, 4, 0, 0, 0, 0, 0, 0, 0, '2026-05-19 21:16:28', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(9, 0, 1, 0, 0, 0, 0, 0, 0, 0, '2026-05-19 21:18:44', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `user_module_progress`
+--
+
+CREATE TABLE `user_module_progress` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `lesson_id` int(11) NOT NULL,
+  `module_index` int(11) NOT NULL,
+  `completed` tinyint(1) DEFAULT 0,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_module_progress`
+--
+
+INSERT INTO `user_module_progress` (`id`, `user_id`, `lesson_id`, `module_index`, `completed`, `updated_at`) VALUES
+(1, 4, 1, 0, 1, '2026-05-30 16:23:51'),
+(7, 4, 1, 1, 1, '2026-05-30 16:23:51'),
+(8, 4, 1, 2, 1, '2026-05-30 16:23:51'),
+(10, 4, 2, 0, 1, '2026-05-30 16:31:56'),
+(14, 4, 2, 1, 1, '2026-05-30 16:38:36'),
+(15, 4, 2, 2, 1, '2026-05-30 16:38:37'),
+(16, 4, 3, 0, 1, '2026-05-30 16:45:12'),
+(17, 4, 3, 1, 1, '2026-05-30 16:45:13'),
+(18, 4, 3, 2, 1, '2026-05-30 16:45:14'),
+(48, 4, 14, 0, 1, '2026-05-30 17:03:54'),
+(49, 4, 13, 0, 1, '2026-05-30 17:04:09'),
+(50, 4, 13, 1, 1, '2026-05-30 17:04:10'),
+(51, 4, 13, 2, 1, '2026-05-30 17:04:11'),
+(52, 4, 14, 1, 1, '2026-05-30 17:04:18'),
+(53, 4, 14, 2, 1, '2026-05-30 17:04:19'),
+(54, 4, 15, 0, 1, '2026-05-30 17:04:40'),
+(55, 4, 15, 1, 1, '2026-05-30 17:04:41'),
+(56, 4, 15, 2, 1, '2026-05-30 17:04:42'),
+(57, 4, 16, 0, 1, '2026-05-30 17:06:04'),
+(58, 4, 25, 0, 1, '2026-05-30 17:11:56'),
+(78, 4, 25, 1, 1, '2026-05-30 17:15:37'),
+(79, 4, 25, 2, 1, '2026-05-30 17:15:40'),
+(80, 4, 26, 0, 1, '2026-05-30 17:15:54'),
+(83, 4, 26, 1, 1, '2026-05-30 17:15:58'),
+(85, 4, 26, 2, 1, '2026-05-30 17:16:00'),
+(86, 4, 4, 0, 1, '2026-05-30 17:26:08'),
+(87, 4, 4, 1, 1, '2026-05-30 17:26:10'),
+(88, 4, 4, 2, 1, '2026-05-30 17:26:12'),
+(89, 4, 16, 1, 1, '2026-05-30 17:39:29'),
+(90, 4, 16, 2, 1, '2026-05-30 17:39:31'),
+(91, 4, 17, 0, 1, '2026-05-30 17:39:50'),
+(92, 4, 17, 1, 1, '2026-05-30 17:39:52'),
+(93, 4, 17, 2, 1, '2026-05-30 17:39:54'),
+(94, 4, 5, 0, 1, '2026-05-30 19:27:16'),
+(95, 4, 5, 1, 1, '2026-05-30 19:27:17'),
+(96, 4, 5, 2, 1, '2026-05-30 19:27:18'),
+(97, 4, 6, 0, 1, '2026-05-30 19:27:28'),
+(98, 4, 6, 1, 1, '2026-05-30 19:27:29'),
+(99, 4, 6, 2, 1, '2026-05-30 19:27:31'),
+(100, 4, 7, 0, 1, '2026-05-30 19:27:42'),
+(101, 4, 7, 1, 1, '2026-05-30 19:27:43'),
+(102, 4, 7, 2, 1, '2026-05-30 19:27:44'),
+(103, 4, 8, 0, 1, '2026-05-30 19:27:56'),
+(104, 4, 8, 1, 1, '2026-05-30 19:27:58'),
+(105, 4, 8, 2, 1, '2026-05-30 19:27:59'),
+(106, 4, 9, 0, 1, '2026-05-30 19:28:08'),
+(107, 4, 9, 1, 1, '2026-05-30 19:28:09'),
+(108, 4, 9, 2, 1, '2026-05-30 19:28:11'),
+(109, 4, 10, 0, 1, '2026-05-30 19:28:20'),
+(110, 4, 10, 1, 1, '2026-05-30 19:28:21'),
+(111, 4, 10, 2, 1, '2026-05-30 19:28:23'),
+(112, 4, 11, 0, 1, '2026-05-30 19:28:32'),
+(113, 4, 11, 1, 1, '2026-05-30 19:28:33'),
+(114, 4, 11, 2, 1, '2026-05-30 19:28:34'),
+(115, 4, 12, 0, 1, '2026-05-30 19:28:45'),
+(116, 4, 12, 1, 1, '2026-05-30 19:28:48'),
+(117, 4, 12, 2, 1, '2026-05-30 19:28:50'),
+(118, 4, 18, 0, 1, '2026-05-30 19:35:19'),
+(126, 4, 27, 0, 1, '2026-05-31 09:31:28'),
+(127, 4, 27, 1, 1, '2026-05-31 09:31:30'),
+(128, 4, 27, 2, 1, '2026-05-31 09:31:32'),
+(129, 4, 27, 3, 1, '2026-05-31 09:47:42'),
+(130, 4, 27, 4, 1, '2026-05-31 09:47:43'),
+(131, 4, 27, 5, 1, '2026-05-31 09:47:44'),
+(132, 4, 18, 1, 1, '2026-05-31 11:41:08'),
+(133, 4, 18, 2, 1, '2026-05-31 11:41:09'),
+(134, 4, 18, 3, 1, '2026-05-31 11:41:10'),
+(135, 4, 18, 4, 1, '2026-05-31 11:41:12'),
+(136, 4, 18, 5, 1, '2026-05-31 11:42:01'),
+(138, 4, 1, 3, 1, '2026-05-31 11:53:40'),
+(139, 4, 1, 4, 1, '2026-05-31 11:53:41'),
+(140, 4, 1, 5, 1, '2026-05-31 11:53:42'),
+(141, 4, 28, 0, 1, '2026-05-31 12:04:28'),
+(142, 4, 28, 1, 1, '2026-05-31 12:04:29'),
+(143, 4, 28, 2, 1, '2026-05-31 12:04:30'),
+(144, 4, 28, 3, 1, '2026-05-31 12:04:33'),
+(145, 4, 28, 4, 1, '2026-05-31 12:04:35'),
+(146, 4, 28, 5, 1, '2026-05-31 12:04:36'),
+(147, 4, 19, 0, 1, '2026-05-31 12:25:51'),
+(149, 4, 19, 1, 1, '2026-05-31 12:26:50'),
+(150, 4, 19, 2, 1, '2026-05-31 12:27:09'),
+(151, 4, 19, 3, 1, '2026-05-31 12:28:12'),
+(152, 4, 19, 4, 1, '2026-05-31 12:28:16'),
+(153, 4, 19, 5, 1, '2026-05-31 12:28:27'),
+(154, 4, 20, 0, 1, '2026-05-31 12:29:37'),
+(155, 4, 20, 1, 1, '2026-05-31 12:29:38'),
+(156, 4, 20, 2, 1, '2026-05-31 12:29:39'),
+(157, 4, 20, 3, 1, '2026-05-31 12:29:40'),
+(158, 4, 20, 4, 1, '2026-05-31 12:29:41'),
+(159, 4, 20, 5, 1, '2026-05-31 12:29:42'),
+(160, 4, 21, 0, 1, '2026-05-31 12:41:32'),
+(161, 4, 21, 1, 1, '2026-05-31 12:41:36'),
+(162, 4, 21, 2, 1, '2026-05-31 12:41:37'),
+(163, 4, 21, 3, 1, '2026-05-31 12:41:55'),
+(164, 4, 21, 4, 1, '2026-05-31 12:41:56'),
+(165, 4, 21, 5, 1, '2026-05-31 12:41:57'),
+(166, 4, 29, 0, 1, '2026-05-31 12:43:24'),
+(167, 4, 22, 0, 1, '2026-05-31 12:45:26'),
+(168, 4, 29, 1, 1, '2026-05-31 12:46:53'),
+(169, 4, 29, 2, 1, '2026-05-31 12:46:55'),
+(170, 4, 29, 3, 1, '2026-05-31 12:46:56'),
+(171, 4, 29, 4, 1, '2026-05-31 12:46:57'),
+(172, 4, 29, 5, 1, '2026-05-31 12:46:59'),
+(173, 4, 22, 1, 1, '2026-05-31 12:48:54'),
+(174, 4, 22, 2, 1, '2026-05-31 12:48:54'),
+(175, 4, 22, 3, 1, '2026-05-31 12:49:18'),
+(176, 4, 22, 4, 1, '2026-05-31 12:49:19'),
+(177, 4, 22, 5, 1, '2026-05-31 12:49:20'),
+(178, 4, 30, 0, 1, '2026-05-31 13:09:01'),
+(179, 4, 30, 1, 1, '2026-05-31 13:09:03'),
+(180, 4, 30, 2, 1, '2026-05-31 13:09:04'),
+(181, 4, 30, 3, 1, '2026-05-31 13:09:05'),
+(182, 4, 30, 4, 1, '2026-05-31 13:09:06'),
+(183, 4, 30, 5, 1, '2026-05-31 13:09:08'),
+(184, 4, 23, 0, 1, '2026-05-31 14:15:45'),
+(185, 4, 23, 1, 1, '2026-05-31 14:15:46'),
+(186, 4, 23, 2, 1, '2026-05-31 14:15:47'),
+(187, 4, 23, 3, 1, '2026-05-31 14:15:48'),
+(188, 4, 23, 4, 1, '2026-05-31 14:15:49'),
+(189, 4, 23, 5, 1, '2026-05-31 14:15:50'),
+(190, 4, 24, 0, 1, '2026-05-31 14:16:02'),
+(191, 4, 24, 1, 1, '2026-05-31 14:16:03'),
+(193, 4, 24, 2, 1, '2026-05-31 14:16:05'),
+(194, 4, 24, 3, 1, '2026-05-31 14:16:06'),
+(195, 4, 24, 4, 1, '2026-05-31 14:16:07'),
+(196, 4, 24, 5, 1, '2026-05-31 14:16:08'),
+(197, 4, 31, 0, 1, '2026-05-31 14:21:39'),
+(198, 4, 31, 1, 1, '2026-05-31 14:21:40'),
+(199, 4, 31, 2, 1, '2026-05-31 14:21:41'),
+(200, 4, 31, 3, 1, '2026-05-31 14:21:42'),
+(201, 4, 31, 4, 1, '2026-05-31 14:21:43'),
+(202, 4, 31, 5, 1, '2026-05-31 14:21:44'),
+(203, 4, 32, 0, 1, '2026-05-31 14:21:58'),
+(204, 4, 32, 1, 1, '2026-05-31 14:21:59'),
+(205, 4, 32, 2, 1, '2026-05-31 14:22:00'),
+(206, 4, 32, 3, 1, '2026-05-31 14:22:01'),
+(207, 4, 32, 4, 1, '2026-05-31 14:22:02'),
+(208, 4, 32, 5, 1, '2026-05-31 14:22:03'),
+(209, 4, 33, 0, 1, '2026-05-31 14:22:17'),
+(210, 4, 33, 1, 1, '2026-05-31 14:22:18'),
+(211, 4, 33, 2, 1, '2026-05-31 14:22:19'),
+(212, 4, 33, 3, 1, '2026-05-31 14:22:20'),
+(213, 4, 33, 4, 1, '2026-05-31 14:22:20'),
+(214, 4, 33, 5, 1, '2026-05-31 14:22:21'),
+(215, 4, 34, 0, 1, '2026-05-31 14:22:33'),
+(216, 4, 34, 1, 1, '2026-05-31 14:22:34'),
+(217, 4, 34, 2, 1, '2026-05-31 14:22:35'),
+(218, 4, 34, 3, 1, '2026-05-31 14:22:36'),
+(219, 4, 34, 4, 1, '2026-05-31 14:22:37'),
+(220, 4, 34, 5, 1, '2026-05-31 14:22:38'),
+(221, 4, 35, 0, 1, '2026-05-31 14:22:51'),
+(222, 4, 35, 1, 1, '2026-05-31 14:22:52'),
+(223, 4, 35, 2, 1, '2026-05-31 14:22:53'),
+(224, 4, 35, 3, 1, '2026-05-31 14:22:54'),
+(225, 4, 35, 4, 1, '2026-05-31 14:22:54'),
+(226, 4, 35, 5, 1, '2026-05-31 14:22:55'),
+(227, 4, 36, 0, 1, '2026-05-31 14:23:09'),
+(228, 4, 36, 1, 1, '2026-05-31 14:23:10'),
+(229, 4, 36, 2, 1, '2026-05-31 14:23:11'),
+(230, 4, 36, 3, 1, '2026-05-31 14:23:12'),
+(231, 4, 36, 4, 1, '2026-05-31 14:23:13'),
+(232, 4, 36, 5, 1, '2026-05-31 14:23:14'),
+(235, 4, 7, 3, 1, '2026-06-04 14:58:19'),
+(236, 4, 7, 4, 1, '2026-06-04 14:58:22'),
+(237, 4, 7, 5, 1, '2026-06-04 14:58:27');
 
 -- --------------------------------------------------------
 
@@ -504,7 +1395,7 @@ CREATE TABLE `user_tiles` (
 --
 
 INSERT INTO `user_tiles` (`id`, `user_id`, `tiles`) VALUES
-(0, 4, '[{\"id\":\"747b5163-f09d-4b3a-8ade-f2241d216095\",\"slug\":\"members_of_parliament\",\"accent\":\"blue\",\"icon\":\"userGroup\",\"iconColor\":\"blue\"},{\"id\":\"1abe991b-28ae-4c82-9fb8-a9ed7a09615f\",\"slug\":\"senators\",\"accent\":\"indigo\",\"icon\":\"user\",\"iconColor\":\"indigo\"},{\"id\":\"97bf3f3e-6c4e-4d80-91e9-7e306d6e81ab\",\"slug\":\"parliamentary_clubs\",\"accent\":\"purple\",\"icon\":\"scale\",\"iconColor\":\"purple\"},{\"id\":\"8df633e9-9ded-4f57-b87f-cf9b18cf5d75\",\"slug\":\"laws\",\"accent\":\"green\",\"icon\":\"document\",\"iconColor\":\"green\"},{\"id\":\"9c40940a-bdaf-4347-a5e8-815eae5179c1\",\"slug\":\"council_of_ministers\",\"accent\":\"rose\",\"icon\":\"ministry\",\"iconColor\":\"rose\"},{\"id\":\"8dcae28d-5dc1-4eb9-8d32-6492109ba0b0\",\"slug\":\"senate\",\"accent\":\"orange\",\"icon\":\"parliament\",\"iconColor\":\"orange\"},{\"id\":\"7ff695f0-a6b4-4497-8bc7-946d16ce8c65\",\"slug\":\"ministry_of_science_and_higher_education\",\"accent\":\"lime-gradient\",\"icon\":\"courses\",\"iconColor\":\"lime-gradient\"}]'),
+(0, 4, '[{\"id\":\"747b5163-f09d-4b3a-8ade-f2241d216095\",\"slug\":\"members_of_parliament\",\"accent\":\"blue\",\"icon\":\"userGroup\",\"iconColor\":\"blue\"},{\"id\":\"1abe991b-28ae-4c82-9fb8-a9ed7a09615f\",\"slug\":\"senators\",\"accent\":\"indigo\",\"icon\":\"user\",\"iconColor\":\"indigo\"},{\"id\":\"0e5d50fb-644b-44a6-9061-830823171c6f\",\"slug\":\"presidential_chancellery\",\"accent\":\"teal\",\"icon\":\"briefcase\",\"iconColor\":\"teal\"},{\"id\":\"7f6a0d6b-914d-44bd-b9eb-e5320fb526d8\",\"slug\":\"council_of_ministers\",\"accent\":\"rose\",\"icon\":\"ministry\",\"iconColor\":\"rose\"},{\"id\":\"af0d5b7d-2263-45f5-ab46-6ddcf61a07fc\",\"slug\":\"constitutional_tribunal\",\"accent\":\"yellow\",\"icon\":\"courses\",\"iconColor\":\"yellow\"},{\"id\":\"894aba71-47f2-4f95-9658-9835f8102056\",\"slug\":\"supreme_administrative_court\",\"accent\":\"cyan\",\"icon\":\"ministry\",\"iconColor\":\"cyan\"},{\"id\":\"7cd0f09e-daa1-440d-a377-22d2fc5b08fe\",\"slug\":\"ministry_of_national_defence\",\"accent\":\"cyan\",\"icon\":\"shield\",\"iconColor\":\"cyan\"},{\"id\":\"4dfbd2de-3ba5-4586-a3d9-22748393d449\",\"slug\":\"ministry_of_health\",\"accent\":\"red-gradient\",\"icon\":\"heart\",\"iconColor\":\"red-gradient\"},{\"id\":\"be9dc1ad-71dc-409c-9567-0ec96f60a947\",\"slug\":\"president\",\"accent\":\"red\",\"icon\":\"flag\",\"iconColor\":\"red\"},{\"id\":\"7c26790f-d4ad-40cf-b93c-f4cc7b6c8100\",\"slug\":\"ministry_of_digital_affairs\",\"accent\":\"amber-gradient\",\"icon\":\"computer\",\"iconColor\":\"amber-gradient\"},{\"id\":\"0c3bc69f-53ff-4d98-af6e-b29ecb9289ba\",\"slug\":\"ministry_of_internal_affairs_and_administration\",\"accent\":\"cyan-gradient\",\"icon\":\"tablet\",\"iconColor\":\"cyan-gradient\"},{\"id\":\"c2001763-06b9-41b3-b37e-22399647828a\",\"slug\":\"ministry_of_energy\",\"accent\":\"yellow\",\"icon\":\"lighting\",\"iconColor\":\"yellow\"},{\"id\":\"45f0d047-7a3e-49f0-9c9e-2b0f1d1ee376\",\"slug\":\"ministry_of_education\",\"accent\":\"emerald\",\"icon\":\"courses\",\"iconColor\":\"emerald\"},{\"id\":\"6419effb-c586-403a-aba9-3f10c3393b3c\",\"slug\":\"ministry_of_funds_and_regional_policy\",\"accent\":\"pink\",\"icon\":\"euro\",\"iconColor\":\"pink\"},{\"id\":\"0c1e88ef-66b3-4e25-94dd-b673f756c02d\",\"slug\":\"ministry_of_science_and_higher_education\",\"accent\":\"lime-gradient\",\"icon\":\"courses\",\"iconColor\":\"lime-gradient\"},{\"id\":\"4ba263b4-369f-4660-910a-ae77ef9595a4\",\"slug\":\"ministry_of_family_labour_and_social_policy\",\"accent\":\"rose-gradient\",\"icon\":\"users\",\"iconColor\":\"rose-gradient\"},{\"id\":\"dc9e4ddc-122d-4ca1-ab91-59827907f35d\",\"slug\":\"ministry_of_sport_and_tourism\",\"accent\":\"cyan-gradient\",\"icon\":\"trophy\",\"iconColor\":\"cyan-gradient\"},{\"id\":\"ce487054-0fcd-4dd2-9a9f-b9f1151fdffc\",\"slug\":\"ministry_of_culture_and_national_heritage\",\"accent\":\"pink-gradient\",\"icon\":\"paintbrush\",\"iconColor\":\"pink-gradient\"},{\"id\":\"63c5d502-aac4-4aaf-a18f-ea159f4179bc\",\"slug\":\"ministry_of_state_assets\",\"accent\":\"amber-gradient\",\"icon\":\"factory\",\"iconColor\":\"amber-gradient\"},{\"id\":\"b3812956-ed51-444a-bcee-5b90f54574ea\",\"slug\":\"ministry_of_foreign_affairs\",\"accent\":\"sky-gradient\",\"icon\":\"globe\",\"iconColor\":\"sky-gradient\"},{\"id\":\"68d262ac-e8e5-4c80-93e0-4281cb1524b5\",\"slug\":\"ministry_of_infrastructure\",\"accent\":\"orange-gradient\",\"icon\":\"truck\",\"iconColor\":\"orange-gradient\"},{\"id\":\"15d3c55a-30ad-4ac2-a638-7e189e658af4\",\"slug\":\"ministry_of_finance\",\"accent\":\"emerald-gradient\",\"icon\":\"banknotes\",\"iconColor\":\"emerald-gradient\"},{\"id\":\"4c3a81ae-d0b8-4143-9d5a-457a57941fc9\",\"slug\":\"ministry_of_agriculture\",\"accent\":\"lime-gradient\",\"icon\":\"tractor\",\"iconColor\":\"lime-gradient\"},{\"id\":\"3599e96f-2e22-4aa0-8692-5515277640cc\",\"slug\":\"ministry_of_climate_and_environment\",\"accent\":\"emerald-gradient\",\"icon\":\"leaf\",\"iconColor\":\"emerald-gradient\"},{\"id\":\"840ad398-5d59-4429-8fa6-b98045527288\",\"slug\":\"ministry_of_justice\",\"accent\":\"purple-gradient\",\"icon\":\"scale\",\"iconColor\":\"purple-gradient\"},{\"id\":\"1d635667-d58c-447b-a679-839f44c43e9c\",\"slug\":\"senate\",\"accent\":\"orange\",\"icon\":\"parliament\",\"iconColor\":\"orange\"},{\"id\":\"47f21482-42cc-4f4e-b4eb-c798674ca939\",\"slug\":\"sejm\",\"accent\":\"emerald\",\"icon\":\"parliament\",\"iconColor\":\"emerald\"},{\"id\":\"ad76df76-f563-40c9-80ea-0c10cb1c4fd7\",\"slug\":\"sn\",\"accent\":\"pink\",\"icon\":\"documents\",\"iconColor\":\"pink\"},{\"id\":\"786a6480-cc7d-4967-975a-6bb6c8a19d3b\",\"slug\":\"national_council_of_the_judiciary\",\"accent\":\"teal\",\"icon\":\"ministry\",\"iconColor\":\"teal\"},{\"id\":\"5f6b2e65-8a70-47d5-82be-464d13a1b470\",\"slug\":\"parliamentary_clubs\",\"accent\":\"purple\",\"icon\":\"scale\",\"iconColor\":\"purple\"},{\"id\":\"e7db84f2-251a-4645-882a-31e3f467596d\",\"slug\":\"chancellery_of_the_prime_minister\",\"accent\":\"rose-gradient\",\"icon\":\"briefcase\",\"iconColor\":\"rose-gradient\"}]'),
 (1, 6, '[]'),
 (2, 5, '[{\"id\":\"bed47375-71d2-4fae-b705-67a2d2cfbe52\",\"type\":\"senatorowie\",\"name\":\"Senatorowie\",\"accent\":\"indigo\",\"icon\":\"user\",\"iconColor\":\"indigo\"},{\"id\":\"e247bbb8-086a-49c7-9dfb-2a1a82822717\",\"type\":\"rada\",\"name\":\"Rada Ministrów\",\"accent\":\"rose\",\"icon\":\"ministry\",\"iconColor\":\"rose\"},{\"id\":\"45350418-3aff-499a-970e-2c9efbb79dcd\",\"type\":\"uokik\",\"name\":\"UOKiK\",\"accent\":\"pink\",\"icon\":\"banknotes\",\"iconColor\":\"pink\"},{\"id\":\"f5fada37-f4b0-49e4-b2a2-baf2b883f408\",\"type\":\"prezydent\",\"name\":\"Prezydent RP\",\"accent\":\"red\",\"icon\":\"flag\",\"iconColor\":\"red\"},{\"id\":\"88a950a9-e9df-4537-89e6-4eab9b339ab8\",\"type\":\"senat\",\"name\":\"Senat RP\",\"accent\":\"orange\",\"icon\":\"parliament\",\"iconColor\":\"orange\"},{\"id\":\"3ea6f6b3-5bbc-4406-89c4-48dbec122b7e\",\"type\":\"poslowie\",\"name\":\"Posłowie\",\"accent\":\"blue\",\"icon\":\"userGroup\",\"iconColor\":\"blue\"}]'),
 (3, 3, '[{\"id\":\"5b69f735-23c1-4505-bf6d-650e824a934f\",\"type\":\"senatorowie\",\"name\":\"Senatorowie\",\"accent\":\"indigo\",\"icon\":\"user\",\"iconColor\":\"indigo\"}]');
@@ -703,7 +1594,54 @@ INSERT INTO `xp_logs` (`id`, `user_id`, `amount`, `reason`, `created_at`) VALUES
 (173, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:58:22'),
 (174, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:58:33'),
 (175, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:59:45'),
-(176, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:59:48');
+(176, 4, 50, 'SURVEY_COMPLETED', '2026-05-28 19:59:48'),
+(177, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-29 17:03:17'),
+(178, 4, 50, 'SURVEY_COMPLETED', '2026-05-29 17:14:29'),
+(179, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-30 09:14:36'),
+(180, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-31 00:11:55'),
+(181, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-31 00:11:55'),
+(182, 4, 25, 'LOGIN_STREAK_BIG', '2026-05-31 00:11:55'),
+(183, 4, 50, 'SURVEY_COMPLETED', '2026-05-31 14:36:32'),
+(184, 4, 10, 'ACHIEVEMENT', '2026-05-31 14:36:32'),
+(185, 4, 5, 'ACHIEVEMENT', '2026-05-31 14:36:32'),
+(186, 4, 50, 'ACHIEVEMENT', '2026-05-31 14:43:24'),
+(187, 4, 50, 'SURVEY_COMPLETED', '2026-05-31 14:47:33'),
+(188, 4, 50, 'SURVEY_COMPLETED', '2026-05-31 14:48:16'),
+(189, 4, 50, 'SURVEY_COMPLETED', '2026-05-31 14:48:45'),
+(190, 4, 150, 'ACHIEVEMENT', '2026-05-31 16:22:01'),
+(191, 4, 50, 'ACHIEVEMENT', '2026-05-31 16:25:36'),
+(192, 4, 150, 'ACHIEVEMENT', '2026-05-31 16:35:16'),
+(193, 4, 50, 'SURVEY_COMPLETED', '2026-05-31 16:37:40'),
+(194, 4, 200, 'COURSES_COMPLETED', '2026-05-31 16:46:03'),
+(195, 4, 25, 'LOGIN_STREAK_BIG', '2026-06-01 00:23:13'),
+(196, 4, 25, 'LOGIN_STREAK_BIG', '2026-06-01 00:23:13'),
+(197, 4, 25, 'LOGIN_STREAK_BIG', '2026-06-01 00:27:56'),
+(198, 4, 200, 'COURSES_COMPLETED', '2026-06-01 00:28:42'),
+(199, 4, 25, 'LOGIN_STREAK_BIG', '2026-06-02 10:08:42'),
+(200, 4, 25, 'LOGIN_STREAK_BIG', '2026-06-03 12:20:13'),
+(201, 4, 5, 'MP_RATED', '2026-06-03 18:08:09'),
+(202, 4, 5, 'MP_RATED', '2026-06-03 18:12:03'),
+(203, 4, 15, 'ACHIEVEMENT', '2026-06-03 18:12:03'),
+(204, 4, 5, 'MP_RATED', '2026-06-03 18:30:24'),
+(205, 4, 5, 'MP_RATED', '2026-06-03 18:31:05'),
+(206, 4, 5, 'MP_RATED', '2026-06-03 18:31:11'),
+(207, 4, 5, 'MP_RATED', '2026-06-03 18:31:14'),
+(208, 4, 100, 'ACHIEVEMENT', '2026-06-03 18:31:14'),
+(209, 4, 5, 'MP_RATED', '2026-06-03 18:33:54'),
+(210, 4, 5, 'MP_RATED', '2026-06-03 18:46:40'),
+(211, 4, 10, 'OPINION_POSTED', '2026-06-03 19:10:31'),
+(212, 4, 10, 'OPINION_POSTED', '2026-06-03 20:20:35'),
+(213, 4, 50, 'ACHIEVEMENT', '2026-06-03 20:20:35'),
+(214, 4, 10, 'OPINION_POSTED', '2026-06-03 20:23:00'),
+(215, 4, 5, 'MP_RATED', '2026-06-03 21:35:56'),
+(216, 4, 5, 'MP_RATED', '2026-06-03 21:39:24'),
+(217, 4, 75, 'ACHIEVEMENT', '2026-06-03 21:39:24'),
+(218, 4, 25, 'LOGIN_STREAK_BIG', '2026-06-04 00:20:07'),
+(219, 4, 10, 'OPINION_POSTED', '2026-06-04 00:20:34'),
+(220, 4, 5, 'MP_RATED', '2026-06-04 00:45:02'),
+(221, 4, 5, 'MP_RATED', '2026-06-04 11:54:09'),
+(222, 4, 5, 'MP_RATED', '2026-06-04 12:08:09'),
+(223, 4, 50, 'SURVEY_COMPLETED', '2026-06-06 22:42:34');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -725,10 +1663,65 @@ ALTER TABLE `achievement_categories`
   ADD UNIQUE KEY `slug` (`slug`);
 
 --
+-- Indeksy dla tabeli `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeksy dla tabeli `dashboard_content`
 --
 ALTER TABLE `dashboard_content`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `institution_follows`
+--
+ALTER TABLE `institution_follows`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uq_user_inst` (`user_id`,`institution_id`);
+
+--
+-- Indeksy dla tabeli `institution_news_cache`
+--
+ALTER TABLE `institution_news_cache`
+  ADD PRIMARY KEY (`institution_id`);
+
+--
+-- Indeksy dla tabeli `legislation_opinions`
+--
+ALTER TABLE `legislation_opinions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `idx_print_num` (`print_num`);
+
+--
+-- Indeksy dla tabeli `lessons`
+--
+ALTER TABLE `lessons`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `lessons_ibfk_1` (`course_id`);
+
+--
+-- Indeksy dla tabeli `lesson_quizzes`
+--
+ALTER TABLE `lesson_quizzes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `lesson_id` (`lesson_id`);
+
+--
+-- Indeksy dla tabeli `modules`
+--
+ALTER TABLE `modules`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `lesson_id` (`lesson_id`);
+
+--
+-- Indeksy dla tabeli `mp_ratings`
+--
+ALTER TABLE `mp_ratings`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_user_mp` (`user_id`,`mp_id`);
 
 --
 -- Indeksy dla tabeli `notifications`
@@ -785,10 +1778,32 @@ ALTER TABLE `user_achievements`
   ADD KEY `achievement_id` (`achievement_id`);
 
 --
+-- Indeksy dla tabeli `user_courses`
+--
+ALTER TABLE `user_courses`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id` (`user_id`,`course_id`),
+  ADD KEY `course_id` (`course_id`);
+
+--
+-- Indeksy dla tabeli `user_lesson_progress`
+--
+ALTER TABLE `user_lesson_progress`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_lesson` (`user_id`,`lesson_id`);
+
+--
 -- Indeksy dla tabeli `user_metrics`
 --
 ALTER TABLE `user_metrics`
   ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indeksy dla tabeli `user_module_progress`
+--
+ALTER TABLE `user_module_progress`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_progress` (`user_id`,`lesson_id`,`module_index`);
 
 --
 -- Indeksy dla tabeli `user_tiles`
@@ -813,7 +1828,7 @@ ALTER TABLE `xp_logs`
 -- AUTO_INCREMENT for table `achievements`
 --
 ALTER TABLE `achievements`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `achievement_categories`
@@ -822,16 +1837,58 @@ ALTER TABLE `achievement_categories`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `dashboard_content`
 --
 ALTER TABLE `dashboard_content`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
+-- AUTO_INCREMENT for table `institution_follows`
+--
+ALTER TABLE `institution_follows`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `legislation_opinions`
+--
+ALTER TABLE `legislation_opinions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `lessons`
+--
+ALTER TABLE `lessons`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `lesson_quizzes`
+--
+ALTER TABLE `lesson_quizzes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
+
+--
+-- AUTO_INCREMENT for table `modules`
+--
+ALTER TABLE `modules`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
+
+--
+-- AUTO_INCREMENT for table `mp_ratings`
+--
+ALTER TABLE `mp_ratings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=325;
 
 --
 -- AUTO_INCREMENT for table `options`
@@ -861,7 +1918,7 @@ ALTER TABLE `surveys`
 -- AUTO_INCREMENT for table `survey_answers`
 --
 ALTER TABLE `survey_answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -873,13 +1930,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_achievements`
 --
 ALTER TABLE `user_achievements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=818;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2529;
+
+--
+-- AUTO_INCREMENT for table `user_courses`
+--
+ALTER TABLE `user_courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `user_lesson_progress`
+--
+ALTER TABLE `user_lesson_progress`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `user_module_progress`
+--
+ALTER TABLE `user_module_progress`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
 
 --
 -- AUTO_INCREMENT for table `xp_logs`
 --
 ALTER TABLE `xp_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
 
 --
 -- Constraints for dumped tables
@@ -890,6 +1965,36 @@ ALTER TABLE `xp_logs`
 --
 ALTER TABLE `achievements`
   ADD CONSTRAINT `achievements_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `achievement_categories` (`id`);
+
+--
+-- Constraints for table `legislation_opinions`
+--
+ALTER TABLE `legislation_opinions`
+  ADD CONSTRAINT `legislation_opinions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `lessons`
+--
+ALTER TABLE `lessons`
+  ADD CONSTRAINT `lessons_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `lesson_quizzes`
+--
+ALTER TABLE `lesson_quizzes`
+  ADD CONSTRAINT `lesson_quizzes_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `modules`
+--
+ALTER TABLE `modules`
+  ADD CONSTRAINT `modules_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `mp_ratings`
+--
+ALTER TABLE `mp_ratings`
+  ADD CONSTRAINT `mp_ratings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `options`
@@ -909,6 +2014,13 @@ ALTER TABLE `questions`
 ALTER TABLE `user_achievements`
   ADD CONSTRAINT `user_achievements_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `user_achievements_ibfk_2` FOREIGN KEY (`achievement_id`) REFERENCES `achievements` (`id`);
+
+--
+-- Constraints for table `user_courses`
+--
+ALTER TABLE `user_courses`
+  ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `user_metrics`

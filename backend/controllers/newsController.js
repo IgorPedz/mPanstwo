@@ -3,7 +3,6 @@ const cheerio = require("cheerio");
 
 const BASE_URL = "https://www.gov.pl";
 
-// ministry data-key → { govSlug, newsPath }
 const NEWS_MAP = {
   ministry_of_finance:                             { s: "finanse",           p: "wiadomosci" },
   ministry_of_health:                              { s: "zdrowie",           p: "wiadomosci" },

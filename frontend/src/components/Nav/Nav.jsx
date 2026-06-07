@@ -24,7 +24,6 @@ export default function Sidebar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // zamknij mobile nav po zmianie strony
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);

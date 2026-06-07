@@ -64,8 +64,8 @@ export default function AuthPage() {
   return (
     <m.div
       className="
-        transition-colors relative h-screen w-full
-        grid lg:grid-cols-2 overflow-hidden
+        transition-colors relative min-h-screen w-full
+        grid lg:grid-cols-2
         color-transition
       "
       initial={{ opacity: 0 }}
@@ -76,20 +76,20 @@ export default function AuthPage() {
         className="
           transition-colors
           flex flex-col items-center justify-center
-          px-8 py-12 relative z-10
+          px-8 sm:px-12 py-8 sm:py-12 relative z-10
         "
       >
         <div className="absolute top-4 left-4 w-fit">
           <Settings size="sm" />
         </div>
         <div className="w-full max-w-md">
-          <div className="mb-10">
+          <div className="mb-6 sm:mb-10">
             <h1
               className="
                 transition-colors
-                text-6xl font-black
+                text-4xl sm:text-6xl font-black
                 text-slate-900 dark:text-white
-                mb-4 uppercase tracking-tighter leading-none
+                mb-2 sm:mb-4 uppercase tracking-tighter leading-none
               "
             >
               {isLogin ? t("auth.loginHeading") : t("auth.registerHeading")}
@@ -168,7 +168,7 @@ export default function AuthPage() {
 
         <div
           className="
-            transition-colors pt-10
+            transition-colors pt-6 sm:pt-10
             w-full justify-center flex
             border-t border-slate-100 dark:border-slate-900
           "

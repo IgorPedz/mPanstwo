@@ -6,7 +6,6 @@ const SEJM_API = "https://api.sejm.gov.pl";
 const TERM = "term10";
 const HEADERS = { "User-Agent": "Mozilla/5.0 (compatible; mPanstwo/1.0)" };
 
-/* ── Cache ───────────────────────────────────────────────────────────────── */
 const cache = new Map();
 function fromCache(key) {
   const e = cache.get(key);
@@ -18,7 +17,6 @@ function toCache(key, data, ttlMs) {
   cache.set(key, { data, exp: Date.now() + ttlMs });
 }
 
-/* ── Helpers ─────────────────────────────────────────────────────────────── */
 const APPLICANT_TYPE_MAP = {
   GOVERNMENT:  "rzadowy",
   DEPUTIES:    "poselski",
@@ -86,7 +84,6 @@ async function fetchAllBills() {
   return bills;
 }
 
-/* ── Głosowania powiązane z drukiem ─────────────────────────────────────── */
 function collectStages(stages = []) {
   const out = [];
   for (const s of stages) {
@@ -137,7 +134,6 @@ async function getBillVotings(req, res) {
       });
     }
 
-    // ── Ścieżka główna: dane głosowań zagnieżdżone w etapach procesu ──
     try {
       const { data: proc } = await axios.get(
         `${SEJM_API}/sejm/${TERM}/processes/${num}`,
@@ -285,13 +281,11 @@ async function getBillDetails(req, res) {
     let bill = fromCache(cacheKey);
 
     if (!bill) {
-      // Pobierz dane druku z API Sejmu
       const { data: printData } = await axios.get(
         `${SEJM_API}/sejm/${TERM}/prints/${num}`,
         { headers: HEADERS, timeout: 15_000 }
       );
 
-      // Uzupełnij o dane z /bills (opis, wnioskodawca) jeśli dostępne w cache
       const billsList = fromCache("legislation_bills") ?? [];
       const billMeta  = billsList.find((b) => b.number === String(num));
 

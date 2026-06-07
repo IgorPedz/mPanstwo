@@ -36,7 +36,6 @@ export function useModuleProgress(courseId, lessonId) {
       console.error("Użytkownik nie jest zalogowany.");
       return;
     }
-    console.log("id",user.id, courseId, lessonId, moduleIndex);
     setProgress((prev) => ({
       ...prev,
       [moduleIndex]: true,

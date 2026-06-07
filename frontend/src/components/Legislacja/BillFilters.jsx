@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 export default function BillFilters({ type, onTypeChange, search, onSearchChange }) {
   const { t } = useTranslation();
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-2">
+    <div className="flex flex-row items-start sm:items-center justify-between gap-4 mb-2">
       <TypeTabs active={type} onChange={onTypeChange} />
 
       <div className="relative mb-6">

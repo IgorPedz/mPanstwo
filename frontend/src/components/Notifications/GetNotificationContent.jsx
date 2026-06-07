@@ -5,8 +5,6 @@ export const getNotificationContent = (notif, t) => {
         typeof notif?.data === "string"
             ? JSON.parse(notif.data)
             : notif?.data || {};
-    console.log(notif, eventKey, data);
-    // ACHIEVEMENT
     const achievementSlug = data?.achievementSlug;
 
     const achievementName = achievementSlug
@@ -15,7 +13,6 @@ export const getNotificationContent = (notif, t) => {
         })
         : "";
 
-    // RANK
     const rankSlug =
         data?.newRank?.icon ||
         data?.newRank?.slug ||

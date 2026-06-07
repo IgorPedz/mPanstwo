@@ -1,4 +1,4 @@
-{
+﻿{
     "nav": {
         "sections": {
             "main": "Hauptseite",
@@ -174,7 +174,17 @@
             "unlockAchievements": {
                 "title": "Erfolge freischalten",
                 "desc": "Sammeln Sie besondere Erfolge.",
-                "val": "+25-500 Ruf"
+                "val": "+25-5000 Ruf"
+            },
+            "courses": {
+                "title": "Abgeschlossene Kurse",
+                "desc": "Verdienen Sie Ruf für abgeschlossene Kurse.",
+                "val": "+200 Ruf"
+            },
+            "opinions": {
+                "title": "Geschriebene Meinungen",
+                "desc": "Verdienen Sie Ruf für geschriebene Meinungen.",
+                "val": "+15 Ruf"
             }
         },
         "ranks": {

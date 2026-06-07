@@ -1,6 +1,5 @@
 export const Icons = {
 
-  // 1 — Obywatel: sylwetka człowieka
   rank1: (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
       <circle cx="12" cy="8" r="3.5" />
@@ -8,7 +7,6 @@ export const Icons = {
     </svg>
   ),
 
-  // 2 — Czytelnik: otwarta książka
   rank2: (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M12 6C10 4.3 7 4 4 5v13c3-1 6-.5 8 1.5V6z" />
@@ -16,7 +14,6 @@ export const Icons = {
     </svg>
   ),
 
-  // 3 — Głos: dłoń w górze
   rank3: (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M12 4v10" />
@@ -26,14 +23,12 @@ export const Icons = {
     </svg>
   ),
 
-  // 4 — Obrońca: tarcza
   rank4: (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M12 3L4 6.5v5.6c0 4.4 3.4 8.4 8 9.4 4.6-1 8-5 8-9.4V6.5L12 3z" />
     </svg>
   ),
 
-  // 5 — Prawodawca: młotek sędziowski
   rank5: (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M15 4l5 5-3 3-5-5 3-3z" />
@@ -43,7 +38,6 @@ export const Icons = {
     </svg>
   ),
 
-  // 6 — Medal: krążek na wstążce
   rank6: (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
       <circle cx="12" cy="15" r="5" />
@@ -52,7 +46,6 @@ export const Icons = {
     </svg>
   ),
 
-  // 7 — Sprawiedliwość: waga
   rank7: (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M12 4v16" />
@@ -62,7 +55,6 @@ export const Icons = {
     </svg>
   ),
 
-  // 8 — Pochodnia: płomień na słupku
   rank8: (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M12 14v8M9.5 14h5" />
@@ -71,7 +63,6 @@ export const Icons = {
     </svg>
   ),
 
-  // 9 — Korona
   rank9: (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M3 17h18" />
@@ -82,7 +73,6 @@ export const Icons = {
     </svg>
   ),
 
-  // 10 — Prezydent: gwiazda pięcioramienna
   rank10: (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />

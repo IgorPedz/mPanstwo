@@ -20,7 +20,7 @@ export default function AuthInput({
   const isError = !!error;
 
   return (
-    <div className="flex flex-col gap-2 mb-6 color-transition group">
+    <div className="flex flex-col gap-1.5 mb-3 sm:mb-6 color-transition group">
       {label && (
         <label
           htmlFor={name}
@@ -46,7 +46,7 @@ export default function AuthInput({
                 : "off"
           }
           className={`
-            transition-colors w-full px-5 py-4 rounded-2xl border-2 color-transition outline-none
+            transition-colors w-full px-4 py-3 sm:px-5 sm:py-4 rounded-2xl border-2 color-transition outline-none
             text-sm font-bold tracking-wide
             ${
               isError

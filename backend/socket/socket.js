@@ -14,19 +14,10 @@ const initSocket = (server) => {
     const userId = socket.handshake.auth?.userId;
 
     if (userId) {
-      const room = `user:${userId}`;
-
-      socket.join(room);
-
-      console.log(`🟢 User ${userId} connected (${socket.id})`);
-      console.log(`📦 Joined room: ${room}`);
-    } else {
-      console.log(`🟢 Guest connected (${socket.id})`);
+      socket.join(`user:${userId}`);
     }
 
-    socket.on("disconnect", () => {
-      console.log(`🔴 User disconnected (${socket.id})`);
-    });
+    socket.on("disconnect", () => {});
   });
 };
 

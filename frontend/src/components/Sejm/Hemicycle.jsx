@@ -16,7 +16,6 @@ const SPECTRUM = [
 ];
 
 const COALITION = new Set(["KO", "PSL-TD", "Lewica", "Polska2050", "Centrum"]);
-// 4 posłów niezrzeszonych należy do koalicji rządzącej
 const COALITION_NIEZ = 4;
 
 export const CLUB_HEX = {
@@ -33,7 +32,6 @@ export const CLUB_HEX = {
   PiS: "#4338ca",
 };
 
-/* ── Geometria hemicyklu ─────────────────────────────────────────────────── */
 const N_ROWS = 8;
 const R_INNER = 28;
 const R_OUTER = 92;
@@ -55,7 +53,6 @@ function buildLayout() {
 
 const { radii: RADII, perRow: PER_ROW } = buildLayout();
 
-/* ── Komponent ───────────────────────────────────────────────────────────── */
 export default function Hemicycle({ clubs }) {
   const seats = useMemo(() => {
     if (!clubs?.length) return [];
@@ -87,10 +84,7 @@ export default function Hemicycle({ clubs }) {
       const n = PER_ROW[row];
       const r = RADII[row];
       for (let local = 0; local < n; local++) {
-        // angFrac dla pozycji SVG — sięga dokładnie do krawędzi łuku
         const angFrac  = n === 1 ? 0.5 : local / (n - 1);
-        // clubFrac dla przypisania klubu — offset ½ unika trafiania na granicę startFrac=0
-        // (dzięki temu małe Razem ~0.87% pojawia się tylko w dużych zewnętrznych rzędach)
         const clubFrac = n === 1 ? 0.5 : (local + 0.5) / n;
         const theta = Math.PI * (1 - angFrac);
         const x = CX + r * Math.cos(theta);

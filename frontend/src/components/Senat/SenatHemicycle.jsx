@@ -40,10 +40,9 @@ function buildLayout() {
 
 const { radii: RADII, perRow: PER_ROW } = buildLayout();
 
-/* ── Alokacja n miejsc z puli remaining, metodą największych reszt ────────── */
 function allocateRow(n, remaining) {
   const totalRemaining = remaining.reduce((s, r) => s + r, 0);
-  if (totalRemaining === n) return [...remaining]; // ostatni rząd — bierz dokładnie resztę
+  if (totalRemaining === n) return [...remaining]; 
   const quotas = remaining.map(r => n * r / totalRemaining);
   const floors  = quotas.map(q => Math.floor(q));
   const deficit = n - floors.reduce((s, f) => s + f, 0);
@@ -67,7 +66,6 @@ export default function SenatHemicycle({ clubs }) {
         return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
       });
 
-    // remaining — ile mandatów każdy klub ma jeszcze do rozmieszczenia
     const remaining = sorted.map(c => c.membersCount);
 
     const result = [];
@@ -76,7 +74,6 @@ export default function SenatHemicycle({ clubs }) {
       const r     = RADII[row];
       const alloc = allocateRow(n, remaining);
 
-      // odejmij przydzielone od puli
       alloc.forEach((a, ci) => { remaining[ci] -= a; });
 
       let startPos = 0;

@@ -20,7 +20,6 @@ const BASE_URL  = "https://www.prezydent.pl";
 
 const HEADERS = { "User-Agent": "Mozilla/5.0 (compatible; mPanstwo-scraper/1.0)" };
 
-/* ── 1. Scrape prezydent.pl/prezydent/biografia ─────────────────────────── */
 async function scrapeOfficialBio() {
   const url = `${BASE_URL}/prezydent/biografia`;
 
@@ -35,7 +34,6 @@ async function scrapeOfficialBio() {
 
   const $ = cheerio.load(html);
 
-  // Imię i nazwisko — oczyszczone z tytułów i dopisków po myślniku
   const rawName = [
     $("h1").first().text().trim(),
     $("[class*='president-name'], [class*='presidenta'], [class*='name']").first().text().trim(),
@@ -44,12 +42,11 @@ async function scrapeOfficialBio() {
 
   const name = rawName
     ? rawName
-        .replace(/^(Prof\.|Dr\.?|mgr\.?|inż\.?)\s+/i, "")   // usuń tytuły naukowe
-        .replace(/\s*[–—-].*$/, "")                           // usuń "– Prezydent RP" itp.
+        .replace(/^(Prof\.|Dr\.?|mgr\.?|inż\.?)\s+/i, "")   
+        .replace(/\s*[–—-].*$/, "")                           
         .trim()
     : null;
 
-  // Zdjęcie
   const rawPhoto =
     $(".biography img, [class*='photo'] img, [class*='portret'] img, .article-img img, main article img, .page-content img")
       .first()
@@ -61,7 +58,6 @@ async function scrapeOfficialBio() {
     ? (rawPhoto.startsWith("http") ? rawPhoto : `${BASE_URL}${rawPhoto}`)
     : null;
 
-  // Opis biograficzny (pierwsze 2 długie akapity)
   const paragraphs = [];
   $(".biography p, .biography-content p, .article-content p, .content p, main article p").each((_, el) => {
     const text = $(el).text().trim();
@@ -71,17 +67,13 @@ async function scrapeOfficialBio() {
     ? paragraphs.slice(0, 2).join(" ").replace(/\s+/g, " ").slice(0, 600)
     : null;
 
-  // profileUrl do strony biogramowej
   const profileUrl = `${BASE_URL}/prezydent/biografia`;
 
   return { name, photo, description, profileUrl };
 }
 
-/* ── 2. Wikipedia API fallback ──────────────────────────────────────────── */
 async function scrapeWikipedia() {
-  // Pobieramy aktualnego prezydenta z listy prezydentów RP
   try {
-    // Najpierw ustalamy aktualnego prezydenta przez API
     const searchParams = new URLSearchParams({
       action:   "query",
       list:     "search",
@@ -90,7 +82,6 @@ async function scrapeWikipedia() {
       origin:   "*",
     });
 
-    // Pobieramy stronę "Prezydent Rzeczypospolitej Polskiej" żeby wyciągnąć nazwisko
     const overviewParams = new URLSearchParams({
       action:        "query",
       titles:        "Prezydent Rzeczypospolitej Polskiej",
@@ -110,10 +101,8 @@ async function scrapeWikipedia() {
     const pages   = overviewRes.data?.query?.pages ?? {};
     const content = Object.values(pages)[0]?.revisions?.[0]?.slots?.main?.["*"] ?? "";
 
-    // Wyciągamy imię i nazwisko z szablonu {{aktualny prezydent}} lub podobnych wpisów
     let presidentName = null;
 
-    // Szukamy wzorców: "aktualny" lub "od ... Prezydentem RP jest X"
     const nameMatch =
       content.match(/Prezydentem RP jest \[\[([^\]|]+)/i) ||
       content.match(/\[\[([A-ZŁŚŻŹĆĄĘÓŃ][a-złśżźćąęóń]+ [A-ZŁŚŻŹĆĄĘÓŃ][a-złśżźćąęóń]+)\]\].*prezydent/i);
@@ -125,7 +114,6 @@ async function scrapeWikipedia() {
       return null;
     }
 
-    // Teraz pobieramy stronę konkretnego prezydenta (zdjęcie + extract)
     const bioParams = new URLSearchParams({
       action:        "query",
       titles:        presidentName,
@@ -161,7 +149,6 @@ async function scrapeWikipedia() {
   }
 }
 
-/* ── Patch helpers ──────────────────────────────────────────────────────── */
 function escapeForJs(str) {
   return str.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, " ");
 }
@@ -169,7 +156,6 @@ function escapeForJs(str) {
 function patchField(source, jsKey, value) {
   if (!value) return source;
   const escaped = escapeForJs(value);
-  // Zamienia: key: "stara wartość" lub key: null → key: "nowa wartość"
   const regex = new RegExp(`(${jsKey}:\\s*)(?:"[^"]*"|null)`, "g");
   return source.replace(regex, `$1"${escaped}"`);
 }
@@ -177,14 +163,12 @@ function patchField(source, jsKey, value) {
 function patchDescription(source, description) {
   if (!description) return source;
   const escaped = escapeForJs(description);
-  // Zamienia całą wieloliniową właściwość description
   return source.replace(
     /description:\s*(?:"(?:[^"\\]|\\.)*"|`(?:[^`\\]|\\.)*`)/,
     `description: "${escaped}"`
   );
 }
 
-/* ── Main ────────────────────────────────────────────────────────────────── */
 async function runPresidentUpdate() {
   console.log("Aktualizacja danych prezydenta…");
 
@@ -194,7 +178,6 @@ async function runPresidentUpdate() {
     console.log("  → Fallback: Wikipedia API");
     data = await scrapeWikipedia();
   } else if (!data.photo) {
-    // Mamy bio z prezydent.pl, ale brak zdjęcia → dobieramy z Wikipedii
     const wikiData = await scrapeWikipedia();
     if (wikiData?.photo) data.photo = wikiData.photo;
     if (!data.name && wikiData?.name) data.name = wikiData.name;

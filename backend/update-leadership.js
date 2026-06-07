@@ -19,8 +19,6 @@ const BASE_URL  = "https://www.gov.pl";
 const DATA_FILE = path.resolve(__dirname, "../frontend/src/data/ministriesData.js");
 const DELAY_MS  = 1200;
 
-/* ── ministry data key → { govSlug, leadershipPath } ──────────────────── */
-// Most use /kierownictwo-ministerstwa, some use /kierownictwo
 const MINISTRY_MAP = {
   ministry_of_finance:                             { s: "finanse",           p: "kierownictwo" },
   ministry_of_health:                              { s: "zdrowie",           p: "kierownictwo" },
@@ -41,14 +39,12 @@ const MINISTRY_MAP = {
   ministry_of_internal_affairs_and_administration: { s: "mswia",             p: "kierownictwo-mswia" },
   ministry_of_digital_affairs:                     { s: "cyfryzacja",        p: "kierownictwo" },
 
-  // Instytucje rządowe (nie-ministerstwa)
   chancellery_of_the_prime_minister: { s: "premier", p: "kierownictwo-kprm5" },
   council_of_ministers:              { s: "premier", p: "sklad-rady-ministrow" },
 };
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-/* ── Fetch + parse one ministry's leadership page ──────────────────────── */
 async function scrapeLeadership(govSlug, leadershipPath) {
   const url = `${BASE_URL}/web/${govSlug}/${leadershipPath}`;
 
@@ -73,19 +69,16 @@ async function scrapeLeadership(govSlug, leadershipPath) {
 
     if (!name) return;
 
-    // Official gov.pl photo URL (from <picture><img>)
     const imgSrc = $(el).find("picture img").attr("src") || "";
     const photo  = imgSrc
       ? (imgSrc.startsWith("http") ? imgSrc : `${BASE_URL}${imgSrc}`)
       : null;
 
-    // Profile URL (from .title a href)
     const href       = $(el).find(".title a").attr("href") || "";
     const profileUrl = href
       ? (href.startsWith("http") ? href : `${BASE_URL}${href}`)
       : null;
 
-    // Determine role
     const titleLower = title.toLowerCase();
     let role;
     if (i === 0) {
@@ -108,16 +101,12 @@ async function scrapeLeadership(govSlug, leadershipPath) {
   return people.length > 0 ? people : null;
 }
 
-/* ── Serialise one person object to JS source ───────────────────────────── */
 function serializePerson(p) {
   const photoLine      = p.photo      ? `\n        photo: "${p.photo}",`           : "";
   const profileUrlLine = p.profileUrl ? `\n        profileUrl: "${p.profileUrl}",` : "";
   return `      { name: "${p.name}", title: "${p.title}", role: "${p.role}",${photoLine}${profileUrlLine} }`;
 }
 
-/* ── Replace the leadership array for one key in the source text ─────────
-   Walks through characters to find the exact matching brackets, so it is
-   immune to nested arrays or objects inside the leadership entries.        */
 function patchLeadership(source, dataKey, people) {
   const blockStart = source.indexOf(`${dataKey}:`);
   if (blockStart === -1) {
@@ -136,7 +125,7 @@ function patchLeadership(source, dataKey, people) {
     else if (source[i] === "]") { depth--; if (depth === 0) break; }
     i++;
   }
-  // Consume optional trailing comma + whitespace
+
   const trailingComma = source.slice(i + 1).match(/^(\s*,)?/)[0];
   const end = i + 1 + trailingComma.length;
 
@@ -144,7 +133,6 @@ function patchLeadership(source, dataKey, people) {
   return source.slice(0, leadershipIdx) + newBlock + source.slice(end);
 }
 
-/* ── Main ────────────────────────────────────────────────────────────────── */
 async function main() {
   const filterSlug = process.argv[2];
 
@@ -181,7 +169,6 @@ async function main() {
   console.log(`\n✅  Done — ${updated}/${targets.length} updated.`);
 }
 
-// Wywołanie bezpośrednie: node backend/update-leadership.js [govSlug]
 if (require.main === module) {
   main().catch(err => {
     console.error("Fatal:", err.message);
@@ -189,5 +176,4 @@ if (require.main === module) {
   });
 }
 
-// Wywołanie z serwera (cron)
 module.exports = { runLeadershipUpdate: main };

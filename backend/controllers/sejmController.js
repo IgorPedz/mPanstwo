@@ -5,7 +5,6 @@ const TERM = "term10";
 
 const HEADERS = { "User-Agent": "Mozilla/5.0 (compatible; mPanstwo/1.0)" };
 
-/* ── Prosty cache in-memory z TTL ───────────────────────────────────────── */
 const cache = new Map();
 function fromCache(key) {
   const entry = cache.get(key);
@@ -27,9 +26,6 @@ function norm(s) {
   return (s ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 }
 
-// Wyciąga imię i nazwisko z tytułu druku np:
-// "Kandydat na stanowisko Marszałka Sejmu RP - poseł Jan Kowalski."
-// "Kandydat na stanowisko Wicemarszałka Sejmu RP - poseł Anna Nowak."
 function nameFromPrintTitle(title) {
   const m = title.match(/[-–]\s*pose[łl]\w*\s+(.+?)\s*\.?\s*$/i);
   return m ? m[1].trim() : null;
@@ -47,14 +43,12 @@ async function buildPrezydiumFromPrints(allMPs) {
     }),
   ]);
 
-  // Druki z kandydaturami
   const electionPrints = prints
     .filter((p) =>
       /kandydat na stanowisko (wice)?marsza[łl]ka sejmu/i.test(p.title),
     )
     .sort((a, b) => Number(a.number) - Number(b.number));
 
-  // Druki z wnioskami o odwołanie
   const recallPrints = prints.filter((p) =>
     /wniosek o odwo.anie wicemar/i.test(p.title),
   );
@@ -64,13 +58,10 @@ async function buildPrezydiumFromPrints(allMPs) {
       .filter(Boolean),
   );
 
-  // Mapowanie daty → numer posiedzenia
   const dateToProc = {};
   for (const proc of proceedings) {
     for (const d of proc.dates ?? []) dateToProc[d] = proc.number;
   }
-
-  // Pobierz głosowania dla posiedzeń z wyborami (jeden fetch per posiedzenie)
   const procNums = [
     ...new Set(
       electionPrints.map((p) => dateToProc[p.deliveryDate]).filter(Boolean),
@@ -91,7 +82,6 @@ async function buildPrezydiumFromPrints(allMPs) {
     }),
   );
 
-  // Budujemy skład weryfikując wyniki głosowań
   let marshal = null;
   const deputies = new Map();
 
@@ -103,7 +93,6 @@ async function buildPrezydiumFromPrints(allMPs) {
       /stanowisko Marsza[łl]ka Sejmu/i.test(p.title) &&
       !/Wicemarsza/i.test(p.title);
 
-    // Dopasuj posła
     const mp = allMPs.find((m) => {
       const full = norm(`${m.firstName} ${m.lastName}`);
       return norm(rawName)
@@ -112,7 +101,6 @@ async function buildPrezydiumFromPrints(allMPs) {
     });
     if (!mp) continue;
 
-    // Sprawdź wynik głosowania
     const procNum = dateToProc[p.deliveryDate];
     if (procNum) {
       const votes = votingsByProc[procNum] ?? [];
@@ -123,20 +111,18 @@ async function buildPrezydiumFromPrints(allMPs) {
           .split(" ")
           .some((w) => w.length > 2 && topic.includes(w));
       });
-      // Kandydat przegrał głosowanie — pomijamy
       if (vote && vote.yes !== undefined && vote.yes <= (vote.no ?? 0))
         continue;
     }
 
     if (isMarszalek) {
-      deputies.delete(norm(rawName)); // awans z Wicemarszałka
+      deputies.delete(norm(rawName));
       marshal = { mp };
     } else {
       deputies.set(norm(rawName), { mp });
     }
   }
 
-  // Usuń odwołanych
   for (const recalled of recalledNames) {
     for (const key of deputies.keys()) {
       if (key.includes(recalled) || recalled.includes(key))
@@ -168,7 +154,6 @@ async function buildPrezydiumFromPrints(allMPs) {
   return result;
 }
 
-/* ── Kierownictwo ────────────────────────────────────────────────────────── */
 async function getSejmLeadership(req, res) {
   const cached = fromCache("leadership");
   if (cached) return res.json(cached);
@@ -188,7 +173,6 @@ async function getSejmLeadership(req, res) {
   }
 }
 
-/* ── Kluby parlamentarne ─────────────────────────────────────────────────── */
 async function getSejmClubs(req, res) {
   const cached = fromCache("clubs");
   if (cached) return res.json(cached);
@@ -226,7 +210,6 @@ async function getSejmClubs(req, res) {
   }
 }
 
-/* ── Ostatnie posiedzenia ────────────────────────────────────────────────── */
 async function getSejmProceedings(req, res) {
   const cached = fromCache("proceedings");
   if (cached) return res.json(cached);
@@ -258,7 +241,6 @@ async function getSejmProceedings(req, res) {
   }
 }
 
-/* ── Proxy zdjęcia posła ─────────────────────────────────────────────────── */
 async function getMPPhoto(req, res) {
   const { id } = req.params;
   try {
@@ -274,7 +256,6 @@ async function getMPPhoto(req, res) {
   }
 }
 
-/* ── Proxy logo klubu ────────────────────────────────────────────────────── */
 async function getClubLogo(req, res) {
   const { id } = req.params;
   try {
@@ -289,8 +270,6 @@ async function getClubLogo(req, res) {
     res.status(404).end();
   }
 }
-
-/* ── Lista wszystkich posłów ─────────────────────────────────────────────── */
 async function getAllMPs(req, res) {
   const cached = fromCache("all_mps");
   if (cached) return res.json(cached);
@@ -322,7 +301,6 @@ async function getAllMPs(req, res) {
   }
 }
 
-/* ── Szczegóły posła ─────────────────────────────────────────────────────── */
 async function getMPDetails(req, res) {
   const { id } = req.params;
   const KEY = `mp_detail_${id}`;
@@ -341,10 +319,6 @@ async function getMPDetails(req, res) {
       .json({ error: "Failed to fetch MP details", detail: err.message });
   }
 }
-
-/* ── Historia głosowań posła ─────────────────────────────────────────────── */
-// MP-first endpoint: GET /MP/{id}/votings/{sitting}/{date}
-// 180 requestów (59 posiedzeń × ~3 dni każde) zamiast ~4170 — 23× mniej
 
 async function getSittingDates() {
   const KEY = "sitting_dates";
@@ -371,9 +345,8 @@ async function getMPVotings(req, res) {
   if (cached) return res.json(cached);
 
   try {
-    const pairs = await getSittingDates(); // ~180 par (sitting, date)
+    const pairs = await getSittingDates(); 
 
-    // Wszystkie requesty równolegle — 180 to bezpieczna liczba
     const results = await Promise.allSettled(
       pairs.map(({ sitting, date }) =>
         axios.get(`${SEJM_API}/sejm/${TERM}/MP/${id}/votings/${sitting}/${date}`, {
@@ -388,7 +361,6 @@ async function getMPVotings(req, res) {
       if (r.status !== "fulfilled") continue;
       const { sitting, date, votes } = r.value;
       for (const v of votes) {
-        // Klucz: pełny datetime + votingNumber — unikalny globalnie niezależnie od sitting
         const key = `${v.date ?? date}_${v.votingNumber}`;
         if (seen.has(key)) continue;
         seen.add(key);
@@ -411,19 +383,16 @@ async function getMPVotings(req, res) {
   }
 }
 
-/* ── Komisje i podkomisje z members ─────────────────────────────────────── */
 async function fetchCommitteeData() {
   const KEY = "committees_full";
   const cached = fromCache(KEY);
   if (cached) return cached;
 
-  // Krok 1: lista komisji — ma members + subCommittees jako kody (stringi)
   const { data: list } = await axios.get(`${SEJM_API}/sejm/${TERM}/committees`, {
     headers: HEADERS,
     timeout: 15_000,
   });
 
-  // Krok 2: zbierz unikalne kody podkomisji
   const subCodes = [
     ...new Set(
       list.flatMap((c) =>
@@ -432,7 +401,6 @@ async function fetchCommitteeData() {
     ),
   ];
 
-  // Krok 3: fetchuj każdą podkomisję równolegle
   const subResults = await Promise.allSettled(
     subCodes.map((code) =>
       axios
@@ -452,7 +420,6 @@ async function fetchCommitteeData() {
     }
   });
 
-  // Krok 4: połącz komisje z pełnymi danymi podkomisji
   const enriched = list.map((c) => ({
     code: c.code,
     name: c.name,
@@ -467,11 +434,10 @@ async function fetchCommitteeData() {
       })),
   }));
 
-  toCache(KEY, enriched, 30 * 60 * 1000); // 30 min — skład komisji może się zmieniać
+  toCache(KEY, enriched, 30 * 60 * 1000); 
   return enriched;
 }
 
-/* ── Komisje posła ───────────────────────────────────────────────────────── */
 async function getMPCommittees(req, res) {
   const { id } = req.params;
   const mpId = Number(id);
@@ -497,7 +463,6 @@ async function getMPCommittees(req, res) {
         code: c.code,
         name: c.name,
         type: c.type,
-        // bezpośredni członek bez stanowiska → "Członek"; tylko podkomisja → null
         function: directMember
           ? (directMember.function || "Członek")
           : null,
@@ -505,7 +470,7 @@ async function getMPCommittees(req, res) {
       }];
     });
 
-    toCache(KEY, memberships, 15 * 60 * 1000); // 15 min — skład może się zmieniać
+    toCache(KEY, memberships, 15 * 60 * 1000); 
     res.json(memberships);
   } catch (err) {
     res
@@ -514,9 +479,6 @@ async function getMPCommittees(req, res) {
   }
 }
 
-/* ── Paginacja endpointów Sejmu ──────────────────────────────────────────── */
-// offset = numer startowy (num >= offset), NIE skip-count.
-// Używamy lastNum+1 zamiast offset+=limit żeby nie pomijać luk w numeracji.
 async function fetchAllPages(path, limit = 200) {
   const all = [];
   let offset = 0;
@@ -530,18 +492,17 @@ async function fetchAllPages(path, limit = 200) {
         timeout: 25_000,
       }));
     } catch {
-      break; // timeout lub błąd sieci — zakończ z tym co mamy
+      break; 
     }
     if (!Array.isArray(data) || data.length === 0) break;
     all.push(...data);
     const lastNum = data.at(-1)?.num;
     offset = lastNum != null ? lastNum + 1 : offset + limit;
-    if (data.length < limit) break; // ostatnia strona — mniej niż limit rekordów
+    if (data.length < limit) break; 
   }
   return all;
 }
 
-/* ── Interpelacje posła ──────────────────────────────────────────────────── */
 async function fetchAllInterpellations() {
   const KEY = "all_interpellations";
   const cached = fromCache(KEY);
@@ -579,7 +540,6 @@ async function getMPInterpellations(req, res) {
   }
 }
 
-/* ── Zapytania pisemne posła ─────────────────────────────────────────────── */
 async function fetchAllWrittenQuestions() {
   const KEY = "all_written_questions";
   const cached = fromCache(KEY);
@@ -617,13 +577,11 @@ async function getMPWrittenQuestions(req, res) {
   }
 }
 
-/* ── Ocenianie posłów ────────────────────────────────────────────────────── */
 const db = require("../db");
 const { handleEvent } = require("../services/event.service");
 const { checkAchievements } = require("../services/achievement.service");
 const { incrementMetric } = require("../services/metrics.service");
 
-// Mapowanie klub API → kolumna w user_metrics
 const CLUB_METRIC = {
   "KO":              "club_rated_ko",
   "Lewica":          "club_rated_lewica",
@@ -635,10 +593,9 @@ const CLUB_METRIC = {
   "Konfederacja_KP": "club_rated_konfederacja_kp",
   "Centrum":         "club_rated_centrum",
   "Demokracja":      "club_rated_demokracja",
-};
-const CLUBS_TOTAL = Object.keys(CLUB_METRIC).length; // 10
+}
+const CLUBS_TOTAL = Object.keys(CLUB_METRIC).length; 
 
-// Kluby koalicji rządzącej (zgodnie z Hemicycle.jsx)
 const COALITION_CLUBS = new Set(["KO", "PSL-TD", "Lewica", "Polska2050", "Centrum"]);
 
 function clubRarity(count) {
@@ -650,32 +607,7 @@ function clubRarity(count) {
 
 async function initMpRatings() {
   try {
-    await db.query(`
-      CREATE TABLE IF NOT EXISTS mp_ratings (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        user_id INT NOT NULL,
-        mp_id INT NOT NULL,
-        rating TINYINT NOT NULL,
-        club VARCHAR(50) NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        UNIQUE KEY unique_user_mp (user_id, mp_id),
-        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-      )
-    `);
-    await db.query(`ALTER TABLE mp_ratings ADD COLUMN IF NOT EXISTS club VARCHAR(50) NULL`);
 
-    await db.query(`ALTER TABLE user_metrics ADD COLUMN IF NOT EXISTS mps_rated INT DEFAULT 0`);
-    await db.query(`ALTER TABLE user_metrics ADD COLUMN IF NOT EXISTS clubs_rated_count TINYINT DEFAULT 0`);
-    await db.query(`ALTER TABLE user_metrics ADD COLUMN IF NOT EXISTS coalition_rated SMALLINT DEFAULT 0`);
-    await db.query(`ALTER TABLE user_metrics ADD COLUMN IF NOT EXISTS opposition_rated SMALLINT DEFAULT 0`);
-    for (const col of Object.values(CLUB_METRIC)) {
-      await db.query(`ALTER TABLE user_metrics ADD COLUMN IF NOT EXISTS ${col} SMALLINT DEFAULT 0`);
-      // Jeśli kolumna istniała jako TINYINT — poszerz do SMALLINT (ignoruj błąd jeśli już OK)
-      await db.query(`ALTER TABLE user_metrics MODIFY COLUMN ${col} SMALLINT DEFAULT 0`).catch(() => {});
-    }
-
-    // Osiągnięcia za liczbę ocenionych posłów (stałe)
     await db.query(`
       INSERT IGNORE INTO achievements
         (id, slug, category_id, xp_reward, metric_key, metric_source, requirement_value, rarity, active, hidden)
@@ -686,7 +618,6 @@ async function initMpRatings() {
         (73, 'mp_rated_all', 4, 1000, 'mps_rated', 'users_metrics', 460, 'legendary', 1, 0)
     `);
 
-    // Osiągnięcie za ocenę posłów ze wszystkich klubów
     await db.query(
       `INSERT INTO achievements
          (id, slug, category_id, xp_reward, metric_key, metric_source, requirement_value, rarity, active, hidden)
@@ -697,7 +628,6 @@ async function initMpRatings() {
       [CLUBS_TOTAL]
     );
 
-    // Pobierz liczbę aktywnych posłów z API dla każdego klubu
     let sizes = {};
     let coalitionTotal = 0;
     let oppositionTotal = 0;
@@ -716,7 +646,6 @@ async function initMpRatings() {
       console.warn("[mp_ratings] nie udało się pobrać rozmiarów klubów:", e.message);
     }
 
-    // Osiągnięcia per-klub: wymóg = wszyscy posłowie z tego klubu
     const clubEntries = Object.entries(CLUB_METRIC);
     for (let i = 0; i < clubEntries.length; i++) {
       const [club, col] = clubEntries[i];
@@ -736,7 +665,6 @@ async function initMpRatings() {
       );
     }
 
-    // Osiągnięcia koalicja / opozycja
     if (coalitionTotal > 0) {
       await db.query(
         `INSERT INTO achievements
@@ -813,7 +741,6 @@ async function rateMp(req, res) {
     if (!Number.isInteger(rating) || rating < 1 || rating > 5)
       return res.status(400).json({ error: "Ocena musi być liczbą od 1 do 5" });
 
-    // Czy user już oceniał tego posła?
     const [[existing]] = await db.query(
       "SELECT id FROM mp_ratings WHERE user_id = ? AND mp_id = ?",
       [userId, id]
@@ -826,11 +753,8 @@ async function rateMp(req, res) {
     );
 
     if (!existing) {
-      // Pierwsza ocena tego posła: inkrementuj metryki przed handleEvent
-      // (checkAchievements wewnątrz handleEvent zobaczy aktualne wartości)
       const clubMetric = club ? CLUB_METRIC[club] : null;
       if (clubMetric) {
-        // Sprawdź czy to pierwszy poseł z tego klubu (dla clubs_rated_count)
         const [[cur]] = await db.query(
           `SELECT COALESCE(${clubMetric}, 0) AS val FROM user_metrics WHERE user_id = ?`,
           [userId]
@@ -844,10 +768,8 @@ async function rateMp(req, res) {
         const side = COALITION_CLUBS.has(club) ? "coalition_rated" : "opposition_rated";
         await incrementMetric(userId, side, 1);
       }
-      // XP + mps_rated + checkAchievements
       await handleEvent(userId, "MP_RATED");
     } else {
-      // Zmiana oceny: tylko sprawdź osiągnięcia
       await checkAchievements(userId);
     }
 
@@ -872,7 +794,6 @@ async function rateMp(req, res) {
   }
 }
 
-/* ── Pre-warm cache przy starcie serwera ─────────────────────────────────── */
 async function warmCache() {
   try {
     const { data } = await axios.get(`${SEJM_API}/sejm/${TERM}/MP`, {
@@ -902,7 +823,6 @@ async function warmCache() {
   }
 }
 warmCache();
-// Wyczyść stare klucze cache przy restarcie (mogą zawierać niekompletne dane)
 cache.delete("committees_with_members");
 cache.delete("committees_detailed");
 cache.delete("all_interpellations");

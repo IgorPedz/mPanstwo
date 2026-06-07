@@ -27,12 +27,21 @@ const getLocalizedEventText = (notif) => {
     })
     : "";
 
+  const newCount = notif?.data?.newCount ?? 1;
+  const messageKey =
+    notif?.type === "LAW_UPDATE" && newCount > 1
+      ? "notifications.events.LAW_UPDATE.messageMany"
+      : `notifications.events.${notif?.type}.message`;
+
   return {
     title: event.title || notif?.type || "Notification",
-    body: i18n.t(`notifications.events.${notif?.type}.message`, {
+    body: i18n.t(messageKey, {
       defaultValue: event.message || "",
       achievementName,
       rankName,
+      institutionName: notif?.data?.institutionName ?? "",
+      newsTitle:       notif?.data?.newsTitle ?? "",
+      newCount,
     }),
   };
 };
@@ -67,20 +76,16 @@ export const useNotificationStore = create((set, get) => ({
 
         if (!raw) return new Date().toLocaleString();
 
-        // Parse MySQL DATETIME/TIMESTAMP format (YYYY-MM-DD HH:MM:SS) as UTC
         if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}(\.\d+)?$/.test(raw)) {
-          // Convert MySQL format to ISO UTC format
           const isoString = raw.replace(" ", "T") + "Z";
           return new Date(isoString).toLocaleString();
         }
 
-        // Try parsing as ISO string
         const parsed = new Date(raw);
         if (!Number.isNaN(parsed.getTime())) {
           return parsed.toLocaleString();
         }
 
-        // Fallback: try adding 'Z' for UTC
         return new Date(raw.replace(" ", "T") + "Z").toLocaleString();
       })(),
 

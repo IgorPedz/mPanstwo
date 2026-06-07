@@ -1,4 +1,4 @@
-{
+﻿{
     "nav": {
         "sections": {
             "main": "Main",
@@ -175,7 +175,17 @@
             "unlockAchievements": {
                 "title": "Unlocking Achievements",
                 "desc": "Earn special achievements.",
-                "val": "+25-500 Reputation"
+                "val": "+25-5000 Reputation"
+            },
+            "courses": {
+                "title": "Completed Courses",
+                "desc": "Earn reputation for completing courses.",
+                "val": "+200 Reputation"
+            },
+            "opinions": {
+                "title": "Written Opinions",
+                "desc": "Earn reputation for writing opinions.",
+                "val": "+15 Reputation"
             }
         },
         "ranks": {

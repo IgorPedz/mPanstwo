@@ -3,13 +3,12 @@ const sendNotification = require("./utils/notification");
 const { fetchMinistryNewsItems, fetchPresidentNewsItems } = require("./controllers/newsController");
 const { fetchJudicialNewsItems } = require("./controllers/judicialController");
 
-async function fetchNewsForInstitution(institutionId, institutionType) {
-  if (institutionType === "judicial") return fetchJudicialNewsItems(institutionId);
+function fetchNewsForInstitution(institutionId, institutionType) {
+  if (institutionType === "judicial")  return fetchJudicialNewsItems(institutionId);
   if (institutionType === "president") return fetchPresidentNewsItems(institutionId);
   return fetchMinistryNewsItems(institutionId);
 }
 
-// Klucz porównania — URL jeśli dostępny, inaczej tytuł
 function itemKey(item) {
   return item.url || item.title || "";
 }
@@ -22,7 +21,7 @@ async function runFollowNewsCheck({ force = false } = {}) {
     );
     institutions = rows;
   } catch (err) {
-    console.error("[follow-check] DB query error:", err.message);
+    console.error("[follow-check] DB error:", err.message);
     return;
   }
 
@@ -38,48 +37,41 @@ async function runFollowNewsCheck({ force = false } = {}) {
       const latestUrl   = items[0].url ?? null;
 
       const [cacheRows] = await db.query(
-        `SELECT last_news_title, last_news_url FROM institution_news_cache WHERE institution_id = ?`,
+        `SELECT last_news_url, last_news_title FROM institution_news_cache WHERE institution_id = ?`,
         [inst.institution_id]
       );
 
-      if (cacheRows.length === 0) {
+      const isFirstRun = cacheRows.length === 0;
+      const cachedKey  = isFirstRun ? null : (cacheRows[0].last_news_url || cacheRows[0].last_news_title || "");
+
+      if (isFirstRun) {
         await db.query(
           `INSERT INTO institution_news_cache (institution_id, institution_type, last_news_title, last_news_url)
            VALUES (?, ?, ?, ?)`,
           [inst.institution_id, inst.institution_type, latestTitle, latestUrl]
         );
-        console.log(`[follow-check] SEED  ${inst.institution_id}: "${latestTitle}"`);
-        continue;
+      } else {
+        await db.query(
+          `UPDATE institution_news_cache
+           SET last_news_title = ?, last_news_url = ?, checked_at = UTC_TIMESTAMP()
+           WHERE institution_id = ?`,
+          [latestTitle, latestUrl, inst.institution_id]
+        );
       }
 
-      const cachedKey = cacheRows[0].last_news_url || cacheRows[0].last_news_title || "";
+      const hasChange = isFirstRun || (cachedKey !== latestKey);
 
-      console.log(`[follow-check] ${inst.institution_id}`);
-      console.log(`  cache:  "${cachedKey}"`);
-      console.log(`  latest: "${latestKey}"`);
+      if (!hasChange && !force) continue;
 
-      if (cachedKey === latestKey && !force) {
-        console.log(`  → brak zmian`);
-        continue;
-      }
-
-      // Policz ile nowych artykułów pojawiło się przed poprzednim
       let newCount = 0;
-      for (const item of items) {
-        if (itemKey(item) === cachedKey) break;
-        newCount++;
+      if (cachedKey) {
+        for (const item of items) {
+          if (itemKey(item) === cachedKey) break;
+          newCount++;
+        }
       }
-      if (newCount === 0) newCount = 1; // fallback jeśli nie znaleziono starego w liście
+      if (newCount === 0) newCount = 1;
 
-      // Zaktualizuj cache
-      await db.query(
-        `UPDATE institution_news_cache
-         SET last_news_title = ?, last_news_url = ?, checked_at = UTC_TIMESTAMP()
-         WHERE institution_id = ?`,
-        [latestTitle, latestUrl, inst.institution_id]
-      );
-
-      // Powiadom obserwujących — pomijaj tych którzy już dostali ten URL
       const [followers] = await db.query(
         `SELECT user_id, last_notified_url FROM institution_follows WHERE institution_id = ?`,
         [inst.institution_id]
@@ -87,13 +79,10 @@ async function runFollowNewsCheck({ force = false } = {}) {
 
       let notified = 0;
       for (const { user_id, last_notified_url } of followers) {
-        if (last_notified_url === latestUrl) {
-          console.log(`  → user ${user_id} już dostał to powiadomienie, pomijam`);
-          continue;
-        }
+        if (!force && last_notified_url === latestUrl) continue;
 
         await sendNotification({
-          type: "LAW_UPDATE",
+          type:   "LAW_UPDATE",
           userId: user_id,
           data: {
             institutionId:   inst.institution_id,
@@ -109,13 +98,13 @@ async function runFollowNewsCheck({ force = false } = {}) {
            WHERE user_id = ? AND institution_id = ?`,
           [latestUrl, user_id, inst.institution_id]
         );
+
         notified++;
       }
 
-      console.log(
-        `[follow-check] ${inst.institution_title}: ${newCount} nowych artykułów, ` +
-        `najnowszy: "${latestTitle}" → powiadomiono ${followers.length} user(ów)`
-      );
+      if (notified > 0) {
+        console.log(`[follow-check] ${inst.institution_title}: "${latestTitle}" → powiadomiono ${notified}/${followers.length}`);
+      }
     } catch (err) {
       console.error(`[follow-check] Error checking ${inst.institution_id}:`, err.message);
     }

@@ -1,10 +1,13 @@
 const db = require("../db");
 
 async function ensureFollowTables() {
-  // Dodaj kolumnę jeśli tabela istnieje ale kolumna jeszcze nie
   await db.query(`
     ALTER TABLE institution_follows
     ADD COLUMN IF NOT EXISTS last_notified_url VARCHAR(1000) DEFAULT NULL
+  `).catch(() => {});
+  await db.query(`
+    ALTER TABLE institution_follows
+    ADD COLUMN IF NOT EXISTS institution_title_key VARCHAR(200) DEFAULT NULL
   `).catch(() => {});
 
   await db.query(`
@@ -13,6 +16,7 @@ async function ensureFollowTables() {
       user_id       INT          NOT NULL,
       institution_id VARCHAR(100) NOT NULL,
       institution_title VARCHAR(255) NOT NULL,
+      institution_title_key VARCHAR(200) DEFAULT NULL,
       institution_type  VARCHAR(50)  NOT NULL DEFAULT 'ministry',
       icon              VARCHAR(100) DEFAULT NULL,
       accent            VARCHAR(50)  DEFAULT NULL,
@@ -34,16 +38,16 @@ async function ensureFollowTables() {
 }
 
 async function followInstitution(req, res) {
-  const { userId, institutionId, title, type, icon, accent, path } = req.body;
+  const { userId, institutionId, title, titleKey, type, icon, accent, path } = req.body;
   if (!userId || !institutionId || !title) {
     return res.status(400).json({ error: "Missing required fields" });
   }
   try {
     await db.query(
       `INSERT IGNORE INTO institution_follows
-         (user_id, institution_id, institution_title, institution_type, icon, accent, path)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [userId, institutionId, title, type || "ministry", icon || null, accent || null, path || null]
+         (user_id, institution_id, institution_title, institution_title_key, institution_type, icon, accent, path)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [userId, institutionId, title, titleKey || null, type || "ministry", icon || null, accent || null, path || null]
     );
     res.json({ success: true });
   } catch (err) {
@@ -76,6 +80,7 @@ async function getFollows(req, res) {
   try {
     const [rows] = await db.query(
       `SELECT institution_id AS id, institution_title AS title,
+              institution_title_key AS titleKey,
               institution_type AS type, icon, accent, path
        FROM institution_follows WHERE user_id = ?`,
       [userId]

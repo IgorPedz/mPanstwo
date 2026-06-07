@@ -61,7 +61,6 @@ export default function TilesGrid({ tiles, setTiles, currentTiles, currentPage, 
                             exit={{ opacity: 0, x: -40 }}
                             transition={{ duration: 0.35 }}
                         >
-                            {console.log(currentTiles)}
                             {currentTiles.map((tile) => (
                                 <Tile
                                     key={tile.id}

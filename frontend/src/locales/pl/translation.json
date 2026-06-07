@@ -1,4 +1,4 @@
-{
+﻿{
     "nav": {
         "sections": {
             "main": "Główna",
@@ -175,7 +175,17 @@
             "unlockAchievements": {
                 "title": "Odblokowywanie Osiągnięć",
                 "desc": "Zdobywaj specjalne osiągnięcia.",
-                "val": "+25-500 Reputacji"
+                "val": "+25-5000 Reputacji"
+            },
+            "courses": {
+                "title": "Ukończone Kursy",
+                "desc": "Zdobywaj reputację za ukończone kursy.",
+                "val": "+200 Reputacji"
+            },
+            "opinions": {
+                "title": "Napisane Opinie",
+                "desc": "Zdobywaj reputację za napisane opinie.",
+                "val": "+15 Reputacji"
             }
         },
         "ranks": {

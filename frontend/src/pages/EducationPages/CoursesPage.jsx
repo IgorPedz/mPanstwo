@@ -21,7 +21,6 @@ export default function CoursesPage() {
   const allCourses = [...courses];
 
   const handleStartCourse = (courseId) => {
-    console.log("Starting course:", courseId);
     handleNotify(
       t("courses.courseStarted") || "Course started successfully",
       "success"

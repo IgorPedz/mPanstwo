@@ -18,7 +18,6 @@ export function useLessonQuiz(lessonId) {
           `http://localhost:5000/courses/lesson/${lessonId}/quiz`
         );
 
-        console.log(res)
         const extractedQuiz = Array.isArray(res.data)
           ? res.data
           : (res.data?.quiz ?? []);

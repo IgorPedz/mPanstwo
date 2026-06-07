@@ -22,7 +22,6 @@ export default function QuizModal({ courseSlug, lessonSlug, isLastLesson, onClos
   const translatedQuiz = t(`courses.${courseSlug}.lessons.${lessonSlug}.quiz`, {
     returnObjects: true,
   });
-  console.log(translatedQuiz);
   const currentQuiz = quiz?.[step];
   const currentTranslation = translatedQuiz?.[step];
 
@@ -52,7 +51,6 @@ export default function QuizModal({ courseSlug, lessonSlug, isLastLesson, onClos
     setSelected(index);
 
     const isCorrect = index === correct;
-    console.log(correct);
     if (isCorrect) {
       setScore((prev) => prev + 1);
     }
@@ -185,7 +183,7 @@ export default function QuizModal({ courseSlug, lessonSlug, isLastLesson, onClos
                 <div className="space-y-3">
                   {currentTranslation?.answers?.map((answer, i) => {
                     const isSelected = selected === i;
-                    console.log(i);
+  
                     const isCorrect = i === currentTranslation.correct;
 
                     let styles =

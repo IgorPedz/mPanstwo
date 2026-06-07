@@ -23,7 +23,6 @@ export default function ProcessTimeline({ num }) {
   const [selectedVoting, setSelectedVoting] = useState(null);
   const { t } = useTranslation();
 
-  // Indeks pełnych danych głosowania z etapów (stageType="Voting") po dacie
   const refByDate = useMemo(() => {
     const m = {};
     for (const s of collectStages(data?.stages ?? [])) {
@@ -47,7 +46,6 @@ export default function ProcessTimeline({ num }) {
     return m;
   }, [data]);
 
-  // Indeks głosowań znalezionych przez backend (po dacie)
   const votingByDate = useMemo(() => {
     const m = {};
     for (const v of votings ?? []) {
@@ -89,7 +87,6 @@ export default function ProcessTimeline({ num }) {
             const isLast  = i === data.stages.length - 1;
             const dateKey = stage.date?.slice(0, 10);
 
-            // Znajdź ref: z zagnieżdżonych danych etapu, potem z backendu, potem fallback na ostatni
             const ref      = refByDate[dateKey] ?? (votingByDate[dateKey] ? { sitting: votingByDate[dateKey].sitting, votingNum: votingByDate[dateKey].votingNum } : null);
             const fallback = !ref && isLast && votings?.length ? votings[0] : null;
             const matched  = votingByDate[dateKey] ?? (fallback ? { sitting: fallback.sitting, votingNum: fallback.votingNum, ...fallback } : null);
@@ -104,7 +101,6 @@ export default function ProcessTimeline({ num }) {
               date:  stage.date ?? matched?.date ?? null,
             });
 
-            // Klikalny tylko gdy mamy dane głosowania ORAZ decision sugeruje wynik głosowania
             const hasVotingData  = !!(sitting && votingNum);
             const decisionIsVote = !!(hasVotingData && stage.decision && VOTE_RESULT_RE.test(stage.decision));
 

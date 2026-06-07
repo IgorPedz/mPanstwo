@@ -20,7 +20,6 @@ const HEADERS = { "User-Agent": "Mozilla/5.0 (compatible; mPanstwo-scraper/1.0)"
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-/* ── 1. Pobierz listę linków do profili ────────────────────────────────── */
 async function getProfileLinks() {
   const res  = await axios.get(LIST_URL, { headers: HEADERS, timeout: 10_000 });
   const $    = cheerio.load(res.data);
@@ -31,7 +30,6 @@ async function getProfileLinks() {
     const href = $(el).attr("href") || "";
     const abs  = href.startsWith("http") ? href : `${BASE_URL}${href}`;
 
-    // Przyjmujemy tylko bieżące kierownictwo – bez archiwum i historii
     const isKierownictwo = abs.includes("/kierownictwo-kancelarii/") &&
       !abs.endsWith("/kierownictwo-kancelarii/") &&
       !abs.includes("-historia") &&
@@ -50,7 +48,6 @@ async function getProfileLinks() {
   return links;
 }
 
-/* ── 2. Scrape jednego profilu ─────────────────────────────────────────── */
 async function scrapeProfile(url) {
   let res;
   try {
@@ -65,7 +62,6 @@ async function scrapeProfile(url) {
   const name = $("h1.page-title, h1").first().text().trim();
   if (!name) return null;
 
-  // Zdjęcie – pierwsze storage/image (pomijamy logo)
   let photo = null;
   $("img").each((_, el) => {
     if (photo) return;
@@ -73,11 +69,9 @@ async function scrapeProfile(url) {
     if (src.includes("storage/image") && !src.includes("logo")) photo = src;
   });
 
-  // Stanowisko – meta description lub pierwszy akapit z tytułem
   let title = $('meta[name="description"]').attr("content")?.trim() || "";
   if (!title || title.length > 200) title = "";
 
-  // 1. Krótki akapit zaczynający się od tytułu (najczęstszy przypadek)
   if (!title) {
     $("p").each((_, el) => {
       if (title) return;
@@ -91,7 +85,6 @@ async function scrapeProfile(url) {
     });
   }
 
-  // 2. Zdanie "powołał/objęła stanowisko X" – tylko gdy dotyczy Prezydenta/KPRP
   if (!title) {
     $("p").each((_, el) => {
       if (title) return;
@@ -115,7 +108,6 @@ async function scrapeProfile(url) {
   return { name, photo, title, profileUrl: url };
 }
 
-/* ── 3. Serialise / patch (jak w update-leadership.js) ─────────────────── */
 function serializePerson(p) {
   const photoLine      = p.photo      ? `\n        photo: "${p.photo}",`           : "\n        photo: null,";
   const profileUrlLine = p.profileUrl ? `\n        profileUrl: "${p.profileUrl}",` : "";
@@ -143,7 +135,7 @@ function patchLeadership(source, dataKey, people) {
   return source.slice(0, leadershipIdx) + newBlock + source.slice(end);
 }
 
-/* ── Main ────────────────────────────────────────────────────────────────── */
+
 async function runChancelleryUpdate() {
   console.log("Aktualizacja kierownictwa Kancelarii Prezydenta RP…\n");
 

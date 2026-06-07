@@ -14,7 +14,7 @@ export default function RegisterForm({
   const handleFormSubmit = handleSubmit(onSubmit, false);
 
   return (
-    <form onSubmit={handleFormSubmit} className="space-y-6">
+    <form onSubmit={handleFormSubmit} className="space-y-4 sm:space-y-6">
       <div className="space-y-2">
         <AuthInput
           label={t("auth.username")}
@@ -49,12 +49,12 @@ export default function RegisterForm({
 
       <PasswordStrength password={formData.password} />
 
-      <div className="flex flex-col gap-4 pt-4">
+      <div className="flex flex-col gap-3 sm:gap-4 pt-2 sm:pt-4">
         <button
           type="submit"
           className="
             group relative cursor-pointer w-full
-            bg-indigo-600 text-white py-5 rounded-2xl
+            bg-indigo-600 text-white py-3.5 sm:py-5 rounded-2xl
             text-[12px] font-black uppercase tracking-[0.3em]
             border-2 border-slate-900
             transition-all duration-200 active:scale-[0.98] hover:bg-indigo-700
@@ -63,7 +63,7 @@ export default function RegisterForm({
           {t("auth.register")}
         </button>
 
-        <div className="relative py-4 flex items-center justify-center">
+        <div className="relative py-3 sm:py-4 flex items-center justify-center">
           <div className="absolute inset-0 flex items-center">
             <div className="transition-colors w-full border-t-2 border-slate-100 dark:border-slate-800"></div>
           </div>
@@ -77,9 +77,9 @@ export default function RegisterForm({
           onClick={switchToLogin}
           className="transition-colors
             cursor-pointer w-full
-            bg-white dark:bg-slate-900 
+            bg-white dark:bg-slate-900
             border-2 border-slate-900 dark:border-slate-100
-            text-slate-900 dark:text-white py-5 rounded-2xl
+            text-slate-900 dark:text-white py-3.5 sm:py-5 rounded-2xl
             text-[12px] font-black uppercase tracking-[0.3em]
             shadow-[6px_6px_0px_0px_rgba(0,0,0,0.05)]
             hover:bg-slate-100 dark:hover:bg-slate-800
