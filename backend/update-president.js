@@ -1,15 +1,3 @@
-/**
- * Scrapes current president data from prezydent.pl and updates
- * frontend/src/data/presidentData.js
- *
- * Usage (run from project root or backend/):
- *   node backend/update-president.js
- *
- * Sources (in order):
- *   1. prezydent.pl/prezydent/biografia
- *   2. Wikipedia API (fallback for photo + name)
- */
-
 const axios   = require("axios");
 const cheerio = require("cheerio");
 const fs      = require("fs");

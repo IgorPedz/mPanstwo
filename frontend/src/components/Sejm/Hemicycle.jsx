@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 
-/* ── Porządek polityczny (lewica → prawica) ─────────────────────────────── */
 const SPECTRUM = [
   "Razem",
   "Lewica",
@@ -180,7 +179,6 @@ export default function Hemicycle({ clubs }) {
               </span>
             </div>
           ))}
-          {/* 4 niezrzeszonych jako wsparcie koalicji */}
           <div className="flex items-center gap-1.5">
             <span
               className="w-2.5 h-2.5 rounded-full shrink-0 border border-dashed border-slate-400"

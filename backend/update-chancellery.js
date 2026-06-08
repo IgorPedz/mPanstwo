@@ -1,11 +1,3 @@
-/**
- * Scrapes current presidential chancellery leadership from prezydent.pl
- * and updates frontend/src/data/ministriesData.js (presidential_chancellery key).
- *
- * Usage:
- *   node backend/update-chancellery.js
- */
-
 const axios   = require("axios");
 const cheerio = require("cheerio");
 const fs      = require("fs");

@@ -9,10 +9,8 @@ const {
 
 const router = express.Router();
 
-// User endpoint (wymaga tylko zalogowania — sprawdza authMiddleware globalny)
 router.post("/report/opinion/:id", reportOpinion);
 
-// Admin/Moderator endpoints
 router.get("/admin/reports",                       moderatorMiddleware, getReports);
 router.put("/admin/reports/:id/dismiss",           moderatorMiddleware, dismissReport);
 router.delete("/admin/reports/:id/delete-opinion", moderatorMiddleware, deleteReportedOpinion);

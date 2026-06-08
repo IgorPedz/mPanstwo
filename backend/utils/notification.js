@@ -15,9 +15,9 @@ async function sendNotification({
 
     const config = EVENT_CONFIG[eventKey] ||
       EVENT_CONFIG.SYSTEM_ALERT || {
-        icon: "🔔",
-        color: "gray",
-      };
+      icon: "🔔",
+      color: "gray",
+    };
 
     const finalIcon = icon ?? config.icon ?? "🔔";
     const finalColor = color ?? config.color ?? "gray";

@@ -1,46 +1,34 @@
-/**
- * Scrapes current ministry leadership from gov.pl and updates
- * frontend/src/data/ministriesData.js
- *
- * Usage (run from project root or backend/):
- *   node backend/update-leadership.js             — all ministries
- *   node backend/update-leadership.js edukacja    — single ministry (gov.pl slug)
- *
- * Cron example — every Monday at 06:00:
- *   0 6 * * 1  cd /path/to/mPanstwo && node backend/update-leadership.js >> logs/leadership.log 2>&1
- */
-
-const axios   = require("axios");
+const axios = require("axios");
 const cheerio = require("cheerio");
-const fs      = require("fs");
-const path    = require("path");
+const fs = require("fs");
+const path = require("path");
 
-const BASE_URL  = "https://www.gov.pl";
+const BASE_URL = "https://www.gov.pl";
 const DATA_FILE = path.resolve(__dirname, "../frontend/src/data/ministriesData.js");
-const DELAY_MS  = 1200;
+const DELAY_MS = 1200;
 
 const MINISTRY_MAP = {
-  ministry_of_finance:                             { s: "finanse",           p: "kierownictwo" },
-  ministry_of_health:                              { s: "zdrowie",           p: "kierownictwo" },
-  ministry_of_national_defence:                    { s: "obrona-narodowa",   p: "kierownictwo" },
-  ministry_of_justice:                             { s: "sprawiedliwosc",    p: "kierownictwo-ministerstwa" },
-  ministry_of_foreign_affairs:                     { s: "dyplomacja",        p: "kierownictwo-ministerstwa" },
-  ministry_of_infrastructure:                      { s: "infrastruktura",    p: "kierownictwo-ministerstwa" },
-  ministry_of_agriculture:                         { s: "rolnictwo",         p: "kierownictwo-ministerstwa" },
-  ministry_of_climate_and_environment:             { s: "klimat",            p: "kierownictwo-ministerstwa" },
-  ministry_of_state_assets:                        { s: "aktywa-panstwowe",  p: "kierownictwo-ministerstwa" },
-  ministry_of_culture_and_national_heritage:       { s: "kultura",           p: "kierownictwo-ministerstwa" },
-  ministry_of_sport_and_tourism:                   { s: "sport",             p: "kierownictwo-ministerstwa" },
-  ministry_of_family_labour_and_social_policy:     { s: "rodzina",           p: "kierownictwo" },
-  ministry_of_energy:                              { s: "energia",           p: "kierownictwo" },
-  ministry_of_education:                           { s: "edukacja",          p: "kierownictwo-ministerstwa" },
-  ministry_of_funds_and_regional_policy:           { s: "fundusze-regiony",  p: "kierownictwo-ministerstwa" },
-  ministry_of_science_and_higher_education:        { s: "nauka",             p: "kierownictwo-ministerstwa" },
-  ministry_of_internal_affairs_and_administration: { s: "mswia",             p: "kierownictwo-mswia" },
-  ministry_of_digital_affairs:                     { s: "cyfryzacja",        p: "kierownictwo" },
+  ministry_of_finance: { s: "finanse", p: "kierownictwo" },
+  ministry_of_health: { s: "zdrowie", p: "kierownictwo" },
+  ministry_of_national_defence: { s: "obrona-narodowa", p: "kierownictwo" },
+  ministry_of_justice: { s: "sprawiedliwosc", p: "kierownictwo-ministerstwa" },
+  ministry_of_foreign_affairs: { s: "dyplomacja", p: "kierownictwo-ministerstwa" },
+  ministry_of_infrastructure: { s: "infrastruktura", p: "kierownictwo-ministerstwa" },
+  ministry_of_agriculture: { s: "rolnictwo", p: "kierownictwo-ministerstwa" },
+  ministry_of_climate_and_environment: { s: "klimat", p: "kierownictwo-ministerstwa" },
+  ministry_of_state_assets: { s: "aktywa-panstwowe", p: "kierownictwo-ministerstwa" },
+  ministry_of_culture_and_national_heritage: { s: "kultura", p: "kierownictwo-ministerstwa" },
+  ministry_of_sport_and_tourism: { s: "sport", p: "kierownictwo-ministerstwa" },
+  ministry_of_family_labour_and_social_policy: { s: "rodzina", p: "kierownictwo" },
+  ministry_of_energy: { s: "energia", p: "kierownictwo" },
+  ministry_of_education: { s: "edukacja", p: "kierownictwo-ministerstwa" },
+  ministry_of_funds_and_regional_policy: { s: "fundusze-regiony", p: "kierownictwo-ministerstwa" },
+  ministry_of_science_and_higher_education: { s: "nauka", p: "kierownictwo-ministerstwa" },
+  ministry_of_internal_affairs_and_administration: { s: "mswia", p: "kierownictwo-mswia" },
+  ministry_of_digital_affairs: { s: "cyfryzacja", p: "kierownictwo" },
 
   chancellery_of_the_prime_minister: { s: "premier", p: "kierownictwo-kprm5" },
-  council_of_ministers:              { s: "premier", p: "sklad-rady-ministrow" },
+  council_of_ministers: { s: "premier", p: "sklad-rady-ministrow" },
 };
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -60,21 +48,21 @@ async function scrapeLeadership(govSlug, leadershipPath) {
     return null;
   }
 
-  const $      = cheerio.load(html);
+  const $ = cheerio.load(html);
   const people = [];
 
   $(".bio-prev li").each((i, el) => {
-    const name  = $(el).find(".title a").text().trim();
+    const name = $(el).find(".title a").text().trim();
     const title = $(el).find(".position, .intro").text().trim();
 
     if (!name) return;
 
     const imgSrc = $(el).find("picture img").attr("src") || "";
-    const photo  = imgSrc
+    const photo = imgSrc
       ? (imgSrc.startsWith("http") ? imgSrc : `${BASE_URL}${imgSrc}`)
       : null;
 
-    const href       = $(el).find(".title a").attr("href") || "";
+    const href = $(el).find(".title a").attr("href") || "";
     const profileUrl = href
       ? (href.startsWith("http") ? href : `${BASE_URL}${href}`)
       : null;
@@ -93,7 +81,7 @@ async function scrapeLeadership(govSlug, leadershipPath) {
       name,
       title,
       role,
-      ...(photo      ? { photo }      : {}),
+      ...(photo ? { photo } : {}),
       ...(profileUrl ? { profileUrl } : {}),
     });
   });
@@ -102,7 +90,7 @@ async function scrapeLeadership(govSlug, leadershipPath) {
 }
 
 function serializePerson(p) {
-  const photoLine      = p.photo      ? `\n        photo: "${p.photo}",`           : "";
+  const photoLine = p.photo ? `\n        photo: "${p.photo}",` : "";
   const profileUrlLine = p.profileUrl ? `\n        profileUrl: "${p.profileUrl}",` : "";
   return `      { name: "${p.name}", title: "${p.title}", role: "${p.role}",${photoLine}${profileUrlLine} }`;
 }
@@ -147,7 +135,7 @@ async function main() {
 
   console.log(`Updating ${targets.length} ministr${targets.length === 1 ? "y" : "ies"}…\n`);
 
-  let source  = fs.readFileSync(DATA_FILE, "utf-8");
+  let source = fs.readFileSync(DATA_FILE, "utf-8");
   let updated = 0;
 
   for (const [dataKey, { s: govSlug, p: leadershipPath }] of targets) {
