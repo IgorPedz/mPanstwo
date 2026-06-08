@@ -53,7 +53,6 @@ export default function AdminPage() {
     >
       <div className="max-w-[1800px] mx-auto">
 
-        {/* Header */}
         <motion.header
           variants={itemVariants}
           className="flex justify-between items-end pb-6 mb-8 color-transition"
@@ -72,7 +71,6 @@ export default function AdminPage() {
           </div>
         </motion.header>
 
-        {/* Tabs */}
         <motion.div variants={itemVariants} className="mb-8">
           <div className="flex flex-wrap gap-1 p-1 rounded-2xl bg-white dark:bg-slate-900
             border border-slate-200 dark:border-slate-800 w-fit color-transition shadow-sm">
@@ -88,7 +86,6 @@ export default function AdminPage() {
                   } color-transition`}
               >
                 {t.label}
-                {/* Badge oczekujące */}
                 {t.key === "reports" && pendingReports > 0 && (
                   <motion.span
                     initial={{ scale: 0 }} animate={{ scale: 1 }}
@@ -114,7 +111,6 @@ export default function AdminPage() {
           </div>
         </motion.div>
 
-        {/* Content z animacją przejścia */}
         <motion.div variants={itemVariants} className="relative overflow-hidden">
           <AnimatePresence mode="wait" custom={dir}>
             <motion.div

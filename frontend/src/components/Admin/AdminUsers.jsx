@@ -43,7 +43,6 @@ export default function AdminUsers() {
   const [error,    setError]    = useState(null);
   const [saving,   setSaving]   = useState(null);
 
-  // Modal state
   const [modal, setModal] = useState({ open: false, type: null, user: null, loading: false });
 
   const openModal = (type, user) => setModal({ open: true, type, user, loading: false });
@@ -155,7 +154,6 @@ export default function AdminUsers() {
         </div>
       )}
 
-      {/* Table */}
       <div className="bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800
         shadow-sm overflow-hidden color-transition">
         {loading ? (
@@ -185,7 +183,6 @@ export default function AdminUsers() {
                       ? "bg-red-50/50 dark:bg-red-950/10 hover:bg-red-50 dark:hover:bg-red-950/20"
                       : "hover:bg-slate-50 dark:hover:bg-slate-800/50"}`}>
 
-                  {/* Avatar */}
                   <div className={`w-9 h-9 rounded-full flex items-center justify-center
                     text-sm font-black shrink-0 uppercase color-transition
                     ${isBanned
@@ -194,7 +191,6 @@ export default function AdminUsers() {
                     {u.name?.charAt(0) || "?"}
                   </div>
 
-                  {/* Info */}
                   <div className="flex-1 min-w-0">
                     <p className={`text-sm font-black truncate color-transition
                       ${isBanned ? "text-red-600 dark:text-red-400 line-through" : "text-slate-900 dark:text-white"}`}>
@@ -205,20 +201,17 @@ export default function AdminUsers() {
                     </p>
                   </div>
 
-                  {/* XP + date */}
                   <div className="hidden md:flex items-center gap-5 text-xs font-bold
                     text-slate-400 dark:text-slate-500 color-transition">
                     <span>XP: <strong className="text-slate-600 dark:text-slate-300">{u.xp ?? 0}</strong></span>
                     <span>{new Date(u.created_at).toLocaleDateString("pl-PL")}</span>
                   </div>
 
-                  {/* Role badge */}
                   <span className={`hidden sm:inline-flex px-2.5 py-1 rounded-lg text-[10px] font-black
                     uppercase tracking-wide color-transition ${ROLE_BADGE[u.role] || ROLE_BADGE["Użytkownik"]}`}>
                     {u.role}
                   </span>
 
-                  {/* Role select — hidden for banned */}
                   {!isBanned && (
                     <select
                       value={u.role}
@@ -233,7 +226,6 @@ export default function AdminUsers() {
                     </select>
                   )}
 
-                  {/* Ban / Unban button */}
                   {isBanned ? (
                     <button
                       onClick={() => openModal("unban", u)}
@@ -264,7 +256,6 @@ export default function AdminUsers() {
         )}
       </div>
 
-      {/* Pagination */}
       {pages > 1 && (
         <div className="flex items-center justify-center gap-3">
           <button disabled={page === 1} onClick={() => setPage((p) => p - 1)}
@@ -289,7 +280,6 @@ export default function AdminUsers() {
         </div>
       )}
 
-      {/* Confirm modal */}
       <ConfirmModal
         isOpen={modal.open}
         onClose={closeModal}

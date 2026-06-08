@@ -4720,8 +4720,13 @@
         "unbanTitle": "Odblokuj {{name}}",
         "unbanDesc": "Użytkownik {{email}} odzyska dostęp do konta (rola: Użytkownik).",
         "banConfirm": "Zbanuj",
-        "unbanConfirm": "Odblokuj"
-    },
+        "unbanConfirm": "Odblokuj",
+        "unbanSuccess": "Twoje odwołanie zostało rozpatrzone pozytywnie — konto zostało odblokowane. Możesz się teraz zalogować.",
+        "unbanUnsuccess": "Twoje odwołanie zostało rozpatrzone negatywnie — konto pozostaje zablokowane. Skontaktuj się z nami, jeśli uważasz, że to błąd.",
+        "reportSuccess": "Zgłoszenie zostało wysłane do administratorów. Dziękujemy za pomoc w utrzymaniu naszej społeczności bezpiecznej i przyjaznej.",
+        "reportDismissed": "Twoje zgłoszenie dotyczące opinii do druku {print_num}} zostało odrzucone — opinia nie naruszała zasad.",
+        "reportResolved": "Twoje zgłoszenie zostało rozpatrzone — opinia została usunięta."
+    },  
     "adminOpinions": {
         "count": "{{total}} opinii",
         "noOpinions": "Brak opinii",

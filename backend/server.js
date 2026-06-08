@@ -22,25 +22,22 @@ const progressionRoutes = require("./routes/progressionRoutes");
 const rankRoutes = require("./routes/rankRoutes");
 const coursesRoutes = require("./routes/coursesRoutes");
 const blocksRoutes = require("./routes/blocksRoutes");
-const newsRoutes   = require("./routes/newsRoutes");
-const sejmRoutes        = require("./routes/sejmRoutes");
+const newsRoutes = require("./routes/newsRoutes");
+const sejmRoutes = require("./routes/sejmRoutes");
 const legislationRoutes = require("./routes/legislationRoutes");
-const senatRoutes    = require("./routes/senatRoutes");
+const senatRoutes = require("./routes/senatRoutes");
 const judicialRoutes = require("./routes/judicialRoutes");
-const followRoutes   = require("./routes/followRoutes");
-const adminRoutes    = require("./routes/adminRoutes");
-const expertRoutes   = require("./routes/expertRoutes");
-const reportRoutes   = require("./routes/reportRoutes");
+const followRoutes = require("./routes/followRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const expertRoutes = require("./routes/expertRoutes");
+const reportRoutes = require("./routes/reportRoutes");
 const cron = require("node-cron");
 const { runLeadershipUpdate } = require("./update-leadership");
-const { runPresidentUpdate }    = require("./update-president");
-const { runChancelleryUpdate }  = require("./update-chancellery");
-const { runFollowNewsCheck }    = require("./follow-news-check");
-const { ensureFollowTables }    = require("./controllers/followController");
-const { ensureReportsTable }    = require("./controllers/reportController");
-const { ensureAppealsTable }    = require("./controllers/appealController");
-const appealRoutes              = require("./routes/appealRoutes");
-const { warmupBillsCache, ensureEndorsementSetup }                  = require("./controllers/legislationController");
+const { runPresidentUpdate } = require("./update-president");
+const { runChancelleryUpdate } = require("./update-chancellery");
+const { runFollowNewsCheck } = require("./follow-news-check");
+const appealRoutes = require("./routes/appealRoutes");
+const { warmupBillsCache } = require("./controllers/legislationController");
 const { warmupCommitteesCache, warmupInterpellationsCache, warmupWrittenQuestionsCache } = require("./controllers/sejmController");
 
 const app = express();
@@ -124,18 +121,6 @@ const port = process.env.PORT || 4000;
 
 server.listen(port, () => {
   console.log(`Serwer działa na porcie ${port}`);
-  ensureFollowTables().catch(err =>
-    console.error("[init] Błąd tworzenia tabel follows:", err.message)
-  );
-  ensureReportsTable()
-    .then(() => console.log("[init] Tabela opinion_reports gotowa"))
-    .catch(err => console.error("[init] Błąd tworzenia tabeli raportów:", err.message));
-  ensureAppealsTable()
-    .then(() => console.log("[init] Tabela ban_appeals gotowa"))
-    .catch(err => console.error("[init] Błąd tworzenia tabeli odwołań:", err.message));
-  ensureEndorsementSetup()
-    .then(() => console.log("[init] Kolumny endorsementu i achievement gotowe"))
-    .catch(err => console.error("[init] Błąd endorsement setup:", err.message));
   warmupBillsCache()
     .then(() => console.log("[warmup] Cache druków ustaw gotowy"))
     .catch(err => console.error("[warmup] Błąd pobierania druków:", err.message));

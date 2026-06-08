@@ -1,24 +1,6 @@
 const db             = require("../db");
 const sendNotification = require("../utils/notification");
 
-/* ─── Tworzenie tabeli ────────────────────────────────────────────────────── */
-const ensureAppealsTable = async () => {
-  await db.query(`
-    CREATE TABLE IF NOT EXISTS ban_appeals (
-      id           INT AUTO_INCREMENT PRIMARY KEY,
-      user_id      INT          NOT NULL,
-      reason       VARCHAR(1000) NOT NULL,
-      admin_response VARCHAR(1000) DEFAULT NULL,
-      status       ENUM('pending','approved','rejected') NOT NULL DEFAULT 'pending',
-      created_at   TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      reviewed_at  TIMESTAMP NULL DEFAULT NULL,
-      reviewed_by  INT NULL DEFAULT NULL,
-      KEY fk_appeal_user     (user_id),
-      KEY fk_appeal_reviewer (reviewed_by)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
-  `);
-};
-
 /* ─── POST /appeal  — zbanowany user składa odwołanie ────────────────────── */
 const submitAppeal = async (req, res, next) => {
   try {
@@ -140,7 +122,7 @@ const approveAppeal = async (req, res, next) => {
     sendNotification({
       type: "APPEAL_APPROVED",
       userId: appeal.user_id,
-      data: { message: "Twoje odwołanie zostało rozpatrzone pozytywnie — konto zostało odblokowane. Możesz się teraz zalogować." },
+      data: { message: "Twoje odwołanie zostało rozpatrzone pozytywnie — konto zostało odblokowane. Możesz się teraz zalogować.", slug: "unbanSuccess" },
     }).catch(() => {});
 
     res.json({ message: "Odwołanie zatwierdzone, konto odblokowane" });
@@ -178,6 +160,7 @@ const rejectAppeal = async (req, res, next) => {
         message: response
           ? `Twoje odwołanie zostało odrzucone. Odpowiedź administratora: ${response}`
           : "Twoje odwołanie zostało odrzucone przez administratora.",
+        slug: "unbanUnsuccess"
       },
     }).catch(() => {});
 
@@ -188,7 +171,6 @@ const rejectAppeal = async (req, res, next) => {
 };
 
 module.exports = {
-  ensureAppealsTable,
   submitAppeal,
   getAppealStatus,
   getAppeals,

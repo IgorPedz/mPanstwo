@@ -398,57 +398,6 @@ async function postOpinion(req, res) {
   }
 }
 
-/* ─── Bezpieczne dodanie kolumny jeśli nie istnieje ─────────────────────── */
-async function addColumnIfMissing(table, column, definition) {
-  const [[row]] = await db.query(
-    `SELECT COUNT(*) AS cnt
-     FROM INFORMATION_SCHEMA.COLUMNS
-     WHERE TABLE_SCHEMA = DATABASE()
-       AND TABLE_NAME   = ?
-       AND COLUMN_NAME  = ?`,
-    [table, column]
-  );
-  if (!row.cnt) {
-    await db.query(`ALTER TABLE \`${table}\` ADD COLUMN \`${column}\` ${definition}`);
-  }
-}
-
-/* ─── Migracja: kolumny endorsementu + achievements ─────────────────────── */
-async function ensureEndorsementSetup() {
-  // Kolumny w legislation_opinions
-  await addColumnIfMissing("legislation_opinions", "endorsed_by", "INT NULL DEFAULT NULL");
-  await addColumnIfMissing("legislation_opinions", "endorsed_at", "TIMESTAMP NULL DEFAULT NULL");
-
-  // Kolumna metryki w user_metrics
-  await addColumnIfMissing("user_metrics", "opinions_endorsed", "INT NOT NULL DEFAULT 0");
-
-  // Usuń stary achievement bez numeru (jeśli istnieje z poprzedniej migracji)
-  // Najpierw usuń powiązane user_achievements, żeby nie złamać FK
-  await db.query(`
-    DELETE ua FROM user_achievements ua
-    JOIN achievements a ON a.id = ua.achievement_id
-    WHERE a.slug = 'opinion_endorsed'
-  `);
-  await db.query(`DELETE FROM achievements WHERE slug = 'opinion_endorsed'`);
-
-  // Znajdź kategorię "opinions"
-  const [[cat]] = await db.query(
-    `SELECT id FROM achievement_categories WHERE slug = 'opinions' LIMIT 1`
-  );
-  const catId = cat?.id ?? 1;
-
-  // Wstaw 4 achievements (poziomy 1 / 3 / 5 / 10)
-  await db.query(`
-    INSERT IGNORE INTO achievements
-      (slug, category_id, xp_reward, metric_key, metric_source, requirement_value, rarity, active, hidden)
-    VALUES
-      ('opinion_endorsed_1',  ?, 75,  'opinions_endorsed', 'user_metrics',  1, 'rare',      1, 0),
-      ('opinion_endorsed_3',  ?, 150, 'opinions_endorsed', 'user_metrics',  3, 'rare',      1, 0),
-      ('opinion_endorsed_5',  ?, 300, 'opinions_endorsed', 'user_metrics',  5, 'epic',      1, 0),
-      ('opinion_endorsed_10', ?, 600, 'opinions_endorsed', 'user_metrics', 10, 'legendary', 1, 0)
-  `, [catId, catId, catId, catId]);
-}
-
 /* ─── PUT /legislation/opinions/:id/endorse — ekspert weryfikuje opinię ──── */
 async function endorseOpinion(req, res, next) {
   try {
@@ -504,7 +453,7 @@ async function endorseOpinion(req, res, next) {
 module.exports = {
   getAllBills, getBillDetails, getLegislativeProcess,
   getOpinions, postOpinion,
-  endorseOpinion, ensureEndorsementSetup,
+  endorseOpinion,
   getBillVotings, getBillVotingDetail,
   warmupBillsCache: fetchAllBills,
 };

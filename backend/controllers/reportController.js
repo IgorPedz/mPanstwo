@@ -1,39 +1,6 @@
 const db = require("../db");
 const sendNotification = require("../utils/notification");
 
-/* Tworzy tabelę jeśli nie istnieje + migruje brakujące kolumny */
-const ensureReportsTable = async () => {
-  await db.query(`
-    CREATE TABLE IF NOT EXISTS opinion_reports (
-      id           INT AUTO_INCREMENT PRIMARY KEY,
-      opinion_id   INT          NOT NULL,
-      reporter_id  INT          NOT NULL,
-      reason       VARCHAR(500) NOT NULL,
-      status       ENUM('pending','reviewed','dismissed') NOT NULL DEFAULT 'pending',
-      created_at   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      reviewed_at  TIMESTAMP    NULL DEFAULT NULL,
-      reviewed_by  INT          NULL DEFAULT NULL,
-      UNIQUE KEY uq_report (opinion_id, reporter_id),
-      KEY fk_opinion  (opinion_id),
-      KEY fk_reporter (reporter_id),
-      KEY fk_reviewer (reviewed_by)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
-  `);
-
-  // Migracja dla istniejących tabel bez tych kolumn
-  for (const [col, def] of [
-    ["reviewed_at", "TIMESTAMP NULL DEFAULT NULL"],
-    ["reviewed_by", "INT NULL DEFAULT NULL"],
-  ]) {
-    const [[row]] = await db.query(
-      `SELECT COUNT(*) AS cnt FROM INFORMATION_SCHEMA.COLUMNS
-       WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'opinion_reports' AND COLUMN_NAME = ?`,
-      [col]
-    );
-    if (!row.cnt) await db.query(`ALTER TABLE opinion_reports ADD COLUMN ${col} ${def}`);
-  }
-};
-
 // POST /report/opinion/:id  { reason }
 const reportOpinion = async (req, res, next) => {
   try {
@@ -146,6 +113,7 @@ const dismissReport = async (req, res, next) => {
       userId: report.reporter_id,
       data: {
         message: `Twoje zgłoszenie dotyczące opinii do druku ${report.print_num} zostało odrzucone — opinia nie naruszała zasad.`,
+        slug: "reportDismissed"
       },
     }).catch(() => {});
 
@@ -186,6 +154,7 @@ const deleteReportedOpinion = async (req, res, next) => {
         userId: reporter_id,
         data: {
           message: `Twoje zgłoszenie dotyczące opinii do druku ${report.print_num} zostało rozpatrzone — opinia została usunięta.`,
+          slug: "reportResolved"
         },
       }).catch(() => {});
     }
@@ -197,7 +166,6 @@ const deleteReportedOpinion = async (req, res, next) => {
 };
 
 module.exports = {
-  ensureReportsTable,
   reportOpinion,
   getReports,
   dismissReport,

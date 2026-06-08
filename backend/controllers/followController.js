@@ -1,42 +1,5 @@
 const db = require("../db");
 
-async function ensureFollowTables() {
-  await db.query(`
-    ALTER TABLE institution_follows
-    ADD COLUMN IF NOT EXISTS last_notified_url VARCHAR(1000) DEFAULT NULL
-  `).catch(() => {});
-  await db.query(`
-    ALTER TABLE institution_follows
-    ADD COLUMN IF NOT EXISTS institution_title_key VARCHAR(200) DEFAULT NULL
-  `).catch(() => {});
-
-  await db.query(`
-    CREATE TABLE IF NOT EXISTS institution_follows (
-      id            INT AUTO_INCREMENT PRIMARY KEY,
-      user_id       INT          NOT NULL,
-      institution_id VARCHAR(100) NOT NULL,
-      institution_title VARCHAR(255) NOT NULL,
-      institution_title_key VARCHAR(200) DEFAULT NULL,
-      institution_type  VARCHAR(50)  NOT NULL DEFAULT 'ministry',
-      icon              VARCHAR(100) DEFAULT NULL,
-      accent            VARCHAR(50)  DEFAULT NULL,
-      path              VARCHAR(200) DEFAULT NULL,
-      last_notified_url VARCHAR(1000) DEFAULT NULL,
-      created_at        TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
-      UNIQUE KEY uq_user_inst (user_id, institution_id)
-    )
-  `);
-  await db.query(`
-    CREATE TABLE IF NOT EXISTS institution_news_cache (
-      institution_id   VARCHAR(100) NOT NULL PRIMARY KEY,
-      institution_type VARCHAR(50)  NOT NULL DEFAULT 'ministry',
-      last_news_title  VARCHAR(500) DEFAULT NULL,
-      last_news_url    VARCHAR(1000) DEFAULT NULL,
-      checked_at       TIMESTAMP    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    )
-  `);
-}
-
 async function followInstitution(req, res) {
   const { userId, institutionId, title, titleKey, type, icon, accent, path } = req.body;
   if (!userId || !institutionId || !title) {
@@ -121,4 +84,4 @@ async function markSeen(req, res) {
   }
 }
 
-module.exports = { ensureFollowTables, followInstitution, unfollowInstitution, getFollows, markSeen };
+module.exports = { followInstitution, unfollowInstitution, getFollows, markSeen };
