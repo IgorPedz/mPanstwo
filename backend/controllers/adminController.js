@@ -2,7 +2,6 @@ const db = require("../db");
 
 const ALLOWED_ROLES = ["Użytkownik", "Administrator", "Moderator", "Ekspert", "Zbanowany"];
 
-// GET /admin/users?page=1&limit=20&search=&role=
 const getUsers = async (req, res, next) => {
   try {
     const page   = Math.max(1, parseInt(req.query.page)  || 1);
@@ -42,7 +41,6 @@ const getUsers = async (req, res, next) => {
   }
 };
 
-// PUT /admin/users/:id/role
 const updateUserRole = async (req, res, next) => {
   try {
     const { id }   = req.params;
@@ -62,7 +60,6 @@ const updateUserRole = async (req, res, next) => {
   }
 };
 
-// DELETE /admin/users/:id
 const deleteUser = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -76,7 +73,6 @@ const deleteUser = async (req, res, next) => {
   }
 };
 
-// GET /admin/stats
 const getStats = async (req, res, next) => {
   try {
     const [[totals]] = await db.query(
@@ -116,7 +112,6 @@ const getStats = async (req, res, next) => {
   }
 };
 
-// GET /admin/opinions?page=1&limit=20
 const getOpinions = async (req, res, next) => {
   try {
     const page   = Math.max(1, parseInt(req.query.page)  || 1);
@@ -143,7 +138,6 @@ const getOpinions = async (req, res, next) => {
   }
 };
 
-// DELETE /admin/opinions/:id
 const deleteOpinion = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -154,7 +148,6 @@ const deleteOpinion = async (req, res, next) => {
   }
 };
 
-// GET /admin/ratings?page=1&limit=20
 const getRatings = async (req, res, next) => {
   try {
     const page   = Math.max(1, parseInt(req.query.page)  || 1);
@@ -181,7 +174,6 @@ const getRatings = async (req, res, next) => {
   }
 };
 
-// DELETE /admin/ratings/:id
 const deleteRating = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -192,7 +184,6 @@ const deleteRating = async (req, res, next) => {
   }
 };
 
-// PUT /admin/users/:id/ban
 const banUser = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -211,7 +202,7 @@ const banUser = async (req, res, next) => {
   }
 };
 
-// PUT /admin/users/:id/unban
+
 const unbanUser = async (req, res, next) => {
   try {
     const { id } = req.params;

@@ -79,7 +79,6 @@ export default function AdminReports({ onPendingCount }) {
 
   useEffect(() => { load(); }, [load]);
 
-  // reset page when filter changes
   useEffect(() => { setPage(1); }, [status]);
 
   const openDismiss = (item) => setModal({ open: true, type: "dismiss", item, loading: false });
@@ -96,7 +95,6 @@ export default function AdminReports({ onPendingCount }) {
         if (status === "pending" && onPendingCount) onPendingCount(Math.max(0, total - 1));
       } else {
         await axios.delete(`${API_BASE}/admin/reports/${modal.item.id}/delete-opinion`, { withCredentials: true });
-        // Remove all reports for that opinion from current view
         setItems((o) => o.filter((x) => x.opinion_id !== modal.item.opinion_id));
         setTotal((t) => t - 1);
         if (status === "pending" && onPendingCount) onPendingCount(Math.max(0, total - 1));

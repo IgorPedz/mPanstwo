@@ -54,7 +54,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 const ICON_MAP = {
-  // core
+
   left: ArrowLeftIcon,
   clock: ClockIcon,
   dashboard: HomeIcon,
@@ -79,7 +79,7 @@ const ICON_MAP = {
   contact: EnvelopeIcon,
   phone: PhoneIcon,
   map: MapPinIcon,
-  // institutions
+
   countries: BuildingOffice2Icon,
   ministry: BuildingOfficeIcon,
   parliament: BuildingLibraryIcon,
@@ -94,13 +94,13 @@ const ICON_MAP = {
   euro: CurrencyEuroIcon,
   tablet: DeviceTabletIcon,
   computer: ComputerDesktopIcon,
-  // missing FIXED
+
   globe: GlobeAltIcon,
   truck: TruckIcon,
   leaf: GlobeEuropeAfricaIcon,
   tractor: BeakerIcon,
   star: StarIcon,
-  // actions
+
   check: CheckIcon,
   cancel: ArrowUturnLeftIcon,
   lock: LockClosedIcon,
@@ -108,7 +108,7 @@ const ICON_MAP = {
   dropdown: ChevronDownIcon,
   pencil: PencilSquareIcon,
 
-  // thematic
+
   heart: HeartIcon,
   shield: ShieldCheckIcon,
   cpu: CpuChipIcon,

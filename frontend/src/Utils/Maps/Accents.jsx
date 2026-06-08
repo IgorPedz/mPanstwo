@@ -13,7 +13,6 @@ export const ACCENT_MAP = {
   cyan: "from-cyan-700 to-cyan-500",
   teal: "from-teal-700 to-teal-500",
 
-  // gradienty specjalne
   "emerald-gradient": "from-emerald-600 via-teal-500 to-cyan-500",
   "red-gradient": "from-red-600 via-rose-500 to-pink-500",
   "slate-gradient": "from-slate-800 via-gray-700 to-gray-600",

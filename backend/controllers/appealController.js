@@ -1,13 +1,11 @@
 const db             = require("../db");
 const sendNotification = require("../utils/notification");
 
-/* ─── POST /appeal  — zbanowany user składa odwołanie ────────────────────── */
 const submitAppeal = async (req, res, next) => {
   try {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ message: "Wymagane logowanie" });
 
-    // Tylko zbanowani mogą składać odwołania
     const [[user]] = await db.query("SELECT role FROM users WHERE id = ?", [userId]);
     if (!user || user.role !== "Zbanowany") {
       return res.status(403).json({ message: "Odwołanie dotyczy tylko zbanowanych kont" });
@@ -17,7 +15,6 @@ const submitAppeal = async (req, res, next) => {
     if (!reason)           return res.status(400).json({ message: "Podaj treść odwołania" });
     if (reason.length > 1000) return res.status(400).json({ message: "Treść zbyt długa (max 1000 znaków)" });
 
-    // Sprawdź czy nie ma już oczekującego odwołania
     const [[existing]] = await db.query(
       "SELECT id FROM ban_appeals WHERE user_id = ? AND status = 'pending'",
       [userId]
@@ -110,7 +107,6 @@ const approveAppeal = async (req, res, next) => {
       return res.status(409).json({ message: "Odwołanie już zostało rozpatrzone" });
     }
 
-    // Odbanuj usera
     await db.query("UPDATE users SET role = 'Użytkownik' WHERE id = ?", [appeal.user_id]);
     await db.query(
       `UPDATE ban_appeals

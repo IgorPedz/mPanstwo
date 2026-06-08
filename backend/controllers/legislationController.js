@@ -417,7 +417,6 @@ async function endorseOpinion(req, res, next) {
       return res.status(400).json({ error: "Nie możesz weryfikować własnej opinii" });
     }
 
-    // Toggle: jeśli ten sam ekspert już zweryfikował → cofnij
     if (opinion.endorsed_by === expertId) {
       await db.query(
         "UPDATE legislation_opinions SET endorsed_by = NULL, endorsed_at = NULL WHERE id = ?",
@@ -426,13 +425,12 @@ async function endorseOpinion(req, res, next) {
       return res.json({ endorsed: false });
     }
 
-    // Zweryfikuj
+
     await db.query(
       "UPDATE legislation_opinions SET endorsed_by = ?, endorsed_at = NOW() WHERE id = ?",
       [expertId, opinionId]
     );
 
-    // Powiadom autora opinii
     const [[expert]] = await db.query("SELECT name FROM users WHERE id = ?", [expertId]);
     sendNotification({
       type: "OPINION_ENDORSED",
@@ -440,7 +438,6 @@ async function endorseOpinion(req, res, next) {
       data: { message: `Ekspert ${expert?.name ?? "ekspert"} uznał Twoją opinię za ważną!` },
     }).catch(() => {});
 
-    // Metrika + achievement dla autora
     await incrementMetric(opinion.user_id, "opinions_endorsed", 1);
     await checkAchievements(opinion.user_id);
 

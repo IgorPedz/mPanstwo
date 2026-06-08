@@ -47,10 +47,8 @@ function OpinionCard({ op, currentUser, onEndorseToggle }) {
   const [endorsed,     setEndorsed]     = useState(!!op.endorsed_by);
   const [endorserName, setEndorserName] = useState(op.endorser_name ?? null);
 
-  // eslint-disable-next-line eqeqeq
   const canReport  = currentUser?.id && currentUser.id != op.author_id;
   const isExpertUser = currentUser?.role === "Ekspert";
-  // eslint-disable-next-line eqeqeq
   const canEndorse = isExpertUser && currentUser?.id != op.author_id;
   const myEndorsement = endorsed && op.endorsed_by == currentUser?.id;
 

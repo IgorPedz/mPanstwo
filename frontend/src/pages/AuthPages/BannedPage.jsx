@@ -22,7 +22,7 @@ export default function BannedPage() {
   const { logout } = useUser();
   const { t, i18n } = useTranslation();
 
-  const [appeal,     setAppeal]     = useState(undefined); // undefined = loading
+  const [appeal,     setAppeal]     = useState(undefined); 
   const [reason,     setReason]     = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error,      setError]      = useState(null);
@@ -49,13 +49,11 @@ export default function BannedPage() {
     }
   };
 
-  // Można złożyć odwołanie zawsze gdy nie ma już oczekującego
-  // (status 'approved' = poprzedni ban odwołany, user zbananowany ponownie)
   const canAppeal = appeal?.status !== "pending";
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center p-4 color-transition">
-      {/* Tło */}
+
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px]
           rounded-full bg-red-500/5 dark:bg-red-500/10 blur-3xl" />

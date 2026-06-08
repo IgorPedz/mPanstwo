@@ -39,9 +39,7 @@ export default function AdminAppeals({ onPendingCount }) {
     rejected: { label: t("appeals.rejected"), color: STATUS_COLORS.rejected },
   };
 
-  // Modal zatwierdzenia
   const [approveModal, setApproveModal] = useState({ open: false, item: null, loading: false });
-  // Panel odrzucenia (inline — z polem na odpowiedź)
   const [rejectPanel, setRejectPanel]   = useState({ id: null, response: "" });
   const [rejectLoading, setRejectLoading] = useState(false);
 

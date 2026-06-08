@@ -98,7 +98,7 @@ export default function AdminStats() {
         </div>
       </section>
 
-      {/* Registrations chart */}
+
       {data?.registrationsLast30?.length > 0 && (
         <motion.section
           initial={{ opacity: 0, y: 20 }}
@@ -118,24 +118,20 @@ export default function AdminStats() {
   );
 }
 
-const CHART_H = 160; // px — odpowiada h-40
+const CHART_H = 160; 
 
-// "2024-01-15" lub Date → "15 sty"
 function fmtDay(raw) {
   if (!raw) return "";
-  // MySQL zwraca "2024-01-15T00:00:00.000Z" lub "2024-01-15"
   const s = typeof raw === "string" ? raw.slice(0, 10) : raw.toISOString().slice(0, 10);
   const [y, m, d] = s.split("-").map(Number);
-  // Budujemy Date w UTC żeby uniknąć przesunięcia strefy
   const date = new Date(Date.UTC(y, m - 1, d));
   return date.toLocaleDateString("pl-PL", { day: "numeric", month: "short", timeZone: "UTC" });
 }
 
-// Tylko numer dnia ("15") do osi X
 function fmtDayShort(raw) {
   if (!raw) return "";
   const s = typeof raw === "string" ? raw.slice(0, 10) : raw.toISOString().slice(0, 10);
-  return String(Number(s.split("-")[2])); // usuwa wiodące zero
+  return String(Number(s.split("-")[2])); 
 }
 
 function RegistrationsChart({ data, t }) {

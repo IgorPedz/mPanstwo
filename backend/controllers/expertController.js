@@ -15,7 +15,7 @@ const sendFile = (res, data, filename, format) => {
   if (format === "csv") {
     res.setHeader("Content-Type", "text/csv; charset=utf-8");
     res.setHeader("Content-Disposition", `attachment; filename="${filename}.csv"`);
-    res.send("﻿" + toCSV(data)); // BOM for Excel
+    res.send("﻿" + toCSV(data)); 
   } else {
     res.setHeader("Content-Type", "application/json");
     res.setHeader("Content-Disposition", `attachment; filename="${filename}.json"`);
@@ -23,7 +23,6 @@ const sendFile = (res, data, filename, format) => {
   }
 };
 
-// GET /expert/export/users?format=csv|json
 const exportUsers = async (req, res, next) => {
   try {
     const format = req.query.format === "csv" ? "csv" : "json";
@@ -39,7 +38,6 @@ const exportUsers = async (req, res, next) => {
   }
 };
 
-// GET /expert/export/opinions?format=csv|json
 const exportOpinions = async (req, res, next) => {
   try {
     const format = req.query.format === "csv" ? "csv" : "json";
@@ -56,7 +54,6 @@ const exportOpinions = async (req, res, next) => {
   }
 };
 
-// GET /expert/export/mp-ratings?format=csv|json
 const exportMpRatings = async (req, res, next) => {
   try {
     const format = req.query.format === "csv" ? "csv" : "json";
@@ -73,7 +70,6 @@ const exportMpRatings = async (req, res, next) => {
   }
 };
 
-// GET /expert/export/surveys?format=csv|json
 const exportSurveys = async (req, res, next) => {
   try {
     const format = req.query.format === "csv" ? "csv" : "json";
@@ -92,7 +88,6 @@ const exportSurveys = async (req, res, next) => {
   }
 };
 
-// GET /expert/export/mp-ratings-summary?format=csv|json
 const exportMpRatingsSummary = async (req, res, next) => {
   try {
     const format = req.query.format === "csv" ? "csv" : "json";

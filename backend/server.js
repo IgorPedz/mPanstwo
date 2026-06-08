@@ -109,7 +109,7 @@ cron.schedule("0 5 1 * *", () => {
   );
 });
 
-// Co 30 minut — sprawdź nowe aktualności dla obserwowanych instytucji
+// Co 30 minut
 cron.schedule("*/30 * * * *", () => {
   console.log("[cron] Sprawdzanie aktualności obserwowanych instytucji…");
   runFollowNewsCheck().catch(err =>

@@ -76,7 +76,6 @@ const login = async (req, res, next) => {
 
     const isBanned = user.role === "Zbanowany";
 
-    // Zbanowani mogą się zalogować, ale bez aktualizacji aktywności
     let streakResult = { streak: 0, notify: false };
     if (!isBanned) {
       streakResult = await updateUserActivity(user.id);

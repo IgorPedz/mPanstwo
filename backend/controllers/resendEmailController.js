@@ -22,7 +22,6 @@ const resetPassword = async (req, res) => {
 
     const link = `http://localhost:5173/reset-password/${token}`;
 
-    // 15 minut od teraz
     const expires = Date.now() + 15 * 60 * 1000;
 
     await db.execute(

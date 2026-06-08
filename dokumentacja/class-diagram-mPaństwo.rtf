@@ -28310,22 +28310,17 @@ Reprezentuje u\f2\'bfytkownika systemu. Zawiera dane identyfikacyjne oraz operac
 Ka\'bfdy u\'bfytkownik posiada jeden dashboard. Umo\'bfliwia on personalizacj\'ea widoku poprzez dodawanie i usuwanie widget\f0\'f3w.\par
 \b Widget\par
 \b0 Reprezentuje pojedynczy element dashboardu (np. wykres, lista obserwowanych projekt\'f3w). Zawiera konfiguracj\f2\'ea zapisan\'b9 w formacie JSON.\par
-\b Bill\b0\par
-Reprezentuje projekt ustawy pobierany z API Sejmu RP. Zawiera podstawowe informacje o statusie i dacie z\'b3o\'bfenia.\par
-\b ObservedBill\b0\par
-Klasa po\'9crednicz\'b9ca mi\'eadzy u\'bfytkownikiem a projektem ustawy. Reprezentuje relacj\'ea obserwowania projektu przez u\'bfytkownika.\par
 \b Notification\b0\par
 Odpowiada za przechowywanie powiadomie\'f1 o zmianach w obserwowanych projektach.\par
-\b Vote\b0\par
-Reprezentuje g\'b3osowanie powi\'b9zane z projektem ustawy.\par
-\b Rating\b0\par
-Pozwala u\'bfytkownikowi oceni\'e6 projekt ustawy.\par
+\b Institution\b0\par
+Odpowiada za wszystkie mozliwie instytucje panstwowe do sledzenie przez mPanstwo\par
+\b ObservedInstitution\b0\par
+Odpowiada za wszsytkie instytucje o kt\f0\'f3\f2 rych uzytkownik chce dostawac powiadomienia.\par
 \b Relacje\b0\par
 
 \pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl240\slmult1 Jeden u\'bfytkownik posiada jeden dashboard (1:1).\par
 {\pntext\f3\'B7\tab}Dashboard zawiera wiele widget\f0\'f3w (1:N).\par
-{\pntext\f3\'B7\tab}U\f2\'bfytkownik mo\'bfe obserwowa\'e6 wiele projekt\f0\'f3w (relacja przez klas\f2\'ea ObservedBill).\par
-{\pntext\f3\'B7\tab}Projekt ustawy mo\'bfe posiada\'e6 wiele g\'b3osowa\'f1 i ocen.\par
+{\pntext\f3\'B7\tab}U\f2\'bfytkownik mo\'bfe obserwowa\'e6 wiele instytucji.\par
 {\pntext\f3\'B7\tab}U\'bfytkownik mo\'bfe posiada\'e6 wiele powiadomie\'f1.\par
 
 \pard\sa200\sl240\slmult1 Diagram pokazuje modularn\'b9 struktur\'ea systemu oraz separacj\'ea odpowiedzialno\'9cci poszczeg\f0\'f3lnych klas. Model umo\f2\'bfliwia \'b3atwe rozszerzenie systemu o kolejne typy widget\f0\'f3w lub dodatkowe funkcje analityczne.\f2\lang21\par

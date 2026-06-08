@@ -1,7 +1,6 @@
 const db = require("../db");
 const sendNotification = require("../utils/notification");
 
-// POST /report/opinion/:id  { reason }
 const reportOpinion = async (req, res, next) => {
   try {
     const reporterId = req.user?.id;
@@ -12,7 +11,6 @@ const reportOpinion = async (req, res, next) => {
     if (!reason) return res.status(400).json({ message: "Podaj powód zgłoszenia" });
     if (reason.length > 500) return res.status(400).json({ message: "Powód zbyt długi (max 500 znaków)" });
 
-    // Sprawdź czy opinia istnieje
     const [[opinion]] = await db.query(
       "SELECT id, user_id FROM legislation_opinions WHERE id = ?", [opinionId]
     );
@@ -34,7 +32,6 @@ const reportOpinion = async (req, res, next) => {
   }
 };
 
-// GET /admin/reports?status=pending&page=1&limit=20
 const getReports = async (req, res, next) => {
   try {
     const page   = Math.max(1, parseInt(req.query.page)  || 1);
@@ -89,10 +86,8 @@ const getReports = async (req, res, next) => {
   }
 };
 
-// PUT /admin/reports/:id/dismiss
 const dismissReport = async (req, res, next) => {
   try {
-    // Pobierz dane przed aktualizacją
     const [[report]] = await db.query(
       `SELECT r.reporter_id, lo.print_num
        FROM opinion_reports r
@@ -107,7 +102,6 @@ const dismissReport = async (req, res, next) => {
       [req.user.id, req.params.id]
     );
 
-    // Powiadom zgłaszającego
     sendNotification({
       type: "REPORT_DISMISSED",
       userId: report.reporter_id,
@@ -123,7 +117,6 @@ const dismissReport = async (req, res, next) => {
   }
 };
 
-// DELETE /admin/reports/:id/delete-opinion  (usuwa opinię + oznacza raport jako reviewed)
 const deleteReportedOpinion = async (req, res, next) => {
   try {
     const [[report]] = await db.query(
@@ -135,7 +128,6 @@ const deleteReportedOpinion = async (req, res, next) => {
     );
     if (!report) return res.status(404).json({ message: "Zgłoszenie nie istnieje" });
 
-    // Pobierz wszystkich zgłaszających (żeby powiadomić każdego)
     const [reporters] = await db.query(
       "SELECT reporter_id FROM opinion_reports WHERE opinion_id = ? AND status = 'pending'",
       [report.opinion_id]
@@ -147,7 +139,6 @@ const deleteReportedOpinion = async (req, res, next) => {
       [req.user.id, report.opinion_id]
     );
 
-    // Powiadom wszystkich zgłaszających
     for (const { reporter_id } of reporters) {
       sendNotification({
         type: "REPORT_RESOLVED",
