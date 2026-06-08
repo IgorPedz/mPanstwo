@@ -17,7 +17,8 @@ export default function FinalExamNode({
 
   const allCompleted =
     completedLessons.length >= totalLessons && totalLessons > 0;
-  const ui = (key) => t(`courses.final_exam.${key}`);
+  const ui = (key, options) =>
+    t(`courses.final_exam.${key}`, options);
   const uiPractice = (key) => t(`courses.practice_exam.${key}`);
 
   return (
@@ -60,12 +61,11 @@ export default function FinalExamNode({
         whileTap={allCompleted && !examPassed ? { scale: 0.995 } : {}}
         className={`
           w-full text-left rounded-2xl border p-5 transition-all duration-200 color-transition
-          ${
-            examPassed
-              ? "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/50 cursor-default"
-              : allCompleted
-                ? "bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800/50 hover:border-amber-300 dark:hover:border-amber-700 hover:shadow-lg cursor-pointer"
-                : "bg-slate-50 dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-800/40 cursor-not-allowed opacity-60"
+          ${examPassed
+            ? "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/50 cursor-default"
+            : allCompleted
+              ? "bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800/50 hover:border-amber-300 dark:hover:border-amber-700 hover:shadow-lg cursor-pointer"
+              : "bg-slate-50 dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-800/40 cursor-not-allowed opacity-60"
           }
         `}
       >
@@ -74,12 +74,11 @@ export default function FinalExamNode({
             <div
               className={`color-transition
                 shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center text-2xl
-                ${
-                  examPassed
-                    ? "bg-emerald-100 dark:bg-emerald-900/40"
-                    : allCompleted
-                      ? "bg-amber-100 dark:bg-amber-900/40"
-                      : "bg-slate-100 dark:bg-slate-800"
+                ${examPassed
+                  ? "bg-emerald-100 dark:bg-emerald-900/40"
+                  : allCompleted
+                    ? "bg-amber-100 dark:bg-amber-900/40"
+                    : "bg-slate-100 dark:bg-slate-800"
                 }
               `}
             >
